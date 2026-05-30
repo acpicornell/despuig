@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import data from '../data/pobles.json';
+import { cellPct } from '../lib/frame.mjs';
+import { url } from '../lib/url.mjs';
+
+const pobles = data.pobles;
+const spots = pobles.map((p) => ({ ...p, pct: cellPct(p.borde, p.ordre) }));
+const totalAnimes = pobles.reduce((s, p) => s + (p.animes || 0), 0);
+---
+<Base
+  title={null}
+  description="Explora les 34 viñetas de pobles del mapa de Mallorca del Cardenal Despuig (1785). Fes clic sobre qualsevol vista per descobrir-ne el text original i les dades.">
+  <section class="hero wrap">
+    <p class="kicker">Mapa de la Isla de Mallorca · gravat el 1785 · dades de 1829</p>
+    <h1>Les viñetas del Cardenal Despuig</h1>
+    <p class="lede">
+      El mapa més cèlebre de Mallorca està envoltat de <strong>34 vistes gravades</strong> dels
+      seus pobles, cadascuna amb una breu descripció de la seva història, població i collites.
+      Aquí pots recórrer-les una a una.
+    </p>
+    <div class="cta">
+      <a class="btn" href={url('pobles')}>Explora els pobles</a>
+      <a class="btn ghost" href={url('mapa')}>Obre el mapa amb zoom</a>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <p class="hint center muted">Passa el cursor i fes clic sobre qualsevol viñeta del marc ↓</p>
+    <div class="frame">
+      <img src={url('map/mapa-web.jpg')} alt="Mapa de Mallorca del Cardenal Despuig amb les seves 34 viñetas" />
+      {spots.map((p) => (
+        <a
+          class={`spot spot--${p.borde}`}
+          href={url(`pobles/${p.slug}`)}
+          style={`left:${p.pct.left}%;top:${p.pct.top}%;width:${p.pct.width}%;height:${p.pct.height}%`}
+          aria-label={`${p.nom} — ${p.animes ?? '?'} ànimes`}>
+          <span class="spot__label">{p.nom}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="wrap stats">
+    <div class="stat card"><strong>34</strong><span>viñetas de pobles</span></div>
+    <div class="stat card"><strong>5</strong><span>llogarets dependents</span></div>
+    <div class="stat card"><strong>{totalAnimes.toLocaleString('ca-ES')}</strong><span>ànimes (cens de 1829)</span></div>
+    <div class="stat card"><strong>1785</strong><span>any del gravat original</span></div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding: 2.4rem 1.2rem 1rem; max-width: 900px; }
+  .kicker { font-family: var(--display); letter-spacing: .12em; text-transform: uppercase; font-size: .82rem; color: var(--sepia); margin: 0 0 .5rem; }
+  .cta { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.2rem; }
+  .hint { margin: 1.5rem 0 .8rem; font-style: italic; }
+
+  .frame {
+    position: relative; line-height: 0;
+    border: 1px solid var(--line); box-shadow: 0 4px 20px var(--shadow);
+    background: #fff;
+  }
+  .frame img { width: 100%; height: auto; }
+
+  .spot {
+    position: absolute; display: block;
+    border: 2px solid transparent; border-radius: 2px;
+    transition: background-color .15s, border-color .15s;
+  }
+  .spot:hover, .spot:focus-visible {
+    background-color: rgba(138, 51, 36, 0.16);
+    border-color: var(--accent);
+    outline: none;
+  }
+  .spot__label {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    bottom: 100%; margin-bottom: 4px;
+    background: var(--ink); color: #fdf6e8;
+    font-family: var(--display); font-size: .8rem; line-height: 1.1;
+    padding: .2rem .5rem; border-radius: 3px; white-space: nowrap;
+    opacity: 0; pointer-events: none; transition: opacity .15s;
+    z-index: 5;
+  }
+  /* etiquetes de la fila inferior cap avall, per no sortir del marc */
+  .spot--inferior .spot__label { bottom: auto; top: 100%; margin: 4px 0 0; }
+  .spot:hover .spot__label, .spot:focus-visible .spot__label { opacity: 1; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+  .stat { padding: 1.1rem; text-align: center; }
+  .stat strong { display: block; font-family: var(--display); font-size: 1.8rem; color: var(--accent); }
+  .stat span { font-size: .92rem; color: var(--ink-soft); }
+  @media (max-width: 680px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+</style>

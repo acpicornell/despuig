@@ -1,0 +1,16 @@
+# build output
+dist/
+# dependencies
+node_modules/
+# generated assets (regenerables des de data/jpg amb els scripts)
+public/vinetas/
+public/map/mapa.dzi
+public/map/mapa_files/
+public/map/mapa-web.jpg
+public/map/T0023524.jpg
+# logs
+npm-debug.log*
+# macOS
+.DS_Store
+# astro
+.astro/

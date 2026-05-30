@@ -1,0 +1,131 @@
+---
+import Base from '../layouts/Base.astro';
+import data from '../data/pobles.json';
+import { url } from '../lib/url.mjs';
+
+const pobles = data.pobles;
+
+// Població (ànimes) ordenada
+const perPoblacio = [...pobles]
+  .filter((p) => p.animes)
+  .sort((a, b) => b.animes - a.animes);
+const maxAnimes = perPoblacio[0].animes;
+
+// Freqüència de collites
+const compteCollites = {};
+for (const p of pobles) for (const c of p.collites) compteCollites[c] = (compteCollites[c] || 0) + 1;
+const collites = Object.entries(compteCollites).sort((a, b) => b[1] - a[1]);
+const maxCollita = collites[0][1];
+
+// Fundacions / primera menció com a vila
+const fundacions = {};
+for (const p of pobles) if (p.anyVila) (fundacions[p.anyVila] ||= []).push(p.nom);
+const anys = Object.keys(fundacions).map(Number).sort((a, b) => a - b);
+
+// Punts per al mapa (pobles + dependents)
+const punts = [];
+for (const p of pobles) {
+  punts.push({ nom: p.nom, slug: p.slug, lat: p.coords.lat, lng: p.coords.lng, animes: p.animes, main: true });
+  for (const d of p.dependents) if (d.coords) punts.push({ nom: d.nom, lat: d.coords.lat, lng: d.coords.lng, animes: d.animes, main: false });
+}
+---
+<Base title="Dades" description="La Mallorca de 1829 en xifres: població, collites i fundacions dels pobles segons el mapa del Cardenal Despuig.">
+  <section class="wrap">
+    <h1>La Mallorca de 1829 en xifres</h1>
+    <p class="lede">Les cartelas no només descriuen: recullen el cens de veïns i ànimes, les collites i la història de cada vila. Les hem reunit aquí.</p>
+  </section>
+
+  <section class="wrap">
+    <h2>Població per poble <small class="muted">(ànimes, cens de 1829)</small></h2>
+    <div class="bars">
+      {perPoblacio.map((p) => (
+        <a class="bar" href={url(`pobles/${p.slug}`)}>
+          <span class="bar__name">{p.nom}</span>
+          <span class="bar__track"><span class="bar__fill" style={`width:${(p.animes / maxAnimes) * 100}%`}></span></span>
+          <span class="bar__val">{p.animes.toLocaleString('ca-ES')}</span>
+        </a>
+      ))}
+    </div>
+    <p class="muted small">Palma, amb 36.008 ànimes, multiplicava per quatre la població de Manacor, la següent vila més gran.</p>
+  </section>
+
+  <section class="wrap two">
+    <div>
+      <h2>Collites més freqüents</h2>
+      <div class="bars compact">
+        {collites.map(([nom, n]) => (
+          <div class="bar static">
+            <span class="bar__name">{nom}</span>
+            <span class="bar__track"><span class="bar__fill alt" style={`width:${(n / maxCollita) * 100}%`}></span></span>
+            <span class="bar__val">{n}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div>
+      <h2>Quan van ser viles</h2>
+      <ul class="timeline">
+        {anys.map((a) => (
+          <li><span class="any">{a}</span><span>{fundacions[a].join(', ')}</span></li>
+        ))}
+      </ul>
+      <p class="muted small">Molts pobles reben el títol de vila el 1300, de mans del rei Jaume II de Mallorca.</p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Els pobles sobre la Mallorca actual</h2>
+    <p class="muted">Cada marca enllaça amb la fitxa del poble. Els llogarets dependents es mostren en to més clar.</p>
+    <div id="mapa-actual" data-punts={JSON.stringify(punts)} data-base={url('pobles/')}></div>
+  </section>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script is:inline>
+    (function () {
+      const el = document.getElementById('mapa-actual');
+      if (!el || !window.L) return;
+      const punts = JSON.parse(el.dataset.punts);
+      const base = el.dataset.base;
+      const map = L.map(el).setView([39.62, 2.95], 9);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap' }).addTo(map);
+      punts.forEach(function (pt) {
+        const r = pt.main ? 7 : 4;
+        const m = L.circleMarker([pt.lat, pt.lng], {
+          radius: r,
+          color: pt.main ? '#8a3324' : '#b06a4e',
+          fillColor: pt.main ? '#8a3324' : '#d9b48a',
+          fillOpacity: pt.main ? 0.85 : 0.7, weight: 1.5,
+        }).addTo(map);
+        const link = pt.main ? '<a href="' + base + pt.slug + '">' + pt.nom + '</a>' : pt.nom + ' <em>(dependent)</em>';
+        m.bindPopup('<strong>' + link + '</strong>' + (pt.animes ? '<br>' + pt.animes.toLocaleString('ca-ES') + ' ànimes' : ''));
+      });
+    })();
+  </script>
+</Base>
+
+<style>
+  h2 small { font-weight: 400; font-size: .9rem; }
+  .bars { display: grid; gap: .35rem; margin: 1rem 0; }
+  .bars.compact { gap: .25rem; }
+  .bar { display: grid; grid-template-columns: 150px 1fr 64px; align-items: center; gap: .7rem; text-decoration: none; color: inherit; padding: .12rem .2rem; border-radius: 3px; }
+  a.bar:hover { background: rgba(138,51,36,.08); }
+  .bar__name { font-size: .95rem; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bar__track { background: var(--paper-2); border: 1px solid var(--line); border-radius: 999px; height: 16px; overflow: hidden; }
+  .bar__fill { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-soft)); }
+  .bar__fill.alt { background: linear-gradient(90deg, var(--sepia), #b89b6a); }
+  .bar__val { font-family: var(--display); font-size: .9rem; color: var(--sepia); }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .timeline { list-style: none; padding: 0; margin: 1rem 0; }
+  .timeline li { display: grid; grid-template-columns: 70px 1fr; gap: .8rem; padding: .35rem 0; border-bottom: 1px dotted var(--line); }
+  .timeline .any { font-family: var(--display); color: var(--accent); font-size: 1.1rem; }
+
+  #mapa-actual { height: 520px; border: 1px solid var(--line); border-radius: 4px; margin-top: 1rem; }
+  .small { font-size: .85rem; }
+  @media (max-width: 760px) {
+    .two { grid-template-columns: 1fr; }
+    .bar { grid-template-columns: 110px 1fr 56px; }
+    .bar__name { font-size: .85rem; }
+  }
+</style>

@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/url.mjs';
+---
+<Base title="Sobre el mapa" description="Història del mapa de Mallorca del Cardenal Despuig (1785), les seves edicions, el mètode de transcripció i les fonts.">
+  <article class="wrap prosa">
+    <h1>Sobre el mapa</h1>
+
+    <h2>El mapa del Cardenal Despuig</h2>
+    <p>
+      El <em>Mapa de la Isla de Mallorca</em> és l'obra cabdal de la cartografia mallorquina i un
+      dels mapes més importants del segle XVIII espanyol. Fou patrocinat per <strong>Antoni Despuig
+      i Dameto</strong> (1745–1813), il·lustre eclesiàstic mallorquí que arribà a cardenal, i
+      <strong>gravat el 1785</strong> per <strong>Josep Muntaner i Moner</strong>. Es dedicà a la
+      princesa d'Astúries, Maria Lluïsa de Borbó.
+    </p>
+    <p>
+      A escala aproximada d'1:72.000, el mapa recull més de 2.500 topònims —entre ells uns 1.250
+      possessions—, amb un detall i una densitat d'informació excepcionals per a l'època. Aquesta
+      riquesa el converteix en una font de primer ordre per a la història del poblament, l'economia
+      i el paisatge de Mallorca.
+    </p>
+
+    <h2>Les edicions i aquesta còpia</h2>
+    <p>
+      De l'edició original de 1785 se'n van fer reedicions posteriors. La que es mostra en aquest
+      lloc és una <strong>reedició reduïda</strong>, re-gravada per <strong>Llorenç Muntaner</strong>
+      i reduïda per Manuel Briton, en què el marc s'enriquí amb <strong>34 vistes gravades</strong>
+      dels pobles de l'illa. Les xifres de població que apareixen a les cartelas corresponen al
+      <strong>cens de 1829</strong>, segons la nota explícita sota la cartela de Palma. L'exemplar
+      digitalitzat prové de l'Instituto Geográfico Nacional (fitxa <strong>32-H-18</strong>).
+    </p>
+
+    <h2>Les viñetas</h2>
+    <p>
+      El tret més singular d'aquesta edició és la informació complementària dels gravats del marc.
+      Cada una de les 34 viñetas mostra una vista del poble i, sota seu, una breu ressenya que
+      barreja història, demografia, usos del sòl i recursos econòmics —de l'oli i les garroves de la
+      serra als marjals i les salines del pla—. Són una petita enciclopèdia de la Mallorca de fa dos
+      segles. <a href={url('pobles')}>Explora-les totes</a>.
+    </p>
+
+    <h2>Com s'ha fet aquest lloc</h2>
+    <p>
+      El text de cada cartela s'ha <strong>transcrit a mà</strong> a partir de la imatge en alta
+      resolució, conservant la grafia castellana original de l'època (per exemple <em>aceyte</em>,
+      <em>Jayme</em> o <em>9bre</em>). Cada fitxa n'ofereix un resum modernitzat en català i les
+      dades estructurades. Quan una lectura és incerta —abreviatures, noms àrabs o xifres
+      esborrades— s'indica de manera transparent a l'apartat <em>«dubtes de transcripció»</em> de
+      la fitxa corresponent. Les viñetas s'han retallat automàticament de la imatge mestra i el
+      mapa complet es pot explorar amb zoom gràcies a una piràmide de tessel·les.
+    </p>
+
+    <h2>Fonts</h2>
+    <ul>
+      <li>
+        Climent Picornell, Joana M. Seguí i Antoni Ginard, «El mapa de Mallorca d'Antoni Despuig
+        (1785)», <em>Treballs de Geografia</em>, núm. 40, Departament de Ciències de la Terra,
+        Universitat de les Illes Balears, Palma, 1988, pp. 23–40.
+      </li>
+      <li>
+        Instituto Geográfico Nacional, Cartoteca — fitxa 32-H-18,
+        <a href="https://www.ign.es/web/catalogo-cartoteca/resources/html/023524.html">catàleg en línia</a>.
+      </li>
+      <li>
+        Antoni Despuig i Dameto, el mapa de Mallorca (1784–1785) i la Societat d'Amics del País
+        (<a href="https://dialnet.unirioja.es/servlet/articulo?codigo=3237802">Dialnet</a>).
+      </li>
+    </ul>
+
+    <h2>Llicència</h2>
+    <p>
+      La imatge del mapa és de domini públic / CC-BY 4.0, cedida per l'Instituto Geográfico Nacional
+      (Orden FOM/2807/2015). Les transcripcions, els resums en català i el codi d'aquest lloc es
+      publiquen amb finalitat divulgativa i educativa, citant-ne sempre les fonts.
+    </p>
+
+    <p class="back"><a class="btn" href={url('pobles')}>Comença per veure els pobles</a></p>
+  </article>
+</Base>
+
+<style>
+  .prosa { max-width: 760px; padding-top: 1.5rem; }
+  .prosa h2 { margin-top: 2rem; }
+  .prosa li { margin-bottom: .6rem; }
+  .back { margin-top: 2.5rem; }
+</style>

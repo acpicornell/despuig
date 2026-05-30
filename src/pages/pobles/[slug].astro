@@ -1,0 +1,157 @@
+---
+import Base from '../../layouts/Base.astro';
+import data from '../../data/pobles.json';
+import { url } from '../../lib/url.mjs';
+
+export function getStaticPaths() {
+  const ordered = [...data.pobles].sort((a, b) => a.id - b.id);
+  return ordered.map((p, i) => ({
+    params: { slug: p.slug },
+    props: {
+      poble: p,
+      prev: ordered[(i - 1 + ordered.length) % ordered.length],
+      next: ordered[(i + 1) % ordered.length],
+    },
+  }));
+}
+
+const { poble: p, prev, next } = Astro.props;
+const bordeLabel = { superior: 'marge superior', inferior: 'marge inferior', izquierdo: 'marge esquerre', derecho: 'marge dret' };
+
+// Punts per al mini-mapa: el poble + els seus llogarets dependents.
+const punts = [
+  { nom: p.nom, lat: p.coords.lat, lng: p.coords.lng, main: true },
+  ...p.dependents.filter((d) => d.coords).map((d) => ({ nom: d.nom, lat: d.coords.lat, lng: d.coords.lng, main: false })),
+];
+---
+<Base title={p.nom} description={p.resumCat}>
+  <article class="wrap fitxa">
+    <nav class="breadcrumb"><a href={url('pobles')}>← Tots els pobles</a></nav>
+
+    <header class="fitxa__head">
+      <div>
+        <p class="kicker">Viñeta {p.id} · {bordeLabel[p.borde]}</p>
+        <h1>{p.nom}</h1>
+        <p class="lede">{p.resumCat}</p>
+        {(p.nomArab || p.nomAntic) && (
+          <p class="muted noms">
+            {p.nomArab && <span>Nom àrab: <em>{p.nomArab}</em></span>}
+            {p.nomAntic && <span>Nom antic: <em>{p.nomAntic}</em></span>}
+          </p>
+        )}
+      </div>
+      <figure class="gravat">
+        <img src={url(`vinetas/${p.slug}.jpg`)} alt={`Vista gravada de ${p.nom} al mapa de Despuig`} />
+        <figcaption>Gravat original de la viñeta de {p.nom}.</figcaption>
+      </figure>
+    </header>
+
+    <section class="dades">
+      <div class="dada"><span>Veïns</span><strong>{p.veins?.toLocaleString('ca-ES') ?? '—'}</strong></div>
+      <div class="dada"><span>Ànimes</span><strong>{p.animes?.toLocaleString('ca-ES') ?? '—'}</strong></div>
+      <div class="dada"><span>Vila des de</span><strong>{p.anyVila ?? '—'}</strong></div>
+      <div class="dada"><span>Fires</span><strong>{p.fires ?? '—'}</strong></div>
+    </section>
+
+    {p.collites.length > 0 && (
+      <p class="collites"><span class="muted">Collites:</span> {p.collites.map((c) => <span class="tag">{c}</span>)}</p>
+    )}
+
+    <div class="cols">
+      <div>
+        <h2>Text original de la cartela</h2>
+        <blockquote class="original">{p.textOriginal}</blockquote>
+        {p.notes && <p class="notes"><strong>Nota:</strong> {p.notes}</p>}
+
+        {p.dependents.length > 0 && (
+          <div class="dependents">
+            <h2>Llogarets dependents</h2>
+            <ul>
+              {p.dependents.map((d) => (
+                <li><strong>{d.nom}</strong> — {d.veins} veïns, {d.animes} ànimes</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {p.dubtes.length > 0 && (
+          <div class="dubtes">
+            <h2>Dubtes de transcripció</h2>
+            <ol>{p.dubtes.map((d) => <li>{d}</li>)}</ol>
+          </div>
+        )}
+      </div>
+
+      <aside>
+        <h2>On és</h2>
+        <div id="locator" data-punts={JSON.stringify(punts)} role="img" aria-label={`Mapa amb la ubicació de ${p.nom}`}></div>
+        <p class="muted small">Ubicació actual del municipi.</p>
+      </aside>
+    </div>
+
+    <nav class="pager">
+      <a href={url(`pobles/${prev.slug}`)}>← {prev.nom}</a>
+      <a href={url(`pobles/${next.slug}`)}>{next.nom} →</a>
+    </nav>
+  </article>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script is:inline>
+    (function () {
+      const el = document.getElementById('locator');
+      if (!el || !window.L) return;
+      const punts = JSON.parse(el.dataset.punts);
+      const main = punts.find((p) => p.main) || punts[0];
+      const map = L.map(el, { scrollWheelZoom: false, attributionControl: true }).setView([main.lat, main.lng], 11);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '© OpenStreetMap',
+      }).addTo(map);
+      const group = [];
+      punts.forEach((pt) => {
+        const m = L.marker([pt.lat, pt.lng]).addTo(map)
+          .bindPopup(pt.main ? '<strong>' + pt.nom + '</strong>' : pt.nom + ' (dependent)');
+        group.push(m.getLatLng());
+      });
+      if (group.length > 1) map.fitBounds(L.latLngBounds(group).pad(0.4));
+    })();
+  </script>
+</Base>
+
+<style>
+  .fitxa { padding-top: 1.5rem; }
+  .breadcrumb { margin-bottom: .8rem; font-size: .95rem; }
+  .kicker { font-family: var(--display); letter-spacing: .1em; text-transform: uppercase; font-size: .78rem; color: var(--sepia); margin: 0 0 .3rem; }
+  .fitxa__head { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+  .noms.noms { display: flex; gap: 1.2rem; flex-wrap: wrap; font-size: .95rem; }
+  .gravat { margin: 0; border: 1px solid var(--line); background: #fff; box-shadow: 0 3px 14px var(--shadow); }
+  .gravat img { width: 100%; }
+  .gravat figcaption { padding: .5rem .7rem; font-size: .82rem; color: var(--ink-soft); font-style: italic; }
+
+  .dades { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0 1rem; }
+  .dada { text-align: center; padding: .9rem .5rem; background: rgba(255,255,255,.4); border: 1px solid var(--line); border-radius: 4px; }
+  .dada span { display: block; font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); }
+  .dada strong { font-family: var(--display); font-size: 1.5rem; color: var(--accent); }
+  .collites { margin: .5rem 0 1.5rem; }
+
+  .cols { display: grid; grid-template-columns: 1.6fr 1fr; gap: 2.4rem; align-items: start; }
+  .original {
+    font-size: 1.16rem; line-height: 1.7; margin: 0; padding: 1.2rem 1.4rem;
+    border-left: 4px solid var(--accent); background: rgba(255,255,255,.4);
+    font-style: italic; color: var(--ink);
+  }
+  .notes { font-size: .98rem; color: var(--ink-soft); }
+  .dependents ul { padding-left: 1.1rem; }
+  .dubtes { margin-top: 1.5rem; font-size: .92rem; color: var(--ink-soft); }
+  .dubtes ol { padding-left: 1.2rem; }
+  .small { font-size: .85rem; }
+  #locator { height: 320px; border: 1px solid var(--line); border-radius: 4px; }
+
+  .pager { display: flex; justify-content: space-between; gap: 1rem; margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1rem; font-family: var(--display); }
+
+  @media (max-width: 820px) {
+    .fitxa__head, .cols { grid-template-columns: 1fr; }
+    .dades { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

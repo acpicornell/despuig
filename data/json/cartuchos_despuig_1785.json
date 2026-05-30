@@ -1,0 +1,251 @@
+{
+  "fuente": "Mapa de la Isla de Mallorca, reedición a escala menor del original publicado por el Cardenal Despuig en 1785. Las cifras censales corresponden al año 1829 según nota explícita bajo el cartucho de Palma.",
+  "total_cartuchos": 34,
+  "poblaciones_dependientes_mencionadas": [
+    {"nombre": "Villafranca", "dentro_de": "Petra", "vecinos": 168, "almas": 619},
+    {"nombre": "Lloseta", "dentro_de": "Binisalem", "vecinos": 215, "almas": 971},
+    {"nombre": "Deyá", "dentro_de": "Valldemusa", "vecinos": 189, "almas": 782},
+    {"nombre": "Bañalbufar", "dentro_de": "Esporlas", "vecinos": 102, "almas": 482},
+    {"nombre": "Estellencs (Estolleñas)", "dentro_de": "Puigpunyent", "vecinos": 123, "almas": 472}
+  ],
+  "cartuchos": [
+    {
+      "id": 1,
+      "borde": "superior",
+      "pueblo": "Selva",
+      "texto": "SELVA, llamada por los Moros Xilvar, es villa desde 1300; su población es de 768 vecinos y 3349 almas, su situación es muy alegre y muy abundante de fuentes, hay algunos pozos de nieve y mucho bosque; su cosecha aceyte, algarrobas y seda.",
+      "dudas": []
+    },
+    {
+      "id": 2,
+      "borde": "superior",
+      "pueblo": "Campanet",
+      "texto": "CAMPANET fué villa fundada por el Rey D. Jaymè de Aragón poco después de la Conquista, edificada en el oratorio de San Miguel, y trasladada después en el sitio donde se halla; su cosecha es de aceyte, algarrobas, y su población es de 696 vecinos y 2764 almas.",
+      "dudas": []
+    },
+    {
+      "id": 3,
+      "borde": "superior",
+      "pueblo": "Lluch",
+      "texto": "LLUCH es Parroquia desde 1456 á que se le agregó la antigua de Escorca; fundóse después un Colegio á cuyos Capellanes concedió Alexandro 6º el título de Congregación de S. Pedro; se venera en él la sagrada imagen de Nra Sra hallada en aquel territorio en el año 1238; contiene 4 vecinos y 233 almas. Su cosecha aceyte y ganados; sus montes que es lo más alto de la Isla; esta población de buen aire y tiene fuentes preciosas.",
+      "dudas": ["'la sagrada imagen' es lectura tentativa de una abreviatura ('Sgdª' o similar)", "'esta población de buen aire' — lectura de la abreviatura final 'd. baf' es incierta"]
+    },
+    {
+      "id": 4,
+      "borde": "superior",
+      "pueblo": "Pollensa",
+      "texto": "POLLENSA, fundada por los Romanos, es una de las villas más antiguas y considerables del Reyno; su cosecha aceyte, lanas y ganado; se hace un vino particular Montona; tiene 1282 vecinos y 5486 almas y pertenece á la religión de S. Juan; celebra feria en los últimos domingos de 9bre (noviembre).",
+      "dudas": ["'Montona' (nombre del vino) — podría ser 'Mantona' u otra grafía"]
+    },
+    {
+      "id": 5,
+      "borde": "superior",
+      "pueblo": "Alcudia",
+      "texto": "ALCUDIA, villa desde el año 1300, siendo antes Parroquia; el Emperador Carlos 5º le dio el título de Ciudad en el año 1523, adquirió el renombre de fidelísima por su lealtad; tiene un hermoso Puerto; su cosecha es de granos, ganado y finísima lana; tiene la celebrada Albufera, con inumerables las aves que crían en ella, particularmente los Cisnes; produce mucha pesca y anguilas de un extraordinario grandor; su población 267 vecinos y 1054 almas.",
+      "dudas": []
+    },
+    {
+      "id": 6,
+      "borde": "superior",
+      "pueblo": "La Puebla",
+      "texto": "LA PUEBLA, villa desde el año 1300, contiene su termino la población de 674 vecinos y 2835 almas; su principal cosecha es de cañamos, trigos y ganado lanar, y comprehende los fecundísimos marjales que crían melones, sandías y calabazas extraordinarias.",
+      "dudas": []
+    },
+    {
+      "id": 7,
+      "borde": "superior",
+      "pueblo": "Muro",
+      "texto": "MURO, llamada por los Moros Algebelí, es población de 1018 vecinos y 4092 almas; era ya villa en el año de 1272. Su cosecha es de granos, ganado, cañamos, alcaparras y seda; comprehende porción de las Marjales; tiene en su distrito una Cantera de piedra de muy buena calidad.",
+      "dudas": ["'alcaparras' — lectura del final de palabra incierta; podría ser 'alcaparrones'"]
+    },
+    {
+      "id": 8,
+      "borde": "superior",
+      "pueblo": "Artá",
+      "texto": "ARTA, llamada por los Moros Sertan, es población de 1265 vecinos y 5325 almas; su cosecha es de aceyte, legumbres y ganado, particularmente ovino y vacuno; abunda de mucha caza, se cría finísimo algodón, y sus cuevas ó cavernas merecen la atención de los Naturalistas.",
+      "dudas": ["'ovino y vacuno' vs 'cabrío y vacuno' — los dos primeros caracteres podrían leerse de otra forma"]
+    },
+    {
+      "id": 9,
+      "borde": "superior",
+      "pueblo": "Manacor",
+      "texto": "MANACOR, es una de las mayores poblaciones de la Isla, habitada por 1933 vecinos y 8938 almas; en su distrito se halla una Cueva de muy digna y curiosa atención. El Rey D. Jayme el 2º la hizo villa en 1300; tiene puerto, cosecha de granos, legumbres, vino, higos pasos y ganado.",
+      "dudas": ["'Cueva de muy digna y curiosa atención' — sintaxis original peculiar; podría leerse 'Cueva muy digna y curiosa de atención'"]
+    },
+    {
+      "id": 10,
+      "borde": "derecho",
+      "pueblo": "Petra",
+      "texto": "PETRA, es una de las primeras poblaciones de la Isla, tiene 580 vecinos y 2288 almas; y en su distrito hay un molino y fábrica de papel; su cosecha es de granos, legumbres, vino y ganado. A sus inmediaciones se halla á Villafranca de 168 vecinos y 619 almas.",
+      "dudas": []
+    },
+    {
+      "id": 11,
+      "borde": "derecho",
+      "pueblo": "Sta. Margarita",
+      "texto": "Sta MARGARITA, era ya villa en 1232 y con el nombre de Hero, fué pueblo antiguo de los Romanos, en cuyos campos se hallaron sepulcros é inscripciones de aquellos tiempos: su población es de 632 vecinos y 2850 almas, y su cosecha granos, ganado, miel y cañamos.",
+      "dudas": []
+    },
+    {
+      "id": 12,
+      "borde": "derecho",
+      "pueblo": "Sancellas",
+      "texto": "SANSELLAS, su situación es hermosísima por dominar unas llanuras pobladas de árboles y de viñas, su cosecha principal es de granos, ganado, vino y azafrán; su población asciende á 740 vecinos y 3772 almas. En su distrito se halla vestigios de los antiguos habitadores de la Isla.",
+      "dudas": []
+    },
+    {
+      "id": 13,
+      "borde": "derecho",
+      "pueblo": "Sineu",
+      "texto": "SINEU, llamada antiguamente Sixneu, fue población de los Romanos, y villa de las más antiguas de la Isla, en ella tuvieron su Corte los Sres Reyes de Mallorca, y tiene por esto muchos privilegios, celebra sus ferias por el mes de Mayo, habitan en su distrito 884 vecinos y 3363 almas; su cosecha es de granos, legumbres, vino y ganado.",
+      "dudas": []
+    },
+    {
+      "id": 14,
+      "borde": "derecho",
+      "pueblo": "San Juan",
+      "texto": "S. JUAN, llamada antiguamente Alahmar, villa desde el año 1300, contiene su termino la población de 484 vecinos y 1566 almas; su terreno es de los más fértiles y de más sustancia de la Isla; su cosecha es de granos y ganado de toda especie.",
+      "dudas": ["'Alahmar' — nombre árabe; lectura tentativa de la grafía"]
+    },
+    {
+      "id": 15,
+      "borde": "derecho",
+      "pueblo": "Montuiri",
+      "texto": "MONTUIRI, población antigua llamada por los Moros Montueri ó Monte Calmo, su territorio es fertilísimo, contiene en su termino 448 vecinos y 1879 almas; su cosecha es de granos, legumbres, higos pasos y ganado.",
+      "dudas": ["'Monte Calmo' — segundo nombre; podría leerse 'Monte Calmis' u otra grafía"]
+    },
+    {
+      "id": 16,
+      "borde": "derecho",
+      "pueblo": "Porreras",
+      "texto": "PORRERAS, el Rey D. Jayme el 2º la erigió villa en el año 1300; su situación es hermosa y fértil; su cosecha es de granos, ganado, frutas, vino y azafrán; se fabrica también aguardiente; habitan en su termino 846 vecinos y 3730 almas.",
+      "dudas": []
+    },
+    {
+      "id": 17,
+      "borde": "derecho",
+      "pueblo": "Felanitx",
+      "texto": "FELANITX, llamada antiguamente Canalix, villa desde el año 1300, es población de 1808 vecinos y 6735 almas; en su distrito tiene un Castillo sobre un monte llamado desde los tiempos más antiguos Santueri, en el que se conoce por sus vestigios era el lugar donde tenian los moros sus baños, y custodiaban sus presos; su cosecha es de granos, ganado y vino del que fabrican mucho aguardiente.",
+      "dudas": ["Nº de vecinos: dudoso, podría leerse 1808 o 1880"]
+    },
+    {
+      "id": 18,
+      "borde": "inferior",
+      "pueblo": "Andraitx",
+      "texto": "ANDRAITX, población de 943 vecinos y 3773 almas; tiene su Puerto con su fortaleza; su principal cosecha es de aceyte; La Isla de la Dragonera se halla al poniente de esta costa, es de poca consideración.",
+      "dudas": []
+    },
+    {
+      "id": 19,
+      "borde": "inferior",
+      "pueblo": "Calviá",
+      "texto": "CALVIÁ, es lugar montuoso y muy fértil en aceyte, algarrobas, granos y ganado que son su cosecha principal; tiene algunos Puertos y entre ellos el de la Paguera donde desembarcó con su armada nuestro Glorioso Conquistador en 1229; su población es de 379 vecinos y 1583 almas.",
+      "dudas": []
+    },
+    {
+      "id": 20,
+      "borde": "inferior",
+      "pueblo": "Sta. María",
+      "texto": "Sta MARIA, población de 602 vecinos y 2426 almas; villa situada en una hermosa llanura; tiene cosecha de todos frutos, pero la más fuerte es de aceyte, granos, ganado, almendras y vino.",
+      "dudas": []
+    },
+    {
+      "id": 21,
+      "borde": "inferior",
+      "pueblo": "Marratxí",
+      "texto": "MARRATXI, su Parroquia S. MARCIAL, es población de 307 vecinos y 1379 almas; su principal cosecha es de aceyte, granos, viña, almendras, algarrobas, higos y ganado de toda especie. En su distrito se halla una fábrica de Losa ordinaria.",
+      "dudas": []
+    },
+    {
+      "id": 22,
+      "borde": "inferior",
+      "pueblo": "Palma",
+      "texto": "PALMA, Capital de la Isla. Su circuito 5250 varas castellanas. Su fortificación es á la moderna, con excelentes murallas, baluartes, plazas baxas, flancos retirados, plataformas, revellines, y 8 puertas para la comunicación exterior. Entre sus suntuosos edificios sobresale la Catedral, la Casa Consistorial y la de la Lonja. Tiene 6 parroquias, 7 pilas batismales, 3 Hospitales, 9 conventos de Religiosos, 11 de Religiosas, 2 casas de Estudios, 1 Universidad, 3 casas de niñas educandas, 1 Hospicio y gran número de Iglesias sufragáneas. Su campiña es amena y fértil, y sus paseos deliciosos. El número de vecinos con arrabales y distrito asciende á 8523 y 36008 almas.",
+      "dudas": []
+    },
+    {
+      "id": 23,
+      "borde": "inferior",
+      "pueblo": "Algaida",
+      "texto": "ALGAIDA, llamada así por los Moros; villa fundada en el año 1300 por el Rey D. Jayme el 2º; habitan en su termino 555 vecinos y 2520 almas; su cosecha es de granos, legumbres, vino, ganado é higos pasos.",
+      "dudas": []
+    },
+    {
+      "id": 24,
+      "borde": "inferior",
+      "pueblo": "Llucmayor",
+      "texto": "LLUCMAYOR, fundada del año 1300, habitan en su termino 1563 vecinos y 7330 almas; su cosecha principal es de trigos, higos pasos y ganados de toda especie; celebra feria todos los años á 29 de Setiembre; en una de sus llanuras perdió el Rey D. Jayme 3º una batalla, el Reyno y la vida.",
+      "dudas": []
+    },
+    {
+      "id": 25,
+      "borde": "inferior",
+      "pueblo": "Campos",
+      "texto": "CAMPOS, fundada del año 1300, algunos creen que la antigua Palma estaba en el Palmar donde hay unos baños muy saludables; abunda de granos y ganado; crían sus prados sosos, y en su termino existen las salinas que producen finísima sal; su población es de 628 vecinos y 2639 almas.",
+      "dudas": ["'prados sosos' — lectura incierta; podría ser 'prados solos' u otra variante"]
+    },
+    {
+      "id": 26,
+      "borde": "inferior",
+      "pueblo": "Santañí",
+      "texto": "SANTAÑI, fundada en el año 1300 por el Rey D. Jayme 2º; se ven en sus campos sepulcros antiguos memoria de los Romanos que la habitaron; es población de 890 vecinos y 3818 almas; su cosecha principal es de granos, especialmente el candeal.",
+      "dudas": []
+    },
+    {
+      "id": 27,
+      "borde": "izquierdo",
+      "pueblo": "Inca",
+      "texto": "INCA, es una de las poblaciones que tuvieron los Romanos, se hallaron vestigios antiguos y en uno de sus campos la Lápida que va grabada. Celebra Ferias todos los Jueves del año; tiene 822 vecinos y 3707 almas; su cosecha aceyte, granos, frutas, almendras, vino y ganado.",
+      "dudas": ["La viñeta muestra una lápida romana grabada: «SULPITIA GALIENI VIXIT [ANNIS] XXV»"]
+    },
+    {
+      "id": 28,
+      "borde": "izquierdo",
+      "pueblo": "Binisalem",
+      "texto": "BINISALEM, llamada antes Rubines, y por los Moros Beniçalel, hecha villa en 1300; tiene 542 vecinos y 2769 almas, su situación es una de las más hermosas de la Isla, abunda en aceyte, algarrobas, almendras, seda, granos, ganado, y de un vino de superior calidad. A sus cercanías está Lloseta de 215 vecinos y 971 almas.",
+      "dudas": []
+    },
+    {
+      "id": 29,
+      "borde": "izquierdo",
+      "pueblo": "Sóller",
+      "texto": "SOLLER, situada dentro de unos altísimos montes, en una vega muy amena. Población de 1516 vecinos y 6583 almas; tiene su puerto con su Castillo. Desembarcó en él el Rey D. Juan en 1394. Su cosecha aceyte, algarrobas, seda, ortaliza, frutas, ganado y naranjas tan celebradas.",
+      "dudas": []
+    },
+    {
+      "id": 30,
+      "borde": "izquierdo",
+      "pueblo": "Alaró",
+      "texto": "ALARÓ, llamada antiguamente Azaró, es población de 850 vecinos y [3???] almas; su cosecha aceyte, algarrobas, ganados, almendras, granos y abunda de muchas fuentes de que muelen algunos molinos. En su distrito se halla el antiguo Castillo tan celebrado de algunos Historiadores.",
+      "dudas": ["Número de almas: dudoso, primer dígito '3' visible, el resto cortado en el recorte; revisar sobre el original"]
+    },
+    {
+      "id": 31,
+      "borde": "izquierdo",
+      "pueblo": "Buñola",
+      "texto": "BUÑOLA, llamada por los Moros Buñoña; tiene cosecha abundante de aceyte, algarrobas, ganado, seda y frutas; en su distrito hay algunos bosques de consideración; su población es 440 vecinos y 1752 almas.",
+      "dudas": []
+    },
+    {
+      "id": 32,
+      "borde": "izquierdo",
+      "pueblo": "Valldemusa",
+      "texto": "VALLDEMUSA, llamada por los Moros Villavente por su gran amenidad; población de 332 vecinos y 1368 almas; su cosecha aceyte, algarrobas, seda, frutas, ortaliza y ganado. En sus inmediaciones se halla Deyá de 189 vecinos y 782 almas; su cosecha principal aceyte y cerdos.",
+      "dudas": []
+    },
+    {
+      "id": 33,
+      "borde": "izquierdo",
+      "pueblo": "Esporlas",
+      "texto": "ESPORLAS, situada entre unos frondosos montes, lugar muy ameno y fértil en aceyte, algarrobas, seda, ganado y frutas; hay muchas fuentes y dos de ellas abastecen la Ciudad; tiene 740 vecinos y 3075 almas. Cercano al mar está Bañalbufar de 102 vecinos y 482 almas; donde hay esquisitos vinos.",
+      "dudas": []
+    },
+    {
+      "id": 34,
+      "borde": "izquierdo",
+      "pueblo": "Puigpunyent",
+      "texto": "PUIGPUNENT, situada en un espacioso valle de olivos y otros arbolados; tiene 252 vecinos y 998 almas; su cosecha aceyte, algarrobas, ganado, seda y frutas; en su distrito se hallan las mayores Canteras de Jaspe; á la orilla del mar está Estolleñas, población de 123 vecinos y 472 almas.",
+      "dudas": ["Grafía 'PUIGPUNENT' tal como aparece en el cartucho (sin la segunda 'y' moderna)"]
+    }
+  ]
+}
