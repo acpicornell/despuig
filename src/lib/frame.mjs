@@ -11,8 +11,11 @@ export const IMG = { w: 8280, h: 6460 };
 
 // Línies del marc imprès, mesurades sobre la imatge mestra (perfil de foscor).
 // OUTER = vora exterior de la banda de viñetas; MAP = requadre interior del mapa.
-const OUTER = { l: 560, t: 140, r: 7765, b: 6280 };
-const MAP = { l: 1410, t: 835, r: 6915, b: 5555 };
+export const OUTER = { l: 560, t: 140, r: 7765, b: 6280 };
+export const MAP = { l: 1410, t: 835, r: 6915, b: 5555 };
+
+// Regió interior del mapa (on hi ha els topònims), per al buidatge OCR.
+export const MAP_REGION = { x: MAP.l, y: MAP.t, w: MAP.r - MAP.l, h: MAP.b - MAP.t };
 
 const N_H = 9; // viñetas per fila horitzontal (superior / inferior)
 const N_V = 8; // viñetas per columna vertical (esquerra / dreta)

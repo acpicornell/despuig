@@ -1,0 +1,19 @@
+{
+  "subtile": "s06_c06",
+  "toponims": [
+    { "nom": "Biniagual", "graf": "Beniagus", "tipus": "possessió", "dubte": true, "fx": 0.40, "fy": 0.02 },
+    { "nom": "Binifabell", "graf": "Benifoubell", "tipus": "possessió", "dubte": true, "fx": 0.78, "fy": 0.05 },
+    { "nom": "Biniali", "graf": "Biniatnara", "tipus": "possessió", "dubte": true, "fx": 0.52, "fy": 0.16 },
+    { "nom": "Son Saletes", "graf": "Sõ Saletas", "tipus": "possessió", "dubte": true, "fx": 0.46, "fy": 0.29 },
+    { "nom": "Sencelles", "graf": "SANSELLAS", "tipus": "nucli", "dubte": false, "fx": 0.80, "fy": 0.29 },
+    { "nom": "Cascanar", "graf": "Cas Canar", "tipus": "possessió", "dubte": true, "fx": 0.84, "fy": 0.45 },
+    { "nom": "La Torre", "graf": "La Torre", "tipus": "possessió", "dubte": true, "fx": 0.18, "fy": 0.42 },
+    { "nom": "Alqueries", "graf": "Alquerias", "tipus": "possessió", "dubte": true, "fx": 0.18, "fy": 0.48 },
+    { "nom": "Son Arrossa", "graf": "Sõ Arrosa", "tipus": "possessió", "dubte": true, "fx": 0.42, "fy": 0.50 },
+    { "nom": "Morei", "graf": "Morey", "tipus": "possessió", "dubte": true, "fx": 0.56, "fy": 0.56 },
+    { "nom": "Aireflor", "graf": "Ayreflor", "tipus": "possessió", "dubte": true, "fx": 0.58, "fy": 0.61 },
+    { "nom": "Judí", "graf": "Judí", "tipus": "possessió", "dubte": true, "fx": 0.92, "fy": 0.52 },
+    { "nom": "Son Mateu", "graf": "Sõ Mate", "tipus": "possessió", "dubte": true, "fx": 0.46, "fy": 0.78 },
+    { "nom": "Ruberts", "graf": "Lugení", "tipus": "nucli", "dubte": true, "fx": 0.18, "fy": 0.68 }
+  ]
+}

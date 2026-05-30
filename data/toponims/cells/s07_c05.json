@@ -1,0 +1,23 @@
+{
+  "subtile": "s07_c05",
+  "toponims": [
+    { "nom": "Pòrtol", "graf": "Portol", "tipus": "nucli", "dubte": true, "fx": 0.40, "fy": 0.20 },
+    { "nom": "Barruc", "graf": "Barruch", "tipus": "possessió", "dubte": true, "fx": 0.36, "fy": 0.44 },
+    { "nom": "Pontiró", "graf": "Pontiró", "tipus": "possessió", "dubte": true, "fx": 0.52, "fy": 0.46 },
+    { "nom": "Son Gili", "graf": "Sõ Cili", "tipus": "possessió", "dubte": true, "fx": 0.14, "fy": 0.52 },
+    { "nom": "Son Pelat", "graf": "Sõ Pelat", "tipus": "possessió", "dubte": true, "fx": 0.42, "fy": 0.54 },
+    { "nom": "Son Mir", "graf": "Sõ Mir", "tipus": "possessió", "dubte": true, "fx": 0.16, "fy": 0.60 },
+    { "nom": "Badaluc", "graf": "Badaluch", "tipus": "possessió", "dubte": true, "fx": 0.66, "fy": 0.58 },
+    { "nom": "Son Axal", "graf": "Sõ Axal", "tipus": "possessió", "dubte": true, "fx": 0.34, "fy": 0.64 },
+    { "nom": "Casablanca", "graf": "Casa blaca", "tipus": "possessió", "dubte": true, "fx": 0.26, "fy": 0.74 },
+    { "nom": "Son Llaté", "graf": "Sõ Llaté", "tipus": "possessió", "dubte": true, "fx": 0.42, "fy": 0.70 },
+    { "nom": "Morante", "graf": "Monente", "tipus": "possessió", "dubte": true, "fx": 0.66, "fy": 0.70 },
+    { "nom": "Cornya", "graf": "Kornya", "tipus": "possessió", "dubte": true, "fx": 0.66, "fy": 0.76 },
+    { "nom": "Caragol", "graf": "Carasol", "tipus": "possessió", "dubte": true, "fx": 0.48, "fy": 0.79 },
+    { "nom": "Hostal del Pla", "graf": "Hostal del Pla", "tipus": "altre", "dubte": true, "fx": 0.58, "fy": 0.85 },
+    { "nom": "Son Torer", "graf": "Sõ Torer", "tipus": "possessió", "dubte": true, "fx": 0.30, "fy": 0.86 },
+    { "nom": "Gual", "graf": "Gual", "tipus": "possessió", "dubte": true, "fx": 0.50, "fy": 0.92 },
+    { "nom": "Sant Jordi", "graf": "Sõ Jorge", "tipus": "nucli", "dubte": true, "fx": 0.42, "fy": 0.96 },
+    { "nom": "Marina", "graf": "Marina Verdera", "tipus": "costa", "dubte": true, "fx": 0.92, "fy": 0.86 }
+  ]
+}

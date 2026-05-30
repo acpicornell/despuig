@@ -10,6 +10,12 @@ public/map/mapa-web.jpg
 public/map/T0023524.jpg
 # logs
 npm-debug.log*
+# buidatge de topònims: imatges regenerables (els manifests i toponims.json sí es versionen)
+data/toponims/tiles/
+data/toponims/sub/
+data/toponims/candidates.json
+data/toponims/*-qa.png
+
 # macOS
 .DS_Store
 # astro
