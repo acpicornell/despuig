@@ -9,7 +9,10 @@
     "preview": "astro preview",
     "astro": "astro",
     "vinetas": "node scripts/crop-vinetas.mjs",
-    "dzi": "node scripts/build-dzi.mjs"
+    "dzi": "node scripts/build-dzi.mjs",
+    "toponims:subtiles": "node scripts/toponims/subtiles.mjs",
+    "toponims:merge": "node scripts/toponims/merge.mjs",
+    "toponims:review": "node scripts/toponims/review-server.mjs"
   },
   "dependencies": {
     "astro": "^4.16.18"
