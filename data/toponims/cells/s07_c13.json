@@ -1,0 +1,29 @@
+{
+  "subtile": "s07_c13",
+  "toponims": [
+    { "graf": "Sôs Ferrers", "nom": "Sos Ferrers", "tipus": "possessió", "dubte": false, "fx": 0.30, "fy": 0.03 },
+    { "graf": "Sos Llulls", "nom": "Sos Llulls", "tipus": "possessió", "dubte": false, "fx": 0.52, "fy": 0.03 },
+    { "graf": "Sô Coll", "nom": "Son Coll", "tipus": "possessió", "dubte": false, "fx": 0.92, "fy": 0.02 },
+    { "graf": "Sô Biscai", "nom": "Son Biscai", "tipus": "possessió", "dubte": false, "fx": 0.10, "fy": 0.08 },
+    { "graf": "cabey", "nom": "cabey", "tipus": "possessió", "dubte": true, "fx": 0.04, "fy": 0.20 },
+    { "graf": "ida Caramañy", "nom": "Caramany", "tipus": "possessió", "dubte": false, "fx": 0.06, "fy": 0.27 },
+    { "graf": "Mesquida Conté", "nom": "Mesquida Conté", "tipus": "possessió", "dubte": false, "fx": 0.32, "fy": 0.29 },
+    { "graf": "Sô Galianeta", "nom": "Son Galianeta", "tipus": "possessió", "dubte": false, "fx": 0.82, "fy": 0.27 },
+    { "graf": "novas", "nom": "novas", "tipus": "possessió", "dubte": true, "fx": 0.02, "fy": 0.51 },
+    { "graf": "Las Planas", "nom": "Les Planes", "tipus": "possessió", "dubte": false, "fx": 0.83, "fy": 0.51 },
+    { "graf": "Ses Voltas", "nom": "Ses Voltes", "tipus": "possessió", "dubte": false, "fx": 0.57, "fy": 0.60 },
+    { "graf": "Calicant", "nom": "Calicant", "tipus": "possessió", "dubte": false, "fx": 0.37, "fy": 0.68 },
+    { "graf": "Balafi", "nom": "Balafi", "tipus": "possessió", "dubte": false, "fx": 0.62, "fy": 0.77 },
+    { "graf": "Boga", "nom": "Boga", "tipus": "possessió", "dubte": false, "fx": 0.02, "fy": 0.80 },
+    { "graf": "Tange", "nom": "Tange", "tipus": "possessió", "dubte": false, "fx": 0.37, "fy": 0.82 },
+    { "graf": "Las Sitjas", "nom": "Les Sitges", "tipus": "possessió", "dubte": false, "fx": 0.77, "fy": 0.82 },
+    { "graf": "Rfl. d Bellver", "nom": "Rafal d'Bellver", "tipus": "possessió", "dubte": false, "fx": 0.08, "fy": 0.86 },
+    { "graf": "Sô Ribót", "nom": "Son Ribot", "tipus": "possessió", "dubte": false, "fx": 0.27, "fy": 0.93 },
+    { "graf": "Sô Barbot", "nom": "Son Barbot", "tipus": "possessió", "dubte": false, "fx": 0.90, "fy": 0.93 },
+    { "graf": "Bellvers", "nom": "Bellvers", "tipus": "possessió", "dubte": false, "fx": 0.12, "fy": 0.97 },
+    { "graf": "Lluchamar", "nom": "Lluchamar", "tipus": "possessió", "dubte": false, "fx": 0.62, "fy": 0.96 },
+    { "graf": "La Murtera", "nom": "La Murtera", "tipus": "possessió", "dubte": false, "fx": 0.05, "fy": 1.00 },
+    { "graf": "S. Lorêzo", "nom": "Sant Llorenç", "tipus": "nucli", "dubte": false, "fx": 0.66, "fy": 1.00 },
+    { "graf": "Beata", "nom": "Beata", "tipus": "possessió", "dubte": false, "fx": 0.36, "fy": 1.00 }
+  ]
+}

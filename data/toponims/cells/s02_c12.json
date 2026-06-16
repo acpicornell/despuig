@@ -1,0 +1,11 @@
+{
+  "subtile": "s02_c12",
+  "toponims": [
+    { "graf": "Cabo Menorca", "nom": "Cap Menorca", "tipus": "costa", "dubte": false, "fx": 0.58, "fy": 0.01 },
+    { "graf": "Sa Sinals", "nom": "Sa Sinals", "tipus": "possessió", "dubte": true, "fx": 0.04, "fy": 0.16 },
+    { "graf": "Sòcies", "nom": "Sòcies", "tipus": "possessió", "dubte": false, "fx": 0.02, "fy": 0.23 },
+    { "graf": "Câ Ponset", "nom": "Can Ponset", "tipus": "possessió", "dubte": false, "fx": 0.10, "fy": 0.33 },
+    { "graf": "I. Atalaiola", "nom": "Illa Atalaiola", "tipus": "costa", "dubte": false, "fx": 0.40, "fy": 0.50 },
+    { "graf": "Sa Torre Major", "nom": "Sa Torre Major", "tipus": "costa", "dubte": false, "fx": 0.08, "fy": 0.57 }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "subtile": "s04_c02",
+  "toponims": [
+    { "graf": "Tor. de Va", "nom": "Torre de Va", "tipus": "costa", "dubte": true, "fx": 0.93, "fy": 0.14 },
+    { "graf": "Font figuera", "nom": "Font Figuera", "tipus": "hidrònim", "dubte": false, "fx": 0.91, "fy": 0.32 },
+    { "graf": "Roqua Serrada", "nom": "Roca Serrada", "tipus": "costa", "dubte": false, "fx": 0.72, "fy": 0.50 },
+    { "graf": "Costa de Sô Fernandell", "nom": "Costa de Son Fernandell", "tipus": "costa", "dubte": false, "fx": 0.46, "fy": 0.54 },
+    { "graf": "Puerto de Valldemusa", "nom": "Port de Valldemossa", "tipus": "costa", "dubte": false, "fx": 0.66, "fy": 0.57 },
+    { "graf": "Puerto de Sô Fernandell", "nom": "Port de Son Fernandell", "tipus": "costa", "dubte": false, "fx": 0.60, "fy": 0.61 },
+    { "graf": "Puerto de la Cova", "nom": "Port de la Cova", "tipus": "costa", "dubte": false, "fx": 0.40, "fy": 0.65 },
+    { "graf": "Playa del corp mari", "nom": "Platja del Corb Mari", "tipus": "costa", "dubte": false, "fx": 0.24, "fy": 0.66 },
+    { "graf": "Puerto del Canonge", "nom": "Port del Canonge", "tipus": "costa", "dubte": false, "fx": 0.18, "fy": 0.74 },
+    { "graf": "Puerto de Buñola", "nom": "Port de Bunyola", "tipus": "costa", "dubte": false, "fx": 0.13, "fy": 0.80 },
+    { "graf": "La aguila", "nom": "L'Àguila", "tipus": "costa", "dubte": false, "fx": 0.21, "fy": 0.83 },
+    { "graf": "Sô Oleza", "nom": "Son Oleza", "tipus": "possessió", "dubte": false, "fx": 0.83, "fy": 0.95 },
+    { "graf": "Pla", "nom": "Pla", "tipus": "altre", "dubte": true, "fx": 0.92, "fy": 0.84 },
+    { "graf": "small bernat", "nom": "Comallbernat", "tipus": "costa", "dubte": true, "fx": 0.03, "fy": 0.86 },
+    { "graf": "agalena", "nom": "Magdalena", "tipus": "altre", "dubte": true, "fx": 0.02, "fy": 0.92 },
+    { "graf": "Sô", "nom": "Son", "tipus": "possessió", "dubte": true, "fx": 0.98, "fy": 0.71 }
+  ]
+}

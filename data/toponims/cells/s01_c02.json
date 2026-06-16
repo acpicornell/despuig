@@ -1,0 +1,16 @@
+{
+  "subtile": "s01_c02",
+  "toponims": [
+    { "graf": "ISLA DE LOS CONEJOS", "nom": "Illa dels Conills", "tipus": "costa", "dubte": false, "fx": 0.31, "fy": 0.05 },
+    { "graf": "I. Esponja", "nom": "Illa Esponja", "tipus": "costa", "dubte": false, "fx": 0.85, "fy": 0.10 },
+    { "graf": "Fuente", "nom": "Fuente", "tipus": "hidrònim", "dubte": false, "fx": 0.27, "fy": 0.22 },
+    { "graf": "Cala Estreta", "nom": "Cala Estreta", "tipus": "costa", "dubte": false, "fx": 0.69, "fy": 0.27 },
+    { "graf": "I. Horada", "nom": "Illa Foradada", "tipus": "costa", "dubte": false, "fx": 0.92, "fy": 0.29 },
+    { "graf": "I. Plana", "nom": "Illa Plana", "tipus": "costa", "dubte": false, "fx": 0.78, "fy": 0.33 },
+    { "graf": "I. de la Sa", "nom": "I. de la Sa", "tipus": "costa", "dubte": false, "fx": 0.92, "fy": 0.38 },
+    { "graf": "de la Cuerda", "nom": "de la Cuerda", "tipus": "altre", "dubte": false, "fx": 0.10, "fy": 0.67 },
+    { "graf": "I. Plana", "nom": "Illa Plana", "tipus": "costa", "dubte": false, "fx": 0.47, "fy": 0.64 },
+    { "graf": "escaria del Fraile", "nom": "escaria del Fraile", "tipus": "altre", "dubte": false, "fx": 0.14, "fy": 0.80 },
+    { "graf": "I. Redonda", "nom": "Illa Redona", "tipus": "costa", "dubte": false, "fx": 0.22, "fy": 0.93 }
+  ]
+}

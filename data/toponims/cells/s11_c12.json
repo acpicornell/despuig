@@ -1,0 +1,17 @@
+{
+  "subtile": "s11_c12",
+  "toponims": [
+    { "graf": "Puig de llanar", "nom": "Puig de Llenaire", "tipus": "orònim", "dubte": false, "fx": 0.36, "fy": 0.10 },
+    { "graf": "Espitalet", "nom": "Espitalet", "tipus": "possessió", "dubte": false, "fx": 0.88, "fy": 0.02 },
+    { "graf": "Espinag", "nom": "Espinagar", "tipus": "possessió", "dubte": false, "fx": 0.93, "fy": 0.11 },
+    { "graf": "La Plana", "nom": "La Plana", "tipus": "possessió", "dubte": false, "fx": 0.33, "fy": 0.29 },
+    { "graf": "Câ Galeri", "nom": "Can Galeri", "tipus": "possessió", "dubte": false, "fx": 0.04, "fy": 0.38 },
+    { "graf": "Pûta", "nom": "Punta", "tipus": "possessió", "dubte": false, "fx": 0.40, "fy": 0.62 },
+    { "graf": "Câ Gelat", "nom": "Can Gelat", "tipus": "possessió", "dubte": false, "fx": 0.21, "fy": 0.69 },
+    { "graf": "Câ Alou nou", "nom": "Can Alou Nou", "tipus": "possessió", "dubte": false, "fx": 0.02, "fy": 0.76 },
+    { "graf": "Pla de la Siria", "nom": "Pla de la Síria", "tipus": "possessió", "dubte": false, "fx": 0.26, "fy": 0.87 },
+    { "graf": "Câ Alou vell", "nom": "Can Alou Vell", "tipus": "possessió", "dubte": false, "fx": 0.13, "fy": 0.96 },
+    { "graf": "Câla Mura", "nom": "Cala Murta", "tipus": "costa", "dubte": false, "fx": 0.91, "fy": 0.66 },
+    { "graf": "Las partions", "nom": "Les Partions", "tipus": "altre", "dubte": false, "fx": 0.85, "fy": 0.83 }
+  ]
+}

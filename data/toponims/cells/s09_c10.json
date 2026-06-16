@@ -1,0 +1,31 @@
+{
+  "subtile": "s09_c10",
+  "toponims": [
+    { "graf": "Sô Cremat", "nom": "Son Cremat", "tipus": "possessió", "dubte": false, "fx": 0.13, "fy": 0.02 },
+    { "graf": "Sô Eusebis", "nom": "Son Eusebis", "tipus": "possessió", "dubte": false, "fx": 0.67, "fy": 0.02 },
+    { "graf": "Vila Franca Marq.", "nom": "Vilafranca", "tipus": "nucli", "dubte": false, "fx": 0.43, "fy": 0.09 },
+    { "graf": "Sô Peña", "nom": "Son Penya", "tipus": "possessió", "dubte": false, "fx": 0.04, "fy": 0.11 },
+    { "graf": "Sô Ramô", "nom": "Son Ramon", "tipus": "possessió", "dubte": false, "fx": 0.14, "fy": 0.17 },
+    { "graf": "Sô Martí", "nom": "Son Martí", "tipus": "possessió", "dubte": false, "fx": 0.34, "fy": 0.20 },
+    { "graf": "Sô Barceló", "nom": "Son Barceló", "tipus": "possessió", "dubte": false, "fx": 0.17, "fy": 0.24 },
+    { "graf": "ortella", "nom": "ortella", "tipus": "possessió", "dubte": true, "fx": 0.01, "fy": 0.24 },
+    { "graf": "Alcudia=rom", "nom": "Alcudia-rom", "tipus": "possessió", "dubte": false, "fx": 0.77, "fy": 0.30 },
+    { "graf": "Alcudia=rom", "nom": "Alcudia-rom", "tipus": "possessió", "dubte": false, "fx": 0.69, "fy": 0.38 },
+    { "graf": "ugullutx", "nom": "ugullutx", "tipus": "possessió", "dubte": true, "fx": 0.02, "fy": 0.38 },
+    { "graf": "Pagos", "nom": "Pagos", "tipus": "possessió", "dubte": false, "fx": 0.19, "fy": 0.48 },
+    { "graf": "Biscay", "nom": "Biscay", "tipus": "possessió", "dubte": false, "fx": 0.02, "fy": 0.54 },
+    { "graf": "Nª Anzell", "nom": "Na Anzell", "tipus": "possessió", "dubte": false, "fx": 0.60, "fy": 0.55 },
+    { "graf": "Sô Vaq", "nom": "Son Vaquer", "tipus": "possessió", "dubte": false, "fx": 0.92, "fy": 0.55 },
+    { "graf": "Sô Gall", "nom": "Son Gall", "tipus": "possessió", "dubte": false, "fx": 0.04, "fy": 0.66 },
+    { "graf": "Talayas", "nom": "Talaies", "tipus": "possessió", "dubte": false, "fx": 0.30, "fy": 0.66 },
+    { "graf": "Sô Doctor", "nom": "Son Doctor", "tipus": "possessió", "dubte": false, "fx": 0.34, "fy": 0.74 },
+    { "graf": "Boscana", "nom": "Boscana", "tipus": "possessió", "dubte": false, "fx": 0.75, "fy": 0.75 },
+    { "graf": "Sô Aspe", "nom": "Son Aspe", "tipus": "possessió", "dubte": false, "fx": 0.92, "fy": 0.77 },
+    { "graf": "Refal", "nom": "Rafal", "tipus": "possessió", "dubte": false, "fx": 0.25, "fy": 0.81 },
+    { "graf": "Sô Joy", "nom": "Son Joi", "tipus": "possessió", "dubte": false, "fx": 0.62, "fy": 0.82 },
+    { "graf": "nou", "nom": "nou", "tipus": "possessió", "dubte": true, "fx": 0.01, "fy": 0.81 },
+    { "graf": "allet", "nom": "allet", "tipus": "possessió", "dubte": true, "fx": 0.02, "fy": 0.91 },
+    { "graf": "Sô Calderó", "nom": "Son Calderó", "tipus": "possessió", "dubte": false, "fx": 0.14, "fy": 0.94 },
+    { "graf": "La Torra", "nom": "La Torre", "tipus": "possessió", "dubte": false, "fx": 0.40, "fy": 0.94 }
+  ]
+}

@@ -19,10 +19,13 @@ const MASTER = join(ROOT, MASTER_REL);
 const OUT = join(ROOT, 'data/toponims');
 const SUB = join(OUT, 'sub');
 
-const COLS = 13;
-const ROWS = 14;
-const OVERLAP = 70;
-const SCALE = 3; // ampliació per a la lectura
+const COLS = 16;
+const ROWS = 15;
+const OVERLAP = 180; // generous: a name cut at a cell edge must survive whole in a
+                     // neighbour; merge.mjs dedups the overlap. Stays under the Mpx cap.
+const SCALE = 2; // upscale for legibility; the native cell (~1000×900 px) is
+                 // already near the vision model's ~1.15 Mpx ceiling, so ×2 just
+                 // feeds a clean, sharpened image to its internal downsampler.
 
 const { x: X, y: Y, w: W, h: H } = MAP_REGION;
 const cellW = Math.ceil(W / COLS) + OVERLAP;

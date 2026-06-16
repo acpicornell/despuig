@@ -1,0 +1,9 @@
+{
+  "subtile": "s13_c05",
+  "toponims": [
+    { "graf": "Capocorpno", "nom": "Cap Corp Nou", "tipus": "costa", "dubte": false, "fx": 0.85, "fy": 0.05 },
+    { "graf": "Cabô Blâco", "nom": "Cap Blanc", "tipus": "costa", "dubte": false, "fx": 0.42, "fy": 0.40 },
+    { "graf": "Pûta Bûcala", "nom": "Punta Bucala", "tipus": "costa", "dubte": false, "fx": 0.66, "fy": 0.36 },
+    { "graf": "Cala Beltran", "nom": "Cala Beltran", "tipus": "costa", "dubte": false, "fx": 0.78, "fy": 0.45 }
+  ]
+}

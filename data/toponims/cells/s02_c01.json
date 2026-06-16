@@ -1,0 +1,19 @@
+{
+  "subtile": "s02_c01",
+  "toponims": [
+    { "graf": "Playola", "nom": "Platgola", "tipus": "costa", "dubte": false, "fx": 0.13, "fy": 0.04 },
+    { "graf": "Poret", "nom": "Poret", "tipus": "costa", "dubte": true, "fx": 0.22, "fy": 0.06 },
+    { "graf": "Fuête principal", "nom": "Font principal", "tipus": "hidrònim", "dubte": false, "fx": 0.40, "fy": 0.27 },
+    { "graf": "ISLA DE CABRERA", "nom": "Illa de Cabrera", "tipus": "costa", "dubte": false, "fx": 0.13, "fy": 0.45 },
+    { "graf": "ciola", "nom": "ciola", "tipus": "costa", "dubte": true, "fx": 0.02, "fy": 0.56 },
+    { "graf": "Fuête de la olla", "nom": "Font de l'Olla", "tipus": "hidrònim", "dubte": false, "fx": 0.66, "fy": 0.40 },
+    { "graf": "Escalon del corzo", "nom": "Escalón del Corzo", "tipus": "costa", "dubte": false, "fx": 0.62, "fy": 0.51 },
+    { "graf": "Cala Borri", "nom": "Cala Borri", "tipus": "costa", "dubte": false, "fx": 0.57, "fy": 0.58 },
+    { "graf": "Cabo Borri", "nom": "Cap Borri", "tipus": "costa", "dubte": false, "fx": 0.62, "fy": 0.62 },
+    { "graf": "Cabo de la", "nom": "Cabo de la", "tipus": "costa", "dubte": false, "fx": 0.91, "fy": 0.60 },
+    { "graf": "Codolar", "nom": "Codolar", "tipus": "costa", "dubte": false, "fx": 0.23, "fy": 0.81 },
+    { "graf": "I. de las bledas", "nom": "Illa de ses Bledes", "tipus": "costa", "dubte": false, "fx": 0.45, "fy": 0.81 },
+    { "graf": "Escalon del agua", "nom": "Escalón del Agua", "tipus": "costa", "dubte": false, "fx": 0.04, "fy": 0.89 },
+    { "graf": "I. Imperial", "nom": "Illa Imperial", "tipus": "costa", "dubte": false, "fx": 0.18, "fy": 0.96 }
+  ]
+}

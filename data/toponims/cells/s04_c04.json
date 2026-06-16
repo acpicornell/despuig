@@ -1,0 +1,20 @@
+{
+  "subtile": "s04_c04",
+  "toponims": [
+    { "graf": "Sô Bujosa", "nom": "Son Bujosa", "tipus": "possessió", "dubte": false, "fx": 0.13, "fy": 0.02 },
+    { "graf": "Sô Beltran", "nom": "Son Beltran", "tipus": "possessió", "dubte": false, "fx": 0.30, "fy": 0.06 },
+    { "graf": "Cal Abad", "nom": "Cal Abad", "tipus": "possessió", "dubte": false, "fx": 0.36, "fy": 0.20 },
+    { "graf": "Moli", "nom": "Molí", "tipus": "altre", "dubte": false, "fx": 0.09, "fy": 0.39 },
+    { "graf": "Deya", "nom": "Deià", "tipus": "nucli", "dubte": false, "fx": 0.22, "fy": 0.46 },
+    { "graf": "Sô Moragues", "nom": "Son Moragues", "tipus": "possessió", "dubte": false, "fx": 0.34, "fy": 0.49 },
+    { "graf": "Hort de Dagu", "nom": "Hort de Dagu", "tipus": "possessió", "dubte": false, "fx": 0.82, "fy": 0.39 },
+    { "graf": "ont dels Monjos", "nom": "Font dels Monjos", "tipus": "hidrònim", "dubte": false, "fx": 0.06, "fy": 0.59 },
+    { "graf": "Furcimañy", "nom": "Furcimany", "tipus": "possessió", "dubte": false, "fx": 0.30, "fy": 0.62 },
+    { "graf": "Câ Buqueta", "nom": "Can Buqueta", "tipus": "possessió", "dubte": false, "fx": 0.13, "fy": 0.69 },
+    { "graf": "El Recó", "nom": "El Recó", "tipus": "possessió", "dubte": false, "fx": 0.25, "fy": 0.76 },
+    { "graf": "Neveras", "nom": "Neveres", "tipus": "altre", "dubte": false, "fx": 0.53, "fy": 0.76 },
+    { "graf": "Casa del Rey", "nom": "Casa del Rei", "tipus": "possessió", "dubte": false, "fx": 0.74, "fy": 0.68 },
+    { "graf": "Hostalet", "nom": "Hostalet", "tipus": "possessió", "dubte": false, "fx": 0.80, "fy": 0.84 },
+    { "graf": "Biniforani", "nom": "Biniforani", "tipus": "possessió", "dubte": false, "fx": 0.62, "fy": 0.95 }
+  ]
+}

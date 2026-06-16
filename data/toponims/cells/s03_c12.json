@@ -1,0 +1,13 @@
+{
+  "subtile": "s03_c12",
+  "toponims": [
+    { "graf": "e Noseras", "nom": "e Noseras", "tipus": "costa", "dubte": true, "fx": 0.05, "fy": 0.27 },
+    { "graf": "t de los pores", "nom": "t de los pores", "tipus": "costa", "dubte": true, "fx": 0.05, "fy": 0.47 },
+    { "graf": "I. Plana", "nom": "Illa Plana", "tipus": "costa", "dubte": false, "fx": 0.08, "fy": 0.59 },
+    { "graf": "Aresal", "nom": "Arenal", "tipus": "costa", "dubte": true, "fx": 0.13, "fy": 0.73 },
+    { "graf": "Aigua dulse", "nom": "Aigua Dolça", "tipus": "hidrònim", "dubte": false, "fx": 0.36, "fy": 0.80 },
+    { "graf": "Dûas rocas", "nom": "Dues Roques", "tipus": "costa", "dubte": false, "fx": 0.41, "fy": 0.88 },
+    { "graf": "anada", "nom": "anada", "tipus": "altre", "dubte": true, "fx": 0.52, "fy": 0.90 },
+    { "graf": "ô de Sô Beuló", "nom": "Son Beuló", "tipus": "possessió", "dubte": true, "fx": 0.63, "fy": 0.93 }
+  ]
+}

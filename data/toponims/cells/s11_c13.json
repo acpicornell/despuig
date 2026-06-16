@@ -1,0 +1,13 @@
+{
+  "subtile": "s11_c13",
+  "toponims": [
+    { "graf": "Espinagar", "nom": "Espinagar", "tipus": "possessió", "dubte": false, "fx": 0.10, "fy": 0.17 },
+    { "graf": "Seguer", "nom": "Seguer", "tipus": "costa", "dubte": false, "fx": 0.65, "fy": 0.03 },
+    { "graf": "Cota Magraner", "nom": "Cala Magraner", "tipus": "costa", "dubte": false, "fx": 0.47, "fy": 0.15 },
+    { "graf": "Cala Pilota", "nom": "Cala Pilota", "tipus": "costa", "dubte": false, "fx": 0.38, "fy": 0.27 },
+    { "graf": "Cala Vigili", "nom": "Cala Virgili", "tipus": "costa", "dubte": false, "fx": 0.34, "fy": 0.40 },
+    { "graf": "Piedra qui sona", "nom": "Pedra qui sona", "tipus": "costa", "dubte": false, "fx": 0.21, "fy": 0.52 },
+    { "graf": "Cala Murada", "nom": "Cala Murada", "tipus": "costa", "dubte": false, "fx": 0.03, "fy": 0.74 },
+    { "graf": "s portions", "nom": "s portions", "tipus": "altre", "dubte": true, "fx": 0.01, "fy": 0.85 }
+  ]
+}

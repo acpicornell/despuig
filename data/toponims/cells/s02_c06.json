@@ -1,0 +1,19 @@
+{
+  "subtile": "s02_c06",
+  "toponims": [
+    { "graf": "del Verger", "nom": "del Verger", "tipus": "altre", "dubte": false, "fx": 0.13, "fy": 0.05 },
+    { "graf": "la taleca", "nom": "la Taleca", "tipus": "altre", "dubte": false, "fx": 0.03, "fy": 0.10 },
+    { "graf": "radell", "nom": "radell", "tipus": "altre", "dubte": true, "fx": 0.55, "fy": 0.01 },
+    { "graf": "Sâ Lorêzo", "nom": "Sant Llorenç", "tipus": "possessió", "dubte": false, "fx": 0.78, "fy": 0.12 },
+    { "graf": "La C", "nom": "La C", "tipus": "altre", "dubte": true, "fx": 0.95, "fy": 0.10 },
+    { "graf": "Tuent", "nom": "Tuent", "tipus": "possessió", "dubte": false, "fx": 0.72, "fy": 0.19 },
+    { "graf": "Es Co", "nom": "Es Co", "tipus": "altre", "dubte": true, "fx": 0.91, "fy": 0.27 },
+    { "graf": "Bini", "nom": "Bini", "tipus": "possessió", "dubte": false, "fx": 0.66, "fy": 0.50 },
+    { "graf": "Bini", "nom": "Bini", "tipus": "possessió", "dubte": false, "fx": 0.62, "fy": 0.59 },
+    { "graf": "Balix de vall", "nom": "Balix de Vall", "tipus": "possessió", "dubte": false, "fx": 0.06, "fy": 0.57 },
+    { "graf": "Moncaire", "nom": "Moncaire", "tipus": "possessió", "dubte": false, "fx": 0.15, "fy": 0.72 },
+    { "graf": "Puig dê Torrella", "nom": "Puig de Torrella", "tipus": "orònim", "dubte": false, "fx": 0.74, "fy": 0.71 },
+    { "graf": "Monnaba", "nom": "Monnaba", "tipus": "possessió", "dubte": false, "fx": 0.21, "fy": 0.93 },
+    { "graf": "Auma", "nom": "Auma", "tipus": "altre", "dubte": true, "fx": 0.92, "fy": 0.90 }
+  ]
+}

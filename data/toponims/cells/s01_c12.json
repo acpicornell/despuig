@@ -1,0 +1,21 @@
+{
+  "subtile": "s01_c12",
+  "toponims": [
+    { "graf": "La Moslâ", "nom": "La Moslâ", "tipus": "costa", "dubte": true, "fx": 0.04, "fy": 0.30 },
+    { "graf": "Pûta del Carro", "nom": "Punta del Carro", "tipus": "costa", "dubte": false, "fx": 0.12, "fy": 0.07 },
+    { "graf": "Pûta grosa", "nom": "Punta grossa", "tipus": "costa", "dubte": false, "fx": 0.10, "fy": 0.42 },
+    { "graf": "Pûta del", "nom": "Punta del", "tipus": "costa", "dubte": true, "fx": 0.26, "fy": 0.06 },
+    { "graf": "Cabo del Pinar", "nom": "Cap del Pinar", "tipus": "costa", "dubte": false, "fx": 0.55, "fy": 0.10 },
+    { "graf": "Sô de la Victoria", "nom": "Son de la Victoria", "tipus": "possessió", "dubte": false, "fx": 0.05, "fy": 0.57 },
+    { "graf": "Pta de Salinas", "nom": "Punta de Salines", "tipus": "costa", "dubte": false, "fx": 0.47, "fy": 0.30 },
+    { "graf": "Llozetas", "nom": "Llozetas", "tipus": "altre", "dubte": false, "fx": 0.43, "fy": 0.39 },
+    { "graf": "Pta de la Solana", "nom": "Punta de la Solana", "tipus": "costa", "dubte": false, "fx": 0.46, "fy": 0.45 },
+    { "graf": "Playa de la Solana", "nom": "Platja de la Solana", "tipus": "costa", "dubte": false, "fx": 0.45, "fy": 0.51 },
+    { "graf": "Pta del Clot", "nom": "Punta del Clot", "tipus": "costa", "dubte": false, "fx": 0.43, "fy": 0.57 },
+    { "graf": "Ensenada del Clot", "nom": "Ensenada del Clot", "tipus": "costa", "dubte": false, "fx": 0.45, "fy": 0.63 },
+    { "graf": "Playa", "nom": "Platja", "tipus": "costa", "dubte": false, "fx": 0.36, "fy": 0.71 },
+    { "graf": "Pta del coll baix", "nom": "Punta del coll baix", "tipus": "costa", "dubte": false, "fx": 0.50, "fy": 0.76 },
+    { "graf": "Cabo Menorca", "nom": "Cap Menorca", "tipus": "costa", "dubte": false, "fx": 0.49, "fy": 0.87 },
+    { "graf": "Sa Pinar", "nom": "Sa Pinar", "tipus": "possessió", "dubte": true, "fx": 0.20, "fy": 0.99 }
+  ]
+}

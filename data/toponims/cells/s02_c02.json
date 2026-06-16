@@ -1,0 +1,9 @@
+{
+  "subtile": "s02_c02",
+  "toponims": [
+    { "graf": "I. Redonda", "nom": "Illa Redona", "tipus": "costa", "dubte": false, "fx": 0.27, "fy": 0.10 },
+    { "graf": "Cala de Ambatxar", "nom": "Cala de Ambatxar", "tipus": "costa", "dubte": false, "fx": 0.34, "fy": 0.26 },
+    { "graf": "Cabo Calabaza", "nom": "Cap Calabaza", "tipus": "costa", "dubte": false, "fx": 0.37, "fy": 0.41 },
+    { "graf": "Cabo de la olla", "nom": "Cap de l'Olla", "tipus": "costa", "dubte": false, "fx": 0.05, "fy": 0.66 }
+  ]
+}

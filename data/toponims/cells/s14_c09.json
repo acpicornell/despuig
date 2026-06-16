@@ -1,0 +1,16 @@
+{
+  "subtile": "s14_c09",
+  "toponims": [
+    { "graf": "Sô Cusina", "nom": "Son Cusina", "tipus": "possessió", "dubte": false, "fx": 0.65, "fy": 0.02 },
+    { "graf": "Refal Genas", "nom": "Refal Genas", "tipus": "possessió", "dubte": false, "fx": 0.50, "fy": 0.08 },
+    { "graf": "Refal Genas", "nom": "Refal Genas", "tipus": "possessió", "dubte": false, "fx": 0.72, "fy": 0.13 },
+    { "graf": "Câ Rotja", "nom": "Can Rotja", "tipus": "possessió", "dubte": false, "fx": 0.34, "fy": 0.13 },
+    { "graf": "Llombarts", "nom": "Llombards", "tipus": "possessió", "dubte": false, "fx": 0.82, "fy": 0.24 },
+    { "graf": "Salinas", "nom": "Salines", "tipus": "altre", "dubte": false, "fx": 0.38, "fy": 0.29 },
+    { "graf": "Refal de los porcs", "nom": "Refal dels Porcs", "tipus": "possessió", "dubte": false, "fx": 0.49, "fy": 0.39 },
+    { "graf": "Sô Piris", "nom": "Son Piris", "tipus": "possessió", "dubte": false, "fx": 0.93, "fy": 0.40 },
+    { "graf": "anque de Sal", "nom": "Estanque de Sal", "tipus": "hidrònim", "dubte": false, "fx": 0.05, "fy": 0.38 },
+    { "graf": "L'Avall", "nom": "L'Avall", "tipus": "possessió", "dubte": false, "fx": 0.34, "fy": 0.55 },
+    { "graf": "Estanq.e de las gâbas", "nom": "Estanque de ses Gambes", "tipus": "hidrònim", "dubte": false, "fx": 0.30, "fy": 0.85 }
+  ]
+}

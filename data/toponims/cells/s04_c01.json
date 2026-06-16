@@ -1,0 +1,10 @@
+{
+  "subtile": "s04_c01",
+  "toponims": [
+    { "graf": "Puerto de Bañalb", "nom": "Puerto de Banyalbufar", "tipus": "costa", "dubte": false, "fx": 0.83, "fy": 0.88 },
+    { "graf": "Pûta de la galera", "nom": "Punta de la Galera", "tipus": "costa", "dubte": false, "fx": 0.85, "fy": 0.80 },
+    { "graf": "Cavall bernat", "nom": "Cavall Bernat", "tipus": "costa", "dubte": false, "fx": 0.88, "fy": 0.72 },
+    { "graf": "La", "nom": "La", "tipus": "costa", "dubte": true, "fx": 0.93, "fy": 0.68 },
+    { "graf": "Puer", "nom": "Puerto", "tipus": "costa", "dubte": true, "fx": 0.96, "fy": 0.65 }
+  ]
+}

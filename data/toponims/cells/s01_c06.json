@@ -1,0 +1,21 @@
+{
+  "subtile": "s01_c06",
+  "toponims": [
+    { "graf": "La Vaca", "nom": "La Vaca", "tipus": "costa", "dubte": false, "fx": 0.93, "fy": 0.10 },
+    { "graf": "Torrête de pares", "nom": "Torre de Pares", "tipus": "costa", "dubte": false, "fx": 0.83, "fy": 0.12 },
+    { "graf": "Puerto de la Calobra", "nom": "Port de la Calobra", "tipus": "costa", "dubte": false, "fx": 0.83, "fy": 0.15 },
+    { "graf": "Magalaf", "nom": "Magalaf", "tipus": "possessió", "dubte": false, "fx": 0.78, "fy": 0.18 },
+    { "graf": "Las Fellas", "nom": "Las Fellas", "tipus": "costa", "dubte": false, "fx": 0.74, "fy": 0.20 },
+    { "graf": "La Corda", "nom": "La Corda", "tipus": "possessió", "dubte": false, "fx": 0.60, "fy": 0.21 },
+    { "graf": "Coma de Arnau", "nom": "Coma d'Arnau", "tipus": "altre", "dubte": false, "fx": 0.50, "fy": 0.23 },
+    { "graf": "Mor. de Arnau", "nom": "Morro d'Arnau", "tipus": "orònim", "dubte": false, "fx": 0.49, "fy": 0.26 },
+    { "graf": "Puerto de Arnau", "nom": "Port d'Arnau", "tipus": "costa", "dubte": false, "fx": 0.51, "fy": 0.29 },
+    { "graf": "Flûête de la murtera", "nom": "Punta de la Murtera", "tipus": "costa", "dubte": false, "fx": 0.43, "fy": 0.31 },
+    { "graf": "Mor. delsforat", "nom": "Morro des Forat", "tipus": "orònim", "dubte": false, "fx": 0.36, "fy": 0.34 },
+    { "graf": "El Sarradell", "nom": "El Serradell", "tipus": "orònim", "dubte": false, "fx": 0.33, "fy": 0.38 },
+    { "graf": "Flûête del Verger", "nom": "Punta del Verger", "tipus": "costa", "dubte": false, "fx": 0.13, "fy": 0.40 },
+    { "graf": "de la taleca", "nom": "de la Taleca", "tipus": "costa", "dubte": false, "fx": 0.02, "fy": 0.44 },
+    { "graf": "Sâ Lorêzo", "nom": "Son Llorenç", "tipus": "possessió", "dubte": false, "fx": 0.77, "fy": 0.86 },
+    { "graf": "Tuent", "nom": "Tuent", "tipus": "possessió", "dubte": false, "fx": 0.62, "fy": 0.98 }
+  ]
+}

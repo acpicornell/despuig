@@ -1,0 +1,32 @@
+{
+  "subtile": "s09_c12",
+  "toponims": [
+    { "graf": "Jaume=Andreu", "nom": "Jaume Andreu", "tipus": "possessió", "dubte": false, "fx": 0.06, "fy": 0.03 },
+    { "graf": "Refal", "nom": "Rafal", "tipus": "possessió", "dubte": false, "fx": 0.90, "fy": 0.03 },
+    { "graf": "MANACOR", "nom": "Manacor", "tipus": "nucli", "dubte": false, "fx": 0.45, "fy": 0.09 },
+    { "graf": "Sô Mas", "nom": "Son Mas", "tipus": "possessió", "dubte": false, "fx": 0.71, "fy": 0.10 },
+    { "graf": "Sô Perot", "nom": "Son Perot", "tipus": "possessió", "dubte": false, "fx": 0.04, "fy": 0.15 },
+    { "graf": "Sô Si", "nom": "Sô Si", "tipus": "possessió", "dubte": true, "fx": 0.95, "fy": 0.16 },
+    { "graf": "Sô Galiana", "nom": "Son Galiana", "tipus": "possessió", "dubte": false, "fx": 0.50, "fy": 0.20 },
+    { "graf": "Sô Courer", "nom": "Son Courer", "tipus": "possessió", "dubte": false, "fx": 0.72, "fy": 0.23 },
+    { "graf": "Sô Cu", "nom": "Sô Cu", "tipus": "possessió", "dubte": true, "fx": 0.94, "fy": 0.25 },
+    { "graf": "Câ Sastre", "nom": "Can Sastre", "tipus": "possessió", "dubte": false, "fx": 0.56, "fy": 0.27 },
+    { "graf": "Sô Moix", "nom": "Son Moix", "tipus": "possessió", "dubte": false, "fx": 0.07, "fy": 0.31 },
+    { "graf": "Torre del Rey", "nom": "Torre del Rei", "tipus": "altre", "dubte": false, "fx": 0.30, "fy": 0.38 },
+    { "graf": "Puig d. Sta Lucia", "nom": "Puig de Santa Llucia", "tipus": "orònim", "dubte": false, "fx": 0.28, "fy": 0.43 },
+    { "graf": "Sô Brun", "nom": "Son Brun", "tipus": "possessió", "dubte": false, "fx": 0.57, "fy": 0.43 },
+    { "graf": "Sô Mele", "nom": "Son Mele", "tipus": "possessió", "dubte": false, "fx": 0.31, "fy": 0.53 },
+    { "graf": "Tortova", "nom": "Tortova", "tipus": "possessió", "dubte": false, "fx": 0.72, "fy": 0.53 },
+    { "graf": "Me", "nom": "Me", "tipus": "possessió", "dubte": true, "fx": 0.97, "fy": 0.52 },
+    { "graf": "Cabana", "nom": "Cabana", "tipus": "possessió", "dubte": false, "fx": 0.41, "fy": 0.62 },
+    { "graf": "sô Sitjas", "nom": "Son Sitges", "tipus": "possessió", "dubte": false, "fx": 0.62, "fy": 0.62 },
+    { "graf": "Llodrá", "nom": "Llodra", "tipus": "possessió", "dubte": false, "fx": 0.07, "fy": 0.66 },
+    { "graf": "Sô Conte", "nom": "Son Comte", "tipus": "possessió", "dubte": false, "fx": 0.85, "fy": 0.66 },
+    { "graf": "Amêgual", "nom": "Amengual", "tipus": "possessió", "dubte": false, "fx": 0.04, "fy": 0.79 },
+    { "graf": "Sô Toni=Mas", "nom": "Son Toni Mas", "tipus": "possessió", "dubte": false, "fx": 0.62, "fy": 0.83 },
+    { "graf": "Sô Teyet", "nom": "Son Teiet", "tipus": "possessió", "dubte": false, "fx": 0.66, "fy": 0.92 },
+    { "graf": "Sô Llodrá", "nom": "Son Llodra", "tipus": "possessió", "dubte": false, "fx": 0.55, "fy": 0.98 },
+    { "graf": "Sô Macià", "nom": "Son Macia", "tipus": "possessió", "dubte": false, "fx": 0.39, "fy": 1.00 },
+    { "graf": "Sô Amar", "nom": "Son Amar", "tipus": "possessió", "dubte": true, "fx": 0.78, "fy": 1.00 }
+  ]
+}

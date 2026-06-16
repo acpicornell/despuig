@@ -1,0 +1,243 @@
+---
+import Base from '../layouts/Base.astro';
+// Vision-read toponyms cross-checked against the NGIB gazetteer.
+// Each record: graf (as engraved) -> nom (AI normalization) -> ngib (official spelling).
+import matches from '../../data/toponims/ngib/matches.json';
+
+const rows = matches;
+const total = rows.length;
+
+const byDecision = { confirmat: 0, suggerit: 0, posicional: 0, sense: 0 };
+const byTipus = {};
+let dubtes = 0;
+for (const r of rows) {
+  byDecision[r.decision] = (byDecision[r.decision] || 0) + 1;
+  byTipus[r.tipus] = (byTipus[r.tipus] || 0) + 1;
+  if (r.dubte) dubtes++;
+}
+
+const tipusList = Object.keys(byTipus).sort((a, b) => byTipus[b] - byTipus[a]);
+
+// Human-readable Catalan labels for the decision states.
+const decLabel = {
+  confirmat: 'Confirmat',
+  suggerit: 'Suggerit',
+  posicional: 'Posicional',
+  sense: 'Sense match',
+};
+const tipusLabel = {
+  possessió: 'Possessió',
+  costa: 'Costa',
+  nucli: 'Nucli',
+  hidrònim: 'Hidrònim',
+  orònim: 'Orònim',
+  altre: 'Altre',
+};
+---
+<Base
+  title="Topònims"
+  description="Taula dels milers de topònims llegits sobre el mapa del Cardenal Despuig i la seva equivalència amb el Nomenclàtor Geogràfic de les Illes Balears.">
+  <section class="wrap intro">
+    <h1>Els topònims del mapa</h1>
+    <p class="lede">
+      Lectura assistida per IA de visió dels noms gravats a l'interior del
+      <em>Mapa de la Isla de Mallorca</em> (Despuig, 1785), contrastada amb el
+      <strong>Nomenclàtor Geogràfic de les Illes Balears</strong> (NGIB). Cada fila mostra
+      la grafia tal com apareix gravada, la lectura normalitzada i, quan n'hi ha, la
+      forma oficial al nomenclàtor.
+    </p>
+
+    <div class="stats">
+      <div class="stat card"><strong>{total.toLocaleString('ca-ES')}</strong><span>topònims llegits</span></div>
+      <div class="stat card ok"><strong>{byDecision.confirmat.toLocaleString('ca-ES')}</strong><span>confirmats al NGIB</span></div>
+      <div class="stat card warn"><strong>{byDecision.suggerit.toLocaleString('ca-ES')}</strong><span>suggerits (a revisar)</span></div>
+      <div class="stat card"><strong>{(byDecision.sense + byDecision.posicional).toLocaleString('ca-ES')}</strong><span>sense match clar</span></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="controls">
+      <input type="search" id="q" placeholder="Cerca un topònim, grafia o municipi…" autocomplete="off" />
+      <label>Estat
+        <select id="f-decision">
+          <option value="">tots</option>
+          <option value="confirmat">Confirmat ({byDecision.confirmat})</option>
+          <option value="suggerit">Suggerit ({byDecision.suggerit})</option>
+          <option value="posicional">Posicional ({byDecision.posicional})</option>
+          <option value="sense">Sense match ({byDecision.sense})</option>
+        </select>
+      </label>
+      <label>Tipus
+        <select id="f-tipus">
+          <option value="">tots</option>
+          {tipusList.map((t) => (
+            <option value={t}>{tipusLabel[t] ?? t} ({byTipus[t]})</option>
+          ))}
+        </select>
+      </label>
+      <label class="chk"><input type="checkbox" id="f-dubte" /> només dubtes ({dubtes})</label>
+      <span class="count" id="count"></span>
+    </div>
+
+    <div class="tablewrap">
+      <table id="topo">
+        <thead>
+          <tr>
+            <th data-sort="num" data-key="id">#</th>
+            <th data-sort="str" data-key="graf">Grafia gravada</th>
+            <th data-sort="str" data-key="nom">Lectura (normalitzada)</th>
+            <th data-sort="str" data-key="ngib">NGIB (forma oficial)</th>
+            <th data-sort="str" data-key="municipi">Municipi</th>
+            <th data-sort="str" data-key="tipus">Tipus</th>
+            <th data-sort="num" data-key="sim">Sim.</th>
+            <th data-sort="num" data-key="km">Dist.</th>
+            <th data-sort="str" data-key="decision">Estat</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr
+              data-decision={r.decision}
+              data-tipus={r.tipus}
+              data-dubte={r.dubte ? '1' : '0'}
+              data-search={`${r.graf ?? ''} ${r.nom ?? ''} ${r.ngib ?? ''} ${r.municipi ?? ''}`.toLowerCase()}
+              data-id={r.id} data-sim={r.sim ?? 0} data-km={r.km ?? 9999}>
+              <td class="num">{r.id}</td>
+              <td class="graf">{r.graf}{r.dubte && <span class="q" title="lectura incerta">?</span>}</td>
+              <td>{r.nom}</td>
+              <td class="ngib">{r.ngib ?? '—'}</td>
+              <td>{r.municipi ?? '—'}</td>
+              <td class="muted">{tipusLabel[r.tipus] ?? r.tipus}</td>
+              <td class="num">{r.sim ? r.sim.toFixed(2) : '—'}</td>
+              <td class="num">{r.km != null ? `${r.km} km` : '—'}</td>
+              <td><span class={`badge badge--${r.decision}`}>{decLabel[r.decision]}</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="empty muted center" id="empty" hidden>Cap topònim coincideix amb el filtre.</p>
+    </div>
+    <p class="wrap muted small note">
+      «Sim.» és la similitud amb l'entrada del nomenclàtor (0–1); «Dist.» la distància entre la posició
+      estimada al mapa i la del NGIB. Dades brutes, encara pendents d'afinar.
+    </p>
+  </section>
+
+  <script is:inline>
+    (function () {
+      const q = document.getElementById('q');
+      const fDec = document.getElementById('f-decision');
+      const fTip = document.getElementById('f-tipus');
+      const fDub = document.getElementById('f-dubte');
+      const count = document.getElementById('count');
+      const empty = document.getElementById('empty');
+      const tbody = document.querySelector('#topo tbody');
+      const rows = Array.from(tbody.rows);
+
+      function apply() {
+        const term = q.value.trim().toLowerCase();
+        const dec = fDec.value, tip = fTip.value, dub = fDub.checked;
+        let shown = 0;
+        for (const tr of rows) {
+          let ok = true;
+          if (term && !tr.dataset.search.includes(term)) ok = false;
+          if (ok && dec && tr.dataset.decision !== dec) ok = false;
+          if (ok && tip && tr.dataset.tipus !== tip) ok = false;
+          if (ok && dub && tr.dataset.dubte !== '1') ok = false;
+          tr.hidden = !ok;
+          if (ok) shown++;
+        }
+        count.textContent = shown.toLocaleString('ca-ES') + ' de ' + rows.length.toLocaleString('ca-ES');
+        empty.hidden = shown > 0;
+      }
+
+      [q, fDec, fTip].forEach((el) => el.addEventListener('input', apply));
+      fDub.addEventListener('change', apply);
+
+      // Column sorting.
+      let sortKey = null, sortDir = 1;
+      document.querySelectorAll('#topo th[data-sort]').forEach((th) => {
+        th.addEventListener('click', () => {
+          const key = th.dataset.key, type = th.dataset.sort;
+          sortDir = sortKey === key ? -sortDir : 1;
+          sortKey = key;
+          const get = (tr) =>
+            type === 'num'
+              ? parseFloat(tr.dataset[key] ?? (key === 'id' ? tr.cells[0].textContent : tr.dataset[key]))
+              : (tr.querySelector(keyCol[key]) ? tr.querySelector(keyCol[key]).textContent : '').toLowerCase();
+          rows.sort((a, b) => {
+            const va = get(a), vb = get(b);
+            if (va < vb) return -1 * sortDir;
+            if (va > vb) return 1 * sortDir;
+            return 0;
+          });
+          rows.forEach((tr) => tbody.appendChild(tr));
+          document.querySelectorAll('#topo th').forEach((h) => h.removeAttribute('aria-sort'));
+          th.setAttribute('aria-sort', sortDir === 1 ? 'ascending' : 'descending');
+        });
+      });
+      const keyCol = {
+        graf: '.graf', nom: 'td:nth-child(3)', ngib: '.ngib',
+        municipi: 'td:nth-child(5)', tipus: 'td:nth-child(6)', decision: '.badge',
+      };
+
+      apply();
+    })();
+  </script>
+</Base>
+
+<style>
+  .intro { padding-top: 1.5rem; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.5rem 0 .5rem; }
+  .stat { padding: 1rem; text-align: center; }
+  .stat strong { display: block; font-family: var(--display); font-size: 1.6rem; color: var(--accent); }
+  .stat span { font-size: .85rem; color: var(--ink-soft); }
+  .stat.ok strong { color: #2f7d4f; }
+  .stat.warn strong { color: #b07c1d; }
+  @media (max-width: 680px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+
+  .controls {
+    display: flex; flex-wrap: wrap; gap: .7rem 1rem; align-items: center;
+    margin: 1.2rem 0 .8rem; font-size: .9rem;
+  }
+  .controls input[type=search] {
+    flex: 1 1 240px; min-width: 200px; padding: .5rem .7rem;
+    border: 1px solid var(--line); border-radius: 4px; font: inherit; background: var(--paper);
+  }
+  .controls label { display: inline-flex; align-items: center; gap: .4rem; color: var(--ink-soft); }
+  .controls select { padding: .35rem .4rem; border: 1px solid var(--line); border-radius: 4px; font: inherit; background: var(--paper); }
+  .controls .chk input { accent-color: var(--accent); }
+  .count { margin-left: auto; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+  thead th {
+    position: sticky; top: 0; background: var(--paper); z-index: 1;
+    text-align: left; padding: .55rem .7rem; border-bottom: 2px solid var(--line);
+    font-family: var(--display); font-weight: 600; cursor: pointer; white-space: nowrap;
+    user-select: none;
+  }
+  thead th:hover { color: var(--accent); }
+  thead th[aria-sort]::after { content: ' ▾'; opacity: .6; }
+  thead th[aria-sort=ascending]::after { content: ' ▴'; }
+  tbody td { padding: .45rem .7rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tbody tr:hover { background: var(--accent-soft); }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-soft); white-space: nowrap; }
+  td.graf { font-family: var(--serif); }
+  td.ngib { color: var(--ink); }
+  td.muted { color: var(--ink-soft); }
+  .graf .q { color: #b07c1d; font-weight: 700; margin-left: .25rem; cursor: help; }
+
+  .badge {
+    display: inline-block; padding: .1rem .45rem; border-radius: 999px;
+    font-size: .76rem; font-weight: 600; white-space: nowrap;
+  }
+  .badge--confirmat { background: #e2f0e6; color: #2f7d4f; }
+  .badge--suggerit { background: #f6ecd4; color: #b07c1d; }
+  .badge--posicional { background: #e4ecf5; color: #3a6098; }
+  .badge--sense { background: #efe9e4; color: #8a7a6c; }
+
+  .note { margin-top: .8rem; }
+  .small { font-size: .82rem; }
+  .empty { padding: 2rem; }
+</style>

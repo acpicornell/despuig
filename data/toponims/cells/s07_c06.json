@@ -1,0 +1,19 @@
+{
+  "subtile": "s07_c06",
+  "toponims": [
+    { "graf": "Sta MARIA", "nom": "Santa Maria", "tipus": "nucli", "dubte": false, "fx": 0.18, "fy": 0.02 },
+    { "graf": "Buch", "nom": "Buch", "tipus": "possessió", "dubte": false, "fx": 0.46, "fy": 0.01 },
+    { "graf": "La Coma", "nom": "La Coma", "tipus": "possessió", "dubte": false, "fx": 0.72, "fy": 0.05 },
+    { "graf": "Sô Mascaro", "nom": "Son Mascaró", "tipus": "possessió", "dubte": false, "fx": 0.90, "fy": 0.01 },
+    { "graf": "Sô Borras", "nom": "Son Borràs", "tipus": "possessió", "dubte": false, "fx": 0.32, "fy": 0.16 },
+    { "graf": "Sô Segui", "nom": "Son Seguí", "tipus": "possessió", "dubte": false, "fx": 0.66, "fy": 0.14 },
+    { "graf": "Las Covas", "nom": "Les Coves", "tipus": "possessió", "dubte": false, "fx": 0.88, "fy": 0.18 },
+    { "graf": "Sô Crespi", "nom": "Son Crespí", "tipus": "possessió", "dubte": false, "fx": 0.60, "fy": 0.24 },
+    { "graf": "Sô Verderol", "nom": "Son Verderol", "tipus": "possessió", "dubte": false, "fx": 0.40, "fy": 0.31 },
+    { "graf": "ayol", "nom": "ayol", "tipus": "possessió", "dubte": true, "fx": 0.03, "fy": 0.28 },
+    { "graf": "Ollerias", "nom": "Olleries", "tipus": "possessió", "dubte": false, "fx": 0.85, "fy": 0.81 },
+    { "graf": "abaneta", "nom": "abaneta", "tipus": "possessió", "dubte": true, "fx": 0.05, "fy": 0.80 },
+    { "graf": "Caulellas", "nom": "Caulelles", "tipus": "possessió", "dubte": false, "fx": 0.07, "fy": 0.84 },
+    { "graf": "Portol", "nom": "Pòrtol", "tipus": "nucli", "dubte": false, "fx": 0.10, "fy": 0.91 }
+  ]
+}

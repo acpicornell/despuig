@@ -1,0 +1,17 @@
+{
+  "subtile": "s09_c05",
+  "toponims": [
+    { "graf": "Sô Baña", "nom": "Son Banya", "tipus": "possessió", "dubte": false, "fx": 0.05, "fy": 0.04 },
+    { "graf": "Sô Sâ Juan", "nom": "Son Sant Joan", "tipus": "possessió", "dubte": false, "fx": 0.45, "fy": 0.04 },
+    { "graf": "Casa blanca", "nom": "Casa Blanca", "tipus": "possessió", "dubte": false, "fx": 0.80, "fy": 0.03 },
+    { "graf": "Prat", "nom": "Prat", "tipus": "altre", "dubte": false, "fx": 0.74, "fy": 0.25 },
+    { "graf": "Sô", "nom": "Son", "tipus": "possessió", "dubte": false, "fx": 0.95, "fy": 0.22 },
+    { "graf": "TorraRedona", "nom": "Torre Redona", "tipus": "possessió", "dubte": false, "fx": 0.04, "fy": 0.32 },
+    { "graf": "Sô Oms", "nom": "Son Oms", "tipus": "possessió", "dubte": false, "fx": 0.50, "fy": 0.36 },
+    { "graf": "Sô Oliver", "nom": "Son Oliver", "tipus": "possessió", "dubte": false, "fx": 0.86, "fy": 0.37 },
+    { "graf": "Sô Suñer", "nom": "Son Sunyer", "tipus": "possessió", "dubte": false, "fx": 0.74, "fy": 0.56 },
+    { "graf": "ARENAL", "nom": "Arenal", "tipus": "costa", "dubte": false, "fx": 0.12, "fy": 0.71 },
+    { "graf": "Campo Frâco Marq.", "nom": "Campo Franco Marquès", "tipus": "possessió", "dubte": false, "fx": 0.72, "fy": 0.72 },
+    { "graf": "Torrête dels Jueus", "nom": "Torreta dels Jueus", "tipus": "possessió", "dubte": false, "fx": 0.28, "fy": 0.97 }
+  ]
+}

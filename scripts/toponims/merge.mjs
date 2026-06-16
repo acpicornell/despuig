@@ -29,6 +29,22 @@ for (const f of files) {
     items.push({ ...rest, subtile: cell.subtile, x, y });
   }
 }
+// Drop tiling leftovers: bare articles/prefixes ("La", "Câ", "Sô", "Ses") or
+// 1-2 char shards ("ó", "Pu", "AR") that are halves of names cut at a cell edge,
+// not real toponyms.
+const ARTICLE_ONLY = new Set([
+  'la', 'el', 'les', 'els', 'es', 'sa', 'ses', 'sos', 'ca', 'can', 'cas',
+  'so', 'son', 's', 'd', 'de', 'del', 'na', 'en', 'lo', 'ne', 'y', 'i', 'sc', 'sd',
+]);
+const alnum = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[^a-z0-9]/g, '');
+const isFragment = (graf) => {
+  if (alnum(graf).length <= 2) return true;
+  const toks = (graf || '').toLowerCase().normalize('NFD').replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(Boolean);
+  return toks.length > 0 && toks.every((t) => ARTICLE_ONLY.has(t));
+};
+const dropped = items.filter((t) => isFragment(t.nom) && isFragment(t.graf));
+items = items.filter((t) => !(isFragment(t.nom) && isFragment(t.graf)));
+
 // Dedup de solapaments entre cel·les: mateix nom normalitzat i a < 180 px.
 const normName = (s) => s.toLowerCase().normalize('NFD').replace(/[^a-z]/g, '');
 items.sort((a, b) => (a.y - b.y) || (a.x - b.x));
@@ -58,4 +74,4 @@ const out = {
   toponims: items,
 };
 await writeFile(join(OUT, 'toponims.json'), JSON.stringify(out, null, 2));
-console.log(`✓ ${items.length} topònims de ${done.length} cel·les → data/toponims/toponims.json (${out.comptador.dubtes} dubtes)`);
+console.log(`✓ ${items.length} topònims de ${done.length} cel·les → data/toponims/toponims.json (${out.comptador.dubtes} dubtes, ${dropped.length} fragments descartats)`);

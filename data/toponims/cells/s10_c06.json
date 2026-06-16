@@ -1,0 +1,24 @@
+{
+  "subtile": "s10_c06",
+  "toponims": [
+    { "graf": "Hostalét", "nom": "Hostalet", "tipus": "nucli", "dubte": false, "fx": 0.45, "fy": 0.05 },
+    { "graf": "Sô Garcias", "nom": "Son Garcias", "tipus": "possessió", "dubte": false, "fx": 0.39, "fy": 0.21 },
+    { "graf": "Sô Monjo d.l. rota", "nom": "Son Monjo de la Rota", "tipus": "possessió", "dubte": false, "fx": 0.07, "fy": 0.25 },
+    { "graf": "Sô Monjet", "nom": "Son Monjet", "tipus": "possessió", "dubte": false, "fx": 0.22, "fy": 0.33 },
+    { "graf": "Sô Mir", "nom": "Son Mir", "tipus": "possessió", "dubte": false, "fx": 0.70, "fy": 0.33 },
+    { "graf": "Sô Bono", "nom": "Son Bono", "tipus": "possessió", "dubte": false, "fx": 0.52, "fy": 0.39 },
+    { "graf": "Marroig", "nom": "Marroig", "tipus": "possessió", "dubte": false, "fx": 0.74, "fy": 0.41 },
+    { "graf": "Sô Caldes", "nom": "Son Caldes", "tipus": "possessió", "dubte": false, "fx": 0.44, "fy": 0.44 },
+    { "graf": "Sô Canaves", "nom": "Son Canaves", "tipus": "possessió", "dubte": false, "fx": 0.07, "fy": 0.49 },
+    { "graf": "Sô Cardell", "nom": "Son Cardell", "tipus": "possessió", "dubte": false, "fx": 0.36, "fy": 0.49 },
+    { "graf": "Sô Hereu", "nom": "Son Hereu", "tipus": "possessió", "dubte": false, "fx": 0.52, "fy": 0.61 },
+    { "graf": "Sô Pieres", "nom": "Son Pieres", "tipus": "possessió", "dubte": false, "fx": 0.83, "fy": 0.60 },
+    { "graf": "Sô Fosquet", "nom": "Son Fosquet", "tipus": "possessió", "dubte": false, "fx": 0.80, "fy": 0.70 },
+    { "graf": "Sô Delebau", "nom": "Son Delebau", "tipus": "possessió", "dubte": false, "fx": 0.24, "fy": 0.72 },
+    { "graf": "Sô Noguera", "nom": "Son Noguera", "tipus": "possessió", "dubte": false, "fx": 0.80, "fy": 0.75 },
+    { "graf": "Sô Veri", "nom": "Son Veri", "tipus": "possessió", "dubte": false, "fx": 0.05, "fy": 0.76 },
+    { "graf": "Refalet", "nom": "Refalet", "tipus": "possessió", "dubte": false, "fx": 0.65, "fy": 0.80 },
+    { "graf": "Sô Anselm", "nom": "Son Anselm", "tipus": "possessió", "dubte": false, "fx": 0.45, "fy": 0.90 },
+    { "graf": "Sô Noguera", "nom": "Son Noguera", "tipus": "possessió", "dubte": false, "fx": 0.25, "fy": 0.97 }
+  ]
+}

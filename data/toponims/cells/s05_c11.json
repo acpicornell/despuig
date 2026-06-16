@@ -1,0 +1,29 @@
+{
+  "subtile": "s05_c11",
+  "toponims": [
+    { "graf": "Sô Albâ", "nom": "Son Albà", "tipus": "possessió", "dubte": false, "fx": 0.27, "fy": 0.03 },
+    { "graf": "Câ Ferrâ", "nom": "Can Ferrà", "tipus": "possessió", "dubte": false, "fx": 0.27, "fy": 0.10 },
+    { "graf": "Lecantí", "nom": "Lecantí", "tipus": "possessió", "dubte": false, "fx": 0.25, "fy": 0.16 },
+    { "graf": "Sô Fava", "nom": "Son Fava", "tipus": "possessió", "dubte": false, "fx": 0.10, "fy": 0.24 },
+    { "graf": "Sô Morro", "nom": "Son Morro", "tipus": "possessió", "dubte": false, "fx": 0.33, "fy": 0.24 },
+    { "graf": "Caseta", "nom": "Caseta", "tipus": "possessió", "dubte": false, "fx": 0.54, "fy": 0.25 },
+    { "graf": "Sô Flor", "nom": "Son Flor", "tipus": "possessió", "dubte": false, "fx": 0.11, "fy": 0.30 },
+    { "graf": "Vernise", "nom": "Vernise", "tipus": "possessió", "dubte": false, "fx": 0.36, "fy": 0.32 },
+    { "graf": "la Torre", "nom": "la Torre", "tipus": "possessió", "dubte": false, "fx": 0.02, "fy": 0.36 },
+    { "graf": "Alqueria", "nom": "Alqueria", "tipus": "possessió", "dubte": false, "fx": 0.45, "fy": 0.44 },
+    { "graf": "ASEQUIA REAL", "nom": "Síquia Real", "tipus": "hidrònim", "dubte": false, "fx": 0.70, "fy": 0.40 },
+    { "graf": "Boléda", "nom": "Boléda", "tipus": "possessió", "dubte": false, "fx": 0.55, "fy": 0.61 },
+    { "graf": "Botifarre", "nom": "Botifarre", "tipus": "possessió", "dubte": false, "fx": 0.70, "fy": 0.59 },
+    { "graf": "La Ta", "nom": "La Ta", "tipus": "possessió", "dubte": true, "fx": 0.95, "fy": 0.61 },
+    { "graf": "Atzina", "nom": "Atzina", "tipus": "possessió", "dubte": false, "fx": 0.20, "fy": 0.63 },
+    { "graf": "Femenia", "nom": "Femenia", "tipus": "possessió", "dubte": false, "fx": 0.33, "fy": 0.63 },
+    { "graf": "Refal", "nom": "Rafal", "tipus": "possessió", "dubte": false, "fx": 0.55, "fy": 0.67 },
+    { "graf": "Capellâ", "nom": "Capellà", "tipus": "possessió", "dubte": false, "fx": 0.21, "fy": 0.72 },
+    { "graf": "Câ Valerí", "nom": "Can Valerí", "tipus": "possessió", "dubte": false, "fx": 0.36, "fy": 0.72 },
+    { "graf": "Câ Molines", "nom": "Can Molines", "tipus": "possessió", "dubte": false, "fx": 0.62, "fy": 0.74 },
+    { "graf": "Binicaubell", "nom": "Binicaubell", "tipus": "possessió", "dubte": false, "fx": 0.84, "fy": 0.77 },
+    { "graf": "Alcudiola", "nom": "Alcudiola", "tipus": "possessió", "dubte": false, "fx": 0.38, "fy": 0.80 },
+    { "graf": "Sô Boscâ", "nom": "Son Boscà", "tipus": "possessió", "dubte": false, "fx": 0.88, "fy": 0.84 },
+    { "graf": "Camp dê Serra", "nom": "Camp de Serra", "tipus": "possessió", "dubte": false, "fx": 0.20, "fy": 0.95 }
+  ]
+}

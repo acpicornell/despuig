@@ -1,0 +1,30 @@
+{
+  "subtile": "s08_c14",
+  "toponims": [
+    { "graf": "Barbot", "nom": "Barbot", "tipus": "possessió", "dubte": false, "fx": 0.04, "fy": 0.04 },
+    { "graf": "Casas novas", "nom": "Cases Noves", "tipus": "possessió", "dubte": false, "fx": 0.26, "fy": 0.01 },
+    { "graf": "La Canal", "nom": "La Canal", "tipus": "possessió", "dubte": false, "fx": 0.83, "fy": 0.06 },
+    { "graf": "Toltas", "nom": "Toltes", "tipus": "possessió", "dubte": false, "fx": 0.20, "fy": 0.13 },
+    { "graf": "Sô Garriga", "nom": "Son Garriga", "tipus": "possessió", "dubte": false, "fx": 0.58, "fy": 0.14 },
+    { "graf": "Pocaferina", "nom": "Pocaferina", "tipus": "possessió", "dubte": false, "fx": 0.44, "fy": 0.22 },
+    { "graf": "Sô Servera", "nom": "Son Servera", "tipus": "nucli", "dubte": false, "fx": 0.78, "fy": 0.27 },
+    { "graf": "Sô Sureda", "nom": "Son Sureda", "tipus": "possessió", "dubte": false, "fx": 0.13, "fy": 0.28 },
+    { "graf": "Sô Vives", "nom": "Son Vives", "tipus": "possessió", "dubte": false, "fx": 0.31, "fy": 0.35 },
+    { "graf": "Sô Granot", "nom": "Son Granot", "tipus": "possessió", "dubte": false, "fx": 0.11, "fy": 0.43 },
+    { "graf": "Puig d. l. f", "nom": "Puig de la f", "tipus": "orònim", "dubte": false, "fx": 0.92, "fy": 0.47 },
+    { "graf": "Estalayas", "nom": "Estalaies", "tipus": "possessió", "dubte": false, "fx": 0.48, "fy": 0.49 },
+    { "graf": "Pûta grosa", "nom": "Punta Grossa", "tipus": "costa", "dubte": false, "fx": 0.74, "fy": 0.50 },
+    { "graf": "Rfl. Sech", "nom": "Rafal Sec", "tipus": "possessió", "dubte": false, "fx": 0.32, "fy": 0.54 },
+    { "graf": "Sô Carrió", "nom": "Son Carrió", "tipus": "possessió", "dubte": false, "fx": 0.55, "fy": 0.56 },
+    { "graf": "Sô Mor", "nom": "Son Mor", "tipus": "possessió", "dubte": false, "fx": 0.93, "fy": 0.55 },
+    { "graf": "Refal", "nom": "Rafal", "tipus": "possessió", "dubte": false, "fx": 0.19, "fy": 0.63 },
+    { "graf": "Molinet", "nom": "Molinet", "tipus": "possessió", "dubte": false, "fx": 0.33, "fy": 0.66 },
+    { "graf": "Câ Duáy", "nom": "Can Duai", "tipus": "possessió", "dubte": false, "fx": 0.58, "fy": 0.65 },
+    { "graf": "Sô Berga", "nom": "Son Berga", "tipus": "possessió", "dubte": false, "fx": 0.06, "fy": 0.66 },
+    { "graf": "Torre nova", "nom": "Torre Nova", "tipus": "altre", "dubte": false, "fx": 0.78, "fy": 0.69 },
+    { "graf": "Boscarró", "nom": "Boscarró", "tipus": "possessió", "dubte": false, "fx": 0.30, "fy": 0.86 },
+    { "graf": "Estâq.", "nom": "Estany", "tipus": "hidrònim", "dubte": false, "fx": 0.82, "fy": 0.91 },
+    { "graf": "Punta dê Amér", "nom": "Punta de n'Amer", "tipus": "costa", "dubte": false, "fx": 0.66, "fy": 0.97 },
+    { "graf": "anxo", "nom": "anxo", "tipus": "altre", "dubte": true, "fx": 0.02, "fy": 0.96 }
+  ]
+}

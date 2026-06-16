@@ -1,0 +1,12 @@
+{
+  "subtile": "s03_c14",
+  "toponims": [
+    { "graf": "Cabo de Ferrûx", "nom": "Cap de Ferrutx", "tipus": "costa", "dubte": false, "fx": 0.07, "fy": 0.13 },
+    { "graf": "I.lla de Sô Morey", "nom": "Illa de Son Morey", "tipus": "costa", "dubte": false, "fx": 0.51, "fy": 0.16 },
+    { "graf": "Vaca", "nom": "Vaca", "tipus": "costa", "dubte": false, "fx": 0.58, "fy": 0.41 },
+    { "graf": "Singla de Nalit", "nom": "Singla de Nalit", "tipus": "costa", "dubte": false, "fx": 0.74, "fy": 0.30 },
+    { "graf": "Arenlet", "nom": "Arenalet", "tipus": "costa", "dubte": false, "fx": 0.83, "fy": 0.63 },
+    { "graf": "Desembarcador", "nom": "Desembarcador", "tipus": "costa", "dubte": false, "fx": 0.05, "fy": 0.57 },
+    { "graf": "Calo", "nom": "Caló", "tipus": "costa", "dubte": false, "fx": 0.24, "fy": 0.71 }
+  ]
+}

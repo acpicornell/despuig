@@ -1,0 +1,14 @@
+{
+  "subtile": "s03_c11",
+  "toponims": [
+    { "graf": "Albufera", "nom": "Albufera", "tipus": "hidrònim", "dubte": false, "fx": 0.25, "fy": 0.24 },
+    { "graf": "Arenal de Noseras", "nom": "Arenal de Noseras", "tipus": "costa", "dubte": false, "fx": 0.80, "fy": 0.27 },
+    { "graf": "Pûta de los", "nom": "Punta de los", "tipus": "costa", "dubte": true, "fx": 0.86, "fy": 0.47 },
+    { "graf": "I. Pl", "nom": "I. Pl", "tipus": "costa", "dubte": true, "fx": 0.94, "fy": 0.52 },
+    { "graf": "Ameredor", "nom": "Ameredor", "tipus": "possessió", "dubte": false, "fx": 0.18, "fy": 0.65 },
+    { "graf": "Funtas", "nom": "Fontes", "tipus": "possessió", "dubte": false, "fx": 0.52, "fy": 0.70 },
+    { "graf": "Claret", "nom": "Claret", "tipus": "possessió", "dubte": false, "fx": 0.05, "fy": 0.79 },
+    { "graf": "Sô Sâ Juan", "nom": "Son Sant Joan", "tipus": "possessió", "dubte": false, "fx": 0.22, "fy": 0.81 },
+    { "graf": "Sô Sâ Marti", "nom": "Son Sant Martí", "tipus": "possessió", "dubte": true, "fx": 0.40, "fy": 0.98 }
+  ]
+}

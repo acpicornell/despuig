@@ -1,0 +1,21 @@
+{
+  "subtile": "s07_c07",
+  "toponims": [
+    { "graf": "Mascaro", "nom": "Mascaró", "tipus": "possessió", "dubte": false, "fx": 0.04, "fy": 0.02 },
+    { "graf": "Alquerias", "nom": "Alqueries", "tipus": "possessió", "dubte": false, "fx": 0.27, "fy": 0.02 },
+    { "graf": "Biniali", "nom": "Biniali", "tipus": "nucli", "dubte": false, "fx": 0.55, "fy": 0.02 },
+    { "graf": "SANSELL", "nom": "Sencelles", "tipus": "nucli", "dubte": false, "fx": 0.80, "fy": 0.01 },
+    { "graf": "Sô Arrosa", "nom": "Son Arrossa", "tipus": "possessió", "dubte": false, "fx": 0.61, "fy": 0.14 },
+    { "graf": "as Covas", "nom": "ses Coves", "tipus": "possessió", "dubte": false, "fx": 0.02, "fy": 0.20 },
+    { "graf": "Sô Sâ Juan", "nom": "Son Sant Joan", "tipus": "possessió", "dubte": false, "fx": 0.63, "fy": 0.23 },
+    { "graf": "Mo", "nom": "Mo", "tipus": "possessió", "dubte": true, "fx": 0.96, "fy": 0.20 },
+    { "graf": "Ay", "nom": "Ay", "tipus": "possessió", "dubte": true, "fx": 0.97, "fy": 0.26 },
+    { "graf": "Puigget", "nom": "Puigget", "tipus": "possessió", "dubte": false, "fx": 0.32, "fy": 0.28 },
+    { "graf": "Sta Eugeni", "nom": "Santa Eugènia", "tipus": "nucli", "dubte": false, "fx": 0.27, "fy": 0.53 },
+    { "graf": "Sô Matet", "nom": "Son Matet", "tipus": "possessió", "dubte": false, "fx": 0.76, "fy": 0.72 },
+    { "graf": "llerias", "nom": "lleries", "tipus": "possessió", "dubte": true, "fx": 0.02, "fy": 0.81 },
+    { "graf": "Hostal", "nom": "Hostal", "tipus": "possessió", "dubte": false, "fx": 0.27, "fy": 0.81 },
+    { "graf": "Sô Pujol", "nom": "Son Pujol", "tipus": "possessió", "dubte": false, "fx": 0.44, "fy": 0.90 },
+    { "graf": "La Torte", "nom": "La Torre", "tipus": "possessió", "dubte": false, "fx": 0.20, "fy": 0.95 }
+  ]
+}

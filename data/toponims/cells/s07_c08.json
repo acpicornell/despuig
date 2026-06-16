@@ -1,0 +1,18 @@
+{
+  "subtile": "s07_c08",
+  "toponims": [
+    { "graf": "Moreyo", "nom": "Moreyó", "tipus": "possessió", "dubte": false, "fx": 0.16, "fy": 0.21 },
+    { "graf": "Ayreflor", "nom": "Aireflor", "tipus": "possessió", "dubte": false, "fx": 0.15, "fy": 0.26 },
+    { "graf": "Leyá", "nom": "Leyá", "tipus": "possessió", "dubte": false, "fx": 0.33, "fy": 0.20 },
+    { "graf": "Judí", "nom": "Judí", "tipus": "possessió", "dubte": false, "fx": 0.59, "fy": 0.21 },
+    { "graf": "Sô Jordá", "nom": "Son Jordà", "tipus": "possessió", "dubte": false, "fx": 0.76, "fy": 0.27 },
+    { "graf": "Sô Jua Jauma", "nom": "Son Joan Jaume", "tipus": "possessió", "dubte": false, "fx": 0.78, "fy": 0.51 },
+    { "graf": "T. D Judí", "nom": "Torrent de Judí", "tipus": "hidrònim", "dubte": false, "fx": 0.47, "fy": 0.59 },
+    { "graf": "Sô Gelebert", "nom": "Son Gelabert", "tipus": "possessió", "dubte": false, "fx": 0.79, "fy": 0.63 },
+    { "graf": "Llorito", "nom": "Llorito", "tipus": "nucli", "dubte": false, "fx": 0.72, "fy": 0.77 },
+    { "graf": "Sô Bauló", "nom": "Son Bauló", "tipus": "possessió", "dubte": false, "fx": 0.66, "fy": 0.94 },
+    { "graf": "Llorac", "nom": "Llorac", "tipus": "possessió", "dubte": false, "fx": 0.91, "fy": 0.94 },
+    { "graf": "Casa-nova", "nom": "Casa Nova", "tipus": "possessió", "dubte": false, "fx": 0.50, "fy": 0.98 },
+    { "graf": "Sô Corró", "nom": "Son Corró", "tipus": "possessió", "dubte": false, "fx": 0.22, "fy": 0.99 }
+  ]
+}

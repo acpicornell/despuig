@@ -1,0 +1,29 @@
+{
+  "subtile": "s08_c10",
+  "toponims": [
+    { "graf": "Sô Cardaix", "nom": "Son Cardaix", "tipus": "possessió", "dubte": false, "fx": 0.21, "fy": 0.02 },
+    { "graf": "Sô Cato", "nom": "Son Cato", "tipus": "possessió", "dubte": false, "fx": 0.42, "fy": 0.02 },
+    { "graf": "Sô Romaguera", "nom": "Son Romaguera", "tipus": "possessió", "dubte": false, "fx": 0.62, "fy": 0.02 },
+    { "graf": "Sô Baro", "nom": "Son Baró", "tipus": "possessió", "dubte": false, "fx": 0.02, "fy": 0.13 },
+    { "graf": "Sô Maymó", "nom": "Son Maimó", "tipus": "possessió", "dubte": false, "fx": 0.27, "fy": 0.13 },
+    { "graf": "PETR", "nom": "Petra", "tipus": "nucli", "dubte": false, "fx": 0.93, "fy": 0.20 },
+    { "graf": "Sô Burgas", "nom": "Son Burgues", "tipus": "possessió", "dubte": false, "fx": 0.36, "fy": 0.27 },
+    { "graf": "UAN", "nom": "Sant Joan", "tipus": "nucli", "dubte": false, "fx": 0.03, "fy": 0.39 },
+    { "graf": "assa", "nom": "assa", "tipus": "altre", "dubte": true, "fx": 0.0, "fy": 0.44 },
+    { "graf": "Sô Gurgut", "nom": "Son Gurgut", "tipus": "possessió", "dubte": false, "fx": 0.34, "fy": 0.42 },
+    { "graf": "Sô Deór", "nom": "Son Deor", "tipus": "possessió", "dubte": false, "fx": 0.57, "fy": 0.42 },
+    { "graf": "Nâ Sâ de Bonarîy", "nom": "Nostra Senyora de Bonany", "tipus": "altre", "dubte": false, "fx": 0.18, "fy": 0.50 },
+    { "graf": "Sô Torrat", "nom": "Son Torrat", "tipus": "possessió", "dubte": false, "fx": 0.57, "fy": 0.50 },
+    { "graf": "Caldéres", "nom": "Calderes", "tipus": "possessió", "dubte": false, "fx": 0.14, "fy": 0.57 },
+    { "graf": "Sô Sât Andreu", "nom": "Son Sant Andreu", "tipus": "possessió", "dubte": false, "fx": 0.67, "fy": 0.55 },
+    { "graf": "La Torra", "nom": "La Torre", "tipus": "possessió", "dubte": false, "fx": 0.83, "fy": 0.67 },
+    { "graf": "Sô Gil", "nom": "Son Gil", "tipus": "possessió", "dubte": false, "fx": 0.18, "fy": 0.74 },
+    { "graf": "Sô Ollandes", "nom": "Son Ollandes", "tipus": "possessió", "dubte": false, "fx": 0.67, "fy": 0.74 },
+    { "graf": "Sô Duran", "nom": "Son Duran", "tipus": "possessió", "dubte": false, "fx": 0.08, "fy": 0.80 },
+    { "graf": "Sô Cremat", "nom": "Son Cremat", "tipus": "possessió", "dubte": false, "fx": 0.12, "fy": 0.86 },
+    { "graf": "Sô Eusebits", "nom": "Son Eusebits", "tipus": "possessió", "dubte": false, "fx": 0.67, "fy": 0.85 },
+    { "graf": "Sô Peña", "nom": "Son Penya", "tipus": "possessió", "dubte": false, "fx": 0.04, "fy": 0.94 },
+    { "graf": "Vila Franca Marq.", "nom": "Vilafranca", "tipus": "nucli", "dubte": false, "fx": 0.47, "fy": 0.93 },
+    { "graf": "Sô Ramô", "nom": "Son Ramon", "tipus": "possessió", "dubte": false, "fx": 0.16, "fy": 0.99 }
+  ]
+}

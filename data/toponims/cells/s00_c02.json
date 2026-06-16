@@ -1,0 +1,7 @@
+{
+  "subtile": "s00_c02",
+  "toponims": [
+    { "graf": "ISLA DE LOS CONEJOS", "nom": "Illa dels Conills", "tipus": "costa", "dubte": false, "fx": 0.32, "fy": 0.90 },
+    { "graf": "I. Esponja", "nom": "Illa Esponja", "tipus": "costa", "dubte": false, "fx": 0.82, "fy": 0.89 }
+  ]
+}

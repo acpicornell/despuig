@@ -1,0 +1,7 @@
+{
+  "subtile": "s11_c02",
+  "toponims": [
+    { "graf": "s Bochs", "nom": "es Bocs", "tipus": "costa", "dubte": false, "fx": 0.20, "fy": 0.05 },
+    { "graf": "Cala Figuera", "nom": "Cala Figuera", "tipus": "costa", "dubte": false, "fx": 0.06, "fy": 0.32 }
+  ]
+}

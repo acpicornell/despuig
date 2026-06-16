@@ -1,0 +1,28 @@
+{
+  "subtile": "s09_c11",
+  "toponims": [
+    { "graf": "Lalareta", "nom": "Lalareta", "tipus": "possessió", "dubte": true, "fx": 0.27, "fy": 0.02 },
+    { "graf": "Caparo", "nom": "Caparo", "tipus": "possessió", "dubte": true, "fx": 0.66, "fy": 0.02 },
+    { "graf": "Sô Jaume=And", "nom": "Son Jaume", "tipus": "possessió", "dubte": false, "fx": 0.83, "fy": 0.07 },
+    { "graf": "Aubadellet", "nom": "Aubadellet", "tipus": "possessió", "dubte": false, "fx": 0.45, "fy": 0.14 },
+    { "graf": "Sô Perot", "nom": "Son Perot", "tipus": "possessió", "dubte": false, "fx": 0.85, "fy": 0.16 },
+    { "graf": "Sô Caulas", "nom": "Son Caulas", "tipus": "possessió", "dubte": false, "fx": 0.73, "fy": 0.25 },
+    { "graf": "Sô Pou", "nom": "Son Pou", "tipus": "possessió", "dubte": false, "fx": 0.23, "fy": 0.31 },
+    { "graf": "=rom", "nom": "=rom", "tipus": "possessió", "dubte": true, "fx": 0.03, "fy": 0.31 },
+    { "graf": "Refalot", "nom": "Rafalot", "tipus": "possessió", "dubte": false, "fx": 0.58, "fy": 0.37 },
+    { "graf": "Sô Moix", "nom": "Son Moix", "tipus": "possessió", "dubte": false, "fx": 0.90, "fy": 0.37 },
+    { "graf": "Castellot", "nom": "Castellot", "tipus": "possessió", "dubte": false, "fx": 0.46, "fy": 0.44 },
+    { "graf": "Franquesa", "nom": "Franquesa", "tipus": "possessió", "dubte": false, "fx": 0.30, "fy": 0.49 },
+    { "graf": "Sô Fangos", "nom": "Son Fangos", "tipus": "possessió", "dubte": false, "fx": 0.78, "fy": 0.49 },
+    { "graf": "Refal Nou", "nom": "Rafal Nou", "tipus": "possessió", "dubte": false, "fx": 0.40, "fy": 0.58 },
+    { "graf": "Sô Vaguér", "nom": "Son Vaguer", "tipus": "possessió", "dubte": false, "fx": 0.10, "fy": 0.62 },
+    { "graf": "Justani", "nom": "Justani", "tipus": "possessió", "dubte": false, "fx": 0.57, "fy": 0.69 },
+    { "graf": "Llodrá", "nom": "Llodra", "tipus": "possessió", "dubte": false, "fx": 0.92, "fy": 0.66 },
+    { "graf": "Aubocassa", "nom": "Aubocassa", "tipus": "possessió", "dubte": false, "fx": 0.25, "fy": 0.78 },
+    { "graf": "Sô Artigues", "nom": "Son Artigues", "tipus": "possessió", "dubte": false, "fx": 0.65, "fy": 0.80 },
+    { "graf": "Sô Amêgua", "nom": "Son Amegua", "tipus": "possessió", "dubte": false, "fx": 0.87, "fy": 0.78 },
+    { "graf": "Sô Aspes", "nom": "Son Aspes", "tipus": "possessió", "dubte": false, "fx": 0.08, "fy": 0.83 },
+    { "graf": "Sô Juan=Jaume", "nom": "Son Joan Jaume", "tipus": "possessió", "dubte": false, "fx": 0.40, "fy": 0.90 },
+    { "graf": "Elboc", "nom": "Elboc", "tipus": "possessió", "dubte": true, "fx": 0.85, "fy": 0.97 }
+  ]
+}

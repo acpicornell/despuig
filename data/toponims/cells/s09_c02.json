@@ -1,0 +1,23 @@
+{
+  "subtile": "s09_c02",
+  "toponims": [
+    { "graf": "Calô des Guix", "nom": "Caló des Guix", "tipus": "costa", "dubte": false, "fx": 0.78, "fy": 0.47 },
+    { "graf": "Pûta de Plonta", "nom": "Punta de Plonta", "tipus": "costa", "dubte": true, "fx": 0.86, "fy": 0.43 },
+    { "graf": "I. de Sòllas", "nom": "Illa de Sòllas", "tipus": "costa", "dubte": false, "fx": 0.83, "fy": 0.50 },
+    { "graf": "I. de las Isletas", "nom": "Illa de les Isletes", "tipus": "costa", "dubte": false, "fx": 0.92, "fy": 0.41 },
+    { "graf": "Cala del Pas", "nom": "Cala del Pas", "tipus": "costa", "dubte": false, "fx": 0.96, "fy": 0.34 },
+    { "graf": "Peñas royas", "nom": "Penyes Roges", "tipus": "costa", "dubte": false, "fx": 0.71, "fy": 0.51 },
+    { "graf": "Se Bassa roya", "nom": "Sa Bassa Roja", "tipus": "costa", "dubte": false, "fx": 0.62, "fy": 0.54 },
+    { "graf": "I. des Guix", "nom": "Illa des Guix", "tipus": "costa", "dubte": false, "fx": 0.70, "fy": 0.56 },
+    { "graf": "Pûta negre", "nom": "Punta Negre", "tipus": "costa", "dubte": false, "fx": 0.52, "fy": 0.57 },
+    { "graf": "Carregador del Guix", "nom": "Carregador del Guix", "tipus": "costa", "dubte": false, "fx": 0.45, "fy": 0.60 },
+    { "graf": "Playa de ses Morrudas", "nom": "Platja de ses Morrudes", "tipus": "costa", "dubte": false, "fx": 0.36, "fy": 0.64 },
+    { "graf": "Vol deses Mornudas", "nom": "Vol de ses Morrudes", "tipus": "costa", "dubte": true, "fx": 0.34, "fy": 0.67 },
+    { "graf": "Playa de ne Nadala", "nom": "Platja de na Nadala", "tipus": "costa", "dubte": false, "fx": 0.33, "fy": 0.71 },
+    { "graf": "Playa del recó", "nom": "Platja del Racó", "tipus": "costa", "dubte": false, "fx": 0.33, "fy": 0.74 },
+    { "graf": "La Porrassa", "nom": "La Porrassa", "tipus": "possessió", "dubte": false, "fx": 0.04, "fy": 0.79 },
+    { "graf": "Pûta de la Tor", "nom": "Punta de la Torre", "tipus": "costa", "dubte": false, "fx": 0.42, "fy": 0.82 },
+    { "graf": "Cueva del As", "nom": "Cova del As", "tipus": "costa", "dubte": true, "fx": 0.42, "fy": 0.86 },
+    { "graf": "Playa des Mag", "nom": "Playa des Mag", "tipus": "costa", "dubte": true, "fx": 0.38, "fy": 0.90 }
+  ]
+}

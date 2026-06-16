@@ -1,0 +1,15 @@
+{
+  "subtile": "s09_c01",
+  "toponims": [
+    { "graf": "olâca", "nom": "olâca", "tipus": "altre", "dubte": true, "fx": 0.01, "fy": 0.31 },
+    { "graf": "Ponsa", "nom": "Ponça", "tipus": "costa", "dubte": false, "fx": 0.00, "fy": 0.42 },
+    { "graf": "Calô", "nom": "Caló", "tipus": "costa", "dubte": false, "fx": 0.14, "fy": 0.44 },
+    { "graf": "Vol del Pi", "nom": "Vol del Pi", "tipus": "costa", "dubte": false, "fx": 0.18, "fy": 0.48 },
+    { "graf": "Pas del garrover", "nom": "Pas del Garrover", "tipus": "costa", "dubte": false, "fx": 0.08, "fy": 0.53 },
+    { "graf": "ô dê Pallicer", "nom": "Son de Pallicer", "tipus": "possessió", "dubte": false, "fx": 0.00, "fy": 0.57 },
+    { "graf": "Caleta", "nom": "Caleta", "tipus": "costa", "dubte": false, "fx": 0.09, "fy": 0.61 },
+    { "graf": "Sta Ponsa", "nom": "Santa Ponça", "tipus": "possessió", "dubte": false, "fx": 0.51, "fy": 0.43 },
+    { "graf": "La Porrassa", "nom": "La Porrassa", "tipus": "possessió", "dubte": false, "fx": 0.82, "fy": 0.79 },
+    { "graf": "dreretas", "nom": "dreretas", "tipus": "costa", "dubte": true, "fx": 0.02, "fy": 0.92 }
+  ]
+}

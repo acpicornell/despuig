@@ -1,0 +1,27 @@
+{
+  "subtile": "s06_c10",
+  "toponims": [
+    { "graf": "Sô Llôpard", "nom": "Son Llopard", "tipus": "possessió", "dubte": false, "fx": 0.04, "fy": 0.05 },
+    { "graf": "Reboster", "nom": "Reboster", "tipus": "possessió", "dubte": false, "fx": 0.57, "fy": 0.04 },
+    { "graf": "Sô Puixa", "nom": "Son Puixa", "tipus": "possessió", "dubte": false, "fx": 0.77, "fy": 0.02 },
+    { "graf": "Sô Gil", "nom": "Son Gil", "tipus": "possessió", "dubte": false, "fx": 0.52, "fy": 0.07 },
+    { "graf": "Pujol", "nom": "Pujol", "tipus": "possessió", "dubte": false, "fx": 0.69, "fy": 0.08 },
+    { "graf": "Sô Gili", "nom": "Son Gili", "tipus": "possessió", "dubte": false, "fx": 0.06, "fy": 0.11 },
+    { "graf": "Sô Perot", "nom": "Son Perot", "tipus": "possessió", "dubte": false, "fx": 0.50, "fy": 0.13 },
+    { "graf": "Rl Roig", "nom": "Rafal Roig", "tipus": "possessió", "dubte": false, "fx": 0.83, "fy": 0.18 },
+    { "graf": "Gassons", "nom": "Gassons", "tipus": "possessió", "dubte": false, "fx": 0.61, "fy": 0.30 },
+    { "graf": "La Font", "nom": "La Font", "tipus": "possessió", "dubte": false, "fx": 0.20, "fy": 0.33 },
+    { "graf": "Roquéta", "nom": "Roqueta", "tipus": "possessió", "dubte": false, "fx": 0.40, "fy": 0.41 },
+    { "graf": "Deulosal", "nom": "Deulosal", "tipus": "possessió", "dubte": false, "fx": 0.80, "fy": 0.43 },
+    { "graf": "Maria", "nom": "Maria", "tipus": "nucli", "dubte": false, "fx": 0.55, "fy": 0.47 },
+    { "graf": "Defla", "nom": "Defla", "tipus": "possessió", "dubte": false, "fx": 0.04, "fy": 0.55 },
+    { "graf": "Refal", "nom": "Rafal", "tipus": "possessió", "dubte": false, "fx": 0.71, "fy": 0.58 },
+    { "graf": "Banderola", "nom": "Banderola", "tipus": "possessió", "dubte": false, "fx": 0.32, "fy": 0.66 },
+    { "graf": "Vallfogó", "nom": "Vallfogó", "tipus": "possessió", "dubte": false, "fx": 0.04, "fy": 0.74 },
+    { "graf": "Sô Moreta", "nom": "Son Moreta", "tipus": "possessió", "dubte": false, "fx": 0.45, "fy": 0.76 },
+    { "graf": "Sô Bachs", "nom": "Son Bachs", "tipus": "possessió", "dubte": false, "fx": 0.61, "fy": 0.79 },
+    { "graf": "Casan", "nom": "Casan", "tipus": "possessió", "dubte": true, "fx": 0.95, "fy": 0.80 },
+    { "graf": "Sô Riera", "nom": "Son Riera", "tipus": "possessió", "dubte": false, "fx": 0.20, "fy": 0.87 },
+    { "graf": "Sô Ferregut", "nom": "Son Ferregut", "tipus": "possessió", "dubte": false, "fx": 0.37, "fy": 0.87 }
+  ]
+}

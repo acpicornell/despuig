@@ -1,0 +1,8 @@
+{
+  "subtile": "s12_c04",
+  "toponims": [
+    { "graf": "Cabô Regana", "nom": "Cap Regana", "tipus": "costa", "dubte": false, "fx": 0.62, "fy": 0.21 },
+    { "graf": "Pûta des Ca", "nom": "Punta des Ca", "tipus": "costa", "dubte": false, "fx": 0.78, "fy": 0.40 },
+    { "graf": "La", "nom": "La", "tipus": "altre", "dubte": true, "fx": 0.84, "fy": 0.50 }
+  ]
+}

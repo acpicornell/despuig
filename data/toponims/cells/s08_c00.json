@@ -1,0 +1,21 @@
+{
+  "subtile": "s08_c00",
+  "toponims": [
+    { "graf": "Câ Juan Pera", "nom": "Can Joan Pere", "tipus": "possessió", "dubte": false, "fx": 0.07, "fy": 0.04 },
+    { "graf": "Sô Vich", "nom": "Son Vic", "tipus": "possessió", "dubte": false, "fx": 0.42, "fy": 0.04 },
+    { "graf": "Sô Esteva", "nom": "Son Esteva", "tipus": "possessió", "dubte": false, "fx": 0.66, "fy": 0.03 },
+    { "graf": "Sô Orlandis", "nom": "Son Orlandis", "tipus": "possessió", "dubte": false, "fx": 0.40, "fy": 0.13 },
+    { "graf": "La Cova", "nom": "La Cova", "tipus": "possessió", "dubte": false, "fx": 0.82, "fy": 0.13 },
+    { "graf": "Andrixol", "nom": "Andritxol", "tipus": "possessió", "dubte": false, "fx": 0.42, "fy": 0.21 },
+    { "graf": "La Vall Vera", "nom": "La Vall Vera", "tipus": "possessió", "dubte": false, "fx": 0.86, "fy": 0.25 },
+    { "graf": "Sô Boyra", "nom": "Son Boira", "tipus": "possessió", "dubte": false, "fx": 0.86, "fy": 0.31 },
+    { "graf": "Sô Moll uel", "nom": "Son Mollet", "tipus": "possessió", "dubte": true, "fx": 0.03, "fy": 0.33 },
+    { "graf": "Alcovas", "nom": "Alcoves", "tipus": "possessió", "dubte": false, "fx": 0.13, "fy": 0.40 },
+    { "graf": "Sô Fortuñy", "nom": "Son Fortuny", "tipus": "possessió", "dubte": false, "fx": 0.63, "fy": 0.39 },
+    { "graf": "La", "nom": "La", "tipus": "possessió", "dubte": true, "fx": 0.97, "fy": 0.39 },
+    { "graf": "Paguera", "nom": "Peguera", "tipus": "nucli", "dubte": false, "fx": 0.90, "fy": 0.50 },
+    { "graf": "Camp de mar", "nom": "Camp de Mar", "tipus": "costa", "dubte": false, "fx": 0.53, "fy": 0.59 },
+    { "graf": "Bordella dels gats", "nom": "Bordella dels Gats", "tipus": "costa", "dubte": false, "fx": 0.78, "fy": 0.74 },
+    { "graf": "Calabñua Cōyna pegador Illeta", "nom": "Calabñua Cōyna pegador Illeta", "tipus": "costa", "dubte": true, "fx": 0.18, "fy": 0.78 }
+  ]
+}

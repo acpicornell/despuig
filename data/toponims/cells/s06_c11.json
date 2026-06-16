@@ -1,0 +1,20 @@
+{
+  "subtile": "s06_c11",
+  "toponims": [
+    { "graf": "Sô Boscâ", "nom": "Son Boscà", "tipus": "possessió", "dubte": false, "fx": 0.91, "fy": 0.04 },
+    { "graf": "Camp de Serra", "nom": "Camp de Serra", "tipus": "possessió", "dubte": false, "fx": 0.24, "fy": 0.10 },
+    { "graf": "ôl Roig", "nom": "el Roig", "tipus": "possessió", "dubte": true, "fx": 0.03, "fy": 0.23 },
+    { "graf": "Sô Fullôs", "nom": "Son Fullós", "tipus": "possessió", "dubte": false, "fx": 0.42, "fy": 0.22 },
+    { "graf": "BANDEROLA", "nom": "Banderola", "tipus": "altre", "dubte": false, "fx": 0.55, "fy": 0.27 },
+    { "graf": "Cabâ", "nom": "Cabà", "tipus": "possessió", "dubte": true, "fx": 0.97, "fy": 0.33 },
+    { "graf": "Molins", "nom": "Molins", "tipus": "possessió", "dubte": false, "fx": 0.30, "fy": 0.37 },
+    { "graf": "T D", "nom": "T D", "tipus": "altre", "dubte": true, "fx": 0.24, "fy": 0.42 },
+    { "graf": "osal", "nom": "osal", "tipus": "possessió", "dubte": true, "fx": 0.02, "fy": 0.52 },
+    { "graf": "Monblanch", "nom": "Monblanc", "tipus": "possessió", "dubte": false, "fx": 0.19, "fy": 0.57 },
+    { "graf": "Sô Guillôt", "nom": "Son Guillot", "tipus": "possessió", "dubte": false, "fx": 0.61, "fy": 0.69 },
+    { "graf": "Calderix", "nom": "Calderix", "tipus": "possessió", "dubte": false, "fx": 0.37, "fy": 0.79 },
+    { "graf": "Casanova", "nom": "Casanova", "tipus": "possessió", "dubte": false, "fx": 0.13, "fy": 0.94 },
+    { "graf": "Sô Huguet", "nom": "Son Huguet", "tipus": "possessió", "dubte": false, "fx": 0.64, "fy": 0.93 },
+    { "graf": "L'Av", "nom": "L'Av", "tipus": "possessió", "dubte": true, "fx": 0.96, "fy": 0.92 }
+  ]
+}

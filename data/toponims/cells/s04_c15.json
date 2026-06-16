@@ -1,0 +1,19 @@
+{
+  "subtile": "s04_c15",
+  "toponims": [
+    { "graf": "Font", "nom": "Font", "tipus": "costa", "dubte": true, "fx": 0.27, "fy": 0.04 },
+    { "graf": "Tor: la F", "nom": "Torre", "tipus": "costa", "dubte": true, "fx": 0.46, "fy": 0.10 },
+    { "graf": "Farey", "nom": "Farey", "tipus": "costa", "dubte": false, "fx": 0.51, "fy": 0.06 },
+    { "graf": "Cala Marsa", "nom": "Cala Marsa", "tipus": "costa", "dubte": false, "fx": 0.55, "fy": 0.12 },
+    { "graf": "Cala Curta", "nom": "Cala Curta", "tipus": "costa", "dubte": false, "fx": 0.60, "fy": 0.16 },
+    { "graf": "Cala Mitjana", "nom": "Cala Mitjana", "tipus": "costa", "dubte": false, "fx": 0.66, "fy": 0.16 },
+    { "graf": "Cala Torte", "nom": "Cala Torta", "tipus": "costa", "dubte": false, "fx": 0.69, "fy": 0.21 },
+    { "graf": "Bisch", "nom": "Bisch", "tipus": "altre", "dubte": true, "fx": 0.78, "fy": 0.22 },
+    { "graf": "nal", "nom": "nal", "tipus": "altre", "dubte": true, "fx": 0.83, "fy": 0.29 },
+    { "graf": "Pûta", "nom": "Punta", "tipus": "costa", "dubte": false, "fx": 0.87, "fy": 0.27 },
+    { "graf": "Sô Jaumell", "nom": "Son Jaumell", "tipus": "costa", "dubte": false, "fx": 0.89, "fy": 0.28 },
+    { "graf": "Ell", "nom": "Ell", "tipus": "costa", "dubte": true, "fx": 0.97, "fy": 0.33 },
+    { "graf": "Aubarca", "nom": "Aubarca", "tipus": "possessió", "dubte": false, "fx": 0.05, "fy": 0.42 },
+    { "graf": "La Cova", "nom": "La Cova", "tipus": "possessió", "dubte": false, "fx": 0.30, "fy": 0.71 }
+  ]
+}

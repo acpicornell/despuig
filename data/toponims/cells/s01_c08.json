@@ -1,0 +1,22 @@
+{
+  "subtile": "s01_c08",
+  "toponims": [
+    { "graf": "e Figuera", "nom": "e Figuera", "tipus": "costa", "dubte": true, "fx": 0.02, "fy": 0.10 },
+    { "graf": "a del Pu", "nom": "a del Pu", "tipus": "costa", "dubte": true, "fx": 0.55, "fy": 0.02 },
+    { "graf": "Ariant", "nom": "Ariant", "tipus": "possessió", "dubte": false, "fx": 0.79, "fy": 0.18 },
+    { "graf": "Pedruxella grã", "nom": "Pedruixella Gran", "tipus": "possessió", "dubte": false, "fx": 0.86, "fy": 0.43 },
+    { "graf": "Pedruxellaxic", "nom": "Pedruixella Xic", "tipus": "possessió", "dubte": false, "fx": 0.74, "fy": 0.53 },
+    { "graf": "Mortix", "nom": "Mortitx", "tipus": "possessió", "dubte": false, "fx": 0.50, "fy": 0.52 },
+    { "graf": "Mortixet", "nom": "Mortitxet", "tipus": "possessió", "dubte": false, "fx": 0.57, "fy": 0.58 },
+    { "graf": "Fermenia", "nom": "Femenia", "tipus": "possessió", "dubte": false, "fx": 0.27, "fy": 0.67 },
+    { "graf": "Mossa", "nom": "Mossa", "tipus": "possessió", "dubte": false, "fx": 0.25, "fy": 0.86 },
+    { "graf": "Sô March", "nom": "Son March", "tipus": "possessió", "dubte": false, "fx": 0.84, "fy": 0.72 },
+    { "graf": "Câ Melsion", "nom": "Can Melsion", "tipus": "possessió", "dubte": false, "fx": 0.68, "fy": 0.80 },
+    { "graf": "Molinet", "nom": "Molinet", "tipus": "possessió", "dubte": false, "fx": 0.88, "fy": 0.80 },
+    { "graf": "Môtaña", "nom": "Montaña", "tipus": "possessió", "dubte": false, "fx": 0.67, "fy": 0.86 },
+    { "graf": "Câ Guillê", "nom": "Can Guillem", "tipus": "possessió", "dubte": false, "fx": 0.90, "fy": 0.86 },
+    { "graf": "La", "nom": "La", "tipus": "altre", "dubte": true, "fx": 0.98, "fy": 0.68 },
+    { "graf": "Câ", "nom": "Can", "tipus": "possessió", "dubte": true, "fx": 0.98, "fy": 0.73 },
+    { "graf": "Tantarix del reco", "nom": "Tantarix del reco", "tipus": "possessió", "dubte": false, "fx": 0.62, "fy": 0.96 }
+  ]
+}

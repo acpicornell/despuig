@@ -1,0 +1,14 @@
+{
+  "subtile": "s10_c04",
+  "toponims": [
+    { "graf": "Tor", "nom": "Tor", "tipus": "costa", "dubte": true, "fx": 0.92, "fy": 0.22 },
+    { "graf": "Pûta des fo", "nom": "Punta des fo", "tipus": "costa", "dubte": true, "fx": 0.85, "fy": 0.40 },
+    { "graf": "Cala de mo", "nom": "Cala de mo", "tipus": "costa", "dubte": true, "fx": 0.86, "fy": 0.49 },
+    { "graf": "Caló de la Ser", "nom": "Caló de la Ser", "tipus": "costa", "dubte": true, "fx": 0.85, "fy": 0.56 },
+    { "graf": "Cabo de la pa", "nom": "Cap de la pa", "tipus": "costa", "dubte": true, "fx": 0.85, "fy": 0.60 },
+    { "graf": "Caló gargal", "nom": "Caló gargal", "tipus": "costa", "dubte": false, "fx": 0.86, "fy": 0.64 },
+    { "graf": "Cabo Enderrocat", "nom": "Cap Enderrocat", "tipus": "costa", "dubte": false, "fx": 0.40, "fy": 0.69 },
+    { "graf": "Cabo del falcó", "nom": "Cap del Falcó", "tipus": "costa", "dubte": false, "fx": 0.70, "fy": 0.76 },
+    { "graf": "Ses Taronjas", "nom": "Ses Taronges", "tipus": "costa", "dubte": false, "fx": 0.80, "fy": 0.96 }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "subtile": "s02_c11",
+  "toponims": [
+    { "graf": "ALCUDIA", "nom": "Alcúdia", "tipus": "nucli", "dubte": false, "fx": 0.62, "fy": 0.10 },
+    { "graf": "Câ Bregât", "nom": "Can Bregat", "tipus": "possessió", "dubte": false, "fx": 0.06, "fy": 0.13 },
+    { "graf": "Casas de un Sirvals", "nom": "Casas de un Sirvals", "tipus": "possessió", "dubte": true, "fx": 0.82, "fy": 0.16 },
+    { "graf": "C. nesiona", "nom": "C. nesiona", "tipus": "possessió", "dubte": true, "fx": 0.30, "fy": 0.24 },
+    { "graf": "Estâgê mayor", "nom": "Estany Major", "tipus": "hidrònim", "dubte": false, "fx": 0.34, "fy": 0.22 },
+    { "graf": "Sta Ana", "nom": "Santa Anna", "tipus": "altre", "dubte": false, "fx": 0.56, "fy": 0.23 },
+    { "graf": "Sô Sociês", "nom": "Son Sociês", "tipus": "possessió", "dubte": false, "fx": 0.83, "fy": 0.24 },
+    { "graf": "Gratamoix", "nom": "Gratamoix", "tipus": "possessió", "dubte": false, "fx": 0.21, "fy": 0.31 },
+    { "graf": "Câ P", "nom": "Can P", "tipus": "possessió", "dubte": true, "fx": 0.93, "fy": 0.31 },
+    { "graf": "Oscols", "nom": "Oscols", "tipus": "possessió", "dubte": false, "fx": 0.02, "fy": 0.38 },
+    { "graf": "Buxillar", "nom": "Buxillar", "tipus": "possessió", "dubte": false, "fx": 0.33, "fy": 0.46 },
+    { "graf": "Sâ Martî", "nom": "Sant Martí", "tipus": "possessió", "dubte": false, "fx": 0.22, "fy": 0.50 },
+    { "graf": "Colôbar", "nom": "Colombar", "tipus": "possessió", "dubte": false, "fx": 0.13, "fy": 0.55 },
+    { "graf": "P. entes", "nom": "P. entes", "tipus": "costa", "dubte": true, "fx": 0.55, "fy": 0.55 },
+    { "graf": "Aleufera", "nom": "Albufera", "tipus": "hidrònim", "dubte": false, "fx": 0.22, "fy": 0.71 }
+  ]
+}

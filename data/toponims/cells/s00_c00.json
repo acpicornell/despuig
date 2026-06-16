@@ -1,0 +1,8 @@
+{
+  "subtile": "s00_c00",
+  "toponims": [
+    { "graf": "Sâtueri", "nom": "Santueri", "tipus": "orònim", "dubte": false, "fx": 0.04, "fy": 0.12 },
+    { "graf": "mte Canalix", "nom": "Mont Canalix", "tipus": "orònim", "dubte": false, "fx": 0.80, "fy": 0.05 },
+    { "graf": "Cabo de l", "nom": "Cabo de la", "tipus": "costa", "dubte": true, "fx": 0.86, "fy": 0.97 }
+  ]
+}

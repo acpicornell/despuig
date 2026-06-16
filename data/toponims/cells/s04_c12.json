@@ -1,0 +1,24 @@
+{
+  "subtile": "s04_c12",
+  "toponims": [
+    { "graf": "Agua", "nom": "Agua", "tipus": "altre", "dubte": true, "fx": 0.27, "fy": 0.06 },
+    { "graf": "Las rocas", "nom": "Les Roques", "tipus": "costa", "dubte": false, "fx": 0.40, "fy": 0.06 },
+    { "graf": "Calô", "nom": "Caló", "tipus": "costa", "dubte": false, "fx": 0.31, "fy": 0.12 },
+    { "graf": "Presanada", "nom": "Presanada", "tipus": "costa", "dubte": true, "fx": 0.46, "fy": 0.13 },
+    { "graf": "Pûta dê Sô Bauló", "nom": "Punta de Son Bauló", "tipus": "costa", "dubte": false, "fx": 0.50, "fy": 0.18 },
+    { "graf": "Tonara", "nom": "Tonara", "tipus": "costa", "dubte": true, "fx": 0.47, "fy": 0.25 },
+    { "graf": "Torreta", "nom": "Torreta", "tipus": "costa", "dubte": false, "fx": 0.50, "fy": 0.29 },
+    { "graf": "La Pregó", "nom": "La Pregó", "tipus": "costa", "dubte": false, "fx": 0.63, "fy": 0.28 },
+    { "graf": "I. de los porros", "nom": "Illa dels Porros", "tipus": "costa", "dubte": false, "fx": 0.66, "fy": 0.31 },
+    { "graf": "Illôt", "nom": "Illot", "tipus": "costa", "dubte": false, "fx": 0.62, "fy": 0.34 },
+    { "graf": "Mar de las donas", "nom": "Mar de les Dones", "tipus": "costa", "dubte": false, "fx": 0.73, "fy": 0.36 },
+    { "graf": "Tortuga", "nom": "Tortuga", "tipus": "costa", "dubte": false, "fx": 0.69, "fy": 0.43 },
+    { "graf": "Saral61", "nom": "Saral61", "tipus": "costa", "dubte": true, "fx": 0.69, "fy": 0.47 },
+    { "graf": "Cononar", "nom": "Cononar", "tipus": "costa", "dubte": true, "fx": 0.76, "fy": 0.49 },
+    { "graf": "Estang e mitjá", "nom": "Estany Mitjà", "tipus": "costa", "dubte": false, "fx": 0.79, "fy": 0.53 },
+    { "graf": "La Reyas", "nom": "Les Reies", "tipus": "costa", "dubte": false, "fx": 0.85, "fy": 0.58 },
+    { "graf": "Corral de", "nom": "Corral de", "tipus": "costa", "dubte": false, "fx": 0.90, "fy": 0.64 },
+    { "graf": "Sô Bauló", "nom": "Son Bauló", "tipus": "possessió", "dubte": false, "fx": 0.26, "fy": 0.66 },
+    { "graf": "Sô Real", "nom": "Son Real", "tipus": "possessió", "dubte": false, "fx": 0.52, "fy": 0.95 }
+  ]
+}
