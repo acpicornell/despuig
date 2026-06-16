@@ -1,36 +1,229 @@
 {
   "subtile": "s05_c01",
   "toponims": [
-    { "graf": "to de Bañalbufar", "nom": "Port de Banyalbufar", "tipus": "costa", "dubte": false, "fx": 0.74, "fy": 0.04 },
-    { "graf": "de la galera", "nom": "de la Galera", "tipus": "costa", "dubte": false, "fx": 0.50, "fy": 0.04 },
-    { "graf": "Bañalbufar", "nom": "Banyalbufar", "tipus": "nucli", "dubte": false, "fx": 0.78, "fy": 0.10 },
-    { "graf": "Molinos", "nom": "Molinos", "tipus": "altre", "dubte": false, "fx": 0.78, "fy": 0.14 },
-    { "graf": "Cos", "nom": "Cos", "tipus": "altre", "dubte": false, "fx": 0.78, "fy": 0.18 },
-    { "graf": "Amarador", "nom": "Amarador", "tipus": "altre", "dubte": false, "fx": 0.66, "fy": 0.18 },
-    { "graf": "Ferranda", "nom": "Ferranda", "tipus": "possessió", "dubte": false, "fx": 0.55, "fy": 0.18 },
-    { "graf": "Tor del Vergér", "nom": "Torre del Verger", "tipus": "costa", "dubte": false, "fx": 0.36, "fy": 0.16 },
-    { "graf": "Peñál del romani", "nom": "Penyal del Romaní", "tipus": "orònim", "dubte": false, "fx": 0.37, "fy": 0.22 },
-    { "graf": "Piedra delas", "nom": "Piedra de las", "tipus": "costa", "dubte": false, "fx": 0.36, "fy": 0.30 },
-    { "graf": "Pûta de Sô Serralta", "nom": "Punta de Son Serralta", "tipus": "costa", "dubte": false, "fx": 0.13, "fy": 0.32 },
-    { "graf": "Torrênte de la Tana", "nom": "Torrent de la Tana", "tipus": "hidrònim", "dubte": false, "fx": 0.02, "fy": 0.48 },
-    { "graf": "Pûta roija", "nom": "Punta Roja", "tipus": "costa", "dubte": false, "fx": 0.04, "fy": 0.56 },
-    { "graf": "negre", "nom": "Negre", "tipus": "costa", "dubte": false, "fx": 0.04, "fy": 0.62 },
-    { "graf": "Es sou", "nom": "Es Sou", "tipus": "altre", "dubte": false, "fx": 0.31, "fy": 0.44 },
-    { "graf": "Algar", "nom": "Algar", "tipus": "altre", "dubte": false, "fx": 0.40, "fy": 0.48 },
-    { "graf": "Câ Vich", "nom": "Can Vic", "tipus": "possessió", "dubte": false, "fx": 0.74, "fy": 0.36 },
-    { "graf": "BAÑALBUER", "nom": "Banyalbufar", "tipus": "nucli", "dubte": false, "fx": 0.66, "fy": 0.43 },
-    { "graf": "Baro", "nom": "Baró", "tipus": "possessió", "dubte": false, "fx": 0.80, "fy": 0.46 },
-    { "graf": "Atalaya", "nom": "Atalaia", "tipus": "altre", "dubte": false, "fx": 0.64, "fy": 0.51 },
-    { "graf": "El Pen", "nom": "El Pen", "tipus": "possessió", "dubte": false, "fx": 0.85, "fy": 0.52 },
-    { "graf": "Refal", "nom": "Rafal", "tipus": "possessió", "dubte": false, "fx": 0.81, "fy": 0.57 },
-    { "graf": "Font de la menta", "nom": "Font de la Menta", "tipus": "hidrònim", "dubte": false, "fx": 0.51, "fy": 0.62 },
-    { "graf": "Planicia", "nom": "Planícia", "tipus": "possessió", "dubte": false, "fx": 0.69, "fy": 0.71 },
-    { "graf": "Sô Serralta", "nom": "Son Serralta", "tipus": "possessió", "dubte": false, "fx": 0.31, "fy": 0.72 },
-    { "graf": "Puitret", "nom": "Puigtret", "tipus": "possessió", "dubte": false, "fx": 0.45, "fy": 0.78 },
-    { "graf": "Sô Cabot", "nom": "Son Cabot", "tipus": "possessió", "dubte": false, "fx": 0.22, "fy": 0.81 },
-    { "graf": "Salts", "nom": "Salts", "tipus": "possessió", "dubte": false, "fx": 0.55, "fy": 0.83 },
-    { "graf": "Costa", "nom": "Costa", "tipus": "possessió", "dubte": false, "fx": 0.55, "fy": 0.88 },
-    { "graf": "Millar", "nom": "Millar", "tipus": "possessió", "dubte": false, "fx": 0.32, "fy": 0.90 },
-    { "graf": "Hera den Garriga", "nom": "Era d'en Garriga", "tipus": "possessió", "dubte": false, "fx": 0.18, "fy": 0.98 }
+    {
+      "graf": "to de Bañalbufar",
+      "nom": "Port de Banyalbufar",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.74,
+      "fy": 0.04
+    },
+    {
+      "graf": "de la galera",
+      "nom": "de la Galera",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.5,
+      "fy": 0.04
+    },
+    {
+      "graf": "Bañalbufar",
+      "nom": "Banyalbufar",
+      "tipus": "nucli",
+      "dubte": false,
+      "fx": 0.78,
+      "fy": 0.1
+    },
+    {
+      "graf": "Cos",
+      "nom": "Cos",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.78,
+      "fy": 0.18
+    },
+    {
+      "graf": "Amarador",
+      "nom": "Amarador",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.66,
+      "fy": 0.18
+    },
+    {
+      "graf": "Ferranda",
+      "nom": "Ferranda",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.55,
+      "fy": 0.18
+    },
+    {
+      "graf": "Tor del Vergér",
+      "nom": "Torre del Verger",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.36,
+      "fy": 0.16
+    },
+    {
+      "graf": "Peñál del romani",
+      "nom": "Penyal del Romaní",
+      "tipus": "orònim",
+      "dubte": false,
+      "fx": 0.37,
+      "fy": 0.22
+    },
+    {
+      "graf": "Piedra delas",
+      "nom": "Piedra de las",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.36,
+      "fy": 0.3
+    },
+    {
+      "graf": "Pûta de Sô Serralta",
+      "nom": "Punta de Son Serralta",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.13,
+      "fy": 0.32
+    },
+    {
+      "graf": "Torrênte de la Tana",
+      "nom": "Torrent de la Tana",
+      "tipus": "hidrònim",
+      "dubte": false,
+      "fx": 0.02,
+      "fy": 0.48
+    },
+    {
+      "graf": "Pûta roija",
+      "nom": "Punta Roja",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.04,
+      "fy": 0.56
+    },
+    {
+      "graf": "Algar",
+      "nom": "Algar",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.4,
+      "fy": 0.48
+    },
+    {
+      "graf": "Câ Vich",
+      "nom": "Can Vic",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.74,
+      "fy": 0.36
+    },
+    {
+      "graf": "BAÑALBUER",
+      "nom": "Banyalbufar",
+      "tipus": "nucli",
+      "dubte": false,
+      "fx": 0.66,
+      "fy": 0.43
+    },
+    {
+      "graf": "Baro",
+      "nom": "Baró",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.8,
+      "fy": 0.46
+    },
+    {
+      "graf": "Atalaya",
+      "nom": "Atalaia",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.64,
+      "fy": 0.51
+    },
+    {
+      "graf": "El Pen",
+      "nom": "El Pen",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.85,
+      "fy": 0.52
+    },
+    {
+      "graf": "Refal",
+      "nom": "Rafal",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.81,
+      "fy": 0.57
+    },
+    {
+      "graf": "Font de la menta",
+      "nom": "Font de la Menta",
+      "tipus": "hidrònim",
+      "dubte": false,
+      "fx": 0.51,
+      "fy": 0.62
+    },
+    {
+      "graf": "Planicia",
+      "nom": "Planícia",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.69,
+      "fy": 0.71
+    },
+    {
+      "graf": "Sô Serralta",
+      "nom": "Son Serralta",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.31,
+      "fy": 0.72
+    },
+    {
+      "graf": "Puitret",
+      "nom": "Puigtret",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.45,
+      "fy": 0.78
+    },
+    {
+      "graf": "Sô Cabot",
+      "nom": "Son Cabot",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.22,
+      "fy": 0.81
+    },
+    {
+      "graf": "Salts",
+      "nom": "Salts",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.55,
+      "fy": 0.83
+    },
+    {
+      "graf": "Costa",
+      "nom": "Costa",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.55,
+      "fy": 0.88
+    },
+    {
+      "graf": "Millar",
+      "nom": "Millar",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.32,
+      "fy": 0.9
+    },
+    {
+      "graf": "Hera den Garriga",
+      "nom": "Era d'en Garriga",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.18,
+      "fy": 0.98
+    }
   ]
 }

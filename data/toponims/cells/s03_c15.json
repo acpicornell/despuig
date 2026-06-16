@@ -1,11 +1,45 @@
 {
   "subtile": "s03_c15",
   "toponims": [
-    { "graf": "Font Salada", "nom": "Font Salada", "tipus": "hidrònim", "dubte": false, "fx": 0.32, "fy": 0.66 },
-    { "graf": "Tor. la Falconera", "nom": "Torre de la Falconera", "tipus": "costa", "dubte": false, "fx": 0.45, "fy": 0.73 },
-    { "graf": "Fareyó de Aubarca", "nom": "Faralló de Aubarca", "tipus": "costa", "dubte": false, "fx": 0.52, "fy": 0.74 },
-    { "graf": "Cala Marsoch", "nom": "Cala Marsoc", "tipus": "costa", "dubte": false, "fx": 0.60, "fy": 0.80 },
-    { "graf": "Cûrta Atjena", "nom": "Punta Auzina", "tipus": "costa", "dubte": true, "fx": 0.66, "fy": 0.90 },
-    { "graf": "...ller", "nom": "...ller", "tipus": "altre", "dubte": true, "fx": 0.01, "fy": 0.62 }
+    {
+      "graf": "Font Salada",
+      "nom": "Font Salada",
+      "tipus": "hidrònim",
+      "dubte": false,
+      "fx": 0.32,
+      "fy": 0.66
+    },
+    {
+      "graf": "Tor. la Falconera",
+      "nom": "Torre de la Falconera",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.45,
+      "fy": 0.73
+    },
+    {
+      "graf": "Fareyó de Aubarca",
+      "nom": "Faralló de Aubarca",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.52,
+      "fy": 0.74
+    },
+    {
+      "graf": "Cala Marsoch",
+      "nom": "Cala Marsoc",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.6,
+      "fy": 0.8
+    },
+    {
+      "graf": "Cûrta Atjena",
+      "nom": "Punta Auzina",
+      "tipus": "costa",
+      "dubte": true,
+      "fx": 0.66,
+      "fy": 0.9
+    }
   ]
 }

@@ -1,18 +1,93 @@
 {
   "subtile": "s10_c05",
   "toponims": [
-    { "graf": "Torrête dels Jueus", "nom": "Torrentet dels Jueus", "tipus": "hidrònim", "dubte": false, "fx": 0.27, "fy": 0.16 },
-    { "graf": "Torrête del Capellà", "nom": "Torrentet del Capellà", "tipus": "hidrònim", "dubte": false, "fx": 0.25, "fy": 0.23 },
-    { "graf": "Carregador", "nom": "Carregador", "tipus": "costa", "dubte": false, "fx": 0.26, "fy": 0.30 },
-    { "graf": "Pûta des fornás", "nom": "Punta des Fornàs", "tipus": "costa", "dubte": false, "fx": 0.02, "fy": 0.40 },
-    { "graf": "Cala de moscar", "nom": "Cala de Moscar", "tipus": "costa", "dubte": false, "fx": 0.02, "fy": 0.50 },
-    { "graf": "Sô de la Señora", "nom": "Son de la Senyora", "tipus": "possessió", "dubte": false, "fx": 0.01, "fy": 0.57 },
-    { "graf": "Sô de la paret", "nom": "Son de la Paret", "tipus": "possessió", "dubte": false, "fx": 0.03, "fy": 0.63 },
-    { "graf": "gargal", "nom": "gargal", "tipus": "altre", "dubte": true, "fx": 0.02, "fy": 0.69 },
-    { "graf": "Sô Veri dé Perod", "nom": "Son Veri de Perod", "tipus": "possessió", "dubte": false, "fx": 0.30, "fy": 0.62 },
-    { "graf": "Sô Mor", "nom": "Son Mor", "tipus": "possessió", "dubte": true, "fx": 0.85, "fy": 0.22 },
-    { "graf": "Sô Can", "nom": "Son Can", "tipus": "possessió", "dubte": true, "fx": 0.86, "fy": 0.47 },
-    { "graf": "Sô Veri", "nom": "Son Veri", "tipus": "possessió", "dubte": false, "fx": 0.85, "fy": 0.75 },
-    { "graf": "ronjas", "nom": "ronjas", "tipus": "altre", "dubte": true, "fx": 0.02, "fy": 0.97 }
+    {
+      "graf": "Torrête dels Jueus",
+      "nom": "Torrentet dels Jueus",
+      "tipus": "hidrònim",
+      "dubte": false,
+      "fx": 0.27,
+      "fy": 0.16
+    },
+    {
+      "graf": "Torrête del Capellà",
+      "nom": "Torrentet del Capellà",
+      "tipus": "hidrònim",
+      "dubte": false,
+      "fx": 0.25,
+      "fy": 0.23
+    },
+    {
+      "graf": "Carregador",
+      "nom": "Carregador",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.26,
+      "fy": 0.3
+    },
+    {
+      "graf": "Pûta des fornás",
+      "nom": "Punta des Fornàs",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.02,
+      "fy": 0.4
+    },
+    {
+      "graf": "Cala de moscar",
+      "nom": "Cala de Moscar",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.02,
+      "fy": 0.5
+    },
+    {
+      "graf": "Sô de la Señora",
+      "nom": "Son de la Senyora",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.01,
+      "fy": 0.57
+    },
+    {
+      "graf": "Sô de la paret",
+      "nom": "Son de la Paret",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.03,
+      "fy": 0.63
+    },
+    {
+      "graf": "Sô Veri dé Perod",
+      "nom": "Son Veri de Perod",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.3,
+      "fy": 0.62
+    },
+    {
+      "graf": "Sô Can",
+      "nom": "Son Can",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.86,
+      "fy": 0.47
+    },
+    {
+      "graf": "Sô Veri",
+      "nom": "Son Veri",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.85,
+      "fy": 0.75
+    },
+    {
+      "graf": "ronjas",
+      "nom": "ronjas",
+      "tipus": "altre",
+      "dubte": true,
+      "fx": 0.02,
+      "fy": 0.97
+    }
   ]
 }

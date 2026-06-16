@@ -1,22 +1,133 @@
 {
   "subtile": "s09_c04",
   "toponims": [
-    { "graf": "Sa Pereta", "nom": "Sa Pereta", "tipus": "costa", "dubte": true, "fx": 0.61, "fy": 0.02 },
-    { "graf": "Sô Moix", "nom": "Son Moix", "tipus": "possessió", "dubte": false, "fx": 0.66, "fy": 0.06 },
-    { "graf": "Sô Baña", "nom": "Son Banya", "tipus": "possessió", "dubte": false, "fx": 0.90, "fy": 0.02 },
-    { "graf": "Sô Mossô", "nom": "Son Mossó", "tipus": "possessió", "dubte": false, "fx": 0.74, "fy": 0.20 },
-    { "graf": "TorraRe", "nom": "TorraRe", "tipus": "costa", "dubte": true, "fx": 0.90, "fy": 0.28 },
-    { "graf": "Tor. den Pau", "nom": "Torrent d'en Pau", "tipus": "hidrònim", "dubte": false, "fx": 0.42, "fy": 0.25 },
-    { "graf": "Cala gâba", "nom": "Cala Gabra", "tipus": "costa", "dubte": false, "fx": 0.53, "fy": 0.27 },
-    { "graf": "La Creueta", "nom": "La Creueta", "tipus": "costa", "dubte": false, "fx": 0.54, "fy": 0.31 },
-    { "graf": "Cala Pudê", "nom": "Cala Pudent", "tipus": "costa", "dubte": false, "fx": 0.56, "fy": 0.34 },
-    { "graf": "Cova de se gata", "nom": "Cova de sa Gata", "tipus": "costa", "dubte": false, "fx": 0.57, "fy": 0.37 },
-    { "graf": "La galera", "nom": "La Galera", "tipus": "costa", "dubte": false, "fx": 0.58, "fy": 0.40 },
-    { "graf": "Pûta de la galera", "nom": "Punta de la Galera", "tipus": "costa", "dubte": false, "fx": 0.55, "fy": 0.43 },
-    { "graf": "Nê Pieras", "nom": "Ne Pieras", "tipus": "costa", "dubte": true, "fx": 0.62, "fy": 0.44 },
-    { "graf": "Calô des comût", "nom": "Caló des Comut", "tipus": "costa", "dubte": false, "fx": 0.60, "fy": 0.47 },
-    { "graf": "Sesnesset", "nom": "Ses Nesset", "tipus": "costa", "dubte": true, "fx": 0.67, "fy": 0.46 },
-    { "graf": "Se Estâcia", "nom": "Sa Estàcia", "tipus": "costa", "dubte": false, "fx": 0.72, "fy": 0.45 },
-    { "graf": "AR", "nom": "Artà", "tipus": "nucli", "dubte": true, "fx": 0.92, "fy": 0.55 }
+    {
+      "graf": "Sa Pereta",
+      "nom": "Sa Pereta",
+      "tipus": "costa",
+      "dubte": true,
+      "fx": 0.61,
+      "fy": 0.02
+    },
+    {
+      "graf": "Sô Moix",
+      "nom": "Son Moix",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.66,
+      "fy": 0.06
+    },
+    {
+      "graf": "Sô Baña",
+      "nom": "Son Banya",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.9,
+      "fy": 0.02
+    },
+    {
+      "graf": "Sô Mossô",
+      "nom": "Son Mossó",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.74,
+      "fy": 0.2
+    },
+    {
+      "graf": "TorraRe",
+      "nom": "TorraRe",
+      "tipus": "costa",
+      "dubte": true,
+      "fx": 0.9,
+      "fy": 0.28
+    },
+    {
+      "graf": "Tor. den Pau",
+      "nom": "Torrent d'en Pau",
+      "tipus": "hidrònim",
+      "dubte": false,
+      "fx": 0.42,
+      "fy": 0.25
+    },
+    {
+      "graf": "Cala gâba",
+      "nom": "Cala Gabra",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.53,
+      "fy": 0.27
+    },
+    {
+      "graf": "La Creueta",
+      "nom": "La Creueta",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.54,
+      "fy": 0.31
+    },
+    {
+      "graf": "Cala Pudê",
+      "nom": "Cala Pudent",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.56,
+      "fy": 0.34
+    },
+    {
+      "graf": "Cova de se gata",
+      "nom": "Cova de sa Gata",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.57,
+      "fy": 0.37
+    },
+    {
+      "graf": "La galera",
+      "nom": "La Galera",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.58,
+      "fy": 0.4
+    },
+    {
+      "graf": "Pûta de la galera",
+      "nom": "Punta de la Galera",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.55,
+      "fy": 0.43
+    },
+    {
+      "graf": "Nê Pieras",
+      "nom": "Ne Pieras",
+      "tipus": "costa",
+      "dubte": true,
+      "fx": 0.62,
+      "fy": 0.44
+    },
+    {
+      "graf": "Calô des comût",
+      "nom": "Caló des Comut",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.6,
+      "fy": 0.47
+    },
+    {
+      "graf": "Se Estâcia",
+      "nom": "Sa Estàcia",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.72,
+      "fy": 0.45
+    },
+    {
+      "graf": "AR",
+      "nom": "Artà",
+      "tipus": "nucli",
+      "dubte": true,
+      "fx": 0.92,
+      "fy": 0.55
+    }
   ]
 }

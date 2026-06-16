@@ -1,28 +1,173 @@
 {
   "subtile": "s08_c01",
   "toponims": [
-    { "graf": "Sô Cabôt", "nom": "Son Cabot", "tipus": "possessió", "dubte": false, "fx": 0.42, "fy": 0.02 },
-    { "graf": "La Coma", "nom": "La Coma", "tipus": "possessió", "dubte": false, "fx": 0.22, "fy": 0.05 },
-    { "graf": "Sô Marti", "nom": "Son Martí", "tipus": "possessió", "dubte": false, "fx": 0.74, "fy": 0.04 },
-    { "graf": "Vall", "nom": "Vall", "tipus": "altre", "dubte": false, "fx": 0.95, "fy": 0.10 },
-    { "graf": "Cova", "nom": "Cova", "tipus": "altre", "dubte": false, "fx": 0.03, "fy": 0.12 },
-    { "graf": "S.t Estret", "nom": "Estret", "tipus": "altre", "dubte": false, "fx": 0.16, "fy": 0.16 },
-    { "graf": "Cap dellâ", "nom": "Cap dellà", "tipus": "altre", "dubte": false, "fx": 0.34, "fy": 0.16 },
-    { "graf": "Ses Algorfas", "nom": "Ses Algorfes", "tipus": "possessió", "dubte": false, "fx": 0.63, "fy": 0.14 },
-    { "graf": "Sô Alfonso", "nom": "Son Alfonso", "tipus": "possessió", "dubte": false, "fx": 0.32, "fy": 0.20 },
-    { "graf": "Maferés", "nom": "Maferés", "tipus": "possessió", "dubte": false, "fx": 0.66, "fy": 0.25 },
-    { "graf": "CA", "nom": "CA", "tipus": "nucli", "dubte": false, "fx": 0.96, "fy": 0.24 },
-    { "graf": "Vall Verd", "nom": "Vall Verd", "tipus": "possessió", "dubte": false, "fx": 0.05, "fy": 0.27 },
-    { "graf": "Sô Vich", "nom": "Son Vich", "tipus": "possessió", "dubte": false, "fx": 0.28, "fy": 0.27 },
-    { "graf": "Sô", "nom": "Son", "tipus": "possessió", "dubte": false, "fx": 0.96, "fy": 0.32 },
-    { "graf": "Boyra", "nom": "Boira", "tipus": "possessió", "dubte": false, "fx": 0.02, "fy": 0.38 },
-    { "graf": "Es Pontet", "nom": "Es Pontet", "tipus": "altre", "dubte": false, "fx": 0.69, "fy": 0.39 },
-    { "graf": "La Torra", "nom": "La Torre", "tipus": "possessió", "dubte": false, "fx": 0.16, "fy": 0.49 },
-    { "graf": "Sô Vichnou", "nom": "Son Vic Nou", "tipus": "possessió", "dubte": false, "fx": 0.42, "fy": 0.48 },
-    { "graf": "Paguera", "nom": "Peguera", "tipus": "nucli", "dubte": false, "fx": 0.04, "fy": 0.65 },
-    { "graf": "Sô P", "nom": "Son P", "tipus": "possessió", "dubte": false, "fx": 0.96, "fy": 0.65 },
-    { "graf": "Ses Barracas", "nom": "Ses Barraques", "tipus": "possessió", "dubte": false, "fx": 0.54, "fy": 0.69 },
-    { "graf": "Cas C", "nom": "Cas C", "tipus": "possessió", "dubte": false, "fx": 0.94, "fy": 0.81 },
-    { "graf": "Tora", "nom": "Tora", "tipus": "possessió", "dubte": false, "fx": 0.37, "fy": 0.83 }
+    {
+      "graf": "Sô Cabôt",
+      "nom": "Son Cabot",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.42,
+      "fy": 0.02
+    },
+    {
+      "graf": "La Coma",
+      "nom": "La Coma",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.22,
+      "fy": 0.05
+    },
+    {
+      "graf": "Sô Marti",
+      "nom": "Son Martí",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.74,
+      "fy": 0.04
+    },
+    {
+      "graf": "Cova",
+      "nom": "Cova",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.03,
+      "fy": 0.12
+    },
+    {
+      "graf": "S.t Estret",
+      "nom": "Estret",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.16,
+      "fy": 0.16
+    },
+    {
+      "graf": "Cap dellâ",
+      "nom": "Cap dellà",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.34,
+      "fy": 0.16
+    },
+    {
+      "graf": "Ses Algorfas",
+      "nom": "Ses Algorfes",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.63,
+      "fy": 0.14
+    },
+    {
+      "graf": "Sô Alfonso",
+      "nom": "Son Alfonso",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.32,
+      "fy": 0.2
+    },
+    {
+      "graf": "Maferés",
+      "nom": "Maferés",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.66,
+      "fy": 0.25
+    },
+    {
+      "graf": "CA",
+      "nom": "CA",
+      "tipus": "nucli",
+      "dubte": false,
+      "fx": 0.96,
+      "fy": 0.24
+    },
+    {
+      "graf": "Vall Verd",
+      "nom": "Vall Verd",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.05,
+      "fy": 0.27
+    },
+    {
+      "graf": "Sô Vich",
+      "nom": "Son Vich",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.28,
+      "fy": 0.27
+    },
+    {
+      "graf": "Sô",
+      "nom": "Son",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.96,
+      "fy": 0.32
+    },
+    {
+      "graf": "Boyra",
+      "nom": "Boira",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.02,
+      "fy": 0.38
+    },
+    {
+      "graf": "Es Pontet",
+      "nom": "Es Pontet",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.69,
+      "fy": 0.39
+    },
+    {
+      "graf": "La Torra",
+      "nom": "La Torre",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.16,
+      "fy": 0.49
+    },
+    {
+      "graf": "Sô Vichnou",
+      "nom": "Son Vic Nou",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.42,
+      "fy": 0.48
+    },
+    {
+      "graf": "Paguera",
+      "nom": "Peguera",
+      "tipus": "nucli",
+      "dubte": false,
+      "fx": 0.04,
+      "fy": 0.65
+    },
+    {
+      "graf": "Sô P",
+      "nom": "Son P",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.96,
+      "fy": 0.65
+    },
+    {
+      "graf": "Ses Barracas",
+      "nom": "Ses Barraques",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.54,
+      "fy": 0.69
+    },
+    {
+      "graf": "Tora",
+      "nom": "Tora",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.37,
+      "fy": 0.83
+    }
   ]
 }

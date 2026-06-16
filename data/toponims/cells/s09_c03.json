@@ -1,23 +1,117 @@
 {
   "subtile": "s09_c03",
   "toponims": [
-    { "graf": "Sôcou", "nom": "Sôcou", "tipus": "possessió", "dubte": false, "fx": 0.62, "fy": 0.01 },
-    { "graf": "Sô Vent", "nom": "Son Vent", "tipus": "possessió", "dubte": false, "fx": 0.62, "fy": 0.05 },
-    { "graf": "S. Nicolas", "nom": "Sant Nicolau", "tipus": "altre", "dubte": false, "fx": 0.61, "fy": 0.01 },
-    { "graf": "Puerto Pi", "nom": "Portopí", "tipus": "costa", "dubte": false, "fx": 0.74, "fy": 0.02 },
-    { "graf": "Lanterna", "nom": "Llanterna", "tipus": "altre", "dubte": false, "fx": 0.74, "fy": 0.07 },
-    { "graf": "S. Carlos", "nom": "Sant Carles", "tipus": "altre", "dubte": false, "fx": 0.71, "fy": 0.13 },
-    { "graf": "Cala Major", "nom": "Cala Major", "tipus": "costa", "dubte": false, "fx": 0.58, "fy": 0.21 },
-    { "graf": "Escûi", "nom": "Escui", "tipus": "costa", "dubte": false, "fx": 0.60, "fy": 0.17 },
-    { "graf": "Els grells", "nom": "Els grells", "tipus": "costa", "dubte": false, "fx": 0.71, "fy": 0.20 },
-    { "graf": "Cala nova", "nom": "Cala Nova", "tipus": "costa", "dubte": false, "fx": 0.48, "fy": 0.27 },
-    { "graf": "Caló dels macs", "nom": "Caló dels Macs", "tipus": "costa", "dubte": false, "fx": 0.46, "fy": 0.33 },
-    { "graf": "Caló de las Jerras", "nom": "Caló de les Gerres", "tipus": "costa", "dubte": false, "fx": 0.45, "fy": 0.38 },
-    { "graf": "Cuepa", "nom": "Cuepa", "tipus": "costa", "dubte": false, "fx": 0.34, "fy": 0.40 },
-    { "graf": "Cala burgit", "nom": "Cala Burgit", "tipus": "costa", "dubte": false, "fx": 0.14, "fy": 0.49 },
-    { "graf": "I. de la Calera", "nom": "Illa de la Calera", "tipus": "costa", "dubte": false, "fx": 0.10, "fy": 0.56 },
-    { "graf": "I. del pas", "nom": "Illa del Pas", "tipus": "costa", "dubte": false, "fx": 0.07, "fy": 0.60 },
-    { "graf": "Isletas", "nom": "Illetes", "tipus": "costa", "dubte": false, "fx": 0.04, "fy": 0.63 },
-    { "graf": "guix", "nom": "guix", "tipus": "costa", "dubte": true, "fx": 0.01, "fy": 0.67 }
+    {
+      "graf": "Sô Vent",
+      "nom": "Son Vent",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.62,
+      "fy": 0.05
+    },
+    {
+      "graf": "S. Nicolas",
+      "nom": "Sant Nicolau",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.61,
+      "fy": 0.01
+    },
+    {
+      "graf": "Puerto Pi",
+      "nom": "Portopí",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.74,
+      "fy": 0.02
+    },
+    {
+      "graf": "Lanterna",
+      "nom": "Llanterna",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.74,
+      "fy": 0.07
+    },
+    {
+      "graf": "S. Carlos",
+      "nom": "Sant Carles",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.71,
+      "fy": 0.13
+    },
+    {
+      "graf": "Cala Major",
+      "nom": "Cala Major",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.58,
+      "fy": 0.21
+    },
+    {
+      "graf": "Els grells",
+      "nom": "Els grells",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.71,
+      "fy": 0.2
+    },
+    {
+      "graf": "Cala nova",
+      "nom": "Cala Nova",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.48,
+      "fy": 0.27
+    },
+    {
+      "graf": "Caló dels macs",
+      "nom": "Caló dels Macs",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.46,
+      "fy": 0.33
+    },
+    {
+      "graf": "Caló de las Jerras",
+      "nom": "Caló de les Gerres",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.45,
+      "fy": 0.38
+    },
+    {
+      "graf": "Cala burgit",
+      "nom": "Cala Burgit",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.14,
+      "fy": 0.49
+    },
+    {
+      "graf": "I. de la Calera",
+      "nom": "Illa de la Calera",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.1,
+      "fy": 0.56
+    },
+    {
+      "graf": "I. del pas",
+      "nom": "Illa del Pas",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.07,
+      "fy": 0.6
+    },
+    {
+      "graf": "Isletas",
+      "nom": "Illetes",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.04,
+      "fy": 0.63
+    }
   ]
 }

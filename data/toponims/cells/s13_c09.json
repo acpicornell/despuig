@@ -1,26 +1,165 @@
 {
   "subtile": "s13_c09",
   "toponims": [
-    { "graf": "s novas", "nom": "s novas", "tipus": "possessió", "dubte": true, "fx": 0.04, "fy": 0.03 },
-    { "graf": "Galicât", "nom": "Galicant", "tipus": "possessió", "dubte": false, "fx": 0.50, "fy": 0.03 },
-    { "graf": "Sô Liladó", "nom": "Son Liladó", "tipus": "possessió", "dubte": false, "fx": 0.05, "fy": 0.08 },
-    { "graf": "Sô Toni Amer", "nom": "Son Toni Amer", "tipus": "possessió", "dubte": false, "fx": 0.40, "fy": 0.07 },
-    { "graf": "Blay Mas", "nom": "Blay Mas", "tipus": "possessió", "dubte": false, "fx": 0.04, "fy": 0.13 },
-    { "graf": "Sô Amer", "nom": "Son Amer", "tipus": "possessió", "dubte": false, "fx": 0.33, "fy": 0.18 },
-    { "graf": "Las", "nom": "Las", "tipus": "possessió", "dubte": true, "fx": 0.96, "fy": 0.18 },
-    { "graf": "Sô Baco", "nom": "Son Baco", "tipus": "possessió", "dubte": false, "fx": 0.27, "fy": 0.28 },
-    { "graf": "Serral", "nom": "Serral", "tipus": "possessió", "dubte": false, "fx": 0.25, "fy": 0.33 },
-    { "graf": "Sô Covas", "nom": "Son Coves", "tipus": "possessió", "dubte": false, "fx": 0.15, "fy": 0.43 },
-    { "graf": "Refalet Palla", "nom": "Rafalet Palla", "tipus": "possessió", "dubte": false, "fx": 0.74, "fy": 0.46 },
-    { "graf": "Fuêt Sâta", "nom": "Font Santa", "tipus": "hidrònim", "dubte": false, "fx": 0.05, "fy": 0.51 },
-    { "graf": "Los Orells", "nom": "Los Orells", "tipus": "possessió", "dubte": false, "fx": 0.50, "fy": 0.51 },
-    { "graf": "La Ca nova", "nom": "La Canova", "tipus": "possessió", "dubte": false, "fx": 0.12, "fy": 0.61 },
-    { "graf": "Refal Palla gros", "nom": "Rafal Palla gros", "tipus": "possessió", "dubte": false, "fx": 0.40, "fy": 0.61 },
-    { "graf": "Sô Sa", "nom": "Son Sa", "tipus": "possessió", "dubte": true, "fx": 0.95, "fy": 0.62 },
-    { "graf": "Sô Cusina", "nom": "Son Cusina", "tipus": "possessió", "dubte": false, "fx": 0.65, "fy": 0.71 },
-    { "graf": "Ca", "nom": "Ca", "tipus": "possessió", "dubte": true, "fx": 0.96, "fy": 0.72 },
-    { "graf": "Refal Genas", "nom": "Rafal Genes", "tipus": "possessió", "dubte": false, "fx": 0.42, "fy": 0.80 },
-    { "graf": "Refal Genas", "nom": "Rafal Genes", "tipus": "possessió", "dubte": false, "fx": 0.65, "fy": 0.82 },
-    { "graf": "Câ Rotja", "nom": "Can Rotja", "tipus": "possessió", "dubte": false, "fx": 0.30, "fy": 0.88 }
+    {
+      "graf": "s novas",
+      "nom": "s novas",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.04,
+      "fy": 0.03
+    },
+    {
+      "graf": "Galicât",
+      "nom": "Galicant",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.5,
+      "fy": 0.03
+    },
+    {
+      "graf": "Sô Liladó",
+      "nom": "Son Liladó",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.05,
+      "fy": 0.08
+    },
+    {
+      "graf": "Sô Toni Amer",
+      "nom": "Son Toni Amer",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.4,
+      "fy": 0.07
+    },
+    {
+      "graf": "Blay Mas",
+      "nom": "Blay Mas",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.04,
+      "fy": 0.13
+    },
+    {
+      "graf": "Sô Amer",
+      "nom": "Son Amer",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.33,
+      "fy": 0.18
+    },
+    {
+      "graf": "Sô Baco",
+      "nom": "Son Baco",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.27,
+      "fy": 0.28
+    },
+    {
+      "graf": "Serral",
+      "nom": "Serral",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.25,
+      "fy": 0.33
+    },
+    {
+      "graf": "Sô Covas",
+      "nom": "Son Coves",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.15,
+      "fy": 0.43
+    },
+    {
+      "graf": "Refalet Palla",
+      "nom": "Rafalet Palla",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.74,
+      "fy": 0.46
+    },
+    {
+      "graf": "Fuêt Sâta",
+      "nom": "Font Santa",
+      "tipus": "hidrònim",
+      "dubte": false,
+      "fx": 0.05,
+      "fy": 0.51
+    },
+    {
+      "graf": "Los Orells",
+      "nom": "Los Orells",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.5,
+      "fy": 0.51
+    },
+    {
+      "graf": "La Ca nova",
+      "nom": "La Canova",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.12,
+      "fy": 0.61
+    },
+    {
+      "graf": "Refal Palla gros",
+      "nom": "Rafal Palla gros",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.4,
+      "fy": 0.61
+    },
+    {
+      "graf": "Sô Sa",
+      "nom": "Son Sa",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.95,
+      "fy": 0.62
+    },
+    {
+      "graf": "Sô Cusina",
+      "nom": "Son Cusina",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.65,
+      "fy": 0.71
+    },
+    {
+      "graf": "Ca",
+      "nom": "Ca",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.96,
+      "fy": 0.72
+    },
+    {
+      "graf": "Refal Genas",
+      "nom": "Rafal Genes",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.42,
+      "fy": 0.8
+    },
+    {
+      "graf": "Refal Genas",
+      "nom": "Rafal Genes",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.65,
+      "fy": 0.82
+    },
+    {
+      "graf": "Câ Rotja",
+      "nom": "Can Rotja",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.3,
+      "fy": 0.88
+    }
   ]
 }

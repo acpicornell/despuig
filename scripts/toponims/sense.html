@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Triatge «sense match» · Despuig</title>
+<style>
+  :root { --ink:#2a1d12; --paper:#f7f0e0; --line:#d8cba8; --accent:#8a3324; --ok:#2f7d4f; --bad:#a8392b; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, sans-serif; color:var(--ink); background:#efe7d2; }
+  header {
+    position: sticky; top:0; z-index:10; background:var(--paper); border-bottom:1px solid var(--line);
+    padding:.7rem 1rem; display:flex; gap:1rem; align-items:center; flex-wrap:wrap;
+  }
+  header h1 { font-size:1.05rem; margin:0; }
+  .stats { font-variant-numeric: tabular-nums; color:#6b5a44; }
+  .stats b { color:var(--ink); }
+  .filters { display:flex; gap:.3rem; margin-left:auto; }
+  .filters button { font:inherit; padding:.3rem .6rem; border:1px solid var(--line); background:#fff; border-radius:5px; cursor:pointer; }
+  .filters button.on { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .hint { width:100%; font-size:.82rem; color:#6b5a44; margin:0; }
+
+  .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(230px,1fr)); gap:.7rem; padding:1rem; }
+  .card {
+    border:2px solid var(--line); border-radius:8px; background:#fff; overflow:hidden;
+    transition: border-color .1s, opacity .1s; display:flex; flex-direction:column;
+  }
+  .card .crop { height:140px; background:#d9cba8 no-repeat; border-bottom:1px solid var(--line); cursor:pointer; }
+  .card .meta { padding:.4rem .55rem; cursor:pointer; }
+  .card .graf { font-family: Georgia, serif; font-size:1rem; line-height:1.15; }
+  .card .nom { font-size:.8rem; color:#6b5a44; }
+  .card .tipus { font-size:.7rem; color:#8a7a60; text-transform:uppercase; letter-spacing:.04em; }
+  .card .dub { color:#b07c1d; font-weight:700; }
+
+  .acts { display:flex; border-top:1px solid var(--line); margin-top:auto; }
+  .acts button {
+    flex:1; font:inherit; font-size:.85rem; padding:.45rem 0; border:none; background:#fff;
+    cursor:pointer; color:#6b5a44; border-radius:0;
+  }
+  .acts button:first-child { border-right:1px solid var(--line); }
+  .acts .b-keep:hover { background:#e2f0e6; color:var(--ok); }
+  .acts .b-trash:hover { background:#f6e3df; color:var(--bad); }
+
+  .card.keep { border-color:var(--ok); }
+  .card.keep .b-keep { background:var(--ok); color:#fff; font-weight:600; }
+  .card.trash { border-color:var(--bad); opacity:.62; }
+  .card.trash .crop { filter:grayscale(1); }
+  .card.trash .b-trash { background:var(--bad); color:#fff; font-weight:600; }
+  .empty { padding:3rem; text-align:center; color:#6b5a44; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Triatge «sense match»</h1>
+    <span class="stats" id="stats"></span>
+    <div class="filters">
+      <button data-f="all" class="on">Tots</button>
+      <button data-f="pending">Pendents</button>
+      <button data-f="trash">Basura</button>
+      <button data-f="keep">Reals</button>
+    </div>
+    <p class="hint">A cada fitxa: <b>🗑 basura</b> o <b>✓ real</b>. També pots clicar la imatge per marcar basura ràpid. Es desa sol.</p>
+  </header>
+  <main id="grid" class="grid"></main>
+  <p class="empty" id="empty" hidden>Res a mostrar amb aquest filtre.</p>
+
+<script>
+const grid = document.getElementById('grid');
+const statsEl = document.getElementById('stats');
+const emptyEl = document.getElementById('empty');
+let items = [], verdicts = {}, filter = 'all';
+
+const imgCache = new Map();
+function loadCrop(div, sub, fx, fy) {
+  const apply = (nat) => {
+    const VW = 230, VH = 140, frac = 0.22;           // window = 22% of the cell width
+    const S = VW / (frac * nat.w);
+    const bw = nat.w * S, bh = nat.h * S;
+    div.style.backgroundImage = `url(/sub/${sub}.jpg)`;
+    div.style.backgroundSize = `${bw}px ${bh}px`;
+    div.style.backgroundPosition = `${VW/2 - fx*bw}px ${VH/2 - fy*bh}px`;
+  };
+  if (imgCache.has(sub)) return apply(imgCache.get(sub));
+  const im = new Image();
+  im.onload = () => { const nat = { w: im.naturalWidth, h: im.naturalHeight }; imgCache.set(sub, nat); apply(nat); };
+  im.src = `/sub/${sub}.jpg`;
+}
+
+const io = new IntersectionObserver((entries) => {
+  for (const e of entries) if (e.isIntersecting) {
+    const d = e.target; io.unobserve(d);
+    loadCrop(d, d.dataset.sub, +d.dataset.fx, +d.dataset.fy);
+  }
+}, { rootMargin: '300px' });
+
+const vstate = (key) => (verdicts[key] ? verdicts[key].verdict : null);
+
+async function save(key, verdict) {
+  if (verdict) verdicts[key] = { verdict }; else delete verdicts[key];
+  renderStats();
+  try {
+    await fetch('/api/verdict', { method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ key, verdict }) });
+  } catch (e) { statsEl.textContent = 'ERROR desant — mira la consola'; throw e; }
+}
+
+function renderStats() {
+  const vals = Object.values(verdicts);
+  const tr = vals.filter(v => v.verdict==='trash').length;
+  const kp = vals.filter(v => v.verdict==='keep').length;
+  statsEl.innerHTML = `<b>${items.length}</b> sense · <b>${tr}</b> 🗑 · <b>${kp}</b> ✓ · <b>${items.length - tr - kp}</b> pendents`;
+}
+
+function visible(it) {
+  const v = vstate(it.key);
+  if (filter==='all') return true;
+  if (filter==='pending') return !v;
+  return v === filter;
+}
+
+function set(card, it, verdict) {
+  const nv = vstate(it.key) === verdict ? null : verdict;   // toggle off if same
+  save(it.key, nv);
+  card.classList.remove('trash','keep');
+  if (nv) card.classList.add(nv);
+  if (filter !== 'all' && !visible(it)) card.remove();
+}
+
+function render() {
+  grid.innerHTML = '';
+  const list = items.filter(visible);
+  emptyEl.hidden = list.length > 0;
+  for (const it of list) {
+    const card = document.createElement('div');
+    card.className = 'card' + (vstate(it.key) ? ' ' + vstate(it.key) : '');
+    card.innerHTML =
+      `<div class="crop" data-sub="${it.subtile}" data-fx="${it.fx}" data-fy="${it.fy}"></div>` +
+      `<div class="meta"><div class="graf">${esc(it.graf)}${it.dubte?' <span class="dub" title="lectura incerta">?</span>':''}</div>` +
+      `<div class="nom">${esc(it.nom||'')}</div><div class="tipus">${esc(it.tipus||'')}</div></div>` +
+      `<div class="acts"><button class="b-keep" type="button">✓ real</button>` +
+      `<button class="b-trash" type="button">🗑 basura</button></div>`;
+    card.querySelector('.b-keep').addEventListener('click', () => set(card, it, 'keep'));
+    card.querySelector('.b-trash').addEventListener('click', () => set(card, it, 'trash'));
+    card.querySelector('.crop').addEventListener('click', () => set(card, it, 'trash'));
+    card.querySelector('.meta').addEventListener('click', () => set(card, it, 'trash'));
+    grid.appendChild(card);
+    io.observe(card.querySelector('.crop'));
+  }
+}
+const esc = (s) => (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+document.querySelectorAll('.filters button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.filters button').forEach(x => x.classList.remove('on'));
+  b.classList.add('on'); filter = b.dataset.f; render();
+}));
+
+(async function init() {
+  [items, verdicts] = await Promise.all([
+    fetch('/api/sense').then(r => r.json()),
+    fetch('/api/verdicts').then(r => r.json()),
+  ]);
+  renderStats(); render();
+})();
+</script>
+</body>
+</html>

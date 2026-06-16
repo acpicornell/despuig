@@ -1,16 +1,85 @@
 {
   "subtile": "s04_c11",
   "toponims": [
-    { "graf": "Clarét", "nom": "Claret", "tipus": "possessió", "dubte": false, "fx": 0.03, "fy": 0.08 },
-    { "graf": "Sô Sâ Juan", "nom": "Son Sant Joan", "tipus": "possessió", "dubte": false, "fx": 0.17, "fy": 0.09 },
-    { "graf": "Sô Sâ Mart", "nom": "Son Sant Martí", "tipus": "possessió", "dubte": false, "fx": 0.45, "fy": 0.19 },
-    { "graf": "Sô Serre", "nom": "Son Serra", "tipus": "possessió", "dubte": false, "fx": 0.25, "fy": 0.26 },
-    { "graf": "orey", "nom": "orey", "tipus": "possessió", "dubte": true, "fx": 0.02, "fy": 0.56 },
-    { "graf": "Sô Perera", "nom": "Son Perera", "tipus": "possessió", "dubte": false, "fx": 0.07, "fy": 0.63 },
-    { "graf": "Sâ Eularia", "nom": "Santa Eulària", "tipus": "possessió", "dubte": false, "fx": 0.68, "fy": 0.77 },
-    { "graf": "Sô Lleix", "nom": "Son Lleix", "tipus": "possessió", "dubte": false, "fx": 0.20, "fy": 0.81 },
-    { "graf": "Sô Alba", "nom": "Son Alba", "tipus": "possessió", "dubte": false, "fx": 0.25, "fy": 0.88 },
-    { "graf": "Câ Ferrá", "nom": "Can Ferrà", "tipus": "possessió", "dubte": false, "fx": 0.26, "fy": 0.95 },
-    { "graf": "Lecantí", "nom": "Lecantí", "tipus": "possessió", "dubte": false, "fx": 0.25, "fy": 1.00 }
+    {
+      "graf": "Clarét",
+      "nom": "Claret",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.03,
+      "fy": 0.08
+    },
+    {
+      "graf": "Sô Sâ Juan",
+      "nom": "Son Sant Joan",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.17,
+      "fy": 0.09
+    },
+    {
+      "graf": "Sô Sâ Mart",
+      "nom": "Son Sant Martí",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.45,
+      "fy": 0.19
+    },
+    {
+      "graf": "Sô Serre",
+      "nom": "Son Serra",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.25,
+      "fy": 0.26
+    },
+    {
+      "graf": "Sô Perera",
+      "nom": "Son Perera",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.07,
+      "fy": 0.63
+    },
+    {
+      "graf": "Sâ Eularia",
+      "nom": "Santa Eulària",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.68,
+      "fy": 0.77
+    },
+    {
+      "graf": "Sô Lleix",
+      "nom": "Son Lleix",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.2,
+      "fy": 0.81
+    },
+    {
+      "graf": "Sô Alba",
+      "nom": "Son Alba",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.25,
+      "fy": 0.88
+    },
+    {
+      "graf": "Câ Ferrá",
+      "nom": "Can Ferrà",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.26,
+      "fy": 0.95
+    },
+    {
+      "graf": "Lecantí",
+      "nom": "Lecantí",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.25,
+      "fy": 1
+    }
   ]
 }

@@ -1,11 +1,29 @@
 {
   "subtile": "s01_c05",
   "toponims": [
-    { "graf": "Fueta de", "nom": "Fueta de", "tipus": "costa", "dubte": true, "fx": 0.92, "fy": 0.80 },
-    { "graf": "Recó de la raleca", "nom": "Recó de la raleca", "tipus": "costa", "dubte": false, "fx": 0.78, "fy": 0.84 },
-    { "graf": "Pûta de Calarotja", "nom": "Punta de Calarotja", "tipus": "costa", "dubte": false, "fx": 0.66, "fy": 0.88 },
-    { "graf": "Singla de A", "nom": "Singla de A", "tipus": "costa", "dubte": true, "fx": 0.58, "fy": 0.92 },
-    { "graf": "Cala de Fueta", "nom": "Cala de Fueta", "tipus": "costa", "dubte": false, "fx": 0.48, "fy": 0.95 },
-    { "graf": "Mor de", "nom": "Mor de", "tipus": "costa", "dubte": true, "fx": 0.42, "fy": 0.99 }
+    {
+      "graf": "Recó de la raleca",
+      "nom": "Recó de la raleca",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.78,
+      "fy": 0.84
+    },
+    {
+      "graf": "Pûta de Calarotja",
+      "nom": "Punta de Calarotja",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.66,
+      "fy": 0.88
+    },
+    {
+      "graf": "Cala de Fueta",
+      "nom": "Cala de Fueta",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.48,
+      "fy": 0.95
+    }
   ]
 }

@@ -1,27 +1,173 @@
 {
   "subtile": "s12_c07",
   "toponims": [
-    { "graf": "Sô Peret", "nom": "Son Peret", "tipus": "possessió", "dubte": false, "fx": 0.02, "fy": 0.07 },
-    { "graf": "Sô Cortera", "nom": "Son Cortera", "tipus": "possessió", "dubte": false, "fx": 0.18, "fy": 0.08 },
-    { "graf": "Sô Ferretjâs", "nom": "Son Ferretjans", "tipus": "possessió", "dubte": false, "fx": 0.40, "fy": 0.04 },
-    { "graf": "Tiringadas", "nom": "Tiringadas", "tipus": "possessió", "dubte": false, "fx": 0.16, "fy": 0.16 },
-    { "graf": "Sô Pons", "nom": "Son Pons", "tipus": "possessió", "dubte": false, "fx": 0.72, "fy": 0.18 },
-    { "graf": "Sô Boscana", "nom": "Son Boscana", "tipus": "possessió", "dubte": false, "fx": 0.07, "fy": 0.26 },
-    { "graf": "Sô Segui", "nom": "Son Seguí", "tipus": "possessió", "dubte": false, "fx": 0.27, "fy": 0.27 },
-    { "graf": "Sô Marrano", "nom": "Son Marrano", "tipus": "possessió", "dubte": false, "fx": 0.58, "fy": 0.27 },
-    { "graf": "Sô Ballester", "nom": "Son Ballester", "tipus": "possessió", "dubte": false, "fx": 0.37, "fy": 0.34 },
-    { "graf": "Sô Marranet", "nom": "Son Marranet", "tipus": "possessió", "dubte": false, "fx": 0.60, "fy": 0.34 },
-    { "graf": "La Talaya", "nom": "La Talaia", "tipus": "orònim", "dubte": false, "fx": 0.10, "fy": 0.46 },
-    { "graf": "Cortada", "nom": "Cortada", "tipus": "possessió", "dubte": false, "fx": 0.65, "fy": 0.45 },
-    { "graf": "Marola", "nom": "Marola", "tipus": "possessió", "dubte": false, "fx": 0.17, "fy": 0.60 },
-    { "graf": "Las", "nom": "Las", "tipus": "altre", "dubte": false, "fx": 0.85, "fy": 0.62 },
-    { "graf": "Mas Deu", "nom": "Mas Deu", "tipus": "possessió", "dubte": false, "fx": 0.43, "fy": 0.69 },
-    { "graf": "Porgatori", "nom": "Purgatori", "tipus": "possessió", "dubte": false, "fx": 0.07, "fy": 0.85 },
-    { "graf": "Llobets", "nom": "Llobets", "tipus": "possessió", "dubte": false, "fx": 0.32, "fy": 0.82 },
-    { "graf": "Llobets d. Pastera", "nom": "Llobets de Pastera", "tipus": "possessió", "dubte": false, "fx": 0.52, "fy": 0.82 },
-    { "graf": "Viñoleta", "nom": "Vinyoleta", "tipus": "possessió", "dubte": false, "fx": 0.73, "fy": 0.84 },
-    { "graf": "Sô Segua", "nom": "Son Segua", "tipus": "possessió", "dubte": false, "fx": 0.50, "fy": 0.91 },
-    { "graf": "Vernissa", "nom": "Vernissa", "tipus": "possessió", "dubte": false, "fx": 0.10, "fy": 0.97 },
-    { "graf": "Viñola", "nom": "Vinyola", "tipus": "possessió", "dubte": false, "fx": 0.78, "fy": 0.96 }
+    {
+      "graf": "Sô Peret",
+      "nom": "Son Peret",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.02,
+      "fy": 0.07
+    },
+    {
+      "graf": "Sô Cortera",
+      "nom": "Son Cortera",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.18,
+      "fy": 0.08
+    },
+    {
+      "graf": "Sô Ferretjâs",
+      "nom": "Son Ferretjans",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.4,
+      "fy": 0.04
+    },
+    {
+      "graf": "Tiringadas",
+      "nom": "Tiringadas",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.16,
+      "fy": 0.16
+    },
+    {
+      "graf": "Sô Pons",
+      "nom": "Son Pons",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.72,
+      "fy": 0.18
+    },
+    {
+      "graf": "Sô Boscana",
+      "nom": "Son Boscana",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.07,
+      "fy": 0.26
+    },
+    {
+      "graf": "Sô Segui",
+      "nom": "Son Seguí",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.27,
+      "fy": 0.27
+    },
+    {
+      "graf": "Sô Marrano",
+      "nom": "Son Marrano",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.58,
+      "fy": 0.27
+    },
+    {
+      "graf": "Sô Ballester",
+      "nom": "Son Ballester",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.37,
+      "fy": 0.34
+    },
+    {
+      "graf": "Sô Marranet",
+      "nom": "Son Marranet",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.6,
+      "fy": 0.34
+    },
+    {
+      "graf": "La Talaya",
+      "nom": "La Talaia",
+      "tipus": "orònim",
+      "dubte": false,
+      "fx": 0.1,
+      "fy": 0.46
+    },
+    {
+      "graf": "Cortada",
+      "nom": "Cortada",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.65,
+      "fy": 0.45
+    },
+    {
+      "graf": "Marola",
+      "nom": "Marola",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.17,
+      "fy": 0.6
+    },
+    {
+      "graf": "Mas Deu",
+      "nom": "Mas Deu",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.43,
+      "fy": 0.69
+    },
+    {
+      "graf": "Porgatori",
+      "nom": "Purgatori",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.07,
+      "fy": 0.85
+    },
+    {
+      "graf": "Llobets",
+      "nom": "Llobets",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.32,
+      "fy": 0.82
+    },
+    {
+      "graf": "Llobets d. Pastera",
+      "nom": "Llobets de Pastera",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.52,
+      "fy": 0.82
+    },
+    {
+      "graf": "Viñoleta",
+      "nom": "Vinyoleta",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.73,
+      "fy": 0.84
+    },
+    {
+      "graf": "Sô Segua",
+      "nom": "Son Segua",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.5,
+      "fy": 0.91
+    },
+    {
+      "graf": "Vernissa",
+      "nom": "Vernissa",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.1,
+      "fy": 0.97
+    },
+    {
+      "graf": "Viñola",
+      "nom": "Vinyola",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.78,
+      "fy": 0.96
+    }
   ]
 }

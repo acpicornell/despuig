@@ -1,23 +1,133 @@
 {
   "subtile": "s01_c01",
   "toponims": [
-    { "graf": "Cabo de Lebeche", "nom": "Cabo de Lebeche", "tipus": "costa", "dubte": false, "fx": 0.10, "fy": 0.06 },
-    { "graf": "Cabo del Obispo", "nom": "Cabo del Obispo", "tipus": "costa", "dubte": false, "fx": 0.17, "fy": 0.13 },
-    { "graf": "Cozina del Obispo", "nom": "Cozina del Obispo", "tipus": "costa", "dubte": false, "fx": 0.20, "fy": 0.24 },
-    { "graf": "Cala Donzell", "nom": "Cala Donzell", "tipus": "costa", "dubte": false, "fx": 0.30, "fy": 0.34 },
-    { "graf": "Cabo Xuriguer", "nom": "Cabo Xuriguer", "tipus": "costa", "dubte": false, "fx": 0.37, "fy": 0.30 },
-    { "graf": "La Creueta", "nom": "La Creueta", "tipus": "costa", "dubte": false, "fx": 0.46, "fy": 0.40 },
-    { "graf": "Castella", "nom": "Castella", "tipus": "possessió", "dubte": false, "fx": 0.02, "fy": 0.55 },
-    { "graf": "Castillo", "nom": "Castillo", "tipus": "altre", "dubte": false, "fx": 0.30, "fy": 0.57 },
-    { "graf": "Punta Rebollar", "nom": "Punta Rebollar", "tipus": "costa", "dubte": false, "fx": 0.46, "fy": 0.58 },
-    { "graf": "Pûta de Sta Maria", "nom": "Punta de Santa Maria", "tipus": "costa", "dubte": false, "fx": 0.56, "fy": 0.50 },
-    { "graf": "Cala Nueba", "nom": "Cala Nueva", "tipus": "costa", "dubte": false, "fx": 0.57, "fy": 0.57 },
-    { "graf": "Cabo Morbati", "nom": "Cabo Morbati", "tipus": "costa", "dubte": false, "fx": 0.70, "fy": 0.51 },
-    { "graf": "Puerto Canduf", "nom": "Puerto Canduf", "tipus": "costa", "dubte": false, "fx": 0.51, "fy": 0.68 },
-    { "graf": "Pescaria de la Cuena", "nom": "Pescaria de la Cuena", "tipus": "costa", "dubte": false, "fx": 0.74, "fy": 0.71 },
-    { "graf": "Pescaria de", "nom": "Pescaria de", "tipus": "costa", "dubte": false, "fx": 0.83, "fy": 0.85 },
-    { "graf": "Espalmador", "nom": "Espalmador", "tipus": "costa", "dubte": false, "fx": 0.08, "fy": 0.82 },
-    { "graf": "Playola", "nom": "Playola", "tipus": "costa", "dubte": false, "fx": 0.16, "fy": 0.90 },
-    { "graf": "Porret", "nom": "Porret", "tipus": "costa", "dubte": false, "fx": 0.28, "fy": 0.93 }
+    {
+      "graf": "Cabo de Lebeche",
+      "nom": "Cabo de Lebeche",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.1,
+      "fy": 0.06
+    },
+    {
+      "graf": "Cabo del Obispo",
+      "nom": "Cabo del Obispo",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.17,
+      "fy": 0.13
+    },
+    {
+      "graf": "Cozina del Obispo",
+      "nom": "Cozina del Obispo",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.2,
+      "fy": 0.24
+    },
+    {
+      "graf": "Cala Donzell",
+      "nom": "Cala Donzell",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.3,
+      "fy": 0.34
+    },
+    {
+      "graf": "Cabo Xuriguer",
+      "nom": "Cabo Xuriguer",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.37,
+      "fy": 0.3
+    },
+    {
+      "graf": "La Creueta",
+      "nom": "La Creueta",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.46,
+      "fy": 0.4
+    },
+    {
+      "graf": "Castella",
+      "nom": "Castella",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.02,
+      "fy": 0.55
+    },
+    {
+      "graf": "Punta Rebollar",
+      "nom": "Punta Rebollar",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.46,
+      "fy": 0.58
+    },
+    {
+      "graf": "Pûta de Sta Maria",
+      "nom": "Punta de Santa Maria",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.56,
+      "fy": 0.5
+    },
+    {
+      "graf": "Cala Nueba",
+      "nom": "Cala Nueva",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.57,
+      "fy": 0.57
+    },
+    {
+      "graf": "Cabo Morbati",
+      "nom": "Cabo Morbati",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.7,
+      "fy": 0.51
+    },
+    {
+      "graf": "Puerto Canduf",
+      "nom": "Puerto Canduf",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.51,
+      "fy": 0.68
+    },
+    {
+      "graf": "Pescaria de la Cuena",
+      "nom": "Pescaria de la Cuena",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.74,
+      "fy": 0.71
+    },
+    {
+      "graf": "Espalmador",
+      "nom": "Espalmador",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.08,
+      "fy": 0.82
+    },
+    {
+      "graf": "Playola",
+      "nom": "Playola",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.16,
+      "fy": 0.9
+    },
+    {
+      "graf": "Porret",
+      "nom": "Porret",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.28,
+      "fy": 0.93
+    }
   ]
 }

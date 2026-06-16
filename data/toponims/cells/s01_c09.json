@@ -1,49 +1,341 @@
 {
   "subtile": "s01_c09",
   "toponims": [
-    { "graf": "La Font", "nom": "La Font", "tipus": "hidrònim", "dubte": false, "fx": 0.72, "fy": 0.04 },
-    { "graf": "Câ Vich", "nom": "Can Vic", "tipus": "possessió", "dubte": false, "fx": 0.86, "fy": 0.04 },
-    { "graf": "Câ Salas", "nom": "Can Sales", "tipus": "possessió", "dubte": false, "fx": 0.50, "fy": 0.28 },
-    { "graf": "Câ Marge", "nom": "Can Marge", "tipus": "possessió", "dubte": false, "fx": 0.42, "fy": 0.35 },
-    { "graf": "Câ Vices", "nom": "Can Vices", "tipus": "possessió", "dubte": false, "fx": 0.42, "fy": 0.43 },
-    { "graf": "Câ Diable", "nom": "Can Diable", "tipus": "possessió", "dubte": false, "fx": 0.55, "fy": 0.43 },
-    { "graf": "POLLENSA", "nom": "Pollença", "tipus": "nucli", "dubte": false, "fx": 0.88, "fy": 0.47 },
-    { "graf": "N. Sa del Roser", "nom": "Nostra Senyora del Roser", "tipus": "altre", "dubte": false, "fx": 0.66, "fy": 0.51 },
-    { "graf": "Bruxella grâ", "nom": "Bruixella gran", "tipus": "possessió", "dubte": false, "fx": 0.03, "fy": 0.51 },
-    { "graf": "Câ Llinás", "nom": "Can Llinàs", "tipus": "possessió", "dubte": false, "fx": 0.27, "fy": 0.51 },
-    { "graf": "Câ Pôtico", "nom": "Can Pòtic", "tipus": "possessió", "dubte": true, "fx": 0.45, "fy": 0.55 },
-    { "graf": "Sô Crua Hort", "nom": "Son Crua Hort", "tipus": "possessió", "dubte": true, "fx": 0.20, "fy": 0.57 },
-    { "graf": "Câ Cnitlo", "nom": "Câ Cnitlo", "tipus": "possessió", "dubte": true, "fx": 0.56, "fy": 0.57 },
-    { "graf": "Pôta rrô", "nom": "Punta rró", "tipus": "costa", "dubte": true, "fx": 0.82, "fy": 0.58 },
-    { "graf": "Sô Serre", "nom": "Son Serra", "tipus": "possessió", "dubte": false, "fx": 0.20, "fy": 0.61 },
-    { "graf": "Câ Româ", "nom": "Can Romà", "tipus": "possessió", "dubte": false, "fx": 0.40, "fy": 0.61 },
-    { "graf": "N. Sa de l'Puig", "nom": "Nostra Senyora del Puig", "tipus": "altre", "dubte": false, "fx": 0.62, "fy": 0.60 },
-    { "graf": "Fôt de Varix", "nom": "Font de Varix", "tipus": "hidrònim", "dubte": true, "fx": 0.28, "fy": 0.65 },
-    { "graf": "Câ Prats", "nom": "Can Prats", "tipus": "possessió", "dubte": false, "fx": 0.55, "fy": 0.64 },
-    { "graf": "La Plana", "nom": "La Plana", "tipus": "possessió", "dubte": false, "fx": 0.13, "fy": 0.70 },
-    { "graf": "Câ Llobera", "nom": "Can Llobera", "tipus": "possessió", "dubte": false, "fx": 0.30, "fy": 0.70 },
-    { "graf": "Câ Pau", "nom": "Can Pau", "tipus": "possessió", "dubte": false, "fx": 0.46, "fy": 0.69 },
-    { "graf": "Câ Masâ", "nom": "Can Masà", "tipus": "possessió", "dubte": false, "fx": 0.90, "fy": 0.70 },
-    { "graf": "Câ Barba", "nom": "Can Barba", "tipus": "possessió", "dubte": false, "fx": 0.12, "fy": 0.74 },
-    { "graf": "La Coma", "nom": "La Coma", "tipus": "possessió", "dubte": false, "fx": 0.45, "fy": 0.74 },
-    { "graf": "Sô Brui", "nom": "Son Brui", "tipus": "possessió", "dubte": false, "fx": 0.74, "fy": 0.75 },
-    { "graf": "March", "nom": "March", "tipus": "possessió", "dubte": false, "fx": 0.02, "fy": 0.79 },
-    { "graf": "Varix", "nom": "Varix", "tipus": "possessió", "dubte": true, "fx": 0.20, "fy": 0.79 },
-    { "graf": "Molinet", "nom": "Molinet", "tipus": "possessió", "dubte": false, "fx": 0.12, "fy": 0.85 },
-    { "graf": "Pujol", "nom": "Pujol", "tipus": "possessió", "dubte": false, "fx": 0.26, "fy": 0.85 },
-    { "graf": "Fartarie gran", "nom": "Fartàritx gran", "tipus": "possessió", "dubte": false, "fx": 0.37, "fy": 0.84 },
-    { "graf": "La Jeraria", "nom": "La Jeraria", "tipus": "possessió", "dubte": true, "fx": 0.70, "fy": 0.84 },
-    { "graf": "Câ Guille Bet", "nom": "Can Guillem Bet", "tipus": "possessió", "dubte": false, "fx": 0.10, "fy": 0.91 },
-    { "graf": "El Refal", "nom": "El Rafal", "tipus": "possessió", "dubte": false, "fx": 0.40, "fy": 0.90 },
-    { "graf": "Coloma", "nom": "Coloma", "tipus": "possessió", "dubte": false, "fx": 0.68, "fy": 0.90 },
-    { "graf": "Câ Lloberâ", "nom": "Can Llobera", "tipus": "possessió", "dubte": false, "fx": 0.85, "fy": 0.90 },
-    { "graf": "Câ Bosch", "nom": "Can Bosc", "tipus": "possessió", "dubte": false, "fx": 0.46, "fy": 0.95 },
-    { "graf": "Câ Cuset", "nom": "Can Cuset", "tipus": "possessió", "dubte": true, "fx": 0.62, "fy": 0.95 },
-    { "graf": "Los Refalets", "nom": "Els Rafalets", "tipus": "possessió", "dubte": false, "fx": 0.78, "fy": 0.95 },
-    { "graf": "Lasgreti", "nom": "Lasgreti", "tipus": "possessió", "dubte": true, "fx": 0.30, "fy": 0.98 },
-    { "graf": "La Vanals", "nom": "La Vanals", "tipus": "possessió", "dubte": true, "fx": 0.45, "fy": 0.99 },
-    { "graf": "Lasevelleta", "nom": "Lasevelleta", "tipus": "possessió", "dubte": true, "fx": 0.55, "fy": 0.99 },
-    { "graf": "Câl Hereu", "nom": "Cal Hereu", "tipus": "possessió", "dubte": false, "fx": 0.70, "fy": 0.99 },
-    { "graf": "del reco", "nom": "del recó", "tipus": "altre", "dubte": true, "fx": 0.05, "fy": 0.99 }
+    {
+      "graf": "La Font",
+      "nom": "La Font",
+      "tipus": "hidrònim",
+      "dubte": false,
+      "fx": 0.72,
+      "fy": 0.04
+    },
+    {
+      "graf": "Câ Vich",
+      "nom": "Can Vic",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.86,
+      "fy": 0.04
+    },
+    {
+      "graf": "Câ Salas",
+      "nom": "Can Sales",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.5,
+      "fy": 0.28
+    },
+    {
+      "graf": "Câ Marge",
+      "nom": "Can Marge",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.42,
+      "fy": 0.35
+    },
+    {
+      "graf": "Câ Vices",
+      "nom": "Can Vices",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.42,
+      "fy": 0.43
+    },
+    {
+      "graf": "Câ Diable",
+      "nom": "Can Diable",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.55,
+      "fy": 0.43
+    },
+    {
+      "graf": "POLLENSA",
+      "nom": "Pollença",
+      "tipus": "nucli",
+      "dubte": false,
+      "fx": 0.88,
+      "fy": 0.47
+    },
+    {
+      "graf": "N. Sa del Roser",
+      "nom": "Nostra Senyora del Roser",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.66,
+      "fy": 0.51
+    },
+    {
+      "graf": "Bruxella grâ",
+      "nom": "Bruixella gran",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.03,
+      "fy": 0.51
+    },
+    {
+      "graf": "Câ Llinás",
+      "nom": "Can Llinàs",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.27,
+      "fy": 0.51
+    },
+    {
+      "graf": "Câ Pôtico",
+      "nom": "Can Pòtic",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.45,
+      "fy": 0.55
+    },
+    {
+      "graf": "Sô Crua Hort",
+      "nom": "Son Crua Hort",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.2,
+      "fy": 0.57
+    },
+    {
+      "graf": "Câ Cnitlo",
+      "nom": "Câ Cnitlo",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.56,
+      "fy": 0.57
+    },
+    {
+      "graf": "Pôta rrô",
+      "nom": "Punta rró",
+      "tipus": "costa",
+      "dubte": true,
+      "fx": 0.82,
+      "fy": 0.58
+    },
+    {
+      "graf": "Sô Serre",
+      "nom": "Son Serra",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.2,
+      "fy": 0.61
+    },
+    {
+      "graf": "Câ Româ",
+      "nom": "Can Romà",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.4,
+      "fy": 0.61
+    },
+    {
+      "graf": "N. Sa de l'Puig",
+      "nom": "Nostra Senyora del Puig",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.62,
+      "fy": 0.6
+    },
+    {
+      "graf": "Fôt de Varix",
+      "nom": "Font de Varix",
+      "tipus": "hidrònim",
+      "dubte": true,
+      "fx": 0.28,
+      "fy": 0.65
+    },
+    {
+      "graf": "Câ Prats",
+      "nom": "Can Prats",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.55,
+      "fy": 0.64
+    },
+    {
+      "graf": "La Plana",
+      "nom": "La Plana",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.13,
+      "fy": 0.7
+    },
+    {
+      "graf": "Câ Llobera",
+      "nom": "Can Llobera",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.3,
+      "fy": 0.7
+    },
+    {
+      "graf": "Câ Pau",
+      "nom": "Can Pau",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.46,
+      "fy": 0.69
+    },
+    {
+      "graf": "Câ Masâ",
+      "nom": "Can Masà",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.9,
+      "fy": 0.7
+    },
+    {
+      "graf": "Câ Barba",
+      "nom": "Can Barba",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.12,
+      "fy": 0.74
+    },
+    {
+      "graf": "La Coma",
+      "nom": "La Coma",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.45,
+      "fy": 0.74
+    },
+    {
+      "graf": "Sô Brui",
+      "nom": "Son Brui",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.74,
+      "fy": 0.75
+    },
+    {
+      "graf": "March",
+      "nom": "March",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.02,
+      "fy": 0.79
+    },
+    {
+      "graf": "Varix",
+      "nom": "Varix",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.2,
+      "fy": 0.79
+    },
+    {
+      "graf": "Molinet",
+      "nom": "Molinet",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.12,
+      "fy": 0.85
+    },
+    {
+      "graf": "Pujol",
+      "nom": "Pujol",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.26,
+      "fy": 0.85
+    },
+    {
+      "graf": "Fartarie gran",
+      "nom": "Fartàritx gran",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.37,
+      "fy": 0.84
+    },
+    {
+      "graf": "La Jeraria",
+      "nom": "La Jeraria",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.7,
+      "fy": 0.84
+    },
+    {
+      "graf": "Câ Guille Bet",
+      "nom": "Can Guillem Bet",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.1,
+      "fy": 0.91
+    },
+    {
+      "graf": "El Refal",
+      "nom": "El Rafal",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.4,
+      "fy": 0.9
+    },
+    {
+      "graf": "Coloma",
+      "nom": "Coloma",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.68,
+      "fy": 0.9
+    },
+    {
+      "graf": "Câ Lloberâ",
+      "nom": "Can Llobera",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.85,
+      "fy": 0.9
+    },
+    {
+      "graf": "Câ Bosch",
+      "nom": "Can Bosc",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.46,
+      "fy": 0.95
+    },
+    {
+      "graf": "Câ Cuset",
+      "nom": "Can Cuset",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.62,
+      "fy": 0.95
+    },
+    {
+      "graf": "Los Refalets",
+      "nom": "Els Rafalets",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.78,
+      "fy": 0.95
+    },
+    {
+      "graf": "La Vanals",
+      "nom": "La Vanals",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.45,
+      "fy": 0.99
+    },
+    {
+      "graf": "Lasevelleta",
+      "nom": "Lasevelleta",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.55,
+      "fy": 0.99
+    },
+    {
+      "graf": "Câl Hereu",
+      "nom": "Cal Hereu",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.7,
+      "fy": 0.99
+    }
   ]
 }

@@ -1,8 +1,21 @@
 {
   "subtile": "s00_c07",
   "toponims": [
-    { "graf": "Corral de Figuera", "nom": "Corral de Figuera", "tipus": "possessió", "dubte": false, "fx": 0.83, "fy": 0.75 },
-    { "graf": "Mor. de Llobera", "nom": "Morro de Llobera", "tipus": "possessió", "dubte": false, "fx": 0.66, "fy": 0.80 },
-    { "graf": "Escula de", "nom": "Escula de", "tipus": "costa", "dubte": true, "fx": 0.52, "fy": 0.94 }
+    {
+      "graf": "Corral de Figuera",
+      "nom": "Corral de Figuera",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.83,
+      "fy": 0.75
+    },
+    {
+      "graf": "Mor. de Llobera",
+      "nom": "Morro de Llobera",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.66,
+      "fy": 0.8
+    }
   ]
 }

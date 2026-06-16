@@ -1,9 +1,29 @@
 {
   "subtile": "s03_c13",
   "toponims": [
-    { "graf": "Cabo de Fer", "nom": "Cabo de Fer", "tipus": "costa", "dubte": false, "fx": 0.93, "fy": 0.06 },
-    { "graf": "Desem", "nom": "Desem", "tipus": "costa", "dubte": false, "fx": 0.92, "fy": 0.62 },
-    { "graf": "Cal", "nom": "Cal", "tipus": "costa", "dubte": false, "fx": 0.68, "fy": 0.98 },
-    { "graf": "Calo", "nom": "Calo", "tipus": "costa", "dubte": false, "fx": 0.86, "fy": 0.98 }
+    {
+      "graf": "Cabo de Fer",
+      "nom": "Cabo de Fer",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.93,
+      "fy": 0.06
+    },
+    {
+      "graf": "Cal",
+      "nom": "Cal",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.68,
+      "fy": 0.98
+    },
+    {
+      "graf": "Calo",
+      "nom": "Calo",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.86,
+      "fy": 0.98
+    }
   ]
 }

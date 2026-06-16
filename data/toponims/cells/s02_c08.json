@@ -1,24 +1,141 @@
 {
   "subtile": "s02_c08",
   "toponims": [
-    { "graf": "Mossa", "nom": "Mossa", "tipus": "possessió", "dubte": false, "fx": 0.24, "fy": 0.04 },
-    { "graf": "Motaña", "nom": "Montanya", "tipus": "possessió", "dubte": false, "fx": 0.66, "fy": 0.04 },
-    { "graf": "Câ Guttle", "nom": "Can Guttle", "tipus": "possessió", "dubte": true, "fx": 0.90, "fy": 0.05 },
-    { "graf": "Binifaldo", "nom": "Binifaldó", "tipus": "possessió", "dubte": false, "fx": 0.52, "fy": 0.18 },
-    { "graf": "Tartarix del reco", "nom": "Tartarix del Racó", "tipus": "possessió", "dubte": false, "fx": 0.78, "fy": 0.18 },
-    { "graf": "Menut", "nom": "Menut", "tipus": "possessió", "dubte": false, "fx": 0.44, "fy": 0.30 },
-    { "graf": "Mirca", "nom": "Mirca", "tipus": "possessió", "dubte": false, "fx": 0.92, "fy": 0.29 },
-    { "graf": "Tiucarelleta", "nom": "Tiucarelleta", "tipus": "possessió", "dubte": true, "fx": 0.75, "fy": 0.40 },
-    { "graf": "Tiucarella", "nom": "Tiucarella", "tipus": "possessió", "dubte": true, "fx": 0.66, "fy": 0.45 },
-    { "graf": "Sô Amer", "nom": "Son Amer", "tipus": "possessió", "dubte": false, "fx": 0.34, "fy": 0.51 },
-    { "graf": "D LLUCH", "nom": "De Lluc", "tipus": "nucli", "dubte": false, "fx": 0.21, "fy": 0.56 },
-    { "graf": "Figuerollas", "nom": "Figuerolles", "tipus": "possessió", "dubte": false, "fx": 0.74, "fy": 0.56 },
-    { "graf": "Cuixa", "nom": "Cuixa", "tipus": "possessió", "dubte": false, "fx": 0.43, "fy": 0.61 },
-    { "graf": "Coma freda", "nom": "Coma Freda", "tipus": "possessió", "dubte": false, "fx": 0.18, "fy": 0.65 },
-    { "graf": "Bretxa", "nom": "Bretxa", "tipus": "possessió", "dubte": false, "fx": 0.45, "fy": 0.66 },
-    { "graf": "Aubaffons", "nom": "Aubaffons", "tipus": "possessió", "dubte": true, "fx": 0.66, "fy": 0.69 },
-    { "graf": "Coma de Barruga", "nom": "Coma de Barruga", "tipus": "possessió", "dubte": false, "fx": 0.40, "fy": 0.90 },
-    { "graf": "Santani", "nom": "Santani", "tipus": "possessió", "dubte": false, "fx": 0.72, "fy": 0.91 },
-    { "graf": "S. Mig", "nom": "S. Mig", "tipus": "possessió", "dubte": true, "fx": 0.95, "fy": 0.91 }
+    {
+      "graf": "Mossa",
+      "nom": "Mossa",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.24,
+      "fy": 0.04
+    },
+    {
+      "graf": "Motaña",
+      "nom": "Montanya",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.66,
+      "fy": 0.04
+    },
+    {
+      "graf": "Câ Guttle",
+      "nom": "Can Guttle",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.9,
+      "fy": 0.05
+    },
+    {
+      "graf": "Binifaldo",
+      "nom": "Binifaldó",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.52,
+      "fy": 0.18
+    },
+    {
+      "graf": "Tartarix del reco",
+      "nom": "Tartarix del Racó",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.78,
+      "fy": 0.18
+    },
+    {
+      "graf": "Menut",
+      "nom": "Menut",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.44,
+      "fy": 0.3
+    },
+    {
+      "graf": "Mirca",
+      "nom": "Mirca",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.92,
+      "fy": 0.29
+    },
+    {
+      "graf": "Tiucarelleta",
+      "nom": "Tiucarelleta",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.75,
+      "fy": 0.4
+    },
+    {
+      "graf": "Tiucarella",
+      "nom": "Tiucarella",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.66,
+      "fy": 0.45
+    },
+    {
+      "graf": "Sô Amer",
+      "nom": "Son Amer",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.34,
+      "fy": 0.51
+    },
+    {
+      "graf": "D LLUCH",
+      "nom": "De Lluc",
+      "tipus": "nucli",
+      "dubte": false,
+      "fx": 0.21,
+      "fy": 0.56
+    },
+    {
+      "graf": "Figuerollas",
+      "nom": "Figuerolles",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.74,
+      "fy": 0.56
+    },
+    {
+      "graf": "Coma freda",
+      "nom": "Coma Freda",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.18,
+      "fy": 0.65
+    },
+    {
+      "graf": "Bretxa",
+      "nom": "Bretxa",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.45,
+      "fy": 0.66
+    },
+    {
+      "graf": "Coma de Barruga",
+      "nom": "Coma de Barruga",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.4,
+      "fy": 0.9
+    },
+    {
+      "graf": "Santani",
+      "nom": "Santani",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.72,
+      "fy": 0.91
+    },
+    {
+      "graf": "S. Mig",
+      "nom": "S. Mig",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.95,
+      "fy": 0.91
+    }
   ]
 }

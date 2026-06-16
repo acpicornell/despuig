@@ -13,6 +13,8 @@
     "toponims:subtiles": "node scripts/toponims/subtiles.mjs",
     "toponims:merge": "node scripts/toponims/merge.mjs",
     "toponims:review": "node scripts/toponims/review-server.mjs",
+    "toponims:sense": "node scripts/toponims/sense-server.mjs",
+    "toponims:sense-apply": "node scripts/toponims/apply-sense-review.mjs",
     "toponims:vinetes": "node scripts/toponims/vinetes-server.mjs",
     "toponims:ngib-fetch": "node scripts/toponims/ngib-fetch.mjs",
     "toponims:ngib-match": "nix-shell scripts/toponims/shell.nix --run 'python3 scripts/toponims/ngib_match.py'"

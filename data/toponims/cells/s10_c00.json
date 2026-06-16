@@ -1,9 +1,29 @@
 {
   "subtile": "s10_c00",
   "toponims": [
-    { "graf": "Cabo Negret", "nom": "Cap Negret", "tipus": "costa", "dubte": false, "fx": 0.74, "fy": 0.07 },
-    { "graf": "Pedreretas", "nom": "Pedreretes", "tipus": "costa", "dubte": false, "fx": 0.84, "fy": 0.15 },
-    { "graf": "Peñas", "nom": "Penyes", "tipus": "costa", "dubte": false, "fx": 0.90, "fy": 0.27 },
-    { "graf": "Recó de la f", "nom": "Recó de la f", "tipus": "costa", "dubte": false, "fx": 0.83, "fy": 0.55 }
+    {
+      "graf": "Cabo Negret",
+      "nom": "Cap Negret",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.74,
+      "fy": 0.07
+    },
+    {
+      "graf": "Pedreretas",
+      "nom": "Pedreretes",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.84,
+      "fy": 0.15
+    },
+    {
+      "graf": "Peñas",
+      "nom": "Penyes",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.9,
+      "fy": 0.27
+    }
   ]
 }

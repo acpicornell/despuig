@@ -1,9 +1,29 @@
 {
   "subtile": "s14_c11",
   "toponims": [
-    { "graf": "Cala Mondragó", "nom": "Cala Mondragó", "tipus": "costa", "dubte": false, "fx": 0.50, "fy": 0.10 },
-    { "graf": "Cabo del Moro", "nom": "Cap del Moro", "tipus": "costa", "dubte": false, "fx": 0.30, "fy": 0.28 },
-    { "graf": "Cala Figuera", "nom": "Cala Figuera", "tipus": "costa", "dubte": false, "fx": 0.10, "fy": 0.38 },
-    { "graf": "rencada", "nom": "rencada", "tipus": "costa", "dubte": true, "fx": 0.72, "fy": 0.02 }
+    {
+      "graf": "Cala Mondragó",
+      "nom": "Cala Mondragó",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.5,
+      "fy": 0.1
+    },
+    {
+      "graf": "Cabo del Moro",
+      "nom": "Cap del Moro",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.3,
+      "fy": 0.28
+    },
+    {
+      "graf": "Cala Figuera",
+      "nom": "Cala Figuera",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.1,
+      "fy": 0.38
+    }
   ]
 }

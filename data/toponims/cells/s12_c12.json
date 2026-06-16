@@ -1,20 +1,101 @@
 {
   "subtile": "s12_c12",
   "toponims": [
-    { "graf": "Pla de la Siria", "nom": "Pla de la Síria", "tipus": "altre", "dubte": false, "fx": 0.32, "fy": 0.09 },
-    { "graf": "Câ Alou vell", "nom": "Can Alou vell", "tipus": "possessió", "dubte": false, "fx": 0.10, "fy": 0.16 },
-    { "graf": "as Gayans", "nom": "as Gayans", "tipus": "possessió", "dubte": false, "fx": 0.03, "fy": 0.31 },
-    { "graf": "Algar", "nom": "Algar", "tipus": "costa", "dubte": false, "fx": 0.67, "fy": 0.20 },
-    { "graf": "Partions", "nom": "Partions", "tipus": "altre", "dubte": false, "fx": 0.88, "fy": 0.04 },
-    { "graf": "Puerto Colom", "nom": "Portocolom", "tipus": "costa", "dubte": false, "fx": 0.78, "fy": 0.32 },
-    { "graf": "Corral de Velar", "nom": "Corral de Velar", "tipus": "costa", "dubte": false, "fx": 0.62, "fy": 0.45 },
-    { "graf": "Tor. dé Marsal", "nom": "Torre de Marsal", "tipus": "costa", "dubte": false, "fx": 0.13, "fy": 0.51 },
-    { "graf": "Manuela", "nom": "Manuela", "tipus": "costa", "dubte": false, "fx": 0.54, "fy": 0.51 },
-    { "graf": "Portucol", "nom": "Portucol", "tipus": "costa", "dubte": false, "fx": 0.45, "fy": 0.57 },
-    { "graf": "Pûta del Joâo", "nom": "Punta del Joao", "tipus": "costa", "dubte": false, "fx": 0.50, "fy": 0.61 },
-    { "graf": "el Freo", "nom": "el Freu", "tipus": "costa", "dubte": false, "fx": 0.51, "fy": 0.65 },
-    { "graf": "al Brafi", "nom": "al Brafi", "tipus": "costa", "dubte": true, "fx": 0.50, "fy": 0.69 },
-    { "graf": "Pûta negre", "nom": "Punta negre", "tipus": "costa", "dubte": false, "fx": 0.40, "fy": 0.76 },
-    { "graf": "Cala la n", "nom": "Cala la n", "tipus": "costa", "dubte": true, "fx": 0.27, "fy": 0.93 }
+    {
+      "graf": "Pla de la Siria",
+      "nom": "Pla de la Síria",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.32,
+      "fy": 0.09
+    },
+    {
+      "graf": "Câ Alou vell",
+      "nom": "Can Alou vell",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.1,
+      "fy": 0.16
+    },
+    {
+      "graf": "Algar",
+      "nom": "Algar",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.67,
+      "fy": 0.2
+    },
+    {
+      "graf": "Partions",
+      "nom": "Partions",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.88,
+      "fy": 0.04
+    },
+    {
+      "graf": "Puerto Colom",
+      "nom": "Portocolom",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.78,
+      "fy": 0.32
+    },
+    {
+      "graf": "Corral de Velar",
+      "nom": "Corral de Velar",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.62,
+      "fy": 0.45
+    },
+    {
+      "graf": "Tor. dé Marsal",
+      "nom": "Torre de Marsal",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.13,
+      "fy": 0.51
+    },
+    {
+      "graf": "Portucol",
+      "nom": "Portucol",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.45,
+      "fy": 0.57
+    },
+    {
+      "graf": "Pûta del Joâo",
+      "nom": "Punta del Joao",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.5,
+      "fy": 0.61
+    },
+    {
+      "graf": "el Freo",
+      "nom": "el Freu",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.51,
+      "fy": 0.65
+    },
+    {
+      "graf": "Pûta negre",
+      "nom": "Punta negre",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.4,
+      "fy": 0.76
+    },
+    {
+      "graf": "Cala la n",
+      "nom": "Cala la n",
+      "tipus": "costa",
+      "dubte": true,
+      "fx": 0.27,
+      "fy": 0.93
+    }
   ]
 }

@@ -1,15 +1,69 @@
 {
   "subtile": "s10_c01",
   "toponims": [
-    { "graf": "dreretas", "nom": "dreretas", "tipus": "costa", "dubte": true, "fx": 0.04, "fy": 0.10 },
-    { "graf": "Peñas rotjes", "nom": "Penyes Rotges", "tipus": "costa", "dubte": false, "fx": 0.08, "fy": 0.25 },
-    { "graf": "Recó de la fregata", "nom": "Recó de la Fragata", "tipus": "costa", "dubte": false, "fx": 0.02, "fy": 0.50 },
-    { "graf": "El Toro", "nom": "El Toro", "tipus": "costa", "dubte": false, "fx": 0.20, "fy": 0.78 },
-    { "graf": "Cala Refeubetx", "nom": "Cala Refeubetx", "tipus": "costa", "dubte": false, "fx": 0.22, "fy": 0.83 },
-    { "graf": "Morro de Felui", "nom": "Morro de Felui", "tipus": "costa", "dubte": false, "fx": 0.24, "fy": 0.88 },
-    { "graf": "dels catius", "nom": "dels Catius", "tipus": "costa", "dubte": false, "fx": 0.50, "fy": 0.95 },
-    { "graf": "Cabo", "nom": "Cabo", "tipus": "costa", "dubte": true, "fx": 0.96, "fy": 0.62 },
-    { "graf": "Calo", "nom": "Caló", "tipus": "costa", "dubte": false, "fx": 0.95, "fy": 0.73 },
-    { "graf": "Cala catiu", "nom": "Cala Catiu", "tipus": "costa", "dubte": false, "fx": 0.95, "fy": 0.78 }
+    {
+      "graf": "dreretas",
+      "nom": "dreretas",
+      "tipus": "costa",
+      "dubte": true,
+      "fx": 0.04,
+      "fy": 0.1
+    },
+    {
+      "graf": "Peñas rotjes",
+      "nom": "Penyes Rotges",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.08,
+      "fy": 0.25
+    },
+    {
+      "graf": "Recó de la fregata",
+      "nom": "Recó de la Fragata",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.02,
+      "fy": 0.5
+    },
+    {
+      "graf": "El Toro",
+      "nom": "El Toro",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.2,
+      "fy": 0.78
+    },
+    {
+      "graf": "Cala Refeubetx",
+      "nom": "Cala Refeubetx",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.22,
+      "fy": 0.83
+    },
+    {
+      "graf": "Morro de Felui",
+      "nom": "Morro de Felui",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.24,
+      "fy": 0.88
+    },
+    {
+      "graf": "dels catius",
+      "nom": "dels Catius",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.5,
+      "fy": 0.95
+    },
+    {
+      "graf": "Cala catiu",
+      "nom": "Cala Catiu",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.95,
+      "fy": 0.78
+    }
   ]
 }

@@ -1,24 +1,149 @@
 {
   "subtile": "s09_c13",
   "toponims": [
-    { "graf": "Refal", "nom": "Rafal", "tipus": "possessió", "dubte": false, "fx": 0.05, "fy": 0.03 },
-    { "graf": "Sô Crespí", "nom": "Son Crespí", "tipus": "possessió", "dubte": false, "fx": 0.47, "fy": 0.06 },
-    { "graf": "Sô Manxo", "nom": "Son Manxo", "tipus": "possessió", "dubte": false, "fx": 0.78, "fy": 0.15 },
-    { "graf": "Sô Garbeta", "nom": "Son Garbeta", "tipus": "possessió", "dubte": false, "fx": 0.30, "fy": 0.13 },
-    { "graf": "Sô Sigala", "nom": "Son Sigala", "tipus": "possessió", "dubte": false, "fx": 0.08, "fy": 0.16 },
-    { "graf": "Sô Cirga", "nom": "Son Cirga", "tipus": "possessió", "dubte": false, "fx": 0.09, "fy": 0.31 },
-    { "graf": "Coll de Ferregut", "nom": "Coll de Ferregut", "tipus": "orònim", "dubte": false, "fx": 0.58, "fy": 0.36 },
-    { "graf": "Sô T", "nom": "Sô T", "tipus": "possessió", "dubte": true, "fx": 0.95, "fy": 0.33 },
-    { "graf": "Sô Suau", "nom": "Son Suau", "tipus": "possessió", "dubte": false, "fx": 0.14, "fy": 0.42 },
-    { "graf": "Taleoletas", "nom": "Taleoletes", "tipus": "possessió", "dubte": false, "fx": 0.58, "fy": 0.49 },
-    { "graf": "Maria", "nom": "Maria", "tipus": "possessió", "dubte": false, "fx": 0.95, "fy": 0.43 },
-    { "graf": "Mendiga", "nom": "Mendiga", "tipus": "possessió", "dubte": false, "fx": 0.13, "fy": 0.51 },
-    { "graf": "Câ Ro", "nom": "Can Ro", "tipus": "possessió", "dubte": true, "fx": 0.92, "fy": 0.51 },
-    { "graf": "Taleolas", "nom": "Taleoles", "tipus": "possessió", "dubte": false, "fx": 0.37, "fy": 0.62 },
-    { "graf": "Sô Conte", "nom": "Son Comte", "tipus": "possessió", "dubte": false, "fx": 0.04, "fy": 0.68 },
-    { "graf": "Rfl. Pudent", "nom": "Rafal Pudent", "tipus": "possessió", "dubte": false, "fx": 0.23, "fy": 0.75 },
-    { "graf": "Sô Moro", "nom": "Son Moro", "tipus": "possessió", "dubte": false, "fx": 0.45, "fy": 0.83 },
-    { "graf": "Sô Mas de marina", "nom": "Son Mas de Marina", "tipus": "possessió", "dubte": false, "fx": 0.33, "fy": 0.96 },
-    { "graf": "Sô Ganxo", "nom": "Son Ganxo", "tipus": "possessió", "dubte": false, "fx": 0.13, "fy": 0.99 }
+    {
+      "graf": "Refal",
+      "nom": "Rafal",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.05,
+      "fy": 0.03
+    },
+    {
+      "graf": "Sô Crespí",
+      "nom": "Son Crespí",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.47,
+      "fy": 0.06
+    },
+    {
+      "graf": "Sô Manxo",
+      "nom": "Son Manxo",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.78,
+      "fy": 0.15
+    },
+    {
+      "graf": "Sô Garbeta",
+      "nom": "Son Garbeta",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.3,
+      "fy": 0.13
+    },
+    {
+      "graf": "Sô Sigala",
+      "nom": "Son Sigala",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.08,
+      "fy": 0.16
+    },
+    {
+      "graf": "Sô Cirga",
+      "nom": "Son Cirga",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.09,
+      "fy": 0.31
+    },
+    {
+      "graf": "Coll de Ferregut",
+      "nom": "Coll de Ferregut",
+      "tipus": "orònim",
+      "dubte": false,
+      "fx": 0.58,
+      "fy": 0.36
+    },
+    {
+      "graf": "Sô Suau",
+      "nom": "Son Suau",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.14,
+      "fy": 0.42
+    },
+    {
+      "graf": "Taleoletas",
+      "nom": "Taleoletes",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.58,
+      "fy": 0.49
+    },
+    {
+      "graf": "Maria",
+      "nom": "Maria",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.95,
+      "fy": 0.43
+    },
+    {
+      "graf": "Mendiga",
+      "nom": "Mendiga",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.13,
+      "fy": 0.51
+    },
+    {
+      "graf": "Câ Ro",
+      "nom": "Can Ro",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.92,
+      "fy": 0.51
+    },
+    {
+      "graf": "Taleolas",
+      "nom": "Taleoles",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.37,
+      "fy": 0.62
+    },
+    {
+      "graf": "Sô Conte",
+      "nom": "Son Comte",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.04,
+      "fy": 0.68
+    },
+    {
+      "graf": "Rfl. Pudent",
+      "nom": "Rafal Pudent",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.23,
+      "fy": 0.75
+    },
+    {
+      "graf": "Sô Moro",
+      "nom": "Son Moro",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.45,
+      "fy": 0.83
+    },
+    {
+      "graf": "Sô Mas de marina",
+      "nom": "Son Mas de Marina",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.33,
+      "fy": 0.96
+    },
+    {
+      "graf": "Sô Ganxo",
+      "nom": "Son Ganxo",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.13,
+      "fy": 0.99
+    }
   ]
 }

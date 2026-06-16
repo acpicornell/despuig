@@ -1,33 +1,221 @@
 {
   "subtile": "s06_c14",
   "toponims": [
-    { "graf": "Sô Forteza", "nom": "Son Forteza", "tipus": "possessió", "dubte": false, "fx": 0.22, "fy": 0.08 },
-    { "graf": "El Claper", "nom": "El Claper", "tipus": "possessió", "dubte": false, "fx": 0.80, "fy": 0.04 },
-    { "graf": "Sô Vives", "nom": "Son Vives", "tipus": "possessió", "dubte": false, "fx": 0.88, "fy": 0.08 },
-    { "graf": "St Salvador", "nom": "Sant Salvador", "tipus": "altre", "dubte": false, "fx": 0.86, "fy": 0.16 },
-    { "graf": "Pujol", "nom": "Pujol", "tipus": "possessió", "dubte": false, "fx": 0.96, "fy": 0.20 },
-    { "graf": "ARTÁ", "nom": "Artà", "tipus": "nucli", "dubte": false, "fx": 0.60, "fy": 0.18 },
-    { "graf": "Sô Calletas", "nom": "Son Calletes", "tipus": "possessió", "dubte": false, "fx": 0.30, "fy": 0.24 },
-    { "graf": "Roca Mella", "nom": "Roca Mella", "tipus": "possessió", "dubte": false, "fx": 0.13, "fy": 0.30 },
-    { "graf": "Hort", "nom": "Hort", "tipus": "possessió", "dubte": false, "fx": 0.23, "fy": 0.33 },
-    { "graf": "Paises", "nom": "Paisos", "tipus": "possessió", "dubte": false, "fx": 0.77, "fy": 0.31 },
-    { "graf": "Carbona", "nom": "Carbona", "tipus": "possessió", "dubte": false, "fx": 0.28, "fy": 0.39 },
-    { "graf": "La Font", "nom": "La Font", "tipus": "possessió", "dubte": false, "fx": 0.50, "fy": 0.39 },
-    { "graf": "Las", "nom": "Las", "tipus": "possessió", "dubte": false, "fx": 0.97, "fy": 0.39 },
-    { "graf": "Monasti vell", "nom": "Monestir Vell", "tipus": "altre", "dubte": false, "fx": 0.57, "fy": 0.46 },
-    { "graf": "Corbaya", "nom": "Corbaia", "tipus": "possessió", "dubte": false, "fx": 0.91, "fy": 0.47 },
-    { "graf": "Granja", "nom": "Granja", "tipus": "possessió", "dubte": false, "fx": 0.81, "fy": 0.54 },
-    { "graf": "Bell-Puig Marq.", "nom": "Bellpuig Marquès", "tipus": "possessió", "dubte": false, "fx": 0.55, "fy": 0.57 },
-    { "graf": "Estelrica", "nom": "Estelrica", "tipus": "possessió", "dubte": false, "fx": 0.55, "fy": 0.64 },
-    { "graf": "Refal", "nom": "Rafal", "tipus": "possessió", "dubte": false, "fx": 0.93, "fy": 0.66 },
-    { "graf": "Sô", "nom": "Son", "tipus": "possessió", "dubte": false, "fx": 0.97, "fy": 0.70 },
-    { "graf": "Heretas", "nom": "Heretes", "tipus": "possessió", "dubte": false, "fx": 0.27, "fy": 0.69 },
-    { "graf": "Jordana", "nom": "Jordana", "tipus": "possessió", "dubte": false, "fx": 0.62, "fy": 0.74 },
-    { "graf": "Câ", "nom": "Can", "tipus": "possessió", "dubte": false, "fx": 0.96, "fy": 0.78 },
-    { "graf": "Heras", "nom": "Heres", "tipus": "possessió", "dubte": false, "fx": 0.28, "fy": 0.81 },
-    { "graf": "Sô Mal", "nom": "Son Mal", "tipus": "possessió", "dubte": false, "fx": 0.90, "fy": 0.82 },
-    { "graf": "Sô Coll", "nom": "Son Coll", "tipus": "possessió", "dubte": false, "fx": 0.07, "fy": 0.90 },
-    { "graf": "Sô Cardax", "nom": "Son Cardaix", "tipus": "possessió", "dubte": false, "fx": 0.55, "fy": 0.94 },
-    { "graf": "Se", "nom": "Se", "tipus": "possessió", "dubte": true, "fx": 0.96, "fy": 0.95 }
+    {
+      "graf": "Sô Forteza",
+      "nom": "Son Forteza",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.22,
+      "fy": 0.08
+    },
+    {
+      "graf": "El Claper",
+      "nom": "El Claper",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.8,
+      "fy": 0.04
+    },
+    {
+      "graf": "Sô Vives",
+      "nom": "Son Vives",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.88,
+      "fy": 0.08
+    },
+    {
+      "graf": "St Salvador",
+      "nom": "Sant Salvador",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.86,
+      "fy": 0.16
+    },
+    {
+      "graf": "Pujol",
+      "nom": "Pujol",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.96,
+      "fy": 0.2
+    },
+    {
+      "graf": "ARTÁ",
+      "nom": "Artà",
+      "tipus": "nucli",
+      "dubte": false,
+      "fx": 0.6,
+      "fy": 0.18
+    },
+    {
+      "graf": "Sô Calletas",
+      "nom": "Son Calletes",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.3,
+      "fy": 0.24
+    },
+    {
+      "graf": "Roca Mella",
+      "nom": "Roca Mella",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.13,
+      "fy": 0.3
+    },
+    {
+      "graf": "Hort",
+      "nom": "Hort",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.23,
+      "fy": 0.33
+    },
+    {
+      "graf": "Paises",
+      "nom": "Paisos",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.77,
+      "fy": 0.31
+    },
+    {
+      "graf": "Carbona",
+      "nom": "Carbona",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.28,
+      "fy": 0.39
+    },
+    {
+      "graf": "La Font",
+      "nom": "La Font",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.5,
+      "fy": 0.39
+    },
+    {
+      "graf": "Monasti vell",
+      "nom": "Monestir Vell",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.57,
+      "fy": 0.46
+    },
+    {
+      "graf": "Corbaya",
+      "nom": "Corbaia",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.91,
+      "fy": 0.47
+    },
+    {
+      "graf": "Granja",
+      "nom": "Granja",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.81,
+      "fy": 0.54
+    },
+    {
+      "graf": "Bell-Puig Marq.",
+      "nom": "Bellpuig Marquès",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.55,
+      "fy": 0.57
+    },
+    {
+      "graf": "Estelrica",
+      "nom": "Estelrica",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.55,
+      "fy": 0.64
+    },
+    {
+      "graf": "Refal",
+      "nom": "Rafal",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.93,
+      "fy": 0.66
+    },
+    {
+      "graf": "Sô",
+      "nom": "Son",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.97,
+      "fy": 0.7
+    },
+    {
+      "graf": "Heretas",
+      "nom": "Heretes",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.27,
+      "fy": 0.69
+    },
+    {
+      "graf": "Jordana",
+      "nom": "Jordana",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.62,
+      "fy": 0.74
+    },
+    {
+      "graf": "Câ",
+      "nom": "Can",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.96,
+      "fy": 0.78
+    },
+    {
+      "graf": "Heras",
+      "nom": "Heres",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.28,
+      "fy": 0.81
+    },
+    {
+      "graf": "Sô Mal",
+      "nom": "Son Mal",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.9,
+      "fy": 0.82
+    },
+    {
+      "graf": "Sô Coll",
+      "nom": "Son Coll",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.07,
+      "fy": 0.9
+    },
+    {
+      "graf": "Sô Cardax",
+      "nom": "Son Cardaix",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.55,
+      "fy": 0.94
+    },
+    {
+      "graf": "Se",
+      "nom": "Se",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.96,
+      "fy": 0.95
+    }
   ]
 }

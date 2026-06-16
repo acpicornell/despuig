@@ -1,46 +1,293 @@
 {
   "subtile": "s02_c10",
   "toponims": [
-    { "graf": "Câ Porquer", "nom": "Can Porquer", "tipus": "possessió", "dubte": false, "fx": 0.30, "fy": 0.03 },
-    { "graf": "Câ Soler", "nom": "Can Soler", "tipus": "possessió", "dubte": false, "fx": 0.74, "fy": 0.02 },
-    { "graf": "T. DEN", "nom": "T. DEN", "tipus": "altre", "dubte": true, "fx": 0.50, "fy": 0.07 },
-    { "graf": "Câ Crosp", "nom": "Can Crosp", "tipus": "possessió", "dubte": false, "fx": 0.56, "fy": 0.08 },
-    { "graf": "Sô Burgués", "nom": "Son Burgués", "tipus": "possessió", "dubte": false, "fx": 0.75, "fy": 0.07 },
-    { "graf": "loberina", "nom": "loberina", "tipus": "possessió", "dubte": true, "fx": 0.04, "fy": 0.07 },
-    { "graf": "Câ Toni Pau", "nom": "Can Toni Pau", "tipus": "possessió", "dubte": false, "fx": 0.16, "fy": 0.10 },
-    { "graf": "Câ Brejat", "nom": "Can Brejat", "tipus": "possessió", "dubte": false, "fx": 0.88, "fy": 0.11 },
-    { "graf": "Marnes", "nom": "Marnes", "tipus": "possessió", "dubte": false, "fx": 0.31, "fy": 0.15 },
-    { "graf": "Sô Xenet", "nom": "Son Xenet", "tipus": "possessió", "dubte": false, "fx": 0.70, "fy": 0.16 },
-    { "graf": "ó", "nom": "ó", "tipus": "altre", "dubte": true, "fx": 0.02, "fy": 0.17 },
-    { "graf": "Câ Puig", "nom": "Can Puig", "tipus": "possessió", "dubte": false, "fx": 0.21, "fy": 0.21 },
-    { "graf": "Vertayent", "nom": "Vertayent", "tipus": "possessió", "dubte": false, "fx": 0.74, "fy": 0.21 },
-    { "graf": "C nc", "nom": "C nc", "tipus": "possessió", "dubte": true, "fx": 0.93, "fy": 0.21 },
-    { "graf": "ullas", "nom": "ullas", "tipus": "possessió", "dubte": true, "fx": 0.02, "fy": 0.24 },
-    { "graf": "Sô Rotjer", "nom": "Son Rotger", "tipus": "possessió", "dubte": false, "fx": 0.59, "fy": 0.25 },
-    { "graf": "Câ Llopart", "nom": "Can Llopart", "tipus": "possessió", "dubte": false, "fx": 0.10, "fy": 0.28 },
-    { "graf": "Câ Canonje", "nom": "Can Canonge", "tipus": "possessió", "dubte": false, "fx": 0.50, "fy": 0.30 },
-    { "graf": "Oscols", "nom": "Oscols", "tipus": "possessió", "dubte": false, "fx": 0.85, "fy": 0.32 },
-    { "graf": "reda", "nom": "reda", "tipus": "possessió", "dubte": true, "fx": 0.02, "fy": 0.36 },
-    { "graf": "Sô Seguer", "nom": "Son Seguer", "tipus": "possessió", "dubte": false, "fx": 0.43, "fy": 0.41 },
-    { "graf": "Sô Fe", "nom": "Son Fe", "tipus": "possessió", "dubte": false, "fx": 0.72, "fy": 0.40 },
-    { "graf": "Câ Cap pelut", "nom": "Can Cap pelut", "tipus": "possessió", "dubte": false, "fx": 0.18, "fy": 0.50 },
-    { "graf": "Esnuacrza", "nom": "Esnuacrza", "tipus": "possessió", "dubte": true, "fx": 0.73, "fy": 0.51 },
-    { "graf": "Colo", "nom": "Colo", "tipus": "possessió", "dubte": true, "fx": 0.93, "fy": 0.50 },
-    { "graf": "Vila", "nom": "Vila", "tipus": "nucli", "dubte": false, "fx": 0.02, "fy": 0.52 },
-    { "graf": "Arbosar", "nom": "Arbossar", "tipus": "possessió", "dubte": false, "fx": 0.14, "fy": 0.53 },
-    { "graf": "llinas", "nom": "llinas", "tipus": "possessió", "dubte": true, "fx": 0.03, "fy": 0.55 },
-    { "graf": "Sô Fava", "nom": "Son Fava", "tipus": "possessió", "dubte": false, "fx": 0.46, "fy": 0.54 },
-    { "graf": "stejer", "nom": "stejer", "tipus": "possessió", "dubte": true, "fx": 0.03, "fy": 0.58 },
-    { "graf": "Oriolet", "nom": "Oriolet", "tipus": "possessió", "dubte": false, "fx": 0.57, "fy": 0.61 },
-    { "graf": "Sô Simo", "nom": "Son Simó", "tipus": "possessió", "dubte": false, "fx": 0.36, "fy": 0.65 },
-    { "graf": "Crestaix", "nom": "Crestatx", "tipus": "possessió", "dubte": false, "fx": 0.03, "fy": 0.69 },
-    { "graf": "Sô Carne", "nom": "Son Carne", "tipus": "possessió", "dubte": false, "fx": 0.36, "fy": 0.73 },
-    { "graf": "Molinás", "nom": "Molinàs", "tipus": "possessió", "dubte": false, "fx": 0.22, "fy": 0.80 },
-    { "graf": "Sô Ciurana", "nom": "Son Ciurana", "tipus": "possessió", "dubte": false, "fx": 0.37, "fy": 0.79 },
-    { "graf": "bac", "nom": "bac", "tipus": "possessió", "dubte": true, "fx": 0.02, "fy": 0.80 },
-    { "graf": "Sô Sabater", "nom": "Son Sabater", "tipus": "possessió", "dubte": false, "fx": 0.10, "fy": 0.84 },
-    { "graf": "Molinet", "nom": "Molinet", "tipus": "possessió", "dubte": false, "fx": 0.39, "fy": 0.85 },
-    { "graf": "Torre", "nom": "Torre", "tipus": "possessió", "dubte": false, "fx": 0.38, "fy": 0.90 },
-    { "graf": "Sô Barba", "nom": "Son Barba", "tipus": "possessió", "dubte": false, "fx": 0.22, "fy": 0.94 }
+    {
+      "graf": "Câ Porquer",
+      "nom": "Can Porquer",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.3,
+      "fy": 0.03
+    },
+    {
+      "graf": "Câ Soler",
+      "nom": "Can Soler",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.74,
+      "fy": 0.02
+    },
+    {
+      "graf": "Câ Crosp",
+      "nom": "Can Crosp",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.56,
+      "fy": 0.08
+    },
+    {
+      "graf": "Sô Burgués",
+      "nom": "Son Burgués",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.75,
+      "fy": 0.07
+    },
+    {
+      "graf": "loberina",
+      "nom": "loberina",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.04,
+      "fy": 0.07
+    },
+    {
+      "graf": "Câ Toni Pau",
+      "nom": "Can Toni Pau",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.16,
+      "fy": 0.1
+    },
+    {
+      "graf": "Câ Brejat",
+      "nom": "Can Brejat",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.88,
+      "fy": 0.11
+    },
+    {
+      "graf": "Marnes",
+      "nom": "Marnes",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.31,
+      "fy": 0.15
+    },
+    {
+      "graf": "Sô Xenet",
+      "nom": "Son Xenet",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.7,
+      "fy": 0.16
+    },
+    {
+      "graf": "ó",
+      "nom": "ó",
+      "tipus": "altre",
+      "dubte": true,
+      "fx": 0.02,
+      "fy": 0.17
+    },
+    {
+      "graf": "Câ Puig",
+      "nom": "Can Puig",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.21,
+      "fy": 0.21
+    },
+    {
+      "graf": "Vertayent",
+      "nom": "Vertayent",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.74,
+      "fy": 0.21
+    },
+    {
+      "graf": "ullas",
+      "nom": "ullas",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.02,
+      "fy": 0.24
+    },
+    {
+      "graf": "Sô Rotjer",
+      "nom": "Son Rotger",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.59,
+      "fy": 0.25
+    },
+    {
+      "graf": "Câ Llopart",
+      "nom": "Can Llopart",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.1,
+      "fy": 0.28
+    },
+    {
+      "graf": "Câ Canonje",
+      "nom": "Can Canonge",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.5,
+      "fy": 0.3
+    },
+    {
+      "graf": "Oscols",
+      "nom": "Oscols",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.85,
+      "fy": 0.32
+    },
+    {
+      "graf": "Sô Seguer",
+      "nom": "Son Seguer",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.43,
+      "fy": 0.41
+    },
+    {
+      "graf": "Sô Fe",
+      "nom": "Son Fe",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.72,
+      "fy": 0.4
+    },
+    {
+      "graf": "Câ Cap pelut",
+      "nom": "Can Cap pelut",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.18,
+      "fy": 0.5
+    },
+    {
+      "graf": "Vila",
+      "nom": "Vila",
+      "tipus": "nucli",
+      "dubte": false,
+      "fx": 0.02,
+      "fy": 0.52
+    },
+    {
+      "graf": "Arbosar",
+      "nom": "Arbossar",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.14,
+      "fy": 0.53
+    },
+    {
+      "graf": "llinas",
+      "nom": "llinas",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.03,
+      "fy": 0.55
+    },
+    {
+      "graf": "Sô Fava",
+      "nom": "Son Fava",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.46,
+      "fy": 0.54
+    },
+    {
+      "graf": "stejer",
+      "nom": "stejer",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.03,
+      "fy": 0.58
+    },
+    {
+      "graf": "Oriolet",
+      "nom": "Oriolet",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.57,
+      "fy": 0.61
+    },
+    {
+      "graf": "Sô Simo",
+      "nom": "Son Simó",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.36,
+      "fy": 0.65
+    },
+    {
+      "graf": "Crestaix",
+      "nom": "Crestatx",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.03,
+      "fy": 0.69
+    },
+    {
+      "graf": "Sô Carne",
+      "nom": "Son Carne",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.36,
+      "fy": 0.73
+    },
+    {
+      "graf": "Molinás",
+      "nom": "Molinàs",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.22,
+      "fy": 0.8
+    },
+    {
+      "graf": "Sô Ciurana",
+      "nom": "Son Ciurana",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.37,
+      "fy": 0.79
+    },
+    {
+      "graf": "bac",
+      "nom": "bac",
+      "tipus": "possessió",
+      "dubte": true,
+      "fx": 0.02,
+      "fy": 0.8
+    },
+    {
+      "graf": "Sô Sabater",
+      "nom": "Son Sabater",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.1,
+      "fy": 0.84
+    },
+    {
+      "graf": "Molinet",
+      "nom": "Molinet",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.39,
+      "fy": 0.85
+    },
+    {
+      "graf": "Torre",
+      "nom": "Torre",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.38,
+      "fy": 0.9
+    },
+    {
+      "graf": "Sô Barba",
+      "nom": "Son Barba",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.22,
+      "fy": 0.94
+    }
   ]
 }

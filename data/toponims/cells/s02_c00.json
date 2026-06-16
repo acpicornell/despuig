@@ -1,14 +1,69 @@
 {
   "subtile": "s02_c00",
   "toponims": [
-    { "graf": "I. Freta", "nom": "Illa Freta", "tipus": "costa", "dubte": false, "fx": 0.50, "fy": 0.27 },
-    { "graf": "Puerto d'Anciola", "nom": "Port d'Anciola", "tipus": "costa", "dubte": false, "fx": 0.50, "fy": 0.39 },
-    { "graf": "Fuente Anciola", "nom": "Font Anciola", "tipus": "hidrònim", "dubte": false, "fx": 0.65, "fy": 0.47 },
-    { "graf": "Fûête de Anciola", "nom": "Font de Anciola", "tipus": "hidrònim", "dubte": false, "fx": 0.67, "fy": 0.52 },
-    { "graf": "Escollos", "nom": "Escolls", "tipus": "costa", "dubte": false, "fx": 0.62, "fy": 0.71 },
-    { "graf": "Escalon", "nom": "Escalon", "tipus": "costa", "dubte": false, "fx": 0.94, "fy": 0.78 },
-    { "graf": "Cabo Falco", "nom": "Cap Falcó", "tipus": "costa", "dubte": false, "fx": 0.68, "fy": 0.88 },
-    { "graf": "ISLA", "nom": "Illa", "tipus": "altre", "dubte": false, "fx": 0.95, "fy": 0.35 },
-    { "graf": "CAB", "nom": "Cabrera", "tipus": "nucli", "dubte": false, "fx": 0.95, "fy": 0.45 }
+    {
+      "graf": "I. Freta",
+      "nom": "Illa Freta",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.5,
+      "fy": 0.27
+    },
+    {
+      "graf": "Puerto d'Anciola",
+      "nom": "Port d'Anciola",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.5,
+      "fy": 0.39
+    },
+    {
+      "graf": "Fuente Anciola",
+      "nom": "Font Anciola",
+      "tipus": "hidrònim",
+      "dubte": false,
+      "fx": 0.65,
+      "fy": 0.47
+    },
+    {
+      "graf": "Fûête de Anciola",
+      "nom": "Font de Anciola",
+      "tipus": "hidrònim",
+      "dubte": false,
+      "fx": 0.67,
+      "fy": 0.52
+    },
+    {
+      "graf": "Escollos",
+      "nom": "Escolls",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.62,
+      "fy": 0.71
+    },
+    {
+      "graf": "Escalon",
+      "nom": "Escalon",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.94,
+      "fy": 0.78
+    },
+    {
+      "graf": "Cabo Falco",
+      "nom": "Cap Falcó",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.68,
+      "fy": 0.88
+    },
+    {
+      "graf": "CAB",
+      "nom": "Cabrera",
+      "tipus": "nucli",
+      "dubte": false,
+      "fx": 0.95,
+      "fy": 0.45
+    }
   ]
 }

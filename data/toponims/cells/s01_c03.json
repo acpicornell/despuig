@@ -1,8 +1,21 @@
 {
   "subtile": "s01_c03",
   "toponims": [
-    { "graf": "Esponja", "nom": "Esponja", "tipus": "costa", "dubte": false, "fx": 0.06, "fy": 0.08 },
-    { "graf": "I.Horada", "nom": "Illa Foradada", "tipus": "costa", "dubte": false, "fx": 0.07, "fy": 0.27 },
-    { "graf": "I.de la Sal", "nom": "Illa de la Sal", "tipus": "costa", "dubte": false, "fx": 0.08, "fy": 0.37 }
+    {
+      "graf": "I.Horada",
+      "nom": "Illa Foradada",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.07,
+      "fy": 0.27
+    },
+    {
+      "graf": "I.de la Sal",
+      "nom": "Illa de la Sal",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.08,
+      "fy": 0.37
+    }
   ]
 }

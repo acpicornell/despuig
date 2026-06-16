@@ -1,17 +1,93 @@
 {
   "subtile": "s10_c02",
   "toponims": [
-    { "graf": "Pûta de la Tor.", "nom": "Punta de la Torre", "tipus": "costa", "dubte": false, "fx": 0.55, "fy": 0.04 },
-    { "graf": "Cueva del Asô", "nom": "Cova de l'Ase", "tipus": "costa", "dubte": false, "fx": 0.50, "fy": 0.11 },
-    { "graf": "Playa des Magaluf", "nom": "Platja des Magaluf", "tipus": "costa", "dubte": false, "fx": 0.40, "fy": 0.17 },
-    { "graf": "Isla de la Porrassa", "nom": "Illa de la Porrassa", "tipus": "costa", "dubte": false, "fx": 0.45, "fy": 0.23 },
-    { "graf": "Cala Viñas", "nom": "Cala Vinyes", "tipus": "costa", "dubte": false, "fx": 0.27, "fy": 0.42 },
-    { "graf": "Ses Portadoras", "nom": "Ses Portadores", "tipus": "costa", "dubte": false, "fx": 0.26, "fy": 0.49 },
-    { "graf": "Cabo del Salcó", "nom": "Cap del Falcó", "tipus": "costa", "dubte": false, "fx": 0.27, "fy": 0.55 },
-    { "graf": "Caló d'Nostra Dona", "nom": "Caló de Nostra Dona", "tipus": "costa", "dubte": false, "fx": 0.25, "fy": 0.62 },
-    { "graf": "I. del Sec", "nom": "Illa del Sec", "tipus": "costa", "dubte": false, "fx": 0.27, "fy": 0.69 },
-    { "graf": "Cabo Tarrada", "nom": "Cap Tarrada", "tipus": "costa", "dubte": false, "fx": 0.13, "fy": 0.71 },
-    { "graf": "Caló de Portals", "nom": "Caló de Portals", "tipus": "costa", "dubte": false, "fx": 0.12, "fy": 0.78 },
-    { "graf": "Cala dels Bochs", "nom": "Cala dels Bocs", "tipus": "costa", "dubte": false, "fx": 0.10, "fy": 0.85 }
+    {
+      "graf": "Pûta de la Tor.",
+      "nom": "Punta de la Torre",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.55,
+      "fy": 0.04
+    },
+    {
+      "graf": "Cueva del Asô",
+      "nom": "Cova de l'Ase",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.5,
+      "fy": 0.11
+    },
+    {
+      "graf": "Playa des Magaluf",
+      "nom": "Platja des Magaluf",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.4,
+      "fy": 0.17
+    },
+    {
+      "graf": "Isla de la Porrassa",
+      "nom": "Illa de la Porrassa",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.45,
+      "fy": 0.23
+    },
+    {
+      "graf": "Cala Viñas",
+      "nom": "Cala Vinyes",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.27,
+      "fy": 0.42
+    },
+    {
+      "graf": "Ses Portadoras",
+      "nom": "Ses Portadores",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.26,
+      "fy": 0.49
+    },
+    {
+      "graf": "Cabo del Salcó",
+      "nom": "Cap del Falcó",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.27,
+      "fy": 0.55
+    },
+    {
+      "graf": "Caló d'Nostra Dona",
+      "nom": "Caló de Nostra Dona",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.25,
+      "fy": 0.62
+    },
+    {
+      "graf": "I. del Sec",
+      "nom": "Illa del Sec",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.27,
+      "fy": 0.69
+    },
+    {
+      "graf": "Caló de Portals",
+      "nom": "Caló de Portals",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.12,
+      "fy": 0.78
+    },
+    {
+      "graf": "Cala dels Bochs",
+      "nom": "Cala dels Bocs",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.1,
+      "fy": 0.85
+    }
   ]
 }

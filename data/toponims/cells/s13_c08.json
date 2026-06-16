@@ -1,21 +1,125 @@
 {
   "subtile": "s13_c08",
   "toponims": [
-    { "graf": "Sô Seya", "nom": "Son Seia", "tipus": "possessió", "dubte": false, "fx": 0.27, "fy": 0.04 },
-    { "graf": "Sô Callar petit", "nom": "Son Callar petit", "tipus": "possessió", "dubte": false, "fx": 0.51, "fy": 0.07 },
-    { "graf": "Casas novas", "nom": "Cases noves", "tipus": "possessió", "dubte": false, "fx": 0.78, "fy": 0.03 },
-    { "graf": "Sô Llad", "nom": "Son Llad", "tipus": "possessió", "dubte": false, "fx": 0.90, "fy": 0.07 },
-    { "graf": "Sô Blay Mas", "nom": "Son Blai Mas", "tipus": "possessió", "dubte": false, "fx": 0.79, "fy": 0.16 },
-    { "graf": "Hort dê Vives", "nom": "Hort de Vives", "tipus": "possessió", "dubte": false, "fx": 0.43, "fy": 0.22 },
-    { "graf": "CanEstela", "nom": "Can Estela", "tipus": "possessió", "dubte": false, "fx": 0.20, "fy": 0.32 },
-    { "graf": "Torre marina", "nom": "Torre marina", "tipus": "altre", "dubte": false, "fx": 0.38, "fy": 0.43 },
-    { "graf": "LaBarrala", "nom": "La Barrala", "tipus": "possessió", "dubte": false, "fx": 0.62, "fy": 0.53 },
-    { "graf": "Fuête Sâ", "nom": "Font de Santa", "tipus": "hidrònim", "dubte": false, "fx": 0.91, "fy": 0.62 },
-    { "graf": "La C", "nom": "La C", "tipus": "altre", "dubte": true, "fx": 0.94, "fy": 0.73 },
-    { "graf": "Mareta", "nom": "Mareta", "tipus": "costa", "dubte": false, "fx": 0.18, "fy": 0.68 },
-    { "graf": "Murtes", "nom": "Murtes", "tipus": "costa", "dubte": false, "fx": 0.30, "fy": 0.72 },
-    { "graf": "Covetas", "nom": "Covetes", "tipus": "costa", "dubte": false, "fx": 0.32, "fy": 0.79 },
-    { "graf": "Trenc", "nom": "Trenc", "tipus": "costa", "dubte": false, "fx": 0.58, "fy": 0.92 },
-    { "graf": "i Gavina", "nom": "i Gavina", "tipus": "costa", "dubte": false, "fx": 0.50, "fy": 0.99 }
+    {
+      "graf": "Sô Seya",
+      "nom": "Son Seia",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.27,
+      "fy": 0.04
+    },
+    {
+      "graf": "Sô Callar petit",
+      "nom": "Son Callar petit",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.51,
+      "fy": 0.07
+    },
+    {
+      "graf": "Casas novas",
+      "nom": "Cases noves",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.78,
+      "fy": 0.03
+    },
+    {
+      "graf": "Sô Llad",
+      "nom": "Son Llad",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.9,
+      "fy": 0.07
+    },
+    {
+      "graf": "Sô Blay Mas",
+      "nom": "Son Blai Mas",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.79,
+      "fy": 0.16
+    },
+    {
+      "graf": "Hort dê Vives",
+      "nom": "Hort de Vives",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.43,
+      "fy": 0.22
+    },
+    {
+      "graf": "CanEstela",
+      "nom": "Can Estela",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.2,
+      "fy": 0.32
+    },
+    {
+      "graf": "Torre marina",
+      "nom": "Torre marina",
+      "tipus": "altre",
+      "dubte": false,
+      "fx": 0.38,
+      "fy": 0.43
+    },
+    {
+      "graf": "LaBarrala",
+      "nom": "La Barrala",
+      "tipus": "possessió",
+      "dubte": false,
+      "fx": 0.62,
+      "fy": 0.53
+    },
+    {
+      "graf": "Fuête Sâ",
+      "nom": "Font de Santa",
+      "tipus": "hidrònim",
+      "dubte": false,
+      "fx": 0.91,
+      "fy": 0.62
+    },
+    {
+      "graf": "Mareta",
+      "nom": "Mareta",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.18,
+      "fy": 0.68
+    },
+    {
+      "graf": "Murtes",
+      "nom": "Murtes",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.3,
+      "fy": 0.72
+    },
+    {
+      "graf": "Covetas",
+      "nom": "Covetes",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.32,
+      "fy": 0.79
+    },
+    {
+      "graf": "Trenc",
+      "nom": "Trenc",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.58,
+      "fy": 0.92
+    },
+    {
+      "graf": "i Gavina",
+      "nom": "i Gavina",
+      "tipus": "costa",
+      "dubte": false,
+      "fx": 0.5,
+      "fy": 0.99
+    }
   ]
 }
