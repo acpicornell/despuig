@@ -258,6 +258,29 @@ for t, pm in zip(toponims, proj):
 
 (ROOT / "data/toponims/ngib/matches.json").write_text(json.dumps(matches, ensure_ascii=False, indent=1))
 
+# ---------- candidate lists for the vision recheck ----------
+# For everything not auto-confirmed, dump the nearest gazetteer names so a vision
+# pass can read the engraving and pick the right one (or none).
+decision_by_id = {m["id"]: m["decision"] for m in matches}
+recheck = []
+for t, pm in zip(toponims, proj):
+    if decision_by_id.get(t["id"]) == "confirmat":
+        continue
+    scored = []
+    for j in tree.query_ball_point(pm, RADIUS_M):
+        g = ngib[j]
+        d = math.hypot(*(ngib_m[j] - pm))
+        s = max(similarity(t["nom"], g["grafia"]), similarity(t.get("graf", ""), g["grafia"]))
+        scored.append((s - d / 60000.0, s, d, g))
+    scored.sort(key=lambda r: r[0], reverse=True)
+    cands = [{"grafia": g["grafia"], "municipi": g["municipi"], "km": round(d / 1000, 2), "sim": round(s, 2)}
+             for _, s, d, g in scored[:6]]
+    recheck.append({"id": t["id"], "graf": t.get("graf"), "nom": t["nom"], "tipus": t["tipus"],
+                    "subtile": t["subtile"], "x": t["x"], "y": t["y"],
+                    "decision": decision_by_id.get(t["id"]), "candidates": cands})
+(ROOT / "data/toponims/recheck.json").write_text(json.dumps(recheck, ensure_ascii=False, indent=1))
+print(f"Recheck candidates written: {len(recheck)} items -> data/toponims/recheck.json")
+
 # ---------- report ----------
 dub = [t for t in toponims if t.get("dubte")]
 resolved = [m for m in matches if m["dubte"] and m["decision"] == "confirmat"]

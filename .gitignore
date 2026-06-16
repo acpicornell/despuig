@@ -24,3 +24,10 @@ data/toponims/ngib/llocs.json
 .astro/
 # local Claude Code settings
 .claude/
+
+# vision recheck crops (regenerables, large)
+data/toponims/recheck/
+data/toponims/recheck.json
+
+# copyrighted PDFs (not for the repo)
+data/pdf/
