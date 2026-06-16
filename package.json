@@ -12,7 +12,10 @@
     "dzi": "node scripts/build-dzi.mjs",
     "toponims:subtiles": "node scripts/toponims/subtiles.mjs",
     "toponims:merge": "node scripts/toponims/merge.mjs",
-    "toponims:review": "node scripts/toponims/review-server.mjs"
+    "toponims:review": "node scripts/toponims/review-server.mjs",
+    "toponims:vinetes": "node scripts/toponims/vinetes-server.mjs",
+    "toponims:ngib-fetch": "node scripts/toponims/ngib-fetch.mjs",
+    "toponims:ngib-match": "nix-shell scripts/toponims/shell.nix --run 'python3 scripts/toponims/ngib_match.py'"
   },
   "dependencies": {
     "astro": "^4.16.18"

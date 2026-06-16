@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vignette annotator · Despuig map</title>
+<style>
+  :root { --line:#cdbfa6; --ink:#2b2118; --accent:#8a3324; --paper:#f7f1e3; --panel:#fffdf7; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:14px/1.4 system-ui, sans-serif; color:var(--ink); background:var(--paper); }
+  header { display:flex; align-items:center; gap:1rem; padding:.5rem .8rem; background:var(--panel);
+           border-bottom:1px solid var(--line); position:sticky; top:0; z-index:10; }
+  header h1 { font-size:1rem; margin:0; font-weight:600; }
+  header .grow { flex:1; }
+  button { font:inherit; cursor:pointer; border:1px solid var(--line); background:#fff; color:var(--ink);
+           padding:.35rem .7rem; border-radius:5px; }
+  button.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+  button:disabled { opacity:.5; cursor:default; }
+  .status { font-size:.85rem; color:#6b5a42; }
+  main { display:grid; grid-template-columns: 1fr 320px; gap:0; height:calc(100vh - 49px); }
+  #stagewrap { overflow:auto; padding:1rem; }
+  #stage { position:relative; width:100%; max-width:1400px; margin:0 auto; line-height:0;
+           user-select:none; cursor:crosshair; box-shadow:0 2px 16px rgba(0,0,0,.18); }
+  #stage img { width:100%; height:auto; display:block; pointer-events:none; }
+  .box { position:absolute; border:2px solid var(--accent); background:rgba(138,51,36,.12);
+         cursor:move; }
+  .box.sel { border-color:#1769aa; background:rgba(23,105,170,.18); z-index:3; }
+  .box[data-borde=superior]  { border-color:#2f6b3a; }
+  .box[data-borde=inferior]  { border-color:#8a5e1e; }
+  .box[data-borde=izquierdo] { border-color:#8a3324; }
+  .box[data-borde=derecho]   { border-color:#5a3a8a; }
+  .box.sel { border-color:#1769aa !important; }
+  .box.noname { border-style:dashed; }
+  .box .lbl { position:absolute; left:0; top:-1.25rem; font:11px/1 system-ui; white-space:nowrap;
+              background:var(--ink); color:#fff; padding:2px 5px; border-radius:3px; pointer-events:none; }
+  .box[data-borde=inferior] .lbl { top:auto; bottom:-1.25rem; }
+  .box .hnd { position:absolute; right:-6px; bottom:-6px; width:12px; height:12px; background:#fff;
+              border:2px solid #1769aa; border-radius:50%; cursor:nwse-resize; }
+  #panel { border-left:1px solid var(--line); background:var(--panel); overflow:auto; padding:.8rem; }
+  #panel h2 { font-size:.8rem; text-transform:uppercase; letter-spacing:.05em; color:#6b5a42; margin:1rem 0 .4rem; }
+  #panel h2:first-child { margin-top:0; }
+  .ed label { display:block; font-size:.78rem; color:#6b5a42; margin:.4rem 0 .15rem; }
+  .ed input, .ed select { width:100%; font:inherit; padding:.35rem .4rem; border:1px solid var(--line);
+                          border-radius:5px; background:#fff; }
+  .ed .row { display:flex; gap:.5rem; margin-top:.6rem; }
+  .ed .row button { flex:1; }
+  .hint { font-size:.8rem; color:#6b5a42; }
+  .hint b { color:var(--ink); }
+  .counts { font-size:.82rem; }
+  .counts .warn { color:var(--accent); font-weight:600; }
+  ul.list { list-style:none; margin:.3rem 0 0; padding:0; }
+  ul.list li { padding:.25rem .4rem; border-radius:4px; cursor:pointer; display:flex; justify-content:space-between; gap:.5rem; }
+  ul.list li:hover { background:#f0e8d6; }
+  ul.list li.sel { background:#dceaf5; }
+  ul.list li .b { font-size:.72rem; color:#6b5a42; }
+  ul.list li.noname span:first-child { color:var(--accent); font-style:italic; }
+  kbd { background:#fff; border:1px solid var(--line); border-bottom-width:2px; border-radius:3px; padding:0 .3rem; font-size:.8rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Vignette annotator</h1>
+  <span class="status" id="status">loading…</span>
+  <span class="grow"></span>
+  <button id="reset">Reset to grid</button>
+  <button class="primary" id="save">Save</button>
+</header>
+<main>
+  <div id="stagewrap">
+    <div id="stage"><img id="img" src="/map.jpg" alt="Despuig map" /></div>
+  </div>
+  <aside id="panel">
+    <h2>How to</h2>
+    <p class="hint">
+      <b>Draw</b>: drag on the map to add a box.<br>
+      <b>Move</b>: drag a box. <b>Resize</b>: drag its blue corner.<br>
+      <b>Select</b>: click a box or a row. <b>Delete</b>: <kbd>Del</kbd> or the button.<br>
+      Each box needs a <b>name</b>; the side is auto-set but editable.
+    </p>
+    <h2>Selected</h2>
+    <div class="ed" id="editor"><p class="hint">No box selected.</p></div>
+    <h2>Boxes <span class="counts" id="counts"></span></h2>
+    <ul class="list" id="list"></ul>
+  </aside>
+</main>
+
+<datalist id="pobleslist"></datalist>
+
+<script>
+(function () {
+  const stage = document.getElementById('stage');
+  const listEl = document.getElementById('list');
+  const editorEl = document.getElementById('editor');
+  const countsEl = document.getElementById('counts');
+  const statusEl = document.getElementById('status');
+  const datalist = document.getElementById('pobleslist');
+  const BORDES = ['superior', 'inferior', 'izquierdo', 'derecho'];
+
+  let boxes = [];        // {nom, slug, borde, fx, fy, fw, fh, el}
+  let sel = null;
+  let dirty = false;
+
+  function setStatus(t, warn) { statusEl.textContent = t; statusEl.style.color = warn ? '#8a3324' : ''; }
+  function markDirty() { dirty = true; setStatus('unsaved changes', true); }
+
+  function rect() { return stage.getBoundingClientRect(); }
+  function toFx(clientX) { const r = rect(); return Math.max(0, Math.min(1, (clientX - r.left) / r.width)); }
+  function toFy(clientY) { const r = rect(); return Math.max(0, Math.min(1, (clientY - r.top) / r.height)); }
+
+  function inferBorde(b) {
+    const cx = b.fx + b.fw / 2, cy = b.fy + b.fh / 2;
+    if (cy < 0.16) return 'superior';
+    if (cy > 0.84) return 'inferior';
+    if (cx < 0.2) return 'izquierdo';
+    if (cx > 0.8) return 'derecho';
+    return b.borde || '';
+  }
+
+  function makeBox(b) {
+    const el = document.createElement('div');
+    el.className = 'box';
+    el.innerHTML = '<span class="lbl"></span><span class="hnd"></span>';
+    stage.appendChild(el);
+    b.el = el;
+    el.addEventListener('pointerdown', (e) => onBoxDown(e, b));
+    el.querySelector('.hnd').addEventListener('pointerdown', (e) => onHandleDown(e, b));
+    boxes.push(b);
+    layout(b);
+    return b;
+  }
+
+  function layout(b) {
+    const el = b.el;
+    el.style.left = (b.fx * 100) + '%';
+    el.style.top = (b.fy * 100) + '%';
+    el.style.width = (b.fw * 100) + '%';
+    el.style.height = (b.fh * 100) + '%';
+    el.dataset.borde = b.borde || '';
+    el.classList.toggle('noname', !b.nom);
+    el.classList.toggle('sel', b === sel);
+    el.querySelector('.lbl').textContent = b.nom || '?';
+  }
+
+  function render() {
+    boxes.forEach(layout);
+    renderList();
+    renderEditor();
+    renderCounts();
+  }
+
+  function renderCounts() {
+    const noname = boxes.filter((b) => !b.nom).length;
+    const per = BORDES.map((s) => `${s[0].toUpperCase()}:${boxes.filter((b) => b.borde === s).length}`).join(' · ');
+    countsEl.innerHTML = `— ${boxes.length} total · ${per}` + (noname ? ` · <span class="warn">${noname} unnamed</span>` : '');
+  }
+
+  function renderList() {
+    listEl.innerHTML = '';
+    boxes.slice().sort((a, b) => (a.borde || '~').localeCompare(b.borde || '~') || a.fy - b.fy || a.fx - b.fx)
+      .forEach((b) => {
+        const li = document.createElement('li');
+        li.className = (b === sel ? 'sel ' : '') + (b.nom ? '' : 'noname');
+        li.innerHTML = `<span>${b.nom || 'unnamed'}</span><span class="b">${b.borde || '—'}</span>`;
+        li.addEventListener('click', () => { select(b); });
+        listEl.appendChild(li);
+      });
+  }
+
+  function renderEditor() {
+    if (!sel) { editorEl.innerHTML = '<p class="hint">No box selected.</p>'; return; }
+    const b = sel;
+    editorEl.innerHTML = `
+      <label>Name</label>
+      <input id="ed-nom" list="pobleslist" value="${(b.nom || '').replace(/"/g, '&quot;')}" placeholder="Town name…" autocomplete="off" />
+      <label>Side (borde)</label>
+      <select id="ed-borde">
+        <option value="">—</option>
+        ${BORDES.map((s) => `<option value="${s}"${s === b.borde ? ' selected' : ''}>${s}</option>`).join('')}
+      </select>
+      <div class="row">
+        <button id="ed-del">Delete</button>
+      </div>`;
+    const nom = document.getElementById('ed-nom');
+    nom.addEventListener('input', () => { b.nom = nom.value.trim(); layout(b); renderList(); renderCounts(); markDirty(); });
+    nom.focus();
+    document.getElementById('ed-borde').addEventListener('change', (e) => { b.borde = e.target.value; layout(b); renderList(); renderCounts(); markDirty(); });
+    document.getElementById('ed-del').addEventListener('click', () => removeBox(b));
+  }
+
+  function select(b) { sel = b; render(); }
+  function removeBox(b) {
+    b.el.remove();
+    boxes = boxes.filter((x) => x !== b);
+    if (sel === b) sel = null;
+    render(); markDirty();
+  }
+
+  // ---- drawing a new box ----
+  stage.addEventListener('pointerdown', (e) => {
+    if (e.target !== stage && e.target.id !== 'img') return; // only empty area starts a draw
+    e.preventDefault();
+    const fx = toFx(e.clientX), fy = toFy(e.clientY);
+    const b = makeBox({ nom: '', slug: '', borde: '', fx, fy, fw: 0, fh: 0 });
+    select(b);
+    const move = (ev) => {
+      const nx = toFx(ev.clientX), ny = toFy(ev.clientY);
+      b.fx = Math.min(fx, nx); b.fy = Math.min(fy, ny);
+      b.fw = Math.abs(nx - fx); b.fh = Math.abs(ny - fy);
+      layout(b);
+    };
+    const up = () => {
+      document.removeEventListener('pointermove', move);
+      document.removeEventListener('pointerup', up);
+      if (b.fw < 0.01 || b.fh < 0.01) { removeBox(b); return; }
+      b.borde = inferBorde(b);
+      render(); markDirty();
+    };
+    document.addEventListener('pointermove', move);
+    document.addEventListener('pointerup', up);
+  });
+
+  // ---- moving an existing box ----
+  function onBoxDown(e, b) {
+    if (e.target.classList.contains('hnd')) return;
+    e.preventDefault(); e.stopPropagation();
+    select(b);
+    const sx = toFx(e.clientX) - b.fx, sy = toFy(e.clientY) - b.fy;
+    const move = (ev) => {
+      b.fx = Math.max(0, Math.min(1 - b.fw, toFx(ev.clientX) - sx));
+      b.fy = Math.max(0, Math.min(1 - b.fh, toFy(ev.clientY) - sy));
+      layout(b);
+    };
+    const up = () => {
+      document.removeEventListener('pointermove', move);
+      document.removeEventListener('pointerup', up);
+      b.borde = inferBorde(b); render(); markDirty();
+    };
+    document.addEventListener('pointermove', move);
+    document.addEventListener('pointerup', up);
+  }
+
+  // ---- resizing via SE handle ----
+  function onHandleDown(e, b) {
+    e.preventDefault(); e.stopPropagation();
+    select(b);
+    const move = (ev) => {
+      b.fw = Math.max(0.01, toFx(ev.clientX) - b.fx);
+      b.fh = Math.max(0.01, toFy(ev.clientY) - b.fy);
+      layout(b);
+    };
+    const up = () => {
+      document.removeEventListener('pointermove', move);
+      document.removeEventListener('pointerup', up);
+      render(); markDirty();
+    };
+    document.addEventListener('pointermove', move);
+    document.addEventListener('pointerup', up);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.key === 'Delete' || e.key === 'Backspace') && sel &&
+        !/^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName)) {
+      e.preventDefault(); removeBox(sel);
+    }
+  });
+
+  // ---- load / save ----
+  async function load() {
+    const [pobles, data] = await Promise.all([
+      fetch('/api/pobles').then((r) => r.json()),
+      fetch('/api/vinetes').then((r) => r.json()),
+    ]);
+    datalist.innerHTML = pobles.map((p) => `<option value="${p.nom}">`).join('');
+    (data.vinetes || []).forEach((v) => makeBox({ ...v }));
+    render();
+    setStatus(data.seeded ? 'seeded from grid (not saved yet)' : 'loaded saved boxes');
+  }
+
+  document.getElementById('save').addEventListener('click', async () => {
+    const payload = { vinetes: boxes.map((b) => ({ nom: b.nom, slug: b.slug, borde: b.borde, fx: b.fx, fy: b.fy, fw: b.fw, fh: b.fh })) };
+    setStatus('saving…');
+    const r = await fetch('/api/vinetes', { method: 'POST', body: JSON.stringify(payload) }).then((x) => x.json());
+    dirty = false;
+    setStatus(`saved ${r.saved} boxes → data/toponims/vinetes.json`);
+  });
+
+  document.getElementById('reset').addEventListener('click', async () => {
+    if (!confirm('Discard current boxes and reload the uniform grid?')) return;
+    boxes.forEach((b) => b.el.remove()); boxes = []; sel = null;
+    const data = await fetch('/api/vinetes?seed=1').then((r) => r.json());
+    (data.vinetes || []).forEach((v) => makeBox({ ...v }));
+    render(); markDirty();
+  });
+
+  window.addEventListener('beforeunload', (e) => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+  load().catch((err) => setStatus('error: ' + err, true));
+})();
+</script>
+</body>
+</html>

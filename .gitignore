@@ -6,17 +6,21 @@ node_modules/
 public/vinetas/
 public/map/mapa.dzi
 public/map/mapa_files/
-public/map/mapa-web.jpg
-public/map/T0023524.jpg
+public/map/*.jpg
+# raw master map image — large; sourced from Biblioteca Virtual de Defensa (CC BY 4.0), not versioned
+data/jpg/
 # logs
 npm-debug.log*
 # buidatge de topònims: imatges regenerables (els manifests i toponims.json sí es versionen)
-data/toponims/tiles/
 data/toponims/sub/
-data/toponims/candidates.json
 data/toponims/*-qa.png
+# corpus NGIB descarregable (regenerable amb `npm run toponims:ngib-fetch`;
+# matches.json sí es versiona perquè l'utilitza la web)
+data/toponims/ngib/llocs.json
 
 # macOS
 .DS_Store
 # astro
 .astro/
+# local Claude Code settings
+.claude/

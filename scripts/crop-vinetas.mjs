@@ -8,11 +8,11 @@ import sharp from 'sharp';
 import { readFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { cellRect, IMG } from '../src/lib/frame.mjs';
+import { cellRect, IMG, MASTER_REL } from '../src/lib/frame.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
-const MASTER = join(ROOT, 'data/jpg/T0023524.jpg');
+const MASTER = join(ROOT, MASTER_REL);
 const OUT = join(ROOT, 'public/vinetas');
 
 const { pobles } = JSON.parse(await readFile(join(ROOT, 'src/data/pobles.json'), 'utf8'));

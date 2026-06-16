@@ -1,25 +1,21 @@
 ---
 import Base from '../layouts/Base.astro';
-import data from '../data/pobles.json';
-import { cellRect, IMG } from '../lib/frame.mjs';
+import { IMG } from '../lib/frame.mjs';
 import { url } from '../lib/url.mjs';
 
-// Superposicions en coordenades normalitzades d'OpenSeadragon (x i y dividits per l'amplada).
-const overlays = data.pobles.map((p) => {
-  const r = cellRect(p.borde, p.ordre);
-  return {
-    slug: p.slug, nom: p.nom,
-    x: r.x / IMG.w, y: r.y / IMG.w, w: r.w / IMG.w, h: r.h / IMG.w,
-  };
-});
-const config = { dzi: url('map/mapa.dzi'), fallback: url('map/T0023524.jpg'), W: IMG.w, H: IMG.h, base: url('pobles/') };
+// Vignette hotspots are disabled until Slice B rebuilds them from the explicit
+// boxes in data/toponims/vinetes.json. The toponym layer is deferred to Phase 2
+// (re-extraction on the new master). Both kept empty/absent on purpose for now.
+const overlays = [];
+
+const config = { dzi: url('map/mapa.dzi'), fallback: url('map/mapa-web.jpg'), W: IMG.w, H: IMG.h, base: url('pobles/') };
 ---
 <Base title="Mapa interactiu" description="Explora el mapa de Mallorca del Cardenal Despuig en alta resolució, amb zoom sobre els seus milers de topònims.">
   <section class="wrap intro">
     <h1>El mapa amb zoom</h1>
     <p class="lede">
       Amplia per explorar els milers de topònims, possessions i accidents del litoral que Muntaner
-      gravà sobre el mapa. Les viñetas del marc són clicables: porten a la fitxa de cada poble.
+      gravà sobre el mapa. Les vinyetes del marc són clicables: porten a la fitxa de cada poble.
     </p>
   </section>
 
@@ -47,6 +43,8 @@ const config = { dzi: url('map/mapa.dzi'), fallback: url('map/T0023524.jpg'), W:
       viewer.addHandler('open-failed', function () {
         viewer.open({ type: 'image', url: cfg.fallback });
       });
+
+      // Vinyeta hotspots (currently empty — rebuilt in Slice B from vinetes.json).
       viewer.addHandler('open', function () {
         overlays.forEach(function (o) {
           const a = document.createElement('a');
@@ -63,6 +61,14 @@ const config = { dzi: url('map/mapa.dzi'), fallback: url('map/T0023524.jpg'), W:
 
 <style>
   .intro { padding-top: 1.5rem; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; margin: .5rem 0 0; font-size: .9rem; }
+  .ctl { display: inline-flex; align-items: center; gap: .4rem; }
+  .ctl input[type=checkbox] { accent-color: var(--accent); }
+  .count { color: var(--muted, #888); font-variant-numeric: tabular-nums; }
+  .legend { gap: .35rem; color: var(--muted, #888); }
+  .legend .dot { width: .7rem; height: .7rem; border-radius: 50%; display: inline-block; }
+  .legend .dot-ok { background: var(--accent); }
+  .legend .dot-dubte { background: transparent; border: 1.5px dashed var(--accent); }
   #osd {
     width: 100%; height: 78vh; min-height: 460px;
     background: #d9cba8; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
@@ -74,4 +80,29 @@ const config = { dzi: url('map/mapa.dzi'), fallback: url('map/T0023524.jpg'), W:
     transition: background-color .15s, border-color .15s;
   }
   :global(.osd-spot:hover) { background-color: rgba(138,51,36,.18); border-color: var(--accent); }
+
+  /* Capa de topònims */
+  :global(.topo-layer) { position: relative; width: 100%; height: 100%; pointer-events: none; }
+  :global(.topo-layer.hidden) { display: none; }
+  :global(.topo) {
+    position: absolute; width: 0; height: 0; pointer-events: auto;
+  }
+  :global(.topo)::before {
+    content: ''; position: absolute; left: -3px; top: -3px; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 1px rgba(255,255,255,.6);
+  }
+  :global(.topo.is-dubte)::before { background: transparent; border: 1.5px dashed var(--accent); box-shadow: none; }
+  :global(.topo-layer.hide-dubtes .topo.is-dubte) { display: none; }
+  :global(.topo-label) {
+    position: absolute; left: 8px; top: -.7em; white-space: nowrap;
+    font-size: 13px; line-height: 1.1; color: #2a1d12;
+    background: rgba(247,240,224,.85); padding: 0 3px; border-radius: 2px;
+    opacity: 0; transition: opacity .12s; pointer-events: none;
+  }
+  :global(.topo.is-dubte) .topo-label { color: #6b4a2a; font-style: italic; }
+  /* Etiquetes visibles en apropar-se prou, o sempre en passar-hi el cursor. */
+  :global(.topo-layer.show-labels .topo-label) { opacity: 1; }
+  :global(.topo:hover) { z-index: 5; }
+  :global(.topo:hover .topo-label) { opacity: 1; background: var(--accent); color: #fff; }
+  :global(.topo:hover)::before { transform: scale(1.5); }
 </style>

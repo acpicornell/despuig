@@ -1,29 +1,43 @@
-// Geometria del marc de viñetas del mapa Despuig (imatge mestra 8280 × 6460).
+// Geometry of the Despuig map frame (master image 19306 × 14902 — the ORIGINAL
+// 1785 engraving from the Biblioteca Virtual de Defensa, CC BY 4.0).
 //
-// Disposició: les files SUPERIOR i INFERIOR tenen 9 viñetas i ocupen tota
-// l'amplada (cantonades incloses). Les columnes ESQUERRA i DRETA tenen 8
-// viñetas al tram vertical central, entre les dues files.
+// The original carries 36 vignettes (35 villages + Palma) around the border and
+// is printed on 4 sheets with white "gutter" gaps between them (we work with the
+// image un-joined). The uniform cellRect/cellPct grid below no longer matches the
+// real vignette layout — it is kept ONLY as a seed for the vignette annotator
+// (scripts/toponims/vinetes-server.mjs). The authoritative vignette boxes will be
+// the explicit ones in data/toponims/vinetes.json (Slice B).
 //
-// Aquests són els únics paràmetres a tocar si cal afinar el retall/hotspots.
-// Tots els valors són en píxels de la imatge mestra.
+// All values are in master-image pixels.
 
-export const IMG = { w: 8280, h: 6460 };
+// Master image, relative to repo root. Gitignored (large); sourced from the
+// Biblioteca Virtual de Defensa (signature Ar.G bis-T.3-C.1-023bis).
+export const MASTER_REL = 'data/jpg/despuig-1785-original.jpg';
 
-// Línies del marc imprès, mesurades sobre la imatge mestra (perfil de foscor).
-// OUTER = vora exterior de la banda de viñetas; MAP = requadre interior del mapa.
-export const OUTER = { l: 560, t: 140, r: 7765, b: 6280 };
-export const MAP = { l: 1410, t: 835, r: 6915, b: 5555 };
+export const IMG = { w: 19306, h: 14902 };
 
-// Regió interior del mapa (on hi ha els topònims), per al buidatge OCR.
+// Printed frame lines, measured on the master (darkness profile; APPROXIMATE —
+// refine in Slice B / Phase 2). OUTER = outer edge of the vignette band;
+// MAP = inner map frame (the rectangle around the island).
+export const OUTER = { l: 289, t: 250, r: 19076, b: 14191 };
+export const MAP = { l: 1800, t: 1355, r: 17600, b: 13780 };
+
+// White gutters between the 4 sheets (master pixels), for Phase 2 extraction/georef.
+export const GUTTER_V = { a: 9590, b: 9840 };
+export const GUTTER_H = { a: 7340, b: 7720 };
+
+// Inner map region (where the toponyms are), used for the extraction.
 export const MAP_REGION = { x: MAP.l, y: MAP.t, w: MAP.r - MAP.l, h: MAP.b - MAP.t };
 
-const N_H = 9; // viñetas per fila horitzontal (superior / inferior)
-const N_V = 8; // viñetas per columna vertical (esquerra / dreta)
+// Seed hints only (carried over from the reduced edition; the original's real
+// per-side layout comes from vinetes.json, captured in Slice B).
+const N_H = 9; // vignettes per horizontal row (top / bottom)
+const N_V = 8; // vignettes per vertical column (left / right)
 
-const colW = (OUTER.r - OUTER.l) / N_H; // ≈ 800,6
-const cellH = (MAP.b - MAP.t) / N_V;    // ≈ 590
+const colW = (OUTER.r - OUTER.l) / N_H;
+const cellH = (MAP.b - MAP.t) / N_V;
 
-// Rectangle complet d'una cel·la (imatge + llegenda gravada) segons vora i ordre (1-based).
+// Full rectangle of a cell (image + engraved caption) by border and order (1-based).
 export function cellRect(borde, ordre) {
   const i = ordre - 1;
   switch (borde) {
@@ -36,11 +50,11 @@ export function cellRect(borde, ordre) {
     case 'derecho':
       return { x: MAP.r, y: MAP.t + i * cellH, w: OUTER.r - MAP.r, h: cellH };
     default:
-      throw new Error(`borde desconegut: ${borde}`);
+      throw new Error(`unknown border: ${borde}`);
   }
 }
 
-// Mateix rectangle expressat en percentatges de la imatge (per als hotspots a la web).
+// Same rectangle expressed as image percentages (for the web hotspots).
 export function cellPct(borde, ordre) {
   const r = cellRect(borde, ordre);
   return {

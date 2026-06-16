@@ -1,19 +1,20 @@
 ---
 import Base from '../layouts/Base.astro';
 import data from '../data/pobles.json';
-import { cellPct } from '../lib/frame.mjs';
 import { url } from '../lib/url.mjs';
 
 const pobles = data.pobles;
-const spots = pobles.map((p) => ({ ...p, pct: cellPct(p.borde, p.ordre) }));
+// Frame hotspots disabled until Slice B rebuilds them from data/toponims/vinetes.json
+// (the old 34-cell grid does not fit the new master). Kept empty on purpose.
+const spots = [];
 const totalAnimes = pobles.reduce((s, p) => s + (p.animes || 0), 0);
 ---
 <Base
   title={null}
-  description="Explora les 34 viñetas de pobles del mapa de Mallorca del Cardenal Despuig (1785). Fes clic sobre qualsevol vista per descobrir-ne el text original i les dades.">
+  description="Explora les 34 vinyetes de pobles del mapa de Mallorca del Cardenal Despuig (1785). Fes clic sobre qualsevol vista per descobrir-ne el text original i les dades.">
   <section class="hero wrap">
     <p class="kicker">Mapa de la Isla de Mallorca · gravat el 1785 · dades de 1829</p>
-    <h1>Les viñetas del Cardenal Despuig</h1>
+    <h1>Les vinyetes del Cardenal Despuig</h1>
     <p class="lede">
       El mapa més cèlebre de Mallorca està envoltat de <strong>34 vistes gravades</strong> dels
       seus pobles, cadascuna amb una breu descripció de la seva història, població i collites.
@@ -26,9 +27,9 @@ const totalAnimes = pobles.reduce((s, p) => s + (p.animes || 0), 0);
   </section>
 
   <section class="wrap">
-    <p class="hint center muted">Passa el cursor i fes clic sobre qualsevol viñeta del marc ↓</p>
+    {spots.length > 0 && <p class="hint center muted">Passa el cursor i fes clic sobre qualsevol vinyeta del marc ↓</p>}
     <div class="frame">
-      <img src={url('map/mapa-web.jpg')} alt="Mapa de Mallorca del Cardenal Despuig amb les seves 34 viñetas" />
+      <img src={url('map/mapa-web.jpg')} alt="Mapa de Mallorca del Cardenal Despuig amb les seves 34 vinyetes" />
       {spots.map((p) => (
         <a
           class={`spot spot--${p.borde}`}
@@ -42,7 +43,7 @@ const totalAnimes = pobles.reduce((s, p) => s + (p.animes || 0), 0);
   </section>
 
   <section class="wrap stats">
-    <div class="stat card"><strong>34</strong><span>viñetas de pobles</span></div>
+    <div class="stat card"><strong>34</strong><span>vinyetes de pobles</span></div>
     <div class="stat card"><strong>5</strong><span>llogarets dependents</span></div>
     <div class="stat card"><strong>{totalAnimes.toLocaleString('ca-ES')}</strong><span>ànimes (cens de 1829)</span></div>
     <div class="stat card"><strong>1785</strong><span>any del gravat original</span></div>

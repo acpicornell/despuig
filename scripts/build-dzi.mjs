@@ -7,10 +7,11 @@ import sharp from 'sharp';
 import { mkdir, rm, rename } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { MASTER_REL } from '../src/lib/frame.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
-const MASTER = join(ROOT, 'data/jpg/T0023524.jpg');
+const MASTER = join(ROOT, MASTER_REL);
 const OUT = join(ROOT, 'public/map');
 
 await mkdir(OUT, { recursive: true });
