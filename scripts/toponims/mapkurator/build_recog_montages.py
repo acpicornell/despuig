@@ -27,37 +27,57 @@ def _dist(a, b):
     return math.hypot(a[0] - b[0], a[1] - b[1])
 
 
-def rectify_label(im, polys, out_h=70, pad=0.18):
-    """Rectify a label to a horizontal strip via the spotter's ordered polygon.
-
-    Each 16-point polygon follows the text: pts[0..7] = top edge left→right,
-    pts[8..15] = bottom edge right→left. So the label's source quad is
-    TL=first.member top-left, TR=last.member top-right, BR=last.member
-    bottom-right, BL=first.member bottom-left. A PIL QUAD warp maps that quad onto
-    a level rectangle — the same idea as the model's BezierAlign — so rotated or
-    skewed coastal text comes out upright and readable, and horizontal interior
-    text is unchanged. Members arrive sorted left→right (link_labels)."""
-    ps = [np.array(p, dtype=float) for p in polys if len(p) >= 16]
-    if not ps:
+def rectify_member(im, poly, out_h, vpad=0.18):
+    """Rectify ONE word to a horizontal strip using ALL the spotter's polygon
+    points. The 16-point polygon follows the text contour: pts[0..7] = top edge
+    left→right, pts[8..15] = bottom edge right→left. We pair them into 7 column
+    quads (top[i],bot[i],bot[i+1],top[i+1]) and PIL-MESH-warp each onto its own
+    output column — a piecewise unwarp along the curve, the same idea the model's
+    BezierAlign uses. Handles rotated AND curved text exactly; no angle guessing."""
+    p = np.array(poly, dtype=float)
+    if len(p) < 16:
         return None
-    first, last = ps[0], ps[-1]
-    TL, BL = first[0], first[15]
-    TR, BR = last[7], last[8]
-    w = (_dist(TL, TR) + _dist(BL, BR)) / 2
-    h = (_dist(TL, BL) + _dist(TR, BR)) / 2
-    if w < 4 or h < 4:
+    top = p[0:8]
+    bot = p[8:16][::-1]                    # reverse → left→right, aligned with top
+    # pad outward along the vertical edge so ascenders/descenders survive
+    d = top - bot
+    top = top + d * vpad
+    bot = bot - d * vpad
+    seg = [(_dist(top[i], top[i + 1]) + _dist(bot[i], bot[i + 1])) / 2 for i in range(7)]
+    hs = [(_dist(top[i], bot[i]) + _dist(top[i + 1], bot[i + 1])) / 2 for i in range(7)]
+    W = sum(seg); H = float(np.mean(hs))
+    if W < 4 or H < 4:
         return None
-    # widen the quad slightly so ascenders/edges aren't clipped
-    px = (TR - TL); py = (BL - TL)
-    nx = px / (np.linalg.norm(px) + 1e-6); ny = py / (np.linalg.norm(py) + 1e-6)
-    ex, ey = nx * (w * pad), ny * (h * pad)
-    TL2, TR2 = TL - ex - ey, TR + ex - ey
-    BL2, BR2 = BL - ex + ey, BR + ex + ey
-    out_w = max(8, int(out_h * (w / h)))
-    # PIL QUAD data order: UL, LL, LR, UR of the SOURCE quad
-    data = [TL2[0], TL2[1], BL2[0], BL2[1], BR2[0], BR2[1], TR2[0], TR2[1]]
-    return im.transform((out_w, out_h), Image.QUAD, data,
+    out_w = max(6, int(out_h * W / H))
+    xs, acc = [0.0], 0.0
+    for s in seg:
+        acc += s; xs.append(out_w * acc / W)
+    mesh = []
+    for i in range(7):
+        box = (int(round(xs[i])), 0, int(round(xs[i + 1])), out_h)
+        if box[2] <= box[0]:
+            continue
+        quad = (top[i][0], top[i][1], bot[i][0], bot[i][1],
+                bot[i + 1][0], bot[i + 1][1], top[i + 1][0], top[i + 1][1])
+        mesh.append((box, quad))
+    if not mesh:
+        return None
+    return im.transform((out_w, out_h), Image.MESH, mesh,
                         resample=Image.BICUBIC, fillcolor=(255, 255, 255))
+
+
+def rectify_label(im, polys, out_h=70, gap=6):
+    """Rectify every word of a label and concatenate them left→right (members
+    arrive sorted by link_labels). Uses the full spotter geometry per word."""
+    strips = [s for s in (rectify_member(im, p, out_h) for p in polys) if s is not None]
+    if not strips:
+        return None
+    W = sum(s.width for s in strips) + gap * (len(strips) - 1)
+    out = Image.new("RGB", (W, out_h), (255, 255, 255))
+    x = 0
+    for s in strips:
+        out.paste(s, (x, 0)); x += s.width + gap
+    return out
 
 PER = 80        # labels per montage
 RH = 70         # normalized crop height
