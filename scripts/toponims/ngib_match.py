@@ -59,6 +59,19 @@ def metaphone_key(s: str) -> str:
     return " ".join(jellyfish.metaphone(t) for t in core(s).split() if len(t) > 2)
 
 
+def fold(s: str) -> str:
+    """Canonicalise 18th-c Mallorquí engraving spelling toward the modern NGIB
+    grafia, so systematic orthographic differences stop costing similarity:
+    ll<->y (Mayol/Mallol), h-drop (Buch/Buc), v->b, ç/ss->s, palatal tx/ig/tj->x,
+    and collapsed double letters. Conservative on purpose (no c->s, which would
+    merge Can/San) — applied to BOTH sides so it only rewards true variants."""
+    s = core(s).replace("ny", "n").replace("ll", "y")
+    for a, b in (("tx", "x"), ("itj", "x"), ("ig", "x"), ("ç", "s"),
+                 ("ss", "s"), ("v", "b"), ("h", "")):
+        s = s.replace(a, b)
+    return re.sub(r"(.)\1+", r"\1", s)
+
+
 def similarity(read: str, grafia: str) -> float:
     """0..1 fuzzy similarity.
 
@@ -76,9 +89,13 @@ def similarity(read: str, grafia: str) -> float:
     # long, specific token so generic words inside longer names are not matched.
     if len(a) >= 6 and " " not in a and a in b.split():
         base = max(base, 0.86)
-    # Phonetics only REFINE an already-plausible literal match; they must not
-    # rescue distant strings (e.g. Gomà/Coma share metaphone KM but differ).
+    # Orthographic + phonetic passes only REFINE an already-plausible literal match;
+    # they must not rescue distant strings (e.g. Gomà/Coma share metaphone KM).
     if base >= 0.70:
+        fa, fb = fold(read), fold(grafia)
+        if fa and fb:
+            orth = fuzz.token_sort_ratio(fa, fb) / 100.0
+            base = max(base, 0.5 * base + 0.5 * orth)
         ma, mb = metaphone_key(read), metaphone_key(grafia)
         if ma and mb:
             phon = fuzz.token_sort_ratio(ma, mb) / 100.0
