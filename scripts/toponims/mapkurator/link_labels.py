@@ -25,14 +25,33 @@ BASE = os.path.join(ROOT, "data/toponims/mapkurator")
 
 # Merge tuning (in units of the local word height).
 VOVERLAP = 0.40    # min vertical overlap fraction to count as the same line
-GAP_CONN = 0.95    # max gap when one side is a connector (Sô/Câ/de/…) — aggressive
-GAP_WORD = 0.32    # max gap between two ordinary words — conservative (tight kerning only)
+GAP_MAX = 0.80     # max gap when a HEAD/MID binds the pair (Son X, X de Y)
+GAP_TIGHT = 0.30   # max gap to merge two ORDINARY words (tight kerning = one name)
 GAP_MIN = -0.40    # allow slight horizontal overlap
 CAP = 5            # max words per label — blocks runaway chains across dense rows
 
-# Words that are never a toponym on their own — always part of a larger name.
-CONNECTORS = {"sô", "câ", "sa", "sâ", "son", "can", "de", "del", "d'", "sas",
-              "ses", "es", "na", "den", "la", "lo", "los", "ca", "so"}
+# HEAD words START a toponym ("Son X", "Can Y", "Cala Z", "Hort de W"). They bind
+# to the word on their RIGHT only — so we always CUT before a HEAD word, which is
+# what stops consecutive Son/Can farms from chaining into one giant label.
+HEAD = {"so", "son", "co", "ca", "can", "casa", "cas", "cal", "sa", "ses", "sas",
+        "es", "el", "la", "lo", "los", "na", "den", "s", "sant", "santa", "san",
+        "n", "hort", "mort", "puig", "coll", "pou", "cala", "calo", "punta", "pta",
+        "torre", "torra", "torr", "mola", "moli", "molino", "refal", "refalet",
+        "camp", "pla", "illot", "illa", "cabo", "cap", "playa", "coma", "serra",
+        "font", "bassa", "morro", "cova", "roca", "vall", "alga", "alqueria"}
+# MID connectors bind BOTH sides ("X de Y", "de la Z").
+MID = {"de", "del", "dels", "d", "dela", "des"}
+
+
+def _norm(s):
+    s = s.strip().lower().rstrip(".,;:·").lstrip("·")
+    if s.endswith("'"):                      # d' / s' / l'
+        s = s[:-1]
+    for a, b in (("ô", "o"), ("â", "a"), ("î", "i"), ("ê", "e"), ("û", "u"),
+                 ("á", "a"), ("é", "e"), ("í", "i"), ("ó", "o"), ("ú", "u"),
+                 ("à", "a"), ("ñ", "n"), ("ç", "c")):
+        s = s.replace(a, b)
+    return s
 
 
 def main():
@@ -43,7 +62,7 @@ def main():
     x1, y1 = x0 + bb[:, 2], y0 + bb[:, 3]
     h = bb[:, 3]
     cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
-    is_conn = [det[i]["text"].strip().lower().rstrip(".") in CONNECTORS for i in range(n)]
+    norm = [_norm(det[i]["text"]) for i in range(n)]
 
     # union-find with size tracking (for the per-label cap)
     parent = list(range(n))
@@ -61,14 +80,18 @@ def main():
     cand = []
     for i, j in tree.query_pairs(rad):
         ov = min(y1[i], y1[j]) - max(y0[i], y0[j])
-        if ov < VOVERLAP * min(h[i], h[j]):
+        if ov < VOVERLAP * min(h[i], h[j]):     # not the same text line
             continue
         hh = (h[i] + h[j]) / 2
         gap = (x0[j] - x1[i]) if x0[i] <= x0[j] else (x0[i] - x1[j])
-        # connector on either side → allow the big gap; otherwise require tight kerning
-        limit = GAP_CONN if (is_conn[i] or is_conn[j]) else GAP_WORD
-        if GAP_MIN * hh <= gap <= limit * hh:
-            cand.append((gap, i, j))
+        if not (GAP_MIN * hh <= gap <= GAP_MAX * hh):
+            continue
+        # directional rule: order by x, then CUT before a HEAD word unless the
+        # left word is a MID connector ("…de la Cova" stays joined).
+        li, ri = (i, j) if x0[i] <= x0[j] else (j, i)
+        if norm[ri] in HEAD and norm[li] not in MID:
+            continue
+        cand.append((gap, i, j))
     cand.sort(key=lambda c: c[0])
     for gap, i, j in cand:
         ra, rb = find(i), find(j)
