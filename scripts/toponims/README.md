@@ -67,9 +67,21 @@ projection, ≥ 250 px apart) and refits with a **thin-plate spline** (mapKurato
 
 ## NGIB matching & classification (`ngib_match.py`)
 
-Reads the precomputed `lon`/`lat`, searches NGIB neighbours (`cKDTree`), scores
-with rapidfuzz `token_sort_ratio` + a metaphone refinement (jellyfish). **Distance
-only disambiguates homonyms, it never discards a unique name.** A confidence ladder:
+Reads the precomputed `lon`/`lat`, searches NGIB neighbours (`cKDTree`), and scores
+each candidate name (`similarity()`):
+
+- base = rapidfuzz `token_sort_ratio` on the article-stripped cores (penalises
+  extra/missing tokens, so a name isn't a false match to a longer entry that merely
+  contains it);
+- two refinements that only *raise* an already-plausible match (base ≥ 0.70),
+  blended 50/50 so neither rescues a distant string: an **orthographic fold** that
+  canonicalises 18th-c Mallorquí engraving spelling toward the modern grafia
+  (`ll↔y`, `h`-drop, `v→b`, `ç/ss→s`, palatal `tx/ig/tj→x`, collapsed doubles —
+  e.g. `Son Mayol`↔`Son Mallol`, `Buch`↔`Buc`), and a **metaphone** pass (jellyfish)
+  for residual phonetic variants.
+
+**Distance only disambiguates homonyms, it never discards a unique name.** The
+score then feeds a confidence ladder:
 
 - **`confirmat`** — the *name* is (near-)certain: a name unique to one municipi with
   sim ≥ 0.88 (≤ 6 km), or a homonym whose name **and** position are both strong
