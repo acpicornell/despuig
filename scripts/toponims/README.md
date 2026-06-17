@@ -23,7 +23,7 @@ Nix shell (no global pip): `mapkurator/shell.nix` has Pillow/shapely;
 | 4 | *(human/AI OCR)* | — | montages read into `mapkurator/read/m*.json` (Claude vision; the spotter's English OCR is only a low-confidence fallback) |
 | 5 | `toponims:build` | `mapkurator/build_toponims.py` | labels + read → `mapkurator/toponims-final.json` |
 | 6 | `toponims:clean` | `mapkurator/clean_toponims.py` | → `toponims-clean.json` (+ `toponims-rejected.json`) — drops non-toponyms (numbers, single chars, decorative lettering, lone articles) |
-| 7 | `toponims:table` | `mapkurator/to_table.py` | → `data/toponims/toponims.json` — web/table schema (`graf`, `nom`, `tipus`, `x`, `y`, `dubte`) |
+| 7 | `toponims:table` | `mapkurator/to_table.py` | → `data/toponims/toponims.json` — web/table schema (`graf`, `nom`, `tipus`, `x`, `y`, `dubte`); also **splits over-linked labels** the MST merged (`Sô Verdera Sô Fiol` → two entries, one per possessive head) |
 | 8 | `toponims:georef` | `mapkurator/georef.py` | adds `lon`/`lat` per toponym (see **Georeference**) |
 | 9 | `toponims:georef-bootstrap` | `mapkurator/georef_bootstrap.py` | densifies the georeference (see below) |
 | 10 | `toponims:ngib-fetch` | `ngib-fetch.mjs` | downloads the Mallorca NGIB subset → `ngib/llocs.json` (run once; regenerable) |
