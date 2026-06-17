@@ -95,6 +95,21 @@ score then feeds a confidence ladder:
 - **`posicional`** — only a position (≤ 1.5 km), the reading is too weak to name.
 - **`sense`** — no match.
 
+## Vision recheck (optional — strategy 4)
+
+For toponyms the gazetteer match left uncertain (`suggerit`/`posicional`/`sense`), a
+vision pass reads the actual engraving and picks the right candidate:
+
+1. `build_recheck_montages.py [decision]` (default `suggerit`) — crops the real map
+   around each target into numbered montages (`mapkurator/recheck/r##.png`) plus an
+   `index.json` carrying each crop's NGIB candidates.
+2. A reader (Claude vision) reads each page + its candidates and records the confirmed
+   name per crop into `data/toponims/recheck-picks.json` — `{toponym id: NGIB grafia}`
+   (omit a crop = leave it as is).
+3. `ngib_match.py` applies that file as a **durable override** at the end of the run:
+   each pick → `confirmat` against the nearest NGIB entry of that name, tagged
+   `rev: "vision"`. Re-running the whole pipeline never loses a vision decision.
+
 ## Environment (Nix)
 
 ```sh

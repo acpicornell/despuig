@@ -17,11 +17,12 @@
   "graf": "Cabo de la Cataluña",
   "tipus": "costa",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Cap de Catalunya",
   "municipi": "Pollença",
   "sim": 0.86,
-  "km": 2.35
+  "km": 2.35,
+  "rev": "vision"
  },
  {
   "id": "L0002",
@@ -41,11 +42,12 @@
   "graf": "Pta de Thomás",
   "tipus": "costa",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Punta d'en Tomàs",
   "municipi": "Pollença",
   "sim": 0.88,
-  "km": 2.02
+  "km": 2.02,
+  "rev": "vision"
  },
  {
   "id": "L0004",
@@ -245,11 +247,12 @@
   "graf": "Pta le laguila",
   "tipus": "costa",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Punta de l'Àguila",
   "municipi": "Pollença",
   "sim": 0.77,
-  "km": 1.1
+  "km": 1.1,
+  "rev": "vision"
  },
  {
   "id": "L0026",
@@ -269,11 +272,12 @@
   "graf": "Cala Engosauba",
   "tipus": "costa",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Cala en Gossalba",
   "municipi": "Pollença",
   "sim": 0.83,
-  "km": 1.35
+  "km": 1.35,
+  "rev": "vision"
  },
  {
   "id": "L0024",
@@ -317,11 +321,12 @@
   "graf": "Cala Sâ Vicente",
   "tipus": "costa",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "CEI San Vicente de Paúl",
+  "decision": "confirmat",
+  "ngib": "Cala Sant Vicenç",
   "municipi": "Pollença",
-  "sim": 0.75,
-  "km": 3.43
+  "sim": 0.71,
+  "km": 1.07,
+  "rev": "vision"
  },
  {
   "id": "L0034",
@@ -461,11 +466,12 @@
   "graf": "Aubarcuix",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Albercuix",
   "municipi": "Pollença",
   "sim": 0.85,
-  "km": 1.92
+  "km": 1.92,
+  "rev": "vision"
  },
  {
   "id": "L0042",
@@ -677,11 +683,12 @@
   "graf": "La Cella",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "la Cel·la",
   "municipi": "Pollença",
   "sim": 0.88,
-  "km": 2.23
+  "km": 2.23,
+  "rev": "vision"
  },
  {
   "id": "L0082",
@@ -713,11 +720,12 @@
   "graf": "Pta de Pajes",
   "tipus": "costa",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Punta des Pagès",
   "municipi": "Alcúdia",
   "sim": 0.86,
-  "km": 8.82
+  "km": 8.82,
+  "rev": "vision"
  },
  {
   "id": "L0067",
@@ -917,11 +925,12 @@
   "graf": "La Playola",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "la Platjola",
   "municipi": "Pollença",
   "sim": 0.8,
-  "km": 0.78
+  "km": 0.78,
+  "rev": "vision"
  },
  {
   "id": "L0087",

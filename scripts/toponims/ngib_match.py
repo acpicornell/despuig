@@ -21,7 +21,7 @@ Writes data/toponims/ngib/matches.json (no mutation of the source cells).
 import json
 import math
 import re
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 import numpy as np
@@ -226,6 +226,39 @@ for t, pm in zip(toponims, proj):
         "sim": round(chosen[1], 2) if chosen else 0.0,
         "km": (round(chosen[2] / 1000, 2) if chosen and chosen[2] is not None else None),
     })
+
+# ---------- vision-recheck overrides (strategy 4, durable) ----------
+# Decisions from the vision pass (reading the real engraving crop) live in a
+# versioned file and are applied here, so re-running the pipeline never loses them.
+# Format: {toponym id: chosen NGIB grafia}. Each picked id is promoted to 'confirmat'
+# against the nearest NGIB entry of that name.
+picks_file = ROOT / "data/toponims/recheck-picks.json"
+if picks_file.exists():
+    picks = json.loads(picks_file.read_text())
+    proj_by_id = {t["id"]: pm for t, pm in zip(toponims, proj)}
+    by_name = defaultdict(list)
+    for gi, g in enumerate(ngib):
+        by_name[core(g["grafia"])].append(gi)
+    applied = 0
+    for m in matches:
+        gra = picks.get(m["id"])
+        if not gra or m["id"] not in proj_by_id:
+            continue
+        cand = by_name.get(core(gra))
+        if not cand:
+            continue
+        pm = proj_by_id[m["id"]]
+        gi = min(cand, key=lambda j: math.hypot(*(ngib_m[j] - pm)))
+        g = ngib[gi]
+        m.update(decision="confirmat", ngib=g["grafia"], municipi=g["municipi"],
+                 km=round(math.hypot(*(ngib_m[gi] - pm)) / 1000, 2), rev="vision",
+                 sim=round(max(similarity(m["nom"], g["grafia"]),
+                               similarity(m.get("graf") or "", g["grafia"])), 2))
+        applied += 1
+    counts = dict(Counter(m["decision"] for m in matches))
+    for k in ("confirmat", "probable", "suggerit", "posicional", "sense"):
+        counts.setdefault(k, 0)
+    print(f"Vision-recheck overrides applied: {applied}")
 
 (ROOT / "data/toponims/ngib/matches.json").write_text(json.dumps(matches, ensure_ascii=False, indent=1))
 
