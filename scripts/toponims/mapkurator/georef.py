@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
 """Georeference the toponyms from the EXACT points the user marked on the map.
 
-Control points come in three layers, all placed by hand on the high-res scan:
-  * RED dots  -> the 20 municipi labels (paired via the word-level OCR anchor).
+Control points come in three layers, all placed by hand on the high-res scan and
+TABULATED below so this script is self-contained (no dependency on the gitignored
+dot/detection files):
+  * RED dots  -> the 20 municipi positions (TOWN_ANCHORS; coords from pobles.json).
   * BLUE dots -> distinctive coastal capes/islands (extend the fit to the coast,
                  killing the convex-hull extrapolation that blew up coastal names).
   * YELLOW dots -> extra inland towns/villages (densify the interior).
-The blue/yellow centroids are detected in despuig-1785-original-marked3.jpg
-(scripts produce data/toponims/mapkurator/qa/anchor-dots.json); each is tied here
-to its modern feature (verified against the nearest engraved label), and the real
-coordinate comes from pobles.json (municipis) or the NGIB gazetteer (everything
-else; two capes absent from NGIB use their published coordinate).
+The blue/yellow pixel centroids were detected in despuig-1785-original-marked3.jpg;
+each is tied here to its modern feature (verified against the nearest engraved
+label), and the real coordinate comes from pobles.json (municipis) or the NGIB
+gazetteer (everything else; two capes absent from NGIB use a published coordinate).
+The raw marked images / dot JSONs are kept locally only — these tables are the
+authoritative copy of the hand-marked work.
 
 Model: a single global thin-plate spline pixel->lon/lat over all exact points
 (smoothing=0, every control point honoured exactly). A per-sheet split at the
@@ -32,19 +35,20 @@ from scipy.interpolate import RBFInterpolator
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 BASE = os.path.join(ROOT, "data/toponims/mapkurator")
-PAIR_MAX = 1100.0                                  # px: max OCR-anchor->red-dot distance
 
-# town reading-key -> pobles.json `nom` (red-dot layer)
-TOWNS = {"palma": "Palma", "capital": "Palma", "inca": "Inca", "calvia": "Calvià",
-    "andraix": "Andratx", "soller": "Sóller", "pollensa": "Pollença",
-    "alcudia": "Alcúdia", "muro": "Muro", "selva": "Selva", "banalbufar": "Banyalbufar",
-    "buñola": "Bunyola", "binisalem": "Binissalem", "sansellas": "Sencelles",
-    "alaro": "Alaró", "san juan": "Sant Joan", "montuiri": "Montuïri",
-    "manacor": "Manacor", "felanitx": "Felanitx", "campos": "Campos",
-    "lluchmajor": "Llucmajor", "porreras": "Porreres", "puebla": "La Puebla (sa Pobla)",
-    "santagni": "Santanyí", "santagn": "Santanyí", "algaida": "Algaida", "petra": "Petra",
-    "espor": "Esporles", "puigpuñent": "Puigpunyent", "puigpunyent": "Puigpunyent",
-    "sineu": "Sineu", "valldemossa": "Valldemossa", "campanet": "Campanet"}
+# red dots: exact municipi pixel positions (marked by hand), name = pobles.json `nom`
+TOWN_ANCHORS = [
+    ( 7946,  5886, "Alaró"),               (13085,  3067, "Alcúdia"),
+    ( 9207,  8902, "Algaida"),             ( 2321,  7650, "Andratx"),
+    ( 8857,  6157, "Binissalem"),          ( 3791,  8129, "Calvià"),
+    (10775, 11363, "Campos"),              ( 4780,  6384, "Esporles"),
+    ( 9858,  5494, "Inca"),                (11626,  4395, "La Puebla (sa Pobla)"),
+    ( 9069, 10141, "Llucmajor"),           (13932,  8751, "Manacor"),
+    (12066,  5165, "Muro"),                ( 5809,  8415, "Palma"),
+    (11418,  2574, "Pollença"),            (11288, 10024, "Porreres"),
+    (12073, 12805, "Santanyí"),            ( 9905,  6826, "Sencelles"),
+    (11289,  7203, "Sineu"),               ( 7021,  4502, "Sóller"),
+]
 
 # blue (coast) + yellow (village) dots -> modern feature, verified vs nearby label.
 # src: pobles | ngib | fixed(lng,lat).  muni narrows generic NGIB names to one place.
@@ -96,40 +100,13 @@ def m_err(lo, la, tlo, tla):
                       (la - tla) * 110540)
 
 
-def town_gcps(coords, dots, det):
-    """Resolved red-dot<->town pairing: each dot belongs to its closest town only."""
-    anch = {}
-    for d in det:
-        t = TOWNS.get(key(d["text"]))
-        if t and (t not in anch or d.get("score", 0) > anch[t][0]):
-            anch[t] = (d.get("score", 0), d["cx"], d["cy"])
-    pair = {}
-    for town, (_, ax, ay) in anch.items():
-        if town not in coords:
-            continue
-        di, dist = min(((i, math.hypot(p["x"] - ax, p["y"] - ay)) for i, p in enumerate(dots)),
-                       key=lambda z: z[1])
-        pair[town] = (di, dist)
-    bydot = {}
-    for town, (di, dist) in pair.items():
-        if di not in bydot or dist < bydot[di][1]:
-            bydot[di] = (town, dist)
-    out = []
-    for di, (town, dist) in bydot.items():
-        if dist < PAIR_MAX:
-            out.append({"layer": "town", "town": town, "x": dots[di]["x"], "y": dots[di]["y"],
-                        "lng": coords[town]["lng"], "lat": coords[town]["lat"]})
-    return out
-
-
 def main():
     pobles = json.load(open(os.path.join(ROOT, "src/data/pobles.json")))["pobles"]
     coords = {p["nom"]: p["coords"] for p in pobles}
-    dots = json.load(open(os.path.join(BASE, "qa/town-dots.json")))
-    det = json.load(open(os.path.join(BASE, "detections.json")))["detections"]
     ngib = json.load(open(os.path.join(ROOT, "data/toponims/ngib/llocs.json")))
 
-    gcps = town_gcps(coords, dots, det)
+    gcps = [{"layer": "town", "town": t, "x": x, "y": y,
+             "lng": coords[t]["lng"], "lat": coords[t]["lat"]} for x, y, t in TOWN_ANCHORS]
 
     # rough town-only TPS, to disambiguate multi-hit NGIB names by position
     Pt = np.array([[g["x"], g["y"]] for g in gcps], float)
