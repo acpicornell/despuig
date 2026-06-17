@@ -1,52 +1,86 @@
 # Toponym pipeline
 
-Tools for extracting and validating the place names engraved on the Despuig map.
+Extracts the place names engraved on the Despuig map, georeferences them, and
+matches them against the **NGIB** gazetteer to feed the web table (`/toponims`,
+which imports `data/toponims/ngib/matches.json`).
 
-## Extraction (vision AI)
+> The current pipeline is built on **mapKurator** (GPU text-spotting). An earlier
+> hand-sliced "subtile + vision-AI cell" approach was replaced by it and removed
+> (recoverable in git history). The spotting/detection half lives in
+> [`mapkurator/`](mapkurator/README.md); this README covers the whole chain.
 
-1. `npm run toponims:subtiles` — slice the map interior into 182 cells (×3 renders)
-   under `data/toponims/sub/`.
-2. The cells are transcribed by vision AI into `data/toponims/cells/<id>.json`
-   (schema: `nom`, `graf`, `tipus`, `dubte`, `fx`, `fy`).
-3. `npm run toponims:merge` — assemble the cells into `data/toponims/toponims.json`
-   (computes master-image `x,y` from `fx,fy`, de-duplicates overlaps).
-4. `npm run toponims:review` — local web tool to correct readings / drag points.
+## Pipeline (in order)
 
-## Validation against the NGIB gazetteer
+Everything from the detections onward is one `npm run` per stage. Stages run in a
+Nix shell (no global pip): `mapkurator/shell.nix` has Pillow/shapely;
+`shell.nix` has scipy/rapidfuzz/jellyfish. The `npm` scripts pick the right one.
 
-The vision readings are noisy (many illegible engravings → flagged `dubte`). We
-cross-check them against the **Nomenclàtor Geogràfic de les Illes Balears (NGIB)**,
-the authoritative UIB-normalised gazetteer (field `GRAFIA`), to confirm readings,
-normalise spellings and clear doubt flags.
+| # | `npm run` | Script | In → Out |
+|---|-----------|--------|----------|
+| 1 | *(see [`mapkurator/`](mapkurator/README.md))* | spotter container | scan → `mapkurator/detections.json` (word-level boxes + English OCR) |
+| 2 | `toponims:link` | `mapkurator/link_labels.py` | detections → `mapkurator/labels.json` — joins words into multi-word place names (mapKurator's *multiword string construction*: MST over a height/angle/caps cost, same-line gate) |
+| 3 | `toponims:recog` | `mapkurator/build_recog_montages.py` | labels → `mapkurator/recog/m*.png` — MESH-rectifies each label upright (from its 16-pt polygon) into montages for reading |
+| 4 | *(human/AI OCR)* | — | montages read into `mapkurator/read/m*.json` (Claude vision; the spotter's English OCR is only a low-confidence fallback) |
+| 5 | `toponims:build` | `mapkurator/build_toponims.py` | labels + read → `mapkurator/toponims-final.json` |
+| 6 | `toponims:clean` | `mapkurator/clean_toponims.py` | → `toponims-clean.json` (+ `toponims-rejected.json`) — drops non-toponyms (numbers, single chars, decorative lettering, lone articles) |
+| 7 | `toponims:table` | `mapkurator/to_table.py` | → `data/toponims/toponims.json` — web/table schema (`graf`, `nom`, `tipus`, `x`, `y`, `dubte`) |
+| 8 | `toponims:georef` | `mapkurator/georef.py` | adds `lon`/`lat` per toponym (see **Georeference**) |
+| 9 | `toponims:georef-bootstrap` | `mapkurator/georef_bootstrap.py` | densifies the georeference (see below) |
+| 10 | `toponims:ngib-fetch` | `ngib-fetch.mjs` | downloads the Mallorca NGIB subset → `ngib/llocs.json` (run once; regenerable) |
+| 11 | `toponims:ngib-match` | `ngib_match.py` | → `ngib/matches.json` (+ `recheck.json`) — the file the web reads |
 
-1. `npm run toponims:ngib-fetch` — download the Mallorca subset (`ILLA=1`,
-   ~36.9k named places) from the NGIB REST service into
-   `data/toponims/ngib/llocs.json`. (Node, no extra deps.)
-2. `npm run toponims:ngib-match` — match every toponym against the gazetteer and
-   write `data/toponims/ngib/matches.json`. (Python — see below.)
+`toponims:vinetes` (`vinetes-server.mjs`) is unrelated to this chain — it's the
+deferred Phase-2 tool for the map's cartouche hotspots (`/mapa`).
 
-### `ngib_match.py`
+## Georeference
 
-Python because the matching needs a proper fuzzy/geospatial stack:
+The pixel→lon/lat transform is built from **exact control points the user marked
+by hand** on the high-res scan (not from noisy OCR centroids), so every anchor is
+correct by construction:
 
-- **rapidfuzz** — `token_sort_ratio` (penalises extra/missing tokens, so a name
-  is not a false perfect match to a longer NGIB entry that merely contains it).
-- **jellyfish** — metaphone, to catch historic spelling variants; applied only to
-  refine an already-plausible literal match, never to rescue distant strings.
-- **scipy** — a smoothing thin-plate spline (`RBFInterpolator`) builds the
-  pixel→lon/lat georeference from the curated towns in `src/data/pobles.json`
-  (~1.3 km leave-one-out error), and `cKDTree` does the nearest-neighbour search.
+- **20 towns** (red dots) → coords from `src/data/pobles.json`.
+- **13 coastal capes/islands** (blue dots) → NGIB by name+municipi (two absent
+  capes use a published coordinate). These extend the fit to the coast and kill
+  the convex-hull extrapolation that used to throw coastal names kilometres away.
+- **15 villages** (yellow dots) → pobles.json / NGIB. Densify the interior.
 
-Each toponym is classified: `confirmat` (high-confidence, safe to auto-apply),
-`suggerit` (review candidate), `posicional` (illegible but one close candidate),
-`sense` (no match — likely a vanished estate or unrecoverable reading).
+Each marked dot was cross-checked against the nearest engraved label; the
+identities and sources are the `ANCHORS` table in `georef.py`. The gutters between
+the map's 4 sheets (green cross, x≈9687 / y≈7507) were tested as a per-sheet split
+but rejected (too few points per sheet).
 
-### Environment (Nix)
+**Model = mapKurator's own** (its `m1_geotiff` warps with GDAL `gdal_translate
+-gcp` + `gdalwarp`, offering affine `-order 1` / polynomial `-order 2` / `-tps`).
+`georef.py` fits those three and picks by leave-one-out on the held-out towns →
+**polynomial order 2** (≈1.1 km town LOO). The math is GDAL's, computed in numpy
+(no GDAL dependency yet — could be wired for a QGIS GeoTIFF).
 
-The Python deps are declared in `shell.nix` (no Homebrew, no global pip). Run via:
+**Bootstrap densification** (`georef_bootstrap.py`): a global order-2 polynomial
+has only 6 DOF, so it can't capture the engraving's *local* distortion. The
+bootstrap iterates *fit → project → promote the unambiguous matches to control
+points* (sim ≥ 0.95, name unique to one municipi, already < 2.5 km from its
+projection, ≥ 250 px apart) and refits with a **thin-plate spline** (mapKurator's
+`-tps`; density stops it ringing). It only keeps the result if it beats the
+48-anchor baseline, **validated on the 48 hand-marked anchors** (leave-one-out:
+~1435 m → ~1233 m). Converges at ~192 bootstrapped points (240 total) and roughly
+**halves** the median confirmed-match distance.
+
+## NGIB matching & classification (`ngib_match.py`)
+
+Reads the precomputed `lon`/`lat`, searches NGIB neighbours (`cKDTree`), scores
+with rapidfuzz `token_sort_ratio` + a metaphone refinement (jellyfish). Decision
+rule — **distance only disambiguates homonyms, it never discards a unique name**:
+
+- name unique to one municipi → `confirmat` if sim ≥ 0.88 and ≤ 6 km, else
+  `suggerit` (surfaced, not dropped — the georef is only ~1 km accurate);
+- name in several municipis (homonym) → position must corroborate
+  (`confirmat` sim ≥ 0.90 & ≤ 5 km, then `suggerit` / `posicional` / `sense`).
+
+## Environment (Nix)
 
 ```sh
-nix-shell scripts/toponims/shell.nix --run "python3 scripts/toponims/ngib_match.py"
+npm run toponims:georef          # = nix-shell scripts/toponims/shell.nix --run python3 …
+npm run toponims:ngib-match
 ```
 
-`npm run toponims:ngib-match` wraps exactly this.
+No Homebrew, no global pip — deps are declared in the two `shell.nix` files.

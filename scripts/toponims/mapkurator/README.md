@@ -45,12 +45,21 @@ scripts/toponims/mapkurator/run.sh bash /workspace/mk/build-op.sh
 # 3. download the English spotting weight (Google Drive, via gdown)
 scripts/toponims/mapkurator/run.sh bash /workspace/mk/get-weights.sh
 
-# 4. Phase 0 de-risk: detect on the staged dense test tiles
-#    (in data/toponims/mapkurator/in/ — regenerate with
-#     `node scripts/toponims/subtiles.mjs --render s12_c07`)
+# 4. tile the master scan into overlapping input tiles
+node scripts/toponims/mapkurator/pretile.mjs        # → data/toponims/mapkurator/in/
+
+# 5. detect on the tiles
 scripts/toponims/mapkurator/run.sh bash /workspace/mk/infer.sh
-#    → JSON per tile in data/toponims/mapkurator/out/
+#    → per-tile JSON in data/toponims/mapkurator/out/
+
+# 6. stitch tile detections back to master-image coordinates, de-overlap
+nix-shell scripts/toponims/mapkurator/shell.nix \
+  --run "python3 scripts/toponims/mapkurator/merge_detections.py"   # → detections.json
 ```
+
+`detections.json` is the handoff to the rest of the chain — see the
+[parent README](../README.md) (link → recog → read → clean → table → georef →
+ngib-match).
 
 **Judge Phase 0:** does it draw boxes around whole words on this 1785 engraving
 (not the possession-marker circles, not noise)? If yes, the transfer bet holds →
@@ -69,6 +78,9 @@ proceed to Phase 1 (tile the whole master, merge polygons). If not, fall back to
 - `build-op.sh` — `pip install -e .` the spotter (compiles `adet._C` for sm_89).
 - `get-weights.sh` — download the English checkpoint to the weights mount.
 - `infer.sh` — run `tools/inference.py` over the input tiles → JSON polygons.
+- `pretile.mjs` — slice the master scan into overlapping detection tiles (`in/`).
+- `merge_detections.py` — map tile polygons back to master pixels, de-overlap →
+  `detections.json` (the input to the downstream pipeline; see parent README).
 
 ## Paths (all under data/toponims/mapkurator/, gitignored)
 

@@ -1,9 +1,0 @@
-{
-  "subtile": "s09_c15",
-  "toponims": [
-    { "graf": "Pûta dé Amér", "nom": "Punta de Amer", "tipus": "costa", "dubte": false, "fx": 0.55, "fy": 0.07 },
-    { "graf": "Pûteta Illot", "nom": "Punteta Illot", "tipus": "costa", "dubte": false, "fx": 0.20, "fy": 0.17 },
-    { "graf": "Pûta de Moreya", "nom": "Punta de Moreia", "tipus": "costa", "dubte": false, "fx": 0.28, "fy": 0.35 },
-    { "graf": "Pûta dé Perctó", "nom": "Punta de Pereto", "tipus": "costa", "dubte": true, "fx": 0.02, "fy": 0.66 }
-  ]
-}

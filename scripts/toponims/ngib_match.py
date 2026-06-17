@@ -101,81 +101,15 @@ def to_lonlat(mx, my):
     return mx / KX + LON0, my / KY + LAT0
 
 
-# ---------- control points (nuclis <-> curated towns) ----------
-pob_keys = [(core(p["nom"]), p["coords"]) for p in pobles]
-
-
-def control_points():
-    cps = []
-    for t in toponims:
-        if t["tipus"] != "nucli" or t.get("dubte"):
-            continue
-        k = core(t["nom"])
-        best, bc = 0, None
-        for pk, coords in pob_keys:
-            r = fuzz.ratio(k, pk)
-            if r > best:
-                best, bc = r, coords
-        if best >= 90:
-            cps.append((t["x"], t["y"], bc["lng"], bc["lat"]))
-    return np.array([[c[0], c[1]] for c in cps], float), np.array([[c[2], c[3]] for c in cps], float)
-
-
-px, ll = control_points()
-tgt = to_m(ll[:, 0], ll[:, 1])  # control targets in metres
-
-
-def poly2_design(p):
-    x, y = p[:, 0], p[:, 1]
-    return np.column_stack([np.ones_like(x), x, y, x * x, x * y, y * y])
-
-
-def fit_poly2(P, T):
-    A = poly2_design(P)
-    coef, *_ = np.linalg.lstsq(A, T, rcond=None)
-    return lambda Q: poly2_design(Q) @ coef
-
-
-def loo_error(kind, P, T):
-    """Leave-one-out median error (metres)."""
-    errs = []
-    idx = np.arange(len(P))
-    for i in idx:
-        m = idx != i
-        if kind == "poly2":
-            f = fit_poly2(P[m], T[m])
-            pred = f(P[i:i + 1])[0]
-        else:
-            f = RBFInterpolator(P[m], T[m], kernel="thin_plate_spline", smoothing=kind)
-            pred = f(P[i:i + 1])[0]
-        errs.append(math.hypot(*(pred - T[i])))
-    return float(np.median(errs)), errs
-
-
-# robust outlier removal on poly2 residuals, then choose model by LOO
-keep = np.ones(len(px), bool)
-for _ in range(3):
-    f = fit_poly2(px[keep], tgt[keep])
-    res = np.hypot(*(f(px) - tgt).T)
-    thr = max(2.5 * np.median(res[keep]), 1500.0)
-    new = res <= thr
-    if new.sum() == keep.sum() or new.sum() < 12:
-        keep = new
-        break
-    keep = new
-P, T = px[keep], tgt[keep]
-
-candidates = {"poly2": loo_error("poly2", P, T)}
-for sm in (1e7, 1e8, 5e8):
-    candidates[sm] = loo_error(sm, P, T)
-best_kind = min(candidates, key=lambda k: candidates[k][0])
-best_med = candidates[best_kind][0]
-
-if best_kind == "poly2":
-    project_m = fit_poly2(P, T)
-else:
-    rbf = RBFInterpolator(P, T, kernel="thin_plate_spline", smoothing=best_kind)
-    project_m = lambda Q: rbf(Q)
+# ---------- projection: precomputed exact-dot georeference ----------
+# scripts/toponims/mapkurator/georef.py writes lon/lat per toponym from the user's
+# EXACT town points (global thin-plate spline, every town honoured exactly). Here
+# we only convert those coordinates into the local metric frame.
+if not all("lon" in t and "lat" in t for t in toponims):
+    raise SystemExit("toponims.json lacks lon/lat — run "
+                     "scripts/toponims/mapkurator/georef.py first")
+GEOREF = load("data/toponims/toponims.json").get("georef", {})
+proj = to_m([t["lon"] for t in toponims], [t["lat"] for t in toponims])
 
 # ---------- NGIB spatial index ----------
 ngib_m = to_m([g["lng"] for g in ngib], [g["lat"] for g in ngib])
@@ -201,9 +135,6 @@ for _g in ngib:
 def n_municipis(grafia):
     return len(ngib_municipis.get(core(grafia), ()))
 
-allpx = np.array([[t["x"], t["y"]] for t in toponims], float)
-proj = project_m(allpx)
-
 for t, pm in zip(toponims, proj):
     near = tree.query_ball_point(pm, RADIUS_M)
     best = None       # best by combined score (similarity minus distance penalty)
@@ -218,10 +149,21 @@ for t, pm in zip(toponims, proj):
         if best_name is None or s > best_name[1]:
             best_name = (g, s, d)
 
-    # Primary decision uses the position-balanced candidate, so confirmat always has
-    # the position corroborating the name (homonym-safe by construction).
+    # Distance only DISAMBIGUATES homonyms; it never rejects a unique name.
+    #   * A name in a SINGLE municipi is unique -> trust the text alone, whatever
+    #     the projected distance (the georef is only ~1 km accurate between towns).
+    #   * A name across SEVERAL municipis is a homonym -> position must corroborate.
     decision, chosen = "sense", None  # chosen = (g, sim, dist_or_None)
-    if best:
+    if best_name and n_municipis(best_name[0]["grafia"]) <= 1:
+        g_n, s_n, d_n = best_name
+        # Distance never DISCARDS a unique name, but a strong name landing far
+        # beyond the georef's accuracy (~1.3 km, p90 4 km) is a name coincidence,
+        # not a georef shift -> surface it as a suggestion instead of confirming.
+        if s_n >= 0.88 and d_n <= 6000:
+            decision, chosen = "confirmat", (g_n, s_n, d_n)
+        elif s_n >= 0.70:
+            decision, chosen = "suggerit", (g_n, s_n, d_n)
+    if decision == "sense" and best:                 # homonym (or unique not matched): use position
         _, s, d, g = best
         if s >= 0.90 and d <= 5000:
             decision, chosen = "confirmat", (g, s, d)
@@ -229,21 +171,20 @@ for t, pm in zip(toponims, proj):
             decision, chosen = "suggerit", (g, s, d)
         elif d <= 1500 and s >= 0.45:
             decision, chosen = "posicional", (g, s, d)
-    # Safety net for obvious names the georef shifted out of position: a near-exact
-    # name in a SINGLE municipi has no homonym to confuse it with, so trust it.
-    if decision != "confirmat" and best_name and best_name[1] >= 0.95 \
-            and best_name[2] <= 12000 and n_municipis(best_name[0]["grafia"]) <= 1:
-        decision, chosen = "confirmat", best_name
     if decision == "sense":
-        # Whole-corpus fallback for names the georef threw out of range entirely.
-        # No position to disambiguate -> only a near-exact, single-municipi name is
-        # trusted (Sineu, Pollença); anything ambiguous stays a suggestion.
+        # Whole-corpus fallback for names the georef threw beyond the search radius.
+        # No position to disambiguate -> a near-exact unique name is trusted; an
+        # ambiguous one stays a suggestion.
         key = core(t["nom"])
         hit = process.extractOne(key, ngib_core, scorer=fuzz.token_sort_ratio) if key else None
-        if hit and hit[1] / 100.0 >= 0.95 and len(key) >= 5:
+        if hit and hit[1] / 100.0 >= 0.92 and len(key) >= 5:
             g = ngib[hit[2]]
+            s = hit[1] / 100.0
             unique = n_municipis(g["grafia"]) <= 1
-            decision, chosen = ("confirmat" if unique else "suggerit"), (g, hit[1] / 100.0, None)
+            # No position at all here, so only a near-exact unique name is trusted;
+            # everything else is a suggestion.
+            decision = "confirmat" if (unique and s >= 0.95) else "suggerit"
+            chosen = (g, s, None)
 
     counts[decision] += 1
     g = chosen[0] if chosen else None
@@ -284,9 +225,10 @@ print(f"Recheck candidates written: {len(recheck)} items -> data/toponims/rechec
 # ---------- report ----------
 dub = [t for t in toponims if t.get("dubte")]
 resolved = [m for m in matches if m["dubte"] and m["decision"] == "confirmat"]
-print(f"\nGeoreference: {len(P)} control points, model={best_kind}, "
-      f"median error (LOO) {best_med:.0f} m")
-print(f"  (alternatives: " + ", ".join(f"{k}={v[0]:.0f}m" for k, v in candidates.items()) + ")\n")
+print(f"\nGeoreference (precomputed, exact town dots): "
+      f"{GEOREF.get('control_points', '?')} control points, "
+      f"model={GEOREF.get('model', '?')}, median error (LOO) "
+      f"{GEOREF.get('loo_median_m', '?')} m\n")
 print(f"Toponyms: {len(toponims)}  |  current doubts: {len(dub)}")
 print("NGIB classification:")
 for k in ("confirmat", "suggerit", "posicional", "sense"):

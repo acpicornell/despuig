@@ -1,7 +1,0 @@
-{
-  "subtile": "s03_c01",
-  "toponims": [
-    { "graf": "Escalon del agua", "nom": "Escalon del agua", "tipus": "costa", "dubte": false, "fx": 0.13, "fy": 0.05 },
-    { "graf": "I. Imperial", "nom": "Illa Imperial", "tipus": "costa", "dubte": false, "fx": 0.16, "fy": 0.15 }
-  ]
-}

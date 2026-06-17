@@ -96,23 +96,55 @@ def tipus_of(text, k):
     return "altre"
 
 
+def clean_town_anchors():
+    """Georeference control points must be 100% correct, so build them ONLY from
+    the unique town names — never from ambiguous toponyms (homonyms would corrupt
+    the fit). Pull each town's position from the WORD-LEVEL detection (not the
+    linking-merged label), so a town swallowed into a multi-word label
+    ('Sô Marron SINEU', 'MANACOR R Sô Mas') still gets its clean coordinate."""
+    det = json.load(open(os.path.join(BASE, "detections.json")))["detections"]
+    best = {}                                    # pobles nom -> (score, cx, cy)
+    for d in det:
+        town = TOWNS.get(key(d["text"]))
+        if not town:
+            continue
+        sc = d.get("score", 0.0)
+        if town not in best or sc > best[town][0]:
+            best[town] = (sc, d["cx"], d["cy"])
+    return {town: (v[1], v[2]) for town, v in best.items()}
+
+
 def main():
     src = json.load(open(os.path.join(BASE, "toponims-clean.json")))["toponims"]
+    anchors = clean_town_anchors()               # {pobles nom: (x, y)} from detections
     out = []
+    seen_towns = set()
     for t in src:
         text = t["text"]
         k = key(text)
         tip = tipus_of(text, k)
         nom = TOWNS.get(k) or (normalize_nom(text))
+        x, y = t["cx"], t["cy"]
+        # a label that IS a town: tag nucli and snap to the clean word position
+        if k in TOWNS and TOWNS[k] in anchors:
+            tip = "nucli"; nom = TOWNS[k]; x, y = anchors[TOWNS[k]]
+            seen_towns.add(TOWNS[k])
         out.append({
             "id": t["id"],
             "graf": text,
             "nom": nom,
             "tipus": tip,
             "subtile": "",                       # mapKurator has no subtile grid
-            "x": t["cx"], "y": t["cy"],
+            "x": x, "y": y,
             "dubte": t["confidence"] == "low",
         })
+    # towns the linking swallowed into a multi-word label never appear as a clean
+    # nucli above — add a dedicated anchor entry from the detection position.
+    for town, (x, y) in anchors.items():
+        if town not in seen_towns:
+            out.append({"id": f"T_{key(town).replace(' ', '_')}", "graf": town,
+                        "nom": town, "tipus": "nucli", "subtile": "",
+                        "x": x, "y": y, "dubte": False})
     doc = {
         "font": "Topònims del Mapa de la Isla de Mallorca del Cardenal Despuig "
                 "(reedició reduïda), detectats amb mapKurator (spotter GPU) sobre "

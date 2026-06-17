@@ -1,9 +1,0 @@
-{
-  "subtile": "s11_c04",
-  "toponims": [
-    { "graf": "Ses Taronjas", "nom": "Ses Taronges", "tipus": "costa", "dubte": false, "fx": 0.83, "fy": 0.14 },
-    { "graf": "Pûta Negre", "nom": "Punta Negre", "tipus": "costa", "dubte": false, "fx": 0.87, "fy": 0.33 },
-    { "graf": "Cala veya", "nom": "Cala Vella", "tipus": "costa", "dubte": false, "fx": 0.87, "fy": 0.41 },
-    { "graf": "Almedrava vieja", "nom": "Almadrava Vella", "tipus": "costa", "dubte": false, "fx": 0.82, "fy": 0.66 }
-  ]
-}
