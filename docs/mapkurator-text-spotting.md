@@ -1,7 +1,33 @@
 # Plan: clean toponym extraction via text spotting (mapKurator + Claude)
 
-Status: **planned, not started.** This document is self-contained so the work can
-be resumed on the GPU laptop right after `git clone`.
+Status: **Phase 0 done — the bet holds.** The spotter is set up and running on the
+GPU laptop (RTX 4060), and detection **transfers well** to the 1785 engraving:
+whole-word polygons, possession-marker circles and tree glyphs correctly ignored,
+the (English) recognizer even reads most names at ~0.98 score. Setup, scripts and
+how-to are in [`scripts/toponims/mapkurator/`](../scripts/toponims/mapkurator/)
+(`README.md`). **Next: Phase 1** (tile the whole master, run the spotter, merge
+polygons to master coords). This document remains the *why*; the README is the *how*.
+
+### What differed from the assumptions below (lessons from the setup)
+
+- **No official mapKurator Docker image exists.** The spotter is AdelaiDet
+  (Detectron2) with a custom CUDA op (`adet._C`); we build our own image and
+  compile the op. See `scripts/toponims/mapkurator/Dockerfile`.
+- **Versions (Ada / sm_89):** CUDA 11.8 devel + `torch 2.0.1+cu118` +
+  `torchvision 0.15.2` + **detectron2 built from source** (no torch-2.0 wheels) +
+  **`numpy<2`** (torch 2.0 ABI). Compile both detectron2 and the adet op with
+  `--no-build-isolation` and `TORCH_CUDA_ARCH_LIST=8.9`, `FORCE_CUDA=1`.
+- **GPU in Podman on NixOS:** `hardware.nvidia-container-toolkit.enable = true`
+  writes the CDI spec to **`/run/cdi/nvidia-container-toolkit.json`** (not
+  `/etc/cdi/nvidia.yaml`); the device is `--device nvidia.com/gpu=all`.
+- **Inference config/weight actually used:** `configs/inference_en_test.yaml` with
+  `MODEL.WEIGHTS` overridden to the English checkpoint (GDrive
+  `1agOzYbhZPDVR-nqRc31_S6xu8yR5G1KQ` → `model_v2_en.pth`). The JSON output is
+  column-oriented (`polygon_x`, `polygon_y`, `text`, `score`).
+
+---
+
+This document is self-contained so the work can be resumed right after `git clone`.
 
 ## Why this exists
 

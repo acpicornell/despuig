@@ -31,3 +31,8 @@ data/toponims/recheck.json
 
 # copyrighted PDFs (not for the repo)
 data/pdf/
+
+# mapKurator: pesos del model, tiles d'entrada i sortida (grans/regenerables)
+data/toponims/mapkurator/
+# clon third-party del spotter (es torna a clonar amb run.sh)
+scripts/toponims/mapkurator/vendor/
