@@ -68,13 +68,20 @@ projection, ≥ 250 px apart) and refits with a **thin-plate spline** (mapKurato
 ## NGIB matching & classification (`ngib_match.py`)
 
 Reads the precomputed `lon`/`lat`, searches NGIB neighbours (`cKDTree`), scores
-with rapidfuzz `token_sort_ratio` + a metaphone refinement (jellyfish). Decision
-rule — **distance only disambiguates homonyms, it never discards a unique name**:
+with rapidfuzz `token_sort_ratio` + a metaphone refinement (jellyfish). **Distance
+only disambiguates homonyms, it never discards a unique name.** A confidence ladder:
 
-- name unique to one municipi → `confirmat` if sim ≥ 0.88 and ≤ 6 km, else
-  `suggerit` (surfaced, not dropped — the georef is only ~1 km accurate);
-- name in several municipis (homonym) → position must corroborate
-  (`confirmat` sim ≥ 0.90 & ≤ 5 km, then `suggerit` / `posicional` / `sense`).
+- **`confirmat`** — the *name* is (near-)certain: a name unique to one municipi with
+  sim ≥ 0.88 (≤ 6 km), or a homonym whose name **and** position are both strong
+  (sim ≥ 0.90, ≤ 5 km).
+- **`probable`** — the *position* is certain and the name is a looser variant
+  (quasi-sure): a hit ≤ 1 km with sim ≥ 0.82, or ≤ 1.5 km with sim ≥ 0.85. The
+  close position disambiguates the homonym; the spelling just differs from the
+  gazetteer. Calibrated on the data (below ~0.82, real errors creep in).
+- **`suggerit`** — plausible, needs a look (unique name sim ≥ 0.70 at any distance;
+  or homonym sim ≥ 0.70 within 8 km).
+- **`posicional`** — only a position (≤ 1.5 km), the reading is too weak to name.
+- **`sense`** — no match.
 
 ## Environment (Nix)
 

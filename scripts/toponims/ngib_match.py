@@ -122,7 +122,15 @@ tree = cKDTree(ngib_m)
 # "name-first" rule: a near-exact name match is trusted even when the distance is
 # loose, plus a whole-corpus fallback when the projection finds nothing nearby.
 RADIUS_M = 12000.0
-matches, counts = [], {"confirmat": 0, "suggerit": 0, "posicional": 0, "sense": 0}
+# Positional confirmation: a candidate landing on top of the projection (the georef
+# is ~1 km accurate) with a solid name IS the place, even for a homonym — same-named
+# estates sit farther apart, so the close hit disambiguates which one. Two tiers,
+# calibrated on the data: right on the spot (<1 km) a decent name (0.82) suffices;
+# a bit farther (<1.5 km) needs a stronger name (0.85). Below ~0.82 real errors
+# appear (Son Jaume Andreu -> Son Pere Andreu) even when close.
+POS_NEAR, POS_NEAR_SIM = 1000.0, 0.82
+POS_FAR, POS_FAR_SIM = 1500.0, 0.85
+matches, counts = [], {"confirmat": 0, "probable": 0, "suggerit": 0, "posicional": 0, "sense": 0}
 
 ngib_core = [core(g["grafia"]) for g in ngib]  # precomputed keys for the global fallback
 # Distinct municipalities per name: a name in ONE municipi is a single place (safe to
@@ -139,6 +147,7 @@ for t, pm in zip(toponims, proj):
     near = tree.query_ball_point(pm, RADIUS_M)
     best = None       # best by combined score (similarity minus distance penalty)
     best_name = None  # best by name similarity alone: (g, s, d)
+    best_close = None  # best candidate that meets a positional-confirm tier: (g, s, d)
     for j in near:
         g = ngib[j]
         d = math.hypot(*(ngib_m[j] - pm))
@@ -148,29 +157,33 @@ for t, pm in zip(toponims, proj):
             best = (score, s, d, g)
         if best_name is None or s > best_name[1]:
             best_name = (g, s, d)
+        if ((d <= POS_NEAR and s >= POS_NEAR_SIM) or (d <= POS_FAR and s >= POS_FAR_SIM)) \
+                and (best_close is None or s > best_close[1]):
+            best_close = (g, s, d)
 
-    # Distance only DISAMBIGUATES homonyms; it never rejects a unique name.
-    #   * A name in a SINGLE municipi is unique -> trust the text alone, whatever
-    #     the projected distance (the georef is only ~1 km accurate between towns).
-    #   * A name across SEVERAL municipis is a homonym -> position must corroborate.
+    # Tiered decision. Distance only DISAMBIGUATES homonyms, never discards a unique
+    # name. Confidence ladder:
+    #   confirmat  the NAME is (near-)certain  (unique distinctive name, OR a homonym
+    #              whose name AND position are both strong);
+    #   probable   the POSITION is certain and the name is a looser variant — the
+    #              quasi-sure tier (close hit, spelling differs from the gazetteer);
+    #   suggerit   plausible, needs a look;
+    #   posicional only a position, the reading is too weak to name;
+    #   sense      no match.
+    uniq_name = best_name and n_municipis(best_name[0]["grafia"]) <= 1
     decision, chosen = "sense", None  # chosen = (g, sim, dist_or_None)
-    if best_name and n_municipis(best_name[0]["grafia"]) <= 1:
-        g_n, s_n, d_n = best_name
-        # Distance never DISCARDS a unique name, but a strong name landing far
-        # beyond the georef's accuracy (~1.3 km, p90 4 km) is a name coincidence,
-        # not a georef shift -> surface it as a suggestion instead of confirming.
-        if s_n >= 0.88 and d_n <= 6000:
-            decision, chosen = "confirmat", (g_n, s_n, d_n)
-        elif s_n >= 0.70:
-            decision, chosen = "suggerit", (g_n, s_n, d_n)
-    if decision == "sense" and best:                 # homonym (or unique not matched): use position
-        _, s, d, g = best
-        if s >= 0.90 and d <= 5000:
-            decision, chosen = "confirmat", (g, s, d)
-        elif s >= 0.70 and d <= 8000:
-            decision, chosen = "suggerit", (g, s, d)
-        elif d <= 1500 and s >= 0.45:
-            decision, chosen = "posicional", (g, s, d)
+    if uniq_name and best_name[1] >= 0.88 and best_name[2] <= 6000:
+        decision, chosen = "confirmat", best_name                     # unique distinctive name
+    elif best and best[1] >= 0.90 and best[2] <= 5000:
+        decision, chosen = "confirmat", (best[3], best[1], best[2])   # homonym: name + position strong
+    elif best_close:
+        decision, chosen = "probable", best_close                    # position nails it, name a variant
+    elif uniq_name and best_name[1] >= 0.70:
+        decision, chosen = "suggerit", best_name                     # unique, moderate (any distance)
+    elif best and best[1] >= 0.70 and best[2] <= 8000:
+        decision, chosen = "suggerit", (best[3], best[1], best[2])   # homonym, moderate
+    elif best and best[2] <= 1500 and best[1] >= 0.45:
+        decision, chosen = "posicional", (best[3], best[1], best[2])  # position only, weak name
     if decision == "sense":
         # Whole-corpus fallback for names the georef threw beyond the search radius.
         # No position to disambiguate -> a near-exact unique name is trusted; an
@@ -231,7 +244,7 @@ print(f"\nGeoreference (precomputed, exact town dots): "
       f"{GEOREF.get('loo_median_m', '?')} m\n")
 print(f"Toponyms: {len(toponims)}  |  current doubts: {len(dub)}")
 print("NGIB classification:")
-for k in ("confirmat", "suggerit", "posicional", "sense"):
+for k in ("confirmat", "probable", "suggerit", "posicional", "sense"):
     print(f"  {k:<11} {counts[k]}")
 print(f"\nDoubts a 'confirmat' match would resolve: {len(resolved)}")
 print("\nSample confirmed corrections (AI reading -> NGIB):")
