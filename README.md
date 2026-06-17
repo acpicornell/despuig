@@ -4,12 +4,13 @@ Static site (Astro) presenting the town vignettes and the dense interior toponym
 the *Mapa de la Isla de Mallorca* by Cardinal Antoni Despuig (engraved **1785**). The
 interface is in Catalan; the cartouche texts are kept in their original period Spanish.
 
-> **Status — migration in progress.** The project is being re-based from the IGN scan of
-> the reduced 1814/1829 re-edition onto the **high-resolution original 1785 map** (see
-> *Master image* below). The zoomable map already runs on the new master; the vignette
-> hotspots, the credits/census text and the toponym layer are being rebuilt on it. The
-> next big step is a cleaner toponym extraction — see
-> [`docs/mapkurator-text-spotting.md`](docs/mapkurator-text-spotting.md).
+> **Status.** The project has been re-based from the IGN scan of the reduced 1814/1829
+> re-edition onto the **high-resolution original 1785 map** (see *Master image* below).
+> The zoomable map (`/mapa`) runs on the new master, and the toponym layer has been
+> rebuilt with a **mapKurator** text-spotting pipeline
+> ([`scripts/toponims/README.md`](scripts/toponims/README.md);
+> rationale in [`docs/mapkurator-text-spotting.md`](docs/mapkurator-text-spotting.md)).
+> Still pending on the new master: the vignette hotspots and the toponym overlay on `/mapa`.
 
 ## What it includes
 
@@ -53,32 +54,26 @@ the scripts above (hence gitignored). Run `npm run vinetas && npm run dzi` befor
 
 ## Toponyms (map interior)
 
-Besides the town vignettes, the interior carries thousands of engraved place names. Their
-extraction and validation have their own pipeline, documented in
-[`scripts/toponims/README.md`](scripts/toponims/README.md): tile the interior →
-vision-AI transcription → merge → web review/triage, plus an optional cross-check against
-the NGIB (*rapidfuzz* + a *scipy* spline georeference) to confirm readings and normalise
-spellings. Versioned outputs: `data/toponims/toponims.json` (viewer layer) and
-`data/toponims/ngib/matches.json` (the `/toponims` table). Current state: ~2,900 toponyms
-after manual garbage triage.
+Besides the town vignettes, the interior carries thousands of engraved place names. They
+are extracted with a **mapKurator** GPU text-spotting pipeline (detect word polygons →
+link into multi-word names → AI recognition → georeference → NGIB match), fully documented
+in [`scripts/toponims/README.md`](scripts/toponims/README.md); the rationale and design
+are in [`docs/mapkurator-text-spotting.md`](docs/mapkurator-text-spotting.md). This
+replaced an earlier blind-grid tiler that mutilated names at cell boundaries.
 
-The current approach tiles in a blind grid, which mutilates names at cell boundaries. The
-planned replacement — detect-then-read text spotting on a GPU (mapKurator) plus Claude for
-recognition — is specified in
-[`docs/mapkurator-text-spotting.md`](docs/mapkurator-text-spotting.md).
-
-Local review tools (no deploy):
-
-```bash
-npm run toponims:review        # drag/correct readings per cell
-npm run toponims:sense         # triage NGIB "no-match" readings (real vs garbage)
-npm run toponims:sense-apply   # apply the triage, then re-run merge + ngib-match
-```
+Versioned outputs: `data/toponims/toponims.json` (viewer layer) and
+`data/toponims/ngib/matches.json` (the `/toponims` table). Current state: ~2,500 toponyms;
+the georeference is built from **exact hand-marked control points** (≈1 km accuracy), and
+NGIB cross-checking (*rapidfuzz* + metaphone) confirms readings and normalises spellings —
+distance only disambiguates homonyms, never discards a unique name. Re-run the chain with
+the `toponims:*` npm scripts (`link → recog → build → clean → table → georef →
+georef-bootstrap → ngib-match`).
 
 ## Structure
 
 - `data/` — sources and derived data: the master image (gitignored) and the toponym
-  extraction under `data/toponims/` (cells, manifest, merged JSON, NGIB matches).
+  extraction under `data/toponims/` (the table `toponims.json` + the NGIB `matches.json`;
+  the heavy mapKurator intermediates under `data/toponims/mapkurator/` are gitignored).
 - `src/data/pobles.json` — enriched data for the towns (central, hand-curated artefact).
 - `src/lib/frame.mjs` — frame geometry (`IMG`, `MAP` interior, sheet gutters); feeds the
   crops and the hotspots.

@@ -1,12 +1,18 @@
 # Plan: clean toponym extraction via text spotting (mapKurator + Claude)
 
-Status: **Phase 0 done — the bet holds.** The spotter is set up and running on the
-GPU laptop (RTX 4060), and detection **transfers well** to the 1785 engraving:
-whole-word polygons, possession-marker circles and tree glyphs correctly ignored,
-the (English) recognizer even reads most names at ~0.98 score. Setup, scripts and
-how-to are in [`scripts/toponims/mapkurator/`](../scripts/toponims/mapkurator/)
-(`README.md`). **Next: Phase 1** (tile the whole master, run the spotter, merge
-polygons to master coords). This document remains the *why*; the README is the *how*.
+Status: **Implemented (all phases done).** The spotter runs on the GPU laptop
+(RTX 4060) and detection transfers well to the 1785 engraving (whole-word polygons;
+possession-marker circles and tree glyphs ignored). The whole master was tiled and
+detected, words are linked into multi-word names (mapKurator's *multiword string
+construction*), each label is MESH-rectified upright and read by Claude, the list is
+cleaned, **georeferenced from exact hand-marked control points** (mapKurator's GDAL
+transform — order-2 polynomial — plus a thin-plate-spline bootstrap), and matched
+against the NGIB. The working pipeline (the *how*) is documented in
+[`scripts/toponims/README.md`](../scripts/toponims/README.md) and
+[`scripts/toponims/mapkurator/README.md`](../scripts/toponims/mapkurator/README.md).
+This document is the *why* — the design rationale. The phase plan below is kept as
+the original design record (some inline script names predate the final pipeline; the
+READMEs are authoritative for current commands).
 
 ### What differed from the assumptions below (lessons from the setup)
 
@@ -108,9 +114,8 @@ The only real unknown is whether a detector trained on 19th-c. English Rumsey ma
      **English text spotting** checkpoint and config
      (`spotter-v2`, config `.../PALEJUN/Finetune/Rumsey_Polygon_Finetune.yaml`).
 2. Run detection on ONE dense test tile from our map (e.g. a crop of the southern
-   interior). You can reuse an existing cell image: `data/toponims/sub/s12_c07.jpg`
-   is a dense possession area — but that is gitignored too; regenerate any cell with
-   `node scripts/toponims/subtiles.mjs --render s12_c07` after the master is in place.
+   interior, a dense possession area). Tiling of the master is now done by
+   `scripts/toponims/mapkurator/pretile.mjs`.
 3. Inference command shape (from the docs):
    ```bash
    python tools/inference.py \
@@ -125,12 +130,9 @@ The only real unknown is whether a detector trained on 19th-c. English Rumsey ma
 ## Phase 1 — detect over the whole map
 
 1. **Pre-tile the master into ~1024 px patches with ~25% overlap.** Overlap is what
-   lets boundary words be whole in some tile. Reference for the cropping math:
-   `scripts/toponims/subtiles.mjs` (currently 16×15 cells, overlap 180, for the
-   vision pass — for the spotter use smaller ~1024 px patches; keep a manifest of
-   each patch's `(x, y)` offset in master pixels). Tile the **MAP interior** region
-   (`MAP` in `src/lib/frame.mjs`) if you only want interior toponyms, or the whole
-   `IMG` if you also want the border.
+   lets boundary words be whole in some tile. Implemented as
+   `scripts/toponims/mapkurator/pretile.mjs` (overlapping patches with a per-patch
+   `(x, y)` offset manifest), over the `IMG`/`MAP` regions from `src/lib/frame.mjs`.
 2. Run the spotter on all patches (GPU). Keep per-patch JSON.
 3. **Merge to map coordinates:** shift each polygon by its patch offset, then
    **deduplicate overlapping detections** (same word seen in two patches) by polygon
@@ -141,9 +143,9 @@ The only real unknown is whether a detector trained on 19th-c. English Rumsey ma
 
 ## Phase 2 — recognize with Claude (back on the Mac is fine)
 
-1. For each merged polygon, crop a tight window (with a small margin) from the master.
-   Reuse the rendering approach in `scripts/toponims/render-recheck.mjs`
-   (crop-around-a-point with upscale + sharpen) — adapt it to crop-around-a-polygon.
+1. For each merged polygon, crop and **MESH-rectify** the label upright from its
+   16-point polygon. Implemented in `scripts/toponims/mapkurator/build_recog_montages.py`,
+   which assembles the rectified labels into montages for reading.
 2. Read each crop with Claude (batch several crops per agent to amortise overhead,
    as learned in the grid pass — ~14k tokens/agent if one-per-agent; batch ~8).
 3. Optional: link adjacent word polygons into multi-word labels
@@ -166,14 +168,19 @@ kills the mutilation and needs no GPU.
 
 - `src/lib/frame.mjs` — geometry: `MASTER_REL`, `IMG {19306×14902}`, `MAP` interior
   region, gutters between the 4 printed sheets.
-- `scripts/toponims/subtiles.mjs` — current tiler (cropping math to reuse).
-- `scripts/toponims/render-recheck.mjs` — crop-around-a-point renderer (adapt for
-  polygons in Phase 2).
-- `scripts/toponims/merge.mjs` / `ngib_match.py` — current merge + optional NGIB
-  enrichment, kept for compatibility.
-- Current data state: ~2,909 toponyms in `data/toponims/toponims.json` from the grid
-  pass (after manual garbage triage); this plan aims to supersede it with a cleaner
-  set. Do not delete the current data until the new pass is validated.
+- `scripts/toponims/mapkurator/pretile.mjs` — tiler (master → overlapping patches).
+- `scripts/toponims/mapkurator/merge_detections.py` — merge per-tile polygons to
+  master coords + de-overlap → `detections.json`.
+- `scripts/toponims/mapkurator/link_labels.py` — multiword string construction.
+- `scripts/toponims/mapkurator/build_recog_montages.py` — MESH-rectify each label
+  upright into montages for Claude to read (this is what Phase 2 became).
+- `scripts/toponims/mapkurator/georef.py` + `georef_bootstrap.py` — georeference
+  (exact hand-marked control points; GDAL-style transform + TPS bootstrap).
+- `scripts/toponims/ngib_match.py` — NGIB cross-check (optional enrichment).
+- The old blind-grid pipeline (`subtiles.mjs`, `merge.mjs`, the cell/review/sense
+  tooling) has been **removed** (recoverable in git history) — it is fully superseded.
+- Current data state: ~2,500 toponyms in `data/toponims/toponims.json` from the
+  mapKurator pass.
 
 ## References
 
