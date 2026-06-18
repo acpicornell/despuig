@@ -20,6 +20,10 @@ const F = {
 };
 const readJSON = (p, d) => { try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return d; } };
 const writeJSON = (p, o) => fs.writeFileSync(p, JSON.stringify(o, null, 1));
+// the whole NGIB gazetteer as compact [grafia, municipi, lng, lat] tuples (served once)
+const NGIB_JSON = JSON.stringify(
+  JSON.parse(fs.readFileSync(`${ROOT}/data/toponims/ngib/llocs.json`, 'utf8'))
+    .map(g => [g.grafia, g.municipi, g.lng, g.lat]));
 
 const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</title>
 <link rel=stylesheet href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -91,6 +95,9 @@ function render(){
        <button id=savebtn onclick="saveReading()" title="desa la lectura corregida (no avança)">💾 Lectura</button></div>
      \${cands||'<div class=meta>(sense candidats propers)</div>'}
      <div class=act>
+       <input id=search placeholder="🔍 cerca un nom NGIB i mostra'l al mapa" style="flex:3;padding:.5rem;border:1px solid var(--line);border-radius:8px;font:inherit">
+       <button onclick="searchMap()">al mapa</button></div>
+     <div class=act>
        <input id=custom placeholder="…o escriu el nom NGIB correcte i Enter" style="flex:3;padding:.5rem;border:1px solid var(--line);border-radius:8px;font:inherit">
        <button onclick="pickCustom()" style="flex:1">✓ Escrit</button>
      </div>
@@ -103,11 +110,32 @@ function render(){
   app.querySelectorAll('.cand').forEach(b=>b.onclick=()=>pick(b.dataset.g));
   updateMap(d);
 }
-let map,mlayer;
-function initMap(){ if(map)return; map=L.map('map'); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map); mlayer=L.layerGroup().addTo(map); map.setView([39.6,3.0],9); }
-function clearMap(){ if(mlayer)mlayer.clearLayers(); }
+let map,mlayer,ngibLayer,NGIB=[];
+function initMap(){ if(map)return; map=L.map('map'); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map); ngibLayer=L.layerGroup().addTo(map); mlayer=L.layerGroup().addTo(map); map.setView([39.6,3.0],9); map.on('moveend',renderNgib); loadNgib(); }
+async function loadNgib(){ try{ NGIB=await (await fetch('/ngib')).json(); renderNgib(); }catch(e){} }
+function renderNgib(){
+  if(!ngibLayer||!NGIB.length)return; ngibLayer.clearLayers();
+  if(map.getZoom()<12)return; const b=map.getBounds(); let n=0;
+  for(const a of NGIB){ const lng=a[2],lat=a[3];
+    if(lat<b.getSouth()||lat>b.getNorth()||lng<b.getWest()||lng>b.getEast())continue;
+    const mk=L.circleMarker([lat,lng],{radius:3,color:'#999',weight:1,fillColor:'#ccc',fillOpacity:.75});
+    mk.bindTooltip('<b>'+esc(a[0])+'</b> · '+esc(a[1]||''),{direction:'top'}); mk.on('click',()=>pick(a[0])); mk.addTo(ngibLayer);
+    if(++n>700)break; }
+}
+let searchLayer;
+function searchMap(){
+  if(!map)return; if(!searchLayer)searchLayer=L.layerGroup().addTo(map); searchLayer.clearLayers();
+  const q=($('#search').value||'').trim().toLowerCase(); if(!q||!NGIB.length)return;
+  const pts=[],d=queue[i]; let n=0;
+  for(const a of NGIB){ if(!a[0].toLowerCase().includes(q))continue;
+    const mk=L.circleMarker([a[3],a[2]],{radius:7,color:'#c0530a',weight:2,fillColor:'#e67e22',fillOpacity:.95});
+    mk.bindTooltip('<b>'+esc(a[0])+'</b> · '+esc(a[1]||''),{direction:'top'}); mk.on('click',()=>pick(a[0])); mk.addTo(searchLayer); pts.push([a[3],a[2]]); if(++n>80)break; }
+  if(d&&d.lat!=null)pts.push([d.lat,d.lon]);
+  if(pts.length)map.fitBounds(pts,{padding:[40,40]});
+}
+function clearMap(){ if(mlayer)mlayer.clearLayers(); if(searchLayer)searchLayer.clearLayers(); }
 function updateMap(d){
-  if(!map)return; map.invalidateSize(); mlayer.clearLayers(); const pts=[];
+  if(!map)return; map.invalidateSize(); mlayer.clearLayers(); if(searchLayer)searchLayer.clearLayers(); const pts=[];
   if(d.lat!=null){ L.circleMarker([d.lat,d.lon],{radius:8,color:'#c00',weight:2,fillColor:'#c00',fillOpacity:.45}).bindTooltip('on cau la georef (~1 km)').addTo(mlayer); pts.push([d.lat,d.lon]); }
   (d.candidates||[]).forEach((c,n)=>{ if(c.lat!=null){ const mk=L.circleMarker([c.lat,c.lon],{radius:7,color:'#1d6b4f',weight:2,fillColor:'#37a37e',fillOpacity:.9});
     mk.bindTooltip('<b>'+(n+1)+'. '+esc(c.grafia)+'</b><br>'+esc(c.municipi||'?')+' · '+c.km+' km',{direction:'top'}); mk.on('click',()=>pick(c.grafia)); mk.addTo(mlayer); pts.push([c.lat,c.lon]); }});
@@ -127,7 +155,7 @@ function pickCustom(){ const v=$('#custom').value.trim(); if(v)pick(v); }
 $('#filter').onchange=rebuild;
 addEventListener('keydown',e=>{
   if(!queue.length)return; const d=queue[i];
-  if(e.target.tagName==='INPUT'){ if(e.key==='Enter')pickCustom(); return; }
+  if(e.target.tagName==='INPUT'){ if(e.key==='Enter'){ const id=e.target.id; if(id==='search')searchMap(); else if(id==='graf')saveReading(); else pickCustom(); } return; }
   if(e.key>='1'&&e.key<='6'){const c=d.candidates[+e.key-1]; if(c)pick(c.grafia);}
   else if(e.key==='0')nomatch();
   else if(e.key==='s'||e.key===' '){e.preventDefault();skip();}
@@ -143,6 +171,9 @@ const server = http.createServer((req, res) => {
   }
   if (req.method === 'GET' && u.pathname === '/data') {
     res.writeHead(200, { 'content-type': 'application/json' }); return res.end(fs.readFileSync(F.data));
+  }
+  if (req.method === 'GET' && u.pathname === '/ngib') {
+    res.writeHead(200, { 'content-type': 'application/json' }); return res.end(NGIB_JSON);
   }
   if (req.method === 'GET' && u.pathname === '/state') {
     res.writeHead(200, { 'content-type': 'application/json' });
