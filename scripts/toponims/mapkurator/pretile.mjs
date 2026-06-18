@@ -27,12 +27,15 @@ const ROOT = join(__dirname, '..', '..', '..');
 const DETECTION_MASTER = 'data/jpg/despuig-1785-original-marked1.jpg';
 const MASTER = join(ROOT, process.env.MK_MASTER || DETECTION_MASTER);
 const BASE = join(ROOT, 'data/toponims/mapkurator');
-const IN = join(BASE, 'in');
+const IN = join(BASE, process.env.MK_INDIR || 'in');             // per-sheet: e.g. MK_INDIR=no/in
 
 const PATCH = 1100;          // master px per patch (short of the proven 1168)
 const OVERLAP = 0.28;        // fraction → boundary words survive whole somewhere
 const SCALE = 2;            // upscale + sharpen, as in Phase 0
 const stride = Math.round(PATCH * (1 - OVERLAP));
+// real pixel dimensions of the image being tiled — works for the master OR a sheet
+// crop (the old code assumed frame.mjs IMG, which is wrong for a crop).
+const { width: MW, height: MH } = await sharp(MASTER, { limitInputPixels: false }).metadata();
 
 // Tiling region. We tile the FULL image by default: coastal toponyms (and the
 // southern capes) sit in the band between the inner MAP frame and the paper edge,
@@ -47,7 +50,7 @@ function pickRegion() {
   const r = process.env.MK_REGION || 'FULL';
   if (r === 'MAP') return MAP_REGION;
   if (r === 'OUTER') return { x: OUTER.l, y: OUTER.t, w: OUTER.r - OUTER.l, h: OUTER.b - OUTER.t };
-  if (r === 'FULL') return { x: 0, y: 0, w: IMG.w, h: IMG.h };
+  if (r === 'FULL') return { x: 0, y: 0, w: MW, h: MH };
   const [x, y, w, h] = r.split(',').map(Number);
   return { x, y, w, h };
 }
@@ -69,8 +72,8 @@ function patches() {
     for (const gx of xs) {
       const left = Math.max(0, Math.round(gx));
       const top = Math.max(0, Math.round(gy));
-      const w = Math.min(PATCH, IMG.w - left);
-      const h = Math.min(PATCH, IMG.h - top);
+      const w = Math.min(PATCH, X + W - left);
+      const h = Math.min(PATCH, Y + H - top);
       list.push({ id: `p${String(r).padStart(2, '0')}_${String(c).padStart(2, '0')}`, row: r, col: c, gx: left, gy: top, w, h, scale: SCALE });
       c++;
     }
@@ -100,8 +103,9 @@ for (const p of all) {
   if (++n % 40 === 0) console.log(`   ${n}/${all.length}`);
 }
 
-await writeFile(join(BASE, 'patches.json'), JSON.stringify({
-  region: MAP_REGION, patch: PATCH, overlap: OVERLAP, stride, scale: SCALE,
+await writeFile(join(BASE, process.env.MK_PATCHES || 'patches.json'), JSON.stringify({
+  master: MASTER, region: { x: X, y: Y, w: W, h: H }, dims: { w: MW, h: MH },
+  patch: PATCH, overlap: OVERLAP, stride, scale: SCALE,
   count: all.length, patches: all,
 }, null, 2));
-console.log(`✓ ${all.length} patches → data/toponims/mapkurator/in/  (manifest: patches.json)`);
+console.log(`✓ ${all.length} patches → ${IN}`);

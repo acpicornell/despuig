@@ -11,12 +11,19 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+// Env overrides let one server drive a per-sheet quadrant (default = global A).
+// e.g. for NW:  REVIEW_DATA=data/toponims/no/review-data.json
+//               REVIEW_CROPS=data/toponims/no/review-crops
+//               PICKS_JSON=data/toponims/no/recheck-picks.json
+//               REVIEWED_JSON=data/toponims/no/review-reviewed.json
+//               GRAF_JSON=data/toponims/no/graf-fixes.json
+const P = (env, def) => (process.env[env] ? path.resolve(ROOT, process.env[env]) : `${ROOT}/${def}`);
 const F = {
-  data: `${ROOT}/data/toponims/review-data.json`,
-  crops: `${ROOT}/data/toponims/review-crops`,
-  picks: `${ROOT}/data/toponims/recheck-picks.json`,
-  reviewed: `${ROOT}/data/toponims/review-reviewed.json`,
-  graf: `${ROOT}/data/toponims/graf-fixes.json`,
+  data: P('REVIEW_DATA', 'data/toponims/review-data.json'),
+  crops: P('REVIEW_CROPS', 'data/toponims/review-crops'),
+  picks: P('PICKS_JSON', 'data/toponims/recheck-picks.json'),
+  reviewed: P('REVIEWED_JSON', 'data/toponims/review-reviewed.json'),
+  graf: P('GRAF_JSON', 'data/toponims/graf-fixes.json'),
 };
 const readJSON = (p, d) => { try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return d; } };
 const writeJSON = (p, o) => fs.writeFileSync(p, JSON.stringify(o, null, 1));

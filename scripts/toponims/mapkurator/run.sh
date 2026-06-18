@@ -42,5 +42,6 @@ exec "$RUNTIME" run --rm "${TTY[@]}" "${GPU[@]}" \
   -v "$DATA/weights":/workspace/weights:rw \
   -v "$DATA/in":/workspace/in:rw \
   -v "$DATA/out":/workspace/out:rw \
+  -v "$DATA":/workspace/data:rw \
   -w /workspace/spotter \
   "$IMAGE" "${@:-bash}"

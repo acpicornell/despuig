@@ -19,6 +19,11 @@ from shapely.validation import make_valid
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 BASE = os.path.join(ROOT, "data/toponims/mapkurator")
+# per-sheet support (defaults = the master): override for a sheet crop, e.g.
+#   MK_PATCHES=no/patches.json MK_OUTDIR=no/out MK_DETECTIONS=no/detections.json
+PATCHES = os.path.join(BASE, os.environ.get("MK_PATCHES", "patches.json"))
+OUTDIR = os.path.join(BASE, os.environ.get("MK_OUTDIR", "out"))
+DETECTIONS = os.path.join(BASE, os.environ.get("MK_DETECTIONS", "detections.json"))
 
 IOU_DUP = 0.45        # two boxes with IoU above this are the same word
 CONTAIN_DUP = 0.60    # ...or one mostly inside the other (an edge fragment)
@@ -26,10 +31,10 @@ CONTAIN_DUP = 0.60    # ...or one mostly inside the other (an edge fragment)
 
 def load_raw():
     """Every detection from every patch, in master pixel coords."""
-    man = json.load(open(os.path.join(BASE, "patches.json")))
+    man = json.load(open(PATCHES))
     dets = []
     for p in man["patches"]:
-        f = os.path.join(BASE, "out", f"{p['id']}.json")
+        f = os.path.join(OUTDIR, f"{p['id']}.json")
         if not os.path.exists(f):
             continue
         d = json.load(open(f))
@@ -116,7 +121,7 @@ def main():
         })
     json.dump({"source": "mapkurator-spotter v2 (english)", "region": man["region"],
                "count": len(out), "detections": out},
-              open(os.path.join(BASE, "detections.json"), "w"),
+              open(DETECTIONS, "w"),
               ensure_ascii=False, indent=2)
     print(f"✓ data/toponims/mapkurator/detections.json - {len(out)} word polygons")
 

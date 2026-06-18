@@ -8,27 +8,38 @@ posicional / sense), plus a review-data.json the web review tool consumes.
 Reads data/toponims/ngib/matches.json + data/toponims/b/recheck.json + the master
 scan. Writes data/toponims/review-crops/<id>.jpg + data/toponims/review-data.json
 (both gitignored, regenerable).
+
+Env overrides (default = global A pipeline; set for a per-sheet quadrant):
+  MATCHES_JSON, RECHECK_JSON, TOPONIMS_JSON, MASTER_IMG, REVIEW_CROPS, REVIEW_DATA
+e.g. for NW: MATCHES_JSON=data/toponims/no/matches.json
+             RECHECK_JSON=data/toponims/no/recheck.json
+             TOPONIMS_JSON=data/toponims/no/toponims.json
+             MASTER_IMG=data/jpg/despuig-1785-original-NO-canvas.jpg
+             REVIEW_CROPS=data/toponims/no/review-crops
+             REVIEW_DATA=data/toponims/no/review-data.json
 """
 import json, os
 from PIL import Image, ImageDraw
 Image.MAX_IMAGE_PIXELS = None
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-CROPS = os.path.join(ROOT, "data/toponims/review-crops")
+P = lambda env, default: os.environ.get(env) or os.path.join(ROOT, default)
+CROPS = P("REVIEW_CROPS", "data/toponims/review-crops")
+REVIEW_DATA = P("REVIEW_DATA", "data/toponims/review-data.json")
 WANT = {"suggerit", "posicional", "sense"}
 WW, WH, SCALE = 760, 320, 1.5
 
 os.makedirs(CROPS, exist_ok=True)
-matches = json.load(open(f"{ROOT}/data/toponims/ngib/matches.json"))
-recheck = {r["id"]: r for r in json.load(open(f"{ROOT}/data/toponims/b/recheck.json"))}
-master = Image.open(f"{ROOT}/data/jpg/despuig-1785-original.jpg").convert("RGB")
+matches = json.load(open(P("MATCHES_JSON", "data/toponims/ngib/matches.json")))
+recheck = {r["id"]: r for r in json.load(open(P("RECHECK_JSON", "data/toponims/b/recheck.json")))}
+master = Image.open(P("MASTER_IMG", "data/jpg/despuig-1785-original.jpg")).convert("RGB")
 
 # geo: toponym projected lon/lat + each candidate's real NGIB position (for the modern map)
 import re
 from collections import defaultdict
 from unidecode import unidecode
 topll = {t["id"]: (t.get("lon"), t.get("lat"))
-         for t in json.load(open(f"{ROOT}/data/toponims/toponims.json"))["toponims"]}
+         for t in json.load(open(P("TOPONIMS_JSON", "data/toponims/toponims.json")))["toponims"]}
 llocs = json.load(open(f"{ROOT}/data/toponims/ngib/llocs.json"))
 core = lambda s: re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]", " ", unidecode((s or "").lower()))).strip()
 by_name = defaultdict(list)
@@ -71,7 +82,7 @@ for m in matches:
     })
 
 json.dump({"count": len(items), "items": items},
-          open(f"{ROOT}/data/toponims/review-data.json", "w"), ensure_ascii=False)
+          open(REVIEW_DATA, "w"), ensure_ascii=False)
 from collections import Counter
 print(f"review items: {len(items)}  {dict(Counter(i['decision'] for i in items))}")
-print(f"✓ {CROPS}/<id>.jpg + data/toponims/review-data.json")
+print(f"✓ {CROPS}/<id>.jpg + {REVIEW_DATA}")

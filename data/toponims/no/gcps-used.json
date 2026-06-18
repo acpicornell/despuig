@@ -1,0 +1,150 @@
+{
+ "model": "poly2",
+ "count": 18,
+ "gcps": [
+  {
+   "x": 7449,
+   "y": 4067,
+   "town": "Fornalutx",
+   "lng": 2.74176,
+   "lat": 39.782519,
+   "src": "ngib"
+  },
+  {
+   "x": 6918,
+   "y": 4382,
+   "town": "Sóller",
+   "lng": 2.715018,
+   "lat": 39.766086,
+   "src": "ngib"
+  },
+  {
+   "x": 8879,
+   "y": 4855,
+   "town": "Mancor de la Vall",
+   "lng": 2.870939,
+   "lat": 39.75048,
+   "src": "ngib"
+  },
+  {
+   "x": 5908,
+   "y": 4872,
+   "town": "Deià",
+   "lng": 2.648301,
+   "lat": 39.748567,
+   "src": "ngib"
+  },
+  {
+   "x": 8892,
+   "y": 5628,
+   "town": "Lloseta",
+   "lng": 2.864151,
+   "lat": 39.717333,
+   "src": "ngib"
+  },
+  {
+   "x": 7849,
+   "y": 5741,
+   "town": "Alaró",
+   "lng": 2.789201,
+   "lat": 39.705824,
+   "src": "ngib"
+  },
+  {
+   "x": 5244,
+   "y": 5753,
+   "town": "Valldemossa",
+   "lng": 2.621804,
+   "lat": 39.709089,
+   "src": "ngib"
+  },
+  {
+   "x": 3745,
+   "y": 5768,
+   "town": "Banyalbufar",
+   "lng": 2.513692,
+   "lat": 39.686951,
+   "src": "ngib"
+  },
+  {
+   "x": 6645,
+   "y": 5819,
+   "town": "Bunyola",
+   "lng": 2.699086,
+   "lat": 39.696396,
+   "src": "ngib"
+  },
+  {
+   "x": 8754,
+   "y": 6018,
+   "town": "Binissalem",
+   "lng": 2.843184,
+   "lat": 39.688412,
+   "src": "ngib"
+  },
+  {
+   "x": 4675,
+   "y": 6251,
+   "town": "Esporles",
+   "lng": 2.577617,
+   "lat": 39.668836,
+   "src": "ngib"
+  },
+  {
+   "x": 3028,
+   "y": 6358,
+   "town": "Estellencs",
+   "lng": 2.481785,
+   "lat": 39.653267,
+   "src": "ngib"
+  },
+  {
+   "x": 8392,
+   "y": 6503,
+   "town": "Consell",
+   "lng": 2.81323,
+   "lat": 39.668536,
+   "src": "ngib"
+  },
+  {
+   "x": 7791,
+   "y": 6843,
+   "town": "Santa Maria del Camí",
+   "lng": 2.778829,
+   "lat": 39.647236,
+   "src": "ngib"
+  },
+  {
+   "x": 3997,
+   "y": 7193,
+   "town": "Puigpunyent",
+   "lng": 2.527181,
+   "lat": 39.623511,
+   "src": "ngib"
+  },
+  {
+   "x": 8756,
+   "y": 2686,
+   "town": "Port de sa Calobra",
+   "lng": 2.799968,
+   "lat": 39.851819,
+   "src": "ngib"
+  },
+  {
+   "x": 8316,
+   "y": 2891,
+   "town": "Cala Tuent",
+   "lng": 2.776779,
+   "lat": 39.841078,
+   "src": "ngib"
+  },
+  {
+   "x": 6835,
+   "y": 3725,
+   "town": "Port de Sóller",
+   "lng": 2.69802,
+   "lat": 39.795782,
+   "src": "ngib"
+  }
+ ]
+}

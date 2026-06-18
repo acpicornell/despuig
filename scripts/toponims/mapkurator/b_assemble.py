@@ -15,7 +15,9 @@ import json, os, re, sys
 from collections import Counter
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-WIN = os.path.join(ROOT, "data/toponims/mapkurator/b")
+# per-sheet support: B_WINDIR points at the sheet's window dir (its w##.json box
+# files); positions come out in that sheet crop's pixel space.
+WIN = os.path.join(ROOT, os.environ.get("B_WINDIR", "data/toponims/mapkurator/b"))
 OUT = os.environ.get("TOPONIMS_JSON") or os.path.join(ROOT, "data/toponims/toponims.json")
 
 # ---- normalisation (engraving reading -> nom / tipus) ----

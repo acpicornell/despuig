@@ -24,6 +24,11 @@ Image.MAX_IMAGE_PIXELS = None
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 OUT = os.path.join(ROOT, os.environ.get("B_OUTDIR", "data/toponims/mapkurator/b"))
+# per-sheet support: point at a sheet's detections + the image to crop from. For a
+# sheet the detection coords already live in that crop's pixel space, so B_MASTER
+# must be the SAME crop the spotter ran on.
+DET_PATH = os.path.join(ROOT, os.environ.get("B_DET", "data/toponims/mapkurator/detections.json"))
+MASTER_IMG = os.path.join(ROOT, os.environ.get("B_MASTER", "data/jpg/despuig-1785-original.jpg"))
 DIST = 115           # px: boxes within this (chebyshev, centre-to-centre) cluster together
 TARGET = int(os.environ.get("B_TARGET", "80"))   # aim for ~this many boxes per window
 MARGIN = 55          # px padding around a window's box extent (context, no clip)
@@ -82,8 +87,9 @@ def windows(boxes, area):
 
 def main():
     os.makedirs(OUT, exist_ok=True)
-    det = json.load(open(os.path.join(ROOT, "data/toponims/mapkurator/detections.json")))["detections"]
-    top = json.load(open(os.path.join(ROOT, "data/toponims/toponims.json")))["toponims"]
+    det = json.load(open(DET_PATH))["detections"]
+    top_path = os.path.join(ROOT, "data/toponims/toponims.json")
+    top = json.load(open(top_path))["toponims"] if os.path.exists(top_path) else []
     X0, Y0, X1, Y1 = AREA
     boxes = [b for b in det if X0 <= b["cx"] < X1 and Y0 <= b["cy"] < Y1]
     wins, nclust = windows(boxes, AREA)
@@ -91,7 +97,7 @@ def main():
     wins.sort(key=lambda w: (min(b["cy"] for b in w), min(b["cx"] for b in w)))
     print(f">> area {AREA}: {len(boxes)} boxes -> {nclust} clusters -> {len(wins)} windows")
 
-    master = Image.open(os.path.join(ROOT, "data/jpg/despuig-1785-original.jpg")).convert("RGB")
+    master = Image.open(MASTER_IMG).convert("RGB")
     index = []
     for wi, w in enumerate(wins, 1):
         xs = [b["bbox"][0] for b in w] + [b["bbox"][0] + b["bbox"][2] for b in w]
