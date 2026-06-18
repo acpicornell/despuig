@@ -39,3 +39,6 @@ scripts/toponims/mapkurator/vendor/
 # approach-B parallel track output (regenerable amb el workflow + b_run.sh)
 data/toponims/b/
 __pycache__/
+# web review tool (regenerable: render_review_crops.py)
+data/toponims/review-crops/
+data/toponims/review-data.json

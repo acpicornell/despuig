@@ -16,6 +16,8 @@
     "toponims:georef-bootstrap": "nix-shell scripts/toponims/shell.nix --run 'python3 scripts/toponims/mapkurator/georef_bootstrap.py'",
     "toponims:ngib-fetch": "node scripts/toponims/ngib-fetch.mjs",
     "toponims:ngib-match": "nix-shell scripts/toponims/shell.nix --run 'python3 scripts/toponims/ngib_match.py'",
+    "toponims:review-crops": "nix-shell scripts/toponims/mapkurator/shell.nix --run 'python3 scripts/toponims/mapkurator/render_review_crops.py'",
+    "toponims:review": "node scripts/toponims/review-server.mjs",
     "toponims:vinetes": "node scripts/toponims/vinetes-server.mjs"
   },
   "dependencies": {

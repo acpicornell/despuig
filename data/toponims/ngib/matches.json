@@ -162,11 +162,12 @@
   "graf": "Cala Enfalut",
   "tipus": "costa",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Cala en Feliu",
   "municipi": "Pollença",
   "sim": 0.75,
-  "km": 0.49
+  "km": 0.49,
+  "rev": "vision"
  },
  {
   "id": "B02_1",
@@ -210,11 +211,12 @@
   "graf": "Cala d. Boca",
   "tipus": "costa",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Cala Bóquer",
   "municipi": "Pollença",
   "sim": 0.8,
-  "km": 1.17
+  "km": 1.17,
+  "rev": "vision"
  },
  {
   "id": "B02_5",
@@ -222,11 +224,12 @@
   "graf": "Talaya",
   "tipus": "orònim",
   "dubte": false,
-  "decision": "posicional",
+  "decision": "confirmat",
   "ngib": "Pla de la Talaia",
   "municipi": "Pollença",
   "sim": 0.62,
-  "km": 0.59
+  "km": 0.59,
+  "rev": "vision"
  },
  {
   "id": "B02_6",
@@ -270,11 +273,12 @@
   "graf": "Silla",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Síller",
   "municipi": "Pollença",
   "sim": 0.76,
-  "km": 1.49
+  "km": 0.94,
+  "rev": "vision"
  },
  {
   "id": "B02_10",
@@ -499,11 +503,12 @@
   "graf": "Fort de Sa Vicente",
   "tipus": "altre",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
-  "km": null
+  "decision": "confirmat",
+  "ngib": "Cala Sant Vicenç",
+  "municipi": "Pollença",
+  "sim": 0.5,
+  "km": 0.75,
+  "rev": "vision"
  },
  {
   "id": "B03_8",
@@ -584,11 +589,12 @@
   "graf": "Goma",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Gotmar",
   "municipi": "Pollença",
   "sim": 0.8,
-  "km": 1.44
+  "km": 1.44,
+  "rev": "vision"
  },
  {
   "id": "B03_15",
@@ -716,11 +722,12 @@
   "graf": "Nostra Senyora del Roser",
   "tipus": "altre",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
-  "km": null
+  "decision": "confirmat",
+  "ngib": "Església del Roser Vell",
+  "municipi": "Pollença",
+  "sim": 0.51,
+  "km": 0.59,
+  "rev": "vision"
  },
  {
   "id": "B03_26",
@@ -861,11 +868,12 @@
   "graf": "Punta de Bocca",
   "tipus": "costa",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Punta Blanca",
+  "decision": "confirmat",
+  "ngib": "Punta Bèquer",
   "municipi": "Pollença",
-  "sim": 0.8,
-  "km": 1.19
+  "sim": 0.61,
+  "km": 1.13,
+  "rev": "vision"
  },
  {
   "id": "B04_4",
@@ -873,11 +881,12 @@
   "graf": "La Ferredura",
   "tipus": "altre",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
-  "km": null
+  "decision": "confirmat",
+  "ngib": "la Ferradura",
+  "municipi": "Pollença",
+  "sim": 0.94,
+  "km": 9.73,
+  "rev": "vision"
  },
  {
   "id": "B04_5",
@@ -1068,11 +1077,12 @@
   "graf": "Pedruxella",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Pedruixella Gran",
+  "decision": "confirmat",
+  "ngib": "Pedruixella Petit",
   "municipi": "Pollença",
-  "sim": 0.77,
-  "km": 1.24
+  "sim": 0.75,
+  "km": 0.94,
+  "rev": "vision"
  },
  {
   "id": "B04_21",
@@ -1092,11 +1102,12 @@
   "graf": "Sa Serre",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "la Serreta",
+  "decision": "confirmat",
+  "ngib": "Can Serra",
   "municipi": "Pollença",
-  "sim": 0.83,
-  "km": 3.06
+  "sim": 0.57,
+  "km": 0.47,
+  "rev": "vision"
  },
  {
   "id": "B04_23",
@@ -1141,11 +1152,12 @@
   "graf": "Fermenia",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Femenia Nou",
+  "decision": "confirmat",
+  "ngib": "Femenia Vell",
   "municipi": "Escorca",
-  "sim": 0.74,
-  "km": 1.28
+  "sim": 0.72,
+  "km": 1.59,
+  "rev": "vision"
  },
  {
   "id": "B04_27",
@@ -1177,11 +1189,12 @@
   "graf": "Tot de Varix",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Hort de Vàritx",
+  "decision": "confirmat",
+  "ngib": "Font de Vàritx",
   "municipi": "Pollença",
-  "sim": 0.84,
-  "km": 2.63
+  "sim": 0.82,
+  "km": 1.53,
+  "rev": "vision"
  },
  {
   "id": "B04_30",
@@ -1465,11 +1478,12 @@
   "graf": "Playa de la Solana",
   "tipus": "costa",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Platjola de la Solana",
   "municipi": "Alcúdia",
   "sim": 0.81,
-  "km": 0.3
+  "km": 0.3,
+  "rev": "vision"
  },
  {
   "id": "B05_18",
@@ -1681,11 +1695,12 @@
   "graf": "Puerto de Tuent",
   "tipus": "costa",
   "dubte": false,
-  "decision": "posicional",
-  "ngib": "Platja de Tuent",
+  "decision": "confirmat",
+  "ngib": "Cala Tuent",
   "municipi": "Escorca",
-  "sim": 0.67,
-  "km": 0.48
+  "sim": 0.55,
+  "km": 0.38,
+  "rev": "vision"
  },
  {
   "id": "B06_17",
@@ -1741,11 +1756,12 @@
   "graf": "Tuent",
   "tipus": "altre",
   "dubte": false,
-  "decision": "posicional",
+  "decision": "confirmat",
   "ngib": "Cala Tuent",
   "municipi": "Escorca",
   "sim": 0.67,
-  "km": 0.37
+  "km": 0.37,
+  "rev": "vision"
  },
  {
   "id": "B06_22",
@@ -1873,11 +1889,12 @@
   "graf": "Cas Rey",
   "tipus": "possessió",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Cals Reis",
   "municipi": "Escorca",
   "sim": 0.78,
-  "km": 1.11
+  "km": 1.11,
+  "rev": "vision"
  },
  {
   "id": "B06_33",
@@ -2253,15 +2270,15 @@
  },
  {
   "id": "B08_8",
-  "nom": "Can de Santa Maria Nueva",
-  "graf": "Can de Santa Maria Nueva",
-  "tipus": "possessió",
+  "nom": "Cala Nueba",
+  "graf": "Cala Nueba",
+  "tipus": "costa",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
-  "km": null
+  "decision": "suggerit",
+  "ngib": "Cala Deià",
+  "municipi": "Deià",
+  "sim": 0.74,
+  "km": 10.81
  },
  {
   "id": "B08_9",
@@ -2314,20 +2331,20 @@
  },
  {
   "id": "B08_13",
-  "nom": "Illa Redonda",
-  "graf": "Illa Redonda",
-  "tipus": "costa",
+  "nom": "I. Redonda",
+  "graf": "I. Redonda",
+  "tipus": "altre",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
+  "decision": "suggerit",
+  "ngib": "na Redona",
+  "municipi": "Llucmajor",
+  "sim": 0.92,
   "km": null
  },
  {
   "id": "B08_14",
-  "nom": "Cala de Ambatzar",
-  "graf": "Cala de Ambatzar",
+  "nom": "Cala de Ambatxar",
+  "graf": "Cala de Ambatxar",
   "tipus": "costa",
   "dubte": false,
   "decision": "suggerit",
@@ -2374,9 +2391,9 @@
  },
  {
   "id": "B08_18",
-  "nom": "Borri",
-  "graf": "Borri",
-  "tipus": "altre",
+  "nom": "Cala Borri",
+  "graf": "Cala Borri",
+  "tipus": "costa",
   "dubte": false,
   "decision": "sense",
   "ngib": null,
@@ -2474,23 +2491,24 @@
   "graf": "Padrises",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "sa Pedrissa",
   "municipi": "Deià",
   "sim": 0.82,
-  "km": 0.3
+  "km": 0.3,
+  "rev": "vision"
  },
  {
   "id": "B08_27",
-  "nom": "Estaca de Valldemusa",
-  "graf": "Estaca de Valldemusa",
+  "nom": "Estaca",
+  "graf": "Estaca",
   "tipus": "costa",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "EI Valldemossa",
+  "decision": "confirmat",
+  "ngib": "s'Estaca",
   "municipi": "Valldemossa",
-  "sim": 0.71,
-  "km": 3.72
+  "sim": 1.0,
+  "km": 0.94
  },
  {
   "id": "B08_28",
@@ -2662,15 +2680,15 @@
  },
  {
   "id": "B09_8",
-  "nom": "Illot de la galera",
-  "graf": "Illot de la galera",
-  "tipus": "costa",
+  "nom": "Mor. de la galera",
+  "graf": "Mor. de la galera",
+  "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Clot de sa Caldera",
-  "municipi": "Fornalutx",
-  "sim": 0.78,
-  "km": 3.6
+  "decision": "sense",
+  "ngib": null,
+  "municipi": null,
+  "sim": 0.0,
+  "km": null
  },
  {
   "id": "B09_9",
@@ -2690,11 +2708,12 @@
   "graf": "Cala Tuent",
   "tipus": "costa",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Cala Tuent",
   "municipi": "Escorca",
   "sim": 1.0,
-  "km": 6.89
+  "km": 6.74,
+  "rev": "vision"
  },
  {
   "id": "B09_11",
@@ -2702,11 +2721,12 @@
   "graf": "Balitx de vall",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Salt de Bàlitx",
-  "municipi": "Sóller",
-  "sim": 0.82,
-  "km": 2.45
+  "decision": "confirmat",
+  "ngib": "Bàlitx d'Avall",
+  "municipi": "Fornalutx",
+  "sim": 0.52,
+  "km": 0.54,
+  "rev": "vision"
  },
  {
   "id": "B09_12",
@@ -2727,11 +2747,12 @@
   "graf": "Balitx demunt",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Muntanyeta de Bàlitx",
+  "decision": "confirmat",
+  "ngib": "Bàlitx d'Amunt",
   "municipi": "Sóller",
-  "sim": 0.78,
-  "km": 0.5
+  "sim": 0.48,
+  "km": 0.17,
+  "rev": "vision"
  },
  {
   "id": "B09_14",
@@ -2796,7 +2817,7 @@
  {
   "id": "B09_19",
   "nom": "Can Noguera",
-  "graf": "Can Noguera",
+  "graf": "Câ Noguera",
   "tipus": "possessió",
   "dubte": false,
   "decision": "suggerit",
@@ -2823,11 +2844,12 @@
   "graf": "Ne Moyana",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "sa Moana",
   "municipi": "Sóller",
   "sim": 0.76,
-  "km": 0.51
+  "km": 0.51,
+  "rev": "vision"
  },
  {
   "id": "B09_22",
@@ -2867,8 +2889,8 @@
  },
  {
   "id": "B10_1",
-  "nom": "Castillo de Piedrapicada",
-  "graf": "Castillo de Piedrapicada",
+  "nom": "Castillo d Piedra picada",
+  "graf": "Castillo d Piedra picada",
   "tipus": "altre",
   "dubte": false,
   "decision": "sense",
@@ -2879,8 +2901,8 @@
  },
  {
   "id": "B10_2",
-  "nom": "Piedra de Bany",
-  "graf": "Piedra de Bany",
+  "nom": "Piedra de Bañi",
+  "graf": "Piedra dê Bañi",
   "tipus": "altre",
   "dubte": false,
   "decision": "sense",
@@ -2903,20 +2925,20 @@
  },
  {
   "id": "B10_4",
-  "nom": "Pita mayor",
-  "graf": "Pita mayor",
+  "nom": "Puta mayor",
+  "graf": "Pûta mayor",
   "tipus": "altre",
   "dubte": false,
-  "decision": "posicional",
-  "ngib": "Punta Llarga",
-  "municipi": "Sóller",
-  "sim": 0.55,
-  "km": 0.34
+  "decision": "suggerit",
+  "ngib": "Punta de sa Coma",
+  "municipi": "Escorca",
+  "sim": 0.7,
+  "km": 7.64
  },
  {
   "id": "B10_5",
-  "nom": "Pita menor",
-  "graf": "Pita menor",
+  "nom": "Puta menor",
+  "graf": "Pûta menor",
   "tipus": "altre",
   "dubte": false,
   "decision": "sense",
@@ -2976,26 +2998,27 @@
  },
  {
   "id": "B10_10",
-  "nom": "El Sungla",
-  "graf": "El Sungla",
+  "nom": "El Singla",
+  "graf": "El Singla",
   "tipus": "altre",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
-  "km": null
+  "decision": "confirmat",
+  "ngib": "es Cingles",
+  "municipi": "Sóller",
+  "sim": 0.62,
+  "km": 0.68,
+  "rev": "vision"
  },
  {
   "id": "B10_11",
-  "nom": "Pas",
-  "graf": "Pas",
+  "nom": "Paies",
+  "graf": "Paies",
   "tipus": "altre",
   "dubte": false,
   "decision": "suggerit",
   "ngib": "es Pas",
   "municipi": "Bunyola",
-  "sim": 1.0,
+  "sim": 0.88,
   "km": 7.51
  },
  {
@@ -3025,7 +3048,7 @@
  {
   "id": "B10_14",
   "nom": "Can Sebastia",
-  "graf": "Can Sebastia",
+  "graf": "Câ Sebastia",
   "tipus": "possessió",
   "dubte": false,
   "decision": "suggerit",
@@ -3036,14 +3059,14 @@
  },
  {
   "id": "B10_15",
-  "nom": "Can Freca",
-  "graf": "Can Freca",
+  "nom": "Can Frexa",
+  "graf": "Câ Frexa",
   "tipus": "possessió",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Can Freixe",
   "municipi": "Sóller",
-  "sim": 0.83,
+  "sim": 0.92,
   "km": 4.7
  },
  {
@@ -3120,27 +3143,27 @@
  },
  {
   "id": "B10_22",
-  "nom": "Es pi blanch",
-  "graf": "Es pi blanch",
+  "nom": "del vinblanch",
+  "graf": "del vinblanch",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Pujol d'en Blanc",
-  "municipi": "Fornalutx",
-  "sim": 0.72,
-  "km": 7.21
+  "decision": "sense",
+  "ngib": null,
+  "municipi": null,
+  "sim": 0.0,
+  "km": null
  },
  {
   "id": "B10_23",
-  "nom": "Rama",
-  "graf": "Rama",
+  "nom": "S. Ramo",
+  "graf": "S. Ramô",
   "tipus": "altre",
   "dubte": false,
   "decision": "suggerit",
-  "ngib": "Miramar",
-  "municipi": "Valldemossa",
-  "sim": 0.73,
-  "km": 8.88
+  "ngib": "es Racó",
+  "municipi": "Deià",
+  "sim": 0.75,
+  "km": 6.55
  },
  {
   "id": "B10_24",
@@ -3156,15 +3179,15 @@
  },
  {
   "id": "B10_25",
-  "nom": "Punt del Plat",
-  "graf": "Punt del Plat",
+  "nom": "Puta de Paret",
+  "graf": "Pûta de Paret",
   "tipus": "altre",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
-  "km": null
+  "decision": "suggerit",
+  "ngib": "Punta de sa Creu",
+  "municipi": "Sóller",
+  "sim": 0.7,
+  "km": 0.68
  },
  {
   "id": "B10_26",
@@ -3205,7 +3228,7 @@
  {
   "id": "B10_29",
   "nom": "Can Pati",
-  "graf": "Can Pati",
+  "graf": "Câ Pati",
   "tipus": "possessió",
   "dubte": false,
   "decision": "suggerit",
@@ -3242,7 +3265,7 @@
  {
   "id": "B10_32",
   "nom": "Can Pexet",
-  "graf": "Can Pexet",
+  "graf": "Câ Pexet",
   "tipus": "possessió",
   "dubte": false,
   "decision": "suggerit",
@@ -3303,7 +3326,7 @@
  {
   "id": "B10_37",
   "nom": "Can Hai",
-  "graf": "Can Hai",
+  "graf": "Câ Hai",
   "tipus": "possessió",
   "dubte": false,
   "decision": "suggerit",
@@ -3326,15 +3349,15 @@
  },
  {
   "id": "B10_39",
-  "nom": "Cova",
-  "graf": "Cova",
+  "nom": "Cueva del vinblanch",
+  "graf": "Cueva del vinblanch",
   "tipus": "hidrònim",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "sa Cova",
-  "municipi": "Fornalutx",
-  "sim": 1.0,
-  "km": 6.62
+  "decision": "sense",
+  "ngib": null,
+  "municipi": null,
+  "sim": 0.0,
+  "km": null
  },
  {
   "id": "B11_1",
@@ -3387,14 +3410,15 @@
  {
   "id": "B11_5",
   "nom": "Son Socies",
-  "graf": "Son Socies",
+  "graf": "Sô Socies",
   "tipus": "possessió",
   "dubte": false,
-  "decision": "posicional",
+  "decision": "confirmat",
   "ngib": "Can Socies",
   "municipi": "Alcúdia",
-  "sim": 0.6,
-  "km": 0.37
+  "sim": 0.74,
+  "km": 0.37,
+  "rev": "vision"
  },
  {
   "id": "B11_6",
@@ -3410,15 +3434,16 @@
  },
  {
   "id": "B11_7",
-  "nom": "Forn Major",
-  "graf": "Forn Major",
+  "nom": "Torre Major",
+  "graf": "Torre Major",
   "tipus": "altre",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
-  "km": null
+  "decision": "confirmat",
+  "ngib": "Torre Major",
+  "municipi": "Alcúdia",
+  "sim": 1.0,
+  "km": 1.43,
+  "rev": "vision"
  },
  {
   "id": "B11_8",
@@ -3434,15 +3459,15 @@
  },
  {
   "id": "B11_9",
-  "nom": "Corral de Nostra Senyora",
-  "graf": "Corral de Nostra Senyora",
+  "nom": "Arenal de Noseras",
+  "graf": "Arenal de Noseras",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "CC Nostra Senyora de la Consolació",
-  "municipi": "Alcúdia",
-  "sim": 0.8,
-  "km": 6.1
+  "decision": "sense",
+  "ngib": null,
+  "municipi": null,
+  "sim": 0.0,
+  "km": null
  },
  {
   "id": "B11_10",
@@ -3458,39 +3483,40 @@
  },
  {
   "id": "B11_11",
-  "nom": "Illa Plana",
-  "graf": "Illa Plana",
-  "tipus": "costa",
-  "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Era de sa Plana",
-  "municipi": "Muro",
-  "sim": 0.76,
-  "km": 8.79
- },
- {
-  "id": "B11_12",
-  "nom": "Illa de l'Aigua Dolca",
-  "graf": "Illa de l'Aigua Dolca",
-  "tipus": "costa",
-  "dubte": false,
-  "decision": "posicional",
-  "ngib": "Clot de s'Aigua Dolça",
-  "municipi": "Santa Margalida",
-  "sim": 0.69,
-  "km": 1.0
- },
- {
-  "id": "B11_13",
-  "nom": "Dos Rocas",
-  "graf": "Dos Rocas",
+  "nom": "I. Plana",
+  "graf": "I. Plana",
   "tipus": "altre",
   "dubte": false,
   "decision": "suggerit",
-  "ngib": "Rota d'en Ros",
-  "municipi": "Artà",
-  "sim": 0.72,
-  "km": 11.54
+  "ngib": "sa Plana",
+  "municipi": "Santanyí",
+  "sim": 1.0,
+  "km": null
+ },
+ {
+  "id": "B11_12",
+  "nom": "Agua dulze",
+  "graf": "Agua dulze",
+  "tipus": "altre",
+  "dubte": false,
+  "decision": "confirmat",
+  "ngib": "Clot de s'Aigua Dolça",
+  "municipi": "Santa Margalida",
+  "sim": 0.54,
+  "km": 1.0,
+  "rev": "vision"
+ },
+ {
+  "id": "B11_13",
+  "nom": "Duas Rocas",
+  "graf": "Duas Rocas",
+  "tipus": "altre",
+  "dubte": false,
+  "decision": "suggerit",
+  "ngib": "Ca na Roca",
+  "municipi": "Santa Margalida",
+  "sim": 0.71,
+  "km": 7.8
  },
  {
   "id": "B11_14",
@@ -3506,14 +3532,14 @@
  },
  {
   "id": "B11_15",
-  "nom": "Punta granada de Son Baulo",
-  "graf": "Punta granada de Son Baulo",
-  "tipus": "costa",
+  "nom": "Estaqe de So Baulo",
+  "graf": "Estâqe de Sô Baulo",
+  "tipus": "altre",
   "dubte": false,
-  "decision": "posicional",
+  "decision": "suggerit",
   "ngib": "Platja de Son Bauló",
   "municipi": "Santa Margalida",
-  "sim": 0.67,
+  "sim": 0.71,
   "km": 1.45
  },
  {
@@ -3531,14 +3557,15 @@
  {
   "id": "B12_2",
   "nom": "Motaña",
-  "graf": "Motaña",
+  "graf": "Môtaña",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Muntanya",
   "municipi": "Escorca",
   "sim": 0.75,
-  "km": 0.73
+  "km": 0.73,
+  "rev": "vision"
  },
  {
   "id": "B12_3",
@@ -3687,15 +3714,15 @@
  },
  {
   "id": "B12_15",
-  "nom": "Las Canelletas",
-  "graf": "Las Canelletas",
+  "nom": "Lascrelleta",
+  "graf": "Lascrelleta",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Alcanelleta",
-  "municipi": "Escorca",
-  "sim": 0.86,
-  "km": 6.64
+  "decision": "confirmat",
+  "ngib": "Lassarelleta",
+  "municipi": "Pollença",
+  "sim": 0.9,
+  "km": 1.0
  },
  {
   "id": "B12_16",
@@ -3822,7 +3849,7 @@
  {
   "id": "B12_26",
   "nom": "Can Casellas",
-  "graf": "Can Casellas",
+  "graf": "Câ Casellas",
   "tipus": "possessió",
   "dubte": false,
   "decision": "suggerit",
@@ -3858,27 +3885,29 @@
  },
  {
   "id": "B12_29",
-  "nom": "Crux",
-  "graf": "Crux",
+  "nom": "Guix",
+  "graf": "Guix",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "sa Creu",
-  "municipi": "Campanet",
-  "sim": 0.75,
-  "km": 7.95
+  "decision": "confirmat",
+  "ngib": "es Guix",
+  "municipi": "Escorca",
+  "sim": 1.0,
+  "km": 0.47,
+  "rev": "vision"
  },
  {
   "id": "B12_30",
-  "nom": "Buatza",
-  "graf": "Buatza",
+  "nom": "Bretxa",
+  "graf": "Bretxa",
   "tipus": "altre",
   "dubte": false,
-  "decision": "posicional",
-  "ngib": "es Murtar",
-  "municipi": "Escorca",
-  "sim": 0.5,
-  "km": 0.77
+  "decision": "confirmat",
+  "ngib": "sa Bretxa",
+  "municipi": "Selva",
+  "sim": 1.0,
+  "km": 1.2,
+  "rev": "vision"
  },
  {
   "id": "B12_31",
@@ -3935,11 +3964,12 @@
   "graf": "La Jeraria",
   "tipus": "altre",
   "dubte": false,
-  "decision": "posicional",
+  "decision": "confirmat",
   "ngib": "la Gerreria",
   "municipi": "Pollença",
   "sim": 0.67,
-  "km": 0.36
+  "km": 0.36,
+  "rev": "vision"
  },
  {
   "id": "B13_2",
@@ -4003,15 +4033,15 @@
  },
  {
   "id": "B13_7",
-  "nom": "Can Cotesta",
-  "graf": "Can Cotesta",
+  "nom": "Can Cotesti",
+  "graf": "Câ Cotesti",
   "tipus": "possessió",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Can Corista",
-  "municipi": "Alcúdia",
-  "sim": 0.84,
-  "km": 6.92
+  "decision": "probable",
+  "ngib": "Can Conquestí",
+  "municipi": "Pollença",
+  "sim": 0.83,
+  "km": 0.57
  },
  {
   "id": "B13_8",
@@ -4027,27 +4057,28 @@
  },
  {
   "id": "B13_9",
-  "nom": "Can Gratullas",
-  "graf": "Can Gratullas",
+  "nom": "Can Gatullas",
+  "graf": "Câ Gatullas",
   "tipus": "possessió",
   "dubte": false,
   "decision": "suggerit",
   "ngib": "Can Gatzoll",
   "municipi": "Alcúdia",
-  "sim": 0.78,
+  "sim": 0.82,
   "km": 5.36
  },
  {
   "id": "B13_10",
   "nom": "Can Llopart",
-  "graf": "Can Llopart",
+  "graf": "Câ Llôpart",
   "tipus": "possessió",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Coll de Can Llompart",
+  "decision": "confirmat",
+  "ngib": "Can Llompart de Dalt",
   "municipi": "Pollença",
   "sim": 0.79,
-  "km": 0.69
+  "km": 0.38,
+  "rev": "vision"
  },
  {
   "id": "B13_11",
@@ -4065,26 +4096,28 @@
  {
   "id": "B13_12",
   "nom": "Can Sureda",
-  "graf": "Can Sureda",
+  "graf": "Câ Sureda",
   "tipus": "possessió",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Can Sarrieta",
-  "municipi": "Alcúdia",
-  "sim": 0.87,
-  "km": 5.88
+  "decision": "confirmat",
+  "ngib": "Can Sureda de Dalt",
+  "municipi": "Pollença",
+  "sim": 0.8,
+  "km": 1.53,
+  "rev": "vision"
  },
  {
   "id": "B13_13",
   "nom": "Can Sureda",
-  "graf": "Can Sureda",
+  "graf": "Câ Sureda",
   "tipus": "possessió",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Can Sureda",
-  "municipi": "Alcúdia",
-  "sim": 1.0,
-  "km": null
+  "decision": "confirmat",
+  "ngib": "Can Sureda de Baix",
+  "municipi": "Pollença",
+  "sim": 0.8,
+  "km": 0.84,
+  "rev": "vision"
  },
  {
   "id": "B13_14",
@@ -4136,15 +4169,16 @@
  },
  {
   "id": "B13_18",
-  "nom": "Can Flama",
-  "graf": "Can Flama",
+  "nom": "Can Fava",
+  "graf": "Câ Fava",
   "tipus": "possessió",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Can Fava",
   "municipi": "Pollença",
-  "sim": 0.82,
-  "km": 1.57
+  "sim": 1.0,
+  "km": 1.57,
+  "rev": "vision"
  },
  {
   "id": "B13_19",
@@ -4176,11 +4210,12 @@
   "graf": "Subac",
   "tipus": "altre",
   "dubte": false,
-  "decision": "posicional",
+  "decision": "confirmat",
   "ngib": "s'Obac",
   "municipi": "sa Pobla",
   "sim": 0.67,
-  "km": 0.89
+  "km": 0.89,
+  "rev": "vision"
  },
  {
   "id": "B13_22",
@@ -4256,14 +4291,14 @@
  },
  {
   "id": "B13_28",
-  "nom": "Son Pos d'en Llebra",
-  "graf": "Son Pos d'en Llebra",
+  "nom": "Son Pos dl Llebra",
+  "graf": "Sô Pôs dl Llebra",
   "tipus": "possessió",
   "dubte": false,
   "decision": "posicional",
   "ngib": "Son Cebrià",
   "municipi": "sa Pobla",
-  "sim": 0.67,
+  "sim": 0.59,
   "km": 0.22
  },
  {
@@ -4328,15 +4363,15 @@
  },
  {
   "id": "B14_1",
-  "nom": "Torrent den Burgues",
-  "graf": "Torrent den Burgues",
-  "tipus": "altre",
+  "nom": "Can Porquer",
+  "graf": "Câ Porquer",
+  "tipus": "possessió",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Torrent de Son Brull",
+  "decision": "confirmat",
+  "ngib": "Can Porquer",
   "municipi": "Pollença",
-  "sim": 0.75,
-  "km": 2.26
+  "sim": 1.0,
+  "km": 1.03
  },
  {
   "id": "B14_2",
@@ -4436,15 +4471,16 @@
  },
  {
   "id": "B14_10",
-  "nom": "Son Xenet",
-  "graf": "Son Xenet",
+  "nom": "Son Xenét",
+  "graf": "Sô Xenét",
   "tipus": "possessió",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Son Vent",
-  "municipi": "sa Pobla",
-  "sim": 0.82,
-  "km": 7.34
+  "decision": "confirmat",
+  "ngib": "Can Xanet",
+  "municipi": "Alcúdia",
+  "sim": 0.67,
+  "km": 0.19,
+  "rev": "vision"
  },
  {
   "id": "B14_11",
@@ -4452,23 +4488,25 @@
   "graf": "Vertayent",
   "tipus": "altre",
   "dubte": false,
-  "decision": "posicional",
+  "decision": "confirmat",
   "ngib": "Vertaient Gran",
   "municipi": "Alcúdia",
   "sim": 0.7,
-  "km": 0.49
+  "km": 0.49,
+  "rev": "vision"
  },
  {
   "id": "B14_12",
-  "nom": "Estany Mayor",
-  "graf": "Estany Mayor",
-  "tipus": "hidrònim",
+  "nom": "Estaqe Mayor",
+  "graf": "Estâqe Mayor",
+  "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Estany d'en Mama",
-  "municipi": "Muro",
-  "sim": 0.79,
-  "km": 3.61
+  "decision": "confirmat",
+  "ngib": "Estany Gran",
+  "municipi": "Alcúdia",
+  "sim": 0.52,
+  "km": 2.23,
+  "rev": "vision"
  },
  {
   "id": "B14_13",
@@ -4520,15 +4558,16 @@
  },
  {
   "id": "B14_17",
-  "nom": "Cnesiona",
-  "graf": "Cnesiona",
+  "nom": "C. ne Siona",
+  "graf": "C. ne Siona",
   "tipus": "altre",
   "dubte": false,
-  "decision": "posicional",
+  "decision": "confirmat",
   "ngib": "Ca na Ciona",
   "municipi": "Alcúdia",
-  "sim": 0.62,
-  "km": 0.92
+  "sim": 0.67,
+  "km": 0.92,
+  "rev": "vision"
  },
  {
   "id": "B14_18",
@@ -4556,9 +4595,9 @@
  },
  {
   "id": "B15_1",
-  "nom": "Fuente principal",
-  "graf": "Fuente principal",
-  "tipus": "hidrònim",
+  "nom": "Fuete principal",
+  "graf": "Fuête principal",
+  "tipus": "altre",
   "dubte": false,
   "decision": "sense",
   "ngib": null,
@@ -4580,14 +4619,14 @@
  },
  {
   "id": "B15_3",
-  "nom": "Illa Freda",
-  "graf": "Illa Freda",
-  "tipus": "costa",
+  "nom": "I. Freda",
+  "graf": "I. Freda",
+  "tipus": "altre",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
+  "decision": "suggerit",
+  "ngib": "na Freda",
+  "municipi": "Puigpunyent",
+  "sim": 1.0,
   "km": null
  },
  {
@@ -4628,15 +4667,15 @@
  },
  {
   "id": "B15_7",
-  "nom": "Cala Bona",
-  "graf": "Cala Bona",
+  "nom": "Cala Borri",
+  "graf": "Cala Borri",
   "tipus": "costa",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Coma Bona",
-  "municipi": "Sóller",
-  "sim": 0.79,
-  "km": 11.64
+  "decision": "sense",
+  "ngib": null,
+  "municipi": null,
+  "sim": 0.0,
+  "km": null
  },
  {
   "id": "B15_8",
@@ -4712,9 +4751,9 @@
  },
  {
   "id": "B15_14",
-  "nom": "Penal del Romani",
-  "graf": "Penal del Romani",
-  "tipus": "orònim",
+  "nom": "Peñal del romani",
+  "graf": "Peñal del romani",
+  "tipus": "altre",
   "dubte": false,
   "decision": "suggerit",
   "ngib": "Penyal de na Roja",
@@ -4748,20 +4787,21 @@
  },
  {
   "id": "B15_17",
-  "nom": "Piedra de las Naves",
-  "graf": "Piedra de las Naves",
+  "nom": "Piedra del ase",
+  "graf": "Piedra del ase",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "sa Pera de s'Ase",
   "municipi": "Banyalbufar",
-  "sim": 0.7,
-  "km": 0.65
+  "sim": 0.9,
+  "km": 0.65,
+  "rev": "vision"
  },
  {
   "id": "B16_1",
   "nom": "Son Seguer",
-  "graf": "Son Seguer",
+  "graf": "Sô Seguer",
   "tipus": "possessió",
   "dubte": false,
   "decision": "suggerit",
@@ -4773,7 +4813,7 @@
  {
   "id": "B16_2",
   "nom": "Sa Marti",
-  "graf": "Sa Marti",
+  "graf": "Sâ Marti",
   "tipus": "altre",
   "dubte": false,
   "decision": "suggerit",
@@ -4797,7 +4837,7 @@
  {
   "id": "B16_4",
   "nom": "Can Cap pelat",
-  "graf": "Can Cap pelat",
+  "graf": "Câ Cap pelat",
   "tipus": "possessió",
   "dubte": false,
   "decision": "suggerit",
@@ -4821,7 +4861,7 @@
  {
   "id": "B16_6",
   "nom": "Son Fava",
-  "graf": "Son Fava",
+  "graf": "Sô Fava",
   "tipus": "possessió",
   "dubte": false,
   "decision": "suggerit",
@@ -4893,7 +4933,7 @@
  {
   "id": "B16_12",
   "nom": "Son Carne",
-  "graf": "Son Carne",
+  "graf": "Sô Carne",
   "tipus": "possessió",
   "dubte": false,
   "decision": "suggerit",
@@ -4929,14 +4969,15 @@
  {
   "id": "B16_15",
   "nom": "Son Ciurana",
-  "graf": "Son Ciurana",
+  "graf": "Sô Ciurana",
   "tipus": "possessió",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Son Siurana de Baix",
   "municipi": "Alcúdia",
   "sim": 0.75,
-  "km": 1.22
+  "km": 1.22,
+  "rev": "vision"
  },
  {
   "id": "B16_16",
@@ -5073,15 +5114,15 @@
  },
  {
   "id": "B16_27",
-  "nom": "Eanas",
-  "graf": "Eanas",
+  "nom": "Puntas",
+  "graf": "Puntas",
   "tipus": "altre",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
-  "km": null
+  "decision": "confirmat",
+  "ngib": "ses Puntes",
+  "municipi": "Muro",
+  "sim": 0.92,
+  "km": 0.76
  },
  {
   "id": "B16_28",
@@ -5110,15 +5151,16 @@
  },
  {
   "id": "B16_30",
-  "nom": "T. de Son Garces",
-  "graf": "T. de Son Garces",
+  "nom": "T. Rfl. Garces",
+  "graf": "T. Rfl. Garces",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Son Marc",
-  "municipi": "sa Pobla",
-  "sim": 0.7,
-  "km": 1.38
+  "decision": "confirmat",
+  "ngib": "Torrent des Rafal Garcès",
+  "municipi": "Sencelles",
+  "sim": 0.76,
+  "km": 13.52,
+  "rev": "vision"
  },
  {
   "id": "B16_31",
@@ -5184,7 +5226,7 @@
  {
   "id": "B17_1",
   "nom": "Coma de Barruga",
-  "graf": "Coma de Barruga",
+  "graf": "Coma dê Barruga",
   "tipus": "altre",
   "dubte": false,
   "decision": "suggerit",
@@ -5291,27 +5333,28 @@
  },
  {
   "id": "B17_10",
-  "nom": "Murabona",
-  "graf": "Murabona",
+  "nom": "Mirabona",
+  "graf": "Mirabona",
   "tipus": "altre",
   "dubte": false,
-  "decision": "posicional",
-  "ngib": "sa Regana",
-  "municipi": "Selva",
-  "sim": 0.57,
-  "km": 0.95
+  "decision": "sense",
+  "ngib": null,
+  "municipi": null,
+  "sim": 0.0,
+  "km": null
  },
  {
   "id": "B17_11",
-  "nom": "Biniauri",
-  "graf": "Biniauri",
+  "nom": "Binixiri",
+  "graf": "Binixiri",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Biniarroi",
-  "municipi": "Mancor de la Vall",
-  "sim": 0.92,
-  "km": 6.82
+  "decision": "confirmat",
+  "ngib": "Binixiri",
+  "municipi": "Selva",
+  "sim": 1.0,
+  "km": 1.02,
+  "rev": "vision"
  },
  {
   "id": "B17_12",
@@ -5368,11 +5411,12 @@
   "graf": "Sobias",
   "tipus": "altre",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
-  "km": null
+  "decision": "confirmat",
+  "ngib": "Subies",
+  "municipi": "Selva",
+  "sim": 0.67,
+  "km": 2.68,
+  "rev": "vision"
  },
  {
   "id": "B17_17",
@@ -5426,15 +5470,15 @@
  },
  {
   "id": "B17_21",
-  "nom": "Son Alcari",
-  "graf": "Son Alcari",
-  "tipus": "possessió",
+  "nom": "Alcaria",
+  "graf": "Alcaria",
+  "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Son Catlar",
-  "municipi": "Inca",
-  "sim": 0.8,
-  "km": 5.38
+  "decision": "posicional",
+  "ngib": "s'Alqueria",
+  "municipi": "Campanet",
+  "sim": 0.67,
+  "km": 0.54
  },
  {
   "id": "B17_22",
@@ -5486,15 +5530,16 @@
  },
  {
   "id": "B17_26",
-  "nom": "Cap d'En Soldar",
-  "graf": "Cap d'En Soldar",
+  "nom": "Cap d. Soldat",
+  "graf": "Câp d. Soldat",
   "tipus": "costa",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Camp des Soldat",
   "municipi": "Campanet",
-  "sim": 0.86,
-  "km": 2.62
+  "sim": 0.95,
+  "km": 2.62,
+  "rev": "vision"
  },
  {
   "id": "B17_27",
@@ -5522,8 +5567,8 @@
  },
  {
   "id": "B17_29",
-  "nom": "Son Pere Janet",
-  "graf": "Son Pere Janet",
+  "nom": "Son Pere Janét",
+  "graf": "Sô Pere Janét",
   "tipus": "possessió",
   "dubte": false,
   "decision": "suggerit",
@@ -5558,15 +5603,15 @@
  },
  {
   "id": "B17_32",
-  "nom": "Son Pos d'En Lleb.",
-  "graf": "Son Pos d'En Lleb.",
+  "nom": "Son Pos dl Llebra",
+  "graf": "Sô Pos dl Llebra",
   "tipus": "possessió",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Pous de Son Fillol",
-  "municipi": "Inca",
-  "sim": 0.78,
-  "km": 7.47
+  "decision": "posicional",
+  "ngib": "Son Cebrià",
+  "municipi": "sa Pobla",
+  "sim": 0.59,
+  "km": 0.77
  },
  {
   "id": "B17_33",
@@ -5654,15 +5699,16 @@
  },
  {
   "id": "B17_40",
-  "nom": "Terme de Búger",
-  "graf": "Terme de Búger",
+  "nom": "T. d Bujer",
+  "graf": "T. d Bujer",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Torrent de Búger",
   "municipi": "sa Pobla",
-  "sim": 0.78,
-  "km": 5.22
+  "sim": 0.6,
+  "km": 5.22,
+  "rev": "vision"
  },
  {
   "id": "B17_41",
@@ -5707,11 +5753,12 @@
   "graf": "Es Gorc",
   "tipus": "altre",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
-  "km": null
+  "decision": "confirmat",
+  "ngib": "Gorg Blau",
+  "municipi": "Escorca",
+  "sim": 0.46,
+  "km": 0.28,
+  "rev": "vision"
  },
  {
   "id": "B18_3",
@@ -5767,11 +5814,12 @@
   "graf": "Cuba",
   "tipus": "altre",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
-  "km": null
+  "decision": "confirmat",
+  "ngib": "Pla de Cúber",
+  "municipi": "Escorca",
+  "sim": 0.62,
+  "km": 1.84,
+  "rev": "vision"
  },
  {
   "id": "B18_8",
@@ -5895,15 +5943,16 @@
  },
  {
   "id": "B18_18",
-  "nom": "Oli Clar",
-  "graf": "Oli Clar",
+  "nom": "Oliclar",
+  "graf": "Oliclar",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Olivar Clar",
-  "municipi": "Fornalutx",
-  "sim": 0.85,
-  "km": 7.81
+  "decision": "confirmat",
+  "ngib": "Oliclar",
+  "municipi": "Alaró",
+  "sim": 1.0,
+  "km": 0.45,
+  "rev": "vision"
  },
  {
   "id": "B18_19",
@@ -5955,15 +6004,16 @@
  },
  {
   "id": "B18_23",
-  "nom": "Sollerich Marques",
-  "graf": "Sollerich Marques",
+  "nom": "Sollerich Marq.",
+  "graf": "Sollerich Marq.",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Passadores de Solleric",
+  "decision": "confirmat",
+  "ngib": "Solleric",
   "municipi": "Alaró",
-  "sim": 0.74,
-  "km": 1.96
+  "sim": 0.73,
+  "km": 1.55,
+  "rev": "vision"
  },
  {
   "id": "B18_24",
@@ -5991,15 +6041,15 @@
  },
  {
   "id": "B18_26",
-  "nom": "Sa Cadeneta",
-  "graf": "Sa Cadeneta",
+  "nom": "Eucadeneta",
+  "graf": "Eucadeneta",
   "tipus": "altre",
   "dubte": false,
   "decision": "suggerit",
-  "ngib": "s'Alcadena",
-  "municipi": "Alaró",
-  "sim": 0.75,
-  "km": 2.69
+  "ngib": "s'Esqueneta",
+  "municipi": "Escorca",
+  "sim": 0.77,
+  "km": 11.75
  },
  {
   "id": "B18_27",
@@ -6007,23 +6057,25 @@
   "graf": "Santa Lucia",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Puig de Santa Llúcia",
+  "decision": "confirmat",
+  "ngib": "Capella de Santa Llucia",
   "municipi": "Mancor de la Vall",
-  "sim": 0.79,
-  "km": 0.42
+  "sim": 0.73,
+  "km": 0.33,
+  "rev": "vision"
  },
  {
   "id": "B18_28",
-  "nom": "Sa Cadena",
-  "graf": "Sa Cadena",
+  "nom": "Eucadene",
+  "graf": "Eucadene",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "s'Alcadena",
   "municipi": "Alaró",
-  "sim": 0.86,
-  "km": 1.79
+  "sim": 0.62,
+  "km": 1.79,
+  "rev": "vision"
  },
  {
   "id": "B18_29",
@@ -6100,14 +6152,15 @@
  {
   "id": "B18_35",
   "nom": "Son Fuster",
-  "graf": "Son Fuster",
+  "graf": "Sô Fuster",
   "tipus": "possessió",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Son Fuster",
-  "municipi": "Palma",
-  "sim": 1.0,
-  "km": null
+  "decision": "confirmat",
+  "ngib": "Son Fuster de Dalt",
+  "municipi": "Alaró",
+  "sim": 0.8,
+  "km": 0.81,
+  "rev": "vision"
  },
  {
   "id": "B18_36",
@@ -6115,11 +6168,12 @@
   "graf": "Estorell",
   "tipus": "altre",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
-  "km": null
+  "decision": "confirmat",
+  "ngib": "s'Astorell Vell",
+  "municipi": "Lloseta",
+  "sim": 0.67,
+  "km": 0.92,
+  "rev": "vision"
  },
  {
   "id": "B18_37",
@@ -6319,11 +6373,12 @@
   "graf": "Singla de Nalit",
   "tipus": "altre",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
-  "km": null
+  "decision": "confirmat",
+  "ngib": "Cingle de n'Alis",
+  "municipi": "Artà",
+  "sim": 0.64,
+  "km": 2.38,
+  "rev": "vision"
  },
  {
   "id": "B19_4",
@@ -6355,22 +6410,23 @@
   "graf": "Font Salada",
   "tipus": "hidrònim",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Font de Fontsalada",
   "municipi": "Artà",
   "sim": 0.85,
-  "km": 2.72
+  "km": 2.72,
+  "rev": "vision"
  },
  {
   "id": "B19_7",
-  "nom": "Torre la Falconera",
-  "graf": "Torre la Falconera",
+  "nom": "Tor. la Falconera",
+  "graf": "Tor. la Falconera",
   "tipus": "altre",
   "dubte": false,
   "decision": "suggerit",
   "ngib": "sa Falconera",
   "municipi": "Artà",
-  "sim": 0.77,
+  "sim": 0.82,
   "km": 0.95
  },
  {
@@ -6387,15 +6443,15 @@
  },
  {
   "id": "B19_9",
-  "nom": "Faralló de Marsoch",
-  "graf": "Faralló de Marsoch",
+  "nom": "Farayó de Marsoch",
+  "graf": "Farayó de Marsoch",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Faralló des Moro",
-  "municipi": "Capdepera",
-  "sim": 0.84,
-  "km": 7.6
+  "decision": "sense",
+  "ngib": null,
+  "municipi": null,
+  "sim": 0.0,
+  "km": null
  },
  {
   "id": "B19_10",
@@ -6476,11 +6532,12 @@
   "graf": "Cambres",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "ses Cambres",
   "municipi": "Sóller",
   "sim": 1.0,
-  "km": 6.65
+  "km": 6.65,
+  "rev": "vision"
  },
  {
   "id": "B20_3",
@@ -6509,7 +6566,7 @@
  {
   "id": "B20_5",
   "nom": "Son Bleda",
-  "graf": "Son Bleda",
+  "graf": "Sô Bleda",
   "tipus": "possessió",
   "dubte": false,
   "decision": "suggerit",
@@ -6605,7 +6662,7 @@
  {
   "id": "B20_13",
   "nom": "Can Terreta",
-  "graf": "Can Terreta",
+  "graf": "Câ Terreta",
   "tipus": "possessió",
   "dubte": false,
   "decision": "suggerit",
@@ -6616,15 +6673,15 @@
  },
  {
   "id": "B20_14",
-  "nom": "Can Cristià",
-  "graf": "Can Cristià",
+  "nom": "Can Christiá",
+  "graf": "Câ Christiá",
   "tipus": "possessió",
   "dubte": false,
   "decision": "suggerit",
-  "ngib": "Can Goris",
-  "municipi": "Valldemossa",
-  "sim": 0.81,
-  "km": 8.85
+  "ngib": "Cas Cristino",
+  "municipi": "Bunyola",
+  "sim": 0.8,
+  "km": 7.15
  },
  {
   "id": "B20_15",
@@ -6762,15 +6819,15 @@
  },
  {
   "id": "B20_26",
-  "nom": "Sant dels Monjos",
-  "graf": "Sant dels Monjos",
-  "tipus": "altre",
+  "nom": "Font dels Monjos",
+  "graf": "Font dels Monjos",
+  "tipus": "hidrònim",
   "dubte": false,
-  "decision": "sense",
-  "ngib": null,
-  "municipi": null,
-  "sim": 0.0,
-  "km": null
+  "decision": "suggerit",
+  "ngib": "Font de na Mas",
+  "municipi": "Valldemossa",
+  "sim": 0.8,
+  "km": 4.09
  },
  {
   "id": "B20_27",
@@ -12741,11 +12798,12 @@
   "graf": "Reco",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Reco",
   "municipi": "Artà",
   "sim": 1.0,
-  "km": 6.65
+  "km": 6.65,
+  "rev": "vision"
  },
  {
   "id": "B36_6",
@@ -15543,11 +15601,12 @@
   "graf": "Riera",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "en Riera",
   "municipi": "Palma",
   "sim": 1.0,
-  "km": 5.86
+  "km": 5.86,
+  "rev": "vision"
  },
  {
   "id": "B42_39",
@@ -25402,11 +25461,12 @@
   "graf": "La Mola",
   "tipus": "altre",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Mola",
   "municipi": "Felanitx",
   "sim": 1.0,
-  "km": 7.71
+  "km": 7.71,
+  "rev": "vision"
  },
  {
   "id": "B68_33",
@@ -25835,11 +25895,12 @@
   "graf": "Son Caldes",
   "tipus": "possessió",
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "ngib": "Son Calders",
   "municipi": "Llucmajor",
   "sim": 0.95,
-  "km": 6.22
+  "km": 6.22,
+  "rev": "vision"
  },
  {
   "id": "B70_9",
@@ -27138,11 +27199,12 @@
   "graf": "Pou Salat",
   "tipus": "hidrònim",
   "dubte": false,
-  "decision": "suggerit",
-  "ngib": "Pou Salat",
-  "municipi": "Muro",
+  "decision": "confirmat",
+  "ngib": "es Pou Salat",
+  "municipi": "Santanyí",
   "sim": 1.0,
-  "km": null
+  "km": 25.97,
+  "rev": "vision"
  },
  {
   "id": "B73_28",
