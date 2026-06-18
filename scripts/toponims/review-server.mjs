@@ -22,6 +22,8 @@ const readJSON = (p, d) => { try { return JSON.parse(fs.readFileSync(p, 'utf8'))
 const writeJSON = (p, o) => fs.writeFileSync(p, JSON.stringify(o, null, 1));
 
 const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</title>
+<link rel=stylesheet href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
  :root{--ink:#2b2620;--soft:#7a6f60;--line:#e4dccf;--bg:#f6f1e7}
  *{box-sizing:border-box} body{margin:0;font:15px/1.4 system-ui,sans-serif;color:var(--ink);background:var(--bg)}
@@ -30,7 +32,8 @@ const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</ti
  .bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;width:200px}
  .bar>i{display:block;height:100%;background:#2f7d4f}
  select{padding:.3rem .5rem;border:1px solid var(--line);border-radius:6px;background:#fff}
- main{max-width:1000px;margin:1.2rem auto;padding:0 1rem;display:grid;grid-template-columns:1.3fr 1fr;gap:1.4rem}
+ main{max-width:1280px;margin:1.2rem auto;padding:0 1rem;display:grid;grid-template-columns:1.35fr 1fr;gap:1.4rem;align-items:start}
+ #app{min-width:0} #map{height:80vh;position:sticky;top:64px;border:1px solid var(--line);border-radius:8px;background:#eee}
  .crop{width:100%;border:1px solid var(--line);border-radius:8px;background:#fff}
  .read{font-size:1.5rem;font-weight:700} .read .q{color:var(--soft);font-weight:400;font-size:1rem}
  .meta{color:var(--soft);margin:.2rem 0 1rem} .badge{padding:.1rem .45rem;border-radius:999px;font-size:.78rem;font-weight:600}
@@ -53,13 +56,14 @@ const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</ti
   <option value=all>tots</option><option value=suggerit>suggerit</option>
   <option value=posicional>posicional</option><option value=sense>sense</option></select></label>
 </header>
-<main id=app></main>
+<main><div id=app></div><div id=map></div></main>
 <script>
 let DATA=[], STATE={picks:{},reviewed:{}}, queue=[], i=0;
 const $=s=>document.querySelector(s);
 async function load(){
   DATA=(await (await fetch('/data')).json()).items;
   STATE=await (await fetch('/state')).json();
+  initMap();
   rebuild();
 }
 function rebuild(){
@@ -72,7 +76,7 @@ function render(){
   $('#prog').textContent=\`revisats \${done} / \${tot} · confirmats \${conf} · cua \${queue.length}\`;
   $('#progbar').style.width=(100*done/tot)+'%';
   const app=$('#app');
-  if(!queue.length){app.innerHTML='<div class=done>✓ Res més a la cua amb aquest filtre.<br>Quan acabis: <code>npm run toponims:ngib-match</code></div>';return;}
+  if(!queue.length){app.innerHTML='<div class=done>✓ Res més a la cua amb aquest filtre.<br>Quan acabis: <code>npm run toponims:ngib-match</code></div>';clearMap();return;}
   const d=queue[i];
   const cands=d.candidates.map((c,n)=>{
     const rec=(c.grafia===d.ngib)?' rec':'';
@@ -97,6 +101,17 @@ function render(){
    </div>
    <div class=hint><kbd>1</kbd>–<kbd>6</kbd> tria candidat · <kbd>0</kbd> cap match · <kbd>S</kbd>/<kbd>espai</kbd> saltar · <kbd>←</kbd> enrere</div>\`;
   app.querySelectorAll('.cand').forEach(b=>b.onclick=()=>pick(b.dataset.g));
+  updateMap(d);
+}
+let map,mlayer;
+function initMap(){ if(map)return; map=L.map('map'); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map); mlayer=L.layerGroup().addTo(map); map.setView([39.6,3.0],9); }
+function clearMap(){ if(mlayer)mlayer.clearLayers(); }
+function updateMap(d){
+  if(!map)return; map.invalidateSize(); mlayer.clearLayers(); const pts=[];
+  if(d.lat!=null){ L.circleMarker([d.lat,d.lon],{radius:8,color:'#c00',weight:2,fillColor:'#c00',fillOpacity:.45}).bindTooltip('on cau la georef (~1 km)').addTo(mlayer); pts.push([d.lat,d.lon]); }
+  (d.candidates||[]).forEach((c,n)=>{ if(c.lat!=null){ const mk=L.circleMarker([c.lat,c.lon],{radius:7,color:'#1d6b4f',weight:2,fillColor:'#37a37e',fillOpacity:.9});
+    mk.bindTooltip('<b>'+(n+1)+'. '+esc(c.grafia)+'</b><br>'+esc(c.municipi||'?')+' · '+c.km+' km',{direction:'top'}); mk.on('click',()=>pick(c.grafia)); mk.addTo(mlayer); pts.push([c.lat,c.lon]); }});
+  if(pts.length) map.fitBounds(pts,{padding:[35,35],maxZoom:15});
 }
 const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function curGraf(){ const el=$('#graf'),d=queue[i]; if(!el||!d)return null; const v=el.value.trim(); return (v&&v!==d.graf)?v:null; }

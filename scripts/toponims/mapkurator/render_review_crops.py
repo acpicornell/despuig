@@ -23,6 +23,27 @@ matches = json.load(open(f"{ROOT}/data/toponims/ngib/matches.json"))
 recheck = {r["id"]: r for r in json.load(open(f"{ROOT}/data/toponims/b/recheck.json"))}
 master = Image.open(f"{ROOT}/data/jpg/despuig-1785-original.jpg").convert("RGB")
 
+# geo: toponym projected lon/lat + each candidate's real NGIB position (for the modern map)
+import re
+from collections import defaultdict
+from unidecode import unidecode
+topll = {t["id"]: (t.get("lon"), t.get("lat"))
+         for t in json.load(open(f"{ROOT}/data/toponims/toponims.json"))["toponims"]}
+llocs = json.load(open(f"{ROOT}/data/toponims/ngib/llocs.json"))
+core = lambda s: re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]", " ", unidecode((s or "").lower()))).strip()
+by_name = defaultdict(list)
+for g in llocs:
+    by_name[core(g["grafia"])].append(g)
+
+
+def cand_ll(grafia, lon, lat):
+    cs = by_name.get(core(grafia))
+    if not cs or lon is None:
+        return None, None
+    g = min(cs, key=lambda g: (g["lng"] - lon) ** 2 + (g["lat"] - lat) ** 2)
+    return round(g["lng"], 5), round(g["lat"], 5)
+
+
 items = []
 for m in matches:
     if m["decision"] not in WANT or m["id"] not in recheck:
@@ -36,12 +57,17 @@ for m in matches:
     d.line((cx, cy - 16, cx, cy + 16), fill=(220, 0, 0), width=2)
     crop = crop.resize((int(WW * SCALE), int(WH * SCALE)), Image.LANCZOS)
     crop.save(f"{CROPS}/{m['id']}.jpg", quality=82)
+    lon, lat = topll.get(m["id"], (None, None))
+    cands = []
+    for c in r.get("candidates", [])[:6]:
+        clon, clat = cand_ll(c["grafia"], lon, lat)
+        cands.append({"grafia": c["grafia"], "municipi": c["municipi"],
+                      "km": c["km"], "sim": c["sim"], "lon": clon, "lat": clat})
     items.append({
         "id": m["id"], "graf": m["graf"], "nom": m["nom"], "tipus": m["tipus"],
-        "decision": m["decision"], "x": x, "y": y,
+        "decision": m["decision"], "x": x, "y": y, "lon": lon, "lat": lat,
         "ngib": m.get("ngib"), "sim": m.get("sim"), "km": m.get("km"),
-        "candidates": [{"grafia": c["grafia"], "municipi": c["municipi"],
-                        "km": c["km"], "sim": c["sim"]} for c in r.get("candidates", [])[:6]],
+        "candidates": cands,
     })
 
 json.dump({"count": len(items), "items": items},
