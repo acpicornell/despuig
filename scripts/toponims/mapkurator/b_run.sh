@@ -10,6 +10,7 @@ WF="$1"
 
 nix-shell scripts/toponims/shell.nix --run "
   python3 scripts/toponims/mapkurator/b_assemble.py '$WF' &&   # -> data/toponims/toponims.json
+  python3 scripts/toponims/mapkurator/graf_diplomatic.py &&    # graf -> diplomatic (Sô/Câ); nom stays modern
   python3 scripts/toponims/mapkurator/georef.py &&             # adds lon/lat (exact-dot GCPs)
   python3 scripts/toponims/mapkurator/georef_bootstrap.py &&   # densifies the georeference
   python3 scripts/toponims/ngib_match.py                       # -> data/toponims/ngib/matches.json

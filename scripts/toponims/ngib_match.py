@@ -233,12 +233,16 @@ for t, pm in zip(toponims, proj):
         "km": (round(chosen[2] / 1000, 2) if chosen and chosen[2] is not None else None),
     })
 
-# ---------- vision-recheck overrides (strategy 4, durable) ----------
-# Decisions from the vision pass (reading the real engraving crop) live in a
-# versioned file and are applied here, so re-running the pipeline never loses them.
-# Format: {toponym id: chosen NGIB grafia}. Each picked id is promoted to 'confirmat'
-# against the nearest NGIB entry of that name.
+# ---------- recheck / curation overrides (strategy 4, durable) ----------
+# Decisions from the vision recheck and the hand-curation tool live in a versioned
+# file ({toponym id: chosen NGIB grafia}) and are applied here. A HAND-curated pick
+# (logged as 'pick' in review-reviewed.json) is a human judgement on a 1785->modern
+# mapping, so it lands as 'probable'; the automatic recheck/triage picks land as
+# 'confirmat'.
 picks_file = ROOT / PICKS_REL
+reviewed_file = ROOT / "data/toponims/review-reviewed.json"
+manual = {k for k, v in json.loads(reviewed_file.read_text()).items() if v == "pick"} \
+    if reviewed_file.exists() else set()
 if picks_file.exists():
     picks = json.loads(picks_file.read_text())
     proj_by_id = {t["id"]: pm for t, pm in zip(toponims, proj)}
@@ -256,8 +260,11 @@ if picks_file.exists():
         pm = proj_by_id[m["id"]]
         gi = min(cand, key=lambda j: math.hypot(*(ngib_m[j] - pm)))
         g = ngib[gi]
-        m.update(decision="confirmat", ngib=g["grafia"], municipi=g["municipi"],
-                 km=round(math.hypot(*(ngib_m[gi] - pm)) / 1000, 2), rev="vision",
+        hand = m["id"] in manual
+        m.update(decision="probable" if hand else "confirmat",
+                 ngib=g["grafia"], municipi=g["municipi"],
+                 km=round(math.hypot(*(ngib_m[gi] - pm)) / 1000, 2),
+                 rev="curat" if hand else "vision",
                  sim=round(max(similarity(m["nom"], g["grafia"]),
                                similarity(m.get("graf") or "", g["grafia"])), 2))
         applied += 1

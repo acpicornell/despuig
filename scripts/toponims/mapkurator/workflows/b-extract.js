@@ -36,7 +36,7 @@ Each red box in the image is a detected word; its number is printed at its top-l
 Your job: GROUP the boxes into complete toponyms and READ each one correctly from the engraving.
 - A toponym may span several boxes ("Sô"+"Toni"+"Coll" = one name "Son Toni Coll"); group their numbers.
 - Two adjacent boxes may be two different names ("Sô Maig" vs a separate "Casanova") — keep them apart.
-- Read the ACTUAL engraving, not the machine hint; expand period forms (Sô→Son, Câ→Can, Pta→Punta, Rfl→Rafal).
+- Read the ACTUAL engraving, not the machine hint. Transcribe DIPLOMATICALLY — keep the abbreviation marks exactly as engraved (Sô, Câ, Sâ, circumflex vowels, Pta., Rfl.); do NOT modernize or expand them (the modern form is derived later as \`nom\`).
 - Coastal/feature names count too (Cala, Punta, Cap, Illa, Torrent, Puig…). Town names in CAPITALS are nuclei — include them.
 - Ignore boxes that are pure noise/illegible; do NOT invent names. Some windows are sparse — that's fine.
 
