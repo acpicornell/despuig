@@ -58,7 +58,7 @@ nix-shell scripts/toponims/mapkurator/shell.nix \
 ```
 
 `detections.json` is the handoff to the rest of the chain — see the
-[parent README](../README.md) (link → recog → read → clean → table → georef →
+[parent README](../README.md) (b_windows → vision extraction → assemble → georef →
 ngib-match).
 
 **Judge Phase 0:** does it draw boxes around whole words on this 1785 engraving

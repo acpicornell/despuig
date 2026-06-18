@@ -1,22 +1,87 @@
 #!/usr/bin/env python3
 """Assemble the approach-B extraction (window workflow output) into the web/table
-schema, in PARALLEL to the production list (writes to data/toponims/b/toponims.json,
-never touches data/toponims/toponims.json). Reuses to_table's normalisation.
+schema. Self-contained (no dependency on the retired A-path scripts).
 
 Each B toponym carries its box numbers -> position = centroid of those boxes
 (from the per-window box files). Box ownership is unique per window, so dedup is a
-light safety net (same key + same ~cell).
+light safety net (same reading key + same ~cell).
 
     nix-shell scripts/toponims/shell.nix \
         --run "python3 scripts/toponims/mapkurator/b_assemble.py <wf_output.json>"
+
+Writes data/toponims/toponims.json (the production table the web/georef read).
 """
-import json, os, sys
-sys.path.insert(0, os.path.dirname(__file__))
-import to_table as tt
+import json, os, re, sys
+from collections import Counter
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 WIN = os.path.join(ROOT, "data/toponims/mapkurator/b")
-OUT = os.path.join(ROOT, "data/toponims/b/toponims.json")
+OUT = os.environ.get("TOPONIMS_JSON") or os.path.join(ROOT, "data/toponims/toponims.json")
+
+# ---- normalisation (engraving reading -> nom / tipus) ----
+TOWNS = {
+    "palma": "Palma", "capital": "Palma", "inca": "Inca", "calvia": "Calvià",
+    "andraix": "Andratx", "soller": "Sóller", "pollensa": "Pollença",
+    "alcudia": "Alcúdia", "muro": "Muro", "selva": "Selva", "banalbufar": "Banyalbufar",
+    "buñola": "Bunyola", "binisalem": "Binissalem", "sansellas": "Sencelles",
+    "alaro": "Alaró", "san juan": "Sant Joan", "montuiri": "Montuïri",
+    "manacor": "Manacor", "felanitx": "Felanitx", "campos": "Campos",
+    "lluchmajor": "Llucmajor", "porreras": "Porreres", "puebla": "La Puebla (sa Pobla)",
+    "santagni": "Santanyí", "santagn": "Santanyí", "algaida": "Algaida", "petra": "Petra",
+    "espor": "Esporles", "puigpuñent": "Puigpunyent", "puigpunyent": "Puigpunyent",
+    "sineu": "Sineu", "valldemossa": "Valldemossa", "arta": "Artà", "campanet": "Campanet",
+    "marratxi": "Marratxí", "sta maria": "Santa Maria del Camí",
+    "sta margarita": "Santa Margalida",
+}
+NUCLI_EXTRA = {"la calobra", "colonia", "cabrera", "escorca", "caimari", "fornalutx",
+               "biniaraix", "lluc alcari", "lluc", "de lluc", "orient", "biniamar",
+               "llubi", "maria", "consell", "llorito", "deya", "deia", "mancor",
+               "bujer", "vila", "galilea", "establiments", "raxa", "buger"}
+POSSES = ("son", "so", "can", "ca", "casa", "cas", "cal")
+COSTA = ("cala", "calo", "cabo", "cap", "punta", "pta", "illot", "illa", "morro",
+         "playa", "puerto", "port", "carregador", "ensenada", "freu", "escar",
+         "caleta", "estaca", "moll", "muelle", "carrador", "barranc", "sal",
+         "salinas", "estanq")
+ORONIM = ("puig", "coll", "serra", "talaia", "talaya", "mola", "bec", "penyal",
+          "mirador", "atalaya", "monte")
+HIDRO = ("font", "fuente", "pou", "estany", "sinia", "aljub", "cova", "cueva")
+
+
+def deacc(s):
+    for a, b in (("ô", "o"), ("â", "a"), ("î", "i"), ("ê", "e"), ("û", "u")):
+        s = s.replace(a, b)
+    return s
+
+
+def key(s):
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]", " ", deacc((s or "").lower()))).strip()
+
+
+def normalize_nom(text):
+    out = []
+    for i, w in enumerate(text.split()):
+        wl = deacc(w.lower().strip(".,"))
+        if i == 0 and wl in ("sô", "so"):
+            out.append("Son"); continue
+        if i == 0 and wl in ("câ", "ca"):
+            out.append("Can"); continue
+        out.append(deacc(w))
+    return " ".join(out)
+
+
+def tipus_of(k):
+    head = k.split()[0] if k else ""
+    if k in TOWNS or k in NUCLI_EXTRA:
+        return "nucli"
+    if head in POSSES:
+        return "possessió"
+    if head in COSTA or k.startswith("illot"):
+        return "costa"
+    if head in ORONIM:
+        return "orònim"
+    if head in HIDRO:
+        return "hidrònim"
+    return "altre"
 
 
 def main():
@@ -32,23 +97,21 @@ def main():
                 continue
             x = round(sum(p["cx"] for p in pts) / len(pts))
             y = round(sum(p["cy"] for p in pts) / len(pts))
-            k = tt.key(graf)
-            key2 = (k, x // 40, y // 40)
-            if not k or key2 in seen:
+            k = key(graf)
+            cellkey = (k, x // 40, y // 40)
+            if not k or cellkey in seen:
                 continue
-            seen.add(key2)
+            seen.add(cellkey)
             out.append({"id": f"B{win['w']:02d}_{i + 1}", "graf": graf,
-                        "nom": tt.TOWNS.get(k) or tt.normalize_nom(graf),
-                        "tipus": tt.tipus_of(graf, k), "subtile": "",
-                        "x": x, "y": y, "dubte": False})
+                        "nom": TOWNS.get(k) or normalize_nom(graf),
+                        "tipus": tipus_of(k), "subtile": "", "x": x, "y": y, "dubte": False})
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    json.dump({"font": "Topònims del mapa de Despuig — extracció 'approach B' (spotter "
-                       "detecta les caixes; Claude vision agrupa i llegeix per finestra). "
-                       "Pista paral·lela, no toca la llista de producció.",
+    json.dump({"font": "Topònims del mapa de Despuig (1785). El spotter de mapKurator "
+                       "detecta les caixes de paraula; Claude vision les agrupa en "
+                       "topònims i en llegeix la grafia, finestra a finestra.",
                "comptador": {"toponims": len(out)}, "toponims": out},
               open(OUT, "w"), ensure_ascii=False, indent=1)
-    from collections import Counter
-    print(f"B toponyms: {len(out)}  tipus: {dict(Counter(r['tipus'] for r in out))}")
+    print(f"toponyms: {len(out)}  tipus: {dict(Counter(r['tipus'] for r in out))}")
     print(f"✓ {OUT}")
 
 

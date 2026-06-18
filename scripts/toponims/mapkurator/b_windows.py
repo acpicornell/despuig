@@ -23,13 +23,13 @@ from PIL import Image, ImageDraw
 Image.MAX_IMAGE_PIXELS = None
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-OUT = os.path.join(ROOT, os.environ.get("B_OUTDIR", "data/toponims/mapkurator/pilotB"))
+OUT = os.path.join(ROOT, os.environ.get("B_OUTDIR", "data/toponims/mapkurator/b"))
 DIST = 115           # px: boxes within this (chebyshev, centre-to-centre) cluster together
-TARGET = int(os.environ.get("B_TARGET", "38"))   # aim for ~this many boxes per window
+TARGET = int(os.environ.get("B_TARGET", "80"))   # aim for ~this many boxes per window
 MARGIN = 55          # px padding around a window's box extent (context, no clip)
 SCALE = 1.7
-
-AREA = list(map(int, sys.argv[1:5])) if len(sys.argv) >= 5 else [8500, 7000, 12500, 10000]
+# default = whole detection extent; override with argv "x0 y0 x1 y1" for a sub-area
+AREA = list(map(int, sys.argv[1:5])) if len(sys.argv) >= 5 else [330, 470, 18600, 14430]
 
 
 def cluster(boxes):

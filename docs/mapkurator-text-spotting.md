@@ -143,9 +143,9 @@ The only real unknown is whether a detector trained on 19th-c. English Rumsey ma
 
 ## Phase 2 — recognize with Claude (back on the Mac is fine)
 
-1. For each merged polygon, crop and **MESH-rectify** the label upright from its
-   16-point polygon. Implemented in `scripts/toponims/mapkurator/build_recog_montages.py`,
-   which assembles the rectified labels into montages for reading.
+1. *(Superseded — see the "Evolution" note in Pointers.)* The final approach skips
+   per-label rectification: Claude reads whole map **windows** and groups the
+   spotter boxes itself (`b_windows.py` + `workflows/b-extract.js`).
 2. Read each crop with Claude (batch several crops per agent to amortise overhead,
    as learned in the grid pass — ~14k tokens/agent if one-per-agent; batch ~8).
 3. Optional: link adjacent word polygons into multi-word labels
@@ -171,16 +171,18 @@ kills the mutilation and needs no GPU.
 - `scripts/toponims/mapkurator/pretile.mjs` — tiler (master → overlapping patches).
 - `scripts/toponims/mapkurator/merge_detections.py` — merge per-tile polygons to
   master coords + de-overlap → `detections.json`.
-- `scripts/toponims/mapkurator/link_labels.py` — multiword string construction.
-- `scripts/toponims/mapkurator/build_recog_montages.py` — MESH-rectify each label
-  upright into montages for Claude to read (this is what Phase 2 became).
+- `scripts/toponims/mapkurator/b_windows.py` — window the map by whitespace
+  corridors (no name truncated); `workflows/b-extract.js` — Claude reads + groups
+  the boxes per window; `b_assemble.py` — assemble to the table.
 - `scripts/toponims/mapkurator/georef.py` + `georef_bootstrap.py` — georeference
   (exact hand-marked control points; GDAL-style transform + TPS bootstrap).
 - `scripts/toponims/ngib_match.py` — NGIB cross-check (optional enrichment).
-- The old blind-grid pipeline (`subtiles.mjs`, `merge.mjs`, the cell/review/sense
-  tooling) has been **removed** (recoverable in git history) — it is fully superseded.
-- Current data state: ~2,500 toponyms in `data/toponims/toponims.json` from the
-  mapKurator pass.
+- **Evolution:** the original blind-grid cell pipeline was replaced by a
+  mapKurator-style MST linker + per-label OCR, which in turn was replaced by
+  **approach B** — Claude vision groups the spotter boxes and reads them per window
+  (the MST linker's over-/under-merging was the last structural error source). Both
+  earlier paths are removed but recoverable in git history.
+- Current data state: ~2,600 toponyms in `data/toponims/toponims.json`.
 
 ## References
 

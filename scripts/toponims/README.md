@@ -4,32 +4,34 @@ Extracts the place names engraved on the Despuig map, georeferences them, and
 matches them against the **NGIB** gazetteer to feed the web table (`/toponims`,
 which imports `data/toponims/ngib/matches.json`).
 
-> The current pipeline is built on **mapKurator** (GPU text-spotting). An earlier
-> hand-sliced "subtile + vision-AI cell" approach was replaced by it and removed
-> (recoverable in git history). The spotting/detection half lives in
-> [`mapkurator/`](mapkurator/README.md); this README covers the whole chain.
+> **Detection by the mapKurator spotter (GPU); reading+grouping by Claude vision.**
+> The spotter is excellent at *finding* every word box but weak at *recognition*
+> and at *grouping* words into names. So we keep only its word boxes and let Claude
+> vision read the engraving AND group the boxes into toponyms, window by window.
+> This "approach B" replaced an earlier mapKurator-style MST linker + per-label OCR
+> (which over-/under-merged names); that path is removed but in git history. The
+> detection half lives in [`mapkurator/`](mapkurator/README.md).
 
 ## Pipeline (in order)
 
-Everything from the detections onward is one `npm run` per stage. Stages run in a
-Nix shell (no global pip): `mapkurator/shell.nix` has Pillow/shapely;
-`shell.nix` has scipy/rapidfuzz/jellyfish. The `npm` scripts pick the right one.
+Stages run in a Nix shell (no global pip): `mapkurator/shell.nix` has Pillow,
+`shell.nix` has scipy/rapidfuzz/jellyfish. The vision steps are Claude **workflows**
+(launched via the agent, not the CLI) — their scripts are in
+[`mapkurator/workflows/`](mapkurator/workflows/).
 
-| # | `npm run` | Script | In → Out |
-|---|-----------|--------|----------|
-| 1 | *(see [`mapkurator/`](mapkurator/README.md))* | spotter container | scan → `mapkurator/detections.json` (word-level boxes + English OCR) |
-| 2 | `toponims:link` | `mapkurator/link_labels.py` | detections → `mapkurator/labels.json` — joins words into multi-word place names (mapKurator's *multiword string construction*: MST over a height/angle/caps cost, same-line gate) |
-| 3 | `toponims:recog` | `mapkurator/build_recog_montages.py` | labels → `mapkurator/recog/m*.png` — MESH-rectifies each label upright (from its 16-pt polygon) into montages for reading |
-| 4 | *(human/AI OCR)* | — | montages read into `mapkurator/read/m*.json` (Claude vision; the spotter's English OCR is only a low-confidence fallback) |
-| 5 | `toponims:build` | `mapkurator/build_toponims.py` | labels + read → `mapkurator/toponims-final.json` |
-| 6 | `toponims:clean` | `mapkurator/clean_toponims.py` | → `toponims-clean.json` (+ `toponims-rejected.json`) — drops non-toponyms (numbers, single chars, decorative lettering, lone articles) |
-| 7 | `toponims:table` | `mapkurator/to_table.py` | → `data/toponims/toponims.json` — web/table schema (`graf`, `nom`, `tipus`, `x`, `y`, `dubte`); also **splits over-linked labels** the MST merged (`Sô Verdera Sô Fiol` → two entries, one per possessive head) |
-| 8 | `toponims:georef` | `mapkurator/georef.py` | adds `lon`/`lat` per toponym (see **Georeference**) |
-| 9 | `toponims:georef-bootstrap` | `mapkurator/georef_bootstrap.py` | densifies the georeference (see below) |
-| 10 | `toponims:ngib-fetch` | `ngib-fetch.mjs` | downloads the Mallorca NGIB subset → `ngib/llocs.json` (run once; regenerable) |
-| 11 | `toponims:ngib-match` | `ngib_match.py` | → `ngib/matches.json` (+ `recheck.json`) — the file the web reads |
+| # | step | Script | In → Out |
+|---|------|--------|----------|
+| 1 | *(see [`mapkurator/`](mapkurator/README.md))* | spotter container | scan → `mapkurator/detections.json` (word boxes + a rough English OCR hint) |
+| 2 | `npm run toponims:windows` | `mapkurator/b_windows.py` | detections → `mapkurator/b/w##.png` + per-window box lists. Windows the map by **recursive median split cutting only in whitespace** (clusters stay atomic, gutters are natural cuts) so no name is ever truncated; each box belongs to one window |
+| 3 | *vision extraction* | `mapkurator/workflows/b-extract.js` | one agent per window reads the engraving + **groups the boxes** into toponyms (`{boxes:[n…], reading}`) — the step that fixes mis-grouping; position comes back from the boxes |
+| 4 | `npm run toponims:assemble -- <wf.json>` | `mapkurator/b_assemble.py` | workflow output → `data/toponims/toponims.json` (table schema: `graf`,`nom`,`tipus`,`x`,`y`) |
+| 5 | `npm run toponims:georef` | `mapkurator/georef.py` | adds `lon`/`lat` (see **Georeference**) |
+| 6 | `npm run toponims:georef-bootstrap` | `mapkurator/georef_bootstrap.py` | densifies the georeference |
+| 7 | `npm run toponims:ngib-fetch` | `ngib-fetch.mjs` | downloads the Mallorca NGIB subset → `ngib/llocs.json` (once; regenerable) |
+| 8 | `npm run toponims:ngib-match` | `ngib_match.py` | → `ngib/matches.json` (+ `recheck.json`) — the file the web reads |
+| 9 | *vision recheck (optional)* | `build_recheck_montages.py` + `workflows/b-recheck.js` | confirms `suggerit` matches from the engraving → `recheck-picks.json`, applied by `ngib_match.py` (durable override) |
 
-`toponims:vinetes` (`vinetes-server.mjs`) is unrelated to this chain — it's the
+`b_run.sh <wf.json>` chains steps 4–8. `toponims:vinetes` is unrelated — the
 deferred Phase-2 tool for the map's cartouche hotspots (`/mapa`).
 
 ## Georeference
