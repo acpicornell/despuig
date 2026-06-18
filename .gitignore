@@ -36,3 +36,6 @@ data/pdf/
 data/toponims/mapkurator/
 # clon third-party del spotter (es torna a clonar amb run.sh)
 scripts/toponims/mapkurator/vendor/
+# approach-B parallel track output (regenerable amb el workflow + b_run.sh)
+data/toponims/b/
+__pycache__/

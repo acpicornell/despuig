@@ -35,6 +35,9 @@ from scipy.interpolate import RBFInterpolator
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 BASE = os.path.join(ROOT, "data/toponims/mapkurator")
+# parallel B-track support: override the toponym/gcps paths via env (defaults = A)
+TOP_PATH = os.environ.get("TOPONIMS_JSON") or os.path.join(ROOT, "data/toponims/toponims.json")
+GCPS_PATH = os.environ.get("GCPS_JSON") or os.path.join(BASE, "gcps.json")
 
 # red dots: exact municipi pixel positions (marked by hand), name = pobles.json `nom`
 TOWN_ANCHORS = [
@@ -191,7 +194,7 @@ def main():
               + ("   <-- chosen" if k == best else ""))
     project = make(best)
 
-    top = json.load(open(os.path.join(ROOT, "data/toponims/toponims.json")))
+    top = json.load(open(TOP_PATH))
     Q = np.array([[t["x"], t["y"]] for t in top["toponims"]], float)
     proj = project(Q)
     oob = 0
@@ -203,10 +206,10 @@ def main():
         print(f"   note: {oob} toponyms project outside Mallorca's bbox (extreme extrapolation)")
     top["georef"] = {"model": best, "control_points": len(gcps),
                      "loo_median_m": round(scores[best][0])}
-    json.dump(top, open(os.path.join(ROOT, "data/toponims/toponims.json"), "w"),
+    json.dump(top, open(TOP_PATH, "w"),
               ensure_ascii=False, indent=1)
     json.dump({"count": len(gcps), "gcps": gcps},
-              open(os.path.join(BASE, "gcps.json"), "w"), ensure_ascii=False, indent=1)
+              open(GCPS_PATH, "w"), ensure_ascii=False, indent=1)
     print(f"✓ lon/lat written for {len(top['toponims'])} toponyms; gcps.json saved")
 
 

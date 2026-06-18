@@ -41,6 +41,10 @@ from unidecode import unidecode
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 BASE = os.path.join(ROOT, "data/toponims/mapkurator")
+# parallel B-track support (defaults = A)
+TOP_PATH = os.environ.get("TOPONIMS_JSON") or os.path.join(ROOT, "data/toponims/toponims.json")
+GCPS_PATH = os.environ.get("GCPS_JSON") or os.path.join(BASE, "gcps.json")
+GCPS_BOOT_PATH = os.environ.get("GCPS_BOOT_JSON") or os.path.join(BASE, "gcps-bootstrap.json")
 
 SIM_MIN = 0.95          # near-exact name only
 DIST_MAX = 2500.0       # m: match must already sit close to the projection
@@ -78,8 +82,8 @@ def similarity(read, grafia):
 
 
 def main():
-    gcps = json.load(open(os.path.join(BASE, "gcps.json")))["gcps"]
-    top = json.load(open(os.path.join(ROOT, "data/toponims/toponims.json")))
+    gcps = json.load(open(GCPS_PATH))["gcps"]
+    top = json.load(open(TOP_PATH))
     toponims = top["toponims"]
     pobles = json.load(open(os.path.join(ROOT, "src/data/pobles.json")))["pobles"]
     ngib = json.load(open(os.path.join(ROOT, "data/toponims/ngib/llocs.json")))
@@ -195,10 +199,10 @@ def main():
     top["georef"] = {"model": f"{best}+bootstrap", "control_points": len(P),
                      "anchors": len(TP), "bootstrapped": len(boot),
                      "loo_median_m": round(cand[best])}
-    json.dump(top, open(os.path.join(ROOT, "data/toponims/toponims.json"), "w"),
+    json.dump(top, open(TOP_PATH, "w"),
               ensure_ascii=False, indent=1)
     json.dump({"anchors": len(TP), "bootstrapped": len(boot), "points": boot},
-              open(os.path.join(BASE, "gcps-bootstrap.json"), "w"), ensure_ascii=False, indent=1)
+              open(GCPS_BOOT_PATH, "w"), ensure_ascii=False, indent=1)
     print(f"✓ {len(P)} control points ({len(TP)} anchors + {len(boot)} bootstrapped), "
           f"model {best}, anchor-LOO {cand[best]:.0f} m (was {base:.0f}); {oob} OOB; lon/lat written")
 

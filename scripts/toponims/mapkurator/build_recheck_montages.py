@@ -20,7 +20,8 @@ from PIL import Image, ImageDraw
 
 Image.MAX_IMAGE_PIXELS = None
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-OUT = os.path.join(ROOT, "data/toponims/mapkurator/recheck")
+OUT = os.path.join(ROOT, os.environ.get("RECHECK_OUT", "data/toponims/mapkurator/recheck"))
+RECHECK_IN = os.path.join(ROOT, os.environ.get("RECHECK_JSON", "data/toponims/recheck.json"))
 
 TARGET = sys.argv[1] if len(sys.argv) > 1 else "suggerit"
 WW, WH = 660, 250            # master crop window (px) around the toponym point
@@ -31,7 +32,7 @@ PAD = 8
 
 def main():
     os.makedirs(OUT, exist_ok=True)
-    recheck = json.load(open(os.path.join(ROOT, "data/toponims/recheck.json")))
+    recheck = json.load(open(RECHECK_IN))
     items = [r for r in recheck if r.get("decision") == TARGET]
     master = Image.open(os.path.join(ROOT, "data/jpg/despuig-1785-original.jpg")).convert("RGB")
     print(f">> {len(items)} '{TARGET}' toponyms -> montages of {COLS*ROWS}")

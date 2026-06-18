@@ -20,6 +20,7 @@ Writes data/toponims/ngib/matches.json (no mutation of the source cells).
 """
 import json
 import math
+import os
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -33,8 +34,13 @@ from unidecode import unidecode
 
 ROOT = Path(__file__).resolve().parents[2]
 load = lambda p: json.loads((ROOT / p).read_text())
+# parallel B-track support (defaults = A); paths are relative to ROOT
+TOP_REL = os.environ.get("TOPONIMS_JSON", "data/toponims/toponims.json")
+MATCHES_REL = os.environ.get("MATCHES_JSON", "data/toponims/ngib/matches.json")
+RECHECK_REL = os.environ.get("RECHECK_JSON", "data/toponims/recheck.json")
+PICKS_REL = os.environ.get("PICKS_JSON", "data/toponims/recheck-picks.json")
 
-toponims = load("data/toponims/toponims.json")["toponims"]
+toponims = load(TOP_REL)["toponims"]
 pobles = load("src/data/pobles.json")["pobles"]
 ngib = load("data/toponims/ngib/llocs.json")
 
@@ -125,7 +131,7 @@ def to_lonlat(mx, my):
 if not all("lon" in t and "lat" in t for t in toponims):
     raise SystemExit("toponims.json lacks lon/lat — run "
                      "scripts/toponims/mapkurator/georef.py first")
-GEOREF = load("data/toponims/toponims.json").get("georef", {})
+GEOREF = load(TOP_REL).get("georef", {})
 proj = to_m([t["lon"] for t in toponims], [t["lat"] for t in toponims])
 
 # ---------- NGIB spatial index ----------
@@ -232,7 +238,7 @@ for t, pm in zip(toponims, proj):
 # versioned file and are applied here, so re-running the pipeline never loses them.
 # Format: {toponym id: chosen NGIB grafia}. Each picked id is promoted to 'confirmat'
 # against the nearest NGIB entry of that name.
-picks_file = ROOT / "data/toponims/recheck-picks.json"
+picks_file = ROOT / PICKS_REL
 if picks_file.exists():
     picks = json.loads(picks_file.read_text())
     proj_by_id = {t["id"]: pm for t, pm in zip(toponims, proj)}
@@ -260,7 +266,7 @@ if picks_file.exists():
         counts.setdefault(k, 0)
     print(f"Vision-recheck overrides applied: {applied}")
 
-(ROOT / "data/toponims/ngib/matches.json").write_text(json.dumps(matches, ensure_ascii=False, indent=1))
+(ROOT / MATCHES_REL).write_text(json.dumps(matches, ensure_ascii=False, indent=1))
 
 # ---------- candidate lists for the vision recheck ----------
 # For everything not auto-confirmed, dump the nearest gazetteer names so a vision
@@ -282,8 +288,8 @@ for t, pm in zip(toponims, proj):
     recheck.append({"id": t["id"], "graf": t.get("graf"), "nom": t["nom"], "tipus": t["tipus"],
                     "subtile": t["subtile"], "x": t["x"], "y": t["y"],
                     "decision": decision_by_id.get(t["id"]), "candidates": cands})
-(ROOT / "data/toponims/recheck.json").write_text(json.dumps(recheck, ensure_ascii=False, indent=1))
-print(f"Recheck candidates written: {len(recheck)} items -> data/toponims/recheck.json")
+(ROOT / RECHECK_REL).write_text(json.dumps(recheck, ensure_ascii=False, indent=1))
+print(f"Recheck candidates written: {len(recheck)} items -> {RECHECK_REL}")
 
 # ---------- report ----------
 dub = [t for t in toponims if t.get("dubte")]
@@ -306,4 +312,4 @@ for m in matches:
         shown += 1
         if shown >= 25:
             break
-print("\n✓ data/toponims/ngib/matches.json")
+print(f"\n✓ {MATCHES_REL}")
