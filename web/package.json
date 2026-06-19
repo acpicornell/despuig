@@ -11,12 +11,15 @@
     "data": "node scripts/build-data.mjs",
     "vinetes": "node scripts/copy-vinetes.mjs",
     "hero": "node scripts/build-hero.mjs",
-    "prebuild": "npm run data && npm run vinetes && npm run hero"
+    "map": "node scripts/build-map.mjs",
+    "prebuild": "npm run data && npm run vinetes && npm run hero",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name=mapa-despuig"
   },
   "dependencies": {
     "astro": "^4.16.18"
   },
   "devDependencies": {
-    "sharp": "^0.33.5"
+    "sharp": "^0.33.5",
+    "wrangler": "^3.90.0"
   }
 }

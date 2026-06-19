@@ -14,18 +14,17 @@ import sharp from 'sharp';
 import { mkdir, writeFile, rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { MAP_REGION, OUTER, IMG } from '../../../src/lib/frame.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..', '..');
-// Detection master: a masked copy of the original where the cartouches, border
-// vignettes and surrounding sea are painted out (opaque red). Same pixel
-// dimensions as the original, so all geometry below stays valid. We tile from
-// this — NOT from the canonical MASTER_REL — so the spotter never sees the
-// engraved decorations; the clean original is still what display/DZI use.
-// Override with MK_MASTER to tile a different file.
-const DETECTION_MASTER = 'data/jpg/despuig-1785-original-marked1.jpg';
-const MASTER = join(ROOT, process.env.MK_MASTER || DETECTION_MASTER);
+// Per-sheet pipeline: always tile a quadrant's masked canvas, passed via MK_MASTER
+// (e.g. data/jpg/SE/despuig-1785-original-SE-canvas.jpg). The sea/decoration is
+// painted out there, so no engraved decoration leaks into the spotter.
+if (!process.env.MK_MASTER) {
+  console.error('Set MK_MASTER to the sheet canvas, e.g. MK_MASTER=data/jpg/SE/despuig-1785-original-SE-canvas.jpg');
+  process.exit(1);
+}
+const MASTER = join(ROOT, process.env.MK_MASTER);
 const BASE = join(ROOT, 'data/toponims/mapkurator');
 const IN = join(BASE, process.env.MK_INDIR || 'in');             // per-sheet: e.g. MK_INDIR=nw/in
 
@@ -42,14 +41,10 @@ const { width: MW, height: MH } = await sharp(MASTER, { limitInputPixels: false 
 // so the old MAP-only crop truncated them. The masked detection master makes this
 // safe — everything outside the drawing is painted out, so no decoration leaks in.
 // MK_REGION picks the box:
-//   FULL  → the entire image (default)
-//   OUTER → outer edge of the engraving (skips the black scan margin)
-//   MAP   → inner map frame only (legacy; clips coastal names)
-//   "x,y,w,h" → an explicit box in master px
+//   FULL  → the entire image (default; the sheet canvas is already cropped)
+//   "x,y,w,h" → an explicit box in image px
 function pickRegion() {
   const r = process.env.MK_REGION || 'FULL';
-  if (r === 'MAP') return MAP_REGION;
-  if (r === 'OUTER') return { x: OUTER.l, y: OUTER.t, w: OUTER.r - OUTER.l, h: OUTER.b - OUTER.t };
   if (r === 'FULL') return { x: 0, y: 0, w: MW, h: MH };
   const [x, y, w, h] = r.split(',').map(Number);
   return { x, y, w, h };

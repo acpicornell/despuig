@@ -111,7 +111,9 @@ const FALLBACK_GEO = JSON.parse(readFileSync(join(HERE, 'town-coords-fallback.js
 
 // ─── 3. Pobles: FETS de 1785 (cartel·les) + editorial de pobles.json ───
 const cartelles = rd('data/cartelles-1785/extract.json').towns;            // 36, font dels fets
-const edBySlug = Object.fromEntries(rd('src/data/pobles.json').pobles.map((p) => [p.slug, p]));
+// Editorial (id, esCapital, resumCat/notes, nomAntic) — viu DINS de web/, font pròpia.
+const editorial = JSON.parse(readFileSync(resolve(HERE, '..', 'src', 'data', 'pobles-editorial.json'), 'utf8'));
+const edBySlug = Object.fromEntries(editorial.pobles.map((p) => [p.slug, p]));
 // id de mapa: el de pobles.json on existeix; els nous (Banyalbufar, Deià) al final.
 let nextId = Math.max(...Object.values(edBySlug).map((p) => p.id)) + 1;
 

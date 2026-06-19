@@ -1,57 +1,35 @@
-# build output
+# build output / deps / caches
 dist/
 .astro/
-# dependencies
 node_modules/
-# web nova (per-sheet): assets regenerables + cau d'Astro
-web/public/vinetes/
-web/public/hero/
-web/public/map/
-web/src/data/vendor/
-# generated assets (regenerables des de data/jpg amb els scripts)
-public/vinetas/
-public/map/mapa.dzi
-public/map/mapa_files/
-public/map/*.jpg
-# raw master map image — large; sourced from Biblioteca Virtual de Defensa (CC BY 4.0), not versioned
-data/jpg/
-# logs
-npm-debug.log*
-# buidatge de topònims: imatges regenerables (els manifests i toponims.json sí es versionen)
-data/toponims/sub/
-data/toponims/*-qa.png
-# corpus NGIB descarregable (regenerable amb `npm run toponims:ngib-fetch`;
-# matches.json sí es versiona perquè l'utilitza la web)
-data/toponims/ngib/llocs.json
-
-# macOS
+__pycache__/
 .DS_Store
-# astro
-.astro/
+npm-debug.log*
+
 # local Claude Code settings
 .claude/
 
-# vision recheck crops (regenerables, large)
-data/toponims/recheck/
-data/toponims/recheck.json
+# web (per-sheet): regenerable assets (npm run vinetes / hero / map)
+web/public/vinetes/
+web/public/hero/
+web/public/map/
 
-# copyrighted PDFs (not for the repo)
+# raw master + source images — large; Biblioteca Virtual de Defensa (CC BY 4.0), not versioned
+data/jpg/
+# copyrighted PDFs
 data/pdf/
 
-# mapKurator: pesos del model, tiles d'entrada i sortida (grans/regenerables)
+# NGIB gazetteer corpus — large, regenerable with scripts/toponims/ngib-fetch.mjs
+data/toponims/ngib/llocs.json
+
+# mapKurator: model weights + input/output tiles (large, regenerable)
 data/toponims/mapkurator/
-# clon third-party del spotter (es torna a clonar amb run.sh)
+# third-party spotter clone (re-cloned by run.sh)
 scripts/toponims/mapkurator/vendor/
-# approach-B parallel track output (regenerable amb el workflow + b_run.sh)
-data/toponims/b/
-__pycache__/
-# web review tool (regenerable: render_review_crops.py)
-data/toponims/review-crops/
-data/toponims/review-data.json
-# per-sheet review tool artifacts (regenerable; <q> = no/ne/se/so)
+
+# per-sheet review tool + GCP-build intermediates (regenerable; gcps-<q>.json IS versioned)
 data/toponims/*/review-crops/
 data/toponims/*/review-data.json
-# per-sheet GCP-build intermediates (regenerable; the gcps-<q>.json record is versioned)
 data/toponims/*/gcp-crops/
 data/toponims/*/gcp-dots.json
 data/toponims/*/*-overlay.png
