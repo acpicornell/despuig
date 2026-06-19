@@ -7,7 +7,7 @@ import matches from '../../data/toponims/ngib/matches.json';
 const rows = matches;
 const total = rows.length;
 
-const byDecision = { confirmat: 0, probable: 0, suggerit: 0, posicional: 0, sense: 0 };
+const byDecision = { curat: 0, confirmat: 0, probable: 0, suggerit: 0, posicional: 0, sense: 0 };
 const byTipus = {};
 let dubtes = 0;
 for (const r of rows) {
@@ -20,6 +20,7 @@ const tipusList = Object.keys(byTipus).sort((a, b) => byTipus[b] - byTipus[a]);
 
 // Human-readable Catalan labels for the decision states.
 const decLabel = {
+  curat: 'Curat',
   confirmat: 'Confirmat',
   probable: 'Probable',
   suggerit: 'Suggerit',
@@ -50,6 +51,7 @@ const tipusLabel = {
 
     <div class="stats">
       <div class="stat card"><strong>{total.toLocaleString('ca-ES')}</strong><span>topònims llegits</span></div>
+      {byDecision.curat > 0 && <div class="stat card curat"><strong>{byDecision.curat.toLocaleString('ca-ES')}</strong><span>verificats a mà</span></div>}
       <div class="stat card ok"><strong>{byDecision.confirmat.toLocaleString('ca-ES')}</strong><span>confirmats al NGIB</span></div>
       <div class="stat card prob"><strong>{byDecision.probable.toLocaleString('ca-ES')}</strong><span>probables (quasi segurs)</span></div>
       <div class="stat card warn"><strong>{byDecision.suggerit.toLocaleString('ca-ES')}</strong><span>suggerits (a revisar)</span></div>
@@ -63,6 +65,7 @@ const tipusLabel = {
       <label>Estat
         <select id="f-decision">
           <option value="">tots</option>
+          {byDecision.curat > 0 && <option value="curat">Curat ({byDecision.curat})</option>}
           <option value="confirmat">Confirmat ({byDecision.confirmat})</option>
           <option value="probable">Probable ({byDecision.probable})</option>
           <option value="suggerit">Suggerit ({byDecision.suggerit})</option>
@@ -191,10 +194,11 @@ const tipusLabel = {
 
 <style>
   .intro { padding-top: 1.5rem; }
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.5rem 0 .5rem; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 1.5rem 0 .5rem; }
   .stat { padding: 1rem; text-align: center; }
   .stat strong { display: block; font-family: var(--display); font-size: 1.6rem; color: var(--accent); }
   .stat span { font-size: .85rem; color: var(--ink-soft); }
+  .stat.curat strong { color: #1f6b3f; }
   .stat.ok strong { color: #2f7d4f; }
   .stat.prob strong { color: #2a7d6e; }
   .stat.warn strong { color: #b07c1d; }
@@ -236,6 +240,7 @@ const tipusLabel = {
     display: inline-block; padding: .1rem .45rem; border-radius: 999px;
     font-size: .76rem; font-weight: 600; white-space: nowrap;
   }
+  .badge--curat { background: #cfe8d6; color: #1f6b3f; }
   .badge--confirmat { background: #e2f0e6; color: #2f7d4f; }
   .badge--probable { background: #dcefe9; color: #2a7d6e; }
   .badge--suggerit { background: #f6ecd4; color: #b07c1d; }

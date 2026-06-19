@@ -29,7 +29,7 @@ REVIEW_DATA = P("REVIEW_DATA", "data/toponims/review-data.json")
 # Which decision classes to render for review. Default = only the uncertain ones
 # (global pipeline unchanged); set REVIEW_WANT=all (or a comma list) to also curate
 # the auto-classified confirmat/probable and catch errors there.
-ALL_DEC = {"confirmat", "probable", "suggerit", "posicional", "sense"}
+ALL_DEC = {"curat", "confirmat", "probable", "suggerit", "posicional", "sense"}
 _w = (os.environ.get("REVIEW_WANT") or "suggerit,posicional,sense").strip()
 WANT = ALL_DEC if _w == "all" else set(_w.replace(" ", "").split(","))
 WW, WH, SCALE = 760, 320, 1.5

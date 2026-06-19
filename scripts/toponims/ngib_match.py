@@ -155,7 +155,7 @@ RADIUS_M = 12000.0
 # appear (Son Jaume Andreu -> Son Pere Andreu) even when close.
 POS_NEAR, POS_NEAR_SIM = 1000.0, 0.82
 POS_FAR, POS_FAR_SIM = 1500.0, 0.85
-matches, counts = [], {"confirmat": 0, "probable": 0, "suggerit": 0, "posicional": 0, "sense": 0}
+matches, counts = [], {"curat": 0, "confirmat": 0, "probable": 0, "suggerit": 0, "posicional": 0, "sense": 0}
 
 ngib_core = [core(g["grafia"]) for g in ngib]  # precomputed keys for the global fallback
 # Distinct municipalities per name: a name in ONE municipi is a single place (safe to
@@ -236,15 +236,19 @@ for t, pm in zip(toponims, proj):
     })
 
 # ---------- recheck / curation overrides (strategy 4, durable) ----------
-# Decisions from the vision recheck and the hand-curation tool live in a versioned
-# file ({toponym id: chosen NGIB grafia}) and are applied here. A HAND-curated pick
-# (logged as 'pick' in review-reviewed.json) is a human judgement on a 1785->modern
-# mapping, so it lands as 'probable'; the automatic recheck/triage picks land as
-# 'confirmat'.
+# Decisions from the vision recheck and the hand-curation tool live in versioned
+# files and are applied here. The review tool logs a verdict per toponym in
+# review-reviewed.json: 'pick' (chose an NGIB name), 'ok' (current match verified as
+# correct), 'none' (no NGIB match exists), 'trash' (garbage). A HUMAN verdict is the
+# strongest signal, so hand-picked / hand-verified toponyms land in their own top
+# tier 'curat' (distinct from the algorithmic 'confirmat'); a human 'none' forces
+# 'sense'. Automatic recheck/triage picks still land as 'confirmat'.
 picks_file = ROOT / PICKS_REL
 reviewed_file = ROOT / REVIEWED_REL
-manual = {k for k, v in json.loads(reviewed_file.read_text()).items() if v == "pick"} \
-    if reviewed_file.exists() else set()
+reviewed = json.loads(reviewed_file.read_text()) if reviewed_file.exists() else {}
+manual = {k for k, v in reviewed.items() if v == "pick"}
+verified_ok = {k for k, v in reviewed.items() if v == "ok"}
+nomatch = {k for k, v in reviewed.items() if v == "none"}
 # hand-discarded toponyms (garbage / spurious spotter boxes) — dropped from output
 discards_file = ROOT / DISCARDS_REL
 discards = set(json.loads(discards_file.read_text())) if discards_file.exists() else set()
@@ -266,17 +270,25 @@ if picks_file.exists():
         gi = min(cand, key=lambda j: math.hypot(*(ngib_m[j] - pm)))
         g = ngib[gi]
         hand = m["id"] in manual
-        m.update(decision="probable" if hand else "confirmat",
+        m.update(decision="curat" if hand else "confirmat",
                  ngib=g["grafia"], municipi=g["municipi"],
                  km=round(math.hypot(*(ngib_m[gi] - pm)) / 1000, 2),
                  rev="curat" if hand else "vision",
                  sim=round(max(similarity(m["nom"], g["grafia"]),
                                similarity(m.get("graf") or "", g["grafia"])), 2))
         applied += 1
-    counts = dict(Counter(m["decision"] for m in matches))
-    for k in ("confirmat", "probable", "suggerit", "posicional", "sense"):
-        counts.setdefault(k, 0)
     print(f"Vision-recheck overrides applied: {applied}")
+
+# other human verdicts from the review tool: 'ok' (existing match verified) -> curat;
+# 'none' (reviewer found no NGIB match) -> sense, clearing the (rejected) match.
+ok_n = nm_n = 0
+for m in matches:
+    if m["id"] in verified_ok and m.get("ngib"):
+        m["decision"] = "curat"; m["rev"] = "curat"; ok_n += 1
+    elif m["id"] in nomatch:
+        m.update(decision="sense", ngib=None, municipi=None, km=None, sim=None, rev="curat"); nm_n += 1
+if ok_n or nm_n:
+    print(f"Human verdicts: {ok_n} verified-ok -> curat, {nm_n} cap-match -> sense")
 
 # drop hand-discarded toponyms (garbage), then (re)compute the class counts
 if discards:
@@ -284,7 +296,7 @@ if discards:
     matches = [m for m in matches if m["id"] not in discards]
     print(f"Discarded (brossa): {before - len(matches)}")
 counts = dict(Counter(m["decision"] for m in matches))
-for k in ("confirmat", "probable", "suggerit", "posicional", "sense"):
+for k in ("curat", "confirmat", "probable", "suggerit", "posicional", "sense"):
     counts.setdefault(k, 0)
 
 (ROOT / MATCHES_REL).write_text(json.dumps(matches, ensure_ascii=False, indent=1))
@@ -295,7 +307,7 @@ for k in ("confirmat", "probable", "suggerit", "posicional", "sense"):
 decision_by_id = {m["id"]: m["decision"] for m in matches}
 recheck = []
 for t, pm in zip(toponims, proj):
-    if t["id"] in discards or decision_by_id.get(t["id"]) == "confirmat":
+    if t["id"] in discards or decision_by_id.get(t["id"]) in ("curat", "confirmat"):
         continue
     scored = []
     for j in tree.query_ball_point(pm, RADIUS_M):
@@ -321,7 +333,7 @@ print(f"\nGeoreference (precomputed, exact town dots): "
       f"{GEOREF.get('loo_median_m', '?')} m\n")
 print(f"Toponyms: {len(toponims)}  |  current doubts: {len(dub)}")
 print("NGIB classification:")
-for k in ("confirmat", "probable", "suggerit", "posicional", "sense"):
+for k in ("curat", "confirmat", "probable", "suggerit", "posicional", "sense"):
     print(f"  {k:<11} {counts[k]}")
 print(f"\nDoubts a 'confirmat' match would resolve: {len(resolved)}")
 print("\nSample confirmed corrections (AI reading -> NGIB):")

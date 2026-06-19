@@ -49,7 +49,7 @@ const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</ti
  .crop{width:100%;border:1px solid var(--line);border-radius:8px;background:#fff}
  .read{font-size:1.5rem;font-weight:700} .read .q{color:var(--soft);font-weight:400;font-size:1rem}
  .meta{color:var(--soft);margin:.2rem 0 1rem} .badge{padding:.1rem .45rem;border-radius:999px;font-size:.78rem;font-weight:600}
- .b-confirmat{background:#dcefe1;color:#2f7d4f}.b-probable{background:#d7eeea;color:#1d7a6b}
+ .b-curat{background:#cfe8d6;color:#1f6b3f;border:1px solid #2f7d4f}.b-confirmat{background:#dcefe1;color:#2f7d4f}.b-probable{background:#d7eeea;color:#1d7a6b}
  .b-suggerit{background:#f6ecd4;color:#b07c1d}.b-posicional{background:#e4ecf5;color:#3a6098}.b-sense{background:#efe9e4;color:#8a7a6c}
  .cand{display:block;width:100%;text-align:left;padding:.55rem .7rem;margin:.35rem 0;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer;font:inherit}
  .cand:hover,.cand.rec{border-color:#2f7d4f;background:#f0f7f1}
@@ -68,8 +68,9 @@ const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</ti
  <span id=prog class=meta></span><div class=bar><i id=progbar></i></div>
  <span class=grow></span>
  <label class=meta>filtre <select id=filter>
-  <option value=all>tots</option><option value=confirmat>confirmat</option>
-  <option value=probable>probable</option><option value=suggerit>suggerit</option>
+  <option value=all>tots</option><option value=curat>curat</option>
+  <option value=confirmat>confirmat</option><option value=probable>probable</option>
+  <option value=suggerit>suggerit</option>
   <option value=posicional>posicional</option><option value=sense>sense</option></select></label>
 </header>
 <main><div id=app></div><div id=map></div></main>
