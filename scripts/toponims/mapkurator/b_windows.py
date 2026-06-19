@@ -32,9 +32,24 @@ MASTER_IMG = os.path.join(ROOT, os.environ.get("B_MASTER", "data/jpg/despuig-178
 DIST = 115           # px: boxes within this (chebyshev, centre-to-centre) cluster together
 TARGET = int(os.environ.get("B_TARGET", "80"))   # aim for ~this many boxes per window
 MARGIN = 55          # px padding around a window's box extent (context, no clip)
+# per-sheet hybrid: drop tilted (coastal) boxes here so they go through the deskewed
+# coastal track (b_coast_windows.py) instead. Default off -> global path unchanged.
+MAX_TILT = float(os.environ["B_MAX_TILT"]) if os.environ.get("B_MAX_TILT") else None
 SCALE = 1.7
 # default = whole detection extent; override with argv "x0 y0 x1 y1" for a sub-area
 AREA = list(map(int, sys.argv[1:5])) if len(sys.argv) >= 5 else [330, 470, 18600, 14430]
+
+
+def tilt(b):
+    """Writing-direction tilt from horizontal (deg), from the poly's top-edge chord.
+    Matches b_coast_windows.axis(); used only to split flat (interior) from tilted
+    (coastal) boxes when B_MAX_TILT is set."""
+    p = b.get("poly") or []
+    if len(p) < 4:
+        return 0.0
+    n = len(p) // 2
+    a = math.degrees(math.atan2(p[n - 1][1] - p[0][1], p[n - 1][0] - p[0][0]))
+    return abs((a + 90) % 180 - 90)
 
 
 def cluster(boxes):
@@ -88,10 +103,17 @@ def windows(boxes, area):
 def main():
     os.makedirs(OUT, exist_ok=True)
     det = json.load(open(DET_PATH))["detections"]
-    top_path = os.path.join(ROOT, "data/toponims/toponims.json")
+    # reference overlay only (current.json) — read the SHEET's own table, never the
+    # global one, so a per-sheet run has no dependency on the whole-island pipeline.
+    top_path = os.path.join(ROOT, os.environ.get("TOPONIMS_JSON", "data/toponims/toponims.json"))
     top = json.load(open(top_path))["toponims"] if os.path.exists(top_path) else []
     X0, Y0, X1, Y1 = AREA
     boxes = [b for b in det if X0 <= b["cx"] < X1 and Y0 <= b["cy"] < Y1]
+    if MAX_TILT is not None:
+        before = len(boxes)
+        boxes = [b for b in boxes if tilt(b) <= MAX_TILT]
+        print(f">> kept {len(boxes)}/{before} flat boxes (tilt <= {MAX_TILT} deg); "
+              f"tilted ones go to the coastal track")
     wins, nclust = windows(boxes, AREA)
     wins = [w for w in wins if w]
     wins.sort(key=lambda w: (min(b["cy"] for b in w), min(b["cx"] for b in w)))

@@ -4,15 +4,18 @@
 // groups the spotter boxes into toponyms and reads them DIPLOMATICALLY (Sô/Câ kept).
 // Save the returned {windows:[...]} to <BASE>/extract.json for b_assemble.py.
 //
-// NW (NO) run 2026-06-18: BASE=.../no/b, N=18 → 599 toponyms.
+// NW (NO) clean rebuild 2026-06-19: interior BASE=.../no/b N=15 → 480; coast
+// BASE=.../no/b-coast N=4 → 109. EDIT the BASE/N constants below per track and
+// re-invoke (the Workflow `args` global did NOT propagate when launched via
+// scriptPath, so don't rely on it — the constants are the source of truth).
 export const meta = {
   name: 'b-extract-sheet',
   description: 'Approach B extraction for one quadrant sheet: N agents read map windows, group spotter boxes into toponyms and read them diplomatically',
   phases: [{ title: 'Extract', detail: 'one agent per sheet window' }],
 }
 
-const BASE = '/home/acpicornell/projects/despuig/data/toponims/mapkurator/no/b'
-const N = 18
+const BASE = (args && args.base) || '/home/acpicornell/projects/despuig/data/toponims/mapkurator/no/b'
+const N = (args && args.n) || 15
 const SCHEMA = {
   type: 'object', additionalProperties: false,
   properties: {
@@ -32,22 +35,20 @@ const SCHEMA = {
 }
 
 function prompt(nn) {
-  return `You are transcribing place-names from an 18th-century engraved map of Mallorca (Despuig, 1785). Names are in Mallorqui/Catalan with period spelling (So = Son, Ca = Can, accents written as circumflex o a e, ll/y, b/v).
+  return `You are transcribing place-names from an 18th-century engraved map of Mallorca (Despuig, 1785), in Mallorqui/Catalan period spelling. Your transcription must be STRICTLY LITERAL: read the engraved letters and nothing else. Inventing, "correcting", completing, or guessing a name is a SERIOUS ERROR — it destroys the toponymic record. A partial honest reading is always better than a confident wrong one.
 
-Read BOTH files:
-- window image: ${BASE}/w${nn}.png
-- detected word boxes: ${BASE}/w${nn}.json
+Read the window image: ${BASE}/w${nn}.png
+The companion file ${BASE}/w${nn}.json lists the detected word boxes; n is the number printed at each red box's top-left corner. That file ALSO has a "text" field — it is RAW MACHINE OCR, FREQUENTLY WRONG (it confuses the Son mark with "St", drops and swaps letters). DO NOT copy it, DO NOT trust it, DO NOT let it influence you. Read the engraving pixels ONLY; use n solely to know which box you are transcribing.
 
-Each red box in the image is a detected word; its number is printed at its top-left corner. The json "words" array lists per box: n (number) and text (a rough machine OCR that is OFTEN WRONG - a hint only).
+Your job: GROUP boxes into complete toponyms and transcribe each EXACTLY as engraved.
+- A toponym may span several boxes ("Sô"+"Toni"+"Coll" = "Sô Toni Coll"); group their numbers. Adjacent boxes may be different names — keep them apart.
+- DIPLOMATIC transcription: keep every abbreviation mark exactly as engraved; do NOT modernize or expand them (the modern form is derived later).
+- THE SON ABBREVIATION (critical, very common): a capital S followed by a vowel carrying a circumflex/stroke — Sô, Sâ, Sõ — is the possessive "Son/Sa". Transcribe it LITERALLY as "Sô"/"Sâ". It is NOT "Sant" and NOT "St"/"S.t". Only write "St."/"S.t" when a genuine raised/superscript t is actually engraved (real saints, e.g. "St Jordi"). If you see a rounded mark over the vowel, it is Son — never Sant.
+- Other marks as engraved: Câ/Ca = Can, Pta. = Punta, Rfl. = Rafal, circumflex vowels ô â ê, ll/y, b/v.
+- Coastal/feature names count too (Cala, Punta, Cap, Illa, Torrent, Puig...). Town names in CAPITALS are nuclei — include them.
+- INVENT NOTHING. If some letters are illegible, transcribe only the part you can clearly read. If a whole box is illegible noise, skip it. Never fill a gap with a plausible name. Sparse windows are fine.
 
-Your job: GROUP the boxes into complete toponyms and READ each one correctly from the engraving.
-- A toponym may span several boxes ("So"+"Toni"+"Coll" = one name "Son Toni Coll"); group their numbers.
-- Two adjacent boxes may be two different names - keep them apart.
-- Read the ACTUAL engraving, not the machine hint. Transcribe DIPLOMATICALLY - keep the abbreviation marks exactly as engraved (circumflex So, Ca, Sa, circumflex vowels, Pta., Rfl.); do NOT modernize or expand them (the modern form is derived later as nom).
-- Coastal/feature names count too (Cala, Punta, Cap, Illa, Torrent, Puig...). Town names in CAPITALS are nuclei - include them.
-- Ignore boxes that are pure noise/illegible; do NOT invent names. Some windows are sparse - that's fine.
-
-Return {"toponims": [{"boxes": [n,...], "reading": "..."}]} covering every legible name in the window.`
+Return {"toponims": [{"boxes": [n,...], "reading": "..."}]} for every name you can actually read in the window.`
 }
 
 phase('Extract')

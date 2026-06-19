@@ -39,6 +39,8 @@ TOP_REL = os.environ.get("TOPONIMS_JSON", "data/toponims/toponims.json")
 MATCHES_REL = os.environ.get("MATCHES_JSON", "data/toponims/ngib/matches.json")
 RECHECK_REL = os.environ.get("RECHECK_JSON", "data/toponims/recheck.json")
 PICKS_REL = os.environ.get("PICKS_JSON", "data/toponims/recheck-picks.json")
+REVIEWED_REL = os.environ.get("REVIEWED_JSON", "data/toponims/review-reviewed.json")
+DISCARDS_REL = os.environ.get("DISCARDS_JSON", "data/toponims/discards.json")
 
 toponims = load(TOP_REL)["toponims"]
 pobles = load("src/data/pobles.json")["pobles"]
@@ -240,9 +242,12 @@ for t, pm in zip(toponims, proj):
 # mapping, so it lands as 'probable'; the automatic recheck/triage picks land as
 # 'confirmat'.
 picks_file = ROOT / PICKS_REL
-reviewed_file = ROOT / "data/toponims/review-reviewed.json"
+reviewed_file = ROOT / REVIEWED_REL
 manual = {k for k, v in json.loads(reviewed_file.read_text()).items() if v == "pick"} \
     if reviewed_file.exists() else set()
+# hand-discarded toponyms (garbage / spurious spotter boxes) — dropped from output
+discards_file = ROOT / DISCARDS_REL
+discards = set(json.loads(discards_file.read_text())) if discards_file.exists() else set()
 if picks_file.exists():
     picks = json.loads(picks_file.read_text())
     proj_by_id = {t["id"]: pm for t, pm in zip(toponims, proj)}
@@ -273,6 +278,15 @@ if picks_file.exists():
         counts.setdefault(k, 0)
     print(f"Vision-recheck overrides applied: {applied}")
 
+# drop hand-discarded toponyms (garbage), then (re)compute the class counts
+if discards:
+    before = len(matches)
+    matches = [m for m in matches if m["id"] not in discards]
+    print(f"Discarded (brossa): {before - len(matches)}")
+counts = dict(Counter(m["decision"] for m in matches))
+for k in ("confirmat", "probable", "suggerit", "posicional", "sense"):
+    counts.setdefault(k, 0)
+
 (ROOT / MATCHES_REL).write_text(json.dumps(matches, ensure_ascii=False, indent=1))
 
 # ---------- candidate lists for the vision recheck ----------
@@ -281,7 +295,7 @@ if picks_file.exists():
 decision_by_id = {m["id"]: m["decision"] for m in matches}
 recheck = []
 for t, pm in zip(toponims, proj):
-    if decision_by_id.get(t["id"]) == "confirmat":
+    if t["id"] in discards or decision_by_id.get(t["id"]) == "confirmat":
         continue
     scored = []
     for j in tree.query_ball_point(pm, RADIUS_M):

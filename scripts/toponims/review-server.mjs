@@ -24,6 +24,7 @@ const F = {
   picks: P('PICKS_JSON', 'data/toponims/recheck-picks.json'),
   reviewed: P('REVIEWED_JSON', 'data/toponims/review-reviewed.json'),
   graf: P('GRAF_JSON', 'data/toponims/graf-fixes.json'),
+  discards: P('DISCARDS_JSON', 'data/toponims/discards.json'),
 };
 const readJSON = (p, d) => { try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return d; } };
 const writeJSON = (p, o) => fs.writeFileSync(p, JSON.stringify(o, null, 1));
@@ -48,13 +49,16 @@ const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</ti
  .crop{width:100%;border:1px solid var(--line);border-radius:8px;background:#fff}
  .read{font-size:1.5rem;font-weight:700} .read .q{color:var(--soft);font-weight:400;font-size:1rem}
  .meta{color:var(--soft);margin:.2rem 0 1rem} .badge{padding:.1rem .45rem;border-radius:999px;font-size:.78rem;font-weight:600}
+ .b-confirmat{background:#dcefe1;color:#2f7d4f}.b-probable{background:#d7eeea;color:#1d7a6b}
  .b-suggerit{background:#f6ecd4;color:#b07c1d}.b-posicional{background:#e4ecf5;color:#3a6098}.b-sense{background:#efe9e4;color:#8a7a6c}
  .cand{display:block;width:100%;text-align:left;padding:.55rem .7rem;margin:.35rem 0;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer;font:inherit}
  .cand:hover,.cand.rec{border-color:#2f7d4f;background:#f0f7f1}
  .cand b{font-size:1.02rem} .cand .m{color:var(--soft);font-size:.85rem}
  .cand kbd{float:right;color:var(--soft)}
  .act{display:flex;gap:.5rem;margin-top:.8rem} .act button{flex:1;padding:.55rem;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer;font:inherit}
- .none{color:#a23}.skip{color:var(--soft)}
+ .none{color:#a23}.skip{color:var(--soft)}.trash{color:#8a4a1d}.trash:hover{border-color:#8a4a1d;background:#f7efe7}
+ .undo{color:#3a6098}.undo:hover:not(:disabled){border-color:#3a6098;background:#eef3fa}.undo:disabled{opacity:.4;cursor:default}
+ .ok{color:#2f7d4f}.ok:hover{border-color:#2f7d4f;background:#f0f7f1}
  kbd{font:.8rem monospace;background:var(--line);border-radius:4px;padding:0 .3rem}
  .done{grid-column:1/3;text-align:center;padding:3rem;color:var(--soft)}
  .hint{grid-column:1/3;color:var(--soft);font-size:.85rem;text-align:center}
@@ -64,7 +68,8 @@ const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</ti
  <span id=prog class=meta></span><div class=bar><i id=progbar></i></div>
  <span class=grow></span>
  <label class=meta>filtre <select id=filter>
-  <option value=all>tots</option><option value=suggerit>suggerit</option>
+  <option value=all>tots</option><option value=confirmat>confirmat</option>
+  <option value=probable>probable</option><option value=suggerit>suggerit</option>
   <option value=posicional>posicional</option><option value=sense>sense</option></select></label>
 </header>
 <main><div id=app></div><div id=map></div></main>
@@ -109,11 +114,14 @@ function render(){
        <button onclick="pickCustom()" style="flex:1">✓ Escrit</button>
      </div>
      <div class=act>
+       <button class=ok onclick="ok()" title="marca'l com a revisat sense canviar res (deixa el match actual)"><kbd>C</kbd> ✓ Correcte</button>
        <button class=none onclick="nomatch()"><kbd>0</kbd> Cap match</button>
+       <button class=trash onclick="trash()"><kbd>D</kbd> 🗑 Brossa</button>
        <button class=skip onclick="skip()"><kbd>S</kbd> Saltar</button>
+       <button class=undo onclick="undo()" \${history.length?'':'disabled'} title="desfés l'última decisió i torna l'ítem a la cua">↶ Desfés <kbd>U</kbd></button>
      </div>
    </div>
-   <div class=hint><kbd>1</kbd>–<kbd>6</kbd> tria candidat · <kbd>0</kbd> cap match · <kbd>S</kbd>/<kbd>espai</kbd> saltar · <kbd>←</kbd> enrere</div>\`;
+   <div class=hint><kbd>1</kbd>–<kbd>6</kbd> tria candidat · <kbd>C</kbd> correcte (deixa-ho) · <kbd>0</kbd> cap match · <kbd>D</kbd> brossa · <kbd>S</kbd>/<kbd>espai</kbd> saltar · <kbd>←</kbd> navega · <kbd>U</kbd>/<kbd>⌫</kbd> desfés</div>\`;
   app.querySelectorAll('.cand').forEach(b=>b.onclick=()=>pick(b.dataset.g));
   updateMap(d);
 }
@@ -153,9 +161,20 @@ function curGraf(){ const el=$('#graf'),d=queue[i]; if(!el||!d)return null; cons
 async function send(id,action,grafia,graf){
   await fetch('/pick',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id,action,grafia,graf})});
 }
+let history=[];   // stack of {id} of the items reviewed this session, for ↶ Desfés
 function advance(){ queue.splice(i,1); if(i>=queue.length)i=queue.length-1; render(); }
-async function pick(g){ const d=queue[i]; STATE.reviewed[d.id]='pick'; STATE.picks[d.id]=g; await send(d.id,'pick',g,curGraf()); advance(); }
-async function nomatch(){ const d=queue[i]; STATE.reviewed[d.id]='none'; await send(d.id,'none',null,curGraf()); advance(); }
+async function pick(g){ const d=queue[i]; history.push({id:d.id}); STATE.reviewed[d.id]='pick'; STATE.picks[d.id]=g; await send(d.id,'pick',g,curGraf()); advance(); }
+async function nomatch(){ const d=queue[i]; history.push({id:d.id}); STATE.reviewed[d.id]='none'; await send(d.id,'none',null,curGraf()); advance(); }
+async function trash(){ const d=queue[i]; history.push({id:d.id}); STATE.reviewed[d.id]='trash'; await send(d.id,'trash',null,curGraf()); advance(); }
+async function ok(){ const d=queue[i]; history.push({id:d.id}); STATE.reviewed[d.id]='ok'; await send(d.id,'ok',null,curGraf()); advance(); }
+async function undo(){
+  const h=history.pop(); if(!h)return;
+  delete STATE.reviewed[h.id]; delete STATE.picks[h.id];   // server also drops it from discards
+  await send(h.id,'undo',null,null);
+  rebuild();                                               // the item reappears in the cua (if it matches the filtre)
+  const j=queue.findIndex(d=>d.id===h.id); if(j>=0)i=j;    // and we jump back to it to re-edit
+  render();
+}
 async function saveReading(){ const d=queue[i],g=curGraf(); if(!g)return; (STATE.graf=STATE.graf||{})[d.id]=g; await send(d.id,'graf',null,g); const b=$('#savebtn'); if(b){b.textContent='✓ desada';setTimeout(()=>{if($('#savebtn'))$('#savebtn').textContent='💾 Lectura';},1200);} }
 function skip(){ i=(i+1)%queue.length; render(); }
 function pickCustom(){ const v=$('#custom').value.trim(); if(v)pick(v); }
@@ -165,7 +184,10 @@ addEventListener('keydown',e=>{
   if(e.target.tagName==='INPUT'){ if(e.key==='Enter'){ const id=e.target.id; if(id==='search')searchMap(); else if(id==='graf')saveReading(); else pickCustom(); } return; }
   if(e.key>='1'&&e.key<='6'){const c=d.candidates[+e.key-1]; if(c)pick(c.grafia);}
   else if(e.key==='0')nomatch();
+  else if(e.key==='c')ok();
+  else if(e.key==='d')trash();
   else if(e.key==='s'||e.key===' '){e.preventDefault();skip();}
+  else if(e.key==='u'||e.key==='Backspace'){e.preventDefault();undo();}
   else if(e.key==='ArrowLeft'){i=(i-1+queue.length)%queue.length;render();}
 });
 load();
@@ -201,6 +223,14 @@ const server = http.createServer((req, res) => {
       if (graf) { const gf = readJSON(F.graf, {}); gf[id] = graf; writeJSON(F.graf, gf); }
       if (action === 'pick' && grafia) { picks[id] = grafia; reviewed[id] = 'pick'; writeJSON(F.picks, picks); writeJSON(F.reviewed, reviewed); }
       else if (action === 'none') { reviewed[id] = 'none'; writeJSON(F.reviewed, reviewed); }
+      else if (action === 'ok') { reviewed[id] = 'ok'; writeJSON(F.reviewed, reviewed); }
+      else if (action === 'trash') { const dj = readJSON(F.discards, {}); dj[id] = true; writeJSON(F.discards, dj); reviewed[id] = 'trash'; writeJSON(F.reviewed, reviewed); }
+      else if (action === 'undo') {
+        if (id in reviewed) { delete reviewed[id]; writeJSON(F.reviewed, reviewed); }
+        if (id in picks) { delete picks[id]; writeJSON(F.picks, picks); }
+        const dj = readJSON(F.discards, {}); if (id in dj) { delete dj[id]; writeJSON(F.discards, dj); }
+        // the graf (reading) correction is kept on purpose, so a mis-edit can be fixed
+      }
       // action 'graf' only records the reading correction; the item stays unreviewed
       res.writeHead(200, { 'content-type': 'application/json' });
       res.end(JSON.stringify({ ok: true }));

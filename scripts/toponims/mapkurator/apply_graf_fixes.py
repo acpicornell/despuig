@@ -12,8 +12,14 @@ sys.path.insert(0, os.path.dirname(__file__))
 import b_assemble as ba
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-TOP = f"{ROOT}/data/toponims/toponims.json"
-FIXES = f"{ROOT}/data/toponims/graf-fixes.json"
+# per-sheet support: default to the global table/fixes; a quadrant run passes
+# TOPONIMS_JSON + GRAF_JSON so it only ever touches data/toponims/<q>/.
+TOP = os.environ.get("TOPONIMS_JSON") or f"{ROOT}/data/toponims/toponims.json"
+if not os.path.isabs(TOP):
+    TOP = f"{ROOT}/{TOP}"
+FIXES = os.environ.get("GRAF_JSON") or f"{ROOT}/data/toponims/graf-fixes.json"
+if not os.path.isabs(FIXES):
+    FIXES = f"{ROOT}/{FIXES}"
 
 
 def main():

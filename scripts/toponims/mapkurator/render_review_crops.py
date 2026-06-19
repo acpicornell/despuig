@@ -26,7 +26,12 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..")
 P = lambda env, default: os.environ.get(env) or os.path.join(ROOT, default)
 CROPS = P("REVIEW_CROPS", "data/toponims/review-crops")
 REVIEW_DATA = P("REVIEW_DATA", "data/toponims/review-data.json")
-WANT = {"suggerit", "posicional", "sense"}
+# Which decision classes to render for review. Default = only the uncertain ones
+# (global pipeline unchanged); set REVIEW_WANT=all (or a comma list) to also curate
+# the auto-classified confirmat/probable and catch errors there.
+ALL_DEC = {"confirmat", "probable", "suggerit", "posicional", "sense"}
+_w = (os.environ.get("REVIEW_WANT") or "suggerit,posicional,sense").strip()
+WANT = ALL_DEC if _w == "all" else set(_w.replace(" ", "").split(","))
 WW, WH, SCALE = 760, 320, 1.5
 
 os.makedirs(CROPS, exist_ok=True)
@@ -38,8 +43,8 @@ master = Image.open(P("MASTER_IMG", "data/jpg/despuig-1785-original.jpg")).conve
 import re
 from collections import defaultdict
 from unidecode import unidecode
-topll = {t["id"]: (t.get("lon"), t.get("lat"))
-         for t in json.load(open(P("TOPONIMS_JSON", "data/toponims/toponims.json")))["toponims"]}
+topo = {t["id"]: t
+        for t in json.load(open(P("TOPONIMS_JSON", "data/toponims/toponims.json")))["toponims"]}
 llocs = json.load(open(f"{ROOT}/data/toponims/ngib/llocs.json"))
 core = lambda s: re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]", " ", unidecode((s or "").lower()))).strip()
 by_name = defaultdict(list)
@@ -57,10 +62,12 @@ def cand_ll(grafia, lon, lat):
 
 items = []
 for m in matches:
-    if m["decision"] not in WANT or m["id"] not in recheck:
+    if m["decision"] not in WANT:
         continue
-    r = recheck[m["id"]]
-    x, y = r["x"], r["y"]
+    t = topo.get(m["id"])
+    if not t:                       # position lives in the toponym table (not all are in recheck)
+        continue
+    x, y = t["x"], t["y"]
     crop = master.crop((x - WW // 2, y - WH // 2, x + WW // 2, y + WH // 2)).copy()
     d = ImageDraw.Draw(crop)
     cx, cy = crop.width // 2, crop.height // 2
@@ -68,12 +75,19 @@ for m in matches:
     d.line((cx, cy - 16, cx, cy + 16), fill=(220, 0, 0), width=2)
     crop = crop.resize((int(WW * SCALE), int(WH * SCALE)), Image.LANCZOS)
     crop.save(f"{CROPS}/{m['id']}.jpg", quality=82)
-    lon, lat = topll.get(m["id"], (None, None))
-    cands = []
-    for c in r.get("candidates", [])[:6]:
-        clon, clat = cand_ll(c["grafia"], lon, lat)
-        cands.append({"grafia": c["grafia"], "municipi": c["municipi"],
-                      "km": c["km"], "sim": c["sim"], "lon": clon, "lat": clat})
+    lon, lat = t.get("lon"), t.get("lat")
+    cands, r = [], recheck.get(m["id"])
+    if r:
+        for c in r.get("candidates", [])[:6]:
+            clon, clat = cand_ll(c["grafia"], lon, lat)
+            cands.append({"grafia": c["grafia"], "municipi": c["municipi"],
+                          "km": c["km"], "sim": c["sim"], "lon": clon, "lat": clat})
+    # confirmat/probable often aren't in recheck — surface their CURRENT match so the
+    # reviewer sees what it's matched to (marked as recommended via ngib) and can re-pick.
+    if m.get("ngib") and not any(c["grafia"] == m["ngib"] for c in cands):
+        clon, clat = cand_ll(m["ngib"], lon, lat)
+        cands.insert(0, {"grafia": m["ngib"], "municipi": m.get("municipi"),
+                         "km": m.get("km"), "sim": m.get("sim"), "lon": clon, "lat": clat})
     items.append({
         "id": m["id"], "graf": m["graf"], "nom": m["nom"], "tipus": m["tipus"],
         "decision": m["decision"], "x": x, "y": y, "lon": lon, "lat": lat,

@@ -1,6 +1,6 @@
 {
  "model": "poly2",
- "count": 18,
+ "count": 15,
  "gcps": [
   {
    "x": 7449,
@@ -120,30 +120,6 @@
    "town": "Puigpunyent",
    "lng": 2.527181,
    "lat": 39.623511,
-   "src": "ngib"
-  },
-  {
-   "x": 8756,
-   "y": 2686,
-   "town": "Port de sa Calobra",
-   "lng": 2.799968,
-   "lat": 39.851819,
-   "src": "ngib"
-  },
-  {
-   "x": 8316,
-   "y": 2891,
-   "town": "Cala Tuent",
-   "lng": 2.776779,
-   "lat": 39.841078,
-   "src": "ngib"
-  },
-  {
-   "x": 6835,
-   "y": 3725,
-   "town": "Port de Sóller",
-   "lng": 2.69802,
-   "lat": 39.795782,
    "src": "ngib"
   }
  ]

@@ -19,6 +19,12 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..")
 # files); positions come out in that sheet crop's pixel space.
 WIN = os.path.join(ROOT, os.environ.get("B_WINDIR", "data/toponims/mapkurator/b"))
 OUT = os.environ.get("TOPONIMS_JSON") or os.path.join(ROOT, "data/toponims/toponims.json")
+# optional coastal (deskewed) track: a second window dir + its extract output. Its
+# tilted toponyms supersede the interior toponyms built from the same boxes (which
+# the axis-aligned windowing read badly). Interior ids stay stable (hand-curation
+# keyed by id survives); coastal toponyms get a "C" id prefix.
+COAST_WIN = os.environ.get("B_COAST_WINDIR")
+COAST_EXTRACT = os.environ.get("B_COAST_EXTRACT")
 
 # ---- normalisation (engraving reading -> nom / tipus) ----
 TOWNS = {
@@ -86,17 +92,21 @@ def tipus_of(k):
     return "altre"
 
 
-def main():
-    wf = json.load(open(sys.argv[1]))
-    W = wf["result"]["windows"] if "result" in wf else wf["windows"]
-    out, seen = [], set()
-    for win in W:
-        boxes = {b["n"]: b for b in json.load(open(f"{WIN}/w{win['w']:02d}.json"))["words"]}
+def emit(windows, windir, prefix, out, seen, skip_steep=None):
+    """Build toponyms from one extraction track into `out` (deduping via `seen`).
+    If `skip_steep` (a set of (cx,cy)) is given, drop toponyms whose member boxes are
+    mostly in it -- they belong to the coastal track instead."""
+    for win in windows:
+        boxes = {b["n"]: b for b in json.load(open(f"{windir}/w{win['w']:02d}.json"))["words"]}
         for i, t in enumerate(win["toponims"]):
             pts = [boxes[n] for n in t["boxes"] if n in boxes]
             graf = (t["reading"] or "").strip()
             if not pts or not graf:
                 continue
+            if skip_steep is not None:
+                nsteep = sum(1 for p in pts if (p["cx"], p["cy"]) in skip_steep)
+                if nsteep * 2 >= len(pts):       # majority tilted -> coastal track owns it
+                    continue
             x = round(sum(p["cx"] for p in pts) / len(pts))
             y = round(sum(p["cy"] for p in pts) / len(pts))
             k = key(graf)
@@ -104,9 +114,27 @@ def main():
             if not k or cellkey in seen:
                 continue
             seen.add(cellkey)
-            out.append({"id": f"B{win['w']:02d}_{i + 1}", "graf": graf,
+            out.append({"id": f"{prefix}{win['w']:02d}_{i + 1}", "graf": graf,
                         "nom": TOWNS.get(k) or normalize_nom(graf),
                         "tipus": tipus_of(k), "subtile": "", "x": x, "y": y, "dubte": False})
+
+
+def main():
+    wf = json.load(open(sys.argv[1]))
+    W = wf["result"]["windows"] if "result" in wf else wf["windows"]
+    out, seen = [], set()
+    # coastal track (if configured): its tilted boxes supersede interior toponyms
+    steep = None
+    if COAST_WIN and COAST_EXTRACT:
+        cb = json.load(open(os.path.join(ROOT, COAST_WIN, "coast-boxes.json")))["boxes"]
+        steep = {(cx, cy) for cx, cy in cb}
+    emit(W, WIN, "B", out, seen, skip_steep=steep)        # interior (ids stable)
+    if steep is not None:
+        cw = json.load(open(os.path.join(ROOT, COAST_EXTRACT)))
+        CW = cw["result"]["windows"] if "result" in cw else cw["windows"]
+        emit(CW, os.path.join(ROOT, COAST_WIN), "C", out, seen)   # coastal (deskewed)
+        print(f"coastal track: {sum(1 for r in out if r['id'][0]=='C')} toponyms; "
+              f"interior {sum(1 for r in out if r['id'][0]=='B')}")
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     json.dump({"font": "Topònims del mapa de Despuig (1785). El spotter de mapKurator "
                        "detecta les caixes de paraula; Claude vision les agrupa en "
