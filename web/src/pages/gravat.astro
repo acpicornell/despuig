@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/url.mjs';
+
+const dziUrl = url('map/mapa.dzi');
+// Regions de cada full en píxels del màster (19306×14902), separats pels gutters
+// del gravat de 4 planxes: GUTTER_V {a:9590,b:9840}, GUTTER_H {a:7340,b:7720}.
+const SHEETS = [
+  { key: 'full', label: 'Sencer', rect: null },
+  { key: 'nw', label: 'Nord-oest', rect: [0, 0, 9590, 7340] },
+  { key: 'ne', label: 'Nord-est', rect: [9840, 0, 9466, 7340] },
+  { key: 'sw', label: 'Sud-oest', rect: [0, 7720, 9590, 7182] },
+  { key: 'se', label: 'Sud-est', rect: [9840, 7720, 9466, 7182] },
+];
+const cfg = { dzi: dziUrl, osdImg: 'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/', sheets: SHEETS };
+---
+<Base title="El gravat" description="El gravat original del Mapa de la Isla de Mallorca (Antoni Despuig, 1785) a resolució completa: navega les quatre planxes amb zoom profund.">
+  <section class="wrap ghead">
+    <div class="titlerow">
+      <h1>El gravat</h1>
+      <div class="sheets" role="group" aria-label="Salta a un full">
+        {SHEETS.map((s) => <button data-sheet={s.key} class={s.key === 'full' ? 'on' : ''}>{s.label}</button>)}
+      </div>
+    </div>
+    <p class="muted small">El <em>Mapa de la Isla de Mallorca</em> de 1785, gravat en quatre planxes. Arrossega per moure't, roda per fer zoom, o salta directament a un full.</p>
+  </section>
+
+  <div id="eng" class="viewer"></div>
+
+  <script type="application/json" id="cfg" set:html={JSON.stringify(cfg)}></script>
+  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script>
+  <script is:inline>
+    (function () {
+      const cfg = JSON.parse(document.getElementById('cfg').textContent);
+      const osd = OpenSeadragon({
+        id: 'eng', prefixUrl: cfg.osdImg, tileSources: cfg.dzi,
+        showNavigator: true, navigatorPosition: 'BOTTOM_RIGHT',
+        gestureSettingsMouse: { clickToZoom: false }, minZoomImageRatio: 0.5, visibilityRatio: 1,
+        animationTime: 0.8,
+      });
+      const btns = Array.from(document.querySelectorAll('.sheets button'));
+      function go(key) {
+        const s = cfg.sheets.find((x) => x.key === key);
+        btns.forEach((b) => b.classList.toggle('on', b.dataset.sheet === key));
+        if (!s || !s.rect) { osd.viewport.goHome(); return; }
+        const [x, y, w, h] = s.rect;
+        osd.viewport.fitBounds(osd.viewport.imageToViewportRectangle(new OpenSeadragon.Rect(x, y, w, h)));
+      }
+      btns.forEach((b) => b.addEventListener('click', () => go(b.dataset.sheet)));
+      // En arrossegar/zoom a mà, cap full queda "actiu"
+      osd.addHandler('canvas-drag', () => btns.forEach((b) => b.classList.remove('on')));
+      osd.addHandler('canvas-scroll', () => btns.forEach((b) => b.classList.remove('on')));
+    })();
+  </script>
+</Base>
+
+<style>
+  .ghead { padding-top: 1.2rem; }
+  .titlerow { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .titlerow h1 { margin: 0; }
+  .sheets { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: rgba(255,255,255,.5); }
+  .sheets button { font-family: var(--display); font-size: .85rem; padding: .4rem .9rem; border: 0; border-left: 1px solid var(--line); background: transparent; color: var(--ink-soft); cursor: pointer; }
+  .sheets button:first-child { border-left: 0; }
+  .sheets button.on { background: var(--accent); color: #fff; }
+  .small { margin: .6rem 0 .8rem; }
+  .viewer { width: 100%; height: min(82vh, 900px); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #2a2622; }
+</style>

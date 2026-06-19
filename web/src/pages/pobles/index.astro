@@ -29,6 +29,7 @@ const pobles = [...data.pobles].sort((a, b) => a.nom.localeCompare(b.nom, 'ca'))
 </Base>
 
 <style>
+  section:first-of-type { padding-top: 1.2rem; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
   .poble { text-decoration: none; color: inherit; overflow: hidden; transition: transform .12s, box-shadow .12s; }
   .poble:hover { transform: translateY(-3px); box-shadow: 0 6px 18px var(--shadow); }

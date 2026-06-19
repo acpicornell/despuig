@@ -10,6 +10,7 @@ const path = Astro.url.pathname.replace(/\/$/, '');
 const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 const nav = [
   { href: url(''), label: 'Inici', match: base === '' ? '' : base },
+  { href: url('gravat'), label: 'El gravat', match: base + '/gravat' },
   { href: url('pobles'), label: 'Els pobles', match: base + '/pobles' },
   { href: url('toponims'), label: 'Topònims', match: base + '/toponims' },
   { href: url('mapa'), label: 'Mapa', match: base + '/mapa' },
