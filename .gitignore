@@ -55,3 +55,6 @@ data/toponims/*/review-data.json
 data/toponims/*/gcp-crops/
 data/toponims/*/gcp-dots.json
 data/toponims/*/*-overlay.png
+
+# local backups of superseded curation
+*.superseded

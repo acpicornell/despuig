@@ -39,7 +39,9 @@ const norm = (s) =>
 // ─── 1. Topònims: merge dels quadrants (id prefixat) + join amb el match ───
 const toponims = [];
 const perQuadrant = {};
+// Two axes: `decision` = algorithmic confidence; `review` = human layer (orthogonal).
 const perDecision = {};
+const perReview = {};
 for (const q of QUADRANTS) {
   const topo = rd(q.topo).toponims;
   const matches = rd(q.matches);
@@ -48,6 +50,7 @@ for (const q of QUADRANTS) {
   for (const t of topo) {
     const m = matchById.get(t.id) || {};
     const decision = m.decision || 'sense';
+    const review = m.review ?? null;
     toponims.push({
       uid: `${q.key}:${t.id}`,
       q: q.key,
@@ -62,6 +65,7 @@ for (const q of QUADRANTS) {
       lon: t.lon ?? null,
       lat: t.lat ?? null,
       decision,
+      review,
       ngib: m.ngib ?? null,
       municipi: m.municipi ?? null,
       sim: m.sim ?? null,
@@ -69,6 +73,7 @@ for (const q of QUADRANTS) {
     });
     n++;
     perDecision[decision] = (perDecision[decision] || 0) + 1;
+    if (review) perReview[review] = (perReview[review] || 0) + 1;
   }
   perQuadrant[q.key] = n;
 }
@@ -78,9 +83,9 @@ writeFileSync(
   join(OUT, 'toponims.json'),
   JSON.stringify(
     {
-      font: 'Topònims del mapa de Despuig (1785), pipeline per-sheet: spotter mapKurator + lectura Claude vision + georef poly2 + match NGIB, curat a mà.',
+      font: 'Topònims del mapa de Despuig (1785), pipeline per-sheet: spotter mapKurator + lectura Claude vision + georef + match NGIB. Dos eixos: confiança (decision) + revisió a mà (review).',
       quadrants: QUADRANTS.map((q) => q.key),
-      comptador: { total: toponims.length, perQuadrant, perDecision },
+      comptador: { total: toponims.length, perQuadrant, perDecision, perReview },
       toponims,
     },
     null,

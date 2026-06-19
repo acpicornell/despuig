@@ -3,22 +3,28 @@ import Base from '../layouts/Base.astro';
 import data from '../data/toponims.json';
 import { url } from '../lib/url.mjs';
 
+// Eix de CONFIANÇA (algorítmica).
 const DEC = {
-  curat: { label: 'Curat', color: '#2e7d32' },
-  confirmat: { label: 'Confirmat', color: '#3f7a8a' },
-  probable: { label: 'Probable', color: '#b5862a' },
+  confirmat: { label: 'Confirmat', color: '#2e7d32' },
+  probable: { label: 'Probable', color: '#3f7a8a' },
   suggerit: { label: 'Suggerit', color: '#c2702f' },
   posicional: { label: 'Posicional', color: '#8a8170' },
   sense: { label: 'Sense', color: '#9a4a3a' },
+};
+// Eix de REVISIÓ (humana), ortogonal a la confiança.
+const REV = {
+  revisat: { label: 'Revisat a mà', icon: '✓' },
+  corregit: { label: 'Corregit a mà', icon: '✎' },
 };
 const TIP = { possessió: 'Possessió', costa: 'Costa', nucli: 'Nucli', hidrònim: 'Hidrònim', orònim: 'Orònim', altre: 'Altre' };
 const QNOM = { nw: 'Nord-oest', ne: 'Nord-est', se: 'Sud-est', sw: 'Sud-oest' };
 
 const rows = data.toponims;
 // Ordres presents (per als selects), respectant l'ordre de la escala.
-const decOrder = ['curat', 'confirmat', 'probable', 'suggerit', 'posicional', 'sense'].filter((d) => rows.some((r) => r.decision === d));
+const decOrder = ['confirmat', 'probable', 'suggerit', 'posicional', 'sense'].filter((d) => rows.some((r) => r.decision === d));
 const tipOrder = Object.keys(TIP).filter((t) => rows.some((r) => r.tipus === t));
 const qOrder = data.quadrants;
+const hasReview = rows.some((r) => r.review);
 const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
 ---
 <Base title="Topònims" description="Taula dels milers de topònims llegits sobre el mapa de Despuig (1785) i la seva equivalència al Nomenclàtor Geogràfic de les Illes Balears.">
@@ -26,14 +32,16 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
     <h1>Els topònims del mapa</h1>
     <p class="lede">
       Lectura assistida per IA de visió dels noms gravats a l'interior del mapa, contrastada amb el
-      <strong>Nomenclàtor Geogràfic de les Illes Balears</strong> (NGIB) i curada a mà. La grafia és
+      <strong>Nomenclàtor Geogràfic de les Illes Balears</strong> (NGIB). Hi ha dos eixos independents:
+      la <strong>confiança</strong> del creuament (algorítmica) i la <strong>revisió</strong> a mà
+      (<span class="rev">✓</span> revisat, <span class="rev">✎</span> corregit). La grafia és
       diplomàtica (tal com es grava: Sô = Son, Câ = Can).
     </p>
 
     <div class="controls">
       <input id="q" type="search" placeholder="Cerca grafia, nom o NGIB…" aria-label="Cerca" />
-      <select id="fdec" aria-label="Estat">
-        <option value="">Tots els estats</option>
+      <select id="fdec" aria-label="Confiança">
+        <option value="">Tota confiança</option>
         {decOrder.map((d) => <option value={d}>{DEC[d].label}</option>)}
       </select>
       <select id="ftip" aria-label="Tipus">
@@ -44,22 +52,33 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
         <option value="">Tots els fulls</option>
         {qOrder.map((q) => <option value={q}>{QNOM[q] ?? q}</option>)}
       </select>
+      {hasReview && (
+        <select id="frev" aria-label="Revisió">
+          <option value="">Tota revisió</option>
+          <option value="any">Revisat a mà</option>
+          <option value="none">Sense revisar</option>
+          <option value="corregit">Corregit a mà</option>
+        </select>
+      )}
       <span id="count" class="muted count"></span>
     </div>
 
     <div class="tablewrap">
       <table>
         <thead>
-          <tr><th>Grafia (gravat)</th><th>Lectura</th><th>Tipus</th><th>Estat</th><th>NGIB</th><th>Municipi</th><th class="num">Dist.</th><th>Full</th></tr>
+          <tr><th>Grafia (gravat)</th><th>Lectura</th><th>Tipus</th><th>Confiança</th><th>NGIB</th><th>Municipi</th><th class="num">Dist.</th><th>Full</th></tr>
         </thead>
         <tbody id="rows">
           {rows.map((r) => (
-            <tr data-dec={r.decision} data-tip={r.tipus} data-q={r.q}
+            <tr data-dec={r.decision} data-tip={r.tipus} data-q={r.q} data-rev={r.review ?? ''}
                 data-text={`${r.graf} ${r.nom} ${r.ngib ?? ''} ${r.municipi ?? ''}`.toLowerCase()}>
               <td class="graf">{r.graf}{r.dubte && <span class="dubte" title="lectura dubtosa">?</span>}</td>
               <td>{r.nom}</td>
               <td class="muted">{TIP[r.tipus] ?? r.tipus}</td>
-              <td><span class="badge" style={`--c:${(DEC[r.decision] ?? {}).color ?? '#888'}`}>{(DEC[r.decision] ?? {}).label ?? r.decision}</span></td>
+              <td>
+                <span class="badge" style={`--c:${(DEC[r.decision] ?? {}).color ?? '#888'}`}>{(DEC[r.decision] ?? {}).label ?? r.decision}</span>
+                {r.review && <span class="rev" title={REV[r.review]?.label ?? r.review}>{REV[r.review]?.icon ?? '✓'}</span>}
+              </td>
               <td>{r.ngib ?? <span class="muted">—</span>}</td>
               <td class="muted">{r.municipi ?? ''}</td>
               <td class="num muted">{fmtKm(r.km)}</td>
@@ -77,24 +96,28 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
       const fdec = document.getElementById('fdec');
       const ftip = document.getElementById('ftip');
       const fq = document.getElementById('fq');
+      const frev = document.getElementById('frev');
       const count = document.getElementById('count');
       const trs = Array.from(document.getElementById('rows').children);
       function apply() {
         const t = q.value.trim().toLowerCase();
-        const d = fdec.value, tp = ftip.value, qq = fq.value;
+        const d = fdec.value, tp = ftip.value, qq = fq.value, rv = frev ? frev.value : '';
         let shown = 0;
         for (const tr of trs) {
+          const rev = tr.dataset.rev;
+          const revOk = !rv || (rv === 'any' ? !!rev : rv === 'none' ? !rev : rev === rv);
           const ok =
             (!d || tr.dataset.dec === d) &&
             (!tp || tr.dataset.tip === tp) &&
             (!qq || tr.dataset.q === qq) &&
+            revOk &&
             (!t || tr.dataset.text.includes(t));
           tr.style.display = ok ? '' : 'none';
           if (ok) shown++;
         }
         count.textContent = `mostrant ${shown.toLocaleString('ca-ES')} de ${total.toLocaleString('ca-ES')}`;
       }
-      [q, fdec, ftip, fq].forEach((el) => el.addEventListener('input', apply));
+      [q, fdec, ftip, fq, frev].filter(Boolean).forEach((el) => el.addEventListener('input', apply));
       apply();
     })();
   </script>
@@ -118,5 +141,6 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
   .dubte { color: var(--accent); font-weight: 700; margin-left: .2rem; }
   .num { text-align: right; white-space: nowrap; }
   .badge { display: inline-block; font-size: .76rem; padding: .08rem .5rem; border-radius: 999px; color: #fff; background: var(--c); white-space: nowrap; }
+  .rev { margin-left: .35rem; color: var(--accent); font-weight: 700; cursor: help; }
   @media (max-width: 720px) { .count { margin-left: 0; } }
 </style>

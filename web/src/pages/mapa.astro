@@ -4,9 +4,8 @@ import data from '../data/toponims.json';
 import { url } from '../lib/url.mjs';
 
 const DEC = {
-  curat: { label: 'Curat', color: '#2e7d32' },
-  confirmat: { label: 'Confirmat', color: '#3f7a8a' },
-  probable: { label: 'Probable', color: '#b5862a' },
+  confirmat: { label: 'Confirmat', color: '#2e7d32' },
+  probable: { label: 'Probable', color: '#3f7a8a' },
   suggerit: { label: 'Suggerit', color: '#c2702f' },
   posicional: { label: 'Posicional', color: '#8a8170' },
   sense: { label: 'Sense', color: '#9a4a3a' },
@@ -14,14 +13,14 @@ const DEC = {
 const TIP = { possessió: 'Possessió', costa: 'Costa', nucli: 'Nucli', hidrònim: 'Hidrònim', orònim: 'Orònim', altre: 'Altre' };
 const QNOM = { nw: 'Nord-oest', ne: 'Nord-est', se: 'Sud-est', sw: 'Sud-oest' };
 
-const decOrder = ['curat', 'confirmat', 'probable', 'suggerit', 'posicional', 'sense'].filter((d) => data.toponims.some((r) => r.decision === d));
+const decOrder = ['confirmat', 'probable', 'suggerit', 'posicional', 'sense'].filter((d) => data.toponims.some((r) => r.decision === d));
 const tipOrder = Object.keys(TIP).filter((t) => data.toponims.some((r) => r.tipus === t));
 const qOrder = data.quadrants;
 
-// Payload compacte per al client: [lon, lat, decision, tipus, q, graf, nom, ngib, municipi]
+// Payload compacte: [lon, lat, decision, tipus, q, graf, nom, ngib, municipi, review]
 const pts = data.toponims
   .filter((t) => t.lon != null && t.lat != null)
-  .map((t) => [+t.lon.toFixed(5), +t.lat.toFixed(5), t.decision, t.tipus, t.q, t.graf, t.nom, t.ngib || '', t.municipi || '']);
+  .map((t) => [+t.lon.toFixed(5), +t.lat.toFixed(5), t.decision, t.tipus, t.q, t.graf, t.nom, t.ngib || '', t.municipi || '', t.review || '']);
 const colors = Object.fromEntries(Object.entries(DEC).map(([k, v]) => [k, v.color]));
 const dziUrl = url('map/mapa.dzi');
 ---
@@ -76,18 +75,19 @@ const dziUrl = url('map/mapa.dzi');
         const t = q.value.trim().toLowerCase(), d = fdec.value, tp = ftip.value, qq = fq.value;
         let shown = 0;
         for (const p of pts) {
-          const [lon, lat, dec, tip, qd, graf, nom, ngib, mun] = p;
+          const [lon, lat, dec, tip, qd, graf, nom, ngib, mun, rev] = p;
           if (d && dec !== d) continue;
           if (tp && tip !== tp) continue;
           if (qq && qd !== qq) continue;
           if (t && !((graf + ' ' + nom + ' ' + ngib + ' ' + mun).toLowerCase().includes(t))) continue;
           const m = L.circleMarker([lat, lon], {
-            radius: 4, weight: 1, color: 'rgba(40,30,20,.55)', fillColor: cfg.colors[dec] || '#888', fillOpacity: 0.9,
+            radius: 4, weight: rev ? 2 : 1, color: rev ? '#1d6b2a' : 'rgba(40,30,20,.55)', fillColor: cfg.colors[dec] || '#888', fillOpacity: 0.9,
           });
+          const revTxt = rev === 'corregit' ? ' · ✎ corregit a mà' : rev ? ' · ✓ revisat a mà' : '';
           m.bindPopup(
             '<strong>' + esc(graf) + '</strong>' + (nom && nom !== graf ? ' <span style="opacity:.7">(' + esc(nom) + ')</span>' : '') +
             '<br>' + (ngib ? 'NGIB: ' + esc(ngib) + (mun ? ' · ' + esc(mun) : '') : '<em>sense forma NGIB</em>') +
-            '<br><span style="opacity:.7">' + (QN[qd] || qd) + '</span>'
+            '<br><span style="opacity:.7">' + (QN[qd] || qd) + revTxt + '</span>'
           );
           m.addTo(layer);
           shown++;

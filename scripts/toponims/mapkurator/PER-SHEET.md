@@ -183,8 +183,21 @@ DISCARDS_JSON=data/toponims/nw/discards.json \
   nix-shell scripts/toponims/shell.nix \
   --run 'python3 scripts/toponims/ngib_match.py'
 ```
-Distance only disambiguates homonyms, never discards a unique name. Decision ladder:
-confirmat / probable / suggerit / posicional / sense.
+Distance only disambiguates homonyms, never discards a unique name.
+
+**TWO ORTHOGONAL AXES** (TEI `@cert`/`@resp` model — don't conflate "how sure" with
+"who says so"):
+- `decision` = **confidence** (algorithmic, ALWAYS recomputed): `confirmat` / `probable`
+  / `suggerit` / `posicional` / `sense`. Re-running the match never destroys it.
+- `review` = **human validation** (persistent, orthogonal): `revisat` (a human confirmed
+  the match, or confirmed there is no match), `corregit` (a human changed the match),
+  `descartat` (brossa, dropped), or `null` (unreviewed).
+The review tool's verdicts (`recheck-picks.json` + `review-reviewed.json` 'pick'/'ok'/
+'none', `discards.json`) feed the `review` axis; a pick also re-sets the match and its
+recomputed `decision`. There is **no `curat` tier** any more — "human-verified" is the
+`review` flag, shown on top of whatever confidence the item has. So an already-curated
+sheet can be safely re-matched: the confidence refreshes and the human layer rides along
+(NW's old all-`curat` artefact came from the previous single-ladder model).
 
 **Keep the per-sheet and whole-island databases separate.** The pipeline scripts
 default every path to the global (whole-island) files; a per-sheet run MUST pass the

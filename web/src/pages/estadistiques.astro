@@ -4,12 +4,15 @@ import topo from '../data/toponims.json';
 import pob from '../data/pobles.json';
 
 const DEC = {
-  curat: { label: 'Curat', color: '#2e7d32' },
-  confirmat: { label: 'Confirmat', color: '#3f7a8a' },
-  probable: { label: 'Probable', color: '#b5862a' },
+  confirmat: { label: 'Confirmat', color: '#2e7d32' },
+  probable: { label: 'Probable', color: '#3f7a8a' },
   suggerit: { label: 'Suggerit', color: '#c2702f' },
   posicional: { label: 'Posicional', color: '#8a8170' },
   sense: { label: 'Sense match', color: '#9a4a3a' },
+};
+const REV = {
+  revisat: { label: 'Revisat a mà', color: '#2e7d32' },
+  corregit: { label: 'Corregit a mà', color: '#c2702f' },
 };
 const TIP = { possessió: 'Possessió', costa: 'Costa', nucli: 'Nucli', hidrònim: 'Hidrònim', orònim: 'Orònim', altre: 'Altre' };
 const QNOM = { nw: 'Nord-oest', ne: 'Nord-est', se: 'Sud-est', sw: 'Sud-oest' };
@@ -27,6 +30,10 @@ const tipStats = Object.keys(TIP)
   .sort((a, b) => b.n - a.n);
 const qStats = topo.quadrants.map((q) => ({ q, label: QNOM[q] ?? q, n: topo.comptador.perQuadrant[q] || 0 }));
 const ambNgib = rows.filter((r) => r.ngib).length;
+// Eix de revisió humana (ortogonal a la confiança).
+const perReview = topo.comptador.perReview || {};
+const revStats = Object.keys(REV).map((k) => ({ k, ...REV[k], n: perReview[k] || 0 })).filter((r) => r.n > 0);
+const revisatsTotal = revStats.reduce((s, r) => s + r.n, 0);
 
 // Població de 1785 (vecinos llegits de les cartel·les).
 const pobVeins = pob.pobles.filter((p) => p.veins != null).sort((a, b) => b.veins - a.veins);
@@ -49,15 +56,15 @@ const pct = (n, max) => `${Math.max(2, Math.round((n / max) * 100))}%`;
     <div class="kpis">
       <div class="card kpi"><strong>{total.toLocaleString('ca-ES')}</strong><span>topònims llegits</span></div>
       <div class="card kpi"><strong>{ambNgib.toLocaleString('ca-ES')}</strong><span>amb forma NGIB</span></div>
-      <div class="card kpi"><strong>{pob.pobles.length}</strong><span>pobles amb cartela</span></div>
+      <div class="card kpi"><strong>{revisatsTotal.toLocaleString('ca-ES')}</strong><span>revisats a mà</span></div>
       <div class="card kpi"><strong>{totalVeins.toLocaleString('ca-ES')}</strong><span>veïns (1785)</span></div>
     </div>
   </section>
 
   <section class="wrap cols2">
     <div>
-      <h2>Topònims per estat</h2>
-      <p class="muted small">Escala de confiança del creuament amb el Nomenclàtor (NGIB), després de la curació a mà.</p>
+      <h2>Topònims per confiança</h2>
+      <p class="muted small">Confiança algorítmica del creuament amb el Nomenclàtor (NGIB): nom + posició.</p>
       <ul class="bars">
         {decStats.map((d) => (
           <li>
@@ -67,6 +74,27 @@ const pct = (n, max) => `${Math.max(2, Math.round((n / max) * 100))}%`;
           </li>
         ))}
       </ul>
+
+      {revStats.length > 0 && (
+        <>
+          <h2>Revisió a mà</h2>
+          <p class="muted small">Eix independent de la confiança: validació humana (✓ revisat, ✎ corregit). La resta encara no s'han revisat.</p>
+          <ul class="bars">
+            {revStats.map((r) => (
+              <li>
+                <span class="blab">{r.label}</span>
+                <span class="btrack"><span class="bfill" style={`width:${pct(r.n, total)};background:${r.color}`}></span></span>
+                <span class="bval">{r.n.toLocaleString('ca-ES')}</span>
+              </li>
+            ))}
+            <li>
+              <span class="blab">Sense revisar</span>
+              <span class="btrack"><span class="bfill" style={`width:${pct(total - revisatsTotal, total)};background:var(--line)`}></span></span>
+              <span class="bval">{(total - revisatsTotal).toLocaleString('ca-ES')}</span>
+            </li>
+          </ul>
+        </>
+      )}
 
       <h2>Per tipus</h2>
       <ul class="bars">
