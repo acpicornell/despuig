@@ -20,7 +20,7 @@ from shapely.validation import make_valid
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 BASE = os.path.join(ROOT, "data/toponims/mapkurator")
 # per-sheet support (defaults = the master): override for a sheet crop, e.g.
-#   MK_PATCHES=no/patches.json MK_OUTDIR=no/out MK_DETECTIONS=no/detections.json
+#   MK_PATCHES=nw/patches.json MK_OUTDIR=nw/out MK_DETECTIONS=nw/detections.json
 PATCHES = os.path.join(BASE, os.environ.get("MK_PATCHES", "patches.json"))
 OUTDIR = os.path.join(BASE, os.environ.get("MK_OUTDIR", "out"))
 DETECTIONS = os.path.join(BASE, os.environ.get("MK_DETECTIONS", "detections.json"))

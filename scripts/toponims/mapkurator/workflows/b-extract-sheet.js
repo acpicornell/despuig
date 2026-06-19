@@ -4,8 +4,8 @@
 // groups the spotter boxes into toponyms and reads them DIPLOMATICALLY (Sô/Câ kept).
 // Save the returned {windows:[...]} to <BASE>/extract.json for b_assemble.py.
 //
-// NW (NO) clean rebuild 2026-06-19: interior BASE=.../no/b N=15 → 480; coast
-// BASE=.../no/b-coast N=4 → 109. EDIT the BASE/N constants below per track and
+// NW clean rebuild 2026-06-19: interior BASE=.../nw/b N=15 → 480; coast
+// BASE=.../nw/b-coast N=4 → 109. EDIT the BASE/N constants below per track and
 // re-invoke (the Workflow `args` global did NOT propagate when launched via
 // scriptPath, so don't rely on it — the constants are the source of truth).
 export const meta = {
@@ -14,7 +14,7 @@ export const meta = {
   phases: [{ title: 'Extract', detail: 'one agent per sheet window' }],
 }
 
-const BASE = (args && args.base) || '/home/acpicornell/projects/despuig/data/toponims/mapkurator/no/b'
+const BASE = (args && args.base) || '/home/acpicornell/projects/despuig/data/toponims/mapkurator/nw/b'
 const N = (args && args.n) || 15
 const SCHEMA = {
   type: 'object', additionalProperties: false,

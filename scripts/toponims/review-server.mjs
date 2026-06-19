@@ -12,11 +12,11 @@ import path from 'node:path';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 // Env overrides let one server drive a per-sheet quadrant (default = global A).
-// e.g. for NW:  REVIEW_DATA=data/toponims/no/review-data.json
-//               REVIEW_CROPS=data/toponims/no/review-crops
-//               PICKS_JSON=data/toponims/no/recheck-picks.json
-//               REVIEWED_JSON=data/toponims/no/review-reviewed.json
-//               GRAF_JSON=data/toponims/no/graf-fixes.json
+// e.g. for NW:  REVIEW_DATA=data/toponims/nw/review-data.json
+//               REVIEW_CROPS=data/toponims/nw/review-crops
+//               PICKS_JSON=data/toponims/nw/recheck-picks.json
+//               REVIEWED_JSON=data/toponims/nw/review-reviewed.json
+//               GRAF_JSON=data/toponims/nw/graf-fixes.json
 const P = (env, def) => (process.env[env] ? path.resolve(ROOT, process.env[env]) : `${ROOT}/${def}`);
 const F = {
   data: P('REVIEW_DATA', 'data/toponims/review-data.json'),

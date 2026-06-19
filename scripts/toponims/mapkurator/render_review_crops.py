@@ -11,12 +11,12 @@ scan. Writes data/toponims/review-crops/<id>.jpg + data/toponims/review-data.jso
 
 Env overrides (default = global A pipeline; set for a per-sheet quadrant):
   MATCHES_JSON, RECHECK_JSON, TOPONIMS_JSON, MASTER_IMG, REVIEW_CROPS, REVIEW_DATA
-e.g. for NW: MATCHES_JSON=data/toponims/no/matches.json
-             RECHECK_JSON=data/toponims/no/recheck.json
-             TOPONIMS_JSON=data/toponims/no/toponims.json
-             MASTER_IMG=data/jpg/despuig-1785-original-NO-canvas.jpg
-             REVIEW_CROPS=data/toponims/no/review-crops
-             REVIEW_DATA=data/toponims/no/review-data.json
+e.g. for NW: MATCHES_JSON=data/toponims/nw/matches.json
+             RECHECK_JSON=data/toponims/nw/recheck.json
+             TOPONIMS_JSON=data/toponims/nw/toponims.json
+             MASTER_IMG=data/jpg/NW/despuig-1785-original-NW-canvas.jpg
+             REVIEW_CROPS=data/toponims/nw/review-crops
+             REVIEW_DATA=data/toponims/nw/review-data.json
 """
 import json, os
 from PIL import Image, ImageDraw

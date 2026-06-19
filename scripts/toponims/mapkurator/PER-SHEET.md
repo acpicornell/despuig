@@ -6,7 +6,7 @@ gutter (empty cross-band) that distorts a single whole-map georeference. Working
 hand-marked, immutable control points and georeference it in that crop's own pixel
 space — far tighter than the global fit.
 
-This doc is the reproducible recipe. The first sheet done this way is **NW (NO)**;
+This doc is the reproducible recipe. The first sheet done this way is **NW**;
 its numbers are at the bottom.
 
 ## Inputs the user prepares (in GIMP, as layers)
@@ -21,7 +21,7 @@ are shared):
    hidden** (engraving + red mask only). (Used by the spotter — dots would corrupt
    adjacent text.)
 
-`<Q>` ∈ {NO, NE, SE, SO}. Coastal dots may be marked *in the sea* (their real
+`<Q>` ∈ {NW, NE, SE, SW}. Coastal dots may be marked *in the sea* (their real
 positions shifted historically → lower trust); interior towns are immutable.
 
 ## Step 0 — extract & vet the GCPs (from the dotted export)
@@ -35,7 +35,7 @@ coordinates are off by up to ~1.8 km vs NGIB (Puigpunyent 1757 m, Sencelles/Marr
 Write `data/toponims/<q>/gcps-<q>.json` (tracked — this is the authoritative record
 of the hand-marked control-point work, like the anchor tables in `georef.py`):
 ```json
-{ "sheet":"NO", "crop":"...-NO-canvas.jpg", "crop_dims":[9560,7299],
+{ "sheet":"NW", "crop":"...-NW-canvas.jpg", "crop_dims":[9560,7299],
   "interior":[{"x":..,"y":..,"town":"..","lng":..,"lat":..,"src":"ngib"}, ...],
   "coast":[{"x":..,"y":..,"town":"Port de ..","lng":..,"lat":..,"src":"ngib"}, ...] }
 ```
@@ -47,20 +47,20 @@ as a lone large residual.
 
 ```bash
 # tile (real crop dims, FULL region; reads sharp().metadata, not frame.mjs)
-MK_MASTER=data/jpg/despuig-1785-original-NO-canvas.jpg MK_INDIR=no/in \
-  MK_PATCHES=no/patches.json MK_REGION=FULL \
+MK_MASTER=data/jpg/NW/despuig-1785-original-NW-canvas.jpg MK_INDIR=nw/in \
+  MK_PATCHES=nw/patches.json MK_REGION=FULL \
   nix-shell -p nodejs --run 'node scripts/toponims/mapkurator/pretile.mjs'
 
 # GPU inference inside the container ($DATA is mounted at /workspace/data)
-mkdir -p data/toponims/mapkurator/no/out
+mkdir -p data/toponims/mapkurator/nw/out
 scripts/toponims/mapkurator/run.sh bash -c \
-  'MK_IN=/workspace/data/no/in MK_OUT=/workspace/data/no/out bash /workspace/mk/infer.sh'
+  'MK_IN=/workspace/data/nw/in MK_OUT=/workspace/data/nw/out bash /workspace/mk/infer.sh'
 
 # merge tile polygons → crop-space word polygons
-MK_PATCHES=no/patches.json MK_OUTDIR=no/out MK_DETECTIONS=no/detections.json \
+MK_PATCHES=nw/patches.json MK_OUTDIR=nw/out MK_DETECTIONS=nw/detections.json \
   nix-shell scripts/toponims/mapkurator/shell.nix \
   --run 'python3 scripts/toponims/mapkurator/merge_detections.py'
-# → data/toponims/mapkurator/no/detections.json  (coords already in crop pixel space)
+# → data/toponims/mapkurator/nw/detections.json  (coords already in crop pixel space)
 ```
 
 ## Step 2 — Approach B: window → vision read → assemble
@@ -74,37 +74,37 @@ writing direction (top-edge chord); a box is "tilted" if that exceeds `B_MAX_TIL
 
 ```bash
 # 2a. INTERIOR — flat boxes only (B_MAX_TILT drops tilted ones to the coast track)
-B_DET=data/toponims/mapkurator/no/detections.json \
-B_MASTER=data/jpg/despuig-1785-original-NO-canvas.jpg \
-B_OUTDIR=data/toponims/mapkurator/no/b  B_MAX_TILT=20 \
+B_DET=data/toponims/mapkurator/nw/detections.json \
+B_MASTER=data/jpg/NW/despuig-1785-original-NW-canvas.jpg \
+B_OUTDIR=data/toponims/mapkurator/nw/b  B_MAX_TILT=20 \
   nix-shell scripts/toponims/mapkurator/shell.nix \
   --run 'python3 scripts/toponims/mapkurator/b_windows.py 0 0 9560 7299'
 nix-shell scripts/toponims/mapkurator/shell.nix \
-  --run 'python3 scripts/toponims/mapkurator/split_windows.py data/toponims/mapkurator/no/b'
+  --run 'python3 scripts/toponims/mapkurator/split_windows.py data/toponims/mapkurator/nw/b'
 
 # 2b. COAST — tilted boxes: cluster into oriented ribbons, deskew each to horizontal,
 #     stack into montage windows (same w##.png/windows.json schema; writes coast-boxes.json)
-B_DET=data/toponims/mapkurator/no/detections.json \
-B_MASTER=data/jpg/despuig-1785-original-NO-canvas.jpg \
-B_OUTDIR=data/toponims/mapkurator/no/b-coast  B_MIN_TILT=20 \
+B_DET=data/toponims/mapkurator/nw/detections.json \
+B_MASTER=data/jpg/NW/despuig-1785-original-NW-canvas.jpg \
+B_OUTDIR=data/toponims/mapkurator/nw/b-coast  B_MIN_TILT=20 \
   nix-shell scripts/toponims/mapkurator/shell.nix \
   --run 'python3 scripts/toponims/mapkurator/b_coast_windows.py'
 
 # 2c. EXTRACTION (vision): one agent per window groups boxes → toponyms + reads them
 #     DIPLOMATICALLY (Sô/Câ kept). Run the `b-extract-sheet` Workflow ONCE PER TRACK:
 #     EDIT its BASE/N constants (the `args` global does NOT propagate via scriptPath):
-#       interior: BASE=…/no/b       N = #interior windows
-#       coast:    BASE=…/no/b-coast N = #coast windows
+#       interior: BASE=…/nw/b       N = #interior windows
+#       coast:    BASE=…/nw/b-coast N = #coast windows
 #     Save each result's {windows:[...]} → <BASE>/extract.json.
 
 # 2d. ASSEMBLE both tracks → unified sheet table (interior ids B##_#, coast ids C##_#;
 #     coast supersedes any tilted box that leaked into an interior window)
-B_WINDIR=data/toponims/mapkurator/no/b \
-TOPONIMS_JSON=data/toponims/no/toponims.json \
-B_COAST_WINDIR=data/toponims/mapkurator/no/b-coast \
-B_COAST_EXTRACT=data/toponims/mapkurator/no/b-coast/extract.json \
+B_WINDIR=data/toponims/mapkurator/nw/b \
+TOPONIMS_JSON=data/toponims/nw/toponims.json \
+B_COAST_WINDIR=data/toponims/mapkurator/nw/b-coast \
+B_COAST_EXTRACT=data/toponims/mapkurator/nw/b-coast/extract.json \
   nix-shell scripts/toponims/shell.nix \
-  --run 'python3 scripts/toponims/mapkurator/b_assemble.py data/toponims/mapkurator/no/b/extract.json'
+  --run 'python3 scripts/toponims/mapkurator/b_assemble.py data/toponims/mapkurator/nw/b/extract.json'
 ```
 
 ### Re-running an already-curated sheet (preserve hand-curation)
@@ -114,7 +114,7 @@ A rebuild re-cuts windows, so toponym **ids change** and any existing
 would be orphaned. Back up the pre-rebuild `<q>/` JSONs, rebuild (steps 1–2d), then
 remap the curation onto the new ids by grafia + position:
 ```bash
-OLD=data/toponims/mapkurator/no/prebuild-backup NEW=data/toponims/no \
+OLD=data/toponims/mapkurator/nw/prebuild-backup NEW=data/toponims/nw \
   nix-shell scripts/toponims/shell.nix \
   --run 'python3 scripts/toponims/mapkurator/remap_curation.py'          # dry-run report
 # inspect fuzzy/unmapped, then re-run with --apply (keeps .bak of each rewritten file)
@@ -126,8 +126,8 @@ drops collisions/absent names rather than mis-attaching them.
 ## Step 3 — per-sheet georeference (crop space)
 
 ```bash
-GCPS_NO=data/toponims/mapkurator/no/gcps-no.json \
-TOPONIMS_JSON=data/toponims/no/toponims.json \
+GCPS_NW=data/toponims/mapkurator/nw/gcps-nw.json \
+TOPONIMS_JSON=data/toponims/nw/toponims.json \
   nix-shell scripts/toponims/shell.nix \
   --run 'python3 scripts/toponims/mapkurator/georef_sheet.py --with-coast'
 ```
@@ -141,19 +141,19 @@ default (smooth past the hull; no coastal TPS rings).
 If the review tool has produced reading corrections, apply them to the table FIRST
 (updates `graf`/`nom`/`tipus`; position unchanged, so no re-georef needed):
 ```bash
-TOPONIMS_JSON=data/toponims/no/toponims.json \
-GRAF_JSON=data/toponims/no/graf-fixes.json \
+TOPONIMS_JSON=data/toponims/nw/toponims.json \
+GRAF_JSON=data/toponims/nw/graf-fixes.json \
   nix-shell scripts/toponims/shell.nix \
   --run 'python3 scripts/toponims/mapkurator/apply_graf_fixes.py'
 ```
 Then match:
 ```bash
-TOPONIMS_JSON=data/toponims/no/toponims.json \
-MATCHES_JSON=data/toponims/no/matches.json \
-RECHECK_JSON=data/toponims/no/recheck.json \
-PICKS_JSON=data/toponims/no/recheck-picks.json \
-REVIEWED_JSON=data/toponims/no/review-reviewed.json \
-DISCARDS_JSON=data/toponims/no/discards.json \
+TOPONIMS_JSON=data/toponims/nw/toponims.json \
+MATCHES_JSON=data/toponims/nw/matches.json \
+RECHECK_JSON=data/toponims/nw/recheck.json \
+PICKS_JSON=data/toponims/nw/recheck-picks.json \
+REVIEWED_JSON=data/toponims/nw/review-reviewed.json \
+DISCARDS_JSON=data/toponims/nw/discards.json \
   nix-shell scripts/toponims/shell.nix \
   --run 'python3 scripts/toponims/ngib_match.py'
 ```
@@ -162,29 +162,29 @@ confirmat / probable / suggerit / posicional / sense.
 
 **Keep the per-sheet and whole-island databases separate.** The pipeline scripts
 default every path to the global (whole-island) files; a per-sheet run MUST pass the
-full set of `*_JSON` env vars above so it only ever reads/writes `data/toponims/no/`.
+full set of `*_JSON` env vars above so it only ever reads/writes `data/toponims/nw/`.
 `REVIEWED_JSON` decides which hand picks become `probable` (vs `confirmat`);
 `DISCARDS_JSON` lists toponyms hand-marked as garbage (🗑 Brossa in the review tool),
 which are dropped from `matches.json` and the recheck queue.
 
 The web review tool for this sheet (same isolation — all under `no/`):
 ```bash
-REVIEW_DATA=data/toponims/no/review-data.json \
-REVIEW_CROPS=data/toponims/no/review-crops \
-PICKS_JSON=data/toponims/no/recheck-picks.json \
-REVIEWED_JSON=data/toponims/no/review-reviewed.json \
-GRAF_JSON=data/toponims/no/graf-fixes.json \
-DISCARDS_JSON=data/toponims/no/discards.json \
+REVIEW_DATA=data/toponims/nw/review-data.json \
+REVIEW_CROPS=data/toponims/nw/review-crops \
+PICKS_JSON=data/toponims/nw/recheck-picks.json \
+REVIEWED_JSON=data/toponims/nw/review-reviewed.json \
+GRAF_JSON=data/toponims/nw/graf-fixes.json \
+DISCARDS_JSON=data/toponims/nw/discards.json \
   nix-shell -p nodejs --run 'node scripts/toponims/review-server.mjs'   # → :4400
 ```
 Render its crops first with the matching env (see `render_review_crops.py` header).
 
-## NW (NO) results — clean deskew rebuild, 2026-06-19
+## NW results — clean deskew rebuild, 2026-06-19
 
-- Crop `despuig-1785-original-NO-canvas.jpg` 9560×7299; sea masked, dots removed.
+- Crop `despuig-1785-original-NW-canvas.jpg` 9560×7299; sea masked, dots removed.
 - Spotter: 108 tiles → **979** word polygons (754 flat + 225 tilted >20°).
 - GCPs: **15 interior towns**, all NGIB. (Excluded the SW-peninsula dot by Dragonera.)
-- Windows: interior **15** (`…/no/b/`) + coast **4** deskewed montages (`…/no/b-coast/`).
+- Windows: interior **15** (`…/nw/b/`) + coast **4** deskewed montages (`…/nw/b-coast/`).
 - Extraction (2 `b-extract-sheet` Workflow runs): interior **480** + coast **109** =
   **589 toponyms** (diplomatic grafia).
 - Georef: **poly2**, control-point LOO median **838 m**.

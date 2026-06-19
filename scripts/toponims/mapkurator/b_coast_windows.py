@@ -27,9 +27,9 @@ Output dir (B_OUTDIR, default a sibling `b-coast/`) uses the SAME schema as
 unchanged. It also writes `coast-boxes.json` (the [cx,cy] of every tilted box it
 claimed) so `b_assemble.py` can drop the interior toponyms it supersedes.
 
-    B_DET=data/toponims/mapkurator/no/detections.json \
-    B_MASTER=data/jpg/despuig-1785-original-NO-canvas.jpg \
-    B_OUTDIR=data/toponims/mapkurator/no/b-coast \
+    B_DET=data/toponims/mapkurator/nw/detections.json \
+    B_MASTER=data/jpg/NW/despuig-1785-original-NW-canvas.jpg \
+    B_OUTDIR=data/toponims/mapkurator/nw/b-coast \
       nix-shell scripts/toponims/mapkurator/shell.nix \
       --run "python3 scripts/toponims/mapkurator/b_coast_windows.py 0 0 9560 7299"
 """

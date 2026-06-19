@@ -27,7 +27,7 @@ const ROOT = join(__dirname, '..', '..', '..');
 const DETECTION_MASTER = 'data/jpg/despuig-1785-original-marked1.jpg';
 const MASTER = join(ROOT, process.env.MK_MASTER || DETECTION_MASTER);
 const BASE = join(ROOT, 'data/toponims/mapkurator');
-const IN = join(BASE, process.env.MK_INDIR || 'in');             // per-sheet: e.g. MK_INDIR=no/in
+const IN = join(BASE, process.env.MK_INDIR || 'in');             // per-sheet: e.g. MK_INDIR=nw/in
 
 const PATCH = 1100;          // master px per patch (short of the proven 1168)
 const OVERLAP = 0.28;        // fraction → boundary words survive whole somewhere

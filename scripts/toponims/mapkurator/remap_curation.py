@@ -7,7 +7,7 @@ position is the centroid of the SAME underlying spotter boxes, so a surviving na
 keeps (almost) the same x,y and the same engraving grafia. We match old->new by
 nearest (x,y), requiring the grafia key to agree among close candidates.
 
-    OLD=.../no/prebuild-backup NEW=.../no python3 remap_curation.py [--apply]
+    OLD=.../nw/prebuild-backup NEW=.../no python3 remap_curation.py [--apply]
 
 Without --apply: dry-run report only. With --apply: rewrite NEW/{recheck-picks,
 graf-fixes,review-reviewed}.json in place (a .bak is kept).
@@ -15,9 +15,9 @@ graf-fixes,review-reviewed}.json in place (a .bak is kept).
 import json, os, re, sys, math
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-OLD = os.environ.get("OLD") or os.path.join(ROOT, "data/toponims/mapkurator/no/prebuild-backup")
-NEW = os.environ.get("NEW") or os.path.join(ROOT, "data/toponims/no")
-NEW_TOP = os.environ.get("NEW_TOP") or os.path.join(ROOT, "data/toponims/no/toponims.json")
+OLD = os.environ.get("OLD") or os.path.join(ROOT, "data/toponims/mapkurator/nw/prebuild-backup")
+NEW = os.environ.get("NEW") or os.path.join(ROOT, "data/toponims/nw")
+NEW_TOP = os.environ.get("NEW_TOP") or os.path.join(ROOT, "data/toponims/nw/toponims.json")
 KEY_RADIUS = float(os.environ.get("REMAP_KEY_RADIUS", "400"))  # px: same-grafia match allowed to drift this far (deskew/regroup)
 POS_RADIUS = float(os.environ.get("REMAP_POS_RADIUS", "80"))   # px: blind nearest fallback only this close
 APPLY = "--apply" in sys.argv

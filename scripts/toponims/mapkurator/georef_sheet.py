@@ -11,8 +11,8 @@ Transform: the mapKurator family (affine -order1 / polynomial -order2 / tps),
 chosen by leave-one-out on the towns. poly2 is the safe default — it stays smooth
 past the GCP hull (TPS rings out along the coast where no town anchors it).
 
-    GCPS_NO=data/toponims/mapkurator/no/gcps-no.json \
-    TOPONIMS_JSON=data/toponims/no/toponims.json \
+    GCPS_NW=data/toponims/mapkurator/nw/gcps-nw.json \
+    TOPONIMS_JSON=data/toponims/nw/toponims.json \
     nix-shell scripts/toponims/shell.nix --run \
       "python3 scripts/toponims/mapkurator/georef_sheet.py"
 
@@ -23,8 +23,8 @@ import numpy as np
 from scipy.interpolate import RBFInterpolator
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-GCPS = os.path.join(ROOT, os.environ.get("GCPS_NO", "data/toponims/no/gcps-no.json"))
-TOP = os.environ.get("TOPONIMS_JSON") or os.path.join(ROOT, "data/toponims/no/toponims.json")
+GCPS = os.path.join(ROOT, os.environ.get("GCPS_NW", "data/toponims/nw/gcps-nw.json"))
+TOP = os.environ.get("TOPONIMS_JSON") or os.path.join(ROOT, "data/toponims/nw/toponims.json")
 GCPS_OUT = os.environ.get("GCPS_OUT") or os.path.join(os.path.dirname(TOP), "gcps-used.json")
 WITH_COAST = "--with-coast" in sys.argv
 
