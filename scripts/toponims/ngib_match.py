@@ -43,7 +43,7 @@ REVIEWED_REL = os.environ.get("REVIEWED_JSON", "data/toponims/review-reviewed.js
 DISCARDS_REL = os.environ.get("DISCARDS_JSON", "data/toponims/discards.json")
 
 toponims = load(TOP_REL)["toponims"]
-pobles = load("src/data/pobles.json")["pobles"]
+pobles = load("web/src/data/pobles-editorial.json")["pobles"]
 ngib = load("data/toponims/ngib/llocs.json")
 
 # ---------- text normalisation ----------
