@@ -123,7 +123,7 @@ def main():
                "count": len(out), "detections": out},
               open(DETECTIONS, "w"),
               ensure_ascii=False, indent=2)
-    print(f"✓ data/toponims/mapkurator/detections.json - {len(out)} word polygons")
+    print(f"✓ {os.path.relpath(DETECTIONS, ROOT)} - {len(out)} word polygons")
 
 
 if __name__ == "__main__":

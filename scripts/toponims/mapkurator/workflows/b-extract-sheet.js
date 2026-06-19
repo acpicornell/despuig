@@ -14,8 +14,8 @@ export const meta = {
   phases: [{ title: 'Extract', detail: 'one agent per sheet window' }],
 }
 
-const BASE = (args && args.base) || '/home/acpicornell/projects/despuig/data/toponims/mapkurator/nw/b'
-const N = (args && args.n) || 15
+const BASE = (args && args.base) || '/home/acpicornell/projects/despuig/data/toponims/mapkurator/ne/b-coast'
+const N = (args && args.n) || 5
 const SCHEMA = {
   type: 'object', additionalProperties: false,
   properties: {
