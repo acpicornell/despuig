@@ -206,17 +206,18 @@ full set of `*_JSON` env vars above so it only ever reads/writes `data/toponims/
 `DISCARDS_JSON` lists toponyms hand-marked as garbage (🗑 Brossa in the review tool),
 which are dropped from `matches.json` and the recheck queue.
 
-The web review tool for this sheet (same isolation — all under `no/`):
+The web curation tool is **quadrant-aware** — no env vars; pick the sheet (NW/NE/SE/SW)
+in the header and it reads/writes `data/toponims/<q>/{recheck-picks,review-reviewed,
+graf-fixes,discards}.json`:
 ```bash
-REVIEW_DATA=data/toponims/nw/review-data.json \
-REVIEW_CROPS=data/toponims/nw/review-crops \
-PICKS_JSON=data/toponims/nw/recheck-picks.json \
-REVIEWED_JSON=data/toponims/nw/review-reviewed.json \
-GRAF_JSON=data/toponims/nw/graf-fixes.json \
-DISCARDS_JSON=data/toponims/nw/discards.json \
-  nix-shell -p nodejs --run 'node scripts/toponims/review-server.mjs'   # → :4400
+nix-shell -p nodejs --run 'node scripts/toponims/review-server.mjs'   # → :4400
 ```
-Render its crops first with the matching env (see `render_review_crops.py` header).
+Two views: **Taula** (an editable copy of the public toponyms table — fast inline edits
+of reading/NGIB match, ✓ correcte, 🗑 brossa, candidate chips; works for any quadrant
+straight from `matches.json` + `recheck.json`, no crops needed) and **Fitxes** (one item
+at a time with the engraving crop + candidates + map — needs `render_review_crops.py` run
+for that sheet first; degrades to a notice if absent). After editing, re-bake the sheet:
+`apply_graf_fixes.py` (if readings changed) then `ngib_match.py` with the per-sheet env.
 
 ## NW results — clean deskew rebuild, 2026-06-19
 
