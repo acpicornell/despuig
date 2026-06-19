@@ -1,7 +1,13 @@
 # build output
 dist/
+.astro/
 # dependencies
 node_modules/
+# web nova (per-sheet): assets regenerables + cau d'Astro
+web/public/vinetes/
+web/public/hero/
+web/public/map/
+web/src/data/vendor/
 # generated assets (regenerables des de data/jpg amb els scripts)
 public/vinetas/
 public/map/mapa.dzi

@@ -1,0 +1,139 @@
+---
+import Base from '../layouts/Base.astro';
+import pobles from '../data/pobles.json';
+import toponims from '../data/toponims.json';
+import { url } from '../lib/url.mjs';
+
+const nPobles = pobles.pobles.length;
+const nTopo = toponims.comptador.total;
+const totalVeins = pobles.pobles.reduce((s, p) => s + (p.veins || 0), 0);
+
+// Portes d'entrada a les tres seccions.
+const portes = [
+  { href: 'pobles', nom: 'Els pobles', xifra: nPobles, unitat: 'pobles', txt: 'Les vinyetes gravades i el cens original de 1785, poble a poble.' },
+  { href: 'toponims', nom: 'Els topònims', xifra: nTopo.toLocaleString('ca-ES'), unitat: 'noms llegits', txt: 'Milers de noms de l’interior, creuats amb el Nomenclàtor (NGIB).' },
+  { href: 'estadistiques', nom: 'Estadístiques', xifra: totalVeins.toLocaleString('ca-ES'), unitat: 'veïns (1785)', txt: 'Població, collites i estat de validació, en xifres i gràfics.' },
+];
+
+// Vinyetes per al teaser: el pool sencer (amb camins ja resolts) va al client,
+// que en tria 5 a l'atzar a cada càrrega. El servidor en renderitza 5 de fallback.
+const pool = pobles.pobles
+  .filter((p) => p.vinyeta)
+  .map((p) => ({ nom: p.nom, href: url(`pobles/${p.slug}`), img: url(`vinetes/${p.vinyeta}.jpg`) }));
+const teaser = pool.slice(0, 5);
+---
+<Base
+  title={null}
+  description="Els pobles i els milers de topònims del mapa de Mallorca del Cardenal Antoni Despuig, gravat el 1785.">
+  <section class="hero" style={`--hero:url(${url('hero/mapa-hero.jpg')})`}>
+    <div class="hero__panel wrap">
+      <p class="kicker">Mapa de la Isla de Mallorca · Antoni Despuig · 1785</p>
+      <h1>El mapa del Cardenal Despuig</h1>
+      <p class="lede">
+        Una de les obres mestres de la cartografia mallorquina del segle&nbsp;XVIII. Aquí en
+        divulguem els <strong>pobles</strong> —amb les seves vistes gravades i el cens original
+        de 1785— i la densa <strong>toponímia</strong> de l'interior, llegida sobre el gravat i
+        contrastada amb el Nomenclàtor Geogràfic de les Illes Balears.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap portes">
+    {portes.map((p) => (
+      <a class="card porta" href={url(p.href)}>
+        <strong>{p.xifra}</strong>
+        <span class="unitat">{p.unitat}</span>
+        <h2>{p.nom}</h2>
+        <p>{p.txt}</p>
+        <span class="go">{p.nom} →</span>
+      </a>
+    ))}
+  </section>
+
+  <section class="wrap">
+    <h2 class="seccio">Una tria de vinyetes</h2>
+    <div class="teaser" id="teaser" data-pool={JSON.stringify(pool)}>
+      {teaser.map((p) => (
+        <a class="poble card" href={p.href}>
+          <div class="thumb"><img src={p.img} alt={`Vista gravada de ${p.nom}`} loading="lazy" /></div>
+          <div class="meta"><h3>{p.nom}</h3></div>
+        </a>
+      ))}
+    </div>
+    <p class="mes"><a href={url('pobles')}>Tots els {nPobles} pobles →</a></p>
+
+    <script is:inline>
+      (function () {
+        const box = document.getElementById('teaser');
+        if (!box) return;
+        let pool;
+        try { pool = JSON.parse(box.dataset.pool); } catch (e) { return; }
+        if (!Array.isArray(pool) || pool.length <= 5) return;
+        for (let i = pool.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [pool[i], pool[j]] = [pool[j], pool[i]];
+        }
+        const tria = pool.slice(0, 5);
+        box.innerHTML = tria.map((p) =>
+          '<a class="poble card" href="' + p.href + '">' +
+            '<div class="thumb"><img src="' + p.img + '" alt="Vista gravada de ' + p.nom.replace(/"/g, '&quot;') + '" loading="lazy"></div>' +
+            '<div class="meta"><h3>' + p.nom + '</h3></div>' +
+          '</a>'
+        ).join('');
+      })();
+    </script>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: flex-end; min-height: 56vh;
+  }
+  /* mapa difuminat de fons */
+  .hero::before {
+    content: ''; position: absolute; inset: 0; z-index: 0;
+    background-image: var(--hero); background-size: cover; background-position: center 38%;
+    filter: blur(1.5px) saturate(.85) brightness(1.04);
+    transform: scale(1.04);
+  }
+  /* vel de pergamí sobre tot el mapa (més dens a baix, on hi ha el text) */
+  .hero::after {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to top, var(--paper) 2%, rgba(244,236,219,.82) 42%, rgba(244,236,219,.4) 100%);
+  }
+  .hero__panel {
+    position: relative; z-index: 2;
+    width: 100%; padding: 2.2rem 1.2rem;
+  }
+  .kicker { font-family: var(--display); letter-spacing: .12em; text-transform: uppercase; font-size: .78rem; color: var(--sepia); margin: 0 0 .5rem; }
+  .hero h1 { margin: 0 0 .6rem; }
+  .hero .lede { max-width: 62ch; margin: 0 0 1.2rem; }
+
+  .portes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin: 2.4rem auto; }
+  .porta { text-decoration: none; color: inherit; padding: 1.4rem 1.3rem; display: flex; flex-direction: column; transition: transform .12s, box-shadow .12s; }
+  .porta:hover { transform: translateY(-3px); box-shadow: 0 6px 18px var(--shadow); }
+  .porta strong { font-family: var(--display); font-size: 2.1rem; color: var(--accent); line-height: 1; }
+  .porta .unitat { font-size: .82rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .04em; margin-top: .15rem; }
+  .porta h2 { margin: .7rem 0 .3rem; font-size: 1.25rem; }
+  .porta p { margin: 0 0 1rem; font-size: .96rem; color: var(--ink-soft); flex: 1; }
+  .porta .go { font-family: var(--display); color: var(--accent); font-size: .95rem; }
+
+  .seccio { font-family: var(--display); font-size: 1.05rem; letter-spacing: .03em; text-transform: uppercase; color: var(--sepia); border-bottom: 1px solid var(--line); padding-bottom: .4rem; margin: 1rem 0 1.2rem; }
+
+  /* Globals: aquestes targetes també les injecta el script (sense l'scope d'Astro). */
+  .teaser { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.1rem; }
+  .teaser :global(.poble) { text-decoration: none; color: inherit; overflow: hidden; transition: transform .12s, box-shadow .12s; }
+  .teaser :global(.poble:hover) { transform: translateY(-3px); box-shadow: 0 6px 18px var(--shadow); }
+  .teaser :global(.thumb) { aspect-ratio: 4 / 3; overflow: hidden; background: #fff; border-bottom: 1px solid var(--line); }
+  .teaser :global(.thumb img) { width: 100%; height: 100%; object-fit: cover; }
+  .teaser :global(.meta) { padding: .55rem .8rem .8rem; text-align: center; }
+  .teaser :global(.meta h3) { margin: 0; font-size: 1.1rem; color: var(--ink); }
+  .mes { margin: 1.2rem 0 2.5rem; font-family: var(--display); }
+
+  @media (max-width: 760px) {
+    .portes { grid-template-columns: 1fr; }
+    .hero { min-height: 44vh; }
+  }
+</style>

@@ -1,0 +1,122 @@
+---
+import Base from '../layouts/Base.astro';
+import data from '../data/toponims.json';
+import { url } from '../lib/url.mjs';
+
+const DEC = {
+  curat: { label: 'Curat', color: '#2e7d32' },
+  confirmat: { label: 'Confirmat', color: '#3f7a8a' },
+  probable: { label: 'Probable', color: '#b5862a' },
+  suggerit: { label: 'Suggerit', color: '#c2702f' },
+  posicional: { label: 'Posicional', color: '#8a8170' },
+  sense: { label: 'Sense', color: '#9a4a3a' },
+};
+const TIP = { possessió: 'Possessió', costa: 'Costa', nucli: 'Nucli', hidrònim: 'Hidrònim', orònim: 'Orònim', altre: 'Altre' };
+const QNOM = { nw: 'Nord-oest', ne: 'Nord-est', se: 'Sud-est', sw: 'Sud-oest' };
+
+const rows = data.toponims;
+// Ordres presents (per als selects), respectant l'ordre de la escala.
+const decOrder = ['curat', 'confirmat', 'probable', 'suggerit', 'posicional', 'sense'].filter((d) => rows.some((r) => r.decision === d));
+const tipOrder = Object.keys(TIP).filter((t) => rows.some((r) => r.tipus === t));
+const qOrder = data.quadrants;
+const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
+---
+<Base title="Topònims" description="Taula dels milers de topònims llegits sobre el mapa de Despuig (1785) i la seva equivalència al Nomenclàtor Geogràfic de les Illes Balears.">
+  <section class="wrap">
+    <h1>Els topònims del mapa</h1>
+    <p class="lede">
+      Lectura assistida per IA de visió dels noms gravats a l'interior del mapa, contrastada amb el
+      <strong>Nomenclàtor Geogràfic de les Illes Balears</strong> (NGIB) i curada a mà. La grafia és
+      diplomàtica (tal com es grava: Sô = Son, Câ = Can).
+    </p>
+
+    <div class="controls">
+      <input id="q" type="search" placeholder="Cerca grafia, nom o NGIB…" aria-label="Cerca" />
+      <select id="fdec" aria-label="Estat">
+        <option value="">Tots els estats</option>
+        {decOrder.map((d) => <option value={d}>{DEC[d].label}</option>)}
+      </select>
+      <select id="ftip" aria-label="Tipus">
+        <option value="">Tots els tipus</option>
+        {tipOrder.map((t) => <option value={t}>{TIP[t]}</option>)}
+      </select>
+      <select id="fq" aria-label="Quadrant">
+        <option value="">Tots els fulls</option>
+        {qOrder.map((q) => <option value={q}>{QNOM[q] ?? q}</option>)}
+      </select>
+      <span id="count" class="muted count"></span>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Grafia (gravat)</th><th>Lectura</th><th>Tipus</th><th>Estat</th><th>NGIB</th><th>Municipi</th><th class="num">Dist.</th><th>Full</th></tr>
+        </thead>
+        <tbody id="rows">
+          {rows.map((r) => (
+            <tr data-dec={r.decision} data-tip={r.tipus} data-q={r.q}
+                data-text={`${r.graf} ${r.nom} ${r.ngib ?? ''} ${r.municipi ?? ''}`.toLowerCase()}>
+              <td class="graf">{r.graf}{r.dubte && <span class="dubte" title="lectura dubtosa">?</span>}</td>
+              <td>{r.nom}</td>
+              <td class="muted">{TIP[r.tipus] ?? r.tipus}</td>
+              <td><span class="badge" style={`--c:${(DEC[r.decision] ?? {}).color ?? '#888'}`}>{(DEC[r.decision] ?? {}).label ?? r.decision}</span></td>
+              <td>{r.ngib ?? <span class="muted">—</span>}</td>
+              <td class="muted">{r.municipi ?? ''}</td>
+              <td class="num muted">{fmtKm(r.km)}</td>
+              <td class="muted">{(QNOM[r.q] ?? r.q)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <script is:inline define:vars={{ total: rows.length }}>
+    (function () {
+      const q = document.getElementById('q');
+      const fdec = document.getElementById('fdec');
+      const ftip = document.getElementById('ftip');
+      const fq = document.getElementById('fq');
+      const count = document.getElementById('count');
+      const trs = Array.from(document.getElementById('rows').children);
+      function apply() {
+        const t = q.value.trim().toLowerCase();
+        const d = fdec.value, tp = ftip.value, qq = fq.value;
+        let shown = 0;
+        for (const tr of trs) {
+          const ok =
+            (!d || tr.dataset.dec === d) &&
+            (!tp || tr.dataset.tip === tp) &&
+            (!qq || tr.dataset.q === qq) &&
+            (!t || tr.dataset.text.includes(t));
+          tr.style.display = ok ? '' : 'none';
+          if (ok) shown++;
+        }
+        count.textContent = `mostrant ${shown.toLocaleString('ca-ES')} de ${total.toLocaleString('ca-ES')}`;
+      }
+      [q, fdec, ftip, fq].forEach((el) => el.addEventListener('input', apply));
+      apply();
+    })();
+  </script>
+</Base>
+
+<style>
+  .controls { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: 1.5rem 0 1rem; }
+  .controls input, .controls select {
+    font-family: var(--serif); font-size: 1rem; padding: .4rem .6rem;
+    border: 1px solid var(--line); border-radius: 4px; background: rgba(255,255,255,.6); color: var(--ink);
+  }
+  .controls input { flex: 1 1 240px; }
+  .count { margin-left: auto; font-size: .9rem; }
+
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 4px; background: rgba(255,255,255,.35); }
+  table { border-collapse: collapse; width: 100%; font-size: .96rem; }
+  thead th { position: sticky; top: 0; background: var(--paper-2); text-align: left; font-family: var(--display); font-size: .82rem; letter-spacing: .03em; text-transform: uppercase; color: var(--sepia); padding: .55rem .7rem; border-bottom: 2px solid var(--line); }
+  td { padding: .4rem .7rem; border-bottom: 1px solid rgba(201,183,143,.4); vertical-align: top; }
+  tbody tr:hover { background: rgba(255,255,255,.5); }
+  .graf { font-weight: 500; }
+  .dubte { color: var(--accent); font-weight: 700; margin-left: .2rem; }
+  .num { text-align: right; white-space: nowrap; }
+  .badge { display: inline-block; font-size: .76rem; padding: .08rem .5rem; border-radius: 999px; color: #fff; background: var(--c); white-space: nowrap; }
+  @media (max-width: 720px) { .count { margin-left: 0; } }
+</style>

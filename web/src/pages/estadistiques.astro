@@ -1,0 +1,147 @@
+---
+import Base from '../layouts/Base.astro';
+import topo from '../data/toponims.json';
+import pob from '../data/pobles.json';
+
+const DEC = {
+  curat: { label: 'Curat', color: '#2e7d32' },
+  confirmat: { label: 'Confirmat', color: '#3f7a8a' },
+  probable: { label: 'Probable', color: '#b5862a' },
+  suggerit: { label: 'Suggerit', color: '#c2702f' },
+  posicional: { label: 'Posicional', color: '#8a8170' },
+  sense: { label: 'Sense match', color: '#9a4a3a' },
+};
+const TIP = { possessió: 'Possessió', costa: 'Costa', nucli: 'Nucli', hidrònim: 'Hidrònim', orònim: 'Orònim', altre: 'Altre' };
+const QNOM = { nw: 'Nord-oest', ne: 'Nord-est', se: 'Sud-est', sw: 'Sud-oest' };
+
+const rows = topo.toponims;
+const total = rows.length;
+
+// Topònims per estat (ordre de l'escala), per tipus, per quadrant.
+const decStats = Object.keys(DEC)
+  .map((k) => ({ k, ...DEC[k], n: topo.comptador.perDecision[k] || 0 }))
+  .filter((d) => d.n > 0);
+const tipStats = Object.keys(TIP)
+  .map((k) => ({ k, label: TIP[k], n: rows.filter((r) => r.tipus === k).length }))
+  .filter((t) => t.n > 0)
+  .sort((a, b) => b.n - a.n);
+const qStats = topo.quadrants.map((q) => ({ q, label: QNOM[q] ?? q, n: topo.comptador.perQuadrant[q] || 0 }));
+const ambNgib = rows.filter((r) => r.ngib).length;
+
+// Població de 1785 (vecinos llegits de les cartel·les).
+const pobVeins = pob.pobles.filter((p) => p.veins != null).sort((a, b) => b.veins - a.veins);
+const totalVeins = pobVeins.reduce((s, p) => s + p.veins, 0);
+const maxVeins = pobVeins[0]?.veins || 1;
+
+// Collites més freqüents.
+const collites = {};
+for (const p of pob.pobles) for (const c of p.collites || []) collites[c] = (collites[c] || 0) + 1;
+const colStats = Object.entries(collites).map(([k, n]) => ({ k, n })).sort((a, b) => b.n - a.n).slice(0, 14);
+const maxCol = colStats[0]?.n || 1;
+
+const pct = (n, max) => `${Math.max(2, Math.round((n / max) * 100))}%`;
+---
+<Base title="Estadístiques" description="Estadístiques del mapa de Despuig (1785): topònims llegits, estat de validació NGIB, i població dels pobles segons les cartel·les de 1785.">
+  <section class="wrap">
+    <h1>Estadístiques</h1>
+    <p class="lede">Una mirada de conjunt a allò que hem pogut llegir i georeferenciar del mapa original de 1785.</p>
+
+    <div class="kpis">
+      <div class="card kpi"><strong>{total.toLocaleString('ca-ES')}</strong><span>topònims llegits</span></div>
+      <div class="card kpi"><strong>{ambNgib.toLocaleString('ca-ES')}</strong><span>amb forma NGIB</span></div>
+      <div class="card kpi"><strong>{pob.pobles.length}</strong><span>pobles amb cartela</span></div>
+      <div class="card kpi"><strong>{totalVeins.toLocaleString('ca-ES')}</strong><span>veïns (1785)</span></div>
+    </div>
+  </section>
+
+  <section class="wrap cols2">
+    <div>
+      <h2>Topònims per estat</h2>
+      <p class="muted small">Escala de confiança del creuament amb el Nomenclàtor (NGIB), després de la curació a mà.</p>
+      <ul class="bars">
+        {decStats.map((d) => (
+          <li>
+            <span class="blab">{d.label}</span>
+            <span class="btrack"><span class="bfill" style={`width:${pct(d.n, total)};background:${d.color}`}></span></span>
+            <span class="bval">{d.n.toLocaleString('ca-ES')}</span>
+          </li>
+        ))}
+      </ul>
+
+      <h2>Per tipus</h2>
+      <ul class="bars">
+        {tipStats.map((t) => (
+          <li>
+            <span class="blab">{t.label}</span>
+            <span class="btrack"><span class="bfill" style={`width:${pct(t.n, tipStats[0].n)};background:var(--sepia)`}></span></span>
+            <span class="bval">{t.n.toLocaleString('ca-ES')}</span>
+          </li>
+        ))}
+      </ul>
+
+      <h2>Per full del mapa</h2>
+      <ul class="bars">
+        {qStats.map((q) => (
+          <li>
+            <span class="blab">{q.label}</span>
+            <span class="btrack"><span class="bfill" style={`width:${pct(q.n, total)};background:var(--accent-soft)`}></span></span>
+            <span class="bval">{q.n.toLocaleString('ca-ES')}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2>Collites més freqüents</h2>
+      <p class="muted small">Productes esmentats a les cartel·les, segons el nombre de pobles.</p>
+      <ul class="bars">
+        {colStats.map((c) => (
+          <li>
+            <span class="blab">{c.k}</span>
+            <span class="btrack"><span class="bfill" style={`width:${pct(c.n, maxCol)};background:#7a8a3f`}></span></span>
+            <span class="bval">{c.n}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Població dels pobles (1785)</h2>
+    <p class="muted small">Veïns (caps de casa) segons la xifra gravada a cada cartela. Campanet no s'hi inclou: la xifra és il·legible per una arruga del paper.</p>
+    <ul class="bars pop">
+      {pobVeins.map((p) => (
+        <li>
+          <span class="blab">{p.nom}</span>
+          <span class="btrack"><span class="bfill" style={`width:${pct(p.veins, maxVeins)};background:var(--accent)`}></span></span>
+          <span class="bval">{p.veins.toLocaleString('ca-ES')}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.5rem 0; }
+  .kpi { text-align: center; padding: 1.1rem .6rem; }
+  .kpi strong { display: block; font-family: var(--display); font-size: 1.9rem; color: var(--accent); }
+  .kpi span { font-size: .82rem; color: var(--ink-soft); }
+
+  .cols2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: start; }
+  h2 { margin-top: 1.8rem; }
+  .small { font-size: .88rem; margin-top: -.3rem; }
+
+  .bars { list-style: none; padding: 0; margin: .8rem 0; display: grid; gap: .35rem; }
+  .bars li { display: grid; grid-template-columns: 9.5rem 1fr 3.2rem; align-items: center; gap: .6rem; font-size: .95rem; }
+  .blab { text-align: right; color: var(--ink-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .btrack { background: rgba(201,183,143,.35); border-radius: 3px; height: 1.05rem; overflow: hidden; }
+  .bfill { display: block; height: 100%; border-radius: 3px; min-width: 2px; }
+  .bval { font-variant-numeric: tabular-nums; color: var(--ink); }
+  .pop li { grid-template-columns: 11rem 1fr 3.5rem; }
+
+  @media (max-width: 820px) {
+    .kpis { grid-template-columns: 1fr 1fr; }
+    .cols2 { grid-template-columns: 1fr; }
+    .bars li, .pop li { grid-template-columns: 7.5rem 1fr 3rem; }
+  }
+</style>

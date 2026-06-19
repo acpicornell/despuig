@@ -1,0 +1,968 @@
+{
+ "towns": [
+  {
+   "slug": "selva",
+   "nom": "Selva",
+   "img": "despuig-1785-original-selva.jpg",
+   "nomGravat": "SELUA",
+   "textOriginal": "SELVA, llamada por los Moros Xilvar es villa des-de el año 1300 fundada por el Rey Dn Jayme el 2º su poblacion es de 674 vecinos, su situacion es muy alegre y muy abundante de fuentes, tiene en susmõ-tes algunos pozos de nieve y mucho bosque; su cosecha es de azeyte, algarrovas, y seda",
+   "veins": 674,
+   "animes": null,
+   "anyVila": 1300,
+   "anyCiutat": null,
+   "nomMoros": "Xilvar",
+   "nomAntic": null,
+   "collites": [
+    "azeyte",
+    "algarrovas",
+    "seda"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "'susmõtes' = 'sus montes' amb titlla d'abreviatura sobre la o, partit entre línies",
+    "El nom gravat sembla 'SELUA' (U per V, grafia d'època), transcrit habitualment 'SELVA'"
+   ]
+  },
+  {
+   "slug": "campanet",
+   "nom": "Campanet",
+   "img": "despuig-1785-original-campanet.jpg",
+   "nomGravat": "CAMPANET",
+   "textOriginal": "CAMPANET, llamada asimimo por los Moros, fué Villa fundada por el Rey D⁰ Jayme de Aragon poco despues de la Conquista edificada en el oratorio de S. Mig. y trasladada despues en el sitio dôde se halla; Su cosecha es de azeyte y algarrovas, y su poblacion es de [...] vecinos",
+   "veins": null,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "azeyte",
+    "algarrovas"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "La paraula creuant L->R sembla 'asi'+'mimo' = 'asimismo' (la 'mi' inicial gravada com 'mimo'); lectura incerta",
+    "'S. Mig.' abreviatura de Sant Miquel, gravat amb punt abreviatiu",
+    "'dôde' / 'dô de' amb titlla sobre la o (donde); lectura del partit incerta",
+    "El nom 'llamada asimismo por los Moros' no especifica clarament un topònim morisc concret separat",
+    "La xifra de població NO es llegeix: hi ha una ARRUGA al paper damunt el nombre de vecinos. Deixat com a desconegut."
+   ]
+  },
+  {
+   "slug": "lluc",
+   "nom": "Lluc",
+   "img": "despuig-1785-original-lluch.jpg",
+   "nomGravat": "LLUCH",
+   "textOriginal": "LLUCH llamada pᵒʳ los Moros Aluch, es Parroqᵃ desde 1456, á ifˢ se le agregó la antigua de Escorca; fundˢᵉ despues un Colegio, a cuyos Capellanˢ cocedió Alexᵈʳᵒ 6º. el titulo de Cangˢ de S. Pedro, se venera en el ta sigᵃ de Nᵗʳᵃ Sᵃ hallada en aquel territ[...] en el año 1238; contiene 49 vecinos, su cosecha es de azeyte, y ganado, sus montes qᵉ ſó los mas altos de la Ysla está poblados de boſqˢ y tiene fuentes preciosas.",
+   "veins": 49,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": "Aluch",
+   "nomAntic": null,
+   "collites": [
+    "azeyte",
+    "ganado"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "La frase 'desde 1456, á ifˢ se le agregó' és incerta: el grup després de '1456 á' sembla una abreviatura ('ifˢ' o similar) que no he pogut llegir amb seguretat",
+    "'cocedió Alexᵈʳᵒ 6º' (sembla 'concedió Alejandro VI'), però la primera 'n' de 'concedió' no es veu gravada",
+    "'titulo de Cangˢ' = 'Canónigos' (abreviatura), lectura probable",
+    "'se venera en el ta sigᵃ' és dubtós: la paraula entre 'el' i 'sigᵃ' (potser 'ta'/'es ta'='esta') no és clara",
+    "'territ' tallat/abreviat (territorio), final no llegible amb claredat",
+    "El segon dígit de '1456' i del '1238' són plausibles però gravats petits; '49' de vecinos és clar"
+   ]
+  },
+  {
+   "slug": "pollensa",
+   "nom": "Pollença",
+   "img": "despuig-1785-original-pollensa.jpg",
+   "nomGravat": "POLLENSA",
+   "textOriginal": "POLLENSA, fundada p.r los Romanos, es una de las Villas mas antiguas y considerables del Reyno. Su cosecha es de azeyte, lanas, y ganado, q.e mantiene su môtuoso territorio; se hace vn Vino particular llamado Muntona: tiene 1100. Vecinos, y pertenece á la Religion de S.n Juan, y celebra feria en los ultimos domingos de 9bre.",
+   "veins": 1100,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "azeyte",
+    "lanas",
+    "ganado"
+   ],
+   "fires": "celebra feria en los ultimos domingos de 9bre",
+   "llogarets": [],
+   "dubtes": [
+    "'su mô-tuoso territorio': lectura de 'môtuoso' (probablement per 'montuoso'); l'accent circumflex/titlla sobre la o es discutible",
+    "'Muntona': la o final podria portar accent/titlla (Muntonà), gravat poc clar",
+    "El nom del vi 'Muntona' / 'Muntonà' és lectura literal del gravat"
+   ]
+  },
+  {
+   "slug": "alcudia",
+   "nom": "Alcúdia",
+   "img": "fusion_alcudia.jpg",
+   "nomGravat": "ALCUDIA",
+   "textOriginal": "ALCUDIA la hizo Villa el Rey Dn Jaime 2º en el año 1300 siendo antes Parrª el Emperador Carlos V. le dió el título de Ciudad en el año 1523 adquirió el renombre de fidelíssima p[or] su lealtad, tiene un hermoso Puerto su cosecha es de granos, ganados, y finíssima lana, tiene en su territorio la celebrada Albufera laguna de muchíssima utilidad, y recreo, son inumerables las aves qe crian en ella particularmte los Cisnes produce mucha pesca y anguilas de un extraordinario grádor está habitada solamte de unos 230. vecinos.",
+   "veins": 230,
+   "animes": null,
+   "anyVila": 1300,
+   "anyCiutat": 1523,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "granos",
+    "ganados",
+    "finíssima lana"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "Lectura 'p[or]' al final de la línia 2 (-R): es grava 'p.' abreujat, probablement 'por'",
+    "Línia 2 (-L) acaba amb 'año' just abans del segell; reconstrucció amb la -R 'en el año 1523'",
+    "'particularmte' i 'solamte' amb abreviatura volada",
+    "'grádor' (per 'grandor') tal com es llegeix als píxels"
+   ]
+  },
+  {
+   "slug": "la-puebla",
+   "nom": "sa Pobla (la Puebla)",
+   "img": "despuig-1785-original-sapobla.jpg",
+   "nomGravat": "LA PUEBLA",
+   "textOriginal": "LA PUEBLA, Villa desde el año 1300 contiene su termino 625 vecinos, su principal cosecha es de cañamos, trigos, y ganado lanar, y comprehende de los fecundissimas marjales que criá melones, sandias, y calabazas extrahordinarias.",
+   "veins": 625,
+   "animes": null,
+   "anyVila": 1300,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "cañamos",
+    "trigos",
+    "ganado lanar",
+    "melones",
+    "sandias",
+    "calabazas"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "A l'extrem esquerre hi entra un tros del mapa amb una etiqueta solta ('El Fr...'), aliena a la cartela.",
+    "Paraules partides a final de línia que continuen a la línia següent (termi-no, Ca-ñamos, me-lones): text complet, no tallat."
+   ]
+  },
+  {
+   "slug": "muro",
+   "nom": "Muro",
+   "img": "despuig-1785-original-muro.jpg",
+   "nomGravat": "MURO",
+   "textOriginal": "MURO, llamada por los Moros Algebeli es poblacion de 1015 vecinos, era ya Villa en el año de 1272 su cosecha es de granos, ganado, cañamos, alcaparras y seda: Comprehende porcion de los Marjales, tiene en su distrito una Cantera de piedra de muy buena calidad",
+   "veins": 1015,
+   "animes": null,
+   "anyVila": 1272,
+   "anyCiutat": null,
+   "nomMoros": "Algebeli",
+   "nomAntic": null,
+   "collites": [
+    "granos",
+    "ganado",
+    "cañamos",
+    "alcaparras",
+    "seda"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "El nom moro es llegeix 'Algebeli' però la grafia del gravat és ambigua (podria ser Algebeti/Algebely)",
+    "El nombre de vecinos '1015' és clar però el primer dígit podria llegir-se diferent en alta resolució"
+   ]
+  },
+  {
+   "slug": "arta",
+   "nom": "Artà",
+   "img": "despuig-1785-original-arta.jpg",
+   "nomGravat": "ARTÁ",
+   "textOriginal": "ARTÁ, llamada p.r los Moros Sertan, es poblacion de 1157. ve-cinos: su cosecha es de azey-te, legumbres, y ganado particularmente Cabrio, y Vacuno; abunda de mucha caza, se cria finisimo Algo-don; y sus Cuevas ó Algo-bernas merecen la Aten-cion de los Naturalistas.",
+   "veins": 1157,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": "Sertan",
+   "nomAntic": null,
+   "collites": [
+    "azeyte",
+    "legumbres",
+    "ganado particularmente Cabrio y Vacuno",
+    "caza",
+    "Algodon"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "El nom 'Sertan' (nom dels Moros) podria llegir-se 'Gertan'; la inicial gravada es ambigua entre S i G",
+    "El text te un creuament inusual entre columnes; la reconstruccio de l'ordre de linies (azey-te / Algo-don / Algo-bernas) es la lectura mes coherent pero la separacio sil·labica entre meitats es interpretativa"
+   ]
+  },
+  {
+   "slug": "manacor",
+   "nom": "Manacor",
+   "img": "despuig-1785-original-manacor.jpg",
+   "nomGravat": "MANACOR",
+   "textOriginal": "MANACOR, llamada así desde tiempos muy antíguos, el Rey Dn Jayme el 2º la hizo Villa en 1300 es una de las mayores poblaciones de la Ysla, ihabitada por 1650 vecinos, en su distrito se halla una Cueva de muy digna y curiosa atêcion: tiene fuerte cosecha de granos, legumbres, vino, higos pasos, y ganado",
+   "veins": 1650,
+   "animes": null,
+   "anyVila": 1300,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "granos",
+    "legumbres",
+    "vino",
+    "higos pasos",
+    "ganado"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "L4 comença amb 'ihabitada', probablement cua de 'mayo-/ri' (=mayores) + 'habitada'; lectura del flux: 'mayores ... ihabitada' incerta",
+    "'atêcion' gravat amb accent circumflex sobre la e (per 'atencion'), lectura literal",
+    "'higos pasos' (per 'higos pasas'/'pasas') lectura literal del gravat"
+   ]
+  },
+  {
+   "slug": "petra",
+   "nom": "Petra",
+   "img": "despuig-1785-original-petra.jpg",
+   "nomGravat": "PETRA",
+   "textOriginal": "PETRA es una de las primeras poblaciones de la Ysla, y llamada con este mismo nombre por los moros habitan en su distrito 604 vecinos, y tiene en el un molino y fábrica de papel, su cosecha es de granos, legumbres, vino, y ganado.",
+   "veins": 604,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "granos",
+    "legumbres",
+    "vino",
+    "ganado"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "El text diu 'llamada con este mismo nombre por los moros': sembla referir-se al nom donat pels moros, però no apareix explícitament un topònim àrab gravat",
+    "La frase 'moros habitan' sembla una abreviació/compressió per 'moros. Habitan' (canvi de frase): la lectura literal és ambigua",
+    "Número de veïns llegit '604', el primer dígit podria ser confós però sembla clarament 6"
+   ]
+  },
+  {
+   "slug": "santa-margarita",
+   "nom": "Santa Margalida",
+   "img": "despuig-1785-original-stamargalida.jpg",
+   "nomGravat": "Sta MARGARITA",
+   "textOriginal": "Sta MARGARITA, llamada en lengua arabiga Aben=maaxbar, consta era ya Villa en el año 1232, y con el nombre de Itero, fué pueblo antiguo de los Romanos, en cuyos campos se hallan sepulcros [é] inscripciones de aquellos tiempos; Su poblacion es de 639 vecinos, y su cosecha es de granos, ganado, miel, y cañamos.",
+   "veins": 639,
+   "animes": null,
+   "anyVila": 1232,
+   "anyCiutat": null,
+   "nomMoros": "Aben=maaxbar",
+   "nomAntic": "Itero",
+   "collites": [
+    "granos",
+    "ganado",
+    "miel",
+    "cañamos"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "Inici de la línia 5 esquerra: l'inicial està parcialment tapada pel segell rodó; sembla 'é' (conjunció) però podria ser una altra lletra, transcrita com [é]",
+    "'Aben=maaxbar' (nom moro): la grafia 'maaxbar' és insegura, podria llegir-se 'maaxhar' o similar",
+    "El nom antic 'Itero' té la primera lletra ornamentada; podria ser 'Jtero'"
+   ]
+  },
+  {
+   "slug": "sancellas",
+   "nom": "Sencelles",
+   "img": "despuig-1785-original-sencelles.jpg",
+   "nomGravat": "SANSELLAS",
+   "textOriginal": "SANSELLAS, poblacion de 795 vecinos su situacion es hermosísima por dominar vnas llanuras pobladas de arboles y de viñas, su cosecha prinçipal es de granos, ganado, vino, azafrã y alcaparras. En su distrito se hallan vestigios de haver sido poblacion de los antiguos habitadores de la Ysla",
+   "veins": 795,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "granos",
+    "ganado",
+    "vino",
+    "azafrã",
+    "alcaparras"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "'azafrã' duu titlla d'abreviatura (azafrán), gravat sense la 'n' final",
+    "el nombre de vecinos podria llegir-se 795 o 793; el segon dígit és ambigu pero sembla un 9",
+    "'çipal' (de 'prinçipal') comença amb ç a l'inici de línia a -L"
+   ]
+  },
+  {
+   "slug": "sineu",
+   "nom": "Sineu",
+   "img": "despuig-1785-original-sineu.jpg",
+   "nomGravat": "SINEU",
+   "textOriginal": "SINEU, llamada antiguam.te Sixneu, fué poblacion de Romanos, y Villa de las mas antiguas de la Ysla, en ella tuvieron su Corte los S.res Reyes de Mallorca, y tiene p.r esto muchos privilegios celebra sus ferias por el mes de Mayo, habitan en su distrito 883 vecinos su cosecha es de granos, legumbres, vino, y ganado.",
+   "veins": 883,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": "Sixneu",
+   "collites": [
+    "granos",
+    "legumbres",
+    "vino",
+    "ganado"
+   ],
+   "fires": "celebra sus ferias por el mes de Mayo",
+   "llogarets": [],
+   "dubtes": [
+    "El nom antic es grava 'Sixneu' (la 'x' podria llegir-se diferent)",
+    "'883 vecinos' sembla clar pero el primer dígit podria confondre's"
+   ]
+  },
+  {
+   "slug": "san-juan",
+   "nom": "Sant Joan",
+   "img": "despuig-1785-original-stjoan.jpg",
+   "nomGravat": "SAN JUAN",
+   "textOriginal": "SAN JUAN, llamada antiguamᵗᵉ Alahmar Villa desde el año 1300 contiene su término la poblacion de 428 vecinos, su terreno es de los mas fertiles, y demas sustancia de la Ysla; su cosecha es de granos, y ganado de toda especie.",
+   "veins": 428,
+   "animes": null,
+   "anyVila": 1300,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": "Alahmar",
+   "collites": [
+    "granos"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "El nom antic 'Alahmar' és de lectura incerta; podria llegir-se 'Alahmar' o similar (lletres gravades poc clares).",
+    "La xifra 428 de vecinos: el '4' i el '2' són clars, l'últim dígit sembla '8'.",
+    "L'any '1300' és llegible però el segon dígit podria ser ambigu.",
+    "El text continua més enllà del retall: l'última línia visible acaba en 'granos, y' i 'ganado de toda especie' sembla pertànyer a una línia de la columna esquerra; possiblement falta text per sota del crop.",
+    "No es distingeix clarament si '428' és nombre de vecinos o de població/almas; la frase diu 'la poblacion de 428 vecinos'."
+   ]
+  },
+  {
+   "slug": "montuiri",
+   "nom": "Montuïri",
+   "img": "despuig-1785-original-montuiri.jpg",
+   "nomGravat": "MONTUÍRI",
+   "textOriginal": "MONTUÍRI, poblacion antigua llamada por los Moros Montueri ó Monte Catano, su territorio es fertilisimo, contiene en su término 524 vecinos: Su cosecha es de granos, legumbres, higos pasos, y ganado",
+   "veins": 524,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": "Montueri ó Monte Catano",
+   "nomAntic": null,
+   "collites": [
+    "granos",
+    "legumbres",
+    "higos pasos",
+    "ganado"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "L'última paraula de la línia 4 a -R queda tallada pel marge dret: es llegeix 'higos pa' i continua a la línia 5 -L amb 'sos', reconstruït com 'higos pasos'; lectura raonable però no es veu sencera en una sola imatge",
+    "El nom 'Montueri' a la línia 2 -L podria llegir-se també 'Montuéri'; grafia gravada ambigua entre 'Montueri' i 'Montuiri'",
+    "La xifra 524 és clara però el segon dígit podria confondre's; lectura '524' considerada segura"
+   ]
+  },
+  {
+   "slug": "porreras",
+   "nom": "Porreres",
+   "img": "despuig-1785-original-porreres.jpg",
+   "nomGravat": "PORRERAS",
+   "textOriginal": "PORRERAS, el Rey Dn Jayme el 2º la erigió Villa en el año 1300 su situacion es hermosa, y fertil; Su cosecha es de granos, ganado, frutas, azafran, y vino, del qº fabricâ aguardiête, habitan en su término 696 vecinos",
+   "veins": 696,
+   "animes": null,
+   "anyVila": 1300,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "granos",
+    "ganado",
+    "frutas",
+    "azafran",
+    "vino",
+    "aguardiête"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "'fabricâ aguardiête' amb titlla d'abreviatura sobre la 'a' i la 'e' (fabrica/aguardiente)",
+    "'qº' abreviatura de 'que'"
+   ]
+  },
+  {
+   "slug": "felanitx",
+   "nom": "Felanitx",
+   "img": "despuig-1785-original-felanitx.jpg",
+   "nomGravat": "FELANITX",
+   "textOriginal": "FELANITX, llamada antiguamte Canalix; Villa desde el año 1300 es poblaciô de 1629 vecinos, en su distrito tiene un Castillo sobre un mõte llamado Sâtucrí, en el q.e se conoce p.r sus vestigios era el lugar dôde teniâ los moros sus baños, y custodiavâ sus presos, su sechaes de granos, ganado, y vino del q.e fabricâ mh.o Aguardiente",
+   "veins": 1629,
+   "animes": null,
+   "anyVila": 1300,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": "Canalix",
+   "collites": [
+    "granos",
+    "ganado",
+    "vino",
+    "Aguardiente"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "Línia 'su sechaes de granos': lectura literal de -L; possiblement 'su cosecha es de granos' partit entre línies, però es transcriu tal com es grava.",
+    "Nom del castell/mont: 'Sâtucrí' (amb accent), lectura incerta de les lletres.",
+    "'mh.o' abans d'Aguardiente: abreviatura de 'mucho', lectura del traç incerta.",
+    "'fabricâ'/'fabricã': nasal abreujada poc clara."
+   ]
+  },
+  {
+   "slug": "andraitx",
+   "nom": "Andratx",
+   "img": "despuig-1785-original-andratx.jpg",
+   "nomGravat": "ANDRAIX",
+   "textOriginal": "ANDRAIX, llamada antiguam.te Antrachs, es poblacion de 909 vecinos, su cosecha principal es de azeyte, tiene su Puerto con su fortaleza y algunas canteras de Iaspe de buena calidad. La Ysla de la Dragonera q.e se halla á la parte del poniente de esta costa es de poca consideracion",
+   "veins": 909,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": "Antrachs",
+   "collites": [
+    "azeyte"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "'antiguam.te' i 'distrito' tenen abreviatura/taca; lectura raonable",
+    "el nom antic gravat sembla 'Antrachs' (lletra inicial poc clara)"
+   ]
+  },
+  {
+   "slug": "calvia",
+   "nom": "Calvià",
+   "img": "despuig-1785-original-calvia.jpg",
+   "nomGravat": "CALVIÁ",
+   "textOriginal": "CALVIÁ, poblacion de 337 vecinos es lugar montuoso pero muy fertil en azeyte, algarrobas, granos, y ganado qᵉ son su cosecha principal, tiene algunos Puertos, y entre ellos el de Paguera dóde desêmbarcó con su armada nro Glorioso Côquistador en 1229, y despᵒ los Sres Reyes Dn Alonso y Dn Pedro quando vinieron con las suyas á esta Ysla.",
+   "veins": 337,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "azeyte",
+    "algarrobas",
+    "granos",
+    "ganado"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "línia 2: 'ganado qᵉ' amb abreviatura volada (que) de lectura no del tot clara",
+    "línia 4: 'desêmbarcó' amb titlla sobre la e; lectura per reconstrucció L+R",
+    "abreviatures volades 'qᵉ', 'nro', 'despᵒ', 'Sres', 'Dn' interpretades però gravades abreujades"
+   ]
+  },
+  {
+   "slug": "santa-maria",
+   "nom": "Santa Maria del Camí",
+   "img": "despuig-1785-original-stamaria.jpg",
+   "nomGravat": "Sta MARIA",
+   "textOriginal": "Sta MARIA, poblacion de 555 vecinos villa situada en una hermosa llanura tiene cosecha de todos frutos pero la mas fuerte es de azeyte, granos, ganado, almendras, y vino",
+   "veins": 555,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "azeyte",
+    "granos",
+    "ganado",
+    "almendras",
+    "vino"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "El nom gravat es 'Sta MARIA' (Santa Maria del Cami); nomes consta 'Sta MARIA' al capçal.",
+    "La xifra de vecinos es 555 (tres cincs ben clars)."
+   ]
+  },
+  {
+   "slug": "marratxi",
+   "nom": "Marratxí",
+   "img": "fusion_marratxi.jpg",
+   "nomGravat": "MARRATXI",
+   "textOriginal": "MARRATXI su Parroqª S. MARCIAL, es poblacion de 225 vecinos su principal cosecha es de azeyte, granos, almendras, vino, algarrobas, higos, y ganado de toda espesie. En su distrito se halla una fabrica de losa ordinaria",
+   "veins": 225,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "azeyte",
+    "granos",
+    "almendras",
+    "vino",
+    "algarrobas",
+    "higos"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "La paraula 'espesie' (per 'especie') es llegeix amb dubte a la línia 4 de -L",
+    "'una' al fragment 'halla [u]na fabrica' té la primera lletra parcialment tapada per la unió de les dues meitats",
+    "El nombre 225 de vecinos és força clar però la primera xifra podria confondre's; lectura proposada 225"
+   ]
+  },
+  {
+   "slug": "palma",
+   "nom": "Palma",
+   "img": "despuig-1785-original-palma.jpg",
+   "nomGravat": "PALMA",
+   "textOriginal": "PALMA Capital de la Isla, llamada assí p.r los Romanos y edificada á la orilla del Mar, tiene de circuito 5250 varas Castell.s su fortificac.on es á la moderna con muy buenas murallas q.e componen 12 Baluartes con sus Plazas baxas, y flacos retirados, 2 Plataformas, 2 revellines, vn hornabeq.e todo con su foso camino cubierto y vn Baluarte destacado en la p.ta del Muelle q.e defiende su Puerto de vn regular fodo y abrigo, tiene para la comunicació de mar y tierra 8 Puertas. Hay en la Ciudad algunos edificios sítuosos: la Catredal, los Conv.tos de Dominicos, y Observates, la cassa del Ayuntam.to y la de la Lonja, lo son muy particularm.te: Cotiene 6 Parrog.s 7 Pilas de Bautismo, 6 Ospitales, 10 Conv.tos de Relig.sos, 11 de Relig.sas, 2 Casas de Clerigos reglares, 3 de Recojim.to, 2 de Estudio, 1 Ospicio, vna Vniv.dad y 36 Igl.s su frag.s y orat.s pub.s su cápaña es alegre y fertil siedo s.í cosechagen.en todos frutos, tiene paseos delic.s El n.o de vec.s có sus armas y distric.o có 8299 y 31965 Almas.",
+   "veins": 8299,
+   "animes": 31965,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "todos frutos"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "'fortificac.on' / 'fortificac.i' al final de la 1a línia: abreviatura tallada, lectura incerta",
+    "'2 reve-llines' (revellines): partició de paraula entre columnes, lectura probable",
+    "'regular fodo y abrigo': sembla 'fodo' gravat per 'fondo'",
+    "'la Catredal' gravat així (per 'la Catedral')",
+    "'Cotiene' i 'có' (per 'Contiene' i 'con'): grafia/abreviatura del gravat",
+    "Línia final L: '...siedo s.í cosechagen.en todos frutos' difícil de segmentar; possible 's.í cosecha gen.l en todos frutos' (siendo su cosecha general en todos los frutos)",
+    "'frag.s y orat.s pub.s' (sufragis i oratoris públics): abreviatures, lectura incerta",
+    "Recompte de Parròquies: sembla '6 Parrog.s' però el dígit és ambigu",
+    "'2 Casas de Clerigos reglares' / '3 de Recojim.to': xifres petites, lectura probable"
+   ]
+  },
+  {
+   "slug": "algaida",
+   "nom": "Algaida",
+   "img": "despuig-1785-original-algaida.jpg",
+   "nomGravat": "ALGAIDA",
+   "textOriginal": "ALGAIDA, llamada así de los Moros; Villa fundada en 1300 por el Rey Dn Jayme el 2º es poblacion de 666 vecinos: Su cosecha es de granos, legumbres, vino, ganado, y higos pasos.",
+   "veins": 666,
+   "animes": null,
+   "anyVila": 1300,
+   "anyCiutat": null,
+   "nomMoros": "Algaida",
+   "nomAntic": null,
+   "collites": [
+    "granos",
+    "legumbres",
+    "vino",
+    "ganado",
+    "higos pasos"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "'llamada así de los Moros': el nom 'Algaida' és ell mateix l'origen morisc, no s'indica un altre topònim; nomMoros interpretat com 'Algaida'",
+    "'Jayme el 2º': el '2º' (segon) sembla clar però l'abreviatura ordinal és petita"
+   ]
+  },
+  {
+   "slug": "llucmayor",
+   "nom": "Llucmajor",
+   "img": "despuig-1785-original-llucmajor.jpg",
+   "nomGravat": "LLUCHMAYOR",
+   "textOriginal": "LLUCHMAYOR, Villa fundada p.r el Rey D.n Jayme el 2.º año 1300 habitan en su término 1754 vecinos, su cosecha principal es de trigos, higos pasos, y ganados de toda especie, tiene feria todos los años á 29 de Septiembre, y en una de sus llanuras perdió el Rey D.n Jayme 3.º una batalla, el Reyno, y la vida.",
+   "veins": 1754,
+   "animes": null,
+   "anyVila": 1300,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "trigos",
+    "higos pasos",
+    "ganados de toda especie"
+   ],
+   "fires": "feria todos los años á 29 de Septiembre",
+   "llogarets": [],
+   "dubtes": [
+    "'higos pasos' (pansos/passos): lectura literal del gravat",
+    "el dígit '1754' de vecinos és clar però el '5' i '4' podrien confondre's amb traços propers"
+   ]
+  },
+  {
+   "slug": "campos",
+   "nom": "Campos",
+   "img": "despuig-1785-original-campos.jpg",
+   "nomGravat": "CAMPOS",
+   "textOriginal": "CAMPOS, fundacion del año 1300, tiene 593 vecinos, abûda de granos, y ganado, algunos crehen qᵉ la antigua Palma estava en el Palmar dôde hay unos baños muy saludables; crian los prados de Campos cantidad de sosa, y en su término existen las Salinas qᵉ producen finíssima Sal.",
+   "veins": 593,
+   "animes": null,
+   "anyVila": 1300,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "granos",
+    "ganado",
+    "sosa",
+    "Sal"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "Reconstrucció de la prosa entre columnes parcialment dubtosa: l'ordre de les frases 'crian los prados ... cantidad de sosa' i 'en su término existen las Salinas' queda entrellaçat per la divisió del segell; possible lectura alternativa",
+    "abreviatura 'qᵉ' (que) gravada amb e volada",
+    "'abûda' = abunda, amb titlla sobre la u",
+    "'crehen' lectura probable (creen)",
+    "'dôde' = donde, amb titlla",
+    "any '1300': el '13' apareix tallat al marge dret de la imatge -L i continua a -R; lectura 1300 versemblant però el primer dígit a -L és parcial"
+   ]
+  },
+  {
+   "slug": "santani",
+   "nom": "Santanyí",
+   "img": "despuig-1785-original-santani.jpg",
+   "nomGravat": "SANTAÑÍ",
+   "textOriginal": "SANTAÑÍ, fundada en el año 1300 por el Rey Dn Jayme Segundo, tiene 617 Vecinos; su cosecha principal es de granos especialmente de Candeal; se ven en sus campos muchos Sepulcros antiguos memoria de los Romanos que la habitaron.",
+   "veins": 617,
+   "animes": null,
+   "anyVila": 1300,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "granos",
+    "Candeal"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "El número del año queda partit pel segell rodó: a la columna esquerra es llegeix '13' i a la dreta '1300'; interpreto que l'any és 1300",
+    "'617 Vecinos' sembla clar però el segon dígit podria llegir-se com a 1; lectura més probable 617",
+    "'por el Rey Dn Jayme' abreujat com 'pr el Rey Dn Jayme'"
+   ]
+  },
+  {
+   "slug": "inca",
+   "nom": "Inca",
+   "img": "despuig-1785-original-inca.jpg",
+   "nomGravat": "INCA",
+   "textOriginal": "INCA, es vna de las poblaciones q.[e] tuvierõ los Romanos y mayor en aquellos tiempos de lo que lo es en el dia; se hallã vestigios antiguos, y entre otros se encõtró en vno de sus Cãpos la lãpida de marmol q.[e] va gravada. Fué abitada p.[r] los Moros. Celebra Ferias todos los Jueves del año. Su vecindario es de 778 fuegos: Su cosecha es de azeyte, granos, frutas, almendras, vino, y ganado.",
+   "veins": 778,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "azeyte",
+    "granos",
+    "frutas",
+    "almendras",
+    "vino",
+    "ganado"
+   ],
+   "fires": "Celebra Ferias todos los Jueves del año",
+   "llogarets": [],
+   "dubtes": [
+    "El nombre 778 (fuegos) sembla clar però el primer dígit 7 podria confondre's; lectura 778 fuegos",
+    "Aquesta cartela parla de 'vecindario es de 778 fuegos' (focs/llars), no de 'vecinos' ni 'almas' explícitament; s'ha posat 778 a 'veins' com a recompte de poblament",
+    "'tuvierõ' amb titlla nasal sobre la o (q.e tuvierõ)",
+    "'vestigios' tallat entre línies: -R 'vestigi-' + -L 'os antiguos'",
+    "'encõtró' / 'cõtró' amb titlla nasal",
+    "'Cãpos' i 'lãpida' amb titlla nasal sobre la a",
+    "abreviatura 'q.' amb voladís (=que); 'p.' amb voladís (=por)",
+    "'hallã' final amb traç poc clar, possiblement 'hallan'"
+   ]
+  },
+  {
+   "slug": "binisalem",
+   "nom": "Binissalem",
+   "img": "despuig-1785-original-binissalem.jpg",
+   "nomGravat": "BINISALEM",
+   "textOriginal": "BINISALEM, llamada antes Rubines, y á la q.e los Moros llamaron Beniçalel, y el Rey D.n Jay.e el 2.º su poblacion es de 606 vecinos, su situacion es una de las mas hermosas de la Ysla, tiene abundante cosecha de azeyte, algarrobas, almêdras, granos, ganado, seda, y de un vino de superior calidad fué hecha Villa en 1300 p.r [...]",
+   "veins": 606,
+   "animes": null,
+   "anyVila": 1300,
+   "anyCiutat": null,
+   "nomMoros": "Beniçalel",
+   "nomAntic": "Rubines",
+   "collites": [
+    "azeyte",
+    "algarrobas",
+    "almêdras",
+    "granos",
+    "ganado",
+    "seda",
+    "vino"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "R2: la paraula que sembla 'fué hecha' té un traç inicial confús ('ñ') i la lletra inicial de 'ccha/hecha' és poc clara: lectura 'fué hecha Villa'",
+    "L2/R1: 'Beniçalel' — l'última lletra podria ser 'l' o 't' (Beniçalet?), grafia incerta",
+    "R2 final: '1300 p.r' — 'p.r' (por) tallat al marge dret, possible text continuat fora del retall",
+    "R1: 'á la q.e los Moros' — abreviatura 'q.e' (que) interpretada",
+    "L3: 'el 2.º' — número ordinal després de 'Jay.e' (Jayme) llegit com a 2"
+   ]
+  },
+  {
+   "slug": "soller",
+   "nom": "Sóller",
+   "img": "despuig-1785-original-soller.jpg",
+   "nomGravat": "SOLLER",
+   "textOriginal": "SOLLER, llamada así de los Moros p[or]. hallarse situada de[n]tro de unos altísimos môtes, en una Vega singularm[en]te amena Es poblacion de 1410 vecinos tiene su puerto nombrado p[or]. los antiguos de los Almendros con su Castillo. Desê[mbar]cô en el [él] el Rey D[o]n Juâ en [...] 1394. Su cosecha es de azeyte, algarrobas, seda, ortolisa, frutas, ganado y las naranjas tâ celeb[res]. de esta Ysla.",
+   "veins": 1410,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "azeyte",
+    "algarrobas",
+    "seda",
+    "ortolisa",
+    "frutas",
+    "ganado",
+    "naranjas"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "L línia 5: 'barcó en el el Rey' sembla repetir 'el' (potser 'en él el Rey'); lectura incerta",
+    "R línia 4: 'Desê...' tallat per la vora, probablement 'Desêmbarcô' continuant a la línia següent; final de paraula no clar",
+    "R línia 5: paraula/abreviatura abans de '1394' il·legible [...] (potser 'año')",
+    "R línia 1: 'de[n]-' (guió de tall, continua 'tro' a la línia següent de L)",
+    "R línia 6: 'tâ celeb.' = 'tan celebres', abreviatura amb titlla; lectura per context del traç",
+    "El nom 'llamada así de los Moros' no dóna un topònim àrab concret; nomMoros = null"
+   ]
+  },
+  {
+   "slug": "alaro",
+   "nom": "Alaró",
+   "img": "despuig-1785-original-alaro.jpg",
+   "nomGravat": "ALARÓ",
+   "textOriginal": "ALARÓ, llamada antiguam.te Azaró es poblacion de 692 vecinos, su cosecha es de azeyte, algarrovas, ganados y seda, abûda de muchas Fuentes de q. muelen algunos molinos. En su distrito se halla el antiguo Castillo tan celebrado de algunos Historiadores",
+   "veins": 692,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": "Azaró",
+   "collites": [
+    "azeyte",
+    "algarrovas",
+    "ganados",
+    "seda"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "'abûda' (per 'abunda', amb abreviatura/titlla)",
+    "'q.' = 'que' (abreviat amb punt volat)",
+    "el nom antic es grava 'Azaró' a la columna dreta, mentre el capçal és 'ALARÓ'"
+   ]
+  },
+  {
+   "slug": "bunola",
+   "nom": "Bunyola",
+   "img": "despuig-1785-original-bunola.jpg",
+   "nomGravat": "BUÑOLA",
+   "textOriginal": "BUÑOLA, á la qe los Moros llamaron Buñoña, la fundó Villa el Rey Dn Jaye pocos años despues de la Conquista: tiene cosecha abundante de azeyte, algarrobas, ganado, seda, y frutas, tambien la tiene de trito hay algunos bosqs en su distrito de consideracion; su poblacion es de 358 vecinos.",
+   "veins": 358,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": "Buñoña",
+   "nomAntic": null,
+   "collites": [
+    "azeyte",
+    "algarrobas",
+    "ganado",
+    "seda",
+    "frutas",
+    "trito"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "'Jaye' = abreviatura de 'Jayme' amb signe d'abreviacio sobre la lletra final",
+    "'trito' sembla gravat aixi (per 'trigo'); lectura literal incerta",
+    "L'ordre exacte de la prosa entre columnes es ambigu a les linies 5-6: la reconstruccio literal de '...tambien la tiene de | trito hay algunos bosqs | en su distrito ... de consideracion' no fa una sintaxi del tot fluida",
+    "El nom dels moros 'Buñoña' podria llegir-se 'Buñona'; la titlla ~ es visible"
+   ]
+  },
+  {
+   "slug": "valldemusa",
+   "nom": "Valldemossa",
+   "img": "despuig-1785-original-valldemossa.jpg",
+   "nomGravat": "VALLDEMUSA",
+   "textOriginal": "VALLDEMUSA, llamada p.r los Moros Villaverde p.r su grande amenidad, es población de 234 vecinos, su cosecha es de azeyte, algarrovas, seda, frutas, ortalisa, y ganado: En su distrito se halla el Colegio de Miramar fúdado p.r el Rey D.n Jay.e poco desp.s del año 1276 para la instruccion de la lengua arabiga. Tiene muchas fuentes, con q.e se riega alg.s de sus Campos,",
+   "veins": 234,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": "Villaverde",
+   "nomAntic": null,
+   "collites": [
+    "azeyte",
+    "algarrovas",
+    "seda",
+    "frutas",
+    "ortalisa",
+    "ganado"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "La cartela queda tallada per baix: el text continua i no es llegeix sencer",
+    "Any 1276: lectura probable",
+    "'fúdado' = 'fundado' amb abreviatura/titlla sobre la u",
+    "'Jay.e' (Jayme) abreviat",
+    "El nom gravat al capçal: podria llegir-se 'VALLDEMUSA' (doble L)"
+   ]
+  },
+  {
+   "slug": "esporlas",
+   "nom": "Esporles",
+   "img": "despuig-1785-original-esporles.jpg",
+   "nomGravat": "ESPORLAS",
+   "textOriginal": "ESPORLAS, Villa situada entre unos frondosos môtes es lugar muy ameno y fertil en azeyte, algarrovas, seda ganado, y frutas q.e forman su principal cosecha, la tiene tambien de un vino muy particular llamado Malvasia, tiene muchas fuentes y particularm.te [...] dos con q.e se abastese la Ciudad de Palma su poblacion es de 797 vecinos",
+   "veins": 797,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "azeyte",
+    "algarrovas",
+    "seda",
+    "vino muy particular llamado Malvasia"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "La cartela està retallada per baix: les darreres línies queden parcialment tallades",
+    "Línia 5: entre 'particularm.te' i 'dos con q.e se abastese' hi ha text tallat/il·legible (marcat [...]); probablement una referència a fonts que abasteixen la ciutat",
+    "'môtes' (montes) grafiat amb accent circumflex sobre la o",
+    "El nombre '797 vecinos' és llegible però el primer dígit podria ser 7 o altre per l'estat del gravat"
+   ]
+  },
+  {
+   "slug": "puigpunyent",
+   "nom": "Puigpunyent",
+   "img": "despuig-1785-original-puigpunyent.jpg",
+   "nomGravat": "PUIGPUÑENT",
+   "textOriginal": "PUIGPUÑENT, llamada antes Perpunchent se halla situada en un espacioso Valle vestido de Olivos y otros arboles, es poblacion de 379 vecinos, su cosecha es de azeyte, algarrobas, ganado, seda y muchas frutas, en su distrito se hallan las mejores Canteras de Iaspe qe se conocen en la Ysla.",
+   "veins": 379,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": "Perpunchent",
+   "collites": [
+    "azeyte",
+    "algarrobas",
+    "ganado",
+    "seda",
+    "muchas frutas"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "El nom antic apareix gravat com 'Perpunchent' (precedit del signe '&'/'et'); lectura clara però grafia inusual.",
+    "'Iaspe' (Jaspe) escrit amb I majúscula segons grafia d'època."
+   ]
+  },
+  {
+   "slug": "banyalbufar",
+   "nom": "Banyalbufar",
+   "img": "despuig-1785-original-banyalbufar.jpg",
+   "nomGravat": "BANALBUFAR",
+   "textOriginal": "BANALBUFAR, llamado antiguam.to Bañalbahar, es poblacio de 86 vecinos lugar ameno p[or] su situació y p[or] su fertilidad, abunda de azeyte y frutas exquisitas q[ue] son su cosecha principal, la tiene tábien de varios vinos exquisitos; en su distrito se quentan hasta 70 Fuentes de vnas aguas muy puras y las mas aprop.to p[ar]a el blaqueo de ropas, [d]e hilo, en q[ue] se exercitã sus naturales",
+   "veins": 86,
+   "animes": null,
+   "anyVila": null,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": "Bañalbahar",
+   "collites": [
+    "azeyte",
+    "frutas exquisitas",
+    "vinos exquisitos"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "'blaqueo' gravat així (per 'blanqueo'), sense la 'n'",
+    "Inici de l'última línia de -R: lletra inicial de '[d]e hilo' tallada pel marc esquerre",
+    "Última línia 'se exercitã sus naturales' queda parcialment tallada per la vora inferior; lectura de 'exercitã' amb titlla de nasal",
+    "Etiquetes dels barrils gravats (MoH..., Gruch..., Tinto) ignorades per ser part del dibuix, no del text",
+    "nomAntic 'Bañalbahar' vs capçal 'BANALBUFAR': transcrits literalment tal com es graven"
+   ]
+  },
+  {
+   "slug": "deia",
+   "nom": "Deià",
+   "img": "despuig-1785-original-deia.jpg",
+   "nomGravat": "DEYA",
+   "textOriginal": "DEYA villa desde el año 1583 en lo perteneciente al govierno civil, es población de 196 vecinos, se halla si[tuada] en un valle frodoso y poblado de Olivos, á la orilla del Mar; su principal cosecha es de azey[te], ganados, cerdosos, que le producen sus considera[bles] bosques",
+   "veins": 196,
+   "animes": null,
+   "anyVila": 1583,
+   "anyCiutat": null,
+   "nomMoros": null,
+   "nomAntic": null,
+   "collites": [
+    "azeyte"
+   ],
+   "fires": null,
+   "llogarets": [],
+   "dubtes": [
+    "'frodoso' (probablement 'frondoso') gravat sense la 'n'",
+    "final de línia tallat: 'su principal cosecha es de azey...' -> completat com 'azey[te]'",
+    "paraula 'considera=' tallada al marge dret, completada com 'considera[bles]'",
+    "'cerdosos' lectura literal; podria ser 'cerdosos'/'sabrosos' però sembla 'cerdosos'",
+    "El segell heràldic central mostra 'DEIX' (no és part de la prosa)",
+    "Línia 6 -R no visible (retall acaba a 'considera=' i a -L 'bles bosques')"
+   ]
+  }
+ ]
+}

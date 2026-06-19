@@ -1,0 +1,22 @@
+{
+  "name": "mapa-despuig-web",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Web nova del mapa de Mallorca del Cardenal Despuig (1785), sobre el pipeline de topònims per-sheet",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "data": "node scripts/build-data.mjs",
+    "vinetes": "node scripts/copy-vinetes.mjs",
+    "hero": "node scripts/build-hero.mjs",
+    "prebuild": "npm run data && npm run vinetes && npm run hero"
+  },
+  "dependencies": {
+    "astro": "^4.16.18"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  }
+}

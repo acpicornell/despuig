@@ -1,0 +1,65 @@
+{
+  "_font": "Nomenclàtor Geogràfic de les Illes Balears (NGIB) — nucli de cada municipi; coords aprox. del poble per al localitzador mentre el seu quadrant no està georeferenciat",
+  "coords": {
+    "selva": {
+      "lat": 39.75456,
+      "lng": 2.90106
+    },
+    "manacor": {
+      "lat": 39.56914,
+      "lng": 3.20775
+    },
+    "petra": {
+      "lat": 39.61666,
+      "lng": 3.11316
+    },
+    "san-juan": {
+      "lat": 39.59629,
+      "lng": 3.03918
+    },
+    "montuiri": {
+      "lat": 39.56729,
+      "lng": 2.98224
+    },
+    "porreras": {
+      "lat": 39.51688,
+      "lng": 3.02237
+    },
+    "felanitx": {
+      "lat": 39.46933,
+      "lng": 3.1485
+    },
+    "andraitx": {
+      "lat": 39.57625,
+      "lng": 2.4245
+    },
+    "calvia": {
+      "lat": 39.56356,
+      "lng": 2.50514
+    },
+    "marratxi": {
+      "lat": 39.62183,
+      "lng": 2.75019
+    },
+    "palma": {
+      "lat": 39.56933,
+      "lng": 2.65016
+    },
+    "algaida": {
+      "lat": 39.55914,
+      "lng": 2.89378
+    },
+    "llucmayor": {
+      "lat": 39.49101,
+      "lng": 2.89161
+    },
+    "campos": {
+      "lat": 39.43089,
+      "lng": 3.01968
+    },
+    "santani": {
+      "lat": 39.35433,
+      "lng": 3.1284
+    }
+  }
+}
