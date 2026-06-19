@@ -1,0 +1,125 @@
+{
+ "sheet": "SE",
+ "crop": "despuig-1785-original-SE-canvas.jpg",
+ "crop_dims": [
+  9467,
+  7299
+ ],
+ "note": "GCPs from hand-marked blue dots; coords NGIB nucli/feature. Coast = lower trust.",
+ "interior": [
+  {
+   "x": 935,
+   "y": 266.1,
+   "town": "Llorito",
+   "lng": 2.975429,
+   "lat": 39.618006,
+   "src": "ngib"
+  },
+  {
+   "x": 1593.6,
+   "y": 732.9,
+   "town": "Sant Joan",
+   "lng": 3.039177,
+   "lat": 39.596287,
+   "src": "ngib"
+  },
+  {
+   "x": 2752.3,
+   "y": 575.5,
+   "town": "Petra",
+   "lng": 3.113163,
+   "lat": 39.616662,
+   "src": "ngib"
+  },
+  {
+   "x": 5708.5,
+   "y": 542.5,
+   "town": "Sant Llorenç des Cardassar",
+   "lng": 3.283884,
+   "lat": 39.61001,
+   "src": "ngib"
+  },
+  {
+   "x": 6775.7,
+   "y": 645.5,
+   "town": "Son Servera",
+   "lng": 3.360322,
+   "lat": 39.621034,
+   "src": "ngib"
+  },
+  {
+   "x": 4187.9,
+   "y": 1277.2,
+   "town": "Manacor",
+   "lng": 3.207746,
+   "lat": 39.569135,
+   "src": "ngib"
+  },
+  {
+   "x": 815.9,
+   "y": 1405.7,
+   "town": "Montuïri",
+   "lng": 2.982237,
+   "lat": 39.56729,
+   "src": "ngib"
+  },
+  {
+   "x": 1542.8,
+   "y": 2534.4,
+   "town": "Porreres",
+   "lng": 3.022374,
+   "lat": 39.516881,
+   "src": "ngib"
+  },
+  {
+   "x": 3012.6,
+   "y": 3255.7,
+   "town": "Felanitx",
+   "lng": 3.1485,
+   "lat": 39.469327,
+   "src": "ngib"
+  },
+  {
+   "x": 1023.6,
+   "y": 3871.5,
+   "town": "Campos",
+   "lng": 3.019679,
+   "lat": 39.430888,
+   "src": "ngib"
+  },
+  {
+   "x": 2311.5,
+   "y": 5327.9,
+   "town": "Santanyí",
+   "lng": 3.128405,
+   "lat": 39.354326,
+   "src": "ngib"
+  }
+ ],
+ "coast": [
+  {
+   "x": 4318.5,
+   "y": 3853.1,
+   "town": "Portocolom",
+   "lng": 3.255848,
+   "lat": 39.416414,
+   "src": "ngib"
+  },
+  {
+   "x": 3366.6,
+   "y": 5020.3,
+   "town": "Portopetro",
+   "lng": 3.213383,
+   "lat": 39.360553,
+   "src": "ngib"
+  },
+  {
+   "x": 1612.4,
+   "y": 6583.1,
+   "town": "Cap de ses Salines",
+   "lng": 3.055613,
+   "lat": 39.264436,
+   "src": "ngib"
+  }
+ ]
+}

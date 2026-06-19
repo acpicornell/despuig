@@ -136,6 +136,32 @@ and picks by leave-one-out on the control points. `--with-coast` adds the 3 stab
 port points → extends the GCP hull north, lowering the max error. poly2 is the safe
 default (smooth past the hull; no coastal TPS rings).
 
+## Step 3b — dense refinement from confirmed matches (run AFTER a first match)
+
+The ~15 hand dots are a sparse, hull-limited fit (NW 838 m, but SE 1227 m / SW 1140 m
+LOO). Once Step 4 has run once, every **`confirmat`** toponym is itself a control
+point: its engraving pixel `(x,y)` ↔ the true NGIB coord of the place it matched.
+There are hundreds, densely spread → a far better fit, especially away from the dots.
+
+```bash
+# report-only: validates by predicting the hand dots (held OUT of the fit)
+Q=se ORDER=3 nix-shell scripts/toponims/mapkurator/shell.nix \
+  --run 'python3 scripts/toponims/mapkurator/georef_refine.py'
+# apply: re-projects lon/lat of EVERY toponym with the dense model
+Q=se ORDER=3 APPLY=1 nix-shell scripts/toponims/mapkurator/shell.nix \
+  --run 'python3 scripts/toponims/mapkurator/georef_refine.py'
+```
+Guards against circularity/noise: uses only **unique-name** confirmats (homonym picks
+depend on the prior transform — excluded), **never `curat`** (hand picks may be wrong),
+iterative **robust outlier rejection** (drops bad matches / large label offsets), and
+the hand dots are added back as precise anchors but **never dropped**. Validation =
+predicting the held-out hand dots: SE 1227→~700 m, SW 1140→~650 m, NE 1036→~714 m.
+
+Then **re-match** (Step 4) so positions and homonym picks settle on the new transform —
+EXCEPT on an already-curated sheet: there, run `APPLY=1` to re-project lon/lat only and
+**do NOT re-match**, so the hand curation (decisions/picks/discards) stays intact. (NE
+was refined this way; SE/SW got the full refine+re-match as they were uncurated.)
+
 ## Step 4 — NGIB matching (homonym-aware)
 
 If the review tool has produced reading corrections, apply them to the table FIRST
