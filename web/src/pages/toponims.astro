@@ -22,7 +22,12 @@ const QNOM = { nw: 'Nord-oest', ne: 'Nord-est', se: 'Sud-est', sw: 'Sud-oest' };
 const rows = data.toponims;
 // Ordres presents (per als selects), respectant l'ordre de la escala.
 const decOrder = ['confirmat', 'probable', 'suggerit', 'posicional', 'sense'].filter((d) => rows.some((r) => r.decision === d));
-const tipOrder = Object.keys(TIP).filter((t) => rows.some((r) => r.tipus === t));
+// known TIP labels first, then any other tipus present in the data (the literal
+// 1785 legend categories: Casa de campo ó Predio, Puerto, Punta, Atalaya ó Torre…).
+const tipOrder = [
+  ...Object.keys(TIP).filter((t) => rows.some((r) => r.tipus === t)),
+  ...[...new Set(rows.map((r) => r.tipus))].filter((t) => t && !(t in TIP)).sort((a, b) => a.localeCompare(b, 'ca')),
+];
 const qOrder = data.quadrants;
 const hasReview = rows.some((r) => r.review);
 const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
@@ -47,7 +52,7 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
       </select>
       <select id="ftip" aria-label="Tipus">
         <option value="">Tots els tipus</option>
-        {tipOrder.map((t) => <option value={t}>{TIP[t]}</option>)}
+        {tipOrder.map((t) => <option value={t}>{TIP[t] ?? t}</option>)}
       </select>
       <select id="fq" aria-label="Quadrant">
         <option value="">Tots els fulls</option>

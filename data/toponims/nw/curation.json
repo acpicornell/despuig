@@ -295,7 +295,10 @@
   "verdict": "ok"
  },
  "B09_25": {
-  "graf": "Sô Lleud"
+  "graf": "Sô Lleud",
+  "tipus": "Muchas casas separadas ó Establecimiento",
+  "ngib": "Son Llaüt",
+  "verdict": "pick"
  },
  "B09_29": {
   "graf": "Sta. MARIA"
@@ -549,6 +552,45 @@
  "B06_16": {
   "tipus": "Casa de campo ó Predio",
   "ngib": "Son Bergues",
+  "verdict": "pick"
+ },
+ "B07_10": {
+  "tipus": "Casa de campo ó Predio",
+  "ngib": "Son Bauçà",
+  "verdict": "pick"
+ },
+ "B07_11": {
+  "tipus": "Casa de campo ó Predio",
+  "verdict": "none"
+ },
+ "B08_7": {
+  "tipus": "Casa de campo ó Predio",
+  "ngib": "s'Alqueria Blanca",
+  "verdict": "pick"
+ },
+ "B09_8": {
+  "tipus": "Casa de campo ó Predio",
+  "ngib": "Ca n'Horrac",
+  "verdict": "pick"
+ },
+ "B09_12": {
+  "tipus": "Casa de campo ó Predio",
+  "ngib": "Son Fonoll",
+  "verdict": "pick"
+ },
+ "B09_22": {
+  "tipus": "Casa de campo ó Predio",
+  "ngib": "Mainou",
+  "verdict": "pick"
+ },
+ "B09_24": {
+  "tipus": "Lugar grande",
+  "ngib": "Consell",
+  "verdict": "pick"
+ },
+ "B10_16": {
+  "tipus": "Lugar chico",
+  "ngib": "So na Rossa",
   "verdict": "pick"
  }
 }

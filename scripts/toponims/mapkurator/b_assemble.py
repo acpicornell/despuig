@@ -54,6 +54,17 @@ ORONIM = ("puig", "coll", "serra", "talaia", "talaya", "mola", "bec", "penyal",
           "mirador", "atalaya", "monte")
 HIDRO = ("font", "fuente", "pou", "estany", "sinia", "aljub", "cova", "cueva")
 
+# Head word -> LITERAL 1785 legend category (read from the name, not deduced).
+HEAD_LEGEND = {
+    "puerto": "Puerto", "port": "Puerto",
+    "punta": "Punta", "pta": "Punta",
+    "illa": "Isla", "isla": "Isla",
+    "torre": "Atalaya ó Torre", "atalaya": "Atalaya ó Torre",
+    "talaia": "Atalaya ó Torre", "talaya": "Atalaya ó Torre",
+    "castillo": "Castillo", "castell": "Castillo",
+    "torrent": "Torrente", "torrente": "Torrente",
+}
+
 
 def deacc(s):
     for a, b in (("ô", "o"), ("â", "a"), ("î", "i"), ("ê", "e"), ("û", "u")):
@@ -81,6 +92,8 @@ def tipus_of(k):
     head = k.split()[0] if k else ""
     if k in TOWNS or k in NUCLI_EXTRA:
         return "nucli"
+    if head in HEAD_LEGEND:
+        return HEAD_LEGEND[head]
     if head in POSSES:
         return "Casa de campo ó Predio"
     if head in COSTA or k.startswith("illot"):

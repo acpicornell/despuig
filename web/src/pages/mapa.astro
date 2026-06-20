@@ -14,7 +14,10 @@ const TIP = { possessió: 'Possessió', costa: 'Costa', nucli: 'Nucli', hidròni
 const QNOM = { nw: 'Nord-oest', ne: 'Nord-est', se: 'Sud-est', sw: 'Sud-oest' };
 
 const decOrder = ['confirmat', 'probable', 'suggerit', 'posicional', 'sense'].filter((d) => data.toponims.some((r) => r.decision === d));
-const tipOrder = Object.keys(TIP).filter((t) => data.toponims.some((r) => r.tipus === t));
+const tipOrder = [
+  ...Object.keys(TIP).filter((t) => data.toponims.some((r) => r.tipus === t)),
+  ...[...new Set(data.toponims.map((r) => r.tipus))].filter((t) => t && !(t in TIP)).sort((a, b) => a.localeCompare(b, 'ca')),
+];
 const qOrder = data.quadrants;
 
 // Payload compacte: [lon, lat, decision, tipus, q, graf, nom, ngib, municipi, review]
@@ -33,7 +36,7 @@ const colors = Object.fromEntries(Object.entries(DEC).map(([k, v]) => [k, v.colo
     <div id="geo-controls" class="controls">
       <input id="q" type="search" placeholder="Cerca grafia, nom o NGIB…" aria-label="Cerca" />
       <select id="fdec" aria-label="Estat"><option value="">Tots els estats</option>{decOrder.map((d) => <option value={d}>{DEC[d].label}</option>)}</select>
-      <select id="ftip" aria-label="Tipus"><option value="">Tots els tipus</option>{tipOrder.map((t) => <option value={t}>{TIP[t]}</option>)}</select>
+      <select id="ftip" aria-label="Tipus"><option value="">Tots els tipus</option>{tipOrder.map((t) => <option value={t}>{TIP[t] ?? t}</option>)}</select>
       <select id="fq" aria-label="Full"><option value="">Tots els fulls</option>{qOrder.map((q) => <option value={q}>{QNOM[q] ?? q}</option>)}</select>
       <select id="frev" aria-label="Revisió">
         <option value="">Tota la revisió</option>
