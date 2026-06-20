@@ -1,57 +1,9 @@
 [
  {
-  "id": "B01_11",
-  "graf": "Aubarca",
-  "nom": "Aubarca",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 9481,
-  "y": 3156,
-  "decision": "probable",
-  "candidates": [
-   {
-    "grafia": "Albarca",
-    "municipi": "Escorca",
-    "km": 1.04,
-    "sim": 0.87
-   },
-   {
-    "grafia": "es Barracar",
-    "municipi": "Selva",
-    "km": 3.54,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Clot d'Albarca",
-    "municipi": "Escorca",
-    "km": 1.43,
-    "sim": 0.63
-   },
-   {
-    "grafia": "sa Fàbrica",
-    "municipi": "Escorca",
-    "km": 10.93,
-    "sim": 0.73
-   },
-   {
-    "grafia": "Cova de s'Aigua",
-    "municipi": "Escorca",
-    "km": 3.28,
-    "sim": 0.59
-   },
-   {
-    "grafia": "s'Aram",
-    "municipi": "Escorca",
-    "km": 1.39,
-    "sim": 0.55
-   }
-  ]
- },
- {
   "id": "B01_13",
   "graf": "Casa nova",
   "nom": "Casa nova",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 9230,
   "y": 3284,
@@ -147,7 +99,7 @@
   "id": "B01_16",
   "graf": "Cas Rey",
   "nom": "Cas Rey",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 8970,
   "y": 3368,
@@ -288,102 +240,6 @@
   ]
  },
  {
-  "id": "B01_25",
-  "graf": "Monnaba",
-  "nom": "Monnaba",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 7862,
-  "y": 3784,
-  "decision": "probable",
-  "candidates": [
-   {
-    "grafia": "Monnàber",
-    "municipi": "Fornalutx",
-    "km": 0.37,
-    "sim": 0.83
-   },
-   {
-    "grafia": "sa Moana",
-    "municipi": "Sóller",
-    "km": 4.38,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Bosc de Monnàber",
-    "municipi": "Fornalutx",
-    "km": 0.43,
-    "sim": 0.6
-   },
-   {
-    "grafia": "Montcaire",
-    "municipi": "Fornalutx",
-    "km": 1.67,
-    "sim": 0.5
-   },
-   {
-    "grafia": "Font Nova",
-    "municipi": "Escorca",
-    "km": 2.45,
-    "sim": 0.5
-   },
-   {
-    "grafia": "ses Moncades",
-    "municipi": "Sóller",
-    "km": 4.45,
-    "sim": 0.53
-   }
-  ]
- },
- {
-  "id": "B01_27",
-  "graf": "Aumellutx",
-  "nom": "Aumellutx",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 8701,
-  "y": 3800,
-  "decision": "probable",
-  "candidates": [
-   {
-    "grafia": "Almallutx",
-    "municipi": "Escorca",
-    "km": 1.45,
-    "sim": 0.85
-   },
-   {
-    "grafia": "es Camell",
-    "municipi": "Escorca",
-    "km": 5.55,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Morro d'Almallutx",
-    "municipi": "Escorca",
-    "km": 1.75,
-    "sim": 0.58
-   },
-   {
-    "grafia": "es Castellot",
-    "municipi": "Escorca",
-    "km": 1.49,
-    "sim": 0.56
-   },
-   {
-    "grafia": "sa Capelleta",
-    "municipi": "Mancor de la Vall",
-    "km": 2.73,
-    "sim": 0.56
-   },
-   {
-    "grafia": "s'Esgavellat",
-    "municipi": "Escorca",
-    "km": 1.65,
-    "sim": 0.53
-   }
-  ]
- },
- {
   "id": "B01_31",
   "graf": "Puig Mayor",
   "nom": "Puig Mayor",
@@ -483,7 +339,7 @@
   "id": "B02_2",
   "graf": "Câ Sebastia",
   "nom": "Can Sebastia",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 6909,
   "y": 3441,
@@ -579,7 +435,7 @@
   "id": "B02_5",
   "graf": "Câ Froxa",
   "nom": "Can Froxa",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 6872,
   "y": 3534,
@@ -675,7 +531,7 @@
   "id": "B02_13",
   "graf": "Cas Barards",
   "nom": "Cas Barards",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 7220,
   "y": 3694,
@@ -723,7 +579,7 @@
   "id": "B02_15",
   "graf": "Câ Pati",
   "nom": "Can Pati",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 6512,
   "y": 3776,
@@ -816,54 +672,6 @@
   ]
  },
  {
-  "id": "B02_17",
-  "graf": "Norais",
-  "nom": "Norais",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 6667,
-  "y": 3800,
-  "decision": "probable",
-  "candidates": [
-   {
-    "grafia": "Torrent des Norais",
-    "municipi": "Sóller",
-    "km": 0.94,
-    "sim": 0.86
-   },
-   {
-    "grafia": "es Armaris",
-    "municipi": "Sóller",
-    "km": 2.93,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Can Mora",
-    "municipi": "Sóller",
-    "km": 0.63,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Pas d' Honor",
-    "municipi": "Bunyola",
-    "km": 8.84,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Camí de Binidorm",
-    "municipi": "Sóller",
-    "km": 1.76,
-    "sim": 0.53
-   },
-   {
-    "grafia": "ses Puntoies",
-    "municipi": "Sóller",
-    "km": 4.63,
-    "sim": 0.57
-   }
-  ]
- },
- {
   "id": "B02_18",
   "graf": "Pûnta d. l. Paret",
   "nom": "Punta d. l. Paret",
@@ -912,58 +720,10 @@
   ]
  },
  {
-  "id": "B02_19",
-  "graf": "Sô Llâpayas",
-  "nom": "Son Llapayas",
-  "tipus": "possessió",
-  "subtile": "",
-  "x": 6950,
-  "y": 3761,
-  "decision": "probable",
-  "candidates": [
-   {
-    "grafia": "Son Llampaies",
-    "municipi": "Sóller",
-    "km": 0.51,
-    "sim": 0.83
-   },
-   {
-    "grafia": "Camp de Son Llampaies",
-    "municipi": "Sóller",
-    "km": 1.19,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Son Puça",
-    "municipi": "Sóller",
-    "km": 2.04,
-    "sim": 0.6
-   },
-   {
-    "grafia": "Son Sales",
-    "municipi": "Sóller",
-    "km": 1.91,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Son Canals",
-    "municipi": "Deià",
-    "km": 6.53,
-    "sim": 0.64
-   },
-   {
-    "grafia": "Son Coll",
-    "municipi": "Deià",
-    "km": 4.59,
-    "sim": 0.6
-   }
-  ]
- },
- {
   "id": "B02_22",
   "graf": "Câ Noguera",
   "nom": "Can Noguera",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 7297,
   "y": 3815,
@@ -1107,7 +867,7 @@
   "id": "B02_29",
   "graf": "Câ Pexet",
   "nom": "Can Pexet",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 6428,
   "y": 3952,
@@ -1155,7 +915,7 @@
   "id": "B03_3",
   "graf": "Câ Hai",
   "nom": "Can Hai",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 6771,
   "y": 4029,
@@ -1195,54 +955,6 @@
     "grafia": "Can Teix",
     "municipi": "Sóller",
     "km": 2.15,
-    "sim": 0.67
-   }
-  ]
- },
- {
-  "id": "B03_7",
-  "graf": "Sô Pusa",
-  "nom": "Son Pusa",
-  "tipus": "possessió",
-  "subtile": "",
-  "x": 6796,
-  "y": 4073,
-  "decision": "probable",
-  "candidates": [
-   {
-    "grafia": "Son Puça",
-    "municipi": "Sóller",
-    "km": 0.84,
-    "sim": 0.88
-   },
-   {
-    "grafia": "Son Sales",
-    "municipi": "Sóller",
-    "km": 0.69,
-    "sim": 0.72
-   },
-   {
-    "grafia": "Son Bujosa",
-    "municipi": "Deià",
-    "km": 5.05,
-    "sim": 0.78
-   },
-   {
-    "grafia": "Son Pou",
-    "municipi": "Santa Maria del Camí",
-    "km": 9.32,
-    "sim": 0.84
-   },
-   {
-    "grafia": "Son Palou",
-    "municipi": "Bunyola",
-    "km": 7.43,
-    "sim": 0.75
-   },
-   {
-    "grafia": "Son Bou",
-    "municipi": "Sóller",
-    "km": 2.54,
     "sim": 0.67
    }
   ]
@@ -1299,7 +1011,7 @@
   "id": "B03_20",
   "graf": "Câ Terreta",
   "nom": "Can Terreta",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 6041,
   "y": 4332,
@@ -1347,7 +1059,7 @@
   "id": "B03_21",
   "graf": "Câ Christia",
   "nom": "Can Christia",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 6516,
   "y": 4330,
@@ -1539,7 +1251,7 @@
   "id": "B04_12",
   "graf": "Sô Vent",
   "nom": "Son Vent",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 5213,
   "y": 5048,
@@ -1731,7 +1443,7 @@
   "id": "B04_18",
   "graf": "Sô Oleza",
   "nom": "Son Oleza",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 4761,
   "y": 5412,
@@ -1776,58 +1488,10 @@
   ]
  },
  {
-  "id": "B04_19",
-  "graf": "La Torra",
-  "nom": "La Torra",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 5036,
-  "y": 5395,
-  "decision": "probable",
-  "candidates": [
-   {
-    "grafia": "na Torta",
-    "municipi": "Valldemossa",
-    "km": 0.28,
-    "sim": 0.84
-   },
-   {
-    "grafia": "na Torta",
-    "municipi": "Valldemossa",
-    "km": 1.94,
-    "sim": 0.84
-   },
-   {
-    "grafia": "sa Torre",
-    "municipi": "Palma",
-    "km": 10.27,
-    "sim": 0.9
-   },
-   {
-    "grafia": "sa Morera",
-    "municipi": "Valldemossa",
-    "km": 0.83,
-    "sim": 0.73
-   },
-   {
-    "grafia": "sa Torre",
-    "municipi": "Sóller",
-    "km": 11.88,
-    "sim": 0.9
-   },
-   {
-    "grafia": "sa Torreta",
-    "municipi": "Palma",
-    "km": 11.88,
-    "sim": 0.83
-   }
-  ]
- },
- {
   "id": "B04_21",
   "graf": "Casa de neu",
   "nom": "Casa de neu",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 5559,
   "y": 5485,
@@ -1875,7 +1539,7 @@
   "id": "B04_29",
   "graf": "Sô Homar",
   "nom": "Son Homar",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 5459,
   "y": 5808,
@@ -1923,7 +1587,7 @@
   "id": "B04_33",
   "graf": "Sô Niu",
   "nom": "Son Niu",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 5236,
   "y": 5844,
@@ -2019,7 +1683,7 @@
   "id": "B05_2",
   "graf": "Cal Abad",
   "nom": "Cal Abad",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 6124,
   "y": 4684,
@@ -2211,7 +1875,7 @@
   "id": "B05_13",
   "graf": "Casa del Rey",
   "nom": "Casa del Rey",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 6536,
   "y": 5142,
@@ -2352,106 +2016,10 @@
   ]
  },
  {
-  "id": "B05_24",
-  "graf": "Biniforani",
-  "nom": "Biniforani",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 6385,
-  "y": 5388,
-  "decision": "probable",
-  "candidates": [
-   {
-    "grafia": "Biniforani Nou",
-    "municipi": "Bunyola",
-    "km": 0.43,
-    "sim": 0.86
-   },
-   {
-    "grafia": "Torrent de Biniforani",
-    "municipi": "Bunyola",
-    "km": 0.59,
-    "sim": 0.86
-   },
-   {
-    "grafia": "Biniforani Vell",
-    "municipi": "Bunyola",
-    "km": 0.8,
-    "sim": 0.86
-   },
-   {
-    "grafia": "Bosc de Biniforani",
-    "municipi": "Bunyola",
-    "km": 1.28,
-    "sim": 0.86
-   },
-   {
-    "grafia": "Camí de Biniforani",
-    "municipi": "Bunyola",
-    "km": 1.41,
-    "sim": 0.86
-   },
-   {
-    "grafia": "Biniaraix",
-    "municipi": "Sóller",
-    "km": 6.71,
-    "sim": 0.74
-   }
-  ]
- },
- {
-  "id": "B05_28",
-  "graf": "Câ Garau",
-  "nom": "Can Garau",
-  "tipus": "possessió",
-  "subtile": "",
-  "x": 7418,
-  "y": 5335,
-  "decision": "probable",
-  "candidates": [
-   {
-    "grafia": "Can Gran",
-    "municipi": "Bunyola",
-    "km": 0.83,
-    "sim": 0.87
-   },
-   {
-    "grafia": "Can Guerau",
-    "municipi": "Bunyola",
-    "km": 5.18,
-    "sim": 0.92
-   },
-   {
-    "grafia": "Can Guerau",
-    "municipi": "Fornalutx",
-    "km": 6.41,
-    "sim": 0.92
-   },
-   {
-    "grafia": "Can Cigarro",
-    "municipi": "Bunyola",
-    "km": 5.42,
-    "sim": 0.8
-   },
-   {
-    "grafia": "Cova des Guarà",
-    "municipi": "Bunyola",
-    "km": 5.69,
-    "sim": 0.78
-   },
-   {
-    "grafia": "Can Garriga",
-    "municipi": "Binissalem",
-    "km": 11.78,
-    "sim": 0.88
-   }
-  ]
- },
- {
   "id": "B05_32",
   "graf": "Cal Rey",
   "nom": "Cal Rey",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 7346,
   "y": 5406,
@@ -2592,54 +2160,6 @@
   ]
  },
  {
-  "id": "B06_11",
-  "graf": "Mancor",
-  "nom": "Mancor",
-  "tipus": "nucli",
-  "subtile": "",
-  "x": 8875,
-  "y": 4915,
-  "decision": "probable",
-  "candidates": [
-   {
-    "grafia": "Canamunt de Mancor",
-    "municipi": "Mancor de la Vall",
-    "km": 0.18,
-    "sim": 0.86
-   },
-   {
-    "grafia": "Cementeri de Mancor",
-    "municipi": "Mancor de la Vall",
-    "km": 0.41,
-    "sim": 0.86
-   },
-   {
-    "grafia": "Ajuntament de Mancor de la Vall",
-    "municipi": "Mancor de la Vall",
-    "km": 0.66,
-    "sim": 0.86
-   },
-   {
-    "grafia": "Mancor de la Vall",
-    "municipi": "Mancor de la Vall",
-    "km": 0.66,
-    "sim": 0.86
-   },
-   {
-    "grafia": "Mancor de la Vall",
-    "municipi": "Mancor de la Vall",
-    "km": 0.66,
-    "sim": 0.86
-   },
-   {
-    "grafia": "UBS Mancor de la Vall",
-    "municipi": "Mancor de la Vall",
-    "km": 0.71,
-    "sim": 0.86
-   }
-  ]
- },
- {
   "id": "B06_12",
   "graf": "Eucadeneta",
   "nom": "Eucadeneta",
@@ -2736,58 +2256,10 @@
   ]
  },
  {
-  "id": "B06_16",
-  "graf": "Sô Berga",
-  "nom": "Son Berga",
-  "tipus": "possessió",
-  "subtile": "",
-  "x": 8134,
-  "y": 5212,
-  "decision": "probable",
-  "candidates": [
-   {
-    "grafia": "Son Bergues",
-    "municipi": "Alaró",
-    "km": 0.91,
-    "sim": 0.86
-   },
-   {
-    "grafia": "Son Braó",
-    "municipi": "Consell",
-    "km": 6.39,
-    "sim": 0.87
-   },
-   {
-    "grafia": "Son Barca",
-    "municipi": "Santa Maria del Camí",
-    "km": 9.46,
-    "sim": 0.89
-   },
-   {
-    "grafia": "Son Borràs",
-    "municipi": "Alaró",
-    "km": 3.89,
-    "sim": 0.8
-   },
-   {
-    "grafia": "Camí de Son Bergues",
-    "municipi": "Alaró",
-    "km": 0.93,
-    "sim": 0.73
-   },
-   {
-    "grafia": "Son Beltran",
-    "municipi": "Lloseta",
-    "km": 5.14,
-    "sim": 0.8
-   }
-  ]
- },
- {
   "id": "B06_18",
   "graf": "Sô Fuster",
   "nom": "Son Fuster",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 8239,
   "y": 5273,
@@ -2883,7 +2355,7 @@
   "id": "B06_20",
   "graf": "Sô Grau",
   "nom": "Son Grau",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 8310,
   "y": 5338,
@@ -2979,7 +2451,7 @@
   "id": "B07_1",
   "graf": "Sô Oleza",
   "nom": "Son Oleza",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 4643,
   "y": 5413,
@@ -3027,7 +2499,7 @@
   "id": "B07_8",
   "graf": "Câ Vich",
   "nom": "Can Vich",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 3586,
   "y": 5715,
@@ -3075,7 +2547,7 @@
   "id": "B07_10",
   "graf": "Sô Bauzá",
   "nom": "Son Bauzá",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 3986,
   "y": 5703,
@@ -3123,7 +2595,7 @@
   "id": "B07_11",
   "graf": "Sô Bujozeta",
   "nom": "Son Bujozeta",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 3998,
   "y": 5702,
@@ -3363,7 +2835,7 @@
   "id": "B08_16",
   "graf": "Sô Homar",
   "nom": "Son Homar",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 6183,
   "y": 6538,
@@ -3459,7 +2931,7 @@
   "id": "B08_19",
   "graf": "Câ Capeller",
   "nom": "Can Capeller",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 6584,
   "y": 6572,
@@ -3507,7 +2979,7 @@
   "id": "B08_31",
   "graf": "Sô Frau",
   "nom": "Son Frau",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 6298,
   "y": 7163,
@@ -3555,7 +3027,7 @@
   "id": "B08_32",
   "graf": "Sô Pons",
   "nom": "Son Pons",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 6136,
   "y": 7233,
@@ -3651,7 +3123,7 @@
   "id": "B09_4",
   "graf": "Sô Sâ Juan",
   "nom": "Son Sa Juan",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 8030,
   "y": 5864,
@@ -3699,7 +3171,7 @@
   "id": "B09_6",
   "graf": "Sô Sâ Juan",
   "nom": "Son Sa Juan",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 8052,
   "y": 5945,
@@ -3747,7 +3219,7 @@
   "id": "B09_8",
   "graf": "Câ Horrach",
   "nom": "Can Horrach",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 8392,
   "y": 5998,
@@ -3795,7 +3267,7 @@
   "id": "B09_12",
   "graf": "Sô Fonoi",
   "nom": "Son Fonoi",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 8120,
   "y": 6235,
@@ -3843,7 +3315,7 @@
   "id": "B09_22",
   "graf": "Sô Maynou",
   "nom": "Son Maynou",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 8128,
   "y": 6408,
@@ -3939,7 +3411,7 @@
   "id": "B09_25",
   "graf": "Sô Lleud",
   "nom": "Son Lleud",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 7984,
   "y": 6704,
@@ -3987,7 +3459,7 @@
   "id": "B09_36",
   "graf": "Sô Verderol",
   "nom": "Son Verderol",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 8020,
   "y": 7267,
@@ -4035,7 +3507,7 @@
   "id": "B10_7",
   "graf": "Câ Mayol",
   "nom": "Can Mayol",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 9148,
   "y": 6064,
@@ -4131,7 +3603,7 @@
   "id": "B10_16",
   "graf": "Sô Arrosa",
   "nom": "Son Arrosa",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 9231,
   "y": 7064,
@@ -4227,7 +3699,7 @@
   "id": "B10_19",
   "graf": "Sô Sâ Juan",
   "nom": "Son Sa Juan",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 9298,
   "y": 7144,
@@ -4275,7 +3747,7 @@
   "id": "B11_4",
   "graf": "Sô Farrí",
   "nom": "Son Farrí",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 7254,
   "y": 5954,
@@ -4371,7 +3843,7 @@
   "id": "B11_9",
   "graf": "Sô Gulla",
   "nom": "Son Gulla",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 7527,
   "y": 6198,
@@ -4467,7 +3939,7 @@
   "id": "B11_11",
   "graf": "Sô Matos",
   "nom": "Son Matos",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 7265,
   "y": 6243,
@@ -4563,7 +4035,7 @@
   "id": "B11_22",
   "graf": "Câ Carrió",
   "nom": "Can Carrió",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 7194,
   "y": 6624,
@@ -4611,7 +4083,7 @@
   "id": "B11_23",
   "graf": "Câ Dols",
   "nom": "Can Dols",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 7385,
   "y": 6681,
@@ -4707,7 +4179,7 @@
   "id": "B12_4",
   "graf": "Sô Cabot",
   "nom": "Son Cabot",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 2946,
   "y": 6156,
@@ -4995,7 +4467,7 @@
   "id": "B12_19",
   "graf": "Câ Rigo",
   "nom": "Can Rigo",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 2530,
   "y": 6860,
@@ -5139,7 +4611,7 @@
   "id": "B12_26",
   "graf": "Sô Torres",
   "nom": "Son Torres",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 2690,
   "y": 7152,
@@ -5187,7 +4659,7 @@
   "id": "B12_29",
   "graf": "Câ Trias",
   "nom": "Can Trias",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 2512,
   "y": 7206,
@@ -5283,7 +4755,7 @@
   "id": "B13_7",
   "graf": "Câ Arbos",
   "nom": "Can Arbos",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 4058,
   "y": 6267,
@@ -5331,7 +4803,7 @@
   "id": "B13_8",
   "graf": "Sô Ajaume",
   "nom": "Son Ajaume",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 3761,
   "y": 6387,
@@ -5379,7 +4851,7 @@
   "id": "B13_12",
   "graf": "Sô Trias",
   "nom": "Son Trias",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 4545,
   "y": 6332,
@@ -5475,7 +4947,7 @@
   "id": "B13_20",
   "graf": "Sô Cañellas",
   "nom": "Son Cañellas",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 4242,
   "y": 6662,
@@ -5619,7 +5091,7 @@
   "id": "B13_29",
   "graf": "Sô Bru",
   "nom": "Son Bru",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 4042,
   "y": 6900,
@@ -5667,7 +5139,7 @@
   "id": "B13_31",
   "graf": "Câ Xesch",
   "nom": "Can Xesch",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 4570,
   "y": 6909,
@@ -5955,7 +5427,7 @@
   "id": "B14_8",
   "graf": "Sô Puig del llorer",
   "nom": "Son Puig del llorer",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 5624,
   "y": 6280,
@@ -6051,7 +5523,7 @@
   "id": "B14_14",
   "graf": "Sô Antich",
   "nom": "Son Antich",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 5318,
   "y": 6448,
@@ -6147,7 +5619,7 @@
   "id": "B14_23",
   "graf": "Casa nova",
   "nom": "Casa nova",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 5735,
   "y": 6642,
@@ -6243,7 +5715,7 @@
   "id": "B14_27",
   "graf": "Sô Mayol",
   "nom": "Son Mayol",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 5554,
   "y": 6758,
@@ -6291,7 +5763,7 @@
   "id": "B14_30",
   "graf": "Sô Ajaume",
   "nom": "Son Ajaume",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 5852,
   "y": 6857,
@@ -6339,7 +5811,7 @@
   "id": "B14_31",
   "graf": "Sô Manente",
   "nom": "Son Manente",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 4749,
   "y": 6952,
@@ -6387,7 +5859,7 @@
   "id": "B14_35",
   "graf": "Sô Español",
   "nom": "Son Español",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 5672,
   "y": 6912,
@@ -6483,7 +5955,7 @@
   "id": "B14_38",
   "graf": "Sô Cotoner devall",
   "nom": "Son Cotoner devall",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 4828,
   "y": 7033,
@@ -6531,7 +6003,7 @@
   "id": "B14_43",
   "graf": "Câ Beya",
   "nom": "Can Beya",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 5313,
   "y": 7135,
@@ -7011,7 +6483,7 @@
   "id": "B15_17",
   "graf": "Câ Toni Llarc",
   "nom": "Can Toni Llarc",
-  "tipus": "possessió",
+  "tipus": "Casa de campo ó Predio",
   "subtile": "",
   "x": 1197,
   "y": 7219,

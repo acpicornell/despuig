@@ -82,7 +82,7 @@ def tipus_of(k):
     if k in TOWNS or k in NUCLI_EXTRA:
         return "nucli"
     if head in POSSES:
-        return "possessió"
+        return "Casa de campo ó Predio"
     if head in COSTA or k.startswith("illot"):
         return "costa"
     if head in ORONIM:
@@ -99,7 +99,7 @@ def tipus_for(graf, k):
     if t == "altre":
         w0 = (graf or "").strip().split()
         if w0 and w0[0].lower().strip(".,") in ("sa", "ses"):
-            return "possessió"
+            return "Casa de campo ó Predio"
     return t
 
 

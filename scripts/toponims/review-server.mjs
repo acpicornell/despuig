@@ -116,8 +116,12 @@ const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</ti
 <div id=toast></div>
 <script>
 var Q='', MODE='table', ROWS=[], NGIB=[];
-var TIPS=['possessió','nucli','hidrònim','orònim','costa','altre'];
-function tipSel(id,cur){return '<select class=etip data-id="'+id+'">'+TIPS.map(function(x){return '<option'+(x===cur?' selected':'')+'>'+x+'</option>';}).join('')+'</select>';}
+// Categories LITERALS de la llegenda del gravat (1785), tal com hi estan gravades.
+var TIPS=['Ciudad','Villa Parroquial','Lugar grande','Lugar chico','Oratorio publico',
+  'Muchas casas separadas ó Establecimiento','Dos ó tres casas','Casa de campo ó Predio',
+  'Hermita','Casa de estudios','Castillo','Atalaya ó Torre','Guarda','Bateria',
+  'Torrente','Puente','Puerto','Punta','Isla','altre'];
+function tipSel(id,cur){var opts=TIPS.slice();if(cur&&opts.indexOf(cur)<0)opts.unshift(cur);return '<select class=etip data-id="'+id+'">'+opts.map(function(x){return '<option'+(x===cur?' selected':'')+'>'+esc(x)+'</option>';}).join('')+'</select>';}
 var esc=function(s){return (s==null?'':''+s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
 var $=function(s){return document.querySelector(s);};
 
@@ -246,7 +250,7 @@ function crender(){
     +'<button class=trash onclick="ctrash()"><kbd>D</kbd> 🗑</button><button class=skip onclick="cskip()"><kbd>S</kbd> Saltar</button>'
     +'<button class=undo onclick="cundo()">↶ <kbd>U</kbd></button></div></div>';
   app.querySelectorAll('.cand').forEach(function(b){b.onclick=function(){cpick(b.dataset.g,b);};});
-  var ct=$('#ctip'); if(ct)ct.onchange=function(){ctip(d.id,ct.value,d.tipus);};
+  var et=app.querySelector('.etip'); if(et)et.onchange=function(){ctip(d.id,et.value,d.tipus);};
   cmap(d);
 }
 async function ctip(id,v,base){ STATE.tipus=STATE.tipus||{}; if(v===base)delete STATE.tipus[id]; else STATE.tipus[id]=v; toast('🏷 '+v); await post({id:id,action:'tipus',tipus:(v===base?'':v)}); }

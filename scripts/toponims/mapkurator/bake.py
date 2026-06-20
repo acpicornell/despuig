@@ -26,7 +26,13 @@ import b_assemble as ba
 
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 NGIB_MATCH = os.path.join(os.path.dirname(HERE), "ngib_match.py")
-VALID_TIPUS = {"possessió", "nucli", "hidrònim", "orònim", "costa", "altre"}
+# Hand-picked tipus from the curation tool = the LITERAL 1785 legend categories.
+VALID_TIPUS = {
+    "Ciudad", "Villa Parroquial", "Lugar grande", "Lugar chico", "Oratorio publico",
+    "Muchas casas separadas ó Establecimiento", "Dos ó tres casas", "Casa de campo ó Predio",
+    "Hermita", "Casa de estudios", "Castillo", "Atalaya ó Torre", "Guarda", "Bateria",
+    "Torrente", "Puente", "Puerto", "Punta", "Isla", "altre",
+}
 
 
 def apply_overlay(top_path, cur):

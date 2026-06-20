@@ -46,13 +46,19 @@
   "verdict": "pick"
  },
  "B02_17": {
-  "graf": "Norais"
+  "graf": "Norais",
+  "tipus": "Torrente",
+  "ngib": "Torrent des Norais",
+  "verdict": "pick"
  },
  "B02_18": {
   "graf": "Pûnta d. l. Paret"
  },
  "B02_19": {
-  "graf": "Sô Llâpayas"
+  "graf": "Sô Llâpayas",
+  "tipus": "Casa de campo ó Predio",
+  "ngib": "Son Llampaies",
+  "verdict": "pick"
  },
  "B02_22": {
   "graf": "Câ Noguera"
@@ -114,7 +120,10 @@
   "verdict": "ok"
  },
  "B03_7": {
-  "graf": "Sô Pusa"
+  "graf": "Sô Pusa",
+  "tipus": "Casa de campo ó Predio",
+  "ngib": "Son Puça",
+  "verdict": "pick"
  },
  "B04_11": {
   "graf": "Sô Mas"
@@ -128,7 +137,9 @@
   "verdict": "pick"
  },
  "B04_19": {
-  "graf": "La Torra"
+  "graf": "La Torra",
+  "tipus": "Casa de campo ó Predio",
+  "verdict": "none"
  },
  "B04_2": {
   "graf": "Sô Bujosa"
@@ -508,5 +519,36 @@
  },
  "C04_8": {
   "graf": "Cova del Jueu"
+ },
+ "B01_11": {
+  "tipus": "Casa de campo ó Predio",
+  "verdict": "ok"
+ },
+ "B01_25": {
+  "tipus": "Casa de campo ó Predio",
+  "verdict": "ok"
+ },
+ "B01_27": {
+  "tipus": "Casa de campo ó Predio",
+  "verdict": "ok"
+ },
+ "B05_24": {
+  "tipus": "Casa de campo ó Predio",
+  "ngib": "Biniforani Vell",
+  "verdict": "pick"
+ },
+ "B05_28": {
+  "tipus": "Casa de campo ó Predio",
+  "verdict": "none"
+ },
+ "B06_11": {
+  "tipus": "Lugar grande",
+  "ngib": "Mancor de la Vall",
+  "verdict": "pick"
+ },
+ "B06_16": {
+  "tipus": "Casa de campo ó Predio",
+  "ngib": "Son Bergues",
+  "verdict": "pick"
  }
 }
