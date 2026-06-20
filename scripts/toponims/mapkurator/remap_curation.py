@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
-"""Remap per-sheet hand-curation (picks / graf-fixes / reviewed) from the ids of a
+"""Remap the per-sheet hand-curation overlay (curation.json) from the ids of a
 PRE-REBUILD toponym table onto the ids of a freshly rebuilt one.
 
 The rebuild re-cuts windows, so ids change (B02_11 -> B07_3, etc). But each toponym's
 position is the centroid of the SAME underlying spotter boxes, so a surviving name
 keeps (almost) the same x,y and the same engraving grafia. We match old->new by
-nearest (x,y), requiring the grafia key to agree among close candidates.
+nearest (x,y), requiring the grafia key to agree among close candidates. The whole
+record (graf/tipus/ngib/verdict) travels together — no field can be orphaned.
 
-    OLD=.../nw/prebuild-backup NEW=.../no python3 remap_curation.py [--apply]
+    OLD=.../nw/prebuild-backup NEW=.../nw python3 remap_curation.py [--apply]
 
-Without --apply: dry-run report only. With --apply: rewrite NEW/{recheck-picks,
-graf-fixes,review-reviewed}.json in place (a .bak is kept).
+Without --apply: dry-run report only. With --apply: rewrite NEW/curation.json in
+place (a .bak is kept).
 """
 import json, os, re, sys, math
 
@@ -41,28 +42,25 @@ def main():
     old_top = {t["id"]: t for t in json.load(open(os.path.join(OLD, "toponims.json")))["toponims"]}
     new_top = json.load(open(NEW_TOP))["toponims"]
 
-    picks = load(os.path.join(OLD, "recheck-picks.json"))
-    grafs = load(os.path.join(OLD, "graf-fixes.json"))
-    reviewed = load(os.path.join(OLD, "review-reviewed.json"))
-    curated_ids = set(picks) | set(grafs) | set(reviewed)
+    curation = load(os.path.join(OLD, "curation.json"))   # {id: {graf?, tipus?, ngib?, verdict?}}
+    curated_ids = set(curation)
 
     # Match each curated old id to a new toponym. Strategy, in order:
     #   1. KEY match: any new toponym whose grafia key equals one of the old id's
-    #      readings (human-corrected graf-fix / pick, else the backup engraving graf),
-    #      taking the NEAREST such within KEY_RADIUS. Handles coastal items the deskew
+    #      readings (hand graf / picked ngib, else the backup engraving graf), taking
+    #      the NEAREST such within KEY_RADIUS. Handles coastal items the deskew
     #      regrouped + repositioned, and truncated old reads now read in full.
     #   2. POS fallback: blind nearest within the tight POS_RADIUS (catches same place
     #      whose reading changed slightly, e.g. 'Sô Jua' -> 'Sô Juan').
     #   3. else UNMAPPED (the name is genuinely absent from the rebuild).
-    # first pass: best candidate per old id, tagged with tier (0=key, 1=pos) + distance
     cand, unmapped, fuzzy = {}, [], []
     for oid in sorted(curated_ids):
         ot = old_top.get(oid)
         if not ot:
             unmapped.append((oid, "old id not in backup toponims")); continue
         ox, oy = ot["x"], ot["y"]
-        # all readings we know for this old id -> candidate keys (human reads first)
-        reads = [v for v in (grafs.get(oid), picks.get(oid), ot.get("graf")) if v]
+        rec = curation[oid]
+        reads = [v for v in (rec.get("graf"), rec.get("ngib"), ot.get("graf")) if v]
         okeys = {key(r) for r in reads if key(r)}
         keyc = sorted(((math.hypot(nt["x"] - ox, nt["y"] - oy), nt) for nt in new_top
                        if key(nt["graf"]) in okeys), key=lambda c: c[0])
@@ -93,23 +91,15 @@ def main():
                 w = cand[o]
                 unmapped.append((o, f"collision on {nid} (lost to {winner}); reads={w[4]}"))
 
-    def remap(d):
-        out, lost = {}, []
-        for k, v in d.items():
-            if k in mapping:
-                out[mapping[k]] = v
-            else:
-                lost.append(k)
-        return out, lost
-
-    new_picks, lp = remap(picks)
-    new_grafs, lg = remap(grafs)
-    new_reviewed, lr = remap(reviewed)
+    new_curation, lost = {}, []
+    for oid, rec in curation.items():
+        if oid in mapping:
+            new_curation[mapping[oid]] = rec
+        else:
+            lost.append(oid)
 
     print(f"curated old ids: {len(curated_ids)}  mapped: {len(mapping)}  unmapped: {len(unmapped)}")
-    print(f"  picks {len(picks)}->{len(new_picks)} (lost {len(lp)})  "
-          f"grafs {len(grafs)}->{len(new_grafs)} (lost {len(lg)})  "
-          f"reviewed {len(reviewed)}->{len(new_reviewed)} (lost {len(lr)})")
+    print(f"  curation records {len(curation)} -> {len(new_curation)} (lost {len(lost)})")
     if fuzzy:
         print(f"\n-- {len(fuzzy)} fuzzy matches (no grafia-key agreement, blind nearest <= {POS_RADIUS}px):")
         for oid, og, nid, ng, d in fuzzy:
@@ -120,16 +110,13 @@ def main():
             print(f"   {oid}: {why}")
 
     if APPLY:
-        for name, data in (("recheck-picks.json", new_picks),
-                           ("graf-fixes.json", new_grafs),
-                           ("review-reviewed.json", new_reviewed)):
-            p = os.path.join(NEW, name)
-            if os.path.exists(p):
-                os.replace(p, p + ".bak")
-            json.dump(data, open(p, "w"), ensure_ascii=False, indent=1)
-            print(f"✓ wrote {p}")
+        p = os.path.join(NEW, "curation.json")
+        if os.path.exists(p):
+            os.replace(p, p + ".bak")
+        json.dump(new_curation, open(p, "w"), ensure_ascii=False, indent=1, sort_keys=True)
+        print(f"✓ wrote {p}")
     else:
-        print("\n(dry-run; pass --apply to rewrite NEW curation files)")
+        print("\n(dry-run; pass --apply to rewrite NEW/curation.json)")
 
 
 if __name__ == "__main__":

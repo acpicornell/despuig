@@ -268,17 +268,30 @@ for t, pm in zip(toponims, proj):
 #            None        not reviewed.
 # Picks/'none' still re-set the MATCH (and its recomputed `decision`), but a verified
 # item keeps its honest algorithmic confidence — the public combines the two axes.
-picks_file = ROOT / PICKS_REL
-reviewed_file = ROOT / REVIEWED_REL
-reviewed = json.loads(reviewed_file.read_text()) if reviewed_file.exists() else {}
+# Single curation overlay (CURATION_JSON) is the source of all hand edits; a record
+# is {graf?, tipus?, ngib?, verdict?}. We derive the three signals the matcher needs
+# (picks = the chosen NGIB place, reviewed = the human verdict, discards = trash).
+# Falls back to the legacy 3-file layout when CURATION_JSON is unset.
+CURATION_REL = os.environ.get("CURATION_JSON")
+if CURATION_REL:
+    cur_file = ROOT / CURATION_REL
+    cur = json.loads(cur_file.read_text()) if cur_file.exists() else {}
+    picks = {i: r["ngib"] for i, r in cur.items() if r.get("ngib")}
+    reviewed = {i: r["verdict"] for i, r in cur.items() if r.get("verdict")}
+    discards = {i for i, r in cur.items() if r.get("verdict") == "trash"}
+else:
+    reviewed_file = ROOT / REVIEWED_REL
+    reviewed = json.loads(reviewed_file.read_text()) if reviewed_file.exists() else {}
+    picks_file = ROOT / PICKS_REL
+    picks = json.loads(picks_file.read_text()) if picks_file.exists() else {}
+    discards_file = ROOT / DISCARDS_REL
+    discards = set(json.loads(discards_file.read_text())) if discards_file.exists() else set()
+
 manual = {k for k, v in reviewed.items() if v == "pick"}
 verified_ok = {k for k, v in reviewed.items() if v == "ok"}
 nomatch = {k for k, v in reviewed.items() if v == "none"}
-discards_file = ROOT / DISCARDS_REL
-discards = set(json.loads(discards_file.read_text())) if discards_file.exists() else set()
 
-if picks_file.exists():
-    picks = json.loads(picks_file.read_text())
+if picks:
     proj_by_id = {t["id"]: pm for t, pm in zip(toponims, proj)}
     by_name = defaultdict(list)
     for gi, g in enumerate(ngib):

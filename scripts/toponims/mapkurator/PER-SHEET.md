@@ -109,10 +109,9 @@ B_COAST_EXTRACT=data/toponims/mapkurator/nw/b-coast/extract.json \
 
 ### Re-running an already-curated sheet (preserve hand-curation)
 
-A rebuild re-cuts windows, so toponym **ids change** and any existing
-`recheck-picks.json` / `graf-fixes.json` / `review-reviewed.json` (keyed by old ids)
-would be orphaned. Back up the pre-rebuild `<q>/` JSONs, rebuild (steps 1–2d), then
-remap the curation onto the new ids by grafia + position:
+A rebuild re-cuts windows, so toponym **ids change** and the existing `curation.json`
+(keyed by old ids) would be orphaned. Back up the pre-rebuild `<q>/` JSONs, rebuild
+(steps 1–2d), then remap the overlay onto the new ids by grafia + position:
 ```bash
 OLD=data/toponims/mapkurator/nw/prebuild-backup NEW=data/toponims/nw \
   nix-shell scripts/toponims/shell.nix \
@@ -162,28 +161,24 @@ EXCEPT on an already-curated sheet: there, run `APPLY=1` to re-project lon/lat o
 **do NOT re-match**, so the hand curation (decisions/picks/discards) stays intact. (NE
 was refined this way; SE/SW got the full refine+re-match as they were uncurated.)
 
-## Step 4 — NGIB matching (homonym-aware)
+## Step 4 — NGIB matching (homonym-aware) + bake the curation
 
-If the review tool has produced reading corrections, apply them to the table FIRST
-(updates `graf`/`nom`/`tipus`; position unchanged, so no re-georef needed):
-```bash
-TOPONIMS_JSON=data/toponims/nw/toponims.json \
-GRAF_JSON=data/toponims/nw/graf-fixes.json \
-  nix-shell scripts/toponims/shell.nix \
-  --run 'python3 scripts/toponims/mapkurator/apply_graf_fixes.py'
+All hand curation lives in ONE overlay per sheet, `data/toponims/<q>/curation.json`,
+one record per toponym id:
+```json
+{ "B01_1": { "graf": "Son Bono", "tipus": "possessió", "ngib": "Son Bono", "verdict": "pick" } }
 ```
-Then match:
+`graf` rewrites the reading (re-derives `nom`+`tipus`), `tipus` overrides the type,
+`ngib` is the picked NGIB place, `verdict` (`ok`/`pick`/`none`/`trash`) is the human
+action. **Bake the whole sheet with one command** — it applies the overlay onto the
+table (position unchanged, no re-georef) and re-runs the match:
 ```bash
-TOPONIMS_JSON=data/toponims/nw/toponims.json \
-MATCHES_JSON=data/toponims/nw/matches.json \
-RECHECK_JSON=data/toponims/nw/recheck.json \
-PICKS_JSON=data/toponims/nw/recheck-picks.json \
-REVIEWED_JSON=data/toponims/nw/review-reviewed.json \
-DISCARDS_JSON=data/toponims/nw/discards.json \
-  nix-shell scripts/toponims/shell.nix \
-  --run 'python3 scripts/toponims/ngib_match.py'
+nix-shell scripts/toponims/shell.nix \
+  --run 'python3 scripts/toponims/mapkurator/bake.py nw'
 ```
-Distance only disambiguates homonyms, never discards a unique name.
+`bake.py` is the single entry point (it wraps the overlay-apply + `ngib_match.py` with
+the per-sheet env, reading `curation.json` via `CURATION_JSON`). Distance only
+disambiguates homonyms, never discards a unique name.
 
 **TWO ORTHOGONAL AXES** (TEI `@cert`/`@resp` model — don't conflate "how sure" with
 "who says so"):
@@ -192,23 +187,20 @@ Distance only disambiguates homonyms, never discards a unique name.
 - `review` = **human validation** (persistent, orthogonal): `revisat` (a human confirmed
   the match, or confirmed there is no match), `corregit` (a human changed the match),
   `descartat` (brossa, dropped), or `null` (unreviewed).
-The review tool's verdicts (`recheck-picks.json` + `review-reviewed.json` 'pick'/'ok'/
-'none', `discards.json`) feed the `review` axis; a pick also re-sets the match and its
-recomputed `decision`. There is **no `curat` tier** any more — "human-verified" is the
-`review` flag, shown on top of whatever confidence the item has. So an already-curated
-sheet can be safely re-matched: the confidence refreshes and the human layer rides along
-(NW's old all-`curat` artefact came from the previous single-ladder model).
+The overlay's `verdict` field feeds the `review` axis (`pick`/`ok`/`none` → `revisat`/
+`corregit`; `trash` → dropped); a pick also re-sets the match and its recomputed
+`decision`. There is **no `curat` tier** any more — "human-verified" is the `review`
+flag, shown on top of whatever confidence the item has. So an already-curated sheet can
+be safely re-matched: the confidence refreshes and the human layer rides along (NW's old
+all-`curat` artefact came from the previous single-ladder model).
 
-**Keep the per-sheet and whole-island databases separate.** The pipeline scripts
-default every path to the global (whole-island) files; a per-sheet run MUST pass the
-full set of `*_JSON` env vars above so it only ever reads/writes `data/toponims/nw/`.
-`REVIEWED_JSON` decides which hand picks become `probable` (vs `confirmat`);
-`DISCARDS_JSON` lists toponyms hand-marked as garbage (🗑 Brossa in the review tool),
-which are dropped from `matches.json` and the recheck queue.
+**Keep the per-sheet and whole-island databases separate.** `bake.py <q>` only ever
+reads/writes `data/toponims/<q>/`. (The underlying `ngib_match.py` still defaults its
+paths to the global files when run bare; `bake.py` always passes the per-sheet env, so
+prefer it.)
 
 The web curation tool is **quadrant-aware** — no env vars; pick the sheet (NW/NE/SE/SW)
-in the header and it reads/writes `data/toponims/<q>/{recheck-picks,review-reviewed,
-graf-fixes,discards,tipus-fixes}.json`:
+in the header and it reads/writes the SINGLE `data/toponims/<q>/curation.json`:
 ```bash
 nix-shell -p nodejs --run 'node scripts/toponims/review-server.mjs'   # → :4400
 ```
@@ -217,11 +209,10 @@ of reading/NGIB match + a **tipus dropdown** per row, ✓ correcte, 🗑 brossa,
 chips; works for any quadrant straight from `matches.json` + `recheck.json`, no crops
 needed) and **Fitxes** (one item at a time with the engraving crop + candidates + map +
 the same tipus dropdown — needs `render_review_crops.py` run for that sheet first; degrades
-to a notice if absent). The tipus dropdown writes `tipus-fixes.json` (id→tipus); a value
-equal to the original removes the override. After editing, re-bake the sheet:
-`apply_graf_fixes.py` (applies graf-fixes AND tipus-fixes — `TIPUS_JSON` defaults to the
-sibling of `GRAF_JSON`, so the per-sheet command picks it up automatically) then
-`ngib_match.py` with the per-sheet env. The hand-set tipus wins over the derived one.
+to a notice if absent). Every edit updates one record in `curation.json` (a tipus equal
+to the original removes that field). After editing, **re-bake the sheet** with
+`bake.py <q>` (single command — applies the overlay + re-matches). The hand-set tipus
+wins over the derived one.
 
 ## NW results — clean deskew rebuild, 2026-06-19
 

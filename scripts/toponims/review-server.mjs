@@ -1,12 +1,11 @@
 // Local toponym curation tool — quadrant-aware, two views:
 //   • Taula  : an editable copy of the public toponyms table (fast edits in a grid).
 //   • Fitxes : one item at a time with the engraving crop + NGIB candidates + map.
-// Pick a quadrant (NW/NE/SE/SW) in the header. Persists per sheet to
-//   data/toponims/<q>/{recheck-picks,review-reviewed,graf-fixes,discards}.json
-// then re-run the per-sheet match to bake it:
-//   GRAF_JSON=data/toponims/<q>/graf-fixes.json TOPONIMS_JSON=data/toponims/<q>/toponims.json \
-//     nix-shell scripts/toponims/shell.nix --run 'python3 scripts/toponims/mapkurator/apply_graf_fixes.py'
-//   (then ngib_match.py with the per-sheet *_JSON env — see PER-SHEET.md)
+// Pick a quadrant (NW/NE/SE/SW) in the header. ALL hand edits persist to a SINGLE
+// overlay per sheet — data/toponims/<q>/curation.json — one record per toponym id:
+//   { "B01_1": { "graf": "...", "tipus": "...", "ngib": "...", "verdict": "ok|pick|none|trash" } }
+// Then bake the sheet with one command (applies the overlay + re-matches):
+//   nix-shell scripts/toponims/shell.nix --run 'python3 scripts/toponims/mapkurator/bake.py <q>'
 //
 //   node scripts/toponims/review-server.mjs   ->  http://localhost:4400/
 import http from 'node:http';
@@ -23,9 +22,7 @@ const F = (q) => {
   return {
     matches: `${b}/matches.json`, toponims: `${b}/toponims.json`, recheck: `${b}/recheck.json`,
     reviewdata: `${b}/review-data.json`, crops: `${b}/review-crops`,
-    picks: `${b}/recheck-picks.json`, reviewed: `${b}/review-reviewed.json`,
-    graf: `${b}/graf-fixes.json`, discards: `${b}/discards.json`,
-    tipusfix: `${b}/tipus-fixes.json`,
+    curation: `${b}/curation.json`,   // SINGLE overlay: {id: {graf?, tipus?, ngib?, verdict?}}
   };
 };
 const readJSON = (p, d) => { try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return d; } };
@@ -41,19 +38,20 @@ function tableRows(q) {
   const matches = readJSON(f.matches, []);
   const recheck = readJSON(f.recheck, []);
   const candById = Object.fromEntries(recheck.map((r) => [r.id, r.candidates || []]));
-  const graf = readJSON(f.graf, {}), reviewed = readJSON(f.reviewed, {});
-  const picks = readJSON(f.picks, {}), discards = readJSON(f.discards, {});
-  const tfix = readJSON(f.tipusfix, {});
-  return matches.map((m) => ({
-    id: m.id, graf: graf[m.id] ?? m.graf, graf0: m.graf, nom: m.nom,
-    tipus: tfix[m.id] ?? m.tipus, tipus0: m.tipus, tipusEdited: tfix[m.id] != null && tfix[m.id] !== m.tipus,
-    decision: m.decision, review: m.review || null, ngib: m.ngib || null,
-    municipi: m.municipi || null, km: m.km ?? null, sim: m.sim ?? null,
-    cand: (candById[m.id] || []).slice(0, 6),
-    pend: reviewed[m.id] || null, pendPick: picks[m.id] || null,
-    grafEdited: graf[m.id] != null && graf[m.id] !== m.graf,
-    discarded: !!discards[m.id],
-  }));
+  const cur = readJSON(f.curation, {});
+  return matches.map((m) => {
+    const c = cur[m.id] || {};
+    return {
+      id: m.id, graf: c.graf ?? m.graf, graf0: m.graf, nom: m.nom,
+      tipus: c.tipus ?? m.tipus, tipus0: m.tipus, tipusEdited: c.tipus != null && c.tipus !== m.tipus,
+      decision: m.decision, review: m.review || null, ngib: m.ngib || null,
+      municipi: m.municipi || null, km: m.km ?? null, sim: m.sim ?? null,
+      cand: (candById[m.id] || []).slice(0, 6),
+      pend: c.verdict || null, pendPick: c.ngib || null,
+      grafEdited: c.graf != null && c.graf !== m.graf,
+      discarded: c.verdict === 'trash',
+    };
+  });
 }
 
 const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</title>
@@ -303,7 +301,15 @@ const server = http.createServer((req, res) => {
     const d = readJSON(F(q).reviewdata, { items: [] }); return send(res, 200, 'application/json', JSON.stringify(d));
   }
   if (req.method === 'GET' && u.pathname === '/state' && QUADRANTS.includes(q)) {
-    const f = F(q); return send(res, 200, 'application/json', JSON.stringify({ picks: readJSON(f.picks, {}), reviewed: readJSON(f.reviewed, {}), graf: readJSON(f.graf, {}), tipus: readJSON(f.tipusfix, {}) }));
+    const cur = readJSON(F(q).curation, {});
+    const picks = {}, reviewed = {}, graf = {}, tipus = {};
+    for (const [id, c] of Object.entries(cur)) {
+      if (c.graf) graf[id] = c.graf;
+      if (c.tipus) tipus[id] = c.tipus;
+      if (c.ngib) picks[id] = c.ngib;
+      if (c.verdict) reviewed[id] = c.verdict;
+    }
+    return send(res, 200, 'application/json', JSON.stringify({ picks, reviewed, graf, tipus }));
   }
   if (req.method === 'GET' && u.pathname.startsWith('/crop/') && QUADRANTS.includes(q)) {
     const p = `${F(q).crops}/${path.basename(u.pathname)}`;
@@ -316,18 +322,17 @@ const server = http.createServer((req, res) => {
       const { q: bq, id, action, grafia, graf, tipus } = JSON.parse(body || '{}');
       if (!QUADRANTS.includes(bq)) return send(res, 400, 'application/json', '{"ok":false}');
       const f = F(bq);
-      const reviewed = readJSON(f.reviewed, {}), picks = readJSON(f.picks, {});
-      if (graf) { const gf = readJSON(f.graf, {}); gf[id] = graf; writeJSON(f.graf, gf); }
-      if (action === 'tipus') { const tj = readJSON(f.tipusfix, {}); if (tipus) tj[id] = tipus; else delete tj[id]; writeJSON(f.tipusfix, tj); }
-      else if (action === 'pick' && grafia) { picks[id] = grafia; reviewed[id] = 'pick'; writeJSON(f.picks, picks); writeJSON(f.reviewed, reviewed); }
-      else if (action === 'none') { reviewed[id] = 'none'; writeJSON(f.reviewed, reviewed); }
-      else if (action === 'ok') { reviewed[id] = 'ok'; writeJSON(f.reviewed, reviewed); }
-      else if (action === 'trash') { const dj = readJSON(f.discards, {}); dj[id] = true; writeJSON(f.discards, dj); reviewed[id] = 'trash'; writeJSON(f.reviewed, reviewed); }
-      else if (action === 'undo') {
-        if (id in reviewed) { delete reviewed[id]; writeJSON(f.reviewed, reviewed); }
-        if (id in picks) { delete picks[id]; writeJSON(f.picks, picks); }
-        const dj = readJSON(f.discards, {}); if (id in dj) { delete dj[id]; writeJSON(f.discards, dj); }
-      }
+      const cur = readJSON(f.curation, {});
+      const rec = cur[id] || (cur[id] = {});
+      if (graf) rec.graf = graf;                                   // reading edits ride along any action
+      if (action === 'tipus') { if (tipus) rec.tipus = tipus; else delete rec.tipus; }
+      else if (action === 'pick' && grafia) { rec.ngib = grafia; rec.verdict = 'pick'; }
+      else if (action === 'none') rec.verdict = 'none';
+      else if (action === 'ok') rec.verdict = 'ok';
+      else if (action === 'trash') rec.verdict = 'trash';
+      else if (action === 'undo') { delete rec.verdict; delete rec.ngib; }  // keep graf/tipus edits
+      if (!Object.keys(rec).length) delete cur[id];                // drop empty records
+      writeJSON(f.curation, cur);
       send(res, 200, 'application/json', '{"ok":true}');
     });
     return;

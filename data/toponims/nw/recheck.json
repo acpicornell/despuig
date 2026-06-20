@@ -1,101 +1,5 @@
 [
  {
-  "id": "B01_4",
-  "graf": "Tuent",
-  "nom": "Tuent",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 8448,
-  "y": 3035,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Cala Tuent",
-    "municipi": "Escorca",
-    "km": 2.31,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Cala Tuent",
-    "municipi": "Escorca",
-    "km": 2.39,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Mola de Tuent",
-    "municipi": "Escorca",
-    "km": 2.69,
-    "sim": 0.67
-   },
-   {
-    "grafia": "sa Tanqueta",
-    "municipi": "Escorca",
-    "km": 1.94,
-    "sim": 0.62
-   },
-   {
-    "grafia": "es Torrentó",
-    "municipi": "Escorca",
-    "km": 3.04,
-    "sim": 0.62
-   },
-   {
-    "grafia": "sa Tanqueta",
-    "municipi": "Escorca",
-    "km": 3.4,
-    "sim": 0.62
-   }
-  ]
- },
- {
-  "id": "B01_8",
-  "graf": "Ses Tozas",
-  "nom": "Ses Tozas",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 9397,
-  "y": 3123,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Tossals",
-    "municipi": "Escorca",
-    "km": 6.44,
-    "sim": 0.67
-   },
-   {
-    "grafia": "sa Trona",
-    "municipi": "Escorca",
-    "km": 4.54,
-    "sim": 0.6
-   },
-   {
-    "grafia": "ses Tosses",
-    "municipi": "Escorca",
-    "km": 1.7,
-    "sim": 0.55
-   },
-   {
-    "grafia": "sa Trobada",
-    "municipi": "Escorca",
-    "km": 0.67,
-    "sim": 0.5
-   },
-   {
-    "grafia": "ses Solanes",
-    "municipi": "Escorca",
-    "km": 2.84,
-    "sim": 0.5
-   },
-   {
-    "grafia": "ses Tanques",
-    "municipi": "Escorca",
-    "km": 3.3,
-    "sim": 0.5
-   }
-  ]
- },
- {
   "id": "B01_11",
   "graf": "Aubarca",
   "nom": "Aubarca",
@@ -140,54 +44,6 @@
     "municipi": "Escorca",
     "km": 1.39,
     "sim": 0.55
-   }
-  ]
- },
- {
-  "id": "B01_12",
-  "graf": "Bini",
-  "nom": "Bini",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 8349,
-  "y": 3332,
-  "decision": "posicional",
-  "candidates": [
-   {
-    "grafia": "Coma de Bini",
-    "municipi": "Escorca",
-    "km": 1.3,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Bini Gran",
-    "municipi": "Escorca",
-    "km": 1.3,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Bini Petit",
-    "municipi": "Escorca",
-    "km": 1.52,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Penya de Bini",
-    "municipi": "Escorca",
-    "km": 2.65,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Binimorat",
-    "municipi": "Escorca",
-    "km": 5.51,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Binidorm",
-    "municipi": "Sóller",
-    "km": 9.52,
-    "sim": 0.67
    }
   ]
  },
@@ -336,54 +192,6 @@
   ]
  },
  {
-  "id": "B01_19",
-  "graf": "Bini",
-  "nom": "Bini",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 8302,
-  "y": 3427,
-  "decision": "posicional",
-  "candidates": [
-   {
-    "grafia": "Bini Gran",
-    "municipi": "Escorca",
-    "km": 1.43,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Coma de Bini",
-    "municipi": "Escorca",
-    "km": 1.65,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Bini Petit",
-    "municipi": "Escorca",
-    "km": 1.61,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Binimorat",
-    "municipi": "Escorca",
-    "km": 5.1,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Penya de Bini",
-    "municipi": "Escorca",
-    "km": 2.87,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Binidorm",
-    "municipi": "Sóller",
-    "km": 9.29,
-    "sim": 0.67
-   }
-  ]
- },
- {
   "id": "B01_20",
   "graf": "Tulixât",
   "nom": "Tulixat",
@@ -476,54 +284,6 @@
     "municipi": "Bunyola",
     "km": 4.49,
     "sim": 0.67
-   }
-  ]
- },
- {
-  "id": "B01_24",
-  "graf": "Es Gorc",
-  "nom": "Es Gorc",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 8988,
-  "y": 3705,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Escorca",
-    "municipi": "Escorca",
-    "km": 3.0,
-    "sim": 0.55
-   },
-   {
-    "grafia": "Escorca",
-    "municipi": "Escorca",
-    "km": 3.26,
-    "sim": 0.55
-   },
-   {
-    "grafia": "els Gorgs",
-    "municipi": "Pollença",
-    "km": 10.9,
-    "sim": 0.67
-   },
-   {
-    "grafia": "es Arcs",
-    "municipi": "Escorca",
-    "km": 2.79,
-    "sim": 0.5
-   },
-   {
-    "grafia": "es Arcs",
-    "municipi": "Escorca",
-    "km": 3.35,
-    "sim": 0.5
-   },
-   {
-    "grafia": "s'Hort",
-    "municipi": "Escorca",
-    "km": 3.38,
-    "sim": 0.5
    }
   ]
  },
@@ -624,54 +384,6 @@
   ]
  },
  {
-  "id": "B01_30",
-  "graf": "Cuba",
-  "nom": "Cuba",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 8208,
-  "y": 4015,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Pla de Cúber",
-    "municipi": "Escorca",
-    "km": 1.67,
-    "sim": 0.62
-   },
-   {
-    "grafia": "sa Cabana",
-    "municipi": "Fornalutx",
-    "km": 3.72,
-    "sim": 0.6
-   },
-   {
-    "grafia": "Prat de Cúber",
-    "municipi": "Escorca",
-    "km": 2.33,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Serra de Cúber",
-    "municipi": "Escorca",
-    "km": 2.16,
-    "sim": 0.53
-   },
-   {
-    "grafia": "sa Calobra",
-    "municipi": "Escorca",
-    "km": 6.26,
-    "sim": 0.55
-   },
-   {
-    "grafia": "sa Cabaneta",
-    "municipi": "Fornalutx",
-    "km": 3.68,
-    "sim": 0.5
-   }
-  ]
- },
- {
   "id": "B01_31",
   "graf": "Puig Mayor",
   "nom": "Puig Mayor",
@@ -764,54 +476,6 @@
     "municipi": "Fornalutx",
     "km": 2.21,
     "sim": 0.6
-   }
-  ]
- },
- {
-  "id": "B01_37",
-  "graf": "Es Seregais",
-  "nom": "Es Seregais",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 7566,
-  "y": 4242,
-  "decision": "posicional",
-  "candidates": [
-   {
-    "grafia": "es Saragalls",
-    "municipi": "Fornalutx",
-    "km": 0.74,
-    "sim": 0.59
-   },
-   {
-    "grafia": "es Peregons",
-    "municipi": "Bunyola",
-    "km": 4.29,
-    "sim": 0.62
-   },
-   {
-    "grafia": "sa Serreta",
-    "municipi": "Escorca",
-    "km": 8.04,
-    "sim": 0.67
-   },
-   {
-    "grafia": "sa Serreta",
-    "municipi": "Alaró",
-    "km": 8.11,
-    "sim": 0.67
-   },
-   {
-    "grafia": "sa Serra",
-    "municipi": "Bunyola",
-    "km": 5.37,
-    "sim": 0.62
-   },
-   {
-    "grafia": "sa Regana",
-    "municipi": "Escorca",
-    "km": 2.85,
-    "sim": 0.57
    }
   ]
  },
@@ -1004,150 +668,6 @@
     "municipi": "Sóller",
     "km": 0.25,
     "sim": 0.61
-   }
-  ]
- },
- {
-  "id": "B02_7",
-  "graf": "Sta Cathª",
-  "nom": "Sta Cathª",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 6780,
-  "y": 3604,
-  "decision": "posicional",
-  "candidates": [
-   {
-    "grafia": "Santa Catalina",
-    "municipi": "Sóller",
-    "km": 0.91,
-    "sim": 0.7
-   },
-   {
-    "grafia": "na Catanya",
-    "municipi": "Sóller",
-    "km": 2.42,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Casa del Mar",
-    "municipi": "Sóller",
-    "km": 1.26,
-    "sim": 0.59
-   },
-   {
-    "grafia": "Punta Curta",
-    "municipi": "Sóller",
-    "km": 2.0,
-    "sim": 0.6
-   },
-   {
-    "grafia": "Racó de Santa Catalina",
-    "municipi": "Sóller",
-    "km": 0.72,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Can Nussa",
-    "municipi": "Sóller",
-    "km": 2.54,
-    "sim": 0.56
-   }
-  ]
- },
- {
-  "id": "B02_11",
-  "graf": "Fossar",
-  "nom": "Fossar",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 6750,
-  "y": 3718,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "es Fossaret",
-    "municipi": "Valldemossa",
-    "km": 10.54,
-    "sim": 0.86
-   },
-   {
-    "grafia": "sa Tossa",
-    "municipi": "Alaró",
-    "km": 10.71,
-    "sim": 0.73
-   },
-   {
-    "grafia": "es Tossal",
-    "municipi": "Valldemossa",
-    "km": 11.02,
-    "sim": 0.67
-   },
-   {
-    "grafia": "ses Fonts",
-    "municipi": "Fornalutx",
-    "km": 4.8,
-    "sim": 0.55
-   },
-   {
-    "grafia": "Far des Bufador",
-    "municipi": "Sóller",
-    "km": 0.56,
-    "sim": 0.47
-   },
-   {
-    "grafia": "Alconàsser",
-    "municipi": "Sóller",
-    "km": 2.43,
-    "sim": 0.5
-   }
-  ]
- },
- {
-  "id": "B02_12",
-  "graf": "El Port",
-  "nom": "El Port",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 6914,
-  "y": 3677,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "es Prat",
-    "municipi": "Bunyola",
-    "km": 8.31,
-    "sim": 0.88
-   },
-   {
-    "grafia": "s'Hort",
-    "municipi": "Bunyola",
-    "km": 10.59,
-    "sim": 0.8
-   },
-   {
-    "grafia": "s'Hort",
-    "municipi": "Santa Maria del Camí",
-    "km": 11.0,
-    "sim": 0.8
-   },
-   {
-    "grafia": "l'Horta",
-    "municipi": "Sóller",
-    "km": 2.93,
-    "sim": 0.67
-   },
-   {
-    "grafia": "s'Hort",
-    "municipi": "Escorca",
-    "km": 11.52,
-    "sim": 0.8
-   },
-   {
-    "grafia": "es Porxo",
-    "municipi": "Deià",
-    "km": 6.66,
-    "sim": 0.67
    }
   ]
  },
@@ -1488,54 +1008,6 @@
   ]
  },
  {
-  "id": "B02_23",
-  "graf": "Aviñós",
-  "nom": "Aviñós",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 6318,
-  "y": 3894,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "es Canons",
-    "municipi": "Sóller",
-    "km": 1.57,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Cas Avinyons",
-    "municipi": "Sóller",
-    "km": 2.21,
-    "sim": 0.67
-   },
-   {
-    "grafia": "ses Salines",
-    "municipi": "Deià",
-    "km": 2.46,
-    "sim": 0.62
-   },
-   {
-    "grafia": "ses Alzines",
-    "municipi": "Sóller",
-    "km": 4.56,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Can Pons",
-    "municipi": "Sóller",
-    "km": 4.34,
-    "sim": 0.57
-   },
-   {
-    "grafia": "es Pinetons",
-    "municipi": "Bunyola",
-    "km": 5.96,
-    "sim": 0.57
-   }
-  ]
- },
- {
   "id": "B02_24",
   "graf": "Calhereu",
   "nom": "Calhereu",
@@ -1580,54 +1052,6 @@
     "municipi": "Deià",
     "km": 3.45,
     "sim": 0.57
-   }
-  ]
- },
- {
-  "id": "B02_25",
-  "graf": "Victigal",
-  "nom": "Victigal",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 6793,
-  "y": 3928,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "es Cingles",
-    "municipi": "Sóller",
-    "km": 1.97,
-    "sim": 0.53
-   },
-   {
-    "grafia": "es Cingle",
-    "municipi": "Sóller",
-    "km": 4.63,
-    "sim": 0.57
-   },
-   {
-    "grafia": "es Cingles",
-    "municipi": "Deià",
-    "km": 3.87,
-    "sim": 0.53
-   },
-   {
-    "grafia": "Can Tomàtiga",
-    "municipi": "Sóller",
-    "km": 2.04,
-    "sim": 0.5
-   },
-   {
-    "grafia": "es Figueral",
-    "municipi": "Sóller",
-    "km": 2.12,
-    "sim": 0.5
-   },
-   {
-    "grafia": "es Gall",
-    "municipi": "Sóller",
-    "km": 2.61,
-    "sim": 0.5
    }
   ]
  },
@@ -1776,54 +1200,6 @@
   ]
  },
  {
-  "id": "B03_6",
-  "graf": "SôBleda",
-  "nom": "SoBleda",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 6658,
-  "y": 4113,
-  "decision": "posicional",
-  "candidates": [
-   {
-    "grafia": "Can Bleda",
-    "municipi": "Sóller",
-    "km": 1.09,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Sóller",
-    "municipi": "Sóller",
-    "km": 2.73,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Sóller",
-    "municipi": "Sóller",
-    "km": 2.73,
-    "sim": 0.62
-   },
-   {
-    "grafia": "sa Moleta",
-    "municipi": "Deià",
-    "km": 2.94,
-    "sim": 0.62
-   },
-   {
-    "grafia": "sa Lleida",
-    "municipi": "Fornalutx",
-    "km": 5.5,
-    "sim": 0.62
-   },
-   {
-    "grafia": "sa Mola",
-    "municipi": "Sóller",
-    "km": 1.84,
-    "sim": 0.55
-   }
-  ]
- },
- {
   "id": "B03_7",
   "graf": "Sô Pusa",
   "nom": "Son Pusa",
@@ -1872,54 +1248,6 @@
   ]
  },
  {
-  "id": "B03_11",
-  "graf": "Casteig",
-  "nom": "Casteig",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 6277,
-  "y": 4213,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Can Teix",
-    "municipi": "Sóller",
-    "km": 2.91,
-    "sim": 0.67
-   },
-   {
-    "grafia": "ses Casotes",
-    "municipi": "Valldemossa",
-    "km": 8.37,
-    "sim": 0.75
-   },
-   {
-    "grafia": "es Castellot",
-    "municipi": "Sóller",
-    "km": 1.9,
-    "sim": 0.62
-   },
-   {
-    "grafia": "es Castellàs",
-    "municipi": "Deià",
-    "km": 3.55,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Camí des Teix",
-    "municipi": "Bunyola",
-    "km": 4.7,
-    "sim": 0.62
-   },
-   {
-    "grafia": "es Castellot",
-    "municipi": "Bunyola",
-    "km": 5.42,
-    "sim": 0.62
-   }
-  ]
- },
- {
   "id": "B03_14",
   "graf": "Costa dê Flasada",
   "nom": "Costa de Flasada",
@@ -1964,54 +1292,6 @@
     "municipi": "Sóller",
     "km": 1.63,
     "sim": 0.54
-   }
-  ]
- },
- {
-  "id": "B03_19",
-  "graf": "Alqa. del Conde",
-  "nom": "Alqa. del Conde",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 7116,
-  "y": 4249,
-  "decision": "posicional",
-  "candidates": [
-   {
-    "grafia": "s'Alqueria des Compte",
-    "municipi": "Sóller",
-    "km": 0.8,
-    "sim": 0.64
-   },
-   {
-    "grafia": "Font de s'Alqueria",
-    "municipi": "Fornalutx",
-    "km": 2.09,
-    "sim": 0.61
-   },
-   {
-    "grafia": "Cova de s'Alova",
-    "municipi": "Sóller",
-    "km": 2.23,
-    "sim": 0.6
-   },
-   {
-    "grafia": "sa Falconera",
-    "municipi": "Sóller",
-    "km": 5.08,
-    "sim": 0.63
-   },
-   {
-    "grafia": "s'Aladern",
-    "municipi": "Sóller",
-    "km": 2.9,
-    "sim": 0.59
-   },
-   {
-    "grafia": "Alconàsser",
-    "municipi": "Sóller",
-    "km": 4.71,
-    "sim": 0.6
    }
   ]
  },
@@ -2208,54 +1488,6 @@
   ]
  },
  {
-  "id": "B04_5",
-  "graf": "Trinidad",
-  "nom": "Trinidad",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 5103,
-  "y": 4920,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "sa Ferida",
-    "municipi": "Valldemossa",
-    "km": 2.23,
-    "sim": 0.57
-   },
-   {
-    "grafia": "sa Marina",
-    "municipi": "Deià",
-    "km": 2.23,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Vinya de sa Torre",
-    "municipi": "Valldemossa",
-    "km": 1.67,
-    "sim": 0.53
-   },
-   {
-    "grafia": "Ermita de la Trinitat",
-    "municipi": "Valldemossa",
-    "km": 1.5,
-    "sim": 0.52
-   },
-   {
-    "grafia": "Sínia des Rafal",
-    "municipi": "Valldemossa",
-    "km": 2.91,
-    "sim": 0.53
-   },
-   {
-    "grafia": "sa Foradada",
-    "municipi": "Deià",
-    "km": 3.01,
-    "sim": 0.5
-   }
-  ]
- },
- {
   "id": "B04_10",
   "graf": "Deyá",
   "nom": "Deyá",
@@ -2448,54 +1680,6 @@
   ]
  },
  {
-  "id": "B04_16",
-  "graf": "ElRecó",
-  "nom": "ElRecó",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 5945,
-  "y": 5229,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "es Racó",
-    "municipi": "Deià",
-    "km": 2.0,
-    "sim": 0.6
-   },
-   {
-    "grafia": "Penyal des Racó",
-    "municipi": "Deià",
-    "km": 1.32,
-    "sim": 0.59
-   },
-   {
-    "grafia": "es Racó",
-    "municipi": "Bunyola",
-    "km": 5.46,
-    "sim": 0.6
-   },
-   {
-    "grafia": "es Penyaletó",
-    "municipi": "Bunyola",
-    "km": 3.61,
-    "sim": 0.53
-   },
-   {
-    "grafia": "es Racó",
-    "municipi": "Santa Maria del Camí",
-    "km": 8.27,
-    "sim": 0.6
-   },
-   {
-    "grafia": "Coll d'en Claret",
-    "municipi": "Esporles",
-    "km": 8.1,
-    "sim": 0.59
-   }
-  ]
- },
- {
   "id": "B04_17",
   "graf": "Pla del Rey",
   "nom": "Pla del Rey",
@@ -2683,102 +1867,6 @@
     "grafia": "Caseta des Refugi",
     "municipi": "Valldemossa",
     "km": 1.98,
-    "sim": 0.67
-   }
-  ]
- },
- {
-  "id": "B04_24",
-  "graf": "Cruz de Sor Thoma",
-  "nom": "Cruz de Sor Thoma",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 5103,
-  "y": 5667,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Coma des Cardó",
-    "municipi": "Esporles",
-    "km": 5.26,
-    "sim": 0.58
-   },
-   {
-    "grafia": "Mirador de na Torta",
-    "municipi": "Valldemossa",
-    "km": 1.77,
-    "sim": 0.52
-   },
-   {
-    "grafia": "Marina d'en Cru",
-    "municipi": "Valldemossa",
-    "km": 1.39,
-    "sim": 0.5
-   },
-   {
-    "grafia": "Tanca de Son Moragues",
-    "municipi": "Valldemossa",
-    "km": 1.62,
-    "sim": 0.5
-   },
-   {
-    "grafia": "sa Cresta",
-    "municipi": "Valldemossa",
-    "km": 2.11,
-    "sim": 0.5
-   },
-   {
-    "grafia": "Cul de s'Estaca",
-    "municipi": "Valldemossa",
-    "km": 2.88,
-    "sim": 0.5
-   }
-  ]
- },
- {
-  "id": "B04_27",
-  "graf": "Cartuxa",
-  "nom": "Cartuxa",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 4997,
-  "y": 5756,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "sa Cadireta",
-    "municipi": "Valldemossa",
-    "km": 2.6,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Coa de sa Rata",
-    "municipi": "Valldemossa",
-    "km": 3.36,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Can Perxa",
-    "municipi": "Valldemossa",
-    "km": 2.58,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Coa de sa Rata",
-    "municipi": "Bunyola",
-    "km": 5.24,
-    "sim": 0.67
-   },
-   {
-    "grafia": "sa Cresta",
-    "municipi": "Valldemossa",
-    "km": 2.39,
-    "sim": 0.62
-   },
-   {
-    "grafia": "es Carritxaret",
-    "municipi": "Esporles",
-    "km": 5.8,
     "sim": 0.67
    }
   ]
@@ -3120,54 +2208,6 @@
   ]
  },
  {
-  "id": "B05_12",
-  "graf": "Furcimañy",
-  "nom": "Furcimañy",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 6043,
-  "y": 5083,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Can Fussimany",
-    "municipi": "Deià",
-    "km": 1.73,
-    "sim": 0.64
-   },
-   {
-    "grafia": "es Franc",
-    "municipi": "Valldemossa",
-    "km": 5.3,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Camí de sa Muntanya",
-    "municipi": "Bunyola",
-    "km": 3.87,
-    "sim": 0.55
-   },
-   {
-    "grafia": "es Carcanyols",
-    "municipi": "Bunyola",
-    "km": 4.12,
-    "sim": 0.53
-   },
-   {
-    "grafia": "na Fàtima",
-    "municipi": "Valldemossa",
-    "km": 4.78,
-    "sim": 0.53
-   },
-   {
-    "grafia": "sa Ferida",
-    "municipi": "Valldemossa",
-    "km": 5.08,
-    "sim": 0.53
-   }
-  ]
- },
- {
   "id": "B05_13",
   "graf": "Casa del Rey",
   "nom": "Casa del Rey",
@@ -3260,54 +2300,6 @@
     "municipi": "Escorca",
     "km": 10.06,
     "sim": 0.81
-   }
-  ]
- },
- {
-  "id": "B05_17",
-  "graf": "Refugio",
-  "nom": "Refugio",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 7885,
-  "y": 5187,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Refugi de Cúber",
-    "municipi": "Escorca",
-    "km": 5.13,
-    "sim": 0.63
-   },
-   {
-    "grafia": "Refugi de s'Alova",
-    "municipi": "Sóller",
-    "km": 5.64,
-    "sim": 0.63
-   },
-   {
-    "grafia": "es Reg",
-    "municipi": "Binissalem",
-    "km": 7.02,
-    "sim": 0.6
-   },
-   {
-    "grafia": "es Freu",
-    "municipi": "Bunyola",
-    "km": 4.05,
-    "sim": 0.55
-   },
-   {
-    "grafia": "es Peregons",
-    "municipi": "Bunyola",
-    "km": 4.71,
-    "sim": 0.53
-   },
-   {
-    "grafia": "Son Seguí",
-    "municipi": "Alaró",
-    "km": 3.08,
-    "sim": 0.5
    }
   ]
  },
@@ -3600,54 +2592,6 @@
   ]
  },
  {
-  "id": "B06_10",
-  "graf": "Sta Lucia",
-  "nom": "Sta Lucia",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 8688,
-  "y": 4947,
-  "decision": "posicional",
-  "candidates": [
-   {
-    "grafia": "Puig de Santa Llúcia",
-    "municipi": "Mancor de la Vall",
-    "km": 1.36,
-    "sim": 0.69
-   },
-   {
-    "grafia": "es Llistà",
-    "municipi": "Alaró",
-    "km": 1.93,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Son Llucià",
-    "municipi": "Sencelles",
-    "km": 9.79,
-    "sim": 0.77
-   },
-   {
-    "grafia": "Capella de Santa Llucia",
-    "municipi": "Mancor de la Vall",
-    "km": 1.45,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Can Costa",
-    "municipi": "Selva",
-    "km": 5.32,
-    "sim": 0.67
-   },
-   {
-    "grafia": "sa Caseta Blanca",
-    "municipi": "Inca",
-    "km": 4.86,
-    "sim": 0.64
-   }
-  ]
- },
- {
   "id": "B06_11",
   "graf": "Mancor",
   "nom": "Mancor",
@@ -3792,102 +2736,6 @@
   ]
  },
  {
-  "id": "B06_14",
-  "graf": "Cunia",
-  "nom": "Cunia",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 9216,
-  "y": 5112,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Can Pixa",
-    "municipi": "Lloseta",
-    "km": 2.26,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Can Gaià",
-    "municipi": "Inca",
-    "km": 3.12,
-    "sim": 0.62
-   },
-   {
-    "grafia": "sa Punta",
-    "municipi": "Selva",
-    "km": 2.49,
-    "sim": 0.6
-   },
-   {
-    "grafia": "Ca na Ruixa",
-    "municipi": "Inca",
-    "km": 3.57,
-    "sim": 0.62
-   },
-   {
-    "grafia": "sa Punta",
-    "municipi": "Inca",
-    "km": 3.7,
-    "sim": 0.6
-   },
-   {
-    "grafia": "Can Piula",
-    "municipi": "Inca",
-    "km": 2.38,
-    "sim": 0.57
-   }
-  ]
- },
- {
-  "id": "B06_15",
-  "graf": "Bonase",
-  "nom": "Bonase",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 9473,
-  "y": 5076,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "ses Basses",
-    "municipi": "Mancor de la Vall",
-    "km": 3.88,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Son Bonafè",
-    "municipi": "Selva",
-    "km": 1.53,
-    "sim": 0.62
-   },
-   {
-    "grafia": "es Bosquet",
-    "municipi": "Selva",
-    "km": 2.22,
-    "sim": 0.62
-   },
-   {
-    "grafia": "ses Basses",
-    "municipi": "Selva",
-    "km": 5.37,
-    "sim": 0.67
-   },
-   {
-    "grafia": "ses Basses",
-    "municipi": "Selva",
-    "km": 5.43,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Cas Cabo",
-    "municipi": "Inca",
-    "km": 0.65,
-    "sim": 0.57
-   }
-  ]
- },
- {
   "id": "B06_16",
   "graf": "Sô Berga",
   "nom": "Son Berga",
@@ -3932,54 +2780,6 @@
     "municipi": "Lloseta",
     "km": 5.14,
     "sim": 0.8
-   }
-  ]
- },
- {
-  "id": "B06_17",
-  "graf": "Estorell",
-  "nom": "Estorell",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 8473,
-  "y": 5198,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Ca l'Estrella",
-    "municipi": "Inca",
-    "km": 10.08,
-    "sim": 0.87
-   },
-   {
-    "grafia": "s'Estret",
-    "municipi": "Alaró",
-    "km": 5.01,
-    "sim": 0.77
-   },
-   {
-    "grafia": "s'Astorell Vell",
-    "municipi": "Lloseta",
-    "km": 0.04,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Torella",
-    "municipi": "Escorca",
-    "km": 9.01,
-    "sim": 0.8
-   },
-   {
-    "grafia": "s'Estret",
-    "municipi": "Escorca",
-    "km": 7.66,
-    "sim": 0.77
-   },
-   {
-    "grafia": "s'Estret",
-    "municipi": "Santa Maria del Camí",
-    "km": 8.12,
-    "sim": 0.77
    }
   ]
  },
@@ -4128,102 +2928,6 @@
   ]
  },
  {
-  "id": "B06_23",
-  "graf": "Tofle",
-  "nom": "Tofle",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 8657,
-  "y": 5461,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "sa Torre",
-    "municipi": "Binissalem",
-    "km": 3.45,
-    "sim": 0.6
-   },
-   {
-    "grafia": "sa Goleta",
-    "municipi": "Binissalem",
-    "km": 2.76,
-    "sim": 0.55
-   },
-   {
-    "grafia": "Costa de Tofla",
-    "municipi": "Alaró",
-    "km": 1.12,
-    "sim": 0.5
-   },
-   {
-    "grafia": "ses Fleixes",
-    "municipi": "Lloseta",
-    "km": 1.51,
-    "sim": 0.5
-   },
-   {
-    "grafia": "sa Totxera",
-    "municipi": "Selva",
-    "km": 2.61,
-    "sim": 0.5
-   },
-   {
-    "grafia": "sa Torre",
-    "municipi": "Santa Eugènia",
-    "km": 9.59,
-    "sim": 0.6
-   }
-  ]
- },
- {
-  "id": "B06_29",
-  "graf": "Tofle",
-  "nom": "Tofle",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 8648,
-  "y": 5550,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "sa Torre",
-    "municipi": "Binissalem",
-    "km": 3.0,
-    "sim": 0.6
-   },
-   {
-    "grafia": "sa Goleta",
-    "municipi": "Binissalem",
-    "km": 2.26,
-    "sim": 0.55
-   },
-   {
-    "grafia": "Costa de Tofla",
-    "municipi": "Alaró",
-    "km": 1.24,
-    "sim": 0.5
-   },
-   {
-    "grafia": "ses Fleixes",
-    "municipi": "Lloseta",
-    "km": 1.49,
-    "sim": 0.5
-   },
-   {
-    "grafia": "sa Totxera",
-    "municipi": "Selva",
-    "km": 2.83,
-    "sim": 0.5
-   },
-   {
-    "grafia": "sa Torre",
-    "municipi": "Santa Eugènia",
-    "km": 9.1,
-    "sim": 0.6
-   }
-  ]
- },
- {
   "id": "B06_31",
   "graf": "Alcudieta",
   "nom": "Alcudieta",
@@ -4316,54 +3020,6 @@
     "municipi": "Valldemossa",
     "km": 2.66,
     "sim": 0.64
-   }
-  ]
- },
- {
-  "id": "B07_5",
-  "graf": "Sô Noch",
-  "nom": "Son Noch",
-  "tipus": "possessió",
-  "subtile": "",
-  "x": 3826,
-  "y": 5615,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Son Roca",
-    "municipi": "Puigpunyent",
-    "km": 8.58,
-    "sim": 0.78
-   },
-   {
-    "grafia": "Son Bunyola",
-    "municipi": "Banyalbufar",
-    "km": 1.75,
-    "sim": 0.63
-   },
-   {
-    "grafia": "Son Coll",
-    "municipi": "Banyalbufar",
-    "km": 2.8,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Son Bauçà",
-    "municipi": "Banyalbufar",
-    "km": 1.06,
-    "sim": 0.59
-   },
-   {
-    "grafia": "Son Creus",
-    "municipi": "Banyalbufar",
-    "km": 1.72,
-    "sim": 0.59
-   },
-   {
-    "grafia": "Camí de Son Bunyola",
-    "municipi": "Banyalbufar",
-    "km": 1.55,
-    "sim": 0.58
    }
   ]
  },
@@ -4704,54 +3360,6 @@
   ]
  },
  {
-  "id": "B08_15",
-  "graf": "Fuête",
-  "nom": "Fuete",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 6039,
-  "y": 6514,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "ses Cuinetes",
-    "municipi": "Valldemossa",
-    "km": 4.84,
-    "sim": 0.62
-   },
-   {
-    "grafia": "es Pouet",
-    "municipi": "Palma",
-    "km": 4.56,
-    "sim": 0.6
-   },
-   {
-    "grafia": "s'Estret",
-    "municipi": "Valldemossa",
-    "km": 2.62,
-    "sim": 0.55
-   },
-   {
-    "grafia": "ses Roquetes",
-    "municipi": "Valldemossa",
-    "km": 7.3,
-    "sim": 0.62
-   },
-   {
-    "grafia": "s'Estret",
-    "municipi": "Valldemossa",
-    "km": 3.11,
-    "sim": 0.55
-   },
-   {
-    "grafia": "s'Estret",
-    "municipi": "Valldemossa",
-    "km": 3.24,
-    "sim": 0.55
-   }
-  ]
- },
- {
   "id": "B08_16",
   "graf": "Sô Homar",
   "nom": "Son Homar",
@@ -4896,54 +3504,6 @@
   ]
  },
  {
-  "id": "B08_21",
-  "graf": "Reguer Marq.",
-  "nom": "Reguer Marq.",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 6214,
-  "y": 6664,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Cas Guixer",
-    "municipi": "Palma",
-    "km": 2.01,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Marge Llarg",
-    "municipi": "Bunyola",
-    "km": 1.73,
-    "sim": 0.55
-   },
-   {
-    "grafia": "sa Vaqueria",
-    "municipi": "Bunyola",
-    "km": 1.11,
-    "sim": 0.53
-   },
-   {
-    "grafia": "Molí d'en Vaquer",
-    "municipi": "Palma",
-    "km": 2.51,
-    "sim": 0.55
-   },
-   {
-    "grafia": "Coma Negra",
-    "municipi": "Bunyola",
-    "km": 4.16,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Coma de ses Egües",
-    "municipi": "Puigpunyent",
-    "km": 10.76,
-    "sim": 0.67
-   }
-  ]
- },
- {
   "id": "B08_31",
   "graf": "Sô Frau",
   "nom": "Son Frau",
@@ -5036,54 +3596,6 @@
     "municipi": "Puigpunyent",
     "km": 9.53,
     "sim": 0.88
-   }
-  ]
- },
- {
-  "id": "B08_33",
-  "graf": "Cas Pobre",
-  "nom": "Cas Pobre",
-  "tipus": "possessió",
-  "subtile": "",
-  "x": 6602,
-  "y": 7257,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Cas Pobler",
-    "municipi": "Palma",
-    "km": 10.19,
-    "sim": 0.88
-   },
-   {
-    "grafia": "Cas Porxer",
-    "municipi": "Esporles",
-    "km": 10.09,
-    "sim": 0.84
-   },
-   {
-    "grafia": "Casa des Pastor",
-    "municipi": "Bunyola",
-    "km": 4.89,
-    "sim": 0.73
-   },
-   {
-    "grafia": "Cas Sogre",
-    "municipi": "Palma",
-    "km": 7.75,
-    "sim": 0.78
-   },
-   {
-    "grafia": "Cas Panerer",
-    "municipi": "Palma",
-    "km": 5.38,
-    "sim": 0.73
-   },
-   {
-    "grafia": "Can Nofre",
-    "municipi": "Palma",
-    "km": 1.67,
-    "sim": 0.67
    }
   ]
  },
@@ -5328,54 +3840,6 @@
   ]
  },
  {
-  "id": "B09_20",
-  "graf": "Arbosars",
-  "nom": "Arbosars",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 7767,
-  "y": 6451,
-  "decision": "suggerit",
-  "candidates": [
-   {
-    "grafia": "s'Arboçar",
-    "municipi": "Santa Maria del Camí",
-    "km": 0.3,
-    "sim": 0.8
-   },
-   {
-    "grafia": "s'Arboçar",
-    "municipi": "Bunyola",
-    "km": 6.52,
-    "sim": 0.8
-   },
-   {
-    "grafia": "Pas de s'Arboç",
-    "municipi": "Bunyola",
-    "km": 5.44,
-    "sim": 0.71
-   },
-   {
-    "grafia": "es Rosers",
-    "municipi": "Binissalem",
-    "km": 9.28,
-    "sim": 0.76
-   },
-   {
-    "grafia": "es Cabàs",
-    "municipi": "Santa Maria del Camí",
-    "km": 2.22,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Molí de s'Arboçar",
-    "municipi": "Santa Maria del Camí",
-    "km": 1.35,
-    "sim": 0.6
-   }
-  ]
- },
- {
   "id": "B09_22",
   "graf": "Sô Maynou",
   "nom": "Son Maynou",
@@ -5564,54 +4028,6 @@
     "municipi": "Santa Maria del Camí",
     "km": 2.83,
     "sim": 0.73
-   }
-  ]
- },
- {
-  "id": "B10_3",
-  "graf": "Ayamâs Cond.",
-  "nom": "Ayamas Cond.",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 9010,
-  "y": 5708,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Son Mas",
-    "municipi": "Inca",
-    "km": 6.06,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Son Mas",
-    "municipi": "Consell",
-    "km": 6.31,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Son Mas",
-    "municipi": "Alaró",
-    "km": 6.83,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Son Llampaies",
-    "municipi": "Selva",
-    "km": 2.14,
-    "sim": 0.58
-   },
-   {
-    "grafia": "Son Canals",
-    "municipi": "Selva",
-    "km": 2.17,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Can Balança",
-    "municipi": "Lloseta",
-    "km": 0.9,
-    "sim": 0.55
    }
   ]
  },
@@ -6384,54 +4800,6 @@
   ]
  },
  {
-  "id": "B12_9",
-  "graf": "Hera den Garriga",
-  "nom": "Hera den Garriga",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 2816,
-  "y": 6294,
-  "decision": "posicional",
-  "candidates": [
-   {
-    "grafia": "Sen Garriga",
-    "municipi": "Estellencs",
-    "km": 1.14,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Era de sa Garrigueta",
-    "municipi": "Puigpunyent",
-    "km": 6.11,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Comuna de Garriga",
-    "municipi": "Puigpunyent",
-    "km": 5.79,
-    "sim": 0.6
-   },
-   {
-    "grafia": "Can Garriga",
-    "municipi": "Andratx",
-    "km": 10.07,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Caseta des Garriguer",
-    "municipi": "Puigpunyent",
-    "km": 7.64,
-    "sim": 0.62
-   },
-   {
-    "grafia": "Pedra de sa Galera",
-    "municipi": "Andratx",
-    "km": 4.49,
-    "sim": 0.57
-   }
-  ]
- },
- {
   "id": "B12_10",
   "graf": "Amitjers",
   "nom": "Amitjers",
@@ -6476,54 +4844,6 @@
     "municipi": "Banyalbufar",
     "km": 1.59,
     "sim": 0.53
-   }
-  ]
- },
- {
-  "id": "B12_11",
-  "graf": "Grau devall",
-  "nom": "Grau devall",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 2550,
-  "y": 6409,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Comellar d'en Grau",
-    "municipi": "Andratx",
-    "km": 8.5,
-    "sim": 0.67
-   },
-   {
-    "grafia": "es Grau",
-    "municipi": "Estellencs",
-    "km": 0.93,
-    "sim": 0.53
-   },
-   {
-    "grafia": "Coll de sa Grua",
-    "municipi": "Calvià",
-    "km": 6.1,
-    "sim": 0.6
-   },
-   {
-    "grafia": "Caseta d'en Grau",
-    "municipi": "Andratx",
-    "km": 8.5,
-    "sim": 0.64
-   },
-   {
-    "grafia": "Cova Gran",
-    "municipi": "Banyalbufar",
-    "km": 6.98,
-    "sim": 0.6
-   },
-   {
-    "grafia": "Cova Llarga",
-    "municipi": "Estellencs",
-    "km": 4.12,
-    "sim": 0.55
    }
   ]
  },
@@ -6720,54 +5040,6 @@
   ]
  },
  {
-  "id": "B12_20",
-  "graf": "Sempol",
-  "nom": "Sempol",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 2308,
-  "y": 6946,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "es Molí",
-    "municipi": "Estellencs",
-    "km": 5.5,
-    "sim": 0.6
-   },
-   {
-    "grafia": "sa Mola",
-    "municipi": "Puigpunyent",
-    "km": 6.2,
-    "sim": 0.6
-   },
-   {
-    "grafia": "es Moletó",
-    "municipi": "Calvià",
-    "km": 0.81,
-    "sim": 0.5
-   },
-   {
-    "grafia": "sa Mola",
-    "municipi": "Andratx",
-    "km": 6.89,
-    "sim": 0.6
-   },
-   {
-    "grafia": "es Molí",
-    "municipi": "Puigpunyent",
-    "km": 7.39,
-    "sim": 0.6
-   },
-   {
-    "grafia": "s'Estel",
-    "municipi": "Estellencs",
-    "km": 4.48,
-    "sim": 0.55
-   }
-  ]
- },
- {
   "id": "B12_23",
   "graf": "Alcaria",
   "nom": "Alcaria",
@@ -6956,54 +5228,6 @@
     "municipi": "Andratx",
     "km": 1.41,
     "sim": 0.71
-   }
-  ]
- },
- {
-  "id": "B13_4",
-  "graf": "Ubachs",
-  "nom": "Ubachs",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 4369,
-  "y": 6178,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "sa Bassa",
-    "municipi": "Puigpunyent",
-    "km": 2.2,
-    "sim": 0.55
-   },
-   {
-    "grafia": "Son Bauçà",
-    "municipi": "Banyalbufar",
-    "km": 3.24,
-    "sim": 0.53
-   },
-   {
-    "grafia": "Casa des Obacs",
-    "municipi": "Esporles",
-    "km": 1.33,
-    "sim": 0.5
-   },
-   {
-    "grafia": "Cas Batliu",
-    "municipi": "Valldemossa",
-    "km": 2.58,
-    "sim": 0.5
-   },
-   {
-    "grafia": "Baix de ses Cases",
-    "municipi": "Esporles",
-    "km": 2.9,
-    "sim": 0.5
-   },
-   {
-    "grafia": "Son Bauçà",
-    "municipi": "Palma",
-    "km": 5.59,
-    "sim": 0.53
    }
   ]
  },
@@ -7340,54 +5564,6 @@
     "municipi": "Valldemossa",
     "km": 11.74,
     "sim": 0.78
-   }
-  ]
- },
- {
-  "id": "B13_27",
-  "graf": "Se Cramada",
-  "nom": "Se Cramada",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 3634,
-  "y": 6850,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Son Calma",
-    "municipi": "Puigpunyent",
-    "km": 2.89,
-    "sim": 0.63
-   },
-   {
-    "grafia": "Can Mandons",
-    "municipi": "Puigpunyent",
-    "km": 2.74,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Coma del Sec",
-    "municipi": "Calvià",
-    "km": 8.91,
-    "sim": 0.67
-   },
-   {
-    "grafia": "sa Cama Roja",
-    "municipi": "Puigpunyent",
-    "km": 0.69,
-    "sim": 0.53
-   },
-   {
-    "grafia": "Sagranada",
-    "municipi": "Puigpunyent",
-    "km": 1.13,
-    "sim": 0.53
-   },
-   {
-    "grafia": "Can Mandena",
-    "municipi": "Estellencs",
-    "km": 3.84,
-    "sim": 0.57
    }
   ]
  },
@@ -8688,102 +6864,6 @@
   ]
  },
  {
-  "id": "B15_6",
-  "graf": "Pûta del Jueu",
-  "nom": "Puta del Jueu",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 1102,
-  "y": 7031,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "Punta Negra",
-    "municipi": "Andratx",
-    "km": 2.87,
-    "sim": 0.6
-   },
-   {
-    "grafia": "Punta de sa Dent",
-    "municipi": "Andratx",
-    "km": 5.27,
-    "sim": 0.63
-   },
-   {
-    "grafia": "Punta des Lledó",
-    "municipi": "Andratx",
-    "km": 4.1,
-    "sim": 0.6
-   },
-   {
-    "grafia": "Punta de s'Estaca",
-    "municipi": "Andratx",
-    "km": 3.36,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Punta de na Lluenta",
-    "municipi": "Estellencs",
-    "km": 7.8,
-    "sim": 0.64
-   },
-   {
-    "grafia": "Punta de na Moragues",
-    "municipi": "Andratx",
-    "km": 6.26,
-    "sim": 0.61
-   }
-  ]
- },
- {
-  "id": "B15_7",
-  "graf": "Llepagats",
-  "nom": "Llepagats",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 1109,
-  "y": 6973,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "es Calafats",
-    "municipi": "Andratx",
-    "km": 3.61,
-    "sim": 0.59
-   },
-   {
-    "grafia": "Tancat d'en Llorenç",
-    "municipi": "Andratx",
-    "km": 1.31,
-    "sim": 0.52
-   },
-   {
-    "grafia": "Volta Llarga",
-    "municipi": "Andratx",
-    "km": 4.74,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Escull des Pas",
-    "municipi": "Andratx",
-    "km": 2.14,
-    "sim": 0.53
-   },
-   {
-    "grafia": "So na Llobeta",
-    "municipi": "Andratx",
-    "km": 2.94,
-    "sim": 0.53
-   },
-   {
-    "grafia": "Collet de Dalt",
-    "municipi": "Andratx",
-    "km": 1.95,
-    "sim": 0.5
-   }
-  ]
- },
- {
   "id": "B15_12",
   "graf": "Cabo del falcô",
   "nom": "Cabo del falco",
@@ -9408,102 +7488,6 @@
   ]
  },
  {
-  "id": "C01_16",
-  "graf": "Puerto de Tuent",
-  "nom": "Puerto de Tuent",
-  "tipus": "costa",
-  "subtile": "",
-  "x": 8225,
-  "y": 2726,
-  "decision": "posicional",
-  "candidates": [
-   {
-    "grafia": "Platja de Tuent",
-    "municipi": "Escorca",
-    "km": 1.06,
-    "sim": 0.67
-   },
-   {
-    "grafia": "Mola de Tuent",
-    "municipi": "Escorca",
-    "km": 2.1,
-    "sim": 0.64
-   },
-   {
-    "grafia": "Torrent de Cúber",
-    "municipi": "Escorca",
-    "km": 5.67,
-    "sim": 0.64
-   },
-   {
-    "grafia": "Torre de sa Mola de Tuent",
-    "municipi": "Escorca",
-    "km": 2.1,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Cala Tuent",
-    "municipi": "Escorca",
-    "km": 1.02,
-    "sim": 0.55
-   },
-   {
-    "grafia": "Cala Tuent",
-    "municipi": "Escorca",
-    "km": 1.17,
-    "sim": 0.55
-   }
-  ]
- },
- {
-  "id": "C01_17",
-  "graf": "Las Fellas",
-  "nom": "Las Fellas",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 8466,
-  "y": 2534,
-  "decision": "posicional",
-  "candidates": [
-   {
-    "grafia": "ses Ferles",
-    "municipi": "Escorca",
-    "km": 1.43,
-    "sim": 0.67
-   },
-   {
-    "grafia": "s'Olla",
-    "municipi": "Escorca",
-    "km": 2.8,
-    "sim": 0.6
-   },
-   {
-    "grafia": "Torella",
-    "municipi": "Escorca",
-    "km": 4.01,
-    "sim": 0.62
-   },
-   {
-    "grafia": "es Colls",
-    "municipi": "Escorca",
-    "km": 3.02,
-    "sim": 0.55
-   },
-   {
-    "grafia": "sa Feus",
-    "municipi": "Fornalutx",
-    "km": 6.37,
-    "sim": 0.6
-   },
-   {
-    "grafia": "es Replans",
-    "municipi": "Escorca",
-    "km": 7.6,
-    "sim": 0.62
-   }
-  ]
- },
- {
   "id": "C01_22",
   "graf": "Fuête del Verger",
   "nom": "Fuete del Verger",
@@ -9788,54 +7772,6 @@
     "municipi": "Escorca",
     "km": 10.7,
     "sim": 0.67
-   }
-  ]
- },
- {
-  "id": "C01_31",
-  "graf": "Castillo d. Piedra picada",
-  "nom": "Castillo d. Piedra picada",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 6649,
-  "y": 3211,
-  "decision": "sense",
-  "candidates": [
-   {
-    "grafia": "CEIP Pere Cerdà",
-    "municipi": "Sóller",
-    "km": 3.7,
-    "sim": 0.54
-   },
-   {
-    "grafia": "Oratori de Castelló",
-    "municipi": "Sóller",
-    "km": 4.75,
-    "sim": 0.53
-   },
-   {
-    "grafia": "Camí de na Cavallera",
-    "municipi": "Fornalutx",
-    "km": 7.31,
-    "sim": 0.56
-   },
-   {
-    "grafia": "Cas Xicolater",
-    "municipi": "Sóller",
-    "km": 5.15,
-    "sim": 0.51
-   },
-   {
-    "grafia": "Torre Picada",
-    "municipi": "Sóller",
-    "km": 3.43,
-    "sim": 0.47
-   },
-   {
-    "grafia": "Estació Naval Port de Sóller",
-    "municipi": "Sóller",
-    "km": 3.34,
-    "sim": 0.47
    }
   ]
  },
@@ -12236,54 +10172,6 @@
     "municipi": "Andratx",
     "km": 1.3,
     "sim": 0.52
-   }
-  ]
- },
- {
-  "id": "C04_2",
-  "graf": "Singla de Ginabera",
-  "nom": "Singla de Ginabera",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 507,
-  "y": 6813,
-  "decision": "posicional",
-  "candidates": [
-   {
-    "grafia": "sa Galera Grossa",
-    "municipi": "Andratx",
-    "km": 1.03,
-    "sim": 0.57
-   },
-   {
-    "grafia": "sa Galera Petita",
-    "municipi": "Andratx",
-    "km": 1.16,
-    "sim": 0.57
-   },
-   {
-    "grafia": "Punta Negra",
-    "municipi": "Andratx",
-    "km": 1.76,
-    "sim": 0.54
-   },
-   {
-    "grafia": "na Caragola",
-    "municipi": "Andratx",
-    "km": 2.81,
-    "sim": 0.52
-   },
-   {
-    "grafia": "Parc Natural de sa Dragonera",
-    "municipi": "Andratx",
-    "km": 2.27,
-    "sim": 0.49
-   },
-   {
-    "grafia": "Serra de Son Nadal",
-    "municipi": "Andratx",
-    "km": 5.11,
-    "sim": 0.53
    }
   ]
  },

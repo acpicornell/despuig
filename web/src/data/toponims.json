@@ -15,15 +15,15 @@
    "sw": 564
   },
   "perDecision": {
-   "sense": 325,
+   "sense": 311,
    "confirmat": 1466,
+   "posicional": 150,
    "probable": 196,
-   "posicional": 138,
-   "suggerit": 445
+   "suggerit": 447
   },
   "perReview": {
-   "revisat": 320,
-   "corregit": 137
+   "revisat": 349,
+   "corregit": 153
   }
  },
  "toponims": [
@@ -61,7 +61,7 @@
    "lon": 2.813524,
    "lat": 39.830025,
    "decision": "confirmat",
-   "review": null,
+   "review": "revisat",
    "ngib": "sa Calobra",
    "municipi": "Escorca",
    "sim": 1,
@@ -101,10 +101,10 @@
    "lon": 2.79486,
    "lat": 39.825631,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -180,12 +180,12 @@
    "y": 3123,
    "lon": 2.875866,
    "lat": 39.823441,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": 0,
-   "km": null
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "ses Tosses",
+   "municipi": "Escorca",
+   "sim": 0.55,
+   "km": 1.7
   },
   {
    "uid": "nw:B01_9",
@@ -261,8 +261,8 @@
    "lon": 2.796536,
    "lat": 39.814491,
    "decision": "posicional",
-   "review": null,
-   "ngib": "Coma de Bini",
+   "review": "corregit",
+   "ngib": "Bini Gran",
    "municipi": "Escorca",
    "sim": 0.62,
    "km": 1.3
@@ -401,11 +401,11 @@
    "lon": 2.795606,
    "lat": 39.810803,
    "decision": "posicional",
-   "review": null,
-   "ngib": "Bini Gran",
+   "review": "corregit",
+   "ngib": "Bini Petit",
    "municipi": "Escorca",
-   "sim": 0.62,
-   "km": 1.43
+   "sim": 0.57,
+   "km": 1.61
   },
   {
    "uid": "nw:B01_20",
@@ -500,12 +500,12 @@
    "y": 3705,
    "lon": 2.857585,
    "lat": 39.800578,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": 0,
-   "km": null
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "Gorg Blau",
+   "municipi": "Escorca",
+   "sim": 0.46,
+   "km": 3.11
   },
   {
    "uid": "nw:B01_25",
@@ -620,12 +620,12 @@
    "y": 4015,
    "lon": 2.802761,
    "lat": 39.787316,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": 0,
-   "km": null
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "Pla de Cúber",
+   "municipi": "Escorca",
+   "sim": 0.62,
+   "km": 1.67
   },
   {
    "uid": "nw:B01_31",
@@ -761,7 +761,7 @@
    "lon": 2.758231,
    "lat": 39.776657,
    "decision": "posicional",
-   "review": null,
+   "review": "revisat",
    "ngib": "es Saragalls",
    "municipi": "Fornalutx",
    "sim": 0.59,
@@ -960,8 +960,8 @@
    "y": 3604,
    "lon": 2.682183,
    "lat": 39.798682,
-   "decision": "posicional",
-   "review": null,
+   "decision": "suggerit",
+   "review": "revisat",
    "ngib": "Santa Catalina",
    "municipi": "Sóller",
    "sim": 0.7,
@@ -1041,10 +1041,10 @@
    "lon": 2.683492,
    "lat": 39.79429,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -1060,12 +1060,12 @@
    "y": 3677,
    "lon": 2.69471,
    "lat": 39.796638,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": 0,
-   "km": null
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "Port de Sóller",
+   "municipi": "Sóller",
+   "sim": 0.53,
+   "km": 0.23
   },
   {
    "uid": "nw:B02_13",
@@ -1280,12 +1280,12 @@
    "y": 3894,
    "lon": 2.656352,
    "lat": 39.785302,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": 0,
-   "km": null
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "Cas Avinyons",
+   "municipi": "Sóller",
+   "sim": 0.67,
+   "km": 2.21
   },
   {
    "uid": "nw:B02_24",
@@ -1321,10 +1321,10 @@
    "lon": 2.692812,
    "lat": 39.786499,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -1541,7 +1541,7 @@
    "lon": 2.687549,
    "lat": 39.778615,
    "decision": "posicional",
-   "review": null,
+   "review": "revisat",
    "ngib": "Can Bleda",
    "municipi": "Sóller",
    "sim": 0.62,
@@ -1631,8 +1631,8 @@
    "uid": "nw:B03_11",
    "q": "nw",
    "id": "B03_11",
-   "nom": "Casteig",
-   "graf": "Casteig",
+   "nom": "Casteio",
+   "graf": "Casteio",
    "tipus": "altre",
    "subtile": "",
    "dubte": false,
@@ -1641,10 +1641,10 @@
    "lon": 2.661992,
    "lat": 39.772711,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -1801,7 +1801,7 @@
    "lon": 2.724678,
    "lat": 39.775017,
    "decision": "posicional",
-   "review": null,
+   "review": "revisat",
    "ngib": "s'Alqueria des Compte",
    "municipi": "Sóller",
    "sim": 0.64,
@@ -2060,12 +2060,12 @@
    "y": 4920,
    "lon": 2.594323,
    "lat": 39.736501,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": 0,
-   "km": null
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "Ermita de la Trinitat",
+   "municipi": "Valldemossa",
+   "sim": 0.52,
+   "km": 1.5
   },
   {
    "uid": "nw:B04_6",
@@ -2271,8 +2271,8 @@
    "uid": "nw:B04_16",
    "q": "nw",
    "id": "B04_16",
-   "nom": "ElRecó",
-   "graf": "ElRecó",
+   "nom": "El Recó",
+   "graf": "El Recó",
    "tipus": "altre",
    "subtile": "",
    "dubte": false,
@@ -2280,12 +2280,12 @@
    "y": 5229,
    "lon": 2.656156,
    "lat": 39.728035,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": 0,
-   "km": null
+   "decision": "suggerit",
+   "review": "revisat",
+   "ngib": "es Racó",
+   "municipi": "Deià",
+   "sim": 0.88,
+   "km": 2
   },
   {
    "uid": "nw:B04_17",
@@ -2440,12 +2440,12 @@
    "y": 5667,
    "lon": 2.603506,
    "lat": 39.70353,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": 0,
-   "km": null
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "Creu de Dalt",
+   "municipi": "Valldemossa",
+   "sim": 0.43,
+   "km": 1.78
   },
   {
    "uid": "nw:B04_25",
@@ -2500,12 +2500,12 @@
    "y": 5756,
    "lon": 2.597154,
    "lat": 39.698754,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": 0,
-   "km": null
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "Reial Cartoixa de Valldemossa",
+   "municipi": "Valldemossa",
+   "sim": 0.36,
+   "km": 2.43
   },
   {
    "uid": "nw:B04_28",
@@ -3000,12 +3000,12 @@
    "y": 5083,
    "lon": 2.661297,
    "lat": 39.735015,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": 0,
-   "km": null
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "Can Fussimany",
+   "municipi": "Deià",
+   "sim": 0.64,
+   "km": 1.73
   },
   {
    "uid": "nw:B05_13",
@@ -3101,10 +3101,10 @@
    "lon": 2.792308,
    "lat": 39.734958,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -3741,7 +3741,7 @@
    "lon": 2.850444,
    "lat": 39.746084,
    "decision": "posicional",
-   "review": null,
+   "review": "revisat",
    "ngib": "Puig de Santa Llúcia",
    "municipi": "Mancor de la Vall",
    "sim": 0.69,
@@ -3820,12 +3820,12 @@
    "y": 5112,
    "lon": 2.890172,
    "lat": 39.737191,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": 0,
-   "km": null
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "Conilla de Dalt",
+   "municipi": "Mancor de la Vall",
+   "sim": 0.47,
+   "km": 1.09
   },
   {
    "uid": "nw:B06_15",
@@ -3840,12 +3840,12 @@
    "y": 5076,
    "lon": 2.90956,
    "lat": 39.738251,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": 0,
-   "km": null
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "Son Bonafè",
+   "municipi": "Selva",
+   "sim": 0.62,
+   "km": 1.53
   },
   {
    "uid": "nw:B06_16",
@@ -3880,12 +3880,12 @@
    "y": 5198,
    "lon": 2.835094,
    "lat": 39.734273,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": 0,
-   "km": null
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "s'Astorell Vell",
+   "municipi": "Lloseta",
+   "sim": 0.67,
+   "km": 0.04
   },
   {
    "uid": "nw:B06_18",
@@ -4001,10 +4001,10 @@
    "lon": 2.848035,
    "lat": 39.721042,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -4121,10 +4121,10 @@
    "lon": 2.846946,
    "lat": 39.716563,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -4281,10 +4281,10 @@
    "lon": 2.521189,
    "lat": 39.696332,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -4901,10 +4901,10 @@
    "lon": 2.661998,
    "lat": 39.665738,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -5021,10 +5021,10 @@
    "lon": 2.671288,
    "lat": 39.658188,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -5261,10 +5261,10 @@
    "lon": 2.68425,
    "lat": 39.625663,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -5681,7 +5681,7 @@
    "lon": 2.775719,
    "lat": 39.6704,
    "decision": "suggerit",
-   "review": null,
+   "review": "revisat",
    "ngib": "s'Arboçar",
    "municipi": "Santa Maria del Camí",
    "sim": 0.8,
@@ -6060,12 +6060,12 @@
    "y": 5708,
    "lon": 2.871901,
    "lat": 39.707572,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": 0,
-   "km": null
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "Aiamans",
+   "municipi": "Lloseta",
+   "sim": 0.56,
+   "km": 1.58
   },
   {
    "uid": "nw:B10_4",
@@ -7161,7 +7161,7 @@
    "lon": 2.465856,
    "lat": 39.655836,
    "decision": "posicional",
-   "review": null,
+   "review": "revisat",
    "ngib": "Sen Garriga",
    "municipi": "Estellencs",
    "sim": 0.67,
@@ -7201,10 +7201,10 @@
    "lon": 2.451014,
    "lat": 39.647678,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -7381,10 +7381,10 @@
    "lon": 2.437911,
    "lat": 39.619229,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -7660,12 +7660,12 @@
    "y": 6178,
    "lon": 2.558861,
    "lat": 39.674663,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": 0,
-   "km": null
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "Casa des Obacs",
+   "municipi": "Esporles",
+   "sim": 0.5,
+   "km": 1.33
   },
   {
    "uid": "nw:B13_5",
@@ -8121,10 +8121,10 @@
    "lon": 2.513138,
    "lat": 39.636028,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -9461,10 +9461,10 @@
    "lon": 2.373063,
    "lat": 39.600887,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -9481,10 +9481,10 @@
    "lon": 2.373372,
    "lat": 39.603771,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -10081,7 +10081,7 @@
    "lon": 2.764925,
    "lat": 39.835824,
    "decision": "posicional",
-   "review": null,
+   "review": "revisat",
    "ngib": "Platja de Tuent",
    "municipi": "Escorca",
    "sim": 0.67,
@@ -10101,7 +10101,7 @@
    "lon": 2.776961,
    "lat": 39.843004,
    "decision": "posicional",
-   "review": null,
+   "review": "revisat",
    "ngib": "ses Ferles",
    "municipi": "Escorca",
    "sim": 0.67,
@@ -10381,10 +10381,10 @@
    "lon": 2.65807,
    "lat": 39.811948,
    "decision": "sense",
-   "review": null,
+   "review": "revisat",
    "ngib": null,
    "municipi": null,
-   "sim": 0,
+   "sim": null,
    "km": null
   },
   {
@@ -11880,12 +11880,12 @@
    "y": 6813,
    "lon": 2.341204,
    "lat": 39.602924,
-   "decision": "posicional",
-   "review": null,
-   "ngib": "sa Galera Grossa",
-   "municipi": "Andratx",
-   "sim": 0.57,
-   "km": 1.03
+   "decision": "sense",
+   "review": "revisat",
+   "ngib": null,
+   "municipi": null,
+   "sim": null,
+   "km": null
   },
   {
    "uid": "nw:C04_3",
