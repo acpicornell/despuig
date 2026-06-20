@@ -40,7 +40,7 @@ const pobVeins = pob.pobles.filter((p) => p.veins != null).sort((a, b) => b.vein
 const totalVeins = pobVeins.reduce((s, p) => s + p.veins, 0);
 const maxVeins = pobVeins[0]?.veins || 1;
 
-// Collites més freqüents.
+// Producció més freqüent.
 const collites = {};
 for (const p of pob.pobles) for (const c of p.collites || []) collites[c] = (collites[c] || 0) + 1;
 const colStats = Object.entries(collites).map(([k, n]) => ({ k, n })).sort((a, b) => b.n - a.n).slice(0, 14);
@@ -120,8 +120,8 @@ const pct = (n, max) => `${Math.max(2, Math.round((n / max) * 100))}%`;
     </div>
 
     <div>
-      <h2>Collites més freqüents</h2>
-      <p class="muted small">Productes esmentats a les cartel·les, segons el nombre de pobles.</p>
+      <h2>Producció més freqüent</h2>
+      <p class="muted small">Productes i activitats esmentats a les cartel·les, segons el nombre de pobles.</p>
       <ul class="bars">
         {colStats.map((c) => (
           <li>

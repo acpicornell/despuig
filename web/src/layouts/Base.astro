@@ -15,6 +15,7 @@ const nav = [
   { href: url('toponims'), label: 'Topònims', match: base + '/toponims' },
   { href: url('mapa'), label: 'Mapa', match: base + '/mapa' },
   { href: url('estadistiques'), label: 'Estadístiques', match: base + '/estadistiques' },
+  { href: url('metode'), label: 'El mètode', match: base + '/metode' },
 ];
 const isCurrent = (m) => (m === (base || '') ? path === (base || '') : path === m || path.startsWith(m + '/'));
 ---
@@ -38,10 +39,7 @@ const isCurrent = (m) => (m === (base || '') ? path === (base || '') : path === 
   <body>
     <header class="site-header">
       <div class="wrap">
-        <a class="brand" href={url('')}>
-          El mapa del Cardenal Despuig
-          <small>Mallorca · 1785</small>
-        </a>
+        <a class="brand" href={url('')}>Mapa de Mallorca · Antoni Despuig · 1785</a>
         <nav class="nav" aria-label="Principal">
           {nav.map((n) => (
             <a href={n.href} aria-current={isCurrent(n.match) ? 'page' : undefined}>{n.label}</a>

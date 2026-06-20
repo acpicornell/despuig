@@ -92,6 +92,17 @@ def tipus_of(k):
     return "altre"
 
 
+def tipus_for(graf, k):
+    """tipus_of + article 'Sa/Ses' → possessió, llegit de la grafia CRUA (no la clau
+    deaccentuada) per no confondre 'Sa' (article) amb 'Sâ' (= San, sant)."""
+    t = tipus_of(k)
+    if t == "altre":
+        w0 = (graf or "").strip().split()
+        if w0 and w0[0].lower().strip(".,") in ("sa", "ses"):
+            return "possessió"
+    return t
+
+
 def emit(windows, windir, prefix, out, seen, skip_steep=None):
     """Build toponyms from one extraction track into `out` (deduping via `seen`).
     If `skip_steep` (a set of (cx,cy)) is given, drop toponyms whose member boxes are
@@ -116,7 +127,7 @@ def emit(windows, windir, prefix, out, seen, skip_steep=None):
             seen.add(cellkey)
             out.append({"id": f"{prefix}{win['w']:02d}_{i + 1}", "graf": graf,
                         "nom": TOWNS.get(k) or normalize_nom(graf),
-                        "tipus": tipus_of(k), "subtile": "", "x": x, "y": y, "dubte": False})
+                        "tipus": tipus_for(graf, k), "subtile": "", "x": x, "y": y, "dubte": False})
 
 
 def main():

@@ -25,6 +25,7 @@ const F = (q) => {
     reviewdata: `${b}/review-data.json`, crops: `${b}/review-crops`,
     picks: `${b}/recheck-picks.json`, reviewed: `${b}/review-reviewed.json`,
     graf: `${b}/graf-fixes.json`, discards: `${b}/discards.json`,
+    tipusfix: `${b}/tipus-fixes.json`,
   };
 };
 const readJSON = (p, d) => { try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return d; } };
@@ -42,8 +43,10 @@ function tableRows(q) {
   const candById = Object.fromEntries(recheck.map((r) => [r.id, r.candidates || []]));
   const graf = readJSON(f.graf, {}), reviewed = readJSON(f.reviewed, {});
   const picks = readJSON(f.picks, {}), discards = readJSON(f.discards, {});
+  const tfix = readJSON(f.tipusfix, {});
   return matches.map((m) => ({
-    id: m.id, graf: graf[m.id] ?? m.graf, graf0: m.graf, nom: m.nom, tipus: m.tipus,
+    id: m.id, graf: graf[m.id] ?? m.graf, graf0: m.graf, nom: m.nom,
+    tipus: tfix[m.id] ?? m.tipus, tipus0: m.tipus, tipusEdited: tfix[m.id] != null && tfix[m.id] !== m.tipus,
     decision: m.decision, review: m.review || null, ngib: m.ngib || null,
     municipi: m.municipi || null, km: m.km ?? null, sim: m.sim ?? null,
     cand: (candById[m.id] || []).slice(0, 6),
@@ -115,6 +118,8 @@ const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</ti
 <div id=toast></div>
 <script>
 var Q='', MODE='table', ROWS=[], NGIB=[];
+var TIPS=['possessió','nucli','hidrònim','orònim','costa','altre'];
+function tipSel(id,cur){return '<select class=etip data-id="'+id+'">'+TIPS.map(function(x){return '<option'+(x===cur?' selected':'')+'>'+x+'</option>';}).join('')+'</select>';}
 var esc=function(s){return (s==null?'':''+s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
 var $=function(s){return document.querySelector(s);};
 
@@ -154,7 +159,7 @@ function rowHTML(r){
     +'data-text="'+esc(((r.graf||'')+' '+(r.nom||'')+' '+(r.ngib||'')+' '+(r.municipi||'')).toLowerCase())+'"'
     +(r.pend?' class=pend':'')+(r.discarded?' class=disc':'')+'>'
     +'<td><input class=eg data-id="'+r.id+'" value="'+esc(r.graf)+'">'+(r.grafEdited?' <span class=pendtag>✎</span>':'')+'</td>'
-    +'<td>'+esc(r.nom)+'</td><td class=meta>'+esc(r.tipus)+'</td>'
+    +'<td>'+esc(r.nom)+'</td><td>'+tipSel(r.id,r.tipus)+(r.tipusEdited?' <span class=pendtag>✎</span>':'')+'</td>'
     +'<td><span class="badge b-'+r.decision+'">'+r.decision+'</span>'+rev+pend+'</td>'
     +'<td><input class=en data-id="'+r.id+'" value="'+esc(r.ngib||'')+'" placeholder="—">'+(chips?'<div class=chips>'+chips+'</div>':'')+'</td>'
     +'<td class=meta>'+esc(r.municipi||'')+'</td><td class=num>'+(r.km==null?'':r.km)+'</td>'
@@ -175,7 +180,9 @@ function wireTable(){
     else if(e.target.classList.contains('tr')) trashRow(id);
     else if(e.target.classList.contains('un')) undoRow(id);
   });
+  tb.addEventListener('change',function(e){ if(e.target.classList.contains('etip')) setTipus(e.target.dataset.id,e.target.value); });
 }
+async function setTipus(id,v){ var r=rowOf(id); if(!r||v===r.tipus)return; r.tipus=v; r.tipusEdited=(v!==r.tipus0); await post({id:id,action:'tipus',tipus:(v===r.tipus0?'':v)}); refreshRow(id); toast('🏷 '+v); }
 function rowOf(id){ return ROWS.find(function(r){return r.id===id;}); }
 function trEl(id){ return $('#tb tr[data-id="'+CSS.escape(id)+'"]'); }
 async function saveReading(id,v){ var r=rowOf(id); v=(v||'').trim(); if(!r||!v||v===r.graf)return; r.graf=v; r.grafEdited=(v!==r.graf0); await post({id:id,action:'graf',graf:v}); flash(id); toast('💾 Lectura desada'); }
@@ -228,8 +235,9 @@ function crender(){
   if(!queue.length){app.innerHTML='<div class=done>✓ Res més a la cua amb aquest filtre.</div>';clearMap();return;}
   var d=queue[ci];
   var cands=d.candidates.map(function(c,n){var rec=(c.grafia===d.ngib)?' rec':'';return '<button class="cand'+rec+'" data-g="'+esc(c.grafia)+'"><kbd>'+(n+1)+'</kbd><b>'+esc(c.grafia)+'</b><div class=m>'+esc(c.municipi||'?')+' · '+c.km+'km · sim '+c.sim+'</div></button>';}).join('');
+  var etip=(STATE.tipus&&STATE.tipus[d.id])||d.tipus;
   app.innerHTML='<div><img class=crop src="'+api('/crop/'+d.id+'.jpg')+'"></div><div>'
-    +'<div class=meta><span class="badge b-'+d.decision+'">'+d.decision+'</span> · '+esc(d.tipus)+' · <code>'+d.id+'</code></div>'
+    +'<div class=meta><span class="badge b-'+d.decision+'">'+d.decision+'</span> · '+tipSel(d.id,etip)+' · <code>'+d.id+'</code></div>'
     +'<div class=act><label style="flex:0 0 auto;color:var(--soft);align-self:center">Lectura</label>'
     +'<input id=cgraf value="'+esc((STATE.graf&&STATE.graf[d.id])||d.graf)+'" style="flex:3;font-weight:600">'
     +'<button onclick="csave()">💾</button></div>'
@@ -240,8 +248,10 @@ function crender(){
     +'<button class=trash onclick="ctrash()"><kbd>D</kbd> 🗑</button><button class=skip onclick="cskip()"><kbd>S</kbd> Saltar</button>'
     +'<button class=undo onclick="cundo()">↶ <kbd>U</kbd></button></div></div>';
   app.querySelectorAll('.cand').forEach(function(b){b.onclick=function(){cpick(b.dataset.g,b);};});
+  var ct=$('#ctip'); if(ct)ct.onchange=function(){ctip(d.id,ct.value,d.tipus);};
   cmap(d);
 }
+async function ctip(id,v,base){ STATE.tipus=STATE.tipus||{}; if(v===base)delete STATE.tipus[id]; else STATE.tipus[id]=v; toast('🏷 '+v); await post({id:id,action:'tipus',tipus:(v===base?'':v)}); }
 function toast(msg,cls){var t=$('#toast');t.className='';if(cls)t.classList.add(cls);t.textContent=msg;void t.offsetWidth;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove('show');},1300);}
 function hit(sel){var b=document.querySelector('#app '+sel);if(b)b.classList.add('hit');}
 function cgrafv(){var el=$('#cgraf'),d=queue[ci];if(!el||!d)return null;var v=el.value.trim();return (v&&v!==d.graf)?v:null;}
@@ -270,7 +280,7 @@ function rngib(){if(!ngibLayer||!NGIB.length||map.getZoom()<12)return;ngibLayer.
 function clearMap(){if(mlayer)mlayer.clearLayers();if(searchLayer)searchLayer.clearLayers();}
 function cmap(d){if(!map)return;map.invalidateSize();mlayer.clearLayers();if(searchLayer)searchLayer.clearLayers();var pts=[];if(d.lat!=null){L.circleMarker([d.lat,d.lon],{radius:8,color:'#c00',weight:2,fillColor:'#c00',fillOpacity:.45}).addTo(mlayer);pts.push([d.lat,d.lon]);}(d.candidates||[]).forEach(function(c,n){if(c.lat!=null){var mk=L.circleMarker([c.lat,c.lon],{radius:7,color:'#1d6b4f',weight:2,fillColor:'#37a37e',fillOpacity:.9});mk.bindTooltip('<b>'+(n+1)+'. '+esc(c.grafia)+'</b>');mk.on('click',(function(g){return function(){cpick(g);};})(c.grafia));mk.addTo(mlayer);pts.push([c.lat,c.lon]);}});if(pts.length)map.fitBounds(pts,{padding:[35,35],maxZoom:15});}
 addEventListener('keydown',function(e){
-  if(MODE!=='card'||!queue.length)return; if(e.target.tagName==='INPUT'){if(e.key==='Enter'){if(e.target.id==='ccustom')ccustom();else if(e.target.id==='csearch')csearchMap();else if(e.target.id==='cgraf')csave();}return;}
+  if(MODE!=='card'||!queue.length)return; if(e.target.tagName==='SELECT')return; if(e.target.tagName==='INPUT'){if(e.key==='Enter'){if(e.target.id==='ccustom')ccustom();else if(e.target.id==='csearch')csearchMap();else if(e.target.id==='cgraf')csave();}return;}
   var d=queue[ci];
   if(e.key>='1'&&e.key<='6'){var c=d.candidates[+e.key-1];if(c)cpick(c.grafia);}
   else if(e.key==='0')cnone();else if(e.key==='c')cok();else if(e.key==='d')ctrash();
@@ -293,7 +303,7 @@ const server = http.createServer((req, res) => {
     const d = readJSON(F(q).reviewdata, { items: [] }); return send(res, 200, 'application/json', JSON.stringify(d));
   }
   if (req.method === 'GET' && u.pathname === '/state' && QUADRANTS.includes(q)) {
-    const f = F(q); return send(res, 200, 'application/json', JSON.stringify({ picks: readJSON(f.picks, {}), reviewed: readJSON(f.reviewed, {}), graf: readJSON(f.graf, {}) }));
+    const f = F(q); return send(res, 200, 'application/json', JSON.stringify({ picks: readJSON(f.picks, {}), reviewed: readJSON(f.reviewed, {}), graf: readJSON(f.graf, {}), tipus: readJSON(f.tipusfix, {}) }));
   }
   if (req.method === 'GET' && u.pathname.startsWith('/crop/') && QUADRANTS.includes(q)) {
     const p = `${F(q).crops}/${path.basename(u.pathname)}`;
@@ -303,12 +313,13 @@ const server = http.createServer((req, res) => {
   if (req.method === 'POST' && u.pathname === '/pick') {
     let body = ''; req.on('data', (c) => body += c);
     req.on('end', () => {
-      const { q: bq, id, action, grafia, graf } = JSON.parse(body || '{}');
+      const { q: bq, id, action, grafia, graf, tipus } = JSON.parse(body || '{}');
       if (!QUADRANTS.includes(bq)) return send(res, 400, 'application/json', '{"ok":false}');
       const f = F(bq);
       const reviewed = readJSON(f.reviewed, {}), picks = readJSON(f.picks, {});
       if (graf) { const gf = readJSON(f.graf, {}); gf[id] = graf; writeJSON(f.graf, gf); }
-      if (action === 'pick' && grafia) { picks[id] = grafia; reviewed[id] = 'pick'; writeJSON(f.picks, picks); writeJSON(f.reviewed, reviewed); }
+      if (action === 'tipus') { const tj = readJSON(f.tipusfix, {}); if (tipus) tj[id] = tipus; else delete tj[id]; writeJSON(f.tipusfix, tj); }
+      else if (action === 'pick' && grafia) { picks[id] = grafia; reviewed[id] = 'pick'; writeJSON(f.picks, picks); writeJSON(f.reviewed, reviewed); }
       else if (action === 'none') { reviewed[id] = 'none'; writeJSON(f.reviewed, reviewed); }
       else if (action === 'ok') { reviewed[id] = 'ok'; writeJSON(f.reviewed, reviewed); }
       else if (action === 'trash') { const dj = readJSON(f.discards, {}); dj[id] = true; writeJSON(f.discards, dj); reviewed[id] = 'trash'; writeJSON(f.reviewed, reviewed); }

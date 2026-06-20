@@ -36,6 +36,7 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
       la <strong>confiança</strong> del creuament (algorítmica) i la <strong>revisió</strong> a mà
       (<span class="rev">✓</span> revisat, <span class="rev">✎</span> corregit). La grafia és
       diplomàtica (tal com es grava: Sô = Son, Câ = Can).
+      <strong>Prem qualsevol fila</strong> per veure el topònim al gravat original, amb zoom.
     </p>
 
     <div class="controls">
@@ -70,7 +71,11 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
         </thead>
         <tbody id="rows">
           {rows.map((r) => (
-            <tr data-dec={r.decision} data-tip={r.tipus} data-q={r.q} data-rev={r.review ?? ''}
+            <tr class="row" tabindex="0" role="button" aria-label={`Veure ${r.graf} al gravat`}
+                data-dec={r.decision} data-tip={r.tipus} data-q={r.q} data-rev={r.review ?? ''}
+                data-x={r.x} data-y={r.y} data-lon={r.lon ?? ''} data-lat={r.lat ?? ''}
+                data-graf={r.graf} data-nom={r.nom ?? ''} data-ngib={r.ngib ?? ''} data-mun={r.municipi ?? ''}
+                data-km={r.km ?? ''} data-sim={r.sim ?? ''} data-dubte={r.dubte ? '1' : ''}
                 data-text={`${r.graf} ${r.nom} ${r.ngib ?? ''} ${r.municipi ?? ''}`.toLowerCase()}>
               <td class="graf">{r.graf}{r.dubte && <span class="dubte" title="lectura dubtosa">?</span>}</td>
               <td>{r.nom}</td>
@@ -90,7 +95,28 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
     </div>
   </section>
 
-  <script is:inline define:vars={{ total: rows.length }}>
+  <div id="fx" class="fx" hidden>
+    <div class="fx__back" data-close></div>
+    <div class="fx__panel" role="dialog" aria-modal="true" aria-labelledby="fxgraf">
+      <button class="fx__close" data-close aria-label="Tanca">×</button>
+      <div class="fx__view" id="fxview"></div>
+      <aside class="fx__side">
+        <p class="fx__kicker" id="fxfull"></p>
+        <h2 id="fxgraf"></h2>
+        <p class="fx__nom" id="fxnom"></p>
+        <p class="fx__badges" id="fxbadges"></p>
+        <dl class="fx__meta" id="fxmeta"></dl>
+        <div class="fx__map" id="fxmap"></div>
+        <label class="fx__toggle"><input type="checkbox" id="fxcross" checked /> Marca el topònim amb una creu</label>
+      </aside>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script>
+
+  <script is:inline define:vars={{ total: rows.length, DEC, TIP, QNOM, REV, sheetsBase: url('sheets/'), osdImg: 'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/' }}>
     (function () {
       const q = document.getElementById('q');
       const fdec = document.getElementById('fdec');
@@ -99,6 +125,88 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
       const frev = document.getElementById('frev');
       const count = document.getElementById('count');
       const trs = Array.from(document.getElementById('rows').children);
+
+      // ── Fitxa: visor del gravat + dades + mini-mapa ──
+      const fx = document.getElementById('fx');
+      const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+      let osd = null, lmap = null, lmark = null, markEl = null;
+
+      // Toggle de la creu (recorda la preferència)
+      const fxcross = document.getElementById('fxcross');
+      try { if (localStorage.getItem('fxcross') === '0') fxcross.checked = false; } catch (e) {}
+      function applyCross() { if (markEl) markEl.style.display = fxcross.checked ? '' : 'none'; }
+      fxcross.addEventListener('change', () => {
+        try { localStorage.setItem('fxcross', fxcross.checked ? '1' : '0'); } catch (e) {}
+        applyCross();
+      });
+
+      function fillSide(d) {
+        document.getElementById('fxfull').textContent = QNOM[d.q] ?? d.q;
+        document.getElementById('fxgraf').textContent = d.graf + (d.dubte ? ' ?' : '');
+        document.getElementById('fxnom').textContent = (d.nom && d.nom !== d.graf) ? d.nom : '';
+        const dec = DEC[d.dec] || { label: d.dec, color: '#888' };
+        let badges = `<span class="badge" style="--c:${dec.color}">${esc(dec.label)}</span>`;
+        if (d.rev) { const r = REV[d.rev] || { label: d.rev, icon: '✓' }; badges += ` <span class="revb">${r.icon} ${esc(r.label)}</span>`; }
+        document.getElementById('fxbadges').innerHTML = badges;
+        const meta = [];
+        meta.push(['Tipus', TIP[d.tip] ?? d.tip]);
+        if (d.ngib) meta.push(['NGIB', d.ngib]);
+        if (d.mun) meta.push(['Municipi', d.mun]);
+        if (d.km) meta.push(['Distància al NGIB', (+d.km).toFixed(1) + ' km']);
+        if (d.lat && d.lon) meta.push(['Coordenades', (+d.lat).toFixed(5) + ', ' + (+d.lon).toFixed(5)]);
+        document.getElementById('fxmeta').innerHTML = meta.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('');
+      }
+
+      function initViewer(qd, x, y) {
+        if (osd) { osd.destroy(); osd = null; }
+        osd = OpenSeadragon({
+          id: 'fxview', prefixUrl: osdImg, tileSources: sheetsBase + qd + '.dzi',
+          showNavigator: false, gestureSettingsMouse: { clickToZoom: false },
+          minZoomImageRatio: 0.2, visibilityRatio: 0.5, animationTime: 0.4, immediateRender: true,
+        });
+        osd.addHandler('open', () => {
+          const size = osd.world.getItemAt(0).getContentSize();
+          const pt = osd.viewport.imageToViewportCoordinates(new OpenSeadragon.Point(x, y));
+          osd.viewport.zoomTo(size.x / 850, pt, true);
+          osd.viewport.panTo(pt, true);
+          markEl = document.createElement('div'); markEl.className = 'fxmark';
+          osd.addOverlay({ element: markEl, location: pt, placement: 'CENTER' });
+          applyCross();
+        });
+      }
+
+      function initMap(lat, lon) {
+        const box = document.getElementById('fxmap');
+        if (!lat || !lon) { box.style.display = 'none'; return; }
+        box.style.display = '';
+        if (!lmap) {
+          lmap = L.map('fxmap', { zoomControl: false, attributionControl: false, scrollWheelZoom: false, dragging: false });
+          L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 }).addTo(lmap);
+          lmark = L.circleMarker([+lat, +lon], { radius: 6, color: '#fff', weight: 2, fillColor: '#c2702f', fillOpacity: 1 }).addTo(lmap);
+        } else { lmark.setLatLng([+lat, +lon]); }
+        lmap.setView([+lat, +lon], 14);
+        setTimeout(() => lmap.invalidateSize(), 60);
+      }
+
+      function openFx(tr) {
+        const d = tr.dataset;
+        fillSide(d);
+        fx.hidden = false;
+        document.body.style.overflow = 'hidden';
+        initViewer(d.q, +d.x, +d.y);
+        initMap(d.lat, d.lon);
+      }
+      function closeFx() {
+        fx.hidden = true; document.body.style.overflow = '';
+        if (osd) { osd.destroy(); osd = null; }
+      }
+      fx.addEventListener('click', (e) => { if (e.target.hasAttribute('data-close')) closeFx(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !fx.hidden) closeFx(); });
+      for (const tr of trs) {
+        tr.addEventListener('click', () => openFx(tr));
+        tr.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFx(tr); } });
+      }
+
       function apply() {
         const t = q.value.trim().toLowerCase();
         const d = fdec.value, tp = ftip.value, qq = fq.value, rv = frev ? frev.value : '';
@@ -143,5 +251,40 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
   .num { text-align: right; white-space: nowrap; }
   .badge { display: inline-block; font-size: .76rem; padding: .08rem .5rem; border-radius: 999px; color: #fff; background: var(--c); white-space: nowrap; }
   .rev { margin-left: .35rem; color: var(--accent); font-weight: 700; cursor: help; }
+  tbody tr.row { cursor: pointer; }
+  tbody tr.row:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
   @media (max-width: 720px) { .count { margin-left: 0; } }
+
+  /* ── Fitxa (modal) ── */
+  .fx[hidden] { display: none; }
+  .fx { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: clamp(.5rem, 3vw, 2rem); }
+  .fx__back { position: absolute; inset: 0; background: rgba(20,16,10,.62); backdrop-filter: blur(2px); }
+  .fx__panel { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(260px, 1fr); gap: 0;
+    width: min(1100px, 100%); height: min(78vh, 760px); background: var(--paper, #f3ead3); border: 1px solid var(--line);
+    border-radius: 8px; overflow: hidden; box-shadow: 0 16px 50px rgba(0,0,0,.4); }
+  .fx__view { background: #2a2622; min-height: 0; }
+  :global(.fxmark) { width: 30px; height: 30px; border-radius: 50%; box-sizing: border-box;
+    border: 2px solid #ffcf33; box-shadow: 0 0 0 2px rgba(0,0,0,.5), 0 0 14px rgba(255,207,51,.7); pointer-events: none; }
+  :global(.fxmark)::before, :global(.fxmark)::after { content: ''; position: absolute; background: #ffcf33; }
+  :global(.fxmark)::before { left: 50%; top: 5px; bottom: 5px; width: 2px; margin-left: -1px; }
+  :global(.fxmark)::after { top: 50%; left: 5px; right: 5px; height: 2px; margin-top: -1px; }
+  .fx__side { padding: 1.2rem 1.3rem; overflow-y: auto; border-left: 1px solid var(--line); }
+  .fx__kicker { margin: 0; font-family: var(--display); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+  .fx__side h2 { margin: .2rem 0 .1rem; font-size: 1.5rem; }
+  .fx__nom { margin: 0 0 .6rem; color: var(--ink-soft); font-style: italic; }
+  .fx__badges { margin: 0 0 .9rem; }
+  .fx__badges .badge { display: inline-block; font-size: .76rem; padding: .1rem .55rem; border-radius: 999px; color: #fff; background: var(--c); }
+  .fx__badges .revb { margin-left: .4rem; font-size: .8rem; color: var(--accent); font-weight: 600; }
+  .fx__meta { display: grid; grid-template-columns: auto 1fr; gap: .25rem .8rem; margin: 0 0 1rem; font-size: .92rem; }
+  .fx__meta dt { color: var(--ink-soft); }
+  .fx__meta dd { margin: 0; }
+  .fx__map { height: 170px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); background: #e9e2cf; }
+  .fx__toggle { display: flex; align-items: center; gap: .45rem; margin: .8rem 0 0; font-size: .9rem; color: var(--ink-soft); cursor: pointer; }
+  .fx__toggle input { cursor: pointer; }
+  .fx__close { position: absolute; top: .4rem; right: .5rem; z-index: 2; width: 2rem; height: 2rem; border: 0; border-radius: 50%;
+    background: rgba(0,0,0,.5); color: #fff; font-size: 1.3rem; line-height: 1; cursor: pointer; }
+  @media (max-width: 760px) {
+    .fx__panel { grid-template-columns: 1fr; grid-template-rows: 48vh auto; height: min(88vh, 900px); }
+    .fx__side { border-left: 0; border-top: 1px solid var(--line); }
+  }
 </style>

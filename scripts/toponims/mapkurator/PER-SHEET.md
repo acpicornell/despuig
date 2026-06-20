@@ -208,16 +208,20 @@ which are dropped from `matches.json` and the recheck queue.
 
 The web curation tool is **quadrant-aware** — no env vars; pick the sheet (NW/NE/SE/SW)
 in the header and it reads/writes `data/toponims/<q>/{recheck-picks,review-reviewed,
-graf-fixes,discards}.json`:
+graf-fixes,discards,tipus-fixes}.json`:
 ```bash
 nix-shell -p nodejs --run 'node scripts/toponims/review-server.mjs'   # → :4400
 ```
 Two views: **Taula** (an editable copy of the public toponyms table — fast inline edits
-of reading/NGIB match, ✓ correcte, 🗑 brossa, candidate chips; works for any quadrant
-straight from `matches.json` + `recheck.json`, no crops needed) and **Fitxes** (one item
-at a time with the engraving crop + candidates + map — needs `render_review_crops.py` run
-for that sheet first; degrades to a notice if absent). After editing, re-bake the sheet:
-`apply_graf_fixes.py` (if readings changed) then `ngib_match.py` with the per-sheet env.
+of reading/NGIB match + a **tipus dropdown** per row, ✓ correcte, 🗑 brossa, candidate
+chips; works for any quadrant straight from `matches.json` + `recheck.json`, no crops
+needed) and **Fitxes** (one item at a time with the engraving crop + candidates + map +
+the same tipus dropdown — needs `render_review_crops.py` run for that sheet first; degrades
+to a notice if absent). The tipus dropdown writes `tipus-fixes.json` (id→tipus); a value
+equal to the original removes the override. After editing, re-bake the sheet:
+`apply_graf_fixes.py` (applies graf-fixes AND tipus-fixes — `TIPUS_JSON` defaults to the
+sibling of `GRAF_JSON`, so the per-sheet command picks it up automatically) then
+`ngib_match.py` with the per-sheet env. The hand-set tipus wins over the derived one.
 
 ## NW results — clean deskew rebuild, 2026-06-19
 

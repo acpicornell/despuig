@@ -48,7 +48,7 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 2px 8px var(--shadow);
 }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: .55rem; padding-bottom: .55rem; flex-wrap: wrap; }
-.brand { font-family: var(--display); font-size: 1.15rem; color: var(--ink); text-decoration: none; letter-spacing: .03em; }
+.brand { font-family: var(--display); font-size: .92rem; color: var(--ink-soft); text-decoration: none; letter-spacing: .03em; }
 .brand small { display:block; font-family: var(--serif); font-size: .72rem; color: var(--ink-soft); letter-spacing: .08em; text-transform: uppercase; }
 .nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
 .nav a { color: var(--ink-soft); text-decoration: none; font-size: 1rem; }

@@ -12,6 +12,7 @@
     "vinetes": "node scripts/copy-vinetes.mjs",
     "hero": "node scripts/build-hero.mjs",
     "map": "node scripts/build-map.mjs",
+    "sheets": "node scripts/build-sheets.mjs",
     "prebuild": "npm run data && npm run vinetes && npm run hero",
     "deploy": "npm run build && wrangler pages deploy dist --project-name=mapa-despuig"
   },

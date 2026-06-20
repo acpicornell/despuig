@@ -13,6 +13,7 @@ npm-debug.log*
 web/public/vinetes/
 web/public/hero/
 web/public/map/
+web/public/sheets/
 
 # raw master + source images — large; Biblioteca Virtual de Defensa (CC BY 4.0), not versioned
 data/jpg/

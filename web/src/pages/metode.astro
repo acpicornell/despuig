@@ -1,0 +1,207 @@
+---
+import Base from '../layouts/Base.astro';
+import data from '../data/toponims.json';
+
+const QNOM = { nw: 'Nord-oest', ne: 'Nord-est', se: 'Sud-est', sw: 'Sud-oest' };
+const DEC = {
+  confirmat: { label: 'Confirmat', color: '#2e7d32' },
+  probable: { label: 'Probable', color: '#3f7a8a' },
+  suggerit: { label: 'Suggerit', color: '#c2702f' },
+  posicional: { label: 'Posicional', color: '#8a8170' },
+  sense: { label: 'Sense', color: '#9a4a3a' },
+};
+
+const total = data.toponims.length;
+const perQ = {};
+const perDec = {};
+for (const t of data.toponims) {
+  perQ[t.q] = (perQ[t.q] || 0) + 1;
+  perDec[t.decision] = (perDec[t.decision] || 0) + 1;
+}
+const pct = (n) => Math.round((n / total) * 100);
+const decOrder = ['confirmat', 'probable', 'suggerit', 'posicional', 'sense'];
+---
+<Base title="El mètode" description="Com s'han extret, llegit, georeferenciat i identificat els milers de topònims del mapa de Despuig (1785): el procediment complet, full per full.">
+  <article class="wrap metode">
+    <h1>El mètode</h1>
+    <p class="lede">
+      El mapa de Despuig amaga <strong>{total.toLocaleString('ca-ES')} topònims</strong> gravats en lletra
+      diminuta, sovint inclinada i amb una ortografia mallorquina de fa dos segles i mig. Aquesta pàgina
+      explica, pas a pas, com s'han <em>localitzat</em>, <em>llegit</em>, <em>situat sobre el territori</em>
+      i <em>identificat</em> amb el seu nom actual. És un procediment reproduïble, pensat perquè qualsevol
+      pugui entendre'l —i, si vol, repetir-lo.
+    </p>
+
+    <h2>Per què full per full</h2>
+    <p>
+      El <em>Mapa de la Isla de Mallorca</em> es va imprimir en <strong>quatre planxes</strong> que, un cop
+      ajuntades, deixen una creu central buida (el <em>marge</em> entre fulls). Aquesta discontinuïtat
+      deforma qualsevol intent de georeferenciar el mapa sencer d'una sola tirada. Per això tot el procés
+      es fa <strong>quadrant per quadrant</strong> (nord-oest, nord-est, sud-est, sud-oest): cada full
+      s'ancora amb el seu propi conjunt dens de punts de control i es treballa en el seu propi sistema de
+      coordenades de píxel. El resultat és molt més precís que un ajust global.
+    </p>
+
+    <ol class="steps">
+      <li>
+        <h3><span class="n">1</span> Punts de control (GCPs)</h3>
+        <p>
+          Sobre cada full es marquen a mà, en blau, els pobles identificables: gairebé un centenar de punts
+          en total (uns 48 de pobles interiors, immutables, i 16 de costa, de confiança menor perquè els
+          ports s'han desplaçat amb el temps). De cada punt es llegeix el nom gravat al costat i se li
+          assignen les <strong>coordenades reals modernes</strong> preses del gazetteer oficial <strong>NGIB</strong>
+          (Nomenclàtor Geogràfic de les Illes Balears) —mai d'altres fonts, que arrossegaven errors de fins
+          a 1,8 km. Aquests punts són la base de tot: es validen amb un ajust de prova on cap punt pot quedar
+          com a valor atípic.
+        </p>
+      </li>
+      <li>
+        <h3><span class="n">2</span> Detecció de paraules (l'<em>spotter</em>)</h3>
+        <p>
+          Un model de visió especialitzat en mapes històrics (<strong>mapKurator</strong>, executat amb
+          targeta gràfica) recorre el gravat net —amb el mar emmascarat i els punts blaus amagats perquè no
+          contaminin el text— i en detecta <strong>cada caixa de paraula</strong>. És molt bo trobant on hi
+          ha lletres, però fluix llegint-les i agrupant-les en noms; per això només n'aprofitem les caixes.
+          En un full típic en detecta prop d'un miler.
+        </p>
+      </li>
+      <li>
+        <h3><span class="n">3</span> Lectura i agrupació (visió per finestres)</h3>
+        <p>
+          Aquí entra la lectura pròpiament dita. El full es divideix en <strong>finestres</strong> i cada
+          finestra la llegeix un agent de visió de <strong>Claude</strong>, que agrupa les caixes en noms i
+          els transcriu de manera <strong>diplomàtica</strong> (respectant la grafia original: <em>Sô</em>,
+          <em>Câ</em>, accents i tot). Els noms de la costa són un cas especial: van escrits <em>inclinats</em>,
+          seguint la línia del litoral, de manera que una finestra rectangular els trossejaria. Per això es
+          tracten en una via a part —s'agrupen en cintes orientades, es <em>redrecen</em> a l'horitzontal i
+          es llegeixen— cosa que permet recuperar pràcticament tota la toponímia costanera.
+        </p>
+      </li>
+      <li>
+        <h3><span class="n">4</span> Muntatge del full</h3>
+        <p>
+          Les dues vies (interior i costa) es combinen en una sola taula del full. Cada topònim conserva la
+          seva posició en píxels del gravat, la grafia llegida i el tipus (possessió, nucli, costa, hidrònim,
+          orònim…).
+        </p>
+      </li>
+      <li>
+        <h3><span class="n">5</span> Georeferenciació</h3>
+        <p>
+          Amb els punts de control (píxel ↔ coordenada real) s'ajusta una transformació polinòmica que
+          converteix qualsevol píxel del gravat en longitud i latitud. Es proven diverses famílies (afí,
+          polinomi de 2n grau, <em>thin-plate spline</em>) i es tria la millor amb validació
+          <em>leave-one-out</em> sobre els propis punts de control.
+        </p>
+      </li>
+      <li>
+        <h3><span class="n">6</span> Refinament dens</h3>
+        <p>
+          El centenar de punts marcats a mà és precís però escàs. Un cop fet un primer aparellament, <em>cada</em>
+          topònim ben identificat es converteix també en un punt de control: la seva posició en el gravat
+          lligada a la coordenada real del lloc amb què casa. Amb centenars de punts repartits per tot el full
+          s'ajusta un model molt més fi. Per evitar raonaments circulars només s'hi usen noms únics i
+          inequívocs, amb rebuig robust de valors atípics, i es valida predient els punts marcats a mà (que es
+          deixen <em>fora</em> de l'ajust). L'error mitjà baixa notablement: per exemple, al sud-est de ~1.227 m
+          a ~700 m.
+        </p>
+      </li>
+      <li>
+        <h3><span class="n">7</span> Identificació amb el nom actual (NGIB)</h3>
+        <p>
+          Finalment, cada topònim es compara amb el gazetteer NGIB per trobar-hi el seu equivalent modern. La
+          comparació de noms combina similitud difusa, un <strong>plec ortogràfic</strong> que apropa la grafia
+          mallorquina del set-cents a l'actual i una passada fonètica; la distància geogràfica només serveix per
+          desfer empats entre homònims, mai per descartar un nom únic.
+        </p>
+      </li>
+    </ol>
+
+    <h2>Dos eixos de qualitat</h2>
+    <p>
+      Cada topònim porta dues etiquetes <strong>independents</strong>, perquè «com de segur n'estem» i «qui ho
+      diu» són coses diferents:
+    </p>
+    <ul class="axes">
+      <li>
+        <strong>Confiança</strong> (automàtica): de més a menys segura —
+        {decOrder.filter((d) => perDec[d]).map((d, i) => (
+          <span class="chip"><i style={`background:${DEC[d].color}`}></i>{DEC[d].label}</span>
+        ))}.
+        Indica com de fiable és la identificació: des de <em>Confirmat</em> (nom gairebé cert) fins a
+        <em>Sense</em> (no s'ha trobat equivalent).
+      </li>
+      <li>
+        <strong>Revisió</strong> (humana): a banda de la confiança automàtica, una part dels topònims s'han
+        validat o corregit a mà. Aquesta capa es manté encara que es torni a calcular la confiança.
+      </li>
+    </ul>
+
+    <h2>On som ara</h2>
+    <table class="tbl">
+      <thead><tr><th>Full</th><th class="r">Topònims</th></tr></thead>
+      <tbody>
+        {data.quadrants.map((q) => (
+          <tr><td>{QNOM[q] ?? q}</td><td class="r">{(perQ[q] || 0).toLocaleString('ca-ES')}</td></tr>
+        ))}
+        <tr class="tot"><td>Total</td><td class="r">{total.toLocaleString('ca-ES')}</td></tr>
+      </tbody>
+    </table>
+    <div class="bars">
+      {decOrder.filter((d) => perDec[d]).map((d) => (
+        <div class="bar">
+          <span class="lab"><i style={`background:${DEC[d].color}`}></i>{DEC[d].label}</span>
+          <span class="track"><span class="fill" style={`width:${pct(perDec[d])}%;background:${DEC[d].color}`}></span></span>
+          <span class="val">{perDec[d].toLocaleString('ca-ES')} · {pct(perDec[d])}%</span>
+        </div>
+      ))}
+    </div>
+
+    <h2>Les eines</h2>
+    <p class="tools">
+      <strong>mapKurator</strong> (detecció de text en mapes històrics) ·
+      <strong>Claude</strong> (lectura i agrupació per visió) ·
+      <strong>NGIB</strong> (coordenades i noms actuals) ·
+      Python científic (georeferenciació i aparellament) ·
+      Astro (aquest lloc web).
+    </p>
+  </article>
+</Base>
+
+<style>
+  .metode { max-width: 760px; }
+  .metode { padding-top: 1.2rem; }
+  .lede { font-size: 1.15rem; color: var(--ink-soft); margin: .4rem 0 2rem; }
+  .metode h2 { margin: 2.4rem 0 .6rem; }
+  .metode p { line-height: 1.65; }
+
+  .steps { list-style: none; counter-reset: none; padding: 0; margin: 1.4rem 0; display: grid; gap: 1.4rem; }
+  .steps > li { border-left: 2px solid var(--line); padding-left: 1.2rem; }
+  .steps h3 { display: flex; align-items: center; gap: .6rem; margin: 0 0 .4rem; font-size: 1.2rem; }
+  .steps .n { display: inline-grid; place-items: center; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--accent); color: #fff; font-size: .95rem; flex: none; }
+  .steps p { margin: 0; }
+
+  .axes { line-height: 1.7; padding-left: 1.1rem; }
+  .axes li { margin-bottom: .6rem; }
+  .chip { display: inline-flex; align-items: center; gap: .3rem; white-space: nowrap; margin: 0 .15rem; }
+  .chip i, .lab i { width: .75rem; height: .75rem; border-radius: 50%; display: inline-block; border: 1px solid rgba(40,30,20,.35); }
+
+  .tbl { border-collapse: collapse; margin: .8rem 0 1.6rem; min-width: 280px; }
+  .tbl th, .tbl td { padding: .4rem .9rem; border-bottom: 1px solid var(--line); text-align: left; }
+  .tbl .r { text-align: right; font-variant-numeric: tabular-nums; }
+  .tbl .tot td { font-weight: 600; border-top: 2px solid var(--line); border-bottom: 0; }
+
+  .bars { display: grid; gap: .5rem; margin: .8rem 0 1rem; }
+  .bar { display: grid; grid-template-columns: 9rem 1fr auto; align-items: center; gap: .8rem; font-size: .9rem; }
+  .lab { display: inline-flex; align-items: center; gap: .4rem; }
+  .track { height: .7rem; background: rgba(40,30,20,.08); border-radius: 999px; overflow: hidden; }
+  .fill { display: block; height: 100%; border-radius: 999px; }
+  .val { color: var(--ink-soft); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  .tools { color: var(--ink-soft); }
+
+  @media (max-width: 560px) {
+    .bar { grid-template-columns: 1fr; gap: .2rem; }
+    .track { order: 3; }
+  }
+</style>
