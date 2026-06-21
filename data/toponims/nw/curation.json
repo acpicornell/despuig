@@ -755,5 +755,20 @@
  "C03_21": {
   "tipus": "Isla",
   "verdict": "none"
+ },
+ "B01_22": {
+  "graf": "Puig dê Torrella",
+  "verdict": "none"
+ },
+ "B01_39": {
+  "ngib": "Can Bajoca",
+  "verdict": "pick"
+ },
+ "B01_40": {
+  "ngib": "Masanella",
+  "verdict": "pick"
+ },
+ "B02_1": {
+  "tipus": "Casa de campo ó Predio"
  }
 }

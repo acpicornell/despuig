@@ -1,53 +1,5 @@
 [
  {
-  "id": "B01_22",
-  "graf": "Puig dé Torrella",
-  "nom": "Puig dé Torrella",
-  "tipus": "altre",
-  "subtile": "",
-  "x": 8507,
-  "y": 3565,
-  "decision": "suggerit",
-  "candidates": [
-   {
-    "grafia": "Torella",
-    "municipi": "Escorca",
-    "km": 1.62,
-    "sim": 0.72
-   },
-   {
-    "grafia": "Puig Major de Son Torrella",
-    "municipi": "Escorca",
-    "km": 1.86,
-    "sim": 0.72
-   },
-   {
-    "grafia": "Son Torrella",
-    "municipi": "Escorca",
-    "km": 2.34,
-    "sim": 0.72
-   },
-   {
-    "grafia": "Puig de sa Teula",
-    "municipi": "Campanet",
-    "km": 11.48,
-    "sim": 0.85
-   },
-   {
-    "grafia": "sa Porrella",
-    "municipi": "Sóller",
-    "km": 8.39,
-    "sim": 0.76
-   },
-   {
-    "grafia": "Puig de sa Rateta",
-    "municipi": "Bunyola",
-    "km": 4.49,
-    "sim": 0.67
-   }
-  ]
- },
- {
   "id": "B02_2",
   "graf": "Câ Sebastia",
   "nom": "Can Sebastia",
