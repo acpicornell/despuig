@@ -640,5 +640,1076 @@
  },
  "C03_1": {
   "verdict": "ok"
+ },
+ "B01_1": {
+  "verdict": "ok"
+ },
+ "B01_2": {
+  "verdict": "ok"
+ },
+ "B01_3": {
+  "verdict": "ok"
+ },
+ "B01_4": {
+  "verdict": "ok"
+ },
+ "B01_5": {
+  "verdict": "ok"
+ },
+ "B01_6": {
+  "verdict": "ok"
+ },
+ "B01_7": {
+  "verdict": "ok"
+ },
+ "B01_8": {
+  "verdict": "ok"
+ },
+ "B01_9": {
+  "verdict": "ok"
+ },
+ "B01_10": {
+  "verdict": "ok"
+ },
+ "B01_11": {
+  "verdict": "none"
+ },
+ "B01_12": {
+  "graf": "Cabo del ribell",
+  "verdict": "none"
+ },
+ "B01_13": {
+  "verdict": "ok"
+ },
+ "B01_14": {
+  "verdict": "ok"
+ },
+ "B01_15": {
+  "ngib": "Son Corb",
+  "verdict": "pick"
+ },
+ "B01_16": {
+  "tipus": "Lugar grande",
+  "verdict": "ok"
+ },
+ "B01_19": {
+  "verdict": "ok"
+ },
+ "B01_21": {
+  "graf": "Puig d.l. font",
+  "tipus": "Casa de campo ó Predio",
+  "verdict": "ok"
+ },
+ "B01_23": {
+  "verdict": "ok"
+ },
+ "B01_24": {
+  "verdict": "ok"
+ },
+ "B01_25": {
+  "graf": "Ca Duáy",
+  "ngib": "Can Duai",
+  "verdict": "pick"
+ },
+ "B01_26": {
+  "ngib": "sa Torre Nova",
+  "verdict": "pick"
+ },
+ "B01_29": {
+  "ngib": "Cala Nau",
+  "verdict": "pick"
+ },
+ "B01_31": {
+  "graf": "Punta dê Amér",
+  "ngib": "Punta Amer",
+  "verdict": "pick"
+ },
+ "B02_5": {
+  "ngib": "Son Gibert",
+  "verdict": "pick"
+ },
+ "B02_6": {
+  "ngib": "Son Guineu",
+  "verdict": "pick"
+ },
+ "B02_7": {
+  "ngib": "Son Cuixa",
+  "verdict": "pick"
+ },
+ "B02_8": {
+  "ngib": "es Morro",
+  "verdict": "pick"
+ },
+ "B02_9": {
+  "ngib": "sa Font",
+  "verdict": "pick"
+ },
+ "B02_10": {
+  "ngib": "Son Frare",
+  "verdict": "pick"
+ },
+ "B02_11": {
+  "ngib": "Son Roca",
+  "verdict": "pick"
+ },
+ "B02_12": {
+  "ngib": "Son Queló",
+  "verdict": "pick"
+ },
+ "B02_13": {
+  "ngib": "Son Mieres",
+  "verdict": "pick"
+ },
+ "B02_14": {
+  "ngib": "sa Romeguera",
+  "verdict": "pick"
+ },
+ "B02_15": {
+  "ngib": "Son Frare",
+  "verdict": "pick"
+ },
+ "B02_16": {
+  "ngib": "Son Canals",
+  "verdict": "pick"
+ },
+ "B02_17": {
+  "ngib": "Son Roca",
+  "verdict": "pick"
+ },
+ "B02_18": {
+  "ngib": "sa Canova",
+  "verdict": "pick"
+ },
+ "B02_19": {
+  "tipus": "Villa Parroquial",
+  "ngib": "Petra",
+  "verdict": "pick"
+ },
+ "B02_22": {
+  "ngib": "Rotana",
+  "verdict": "pick"
+ },
+ "B02_24": {
+  "ngib": "Son Dalmau",
+  "verdict": "pick"
+ },
+ "B02_25": {
+  "ngib": "sa Coma",
+  "verdict": "pick"
+ },
+ "B02_26": {
+  "ngib": "es Bessons",
+  "verdict": "pick"
+ },
+ "B02_28": {
+  "ngib": "Son Torrat",
+  "verdict": "pick"
+ },
+ "B02_29": {
+  "graf": "Termenó",
+  "ngib": "Termenor",
+  "verdict": "pick"
+ },
+ "B02_30": {
+  "graf": "Bâdris",
+  "ngib": "Bendrís",
+  "verdict": "pick"
+ },
+ "B02_32": {
+  "ngib": "Son Ferrer",
+  "verdict": "pick"
+ },
+ "B02_33": {
+  "ngib": "es Pou Nou",
+  "verdict": "pick"
+ },
+ "B02_34": {
+  "ngib": "Son Llunes",
+  "verdict": "pick"
+ },
+ "B02_35": {
+  "ngib": "So n'Orlandis",
+  "verdict": "pick"
+ },
+ "B02_36": {
+  "ngib": "sa Torre",
+  "verdict": "pick"
+ },
+ "B02_37": {
+  "ngib": "sa Teulera",
+  "verdict": "pick"
+ },
+ "B02_38": {
+  "ngib": "Son Pere Andreu",
+  "verdict": "pick"
+ },
+ "B03_2": {
+  "ngib": "ses Planes",
+  "verdict": "pick"
+ },
+ "B03_3": {
+  "ngib": "ses Voltes",
+  "verdict": "pick"
+ },
+ "B03_7": {
+  "ngib": "Llucamar",
+  "verdict": "pick"
+ },
+ "B03_8": {
+  "ngib": "Son Barbot Vell",
+  "verdict": "pick"
+ },
+ "B03_11": {
+  "ngib": "sa Blanquera",
+  "verdict": "pick"
+ },
+ "B03_12": {
+  "ngib": "sa Cova",
+  "verdict": "pick"
+ },
+ "B03_14": {
+  "ngib": "Son Vives",
+  "verdict": "pick"
+ },
+ "B03_16": {
+  "ngib": "Son Pontet",
+  "verdict": "pick"
+ },
+ "B03_17": {
+  "graf": "Sô Granót",
+  "ngib": "Son Granot",
+  "verdict": "pick"
+ },
+ "B03_18": {
+  "ngib": "Son Cabrer",
+  "verdict": "pick"
+ },
+ "B03_19": {
+  "ngib": "Rafal Sec",
+  "verdict": "pick"
+ },
+ "B03_20": {
+  "ngib": "Son Negre",
+  "verdict": "pick"
+ },
+ "B03_21": {
+  "verdict": "none"
+ },
+ "B03_22": {
+  "ngib": "Son Berga Vell",
+  "verdict": "pick"
+ },
+ "B03_23": {
+  "ngib": "es Molinet",
+  "verdict": "pick"
+ },
+ "B03_24": {
+  "ngib": "Son Crespí",
+  "verdict": "pick"
+ },
+ "B03_25": {
+  "ngib": "es Bosquerró",
+  "verdict": "pick"
+ },
+ "B03_28": {
+  "graf": "Sô Töell",
+  "ngib": "Son Tovell",
+  "verdict": "pick"
+ },
+ "B03_30": {
+  "ngib": "sa Marineta",
+  "verdict": "pick"
+ },
+ "B03_31": {
+  "ngib": "ses Talaioletes",
+  "verdict": "pick"
+ },
+ "B04_2": {
+  "ngib": "Son Joan Arnau",
+  "verdict": "pick"
+ },
+ "B04_3": {
+  "ngib": "es Colomer",
+  "verdict": "pick"
+ },
+ "B04_4": {
+  "ngib": "Son Fangos",
+  "verdict": "pick"
+ },
+ "B04_5": {
+  "ngib": "Gelabert",
+  "verdict": "pick"
+ },
+ "B04_6": {
+  "ngib": "Son Mas",
+  "verdict": "pick"
+ },
+ "B04_9": {
+  "ngib": "Son Bauló",
+  "verdict": "pick"
+ },
+ "B04_10": {
+  "ngib": "Llorac",
+  "verdict": "pick"
+ },
+ "B04_11": {
+  "ngib": "Son Corró",
+  "verdict": "pick"
+ },
+ "B04_12": {
+  "ngib": "sa Casa Nova",
+  "verdict": "pick"
+ },
+ "B04_13": {
+  "ngib": "Son Brondo",
+  "verdict": "pick"
+ },
+ "B04_14": {
+  "ngib": "Son Gual",
+  "verdict": "pick"
+ },
+ "B04_15": {
+  "ngib": "Son Servera",
+  "verdict": "pick"
+ },
+ "B04_16": {
+  "ngib": "Son Berenguer",
+  "verdict": "pick"
+ },
+ "B04_17": {
+  "ngib": "Son Munar",
+  "verdict": "pick"
+ },
+ "B04_20": {
+  "ngib": "Son Company",
+  "verdict": "pick"
+ },
+ "B04_21": {
+  "graf": "Sô Boivas",
+  "ngib": "Son Boivàs",
+  "verdict": "pick"
+ },
+ "B04_22": {
+  "ngib": "Son Cuca",
+  "verdict": "pick"
+ },
+ "B04_24": {
+  "ngib": "Carrutxa",
+  "verdict": "pick"
+ },
+ "B04_25": {
+  "tipus": "Lugar chico",
+  "ngib": "Pina",
+  "verdict": "pick"
+ },
+ "B04_26": {
+  "ngib": "Puig Moltó",
+  "verdict": "pick"
+ },
+ "B04_27": {
+  "ngib": "Son Toni Coll",
+  "verdict": "pick"
+ },
+ "B04_28": {
+  "ngib": "Can Gadet",
+  "verdict": "pick"
+ },
+ "B04_29": {
+  "ngib": "Sabor",
+  "verdict": "pick"
+ },
+ "B05_1": {
+  "ngib": "Son Sureda",
+  "verdict": "pick"
+ },
+ "B05_3": {
+  "ngib": "Son Sureda",
+  "verdict": "pick"
+ },
+ "B05_4": {
+  "ngib": "ses Cases Noves",
+  "verdict": "pick"
+ },
+ "B05_6": {
+  "ngib": "Calicant",
+  "verdict": "pick"
+ },
+ "B05_9": {
+  "ngib": "Son Boga",
+  "verdict": "pick"
+ },
+ "B05_10": {
+  "ngib": "Rafal de Bellver",
+  "verdict": "pick"
+ },
+ "B05_13": {
+  "ngib": "Son Ribot",
+  "verdict": "pick"
+ },
+ "B05_14": {
+  "ngib": "Son Ramon",
+  "verdict": "pick"
+ },
+ "B05_15": {
+  "ngib": "Son Celiano",
+  "verdict": "pick"
+ },
+ "B05_17": {
+  "ngib": "sa Murtera",
+  "verdict": "pick"
+ },
+ "B05_19": {
+  "ngib": "Son Rector Vell",
+  "verdict": "pick"
+ },
+ "B05_22": {
+  "ngib": "Sos Promets",
+  "verdict": "pick"
+ },
+ "B05_23": {
+  "ngib": "ses Barraques",
+  "verdict": "pick"
+ },
+ "B05_24": {
+  "ngib": "Son Barba",
+  "verdict": "pick"
+ },
+ "B05_25": {
+  "verdict": "none"
+ },
+ "B05_28": {
+  "ngib": "Son Cabrer",
+  "verdict": "pick"
+ },
+ "B05_30": {
+  "ngib": "sa Canova",
+  "verdict": "pick"
+ },
+ "B05_31": {
+  "ngib": "sa Tafal",
+  "verdict": "pick"
+ },
+ "B05_32": {
+  "ngib": "s'Hospital",
+  "verdict": "pick"
+ },
+ "B05_34": {
+  "ngib": "Son Binimelis",
+  "verdict": "pick"
+ },
+ "B05_35": {
+  "ngib": "Son Talent",
+  "verdict": "pick"
+ },
+ "B05_36": {
+  "ngib": "Son Trobat",
+  "verdict": "pick"
+ },
+ "B05_37": {
+  "ngib": "Son Peretó",
+  "verdict": "pick"
+ },
+ "B05_38": {
+  "verdict": "none"
+ },
+ "B05_39": {
+  "verdict": "ok"
+ },
+ "B05_40": {
+  "verdict": "none"
+ },
+ "B06_1": {
+  "verdict": "ok"
+ },
+ "B06_2": {
+  "verdict": "ok"
+ },
+ "B06_3": {
+  "ngib": "Ermita de Sant Onofre",
+  "verdict": "pick"
+ },
+ "B06_4": {
+  "ngib": "Son Tellet",
+  "verdict": "pick"
+ },
+ "B06_6": {
+  "ngib": "Son Virgo",
+  "verdict": "pick"
+ },
+ "B06_7": {
+  "ngib": "So n'Emperador",
+  "verdict": "pick"
+ },
+ "B06_8": {
+  "ngib": "Son Baró",
+  "verdict": "pick"
+ },
+ "B06_9": {
+  "ngib": "Son Cardaix",
+  "verdict": "pick"
+ },
+ "B06_11": {
+  "ngib": "sa Bastida",
+  "verdict": "pick"
+ },
+ "B06_14": {
+  "ngib": "Son Burgues",
+  "verdict": "pick"
+ },
+ "B06_15": {
+  "tipus": "Villa Parroquial",
+  "ngib": "Sant Joan",
+  "verdict": "pick"
+ },
+ "B06_16": {
+  "ngib": "Son Rabassa",
+  "verdict": "pick"
+ },
+ "B06_17": {
+  "ngib": "Son Gorgut",
+  "verdict": "pick"
+ },
+ "B06_18": {
+  "ngib": "Consolació",
+  "verdict": "pick"
+ },
+ "B06_19": {
+  "ngib": "Bonany",
+  "verdict": "pick"
+ },
+ "B07_1": {
+  "verdict": "ok"
+ },
+ "B07_2": {
+  "verdict": "ok"
+ },
+ "B07_3": {
+  "verdict": "ok"
+ },
+ "B07_6": {
+  "verdict": "ok"
+ },
+ "B07_8": {
+  "verdict": "ok"
+ },
+ "B07_11": {
+  "verdict": "ok"
+ },
+ "B07_12": {
+  "verdict": "ok"
+ },
+ "B07_13": {
+  "verdict": "ok"
+ },
+ "B07_14": {
+  "verdict": "ok"
+ },
+ "B07_15": {
+  "verdict": "ok"
+ },
+ "B07_16": {
+  "verdict": "ok"
+ },
+ "B07_17": {
+  "verdict": "none"
+ },
+ "B07_18": {
+  "ngib": "Son Moià",
+  "verdict": "pick"
+ },
+ "B07_19": {
+  "ngib": "Son Costa Nou",
+  "verdict": "pick"
+ },
+ "B07_20": {
+  "verdict": "ok"
+ },
+ "B07_21": {
+  "verdict": "ok"
+ },
+ "B07_22": {
+  "verdict": "ok"
+ },
+ "B07_23": {
+  "ngib": "Son Perot",
+  "verdict": "pick"
+ },
+ "B07_24": {
+  "ngib": "sa Torre",
+  "verdict": "pick"
+ },
+ "B07_25": {
+  "ngib": "Son Comelles",
+  "verdict": "pick"
+ },
+ "B07_26": {
+  "ngib": "Males Herbes",
+  "verdict": "pick"
+ },
+ "B07_28": {
+  "ngib": "Montuïri",
+  "verdict": "pick"
+ },
+ "B07_29": {
+  "ngib": "s'Hostalet",
+  "verdict": "pick"
+ },
+ "B07_30": {
+  "tipus": "Oratorio publico",
+  "ngib": "Puig de Sant Miquel",
+  "verdict": "pick"
+ },
+ "B07_31": {
+  "ngib": "Son Bages",
+  "verdict": "pick"
+ },
+ "B07_33": {
+  "ngib": "Son Collell",
+  "verdict": "pick"
+ },
+ "B07_35": {
+  "ngib": "Son Trobat",
+  "verdict": "pick"
+ },
+ "B07_36": {
+  "tipus": "Casa de campo ó Predio",
+  "ngib": "Mianes",
+  "verdict": "pick"
+ },
+ "B07_37": {
+  "ngib": "Son Miró",
+  "verdict": "pick"
+ },
+ "B08_1": {
+  "ngib": "es Pujol",
+  "verdict": "pick"
+ },
+ "B08_2": {
+  "graf": "Caldéres",
+  "ngib": "es Calderers",
+  "verdict": "pick"
+ },
+ "B08_3": {
+  "ngib": "Son Gil",
+  "verdict": "pick"
+ },
+ "B08_4": {
+  "graf": "Sô Pericas",
+  "ngib": "Son Pericàs",
+  "verdict": "pick"
+ },
+ "B08_5": {
+  "ngib": "Son Duran",
+  "verdict": "pick"
+ },
+ "B08_6": {
+  "ngib": "es Cremat",
+  "verdict": "pick"
+ },
+ "B08_7": {
+  "graf": "Hostalét",
+  "ngib": "s'Hostalet",
+  "verdict": "pick"
+ },
+ "B08_11": {
+  "ngib": "Son Ramon",
+  "verdict": "pick"
+ },
+ "B08_13": {
+  "ngib": "Hortella",
+  "verdict": "pick"
+ },
+ "B08_14": {
+  "ngib": "Son Barceló",
+  "verdict": "pick"
+ },
+ "B08_15": {
+  "ngib": "Son Castanyer",
+  "verdict": "pick"
+ },
+ "B08_16": {
+  "ngib": "Cugulutx",
+  "verdict": "pick"
+ },
+ "B08_17": {
+  "ngib": "So n'Oms",
+  "verdict": "pick"
+ },
+ "B08_18": {
+  "ngib": "es Pagos",
+  "verdict": "pick"
+ },
+ "B08_19": {
+  "ngib": "Son Buscai",
+  "verdict": "pick"
+ },
+ "B08_21": {
+  "ngib": "Son Gall",
+  "verdict": "pick"
+ },
+ "B08_22": {
+  "ngib": "Talayas",
+  "verdict": "pick"
+ },
+ "B08_23": {
+  "ngib": "Son Doctor",
+  "verdict": "pick"
+ },
+ "B08_25": {
+  "ngib": "es Rafal",
+  "verdict": "pick"
+ },
+ "B08_26": {
+  "ngib": "Son Font",
+  "verdict": "pick"
+ },
+ "B08_27": {
+  "ngib": "Son Ballarí",
+  "verdict": "pick"
+ },
+ "B08_28": {
+  "ngib": "Son Calderó",
+  "verdict": "pick"
+ },
+ "B08_29": {
+  "ngib": "sa Torre",
+  "verdict": "pick"
+ },
+ "B08_31": {
+  "ngib": "Son Móra",
+  "verdict": "pick"
+ },
+ "B08_32": {
+  "ngib": "Son Roig",
+  "verdict": "pick"
+ },
+ "B08_33": {
+  "ngib": "Son Vaquer",
+  "verdict": "pick"
+ },
+ "B08_34": {
+  "graf": "Hort dê Jan",
+  "ngib": "Hort d'en Jan",
+  "verdict": "pick"
+ },
+ "B08_36": {
+  "ngib": "Son Veny",
+  "verdict": "pick"
+ },
+ "B08_37": {
+  "ngib": "Son Nebot",
+  "verdict": "pick"
+ },
+ "B08_39": {
+  "tipus": "Villa Parroquial",
+  "ngib": "Porreres",
+  "verdict": "pick"
+ },
+ "B08_40": {
+  "ngib": "Son Redó",
+  "verdict": "pick"
+ },
+ "B08_43": {
+  "ngib": "s'Estepa",
+  "verdict": "pick"
+ },
+ "B09_1": {
+  "ngib": "So n'Elsèbits",
+  "verdict": "pick"
+ },
+ "B09_2": {
+  "ngib": "sa Moleta",
+  "verdict": "pick"
+ },
+ "B09_3": {
+  "ngib": "es Caperó",
+  "verdict": "pick"
+ },
+ "B09_5": {
+  "ngib": "Albadellet",
+  "verdict": "pick"
+ },
+ "B09_7": {
+  "ngib": "Son Perot",
+  "verdict": "pick"
+ },
+ "B09_8": {
+  "ngib": "Alcudiarrom",
+  "verdict": "pick"
+ },
+ "B09_10": {
+  "ngib": "Son Caules",
+  "verdict": "pick"
+ },
+ "B09_11": {
+  "ngib": "Alcudiarrom",
+  "verdict": "pick"
+ },
+ "B09_12": {
+  "ngib": "es Castellot Vell",
+  "verdict": "pick"
+ },
+ "B09_13": {
+  "ngib": "es Rafalot",
+  "verdict": "pick"
+ },
+ "B09_14": {
+  "ngib": "Son Moix",
+  "verdict": "pick"
+ },
+ "B09_15": {
+  "ngib": "sa Franquesa",
+  "verdict": "pick"
+ },
+ "B09_16": {
+  "ngib": "Son Fangos",
+  "verdict": "pick"
+ },
+ "B09_18": {
+  "ngib": "Rafal Nou",
+  "verdict": "pick"
+ },
+ "B09_19": {
+  "ngib": "Son Vaquer",
+  "verdict": "pick"
+ },
+ "B09_20": {
+  "ngib": "Justaní",
+  "verdict": "pick"
+ },
+ "B09_21": {
+  "ngib": "Llodrà",
+  "verdict": "pick"
+ },
+ "B10_1": {
+  "tipus": "Villa Parroquial",
+  "ngib": "Manacor",
+  "verdict": "pick"
+ },
+ "B10_4": {
+  "ngib": "Son Galiana Vell",
+  "verdict": "pick"
+ },
+ "B10_5": {
+  "ngib": "Son Cigala",
+  "verdict": "pick"
+ },
+ "B10_7": {
+  "ngib": "Son Coure",
+  "verdict": "pick"
+ },
+ "B10_8": {
+  "ngib": "Santa Cirga",
+  "verdict": "pick"
+ },
+ "B10_11": {
+  "ngib": "Son Suau",
+  "verdict": "pick"
+ },
+ "B10_13": {
+  "ngib": "Son Brun",
+  "verdict": "pick"
+ },
+ "B10_15": {
+  "ngib": "sa Cabana",
+  "verdict": "pick"
+ },
+ "B10_16": {
+  "ngib": "Son Sitges",
+  "verdict": "pick"
+ },
+ "B10_17": {
+  "ngib": "Tortova",
+  "verdict": "pick"
+ },
+ "B10_18": {
+  "ngib": "ses Talaioles",
+  "verdict": "pick"
+ },
+ "B11_1": {
+  "ngib": "Pola",
+  "verdict": "pick"
+ },
+ "B11_2": {
+  "ngib": "Son Canals",
+  "verdict": "pick"
+ },
+ "B11_3": {
+  "ngib": "es Rafal Franc",
+  "verdict": "pick"
+ },
+ "B11_5": {
+  "ngib": "Son Maçanet",
+  "verdict": "pick"
+ },
+ "B11_6": {
+  "ngib": "Son Baco",
+  "verdict": "pick"
+ },
+ "B11_7": {
+  "ngib": "Son Lleó",
+  "verdict": "pick"
+ },
+ "B11_8": {
+  "ngib": "Son Ribes",
+  "verdict": "pick"
+ },
+ "B11_9": {
+  "graf": "Hostalét",
+  "ngib": "s'Hostalet",
+  "verdict": "pick"
+ },
+ "B11_10": {
+  "verdict": "none"
+ },
+ "B11_12": {
+  "ngib": "Son Sastre",
+  "verdict": "pick"
+ },
+ "B11_13": {
+  "ngib": "Son Valls des Serral",
+  "verdict": "pick"
+ },
+ "B11_14": {
+  "ngib": "Banyeres",
+  "verdict": "pick"
+ },
+ "B11_15": {
+  "ngib": "es Colomer",
+  "verdict": "pick"
+ },
+ "B11_17": {
+  "ngib": "Son Grau",
+  "verdict": "pick"
+ },
+ "B11_18": {
+  "ngib": "Alcoraia",
+  "verdict": "pick"
+ },
+ "B11_20": {
+  "ngib": "Son Mas",
+  "verdict": "pick"
+ },
+ "B11_22": {
+  "ngib": "Son Bonaventura",
+  "verdict": "pick"
+ },
+ "B11_23": {
+  "ngib": "s'Aresta",
+  "verdict": "pick"
+ },
+ "B11_27": {
+  "ngib": "sa Maimona",
+  "verdict": "pick"
+ },
+ "B11_28": {
+  "ngib": "es Riquers",
+  "verdict": "pick"
+ },
+ "B11_29": {
+  "ngib": "Binificat",
+  "verdict": "pick"
+ },
+ "B11_30": {
+  "ngib": "Son Cudem",
+  "verdict": "pick"
+ },
+ "B11_31": {
+  "ngib": "sa Bastida",
+  "verdict": "pick"
+ },
+ "B12_1": {
+  "ngib": "Boscana",
+  "verdict": "pick"
+ },
+ "B12_5": {
+  "ngib": "Son Joi",
+  "verdict": "pick"
+ },
+ "B12_7": {
+  "ngib": "Son Soler",
+  "verdict": "pick"
+ },
+ "B12_8": {
+  "ngib": "Son Figuera",
+  "verdict": "pick"
+ },
+ "B12_9": {
+  "ngib": "es Rafal",
+  "verdict": "pick"
+ },
+ "B12_10": {
+  "ngib": "ses Erasses",
+  "verdict": "pick"
+ },
+ "B12_11": {
+  "graf": "Câ Veyñ",
+  "ngib": "Can Veny",
+  "verdict": "pick"
+ },
+ "B12_12": {
+  "ngib": "So n'Ameret",
+  "verdict": "pick"
+ },
+ "B12_15": {
+  "graf": "Sô Valls vey",
+  "ngib": "Son Valls Vell",
+  "verdict": "pick"
+ },
+ "B12_16": {
+  "ngib": "Son Calderó",
+  "verdict": "pick"
+ },
+ "B12_18": {
+  "ngib": "Son Valls",
+  "verdict": "pick"
+ },
+ "B12_19": {
+  "ngib": "Son Rosselló",
+  "verdict": "pick"
+ },
+ "B12_20": {
+  "ngib": "Can Muda",
+  "verdict": "pick"
+ },
+ "B12_21": {
+  "ngib": "So n'Amer",
+  "verdict": "pick"
+ },
+ "B12_22": {
+  "ngib": "Son Banús",
+  "verdict": "pick"
+ },
+ "B12_23": {
+  "ngib": "Son Ramon",
+  "verdict": "pick"
+ },
+ "B12_24": {
+  "ngib": "Son Maimó",
+  "verdict": "pick"
+ },
+ "B12_26": {
+  "ngib": "Son Vaquer",
+  "verdict": "pick"
+ },
+ "B12_27": {
+  "ngib": "So n'Artigues",
+  "verdict": "pick"
+ },
+ "B12_28": {
+  "ngib": "Can Ros",
+  "verdict": "pick"
+ },
+ "B12_30": {
+  "ngib": "Son Romeguera",
+  "verdict": "pick"
+ },
+ "B12_32": {
+  "ngib": "Can Caseta",
+  "verdict": "pick"
+ },
+ "B12_34": {
+  "ngib": "Son Carrió Gran",
+  "verdict": "pick"
  }
 }
