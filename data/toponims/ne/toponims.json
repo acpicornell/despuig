@@ -8381,42 +8381,6 @@
    "lat": 39.681879
   },
   {
-   "id": "C05_2",
-   "graf": "T",
-   "nom": "T",
-   "tipus": "Casa de campo ó Predio",
-   "subtile": "",
-   "x": 3069,
-   "y": 6592,
-   "dubte": false,
-   "lon": 3.115007,
-   "lat": 39.672966
-  },
-  {
-   "id": "C05_3",
-   "graf": "D",
-   "nom": "D",
-   "tipus": "Casa de campo ó Predio",
-   "subtile": "",
-   "x": 3144,
-   "y": 6561,
-   "dubte": false,
-   "lon": 3.11998,
-   "lat": 39.674687
-  },
-  {
-   "id": "C05_4",
-   "graf": "T.",
-   "nom": "T.",
-   "tipus": "Casa de campo ó Predio",
-   "subtile": "",
-   "x": 4379,
-   "y": 6430,
-   "dubte": false,
-   "lon": 3.203167,
-   "lat": 39.685281
-  },
-  {
    "id": "C05_5",
    "graf": "BOU",
    "nom": "BOU",

@@ -25,7 +25,9 @@
   "verdict": "pick"
  },
  "B01_33": {
-  "graf": "Viña vella"
+  "graf": "Viña vella",
+  "ngib": "sa Vinya Vella",
+  "verdict": "pick"
  },
  "B01_37": {
   "ngib": "es Saragalls",
@@ -476,7 +478,9 @@
   "graf": "Font figuera"
  },
  "C02_31": {
-  "graf": "Puerto de Buñola"
+  "graf": "Puerto de Buñola",
+  "ngib": "Platja de Son Bunyola",
+  "verdict": "pick"
  },
  "C02_32": {
   "graf": "Puerto del Canonge"
@@ -679,6 +683,77 @@
  "C02_29": {
   "graf": "Playa del corp mari",
   "tipus": "altre",
+  "verdict": "none"
+ },
+ "B01_17": {
+  "verdict": "ok"
+ },
+ "B01_20": {
+  "ngib": "Turixant",
+  "verdict": "pick"
+ },
+ "B01_21": {
+  "ngib": "Montcaire",
+  "verdict": "pick"
+ },
+ "B01_23": {
+  "ngib": "s'Estret",
+  "verdict": "pick"
+ },
+ "B01_26": {
+  "ngib": "Son Torrella",
+  "verdict": "pick"
+ },
+ "B01_28": {
+  "ngib": "es Barracar",
+  "verdict": "pick"
+ },
+ "B01_29": {
+  "ngib": "sa Cabana",
+  "verdict": "pick"
+ },
+ "B01_31": {
+  "ngib": "Puig Major de Son Torrella",
+  "verdict": "pick"
+ },
+ "B01_32": {
+  "ngib": "es Horts",
+  "verdict": "pick"
+ },
+ "B01_34": {
+  "ngib": "es Marroig",
+  "verdict": "pick"
+ },
+ "B01_35": {
+  "ngib": "es Tossals Verds",
+  "verdict": "pick"
+ },
+ "B01_36": {
+  "ngib": "Caimari",
+  "verdict": "pick"
+ },
+ "B01_38": {
+  "ngib": "Binimorat",
+  "verdict": "pick"
+ },
+ "C02_38": {
+  "graf": "Amarador",
+  "verdict": "none"
+ },
+ "C03_1": {
+  "verdict": "none"
+ },
+ "C03_7": {
+  "tipus": "Isla",
+  "verdict": "none"
+ },
+ "C03_17": {
+  "tipus": "altre",
+  "graf": "Bufador dê Cerdá",
+  "verdict": "none"
+ },
+ "C03_21": {
+  "tipus": "Isla",
   "verdict": "none"
  }
 }
