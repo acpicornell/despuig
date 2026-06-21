@@ -53,7 +53,7 @@ const colors = Object.fromEntries(Object.entries(DEC).map(([k, v]) => [k, v.colo
     </div>
   </section>
 
-  <div id="geo" class="mapbox"></div>
+  <div class="wrap"><div id="geo" class="mapbox"></div></div>
 
   <script type="application/json" id="pts" set:html={JSON.stringify(pts)}></script>
   <script type="application/json" id="cfg" set:html={JSON.stringify({ colors })}></script>
@@ -137,7 +137,7 @@ const colors = Object.fromEntries(Object.entries(DEC).map(([k, v]) => [k, v.colo
   .lg.sep { border-left: 1px solid var(--line); padding-left: 1rem; }
   .small { margin: 0 0 .8rem; }
 
-  .mapbox { width: 100%; height: min(72vh, 760px); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #e9e2cf; }
+  .mapbox { width: 100%; height: min(72vh, 760px); border: 1px solid var(--line); border-radius: 4px; background: #e9e2cf; }
 
   @media (max-width: 720px) { .count { margin-left: 0; } }
 </style>
