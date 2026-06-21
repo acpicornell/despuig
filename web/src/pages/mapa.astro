@@ -10,7 +10,7 @@ const DEC = {
   posicional: { label: 'Posicional', color: '#8a8170' },
   sense: { label: 'Sense', color: '#9a4a3a' },
 };
-const TIP = { possessió: 'Possessió', costa: 'Costa', nucli: 'Nucli', hidrònim: 'Hidrònim', orònim: 'Orònim', altre: 'Altre' };
+const TIP = { altre: 'Altre' };   // categories de la llegenda; la resta es mostren tal qual (TIP[t] ?? t)
 const QNOM = { nw: 'Nord-oest', ne: 'Nord-est', se: 'Sud-est', sw: 'Sud-oest' };
 
 const decOrder = ['confirmat', 'probable', 'suggerit', 'posicional', 'sense'].filter((d) => data.toponims.some((r) => r.decision === d));

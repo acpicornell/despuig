@@ -304,7 +304,9 @@
   "graf": "Sta. MARIA"
  },
  "B10_13": {
-  "graf": "T. DE SANSELLAS"
+  "graf": "T. DE SANSELLAS",
+  "ngib": "Torrent de Sencelles",
+  "verdict": "pick"
  },
  "B10_19": {
   "graf": "Sô Sâ Juan"
@@ -410,7 +412,8 @@
   "graf": "Pta Blâca"
  },
  "B15_14": {
-  "graf": "Pûta del Jaj Juan"
+  "graf": "Pûta del Jaj Juan",
+  "verdict": "none"
  },
  "B15_17": {
   "graf": "Câ Toni Llarc"
@@ -482,7 +485,9 @@
   "graf": "Pûta de la galera"
  },
  "C02_4": {
-  "graf": "Piedra dê Bañí"
+  "graf": "Piedra dê Bañí",
+  "tipus": "altre",
+  "verdict": "none"
  },
  "C03_11": {
   "graf": "Pûta negre"
@@ -592,5 +597,88 @@
   "tipus": "Lugar chico",
   "ngib": "So na Rossa",
   "verdict": "pick"
+ },
+ "B01_3": {
+  "tipus": "Casa de campo ó Predio",
+  "verdict": "ok"
+ },
+ "B01_5": {
+  "tipus": "Casa de campo ó Predio",
+  "verdict": "ok"
+ },
+ "B01_6": {
+  "tipus": "Casa de campo ó Predio",
+  "verdict": "ok"
+ },
+ "B01_7": {
+  "tipus": "Casa de campo ó Predio",
+  "verdict": "ok"
+ },
+ "B01_9": {
+  "tipus": "Casa de campo ó Predio",
+  "verdict": "ok"
+ },
+ "B01_10": {
+  "tipus": "Casa de campo ó Predio",
+  "verdict": "ok"
+ },
+ "B01_13": {
+  "tipus": "Casa de campo ó Predio",
+  "verdict": "none"
+ },
+ "B01_14": {
+  "tipus": "Oratorio publico",
+  "verdict": "ok"
+ },
+ "B01_15": {
+  "tipus": "Casa de campo ó Predio",
+  "ngib": "Bàlitx d'Avall",
+  "verdict": "pick"
+ },
+ "B01_16": {
+  "tipus": "Casa de campo ó Predio",
+  "verdict": "none"
+ },
+ "B04_15": {
+  "ngib": "Miramar",
+  "verdict": "pick"
+ },
+ "B15_12": {
+  "verdict": "none"
+ },
+ "C01_15": {
+  "tipus": "altre",
+  "verdict": "none"
+ },
+ "C02_3": {
+  "verdict": "none"
+ },
+ "C02_5": {
+  "tipus": "altre",
+  "ngib": "es Cingles",
+  "verdict": "pick"
+ },
+ "C02_7": {
+  "verdict": "none"
+ },
+ "C02_8": {
+  "verdict": "none"
+ },
+ "C02_16": {
+  "graf": "Gallo de Alconase",
+  "tipus": "altre",
+  "verdict": "none"
+ },
+ "C02_18": {
+  "ngib": "Punta de Deià",
+  "verdict": "pick"
+ },
+ "C02_27": {
+  "verdict": "none"
+ },
+ "C02_29": {
+  "graf": "Playa del corp mari",
+  "tipus": "altre",
+  "verdict": "none"
  }
 }

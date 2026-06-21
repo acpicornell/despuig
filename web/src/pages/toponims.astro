@@ -16,7 +16,9 @@ const REV = {
   revisat: { label: 'Revisat a mà', icon: '✓' },
   corregit: { label: 'Corregit a mà', icon: '✎' },
 };
-const TIP = { possessió: 'Possessió', costa: 'Costa', nucli: 'Nucli', hidrònim: 'Hidrònim', orònim: 'Orònim', altre: 'Altre' };
+// Tipus = categories LITERALS de la llegenda del gravat (ja venen ben escrites a les dades);
+// TIP només dóna l'etiqueta visible de 'altre'. La resta es mostren tal qual (TIP[t] ?? t).
+const TIP = { altre: 'Altre' };
 const QNOM = { nw: 'Nord-oest', ne: 'Nord-est', se: 'Sud-est', sw: 'Sud-oest' };
 
 const rows = data.toponims;

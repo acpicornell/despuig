@@ -292,7 +292,7 @@ addEventListener('keydown',function(e){
 boot();
 </script>`;
 
-const send = (res, code, type, body) => { res.writeHead(code, { 'content-type': type }); res.end(body); };
+const send = (res, code, type, body) => { res.writeHead(code, { 'content-type': type, 'cache-control': 'no-store' }); res.end(body); };
 const server = http.createServer((req, res) => {
   const u = new URL(req.url, 'http://x');
   const q = (u.searchParams.get('q') || '').toLowerCase();

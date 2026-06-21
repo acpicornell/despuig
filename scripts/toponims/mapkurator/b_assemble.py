@@ -89,25 +89,19 @@ def normalize_nom(text):
 
 
 def tipus_of(k):
+    """ONLY literal 1785 legend categories. Anything the name can't place in the
+    legend is 'altre' (no invented groupings like nucli/costa/orònim/hidrònim)."""
     head = k.split()[0] if k else ""
-    if k in TOWNS or k in NUCLI_EXTRA:
-        return "nucli"
     if head in HEAD_LEGEND:
         return HEAD_LEGEND[head]
     if head in POSSES:
         return "Casa de campo ó Predio"
-    if head in COSTA or k.startswith("illot"):
-        return "costa"
-    if head in ORONIM:
-        return "orònim"
-    if head in HIDRO:
-        return "hidrònim"
     return "altre"
 
 
 def tipus_for(graf, k):
-    """tipus_of + article 'Sa/Ses' → possessió, llegit de la grafia CRUA (no la clau
-    deaccentuada) per no confondre 'Sa' (article) amb 'Sâ' (= San, sant)."""
+    """tipus_of + article 'Sa/Ses' → 'Casa de campo ó Predio', llegit de la grafia CRUA
+    (no la clau deaccentuada) per no confondre 'Sa' (article) amb 'Sâ' (= San, sant)."""
     t = tipus_of(k)
     if t == "altre":
         w0 = (graf or "").strip().split()

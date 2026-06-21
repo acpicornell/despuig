@@ -1,0 +1,1226 @@
+{
+ "B01_1": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_12": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_15": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_18": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_19": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_20": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_21": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_23": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_24": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_28": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_29": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_3": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_30": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_32": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_33": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_34": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_35": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_36": {
+  "conf": "med",
+  "tipus": "Villa Parroquial"
+ },
+ "B01_37": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_38": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_4": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_40": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_5": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B01_9": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B02_1": {
+  "conf": "med",
+  "tipus": "Isla"
+ },
+ "B02_11": {
+  "conf": "med",
+  "tipus": "Oratorio publico"
+ },
+ "B02_12": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B02_14": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B02_23": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B02_24": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B02_25": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B02_28": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "B02_4": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B02_6": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B02_7": {
+  "conf": "high",
+  "tipus": "Oratorio publico"
+ },
+ "B02_8": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B03_11": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B03_12": {
+  "conf": "high",
+  "tipus": "Villa Parroquial"
+ },
+ "B03_14": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B03_15": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B03_19": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B03_2": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B03_22": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B03_23": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B03_4": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B03_6": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B03_8": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B04_1": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B04_10": {
+  "conf": "high",
+  "tipus": "Villa Parroquial"
+ },
+ "B04_15": {
+  "conf": "high",
+  "tipus": "Hermita"
+ },
+ "B04_16": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B04_17": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B04_23": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B04_24": {
+  "conf": "med",
+  "tipus": "Oratorio publico"
+ },
+ "B04_27": {
+  "conf": "med",
+  "tipus": "Casa de estudios"
+ },
+ "B04_28": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B04_3": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B04_30": {
+  "conf": "high",
+  "tipus": "Villa Parroquial"
+ },
+ "B04_31": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B04_35": {
+  "conf": "med",
+  "tipus": "Villa Parroquial"
+ },
+ "B04_38": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B04_4": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B04_5": {
+  "conf": "med",
+  "tipus": "Villa Parroquial"
+ },
+ "B04_7": {
+  "conf": "med",
+  "tipus": "Villa Parroquial"
+ },
+ "B05_12": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_16": {
+  "conf": "med",
+  "tipus": "altre"
+ },
+ "B05_17": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_18": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_19": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_22": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_25": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_3": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_34": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_36": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_37": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_38": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_4": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_5": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_6": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_7": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_8": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B05_9": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B06_1": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B06_10": {
+  "conf": "med",
+  "tipus": "Oratorio publico"
+ },
+ "B06_12": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B06_13": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B06_14": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B06_15": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B06_17": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B06_19": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B06_2": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B06_23": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B06_29": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B06_30": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B06_31": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B06_32": {
+  "conf": "high",
+  "tipus": "Villa Parroquial"
+ },
+ "B06_4": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B06_6": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B06_7": {
+  "conf": "med",
+  "tipus": "Villa Parroquial"
+ },
+ "B06_8": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B07_13": {
+  "conf": "high",
+  "tipus": "Villa Parroquial"
+ },
+ "B07_14": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B07_16": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B07_18": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B07_19": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B08_1": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B08_10": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B08_11": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B08_12": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B08_15": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B08_17": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B08_18": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B08_21": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B08_29": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B08_3": {
+  "conf": "high",
+  "tipus": "Villa Parroquial"
+ },
+ "B08_34": {
+  "conf": "med",
+  "tipus": "altre"
+ },
+ "B08_4": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B08_6": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B08_7": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B08_9": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B09_15": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B09_2": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B09_20": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B09_24": {
+  "conf": "high",
+  "tipus": "Villa Parroquial"
+ },
+ "B09_26": {
+  "conf": "high",
+  "tipus": "Villa Parroquial"
+ },
+ "B09_27": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B09_3": {
+  "conf": "high",
+  "tipus": "Villa Parroquial"
+ },
+ "B09_30": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B09_31": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B09_35": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B09_5": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B09_9": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B10_12": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B10_13": {
+  "conf": "high",
+  "tipus": "Villa Parroquial"
+ },
+ "B10_14": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B10_15": {
+  "conf": "med",
+  "tipus": "Oratorio publico"
+ },
+ "B10_17": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B10_18": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B10_3": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B10_4": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B10_8": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B10_9": {
+  "conf": "med",
+  "tipus": "Oratorio publico"
+ },
+ "B11_10": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B11_18": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B11_19": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B11_25": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B11_27": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B11_28": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B11_3": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B11_7": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B12_10": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B12_11": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B12_12": {
+  "conf": "high",
+  "tipus": "Villa Parroquial"
+ },
+ "B12_13": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B12_15": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B12_18": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B12_20": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B12_23": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B12_24": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B12_25": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B12_27": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B12_5": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B12_6": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B12_7": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B12_8": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B12_9": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_1": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_11": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_13": {
+  "conf": "med",
+  "tipus": "Oratorio publico"
+ },
+ "B13_15": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_16": {
+  "conf": "high",
+  "tipus": "Hermita"
+ },
+ "B13_17": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_18": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_2": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_21": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_22": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_24": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_26": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_27": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_28": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_30": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_34": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_35": {
+  "conf": "high",
+  "tipus": "Villa Parroquial"
+ },
+ "B13_36": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_38": {
+  "conf": "med",
+  "tipus": "Torrente"
+ },
+ "B13_4": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B13_5": {
+  "conf": "high",
+  "tipus": "Villa Parroquial"
+ },
+ "B13_9": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B14_18": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B14_19": {
+  "conf": "med",
+  "tipus": "Villa Parroquial"
+ },
+ "B14_20": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B14_21": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "B14_22": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B14_24": {
+  "conf": "low",
+  "tipus": "altre"
+ },
+ "B14_28": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B14_3": {
+  "conf": "high",
+  "tipus": "Villa Parroquial"
+ },
+ "B14_32": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B14_33": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B14_34": {
+  "conf": "med",
+  "tipus": "Lugar grande"
+ },
+ "B14_36": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B14_4": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B14_40": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B14_41": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B14_44": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B14_45": {
+  "conf": "high",
+  "tipus": "Villa Parroquial"
+ },
+ "B14_5": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B14_6": {
+  "conf": "med",
+  "tipus": "Hermita"
+ },
+ "B14_9": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B15_1": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B15_14": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "B15_15": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B15_18": {
+  "conf": "med",
+  "tipus": "altre"
+ },
+ "B15_19": {
+  "conf": "low",
+  "tipus": "altre"
+ },
+ "B15_2": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B15_20": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B15_21": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B15_3": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B15_4": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B15_5": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B15_6": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "B15_7": {
+  "conf": "high",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "B15_9": {
+  "conf": "high",
+  "tipus": "Isla"
+ },
+ "C01_1": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C01_10": {
+  "conf": "med",
+  "tipus": "Isla"
+ },
+ "C01_12": {
+  "conf": "high",
+  "tipus": "Torrente"
+ },
+ "C01_13": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C01_14": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C01_15": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C01_17": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C01_18": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "C01_19": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C01_2": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C01_20": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C01_21": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "C01_22": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C01_23": {
+  "conf": "high",
+  "tipus": "Punta"
+ },
+ "C01_24": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C01_25": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C01_27": {
+  "conf": "med",
+  "tipus": "Guarda"
+ },
+ "C01_28": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C01_29": {
+  "conf": "low",
+  "tipus": "altre"
+ },
+ "C01_30": {
+  "conf": "low",
+  "tipus": "altre"
+ },
+ "C01_4": {
+  "conf": "med",
+  "tipus": "Torrente"
+ },
+ "C01_6": {
+  "conf": "med",
+  "tipus": "altre"
+ },
+ "C01_8": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C02_1": {
+  "conf": "high",
+  "tipus": "Isla"
+ },
+ "C02_10": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C02_11": {
+  "conf": "low",
+  "tipus": "altre"
+ },
+ "C02_12": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C02_13": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C02_14": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C02_15": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C02_16": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C02_17": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C02_18": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C02_2": {
+  "conf": "high",
+  "tipus": "Punta"
+ },
+ "C02_20": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C02_21": {
+  "conf": "high",
+  "tipus": "Punta"
+ },
+ "C02_22": {
+  "conf": "high",
+  "tipus": "Torrente"
+ },
+ "C02_26": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C02_27": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C02_3": {
+  "conf": "high",
+  "tipus": "Punta"
+ },
+ "C02_30": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C02_33": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C02_34": {
+  "conf": "high",
+  "tipus": "Punta"
+ },
+ "C02_36": {
+  "conf": "med",
+  "tipus": "altre"
+ },
+ "C02_37": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C02_38": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C02_4": {
+  "conf": "med",
+  "tipus": "Isla"
+ },
+ "C02_5": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C03_1": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C03_10": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "C03_11": {
+  "conf": "high",
+  "tipus": "Punta"
+ },
+ "C03_12": {
+  "conf": "high",
+  "tipus": "Punta"
+ },
+ "C03_14": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C03_15": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "C03_16": {
+  "conf": "high",
+  "tipus": "Punta"
+ },
+ "C03_17": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "C03_18": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "C03_19": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C03_2": {
+  "conf": "high",
+  "tipus": "Torrente"
+ },
+ "C03_20": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C03_21": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C03_23": {
+  "conf": "high",
+  "tipus": "Punta"
+ },
+ "C03_24": {
+  "conf": "high",
+  "tipus": "Punta"
+ },
+ "C03_25": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C03_26": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C03_27": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C03_28": {
+  "conf": "med",
+  "tipus": "Villa Parroquial"
+ },
+ "C03_29": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C03_3": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C03_32": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C03_33": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C03_35": {
+  "conf": "low",
+  "tipus": "unclear"
+ },
+ "C03_4": {
+  "conf": "low",
+  "tipus": "altre"
+ },
+ "C03_5": {
+  "conf": "high",
+  "tipus": "Punta"
+ },
+ "C03_6": {
+  "conf": "med",
+  "tipus": "Punta"
+ },
+ "C03_7": {
+  "conf": "med",
+  "tipus": "altre"
+ },
+ "C03_8": {
+  "conf": "med",
+  "tipus": "Atalaya ó Torre"
+ },
+ "C03_9": {
+  "conf": "high",
+  "tipus": "altre"
+ },
+ "C04_10": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "C04_2": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "C04_4": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "C04_6": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "C04_7": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ },
+ "C04_9": {
+  "conf": "med",
+  "tipus": "Casa de campo ó Predio"
+ }
+}
