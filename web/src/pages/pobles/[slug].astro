@@ -16,86 +16,92 @@ export function getStaticPaths() {
 }
 
 const { poble: p, prev, next } = Astro.props;
-
-// Punts del mini-mapa: el poble + els llogarets dependents amb coords (gcps/NGIB).
-const punts = [];
-if (p.geo) punts.push({ nom: p.nom, lat: p.geo.lat, lng: p.geo.lng, main: true });
-for (const d of p.dependents) {
-  if (d.geo) punts.push({ nom: d.nom, lat: d.geo.lat, lng: d.geo.lng, main: false });
-}
 const kicker = p.esCapital ? "Capital de l'illa" : 'Vinyeta gravada · 1785';
 
-// Dades factuals com a línia de metadades compacta (sense caixes).
+// Dades factuals com a línia de metadades compacta.
 const fets = [
   p.anyVila ? { k: 'Vila des de', v: p.anyVila } : null,
   p.anyCiutat ? { k: 'Ciutat des de', v: p.anyCiutat } : null,
   p.veins != null ? { k: 'Veïns (1785)', v: p.veins.toLocaleString('ca-ES') } : null,
   p.animes != null ? { k: 'Ànimes', v: p.animes.toLocaleString('ca-ES') } : null,
 ].filter(Boolean);
+const vinyetaUrl = p.vinyeta ? url(`vinetes/${p.vinyeta}.jpg`) : null;
+
+// Punts del mapa: el poble + els llogarets dependents amb coords (gcps/NGIB).
+const punts = [];
+if (p.geo) punts.push({ nom: p.nom, lat: p.geo.lat, lng: p.geo.lng, main: true });
+for (const d of p.dependents) {
+  if (d.geo) punts.push({ nom: d.nom, lat: d.geo.lat, lng: d.geo.lng, main: false });
+}
 ---
 <Base title={p.nom} description={p.resumCat}>
   <article class="wrap fitxa">
     <nav class="breadcrumb"><a href={url('pobles')}>← Tots els pobles</a></nav>
 
-    <header class="fitxa__head">
-      <div>
-        <p class="kicker">{kicker}</p>
-        <h1>{p.nom}</h1>
+    <div class="fitxa-grid">
+      <!-- Columna 1: títol + dades a dalt, transcripció a baix -->
+      <div class="maincol">
+        <header class="info">
+          <p class="kicker">{kicker}</p>
+          <h1>{p.nom}</h1>
 
-        {fets.length > 0 && (
-          <dl class="fets">
-            {fets.map((f) => (<><dt>{f.k}</dt><dd>{f.v}</dd></>))}
-          </dl>
-        )}
+          {fets.length > 0 && (
+            <dl class="fets">
+              {fets.map((f) => (<><dt>{f.k}</dt><dd>{f.v}</dd></>))}
+            </dl>
+          )}
 
-        {(p.nomArab || p.nomAntic || p.nomGravat) && (
-          <p class="muted noms">
-            {p.nomGravat && <span>Grafia gravada: <em>{p.nomGravat}</em></span>}
-            {p.nomArab && <span>Nom andalusí: <em>{p.nomArab}</em></span>}
-            {p.nomAntic && <span>Nom antic: <em>{p.nomAntic}</em></span>}
-          </p>
-        )}
+          {(p.nomArab || p.nomAntic || p.nomGravat) && (
+            <p class="muted noms">
+              {p.nomGravat && <span>Grafia gravada: <em>{p.nomGravat}</em></span>}
+              {p.nomArab && <span>Nom andalusí: <em>{p.nomArab}</em></span>}
+              {p.nomAntic && <span>Nom antic: <em>{p.nomAntic}</em></span>}
+            </p>
+          )}
 
-        {p.collites.length > 0 && (
-          <p class="collites"><span class="muted">Producció:</span> {p.collites.map((c) => <span class="tag">{c}</span>)}</p>
-        )}
+          {p.collites.length > 0 && (
+            <p class="collites"><span class="muted">Producció:</span> {p.collites.map((c) => <span class="tag">{c}</span>)}</p>
+          )}
 
-        {p.fires && <p class="fires"><span class="muted">Fires:</span> {p.fires}</p>}
+          {p.fires && <p class="fires"><span class="muted">Fires:</span> {p.fires}</p>}
+        </header>
+
+        <section class="transcripcio">
+          <blockquote class="original">{p.textOriginal}</blockquote>
+
+          {p.dependents.length > 0 && (
+            <div class="dependents">
+              <h2>Llogarets dependents</h2>
+              <ul>
+                {p.dependents.map((d) => (
+                  <li><strong>{d.nom}</strong> — {d.veins} veïns, {d.animes} ànimes</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
       </div>
 
-      {punts.length > 0 && (
-        <aside class="locator-wrap">
-          <div id="locator" data-punts={JSON.stringify(punts)} role="img" aria-label={`Mapa amb la ubicació de ${p.nom}`}></div>
-          <p class="muted small">{p.geoAprox
-            ? 'Localització aproximada del nucli (NGIB); la posició exacta sobre el gravat arribarà amb la georeferenciació del full.'
-            : 'Ubicació segons el Nomenclàtor Geogràfic de les Illes Balears (NGIB).'}</p>
-        </aside>
-      )}
-    </header>
-
-    <div class="cols">
-      <div>
-        <blockquote class="original">{p.textOriginal}</blockquote>
-
-        {p.dependents.length > 0 && (
-          <div class="dependents">
-            <h2>Llogarets dependents</h2>
-            <ul>
-              {p.dependents.map((d) => (
-                <li><strong>{d.nom}</strong> — {d.veins} veïns, {d.animes} ànimes</li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-
-      <figure class="gravat">
-        {p.vinyeta
-          ? <img src={url(`vinetes/${p.vinyeta}.jpg`)} alt={`Vista gravada de ${p.nom} al mapa de Despuig`} />
+      <!-- Columna 2: la vinyeta (clic → amplia) -->
+      <figure class="vinyeta">
+        {vinyetaUrl
+          ? <button class="vthumb" data-full={vinyetaUrl} aria-label={`Amplia la vinyeta de ${p.nom}`}>
+              <img src={vinyetaUrl} alt={`Vista gravada de ${p.nom} al mapa de Despuig`} loading="lazy" />
+            </button>
           : <div class="noimg">Vinyeta no disponible</div>}
-        <figcaption>Gravat original de la vinyeta de {p.nom}.</figcaption>
+        <figcaption class="muted small">Vinyeta gravada{vinyetaUrl ? ' · clica per ampliar' : ''}.</figcaption>
       </figure>
     </div>
+
+    {punts.length > 0 && (
+      <section class="locator-full">
+        <h2>Ubicació</h2>
+        <div id="locator" data-punts={JSON.stringify(punts)} role="img" aria-label={`Mapa amb la ubicació de ${p.nom}`}></div>
+        <p class="muted small">{p.geoAprox
+          ? 'Localització aproximada del nucli (NGIB); la posició exacta sobre el gravat arribarà amb la georeferenciació del full.'
+          : 'Ubicació segons el Nomenclàtor Geogràfic de les Illes Balears (NGIB).'}</p>
+      </section>
+    )}
 
     <nav class="pager">
       <a href={url(`pobles/${prev.slug}`)}>← {prev.nom}</a>
@@ -114,10 +120,7 @@ const fets = [
           const punts = JSON.parse(el.dataset.punts);
           const main = punts.find((p) => p.main) || punts[0];
           const map = L.map(el, { scrollWheelZoom: false, attributionControl: true }).setView([main.lat, main.lng], 11);
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: '© OpenStreetMap',
-          }).addTo(map);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap' }).addTo(map);
           const group = [];
           punts.forEach((pt) => {
             const m = L.marker([pt.lat, pt.lng]).addTo(map)
@@ -129,41 +132,100 @@ const fets = [
       </script>
     </>
   )}
+
+  {vinyetaUrl && (
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label={`Vinyeta ampliada de ${p.nom}`} hidden>
+      <button class="lb-close" aria-label="Tanca">×</button>
+      <img id="lb-img" src="" alt="" />
+    </div>
+  )}
+
+  {vinyetaUrl && (
+    <script is:inline>
+      (function () {
+        const lb = document.getElementById('lightbox');
+        if (!lb) return;
+        const img = document.getElementById('lb-img');
+        const closeBtn = lb.querySelector('.lb-close');
+        let lastFocus = null;
+        const open = (src, alt, trigger) => {
+          lastFocus = trigger || document.activeElement;
+          img.src = src; img.alt = alt || '';
+          lb.hidden = false; document.body.style.overflow = 'hidden';
+          closeBtn.focus();
+        };
+        const close = () => {
+          lb.hidden = true; img.src = ''; document.body.style.overflow = '';
+          if (lastFocus && lastFocus.focus) lastFocus.focus();
+          lastFocus = null;
+        };
+        document.querySelectorAll('.vthumb').forEach((b) =>
+          b.addEventListener('click', () => open(b.dataset.full, b.querySelector('img') && b.querySelector('img').alt, b)));
+        lb.addEventListener('click', (e) => { if (e.target === lb || e.target.classList.contains('lb-close')) close(); });
+        document.addEventListener('keydown', (e) => {
+          if (lb.hidden) return;
+          if (e.key === 'Escape') close();
+          else if (e.key === 'Tab') { e.preventDefault(); closeBtn.focus(); } // trap: només la ×
+        });
+      })();
+    </script>
+  )}
 </Base>
 
 <style>
   .fitxa { padding-top: 1.2rem; }
   .breadcrumb { margin-bottom: 1.6rem; font-size: .95rem; }
   .kicker { font-family: var(--display); letter-spacing: .1em; text-transform: uppercase; font-size: .78rem; color: var(--sepia); margin: 0 0 .2rem; }
-  .fitxa__head { display: grid; grid-template-columns: 2fr 3fr; gap: 2.4rem; align-items: start; }
-  .fitxa__head h1 { margin: 0 0 1rem; }
+
+  /* Dues columnes: [ info + transcripció ] | [ vinyeta ] */
+  .fitxa-grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: 2.4rem; align-items: start; }
+  .maincol, .vinyeta { min-width: 0; }
+  .info h1 { margin: 0 0 1rem; }
 
   .fets { display: grid; grid-template-columns: 1fr auto; align-items: center; margin: 0 0 1.2rem; border-bottom: 1px solid var(--line); }
   .fets dt { font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); padding: .55rem 0; border-top: 1px solid var(--line); }
   .fets dd { margin: 0; text-align: right; font-family: var(--display); font-size: 1.45rem; color: var(--accent); line-height: 1; padding: .5rem 0; border-top: 1px solid var(--line); }
-
   .noms.noms { display: flex; gap: 1.2rem; flex-wrap: wrap; font-size: .92rem; margin: 0 0 .8rem; }
   .collites { margin: 0 0 .5rem; }
   .fires { margin: 0; font-size: .95rem; }
-  .gravat { margin: 0; border: 1px solid var(--line); background: #fff; box-shadow: 0 3px 14px var(--shadow); }
-  .gravat img { width: 100%; display: block; }
-  .gravat .noimg { aspect-ratio: 4 / 3; display: grid; place-items: center; color: var(--ink-soft); font-style: italic; }
-  .gravat figcaption { padding: .5rem .7rem; font-size: .82rem; color: var(--ink-soft); font-style: italic; }
 
-  .cols { display: grid; grid-template-columns: 2fr 3fr; gap: 2.4rem; align-items: start; margin-top: 2rem; }
-  .cols h2 { margin-top: 0; }
-  .original {
+  /* Transcripció a sota dels fets */
+  .transcripcio { margin-top: 1.8rem; }
+  .transcripcio .original {
     font-size: 1.12rem; line-height: 1.65; margin: 0; padding: 1.1rem 1.3rem;
     border-left: 4px solid var(--accent); background: rgba(255,255,255,.4);
     font-style: italic; color: var(--ink);
   }
-  .dependents ul { padding-left: 1.1rem; }
-  .small { font-size: .85rem; }
-  #locator { height: 320px; border: 1px solid var(--line); border-radius: 4px; }
+  .dependents { margin-top: 1.4rem; }
+  .dependents h2 { margin: 0 0 .4rem; }
+  .dependents ul { padding-left: 1.1rem; margin: 0; }
 
-  .pager { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2.5rem; border-top: 1px solid var(--line); padding-top: 1rem; font-family: var(--display); }
+  /* Vinyeta (columna 2), clicable */
+  .vinyeta { margin: 0; position: sticky; top: 5rem; }
+  .vthumb { display: block; width: 100%; padding: 0; border: 1px solid var(--line); background: #fff; box-shadow: 0 3px 14px var(--shadow); cursor: zoom-in; transition: transform .12s, box-shadow .12s; }
+  .vthumb:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--shadow); }
+  .vthumb img { width: 100%; display: block; }
+  .vinyeta .noimg { aspect-ratio: 4 / 3; display: grid; place-items: center; border: 1px solid var(--line); background: #fff; color: var(--ink-soft); font-style: italic; }
+  .vinyeta figcaption { margin-top: .5rem; font-style: italic; }
+  .small { font-size: .85rem; }
+
+  /* Mapa a ample complet, al final de la fitxa */
+  .locator-full { margin-top: 2.6rem; }
+  .locator-full h2 { margin: 0 0 .8rem; }
+  #locator { width: 100%; height: 420px; border: 1px solid var(--line); border-radius: 4px; }
+  .locator-full .small { margin: .5rem 0 0; }
+
+  .pager { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2.6rem; border-top: 1px solid var(--line); padding-top: 1rem; font-family: var(--display); }
+
+  /* Lightbox de la vinyeta (z-index per sobre de tot) */
+  .lightbox { position: fixed; inset: 0; z-index: 3000; background: rgba(20,15,8,.9); display: grid; place-items: center; padding: 2rem; }
+  .lightbox[hidden] { display: none; }
+  .lightbox img { max-width: 95vw; max-height: 90vh; border: 3px solid #fdf6e8; box-shadow: 0 10px 50px rgba(0,0,0,.6); }
+  .lb-close { position: absolute; top: .8rem; right: 1.2rem; font-size: 2.4rem; line-height: 1; background: transparent; border: 0; color: #fdf6e8; cursor: pointer; }
+  .lb-close:focus-visible { outline: 2px solid #fdf6e8; outline-offset: 3px; }
 
   @media (max-width: 820px) {
-    .fitxa__head, .cols { grid-template-columns: 1fr; }
+    .fitxa-grid { grid-template-columns: 1fr; gap: 1.6rem; }
+    .vinyeta { position: static; max-width: 26rem; order: -1; }
   }
 </style>
