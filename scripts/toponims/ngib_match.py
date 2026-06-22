@@ -385,7 +385,8 @@ print("\nSample confirmed corrections (AI reading -> NGIB):")
 shown = 0
 for m in matches:
     if m["decision"] == "confirmat" and core(m["nom"]) != core(m["ngib"]):
-        print(f"  [{m['tipus'][:4]}] \"{m['nom']}\"  ->  \"{m['ngib']}\"  "
+        _tp = m["tipus"][0] if isinstance(m["tipus"], list) and m["tipus"] else (m["tipus"] or "")
+        print(f"  [{str(_tp)[:4]}] \"{m['nom']}\"  ->  \"{m['ngib']}\"  "
               f"(sim {m['sim']}, {m['km']} km, {m['municipi'] or '?'})")
         shown += 1
         if shown >= 25:

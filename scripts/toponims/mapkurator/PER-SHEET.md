@@ -250,6 +250,10 @@ two files (it never edits the data):
   high georef distance (≥1.5 km), i.e. a probable *match* error (≈237 labels). Plain
   name/NGIB duplicates are still NOT flagged: Mallorcan homonyms (two Bini, many
   "Son X", "sa Teulera"…) are legitimate; `ngib_far` is the narrower mismatch signal.
+  Also flags **`dup_near`** = same name + <600 m + a DIFFERENT spotter window
+  (the windows don't overlap-read, but the interior/coast tracks can both pick up a
+  coastal label). These are *candidates* for hand review — the cross-track (B↔C) ones
+  are the likely real duplicates; homonyms get flagged too and are simply left.
 ```bash
 nix-shell scripts/toponims/shell.nix --run 'python3 scripts/toponims/mapkurator/quality_audit.py'
 ```

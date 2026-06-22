@@ -44,6 +44,18 @@ VALID_ORDRES = {
 }
 
 
+def _norm_multi(v, valid):
+    """Overlay tipus/ordre may be a string or a list (multi-value). Keep only legal
+    values; return None if empty, a bare string if one, a list if several."""
+    if v is None:
+        return None
+    items = v if isinstance(v, list) else [v]
+    items = [x for x in items if x in valid]
+    if not items:
+        return None
+    return items[0] if len(items) == 1 else items
+
+
 def apply_overlay(top_path, cur):
     """Rewrite graf/nom/tipus in toponims.json from the curation overlay. Idempotent:
     re-running with the same overlay is a no-op (only changed fields are touched)."""
@@ -58,17 +70,13 @@ def apply_overlay(top_path, cur):
             t["nom"] = ba.TOWNS.get(k) or ba.normalize_nom(g)
             t["tipus"] = ba.tipus_for(g, k)
             ng += 1
-        tp = c.get("tipus")               # hand tipus wins over the derived one, applied LAST
-        if tp in VALID_TIPUS and tp != t["tipus"]:
+        tp = _norm_multi(c.get("tipus"), VALID_TIPUS)   # hand tipus (multi) wins over the derived one
+        if tp is not None and tp != t.get("tipus"):
             t["tipus"] = tp
             nt += 1
-        od = c.get("ordre")               # axis 2: religious order (no derivation, overlay only)
-        if od in VALID_ORDRES:
-            if t.get("ordre") != od:
-                t["ordre"] = od
-                no += 1
-        elif od == "" and t.get("ordre"):  # explicit clear
-            del t["ordre"]
+        od = _norm_multi(c.get("ordre"), VALID_ORDRES)  # axis 2: religious order(s), overlay only
+        if od is not None and t.get("ordre") != od:
+            t["ordre"] = od
             no += 1
     json.dump(top, open(top_path, "w"), ensure_ascii=False, indent=1)
     return ng, nt, no

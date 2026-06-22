@@ -12,7 +12,7 @@ Surfaces likely problems WITHOUT modifying anything:
 Homonyms are real (two Bini, Son Sureda Vell/Nou…), so duplicates are only
 REPORTED, never acted on. Writes a JSON report for later triage.
 """
-import json, os, re, sys, unicodedata
+import json, math, os, re, sys, unicodedata
 from collections import defaultdict
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
@@ -145,6 +145,41 @@ def audit(rows):
                                                 "b": b["uid"], "bnom": b["nom"],
                                                 "px": round(d, 1), "sim": round(sim, 2)})
 
+    # ---- cross-window near-duplicates (same name, very close, DIFFERENT spotter window) ----
+    # The extraction windows don't overlap-read (each spotter box -> exactly one window),
+    # but the interior (B) and coast (C) tracks can both pick up a coastal label. Flag
+    # same-name points <600 m apart that come from a different window so they can be
+    # adjudicated by hand. Legitimate homonyms (the two Bini, Son X Vell/Nou) get flagged
+    # too — that's fine, the human decides; nothing is merged automatically.
+    def _hav(a, b):
+        R = 6371000.0
+        la1, lo1, la2, lo2 = map(math.radians, [a["lat"], a["lon"], b["lat"], b["lon"]])
+        h = math.sin((la2 - la1) / 2) ** 2 + math.cos(la1) * math.cos(la2) * math.sin((lo2 - lo1) / 2) ** 2
+        return 2 * R * math.asin(math.sqrt(h))
+    byq = defaultdict(list)
+    for r in rows:
+        if r["lon"] is not None and r["lat"] is not None and norm(r["nom"]):
+            byq[r["q"]].append(r)
+    dup_hit = {}
+    for qk, group in byq.items():
+        for i in range(len(group)):
+            for j in range(i + 1, len(group)):
+                a, b = group[i], group[j]
+                if a["id"].split("_")[0] == b["id"].split("_")[0]:
+                    continue  # same window -> legitimate distinct neighbours
+                na, nb = norm(a["nom"]), norm(b["nom"])
+                if len(na) < 3 or ratio(na, nb) < 0.85:
+                    continue
+                d = _hav(a, b)
+                if d < 600:
+                    cross = a["id"][0] != b["id"][0]  # interior (B) vs coast (C) track
+                    dup_hit[a["uid"]] = a
+                    dup_hit[b["uid"]] = b
+                    rep["dup_near_pairs"].append({"a": a["uid"], "anom": a["nom"],
+                                                  "b": b["uid"], "bnom": b["nom"],
+                                                  "m": round(d), "cross_track": cross})
+    rep["dup_near"] = list(dup_hit.values())
+
     # ---- spatial outliers ----
     for r in rows:
         if r["lon"] is None or r["lat"] is None:
@@ -161,7 +196,8 @@ def main():
     slim = {"total": len(rows)}
     print(f"\n=== QUALITY AUDIT — {len(rows)} toponyms (trashed excluded) ===\n")
     order = ["empty", "very_short", "short_single", "lower_start", "dangling_edge",
-             "has_digit", "odd_char", "dup_nom", "dup_ngib", "ngib_far", "near_dup", "geo_outlier"]
+             "has_digit", "odd_char", "dup_nom", "dup_ngib", "ngib_far", "near_dup",
+             "dup_near", "geo_outlier"]
     DESC = {
         "empty": "buit (sense lectura)",
         "very_short": "molt curt (≤3) — possible truncat",
@@ -174,6 +210,7 @@ def main():
         "dup_ngib": "mateix NGIB reusat en ≥2 topònims",
         "ngib_far": "NGIB compartit entre fulls + km alt (match probablement erroni)",
         "near_dup": "coords quasi idèntiques + nom semblant (doble detecció)",
+        "dup_near": "mateix nom + <600 m + finestra distinta (possible duplicat de pista)",
         "geo_outlier": "posició fora de Mallorca",
     }
     for k in order:
@@ -193,6 +230,14 @@ def main():
     ex("lower_start", 12, lambda r: f'{r["uid"]:<10} "{r["nom"]}"')
     ex("near_dup", 15, lambda p: f'{p["a"]} "{p["anom"]}"  ≈  {p["b"]} "{p["bnom"]}"  ({p["px"]}px, sim {p["sim"]})')
     ex("dup_ngib", 12, lambda d: f'{d["ngib"]:<22} ×{d["count"]}  ' + " · ".join(f'{i["uid"]}({i["nom"]})' for i in d["items"][:4]))
+    # dup_near pairs (auxiliary list; the flagged entries are in rep["dup_near"])
+    dnp = rep.get("dup_near_pairs", [])
+    if dnp:
+        ncross = sum(1 for p in dnp if p["cross_track"])
+        print(f'\n  · dup_near_pairs (mostra {min(15, len(dnp))}/{len(dnp)}; {ncross} interior↔costa):')
+        for p in sorted(dnp, key=lambda x: (not x["cross_track"], x["m"]))[:15]:
+            tag = "B↔C" if p["cross_track"] else "   "
+            print(f'     {tag} {p["m"]:>4}m  {p["a"]} "{p["anom"]}"  <>  {p["b"]} "{p["bnom"]}"')
     ex("geo_outlier", 10, lambda r: f'{r["uid"]:<10} "{r["nom"]}" lon={r["lon"]} lat={r["lat"]}')
 
     out = f"{ROOT}/data/toponims/mapkurator/quality_report.json"
@@ -202,7 +247,7 @@ def main():
     # errors (cross-sheet shared NGIB at high km). Plain name/NGIB duplicates are still
     # NOT flagged — Mallorcan homonyms are legitimate — but ngib_far is a real mismatch.
     PROB = ["empty", "very_short", "short_single", "lower_start",
-            "dangling_edge", "has_digit", "odd_char", "ngib_far"]
+            "dangling_edge", "has_digit", "odd_char", "ngib_far", "dup_near"]
     flags = defaultdict(list)
     for k in PROB:
         for r in rep.get(k, []):

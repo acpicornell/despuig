@@ -50,15 +50,18 @@ function tableRows(q) {
   const cur = readJSON(f.curation, {});
   const geoById = Object.fromEntries((readJSON(f.toponims, { toponims: [] }).toponims || []).map((t) => [t.id, t]));
   const flags = readJSON(`${ROOT}/data/toponims/mapkurator/quality_flags.json`, {});  // {uid:[codes]} from quality_audit.py
+  const A = (v) => (v == null || v === '') ? [] : (Array.isArray(v) ? v.slice() : [v]);  // tipus/ordre are multi-value
   return matches.map((m) => {
     const c = cur[m.id] || {};
     const g = geoById[m.id] || {};
     const uid = `${q}:${m.id}`;
+    const tip = c.tipus != null ? A(c.tipus) : A(m.tipus), tip0 = A(m.tipus);
+    const ord = c.ordre != null ? A(c.ordre) : A(m.ordre), ord0 = A(m.ordre);
     return {
       id: m.id, q, uid, lon: g.lon ?? null, lat: g.lat ?? null, flags: flags[uid] || [],
       graf: c.graf ?? m.graf, graf0: m.graf, nom: m.nom,
-      tipus: c.tipus ?? m.tipus, tipus0: m.tipus, tipusEdited: c.tipus != null && c.tipus !== m.tipus,
-      ordre: c.ordre ?? m.ordre ?? '', ordre0: m.ordre ?? '', ordreEdited: c.ordre != null && c.ordre !== (m.ordre ?? ''),
+      tipus: tip, tipus0: tip0, tipusEdited: c.tipus != null && tip.join('|') !== tip0.join('|'),
+      ordre: ord, ordre0: ord0, ordreEdited: c.ordre != null && ord.join('|') !== ord0.join('|'),
       decision: m.decision, review: m.review || null, ngib: m.ngib || null,
       municipi: m.municipi || null, km: m.km ?? null, sim: m.sim ?? null,
       cand: (candById[m.id] || []).slice(0, 6),
@@ -101,6 +104,16 @@ const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</ti
  .num{text-align:right;font-variant-numeric:tabular-nums;color:var(--soft)}
  .pendtag{font-size:.7rem;color:#c0530a;font-weight:700}
  .lectlink{cursor:pointer;border-bottom:1px dashed var(--soft)} .lectlink:hover{color:#2f7d4f;border-bottom-color:#2f7d4f}
+ .edcell,.edcellc{cursor:pointer} .edcell .celltxt,.edcellc .celltxt{border-bottom:1px dashed var(--soft)} .edcell:hover .celltxt,.edcellc:hover .celltxt{color:#2f7d4f;border-bottom-color:#2f7d4f}
+ .chkpop{position:absolute;z-index:30;margin-top:.2rem;min-width:14rem;max-height:18rem;overflow:auto;background:#fff;border:1px solid #2f7d4f;border-radius:8px;box-shadow:0 6px 22px rgba(0,0,0,.22);padding:.35rem}
+ .chkpop:focus{outline:none}
+ .chkitems{display:flex;flex-direction:column}
+ .chkpop label{display:flex;align-items:center;gap:.45rem;padding:.2rem .35rem;border-radius:5px;font-size:.9rem;white-space:nowrap;cursor:pointer}
+ .chkpop label:hover{background:#eaf3ec}
+ .chkbar{display:flex;gap:.4rem;margin-top:.35rem;padding-top:.35rem;border-top:1px solid var(--line)}
+ .chkbar button{flex:1;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer;font:inherit;padding:.25rem .4rem}
+ .chkbar .chkdone{color:#2f7d4f;border-color:#2f7d4f}
+ td.edcell{position:relative} .edcellc{position:relative;display:inline-block}
  .warn{color:#c0530a;font-weight:700;cursor:help}
  .gcell{white-space:nowrap} .gcell .warn,.gcell .pendtag{vertical-align:middle}
  tr.disc .warn{opacity:.4}
@@ -181,8 +194,11 @@ function tipSel(id,cur){var opts=TIPS.slice();if(cur&&opts.indexOf(cur)<0)opts.u
 function ordSel(id,cur){var opts=ORDRES.slice();if(cur&&opts.indexOf(cur)<0)opts.unshift(cur);return '<select class=eord data-id="'+id+'"><option value=""'+(cur?'':' selected')+'>—</option>'+opts.map(function(x){return '<option'+(x===cur?' selected':'')+'>'+esc(x)+'</option>';}).join('')+'</select>';}
 var esc=function(s){return (s==null?'':''+s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
 // Etiquetes humanes dels flags de qualitat (quality_audit.py).
-var FLAGLAB={empty:'buit',very_short:'molt curt',short_single:'token curt',lower_start:'minúscula inicial',dangling_edge:'vora penjant',has_digit:'dígits',odd_char:'caràcters/abreviatura',ngib_far:'NGIB llunyà (compartit entre fulls)'};
+var FLAGLAB={empty:'buit',very_short:'molt curt',short_single:'token curt',lower_start:'minúscula inicial',dangling_edge:'vora penjant',has_digit:'dígits',odd_char:'caràcters/abreviatura',ngib_far:'NGIB llunyà (compartit entre fulls)',dup_near:'possible duplicat (mateix nom a prop)'};
 function flagTxt(fs){return (fs||[]).map(function(f){return FLAGLAB[f]||f;}).join(', ');}
+// tipus i ordre són multivalor: normalitza a llista i mostra unit amb " · ".
+function arr(v){ return v==null||v===''?[]:(Array.isArray(v)?v.slice():[v]); }
+function tjoin(v){ return arr(v).join(' · '); }
 var $=function(s){return document.querySelector(s);};
 // Lightbox per ampliar el recorte del gravat (vista Fitxes).
 function openLightbox(src){var lb=$('#lb');lb.querySelector('img').src=src;lb.classList.add('show');}
@@ -211,7 +227,8 @@ async function boot(){
   $('#mCard').onclick=function(){setMode('card');};
   $('#mGeo').onclick=function(){setMode('geo');};
   $('#ford').innerHTML+=ORDRES.map(function(x){return '<option>'+esc(x)+'</option>';}).join('');  // afegeix les ordes al filtre
-  ['#search','#fdec','#ftip','#ford','#frev','#fprob'].forEach(function(s){$(s).addEventListener('input',onFilter);});
+  ['#fdec','#ftip','#ford','#frev','#fprob'].forEach(function(s){$(s).addEventListener('input',onFilter);});
+  var _ft; $('#search').addEventListener('input',function(){ clearTimeout(_ft); _ft=setTimeout(onFilter,160); });  // debounce mentre s'escriu
   $('#lb').onclick=closeLightbox;
   addEventListener('keydown',function(e){ if(e.key==='Escape'&&$('#lb').classList.contains('show')){closeLightbox();} });
   // Ctrl/Cmd+Z desfà l'última acció (taula o fitxes) (I2/B1).
@@ -249,6 +266,7 @@ function sortRows(){ if(!SORT.key)return; var k=SORT.key,d=SORT.dir;
   ROWS.sort(function(a,b){ var x,y;
     if(k==='km'){x=a.km==null?Infinity:a.km;y=b.km==null?Infinity:b.km;}
     else if(k==='decision'){x=DECORD[a.decision]||0;y=DECORD[b.decision]||0;}
+    else if(k==='tipus'||k==='ordre'){x=tjoin(a[k]).toLowerCase();y=tjoin(b[k]).toLowerCase();}
     else{x=(''+(a[k]||'')).toLowerCase();y=(''+(b[k]||'')).toLowerCase();}
     return x<y?-d:x>y?d:0; });
 }
@@ -273,14 +291,14 @@ function rowHTML(r){
   var pend=r.pend?'<span class=pendtag> ·'+r.pend+(r.pendPick?' '+esc(r.pendPick):'')+'</span>':'';
   var rev=r.review==='revisat'?'<span class=rev title="revisat a mà">✓</span>':r.review==='corregit'?'<span class=rev title="corregit a mà">✎</span>':'';
   var chips=(r.cand||[]).slice(0,4).map(function(c){return '<span class=chip data-g="'+esc(c.grafia)+'">'+esc(c.grafia)+'</span>';}).join('');
-  return '<tr data-id="'+esc(u)+'" data-dec="'+r.decision+'" data-tip="'+esc(r.tipus||'')+'" data-ord="'+esc(r.ordre||'')+'" data-rev="'+(r.review||'')+'" data-prob="'+(fs.length?'1':'')+'" '
+  return '<tr data-id="'+esc(u)+'" data-dec="'+r.decision+'" data-tip="|'+esc(arr(r.tipus).join('|'))+'|" data-ord="|'+esc(arr(r.ordre).join('|'))+'|" data-rev="'+(r.review||'')+'" data-prob="'+(fs.length?'1':'')+'" '
     +'data-text="'+esc(((r.graf||'')+' '+(r.nom||'')+' '+(r.ngib||'')+' '+(r.municipi||'')).toLowerCase())+'"'
     +' class="'+(r.pend?'pend ':'')+(r.discarded?'disc ':'')+(SEL[u]?'selrow':'')+'">'
     +'<td class=selcell><input type=checkbox class=selbox data-id="'+esc(u)+'"'+(SEL[u]?' checked':'')+'></td>'
     +'<td class=gcell><input class=eg data-id="'+esc(u)+'" value="'+esc(r.graf)+'">'+warn+(r.grafEdited?' <span class=pendtag>✎</span>':'')+'</td>'
     +'<td><span class=lectlink data-openid="'+esc(u)+'" title="obre la fitxa d\\'edició">'+esc(r.nom)+'</span></td>'
-    +'<td>'+tipSel(u,r.tipus)+(r.tipusEdited?' <span class=pendtag>✎</span>':'')+'</td>'
-    +'<td>'+ordSel(u,r.ordre)+(r.ordreEdited?' <span class=pendtag>✎</span>':'')+'</td>'
+    +'<td class=edcell data-edit=tip data-id="'+esc(u)+'"><span class=celltxt>'+esc(tjoin(r.tipus)||'—')+'</span>'+(r.tipusEdited?' <span class=pendtag>✎</span>':'')+'</td>'
+    +'<td class=edcell data-edit=ord data-id="'+esc(u)+'"><span class=celltxt>'+esc(tjoin(r.ordre)||'—')+'</span>'+(r.ordreEdited?' <span class=pendtag>✎</span>':'')+'</td>'
     +'<td><span class="badge b-'+r.decision+'">'+r.decision+'</span>'+rev+pend+'</td>'
     +'<td><input class=en data-id="'+esc(u)+'" value="'+esc(r.ngib||'')+'" placeholder="—">'+(chips?'<div class=chips>'+chips+'</div>':'')+'</td>'
     +'<td class=meta>'+esc(r.municipi||'')+'</td><td class=num>'+(r.km==null?'':r.km)+'</td>'
@@ -297,6 +315,15 @@ function wireTable(){
   });
   tb.addEventListener('click',function(e){
     if(e.target.classList.contains('lectlink')){ openCardFor(e.target.dataset.openid); return; }
+    var ed=e.target.closest('.edcell');
+    if(ed && !ed.querySelector('.chkpop')){
+      var euid=ed.dataset.id, er=rowOf(euid); if(!er)return; var which=ed.dataset.edit;
+      openChecklist(ed, which==='tip'?TIPS:ORDRES, which==='tip'?arr(er.tipus):arr(er.ordre),
+        function(vals){ if(which==='tip') setTipusM(euid,vals); else setOrdreM(euid,vals); },
+        function(){ refreshRow(euid); });
+      return;
+    }
+    if(ed){ return; }                          // clicks inside the open checklist
     var tr=e.target.closest('tr'); if(!tr)return; var id=tr.dataset.id;
     if(e.target.classList.contains('chip')){ var g=e.target.dataset.g; var en=tr.querySelector('.en'); if(en)en.value=g; pickRow(id,g); }
     else if(e.target.classList.contains('ok')) okRow(id);
@@ -304,12 +331,30 @@ function wireTable(){
     else if(e.target.classList.contains('un')) undoRow(id);
   });
   tb.addEventListener('change',function(e){
-    if(e.target.classList.contains('etip')) setTipus(e.target.dataset.id,e.target.value);
-    else if(e.target.classList.contains('eord')) setOrdre(e.target.dataset.id,e.target.value);
-    else if(e.target.classList.contains('selbox')){ var u=e.target.dataset.id; if(e.target.checked)SEL[u]=1; else delete SEL[u]; var tr=e.target.closest('tr'); if(tr)tr.classList.toggle('selrow',e.target.checked); updateBatchBar(); }
+    if(e.target.classList.contains('selbox')){ var u=e.target.dataset.id; if(e.target.checked)SEL[u]=1; else delete SEL[u]; var tr=e.target.closest('tr'); if(tr)tr.classList.toggle('selrow',e.target.checked); updateBatchBar(); }
   });
   // Desa la lectura en sortir del camp (no només amb Enter): evita perdre edicions.
   tb.addEventListener('focusout',function(e){ if(e.target.classList&&e.target.classList.contains('eg')) saveReading(e.target.dataset.id,e.target.value); });
+}
+// Multi-select checklist, mounted lazily into a cell (table or card). tipus/ordre are
+// multi-value, so a checklist (not a single <select>); also keeps the table light
+// (no thousands of <option> nodes — the picker exists only while editing one cell).
+var CHK=null;
+function openChecklist(anchor, vocab, current, onSave, onCancel){
+  if(CHK) CHK.close(false);
+  anchor.innerHTML='<div class=chkpop tabindex=-1><div class=chkitems>'
+    +vocab.map(function(x){return '<label><input type=checkbox value="'+esc(x)+'"'+(current.indexOf(x)>=0?' checked':'')+'> '+esc(x)+'</label>';}).join('')
+    +'</div><div class=chkbar><button type=button class=chkdone>✓ Desa</button><button type=button class=chkcancel>× cancel·la</button></div></div>';
+  var pop=anchor.querySelector('.chkpop'), done=false;
+  function vals(){ return [].slice.call(pop.querySelectorAll('input:checked')).map(function(i){return i.value;}); }
+  function close(save){ if(done)return; done=true; document.removeEventListener('mousedown',outside,true); CHK=null; if(save)onSave(vals()); else onCancel(); }
+  function outside(ev){ if(!anchor.contains(ev.target)) close(true); }
+  pop.querySelector('.chkdone').onclick=function(){close(true);};
+  pop.querySelector('.chkcancel').onclick=function(){close(false);};
+  pop.addEventListener('keydown',function(e){ if(e.key==='Escape'){e.preventDefault();close(false);} });
+  CHK={close:close};
+  setTimeout(function(){ document.addEventListener('mousedown',outside,true); },0);
+  pop.focus();
 }
 function selVisible(){ var out=[]; document.querySelectorAll('#tb tr').forEach(function(tr){ if(tr.style.display!=='none')out.push(tr.dataset.id); }); return out; }
 function toggleSelAll(on){ selVisible().forEach(function(u){ if(on)SEL[u]=1; else delete SEL[u]; });
@@ -342,21 +387,21 @@ async function batchVerdict(action){ var ids=Object.keys(SEL); if(!ids.length)re
   if(undos.length)pushUndo(async function(){ for(var j=0;j<undos.length;j++)await undos[j](); buildTable(); });
   buildTable(); prog(); toast('✓ '+n+' fila'+(n===1?'':'s'));
 }
-async function batchTipus(v){ if(!v)return; var ids=Object.keys(SEL),n=0,undos=[];
+async function batchTipus(v){ if(!v)return; var vals=[v]; var ids=Object.keys(SEL),n=0,undos=[];
   for(var i=0;i<ids.length;i++){ var r=rowOf(ids[i]); if(!r)continue; var p=snap(r);
-    if(!await post({q:r.q,id:r.id,action:'tipus',tipus:(v===r.tipus0?'':v)})){ toast('⚠ Aturat a '+r.id,'bad'); break; }
-    r.tipus=v; r.tipusEdited=(v!==r.tipus0); undos.push(restorer(ids[i],p)); n++;
+    if(!await post({q:r.q,id:r.id,action:'tipus',tipus:vals})){ toast('⚠ Aturat a '+r.id,'bad'); break; }
+    r.tipus=vals; r.tipusEdited=(vals.join('|')!==arr(r.tipus0).join('|')); undos.push(restorer(ids[i],p)); n++;
   }
   if(undos.length)pushUndo(async function(){ for(var j=0;j<undos.length;j++)await undos[j](); buildTable(); });
   buildTable(); toast('🏷 '+v+' ×'+n);
 }
-async function batchOrdre(v){ if(!v)return; var set=(v==='__clear')?'':v; var ids=Object.keys(SEL),n=0,undos=[];
+async function batchOrdre(v){ if(!v)return; var vals=(v==='__clear')?[]:[v]; var ids=Object.keys(SEL),n=0,undos=[];
   for(var i=0;i<ids.length;i++){ var r=rowOf(ids[i]); if(!r)continue; var p=snap(r);
-    if(!await post({q:r.q,id:r.id,action:'ordre',ordre:(set===r.ordre0?'':set)})){ toast('⚠ Aturat a '+r.id,'bad'); break; }
-    r.ordre=set; r.ordreEdited=((set||'')!==(r.ordre0||'')); undos.push(restorer(ids[i],p)); n++;
+    if(!await post({q:r.q,id:r.id,action:'ordre',ordre:vals})){ toast('⚠ Aturat a '+r.id,'bad'); break; }
+    r.ordre=vals; r.ordreEdited=(vals.join('|')!==arr(r.ordre0).join('|')); undos.push(restorer(ids[i],p)); n++;
   }
   if(undos.length)pushUndo(async function(){ for(var j=0;j<undos.length;j++)await undos[j](); buildTable(); });
-  buildTable(); toast((set?'⛪ '+set:'⛪ (cap orde)')+' ×'+n);
+  buildTable(); toast((vals.length?'⛪ '+v:'⛪ (cap orde)')+' ×'+n);
 }
 function rowOf(uid){ return ROWS.find(function(r){return (r.uid||r.id)===uid;}); }
 function trEl(uid){ return $('#tb tr[data-id="'+CSS.escape(uid)+'"]'); }
@@ -370,13 +415,23 @@ function restorer(uid,p){ return async function(){ var r=rowOf(uid); if(!r)retur
   if(p.grafEdited)body.graf=p.graf;                                  // restore the reading edit (rides along)
   if(!await post(body))return;
   if(!p.grafEdited && r.grafEdited) await post({q:r.q,id:r.id,action:'graf',graf:''});   // was unedited -> clear
-  if(p.tipus!==r.tipus) await post({q:r.q,id:r.id,action:'tipus',tipus:(p.tipus===r.tipus0?'':p.tipus)});
-  if((p.ordre||'')!==(r.ordre||'')) await post({q:r.q,id:r.id,action:'ordre',ordre:((p.ordre||'')===(r.ordre0||'')?'':(p.ordre||''))});
+  if(arr(p.tipus).join('|')!==arr(r.tipus).join('|')) await post({q:r.q,id:r.id,action:'tipus',tipus:arr(p.tipus)});
+  if(arr(p.ordre).join('|')!==arr(r.ordre).join('|')) await post({q:r.q,id:r.id,action:'ordre',ordre:arr(p.ordre)});
   r.pend=p.pend;r.pendPick=p.pendPick;r.review=p.review;r.discarded=p.discarded;r.graf=p.graf;r.grafEdited=p.grafEdited;r.tipus=p.tipus;r.tipusEdited=p.tipusEdited;r.ordre=p.ordre;r.ordreEdited=p.ordreEdited;
   refreshRow(uid); prog(); }; }
 async function tableUndo(){ var fn=UNDO.pop(); if(!fn){toast('(res a desfer)','warn');return;} await fn(); toast('↶ Desfet'); }
-async function setTipus(uid,v){ var r=rowOf(uid); if(!r||v===r.tipus)return; var p=snap(r); if(!await post({q:r.q,id:r.id,action:'tipus',tipus:(v===r.tipus0?'':v)}))return; r.tipus=v; r.tipusEdited=(v!==r.tipus0); refreshRow(uid); pushUndo(restorer(uid,p)); toast('🏷 '+v); }
-async function setOrdre(uid,v){ var r=rowOf(uid); if(!r||(v||'')===(r.ordre||''))return; var p=snap(r); if(!await post({q:r.q,id:r.id,action:'ordre',ordre:(v===r.ordre0?'':v)}))return; r.ordre=v; r.ordreEdited=((v||'')!==(r.ordre0||'')); refreshRow(uid); pushUndo(restorer(uid,p)); toast(v?'⛪ '+v:'⛪ (cap orde)'); }
+async function setTipusM(uid,vals){ var r=rowOf(uid); if(!r){return;} vals=vals||[];
+  if(vals.join('|')!==arr(r.tipus).join('|')){ var p=snap(r);
+    if(!await post({q:r.q,id:r.id,action:'tipus',tipus:vals})){ refreshRow(uid); return; }
+    r.tipus=vals; r.tipusEdited=(vals.join('|')!==arr(r.tipus0).join('|')); pushUndo(restorer(uid,p)); toast(vals.length?'🏷 '+vals.join(' · '):'🏷 (cap tipus)'); }
+  refreshRow(uid);
+}
+async function setOrdreM(uid,vals){ var r=rowOf(uid); if(!r){return;} vals=vals||[];
+  if(vals.join('|')!==arr(r.ordre).join('|')){ var p=snap(r);
+    if(!await post({q:r.q,id:r.id,action:'ordre',ordre:vals})){ refreshRow(uid); return; }
+    r.ordre=vals; r.ordreEdited=(vals.join('|')!==arr(r.ordre0).join('|')); pushUndo(restorer(uid,p)); toast(vals.length?'⛪ '+vals.join(' · '):'⛪ (cap orde)'); }
+  refreshRow(uid);
+}
 async function saveReading(uid,v){ var r=rowOf(uid); v=(v||'').trim(); if(!r||!v||v===r.graf)return; var p=snap(r); if(!await post({q:r.q,id:r.id,action:'graf',graf:v}))return; r.graf=v; r.grafEdited=(v!==r.graf0); flash(uid); refreshRow(uid); pushUndo(restorer(uid,p)); toast('💾 Lectura desada'); }
 async function pickRow(uid,g){ var r=rowOf(uid); if(!r)return; var p=snap(r); if(!await post({q:r.q,id:r.id,action:'pick',grafia:g,graf:ged(uid)}))return; r.pend='pick'; r.pendPick=g; r.review=(g===r.ngib?'revisat':'corregit'); refreshRow(uid); prog(); pushUndo(restorer(uid,p)); toast('✓ '+g); }
 async function noneRow(uid){ var r=rowOf(uid); if(!r)return; var p=snap(r); if(!await post({q:r.q,id:r.id,action:'none',graf:ged(uid)}))return; r.pend='none'; r.pendPick=null; r.ngib=null; r.review=null; refreshRow(uid); prog(); pushUndo(restorer(uid,p)); toast('Cap match','warn'); }
@@ -390,7 +445,7 @@ function refreshRow(uid){ var tr=trEl(uid); if(!tr)return; var r=rowOf(uid); var
 function flash(id){ var tr=trEl(id); if(tr){tr.style.background='#eaf3ec';setTimeout(function(){tr.style.background='';},500);} }
 function fillTipFilter(){
   var sel=$('#ftip'); if(!sel)return; var cur=sel.value;
-  var present={}; ROWS.forEach(function(r){if(r.tipus)present[r.tipus]=1;});
+  var present={}; ROWS.forEach(function(r){arr(r.tipus).forEach(function(x){present[x]=1;});});
   // ordre: les categories de la llegenda primer (TIPS), després qualsevol altra present
   var ordered=TIPS.filter(function(x){return present[x];})
     .concat(Object.keys(present).filter(function(x){return TIPS.indexOf(x)<0;}).sort());
@@ -401,11 +456,11 @@ function applyFilter(){
   if(MODE!=='table')return; var t=($('#search').value||'').trim().toLowerCase(),d=$('#fdec').value,tp=$('#ftip').value,fo=$('#ford').value,rv=$('#frev').value,fp=$('#fprob').value;
   var rows=document.querySelectorAll('#tb tr'),shown=0;
   rows.forEach(function(tr){
-    var rev=tr.dataset.rev, prob=tr.dataset.prob==='1', ord=tr.dataset.ord;
+    var rev=tr.dataset.rev, prob=tr.dataset.prob==='1', ord=tr.dataset.ord, hasord=ord!=='||';
     var rok=!rv||(rv==='any'?!!rev:rv==='none'?!rev:rev===rv);
     var pok=!fp||(fp==='prob'?prob:!prob);
-    var ook=!fo||(fo==='__any'?!!ord:fo==='__none'?!ord:ord===fo);
-    var ok=(!d||tr.dataset.dec===d)&&(!tp||tr.dataset.tip===tp)&&ook&&rok&&pok&&(!t||tr.dataset.text.indexOf(t)>=0);
+    var ook=!fo||(fo==='__any'?hasord:fo==='__none'?!hasord:ord.indexOf('|'+fo+'|')>=0);
+    var ok=(!d||tr.dataset.dec===d)&&(!tp||tr.dataset.tip.indexOf('|'+tp+'|')>=0)&&ook&&rok&&pok&&(!t||tr.dataset.text.indexOf(t)>=0);
     tr.style.display=ok?'':'none'; if(ok)shown++;
   });
   prog(shown);
@@ -450,11 +505,11 @@ function renderGeo(){
   var t=($('#search').value||'').trim().toLowerCase(),d=$('#fdec').value,tp=$('#ftip').value,fo=$('#ford').value,rv=$('#frev').value,fp=$('#fprob').value,shown=0;
   ROWS.forEach(function(r){
     if(r.lat==null||r.lon==null||r.discarded)return;
-    var rev=r.review||'',prob=(r.flags&&r.flags.length)>0,ord=r.ordre||'';
+    var rev=r.review||'',prob=(r.flags&&r.flags.length)>0,oa=arr(r.ordre);
     var rok=!rv||(rv==='any'?!!rev:rv==='none'?!rev:rev===rv);
     var pok=!fp||(fp==='prob'?prob:!prob);
-    var ook=!fo||(fo==='__any'?!!ord:fo==='__none'?!ord:ord===fo);
-    var ok=(!d||r.decision===d)&&(!tp||(r.tipus||'')===tp)&&ook&&rok&&pok&&(!t||((r.graf||'')+' '+(r.nom||'')+' '+(r.ngib||'')+' '+(r.municipi||'')).toLowerCase().indexOf(t)>=0);
+    var ook=!fo||(fo==='__any'?oa.length>0:fo==='__none'?oa.length===0:oa.indexOf(fo)>=0);
+    var ok=(!d||r.decision===d)&&(!tp||arr(r.tipus).indexOf(tp)>=0)&&ook&&rok&&pok&&(!t||((r.graf||'')+' '+(r.nom||'')+' '+(r.ngib||'')+' '+(r.municipi||'')).toLowerCase().indexOf(t)>=0);
     if(!ok)return;
     var mk=L.circleMarker([r.lat,r.lon],{radius:prob?5:4,weight:(prob||rev)?2:1,color:prob?'#c0530a':(rev?'#1d6b2a':'rgba(40,30,20,.55)'),fillColor:GEOC[r.decision]||'#888',fillOpacity:.9});
     var revTxt=rev==='corregit'?' · ✎ corregit':rev?' · ✓ revisat':'';
@@ -498,8 +553,8 @@ function cbuild(){
   queue=DATA.filter(function(d){
     if(d.id in STATE.reviewed) return false;            // la cua = encara no revisats
     if(f && d.decision!==f) return false;
-    if(tp && ((STATE.tipus&&STATE.tipus[d.id])||d.tipus||'')!==tp) return false;
-    if(fo){ var od=(STATE.ordre&&STATE.ordre[d.id])||d.ordre||''; if(fo==='__any'?!od:fo==='__none'?!!od:od!==fo) return false; }
+    if(tp && arr((STATE.tipus&&STATE.tipus[d.id])||d.tipus).indexOf(tp)<0) return false;
+    if(fo){ var oa=arr((STATE.ordre&&STATE.ordre[d.id])||d.ordre); if(fo==='__any'?!oa.length:fo==='__none'?!!oa.length:oa.indexOf(fo)<0) return false; }
     if(fp){ var prob=(d.flags&&d.flags.length)>0; if(fp==='prob'?!prob:prob) return false; }
     if(t){ var hay=((d.graf||'')+' '+(d.nom||'')+' '+(d.ngib||'')+' '+(d.municipi||'')).toLowerCase(); if(hay.indexOf(t)<0) return false; }
     return true;
@@ -521,10 +576,10 @@ function crender(){
   if(!queue.length){app.innerHTML='<div class=done>✓ Res més a la cua amb aquest filtre.</div>';clearMap();return;}
   var d=queue[ci];
   var cands=d.candidates.map(function(c,n){var rec=(c.grafia===d.ngib)?' rec':'';return '<button class="cand'+rec+'" data-g="'+esc(c.grafia)+'"><kbd>'+(n+1)+'</kbd><b>'+esc(c.grafia)+'</b><div class=m>'+esc(c.municipi||'?')+' · '+c.km+'km · sim '+c.sim+'</div></button>';}).join('');
-  var etip=(STATE.tipus&&STATE.tipus[d.id])||d.tipus;
-  var eord=(STATE.ordre&&STATE.ordre[d.id])||d.ordre||'';
+  var etip=arr((STATE.tipus&&STATE.tipus[d.id])||d.tipus);
+  var eord=arr((STATE.ordre&&STATE.ordre[d.id])||d.ordre);
   app.innerHTML='<div><img class=crop src="'+api('/crop/'+d.id+'.jpg')+'" onclick="openLightbox(this.src)" title="clica per ampliar"></div><div>'
-    +'<div class=meta><span class="badge b-'+d.decision+'">'+d.decision+'</span> · '+tipSel(d.id,etip)+' · ⛪ '+ordSel(d.id,eord)+' · <code>'+d.id+'</code>'+(d.flags&&d.flags.length?' · <span class=warn title="'+esc(flagTxt(d.flags))+'">⚠ '+esc(flagTxt(d.flags))+'</span>':'')+'</div>'
+    +'<div class=meta><span class="badge b-'+d.decision+'">'+d.decision+'</span> · tipus <span class="edcellc" data-edit=tip><span class=celltxt>'+esc(tjoin(etip)||'—')+'</span></span> · ⛪ <span class="edcellc" data-edit=ord><span class=celltxt>'+esc(tjoin(eord)||'—')+'</span></span> · <code>'+d.id+'</code>'+(d.flags&&d.flags.length?' · <span class=warn title="'+esc(flagTxt(d.flags))+'">⚠ '+esc(flagTxt(d.flags))+'</span>':'')+'</div>'
     +'<div class=act><label style="flex:0 0 auto;color:var(--soft);align-self:center">Lectura</label>'
     +'<input id=cgraf value="'+esc((STATE.graf&&STATE.graf[d.id])||d.graf)+'" style="flex:3;font-weight:600">'
     +'<button onclick="csave()">💾</button></div>'
@@ -535,12 +590,16 @@ function crender(){
     +'<button class=trash onclick="ctrash()"><kbd>D</kbd> 🗑</button><button class=skip onclick="cskip()"><kbd>S</kbd> Saltar</button>'
     +'<button class=undo onclick="cundo()">↶ <kbd>U</kbd></button></div></div>';
   app.querySelectorAll('.cand').forEach(function(b){b.onclick=function(){cpick(b.dataset.g,b);};});
-  var et=app.querySelector('.etip'); if(et)et.onchange=function(){ctip(d.id,et.value,d.tipus);};
-  var eo=app.querySelector('.eord'); if(eo)eo.onchange=function(){cord(d.id,eo.value,d.ordre||'');};
+  app.querySelectorAll('.edcellc').forEach(function(sp){ sp.onclick=function(){
+    if(sp.querySelector('.chkpop'))return; var which=sp.dataset.edit;
+    openChecklist(sp, which==='tip'?TIPS:ORDRES, which==='tip'?etip:eord,
+      function(vals){ if(which==='tip') ctipM(d.id,vals); else cordM(d.id,vals); },
+      function(){ crender(); });
+  };});
   cmap(d);
 }
-async function ctip(id,v,base){ if(!await post({id:id,action:'tipus',tipus:(v===base?'':v)}))return; STATE.tipus=STATE.tipus||{}; if(v===base)delete STATE.tipus[id]; else STATE.tipus[id]=v; toast('🏷 '+v); }
-async function cord(id,v,base){ if(!await post({id:id,action:'ordre',ordre:(v===base?'':v)}))return; STATE.ordre=STATE.ordre||{}; if(!v||v===base)delete STATE.ordre[id]; else STATE.ordre[id]=v; toast(v?'⛪ '+v:'⛪ (cap orde)'); }
+async function ctipM(id,vals){ vals=vals||[]; if(!await post({id:id,action:'tipus',tipus:vals})){crender();return;} STATE.tipus=STATE.tipus||{}; if(vals.length)STATE.tipus[id]=vals; else delete STATE.tipus[id]; toast(vals.length?'🏷 '+vals.join(' · '):'🏷 (cap tipus)'); crender(); }
+async function cordM(id,vals){ vals=vals||[]; if(!await post({id:id,action:'ordre',ordre:vals})){crender();return;} STATE.ordre=STATE.ordre||{}; if(vals.length)STATE.ordre[id]=vals; else delete STATE.ordre[id]; toast(vals.length?'⛪ '+vals.join(' · '):'⛪ (cap orde)'); crender(); }
 function toast(msg,cls){var t=$('#toast');t.className='';if(cls)t.classList.add(cls);t.textContent=msg;void t.offsetWidth;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove('show');},1300);}
 function hit(sel){var b=document.querySelector('#app '+sel);if(b)b.classList.add('hit');}
 function cgrafv(){var el=$('#cgraf'),d=queue[ci];if(!el||!d)return null;var v=el.value.trim();return (v&&v!==d.graf)?v:null;}
@@ -626,8 +685,8 @@ const server = http.createServer((req, res) => {
         const rec = cur[id] || (cur[id] = {});
         if (graf) rec.graf = graf;                                 // reading edits ride along any action
         if (action === 'graf') { if (!graf) delete rec.graf; }     // explicit empty graf -> clear the reading edit (for undo)
-        else if (action === 'ordre') { if (ordre) rec.ordre = ordre; else delete rec.ordre; }  // religious order (axis 2)
-        else if (action === 'tipus') { if (tipus) rec.tipus = tipus; else delete rec.tipus; }
+        else if (action === 'ordre') { const a = Array.isArray(ordre) ? ordre : (ordre ? [ordre] : []); if (a.length) rec.ordre = a; else delete rec.ordre; }  // axis 2, multi-value
+        else if (action === 'tipus') { const a = Array.isArray(tipus) ? tipus : (tipus ? [tipus] : []); if (a.length) rec.tipus = a; else delete rec.tipus; }  // multi-value
         else if (action === 'pick' && grafia) { rec.ngib = grafia; rec.verdict = 'pick'; }
         else if (action === 'none') { rec.verdict = 'none'; delete rec.ngib; }  // "cap match" also clears any pick
         else if (action === 'ok') rec.verdict = 'ok';
