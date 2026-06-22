@@ -38,7 +38,7 @@
   "verdict": "pick"
  },
  "B02_13": {
-  "graf": "Sta. Ana",
+  "graf": "S.ta Ana",
   "verdict": "none"
  },
  "B02_14": {
@@ -102,7 +102,8 @@
  },
  "B03_20": {
   "ngib": "Església del Roser Vell",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "N. S. del Roser"
  },
  "B03_22": {
   "verdict": "none"
@@ -146,7 +147,8 @@
  "B04_16": {
   "graf": "N. S. del Roser",
   "ngib": "Església de la Mare de Déu del Roser",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Oratorio publico"
  },
  "B04_17": {
   "verdict": "none"
@@ -404,7 +406,8 @@
  },
  "B08_18": {
   "ngib": "sa Pobla",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Villa Parroquial"
  },
  "B08_19": {
   "verdict": "trash"
@@ -415,7 +418,8 @@
  },
  "B08_20": {
   "ngib": "Cases de sa Llebre",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Casa de campo ó Predio"
  },
  "B08_27": {
   "verdict": "none"
@@ -484,7 +488,7 @@
   "verdict": "none"
  },
  "B10_9": {
-  "graf": "Sta. Magdalena",
+  "graf": "S.ta Magdalena",
   "ngib": "Santa Magdalena",
   "verdict": "pick"
  },
@@ -587,7 +591,8 @@
  },
  "B13_23": {
   "ngib": "Talaia Vella",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Atalaya ó Torre"
  },
  "B13_24": {
   "verdict": "none"
@@ -609,7 +614,8 @@
  },
  "B13_8": {
   "ngib": "Puig de Capdepera",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Casa de campo ó Predio"
  },
  "B14_12": {
   "graf": "T. NE=BORJA",
@@ -675,7 +681,8 @@
  "B15_31": {
   "graf": "Ariany Marq.",
   "ngib": "Ariany",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Lugar grande"
  },
  "B15_9": {
   "graf": "Câ Valeri",
@@ -813,7 +820,8 @@
  },
  "B19_13": {
   "ngib": "Costitx",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Lugar grande"
  },
  "B19_14": {
   "graf": "Binialmara",
@@ -950,7 +958,7 @@
   "verdict": "pick"
  },
  "C02_19": {
-  "graf": "d. l. Ferredura",
+  "graf": "Pûta d. l. Ferredura",
   "ngib": "sa Ferradura",
   "verdict": "pick"
  },
@@ -1721,7 +1729,8 @@
   "verdict": "ok"
  },
  "B08_16": {
-  "verdict": "ok"
+  "verdict": "ok",
+  "graf": "Refal"
  },
  "B08_17": {
   "verdict": "ok"
@@ -1908,7 +1917,7 @@
   "verdict": "pick"
  },
  "B11_18": {
-  "tipus": "Villa Parroquial",
+  "tipus": "Lugar grande",
   "ngib": "Llubí",
   "verdict": "pick"
  },
@@ -2037,7 +2046,8 @@
  },
  "B13_9": {
   "ngib": "Capdepera",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Lugar grande"
  },
  "B13_10": {
   "ngib": "na Ferradura",
@@ -2195,7 +2205,8 @@
  },
  "B15_8": {
   "ngib": "sa Capella",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Casa de campo ó Predio"
  },
  "B15_11": {
   "ngib": "Binicalbellet",
@@ -2791,7 +2802,8 @@
  },
  "C03_23": {
   "ngib": "es Caló",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "altre"
  },
  "C03_25": {
   "ngib": "Cala Mitjana",

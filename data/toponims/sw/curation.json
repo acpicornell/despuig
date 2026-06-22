@@ -339,7 +339,7 @@
   "verdict": "ok"
  },
  "B04_1": {
-  "tipus": "Villa Parroquial",
+  "tipus": "Lugar grande",
   "graf": "Sta. Eugeni",
   "ngib": "Santa Eugènia",
   "verdict": "pick"
@@ -996,7 +996,8 @@
  },
  "B09_16": {
   "tipus": "altre",
-  "verdict": "none"
+  "verdict": "none",
+  "graf": "Pas del garrover"
  },
  "B09_17": {
   "verdict": "ok"
@@ -1035,7 +1036,7 @@
   "verdict": "pick"
  },
  "B10_4": {
-  "graf": "Côva",
+  "graf": "Cova",
   "verdict": "none"
  },
  "B10_5": {
@@ -1307,7 +1308,8 @@
   "verdict": "trash"
  },
  "B13_3": {
-  "verdict": "ok"
+  "verdict": "ok",
+  "tipus": "Lugar grande"
  },
  "B13_4": {
   "ngib": "Son Reus de Randa",
@@ -1331,7 +1333,7 @@
  },
  "B13_10": {
   "tipus": "Oratorio publico",
-  "graf": "Na. Sa. de Gracia",
+  "graf": "Nª. Sª. de Gracia",
   "ngib": "Santuari de Gràcia",
   "verdict": "pick"
  },
@@ -1362,7 +1364,8 @@
   "verdict": "pick"
  },
  "B13_19": {
-  "verdict": "ok"
+  "verdict": "ok",
+  "tipus": "Villa Parroquial"
  },
  "B13_20": {
   "verdict": "ok"

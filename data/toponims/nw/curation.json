@@ -41,7 +41,8 @@
   "verdict": "pick"
  },
  "B02_11": {
-  "verdict": "none"
+  "verdict": "ok",
+  "tipus": "altre"
  },
  "B02_12": {
   "ngib": "Port de Sóller",
@@ -91,7 +92,8 @@
  },
  "B02_7": {
   "ngib": "Santa Catalina",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "S.ta Cathª"
  },
  "B03_11": {
   "graf": "Casteio",
@@ -100,7 +102,8 @@
  "B03_12": {
   "graf": "Heretát",
   "ngib": "s'Heretat",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Casa de campo ó Predio"
  },
  "B03_14": {
   "graf": "Costa dê Flasada",
@@ -188,7 +191,8 @@
  },
  "B04_24": {
   "ngib": "Creu de Dalt",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "altre"
  },
  "B04_25": {
   "graf": "Sô Gual",
@@ -222,11 +226,13 @@
  "B04_35": {
   "graf": "Mirabó",
   "ngib": "es Mirabò",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Casa de campo ó Predio"
  },
  "B04_5": {
   "ngib": "Ermita de la Trinitat",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Oratorio publico"
  },
  "B04_6": {
   "graf": "Sô Gallart",
@@ -286,7 +292,8 @@
  },
  "B06_10": {
   "ngib": "Puig de Santa Llúcia",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "S.ta Lucia"
  },
  "B06_14": {
   "ngib": "Conilla de Dalt",
@@ -402,7 +409,8 @@
  "B10_13": {
   "graf": "T. DE SANSELLAS",
   "ngib": "Torrent de Sencelles",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Torrente"
  },
  "B10_19": {
   "graf": "Sô Sâ Juan",
@@ -918,7 +926,8 @@
  },
  "B01_36": {
   "ngib": "Caimari",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Lugar grande"
  },
  "B01_38": {
   "ngib": "Binimorat",
@@ -1101,7 +1110,8 @@
  },
  "B04_7": {
   "ngib": "es Molí",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "altre"
  },
  "B04_9": {
   "ngib": "Son Rutlan",
@@ -1301,7 +1311,8 @@
  },
  "B06_7": {
   "ngib": "sa Teulera",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Casa de campo ó Predio"
  },
  "B06_9": {
   "ngib": "sa Font Garrover",
@@ -1579,7 +1590,8 @@
  },
  "B09_26": {
   "ngib": "Terrades",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Casa de campo ó Predio"
  },
  "B09_27": {
   "ngib": "es Torrent Fals",
@@ -1811,7 +1823,8 @@
  },
  "B12_12": {
   "ngib": "Estellencs",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Lugar grande"
  },
  "B12_13": {
   "verdict": "none"
@@ -1886,7 +1899,8 @@
   "verdict": "pick"
  },
  "B13_5": {
-  "verdict": "none"
+  "verdict": "ok",
+  "tipus": "Casa de campo ó Predio"
  },
  "B13_6": {
   "ngib": "Son Balaguer",
@@ -1917,7 +1931,8 @@
  },
  "B13_13": {
   "ngib": "l'Arca",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Casa de campo ó Predio"
  },
  "B13_14": {
   "ngib": "Son Noguera",
@@ -2052,7 +2067,8 @@
  },
  "B14_19": {
   "ngib": "s'Esgleieta",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Lugar chico"
  },
  "B14_20": {
   "ngib": "es Revellar",
@@ -2122,7 +2138,8 @@
   "verdict": "none"
  },
  "B14_45": {
-  "verdict": "none"
+  "verdict": "ok",
+  "tipus": "Lugar grande"
  },
  "B14_46": {
   "tipus": "Muchas casas separadas ó Establecimiento",

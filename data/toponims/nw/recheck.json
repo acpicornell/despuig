@@ -1,5 +1,53 @@
 [
  {
+  "id": "B02_11",
+  "graf": "Fossar",
+  "nom": "Fossar",
+  "tipus": "altre",
+  "subtile": "",
+  "x": 6750,
+  "y": 3718,
+  "decision": "sense",
+  "candidates": [
+   {
+    "grafia": "es Fossaret",
+    "municipi": "Valldemossa",
+    "km": 10.54,
+    "sim": 0.86
+   },
+   {
+    "grafia": "sa Tossa",
+    "municipi": "Alaró",
+    "km": 10.71,
+    "sim": 0.73
+   },
+   {
+    "grafia": "es Tossal",
+    "municipi": "Valldemossa",
+    "km": 11.02,
+    "sim": 0.67
+   },
+   {
+    "grafia": "ses Fonts",
+    "municipi": "Fornalutx",
+    "km": 4.8,
+    "sim": 0.55
+   },
+   {
+    "grafia": "Far des Bufador",
+    "municipi": "Sóller",
+    "km": 0.56,
+    "sim": 0.47
+   },
+   {
+    "grafia": "Alconàsser",
+    "municipi": "Sóller",
+    "km": 2.43,
+    "sim": 0.5
+   }
+  ]
+ },
+ {
   "id": "C01_4",
   "graf": "Tor. de Burdils",
   "nom": "Tor. de Burdils",

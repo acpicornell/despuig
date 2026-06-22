@@ -104,7 +104,8 @@
  },
  "B03_9": {
   "ngib": "Sant Llorenç des Cardassar",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Lugar grande"
  },
  "B04_1": {
   "ngib": "Son Joan Jaume",
@@ -231,7 +232,8 @@
  },
  "B08_12": {
   "ngib": "Sant Martí",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Casa de campo ó Predio"
  },
  "B08_20": {
   "verdict": "none"
@@ -266,7 +268,8 @@
  "B08_9": {
   "graf": "Vila Franca Marq.",
   "ngib": "Vilafranca de Bonany",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Lugar grande"
  },
  "B09_17": {
   "ngib": "Alanzell",
@@ -331,7 +334,8 @@
  },
  "B11_25": {
   "ngib": "Església de la Santa Creu",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "La Sta. Creu"
  },
  "B11_26": {
   "ngib": "Son Pere Ponç",
@@ -563,7 +567,8 @@
  },
  "B19_34": {
   "ngib": "Santuari de la Mare de Déu de la Consolació",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "N.ª S.ª de Côsolacio"
  },
  "B19_39": {
   "graf": "La Pûta",
@@ -1171,11 +1176,13 @@
  },
  "B06_18": {
   "ngib": "Consolació",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "N.ª S.ª de Côsolacion"
  },
  "B06_19": {
   "ngib": "Bonany",
-  "verdict": "pick"
+  "verdict": "ok",
+  "graf": "N.ª S.ª de Bonañy"
  },
  "B07_1": {
   "verdict": "ok"
@@ -1257,7 +1264,8 @@
  "B07_30": {
   "tipus": "Oratorio publico",
   "ngib": "Puig de Sant Miquel",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "Puig de S. Miquel"
  },
  "B07_31": {
   "ngib": "Son Bages",
@@ -2529,7 +2537,8 @@
  },
  "C01_6": {
   "ngib": "Punta de s'Illot",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Punta"
  },
  "C01_8": {
   "graf": "Castellót dê Peretó",
