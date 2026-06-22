@@ -15,15 +15,15 @@ const QNOM = { nw: 'Nord-oest', ne: 'Nord-est', se: 'Sud-est', sw: 'Sud-oest' };
 
 const decOrder = ['confirmat', 'probable', 'suggerit', 'posicional', 'sense'].filter((d) => data.toponims.some((r) => r.decision === d));
 const tipOrder = [
-  ...Object.keys(TIP).filter((t) => data.toponims.some((r) => r.tipus === t)),
-  ...[...new Set(data.toponims.map((r) => r.tipus))].filter((t) => t && !(t in TIP)).sort((a, b) => a.localeCompare(b, 'ca')),
+  ...Object.keys(TIP).filter((t) => data.toponims.some((r) => (r.tipus || []).includes(t))),
+  ...[...new Set(data.toponims.flatMap((r) => r.tipus || []))].filter((t) => t && !(t in TIP)).sort((a, b) => a.localeCompare(b, 'ca')),
 ];
 const qOrder = data.quadrants;
 
 // Payload compacte: [lon, lat, decision, tipus, q, graf, nom, ngib, municipi, review]
 const pts = data.toponims
   .filter((t) => t.lon != null && t.lat != null)
-  .map((t) => [+t.lon.toFixed(5), +t.lat.toFixed(5), t.decision, t.tipus, t.q, t.graf, t.nom, t.ngib || '', t.municipi || '', t.review || '']);
+  .map((t) => [+t.lon.toFixed(5), +t.lat.toFixed(5), t.decision, (t.tipus || []).join('|'), t.q, t.graf, t.nom, t.ngib || '', t.municipi || '', t.review || '']);
 const colors = Object.fromEntries(Object.entries(DEC).map(([k, v]) => [k, v.color]));
 ---
 <Base title="Mapa" description="Mapa interactiu dels topònims del Despuig (1785) sobre cartografia actual: filtra per estat, tipus i full.">
@@ -81,7 +81,7 @@ const colors = Object.fromEntries(Object.entries(DEC).map(([k, v]) => [k, v.colo
         for (const p of pts) {
           const [lon, lat, dec, tip, qd, graf, nom, ngib, mun, rev] = p;
           if (d && dec !== d) continue;
-          if (tp && tip !== tp) continue;
+          if (tp && !tip.split('|').includes(tp)) continue;
           if (qq && qd !== qq) continue;
           if (rv === 'si' && !rev) continue;
           if (rv === 'no' && rev) continue;

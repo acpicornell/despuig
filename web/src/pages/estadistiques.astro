@@ -24,8 +24,8 @@ const total = rows.length;
 const decStats = Object.keys(DEC)
   .map((k) => ({ k, ...DEC[k], n: topo.comptador.perDecision[k] || 0 }))
   .filter((d) => d.n > 0);
-const tipStats = [...new Set(rows.map((r) => r.tipus))]
-  .map((k) => ({ k, label: TIP[k] ?? k, n: rows.filter((r) => r.tipus === k).length }))
+const tipStats = [...new Set(rows.flatMap((r) => r.tipus || []))]
+  .map((k) => ({ k, label: TIP[k] ?? k, n: rows.filter((r) => (r.tipus || []).includes(k)).length }))
   .filter((t) => t.k && t.n > 0)
   .sort((a, b) => b.n - a.n);
 const qStats = topo.quadrants.map((q) => ({ q, label: QNOM[q] ?? q, n: topo.comptador.perQuadrant[q] || 0 }));

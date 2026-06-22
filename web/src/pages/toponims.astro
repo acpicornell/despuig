@@ -27,8 +27,8 @@ const decOrder = ['confirmat', 'probable', 'suggerit', 'posicional', 'sense'].fi
 // known TIP labels first, then any other tipus present in the data (the literal
 // 1785 legend categories: Casa de campo ó Predio, Puerto, Punta, Atalaya ó Torre…).
 const tipOrder = [
-  ...Object.keys(TIP).filter((t) => rows.some((r) => r.tipus === t)),
-  ...[...new Set(rows.map((r) => r.tipus))].filter((t) => t && !(t in TIP)).sort((a, b) => a.localeCompare(b, 'ca')),
+  ...Object.keys(TIP).filter((t) => rows.some((r) => (r.tipus || []).includes(t))),
+  ...[...new Set(rows.flatMap((r) => r.tipus || []))].filter((t) => t && !(t in TIP)).sort((a, b) => a.localeCompare(b, 'ca')),
 ];
 const qOrder = data.quadrants;
 const hasReview = rows.some((r) => r.review);
@@ -79,14 +79,14 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
         <tbody id="rows">
           {rows.map((r) => (
             <tr class="row" tabindex="0" role="button" aria-label={`Veure ${r.graf} al gravat`}
-                data-dec={r.decision} data-tip={r.tipus} data-q={r.q} data-rev={r.review ?? ''}
+                data-dec={r.decision} data-tip={(r.tipus || []).join('|')} data-q={r.q} data-rev={r.review ?? ''}
                 data-x={r.x} data-y={r.y} data-lon={r.lon ?? ''} data-lat={r.lat ?? ''}
                 data-graf={r.graf} data-nom={r.nom ?? ''} data-ngib={r.ngib ?? ''} data-mun={r.municipi ?? ''}
                 data-km={r.km ?? ''} data-sim={r.sim ?? ''} data-dubte={r.dubte ? '1' : ''}
                 data-text={`${r.graf} ${r.nom} ${r.ngib ?? ''} ${r.municipi ?? ''}`.toLowerCase()}>
               <td class="graf">{r.graf}{r.dubte && <span class="dubte" title="lectura dubtosa">?</span>}</td>
               <td>{r.nom}</td>
-              <td class="muted">{TIP[r.tipus] ?? r.tipus}</td>
+              <td class="muted">{(r.tipus || []).map((t) => TIP[t] ?? t).join(' · ')}</td>
               <td>
                 <span class="badge" style={`--c:${(DEC[r.decision] ?? {}).color ?? '#888'}`}>{(DEC[r.decision] ?? {}).label ?? r.decision}</span>
                 {r.review && <span class="rev" title={REV[r.review]?.label ?? r.review}>{REV[r.review]?.icon ?? '✓'}</span>}
@@ -156,7 +156,7 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
         if (d.rev) { const r = REV[d.rev] || { label: d.rev, icon: '✓' }; badges += ` <span class="revb">${r.icon} ${esc(r.label)}</span>`; }
         document.getElementById('fxbadges').innerHTML = badges;
         const meta = [];
-        meta.push(['Tipus', TIP[d.tip] ?? d.tip]);
+        meta.push(['Tipus', (d.tip || '').split('|').filter(Boolean).map((t) => TIP[t] ?? t).join(' · ')]);
         if (d.ngib) meta.push(['NGIB', d.ngib]);
         if (d.mun) meta.push(['Municipi', d.mun]);
         if (d.km) meta.push(['Distància al NGIB', (+d.km).toFixed(1) + ' km']);
@@ -223,7 +223,7 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
           const revOk = !rv || (rv === 'any' ? !!rev : rv === 'none' ? !rev : rev === rv);
           const ok =
             (!d || tr.dataset.dec === d) &&
-            (!tp || tr.dataset.tip === tp) &&
+            (!tp || tr.dataset.tip.split('|').includes(tp)) &&
             (!qq || tr.dataset.q === qq) &&
             revOk &&
             (!t || tr.dataset.text.includes(t));

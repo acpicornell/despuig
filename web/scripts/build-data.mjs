@@ -57,7 +57,8 @@ for (const q of QUADRANTS) {
       id: t.id,
       nom: t.nom,
       graf: t.graf,
-      tipus: t.tipus,
+      tipus: Array.isArray(t.tipus) ? t.tipus : (t.tipus ? [t.tipus] : []),   // multi-value
+      ordre: Array.isArray(t.ordre) ? t.ordre : (t.ordre ? [t.ordre] : []),   // religious order(s)
       subtile: t.subtile ?? '',
       dubte: !!t.dubte,
       x: t.x,
