@@ -287,7 +287,11 @@
   "verdict": "pick"
  },
  "B10_10": {
-  "verdict": "none"
+  "verdict": "none",
+  "graf": "Puig d.Sta. Luciá",
+  "tipus": [
+   "Oratorio publico"
+  ]
  },
  "B10_12": {
   "ngib": "Son Coletes",
@@ -789,7 +793,10 @@
  "B02_19": {
   "tipus": "Villa Parroquial",
   "ngib": "Petra",
-  "verdict": "pick"
+  "verdict": "pick",
+  "ordre": [
+   "Franciscos"
+  ]
  },
  "B02_22": {
   "ngib": "Rotana",
@@ -1454,7 +1461,8 @@
  },
  "B09_11": {
   "ngib": "Alcudiarrom",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "Alcudia=rom"
  },
  "B09_12": {
   "ngib": "es Castellot Vell",
@@ -1495,7 +1503,10 @@
  "B10_1": {
   "tipus": "Villa Parroquial",
   "ngib": "Manacor",
-  "verdict": "pick"
+  "verdict": "pick",
+  "ordre": [
+   "Dominicos"
+  ]
  },
  "B10_4": {
   "ngib": "Son Galiana Vell",
@@ -1802,7 +1813,10 @@
   "graf": "Nª Sª de Môte=Sion",
   "ngib": "Monti-sion",
   "verdict": "pick",
-  "tipus": "Oratorio publico"
+  "tipus": [
+   "Oratorio publico",
+   "Casa de estudios"
+  ]
  },
  "B14_3": {
   "ngib": "Son Gornals",
@@ -1951,7 +1965,10 @@
  "B15_26": {
   "tipus": "Villa Parroquial",
   "ngib": "Campos",
-  "verdict": "pick"
+  "verdict": "pick",
+  "ordre": [
+   "Minimos"
+  ]
  },
  "B15_27": {
   "ngib": "es Revellar",
@@ -1996,7 +2013,10 @@
  "B16_6": {
   "tipus": "Villa Parroquial",
   "ngib": "Felanitx",
-  "verdict": "pick"
+  "verdict": "pick",
+  "ordre": [
+   "Agustinos"
+  ]
  },
  "B16_7": {
   "ngib": "Son Mas",

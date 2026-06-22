@@ -1367,7 +1367,10 @@
  },
  "B13_19": {
   "verdict": "ok",
-  "tipus": "Villa Parroquial"
+  "tipus": "Villa Parroquial",
+  "ordre": [
+   "Franciscos"
+  ]
  },
  "B13_20": {
   "verdict": "ok"

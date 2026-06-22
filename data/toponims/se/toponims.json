@@ -602,7 +602,8 @@
    "y": 590,
    "dubte": false,
    "lon": 3.116011,
-   "lat": 39.606293
+   "lat": 39.606293,
+   "ordre": "Franciscos"
   },
   {
    "id": "B02_20",
@@ -3354,9 +3355,9 @@
   },
   {
    "id": "B09_11",
-   "graf": "Alcudia =rom",
-   "nom": "Alcudia =rom",
-   "tipus": "Casa de campo ó Predio",
+   "graf": "Alcudia=rom",
+   "nom": "Alcudia=rom",
+   "tipus": "altre",
    "subtile": "",
    "x": 2682,
    "y": 1590,
@@ -3494,7 +3495,8 @@
    "y": 1310,
    "dubte": false,
    "lon": 3.216571,
-   "lat": 39.572285
+   "lat": 39.572285,
+   "ordre": "Dominicos"
   },
   {
    "id": "B10_2",
@@ -3594,9 +3596,9 @@
   },
   {
    "id": "B10_10",
-   "graf": "Puig d. Sta Lucia",
-   "nom": "Puig d. Sta Lucia",
-   "tipus": "altre",
+   "graf": "Puig d.Sta. Luciá",
+   "nom": "Puig d.Sta. Luciá",
+   "tipus": "Oratorio publico",
    "subtile": "",
    "x": 4211,
    "y": 1622,
@@ -4880,7 +4882,10 @@
    "id": "B14_1",
    "graf": "Nª Sª de Môte=Sion",
    "nom": "Nª Sª de Mote=Sion",
-   "tipus": "Oratorio publico",
+   "tipus": [
+    "Oratorio publico",
+    "Casa de estudios"
+   ],
    "subtile": "",
    "x": 1292,
    "y": 2828,
@@ -5414,7 +5419,8 @@
    "y": 3956,
    "dubte": false,
    "lon": 3.014044,
-   "lat": 39.430146
+   "lat": 39.430146,
+   "ordre": "Minimos"
   },
   {
    "id": "B15_27",
@@ -5558,7 +5564,8 @@
    "y": 3246,
    "dubte": false,
    "lon": 3.167609,
-   "lat": 39.46976
+   "lat": 39.46976,
+   "ordre": "Agustinos"
   },
   {
    "id": "B16_7",

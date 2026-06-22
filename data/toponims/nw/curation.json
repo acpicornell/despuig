@@ -207,7 +207,10 @@
  },
  "B04_27": {
   "ngib": "Reial Cartoixa de Valldemossa",
-  "verdict": "pick"
+  "verdict": "pick",
+  "ordre": [
+   "Cartuxos"
+  ]
  },
  "B04_29": {
   "graf": "Sô Homar",
@@ -405,7 +408,10 @@
   "graf": "Sta. MARIA",
   "tipus": "Villa Parroquial",
   "ngib": "Santa Maria del Camí",
-  "verdict": "pick"
+  "verdict": "pick",
+  "ordre": [
+   "Minimos"
+  ]
  },
  "B10_13": {
   "graf": "T. DE SANSELLAS",
@@ -1095,7 +1101,10 @@
  "B03_26": {
   "tipus": "Villa Parroquial",
   "ngib": "Sóller",
-  "verdict": "pick"
+  "verdict": "pick",
+  "ordre": [
+   "Franciscos"
+  ]
  },
  "B04_1": {
   "tipus": "Lugar chico",

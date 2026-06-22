@@ -80,7 +80,7 @@
    "id": "B01_7",
    "graf": "Cabo Menorca",
    "nom": "Cabo Menorca",
-   "tipus": "altre",
+   "tipus": "Punta",
    "subtile": "",
    "x": 4470,
    "y": 2877,
@@ -194,7 +194,8 @@
    "y": 2994,
    "dubte": false,
    "lon": 3.14234,
-   "lat": 39.850783
+   "lat": 39.850783,
+   "ordre": "Franciscos"
   },
   {
    "id": "B02_10",
@@ -782,7 +783,8 @@
    "y": 2497,
    "dubte": false,
    "lon": 3.02274,
-   "lat": 39.875149
+   "lat": 39.875149,
+   "ordre": "Dominicos"
   },
   {
    "id": "B03_20",
@@ -1760,7 +1762,7 @@
    "id": "B06_2",
    "graf": "Colonia",
    "nom": "Colonia",
-   "tipus": "altre",
+   "tipus": "Casa de campo ó Predio",
    "subtile": "",
    "x": 1653,
    "y": 2927,
@@ -1866,8 +1868,8 @@
   },
   {
    "id": "B06_11",
-   "graf": "Câ Bregâ",
-   "nom": "Can Brega",
+   "graf": "Câ Bregât",
+   "nom": "Can Bregat",
    "tipus": "Casa de campo ó Predio",
    "subtile": "",
    "x": 2828,
@@ -3362,7 +3364,12 @@
    "y": 5407,
    "dubte": false,
    "lon": 2.905527,
-   "lat": 39.713792
+   "lat": 39.713792,
+   "ordre": [
+    "Dominicos",
+    "Franciscos",
+    "Geronimas"
+   ]
   },
   {
    "id": "B10_12",
@@ -3522,9 +3529,9 @@
   },
   {
    "id": "B11_1",
-   "graf": "Binacc",
-   "nom": "Binacc",
-   "tipus": "Casa de campo ó Predio",
+   "graf": "Binaco",
+   "nom": "Binaco",
+   "tipus": "altre",
    "subtile": "",
    "x": 1978,
    "y": 4920,
@@ -3602,7 +3609,8 @@
    "y": 5088,
    "dubte": false,
    "lon": 3.067803,
-   "lat": 39.741061
+   "lat": 39.741061,
+   "ordre": "Minimos"
   },
   {
    "id": "B11_8",
@@ -4520,7 +4528,7 @@
    "id": "B13_25",
    "graf": "Cabo Vermei",
    "nom": "Cabo Vermei",
-   "tipus": "altre",
+   "tipus": "Punta",
    "subtile": "",
    "x": 8340,
    "y": 6936,
@@ -5438,7 +5446,8 @@
    "y": 6353,
    "dubte": false,
    "lon": 3.338964,
-   "lat": 39.691468
+   "lat": 39.691468,
+   "ordre": "Franciscos"
   },
   {
    "id": "B16_11",
@@ -5538,9 +5547,9 @@
   },
   {
    "id": "B16_19",
-   "graf": "Bell-Puig Marq.",
-   "nom": "Bell-Puig Marq.",
-   "tipus": "Casa de campo ó Predio",
+   "graf": "Bell=Puig Marq.",
+   "nom": "Bell=Puig Marq.",
+   "tipus": "altre",
    "subtile": "",
    "x": 6386,
    "y": 6700,
@@ -5648,7 +5657,7 @@
    "id": "B16_28",
    "graf": "Alma nov",
    "nom": "Alma nov",
-   "tipus": "altre",
+   "tipus": "Casa de campo ó Predio",
    "subtile": "",
    "x": 6114,
    "y": 7164,
@@ -6114,7 +6123,7 @@
   },
   {
    "id": "B18_5",
-   "graf": "Sta MARGARITA",
+   "graf": "Sta. MARGARITA",
    "nom": "Santa Margalida",
    "tipus": "Villa Parroquial",
    "subtile": "",
@@ -6938,7 +6947,11 @@
    "y": 7104,
    "dubte": false,
    "lon": 3.00088,
-   "lat": 39.640648
+   "lat": 39.640648,
+   "ordre": [
+    "Minimos",
+    "Concepcionistas"
+   ]
   },
   {
    "id": "B19_32",
@@ -7016,7 +7029,7 @@
    "id": "C01_2",
    "graf": "Cabo de Cathaluña",
    "nom": "Cabo de Cathaluña",
-   "tipus": "altre",
+   "tipus": "Punta",
    "subtile": "",
    "x": 4264,
    "y": 526,
@@ -7028,7 +7041,7 @@
    "id": "C01_3",
    "graf": "Cabo de Formêtór",
    "nom": "Cabo de Formetór",
-   "tipus": "altre",
+   "tipus": "Punta",
    "subtile": "",
    "x": 4828,
    "y": 581,
@@ -7352,7 +7365,7 @@
    "id": "C01_30",
    "graf": "Cabo del Vi",
    "nom": "Cabo del Vi",
-   "tipus": "altre",
+   "tipus": "Punta",
    "subtile": "",
    "x": 3801,
    "y": 1715,
@@ -7796,7 +7809,7 @@
    "id": "C03_11",
    "graf": "Cabo de Ferrutx",
    "nom": "Cabo de Ferrutx",
-   "tipus": "altre",
+   "tipus": "Punta",
    "subtile": "",
    "x": 5769,
    "y": 3786,
@@ -8300,7 +8313,7 @@
    "id": "C04_27",
    "graf": "Cabo de Pera",
    "nom": "Cabo de Pera",
-   "tipus": "altre",
+   "tipus": "Punta",
    "subtile": "",
    "x": 8673,
    "y": 5332,
@@ -8348,7 +8361,7 @@
    "id": "C04_31",
    "graf": "ASEQUIA REAL",
    "nom": "ASEQUIA REAL",
-   "tipus": "altre",
+   "tipus": "Torrente",
    "subtile": "",
    "x": 3635,
    "y": 5691,

@@ -22,7 +22,8 @@
  },
  "B01_7": {
   "ngib": "Cap de Menorca",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Punta"
  },
  "B02_10": {
   "graf": "Casas de Jurats",
@@ -563,7 +564,7 @@
  },
  "B12_4": {
   "ngib": "Binissetí Vell",
-  "verdict": "pick"
+  "verdict": "trash"
  },
  "B12_6": {
   "graf": "Rfl. dê Alberti",
@@ -603,7 +604,8 @@
  },
  "B13_25": {
   "ngib": "Cap Vermell",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Punta"
  },
  "B13_26": {
   "verdict": "none"
@@ -685,7 +687,7 @@
  "B15_31": {
   "graf": "Ariany Marq.",
   "ngib": "Ariany",
-  "verdict": "ok",
+  "verdict": "trash",
   "tipus": "Lugar grande"
  },
  "B15_9": {
@@ -703,7 +705,7 @@
   "verdict": "pick"
  },
  "B16_19": {
-  "graf": "Bell-Puig Marq.",
+  "graf": "Bell=Puig Marq.",
   "ngib": "Bellpuig",
   "verdict": "pick"
  },
@@ -719,7 +721,8 @@
   "verdict": "none"
  },
  "B16_28": {
-  "verdict": "none"
+  "verdict": "ok",
+  "tipus": "Casa de campo ó Predio"
  },
  "B16_3": {
   "ngib": "Son Sureda Vell",
@@ -888,7 +891,8 @@
  },
  "C01_2": {
   "ngib": "Cap de Catalunya",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Punta"
  },
  "C01_20": {
   "verdict": "none"
@@ -921,10 +925,12 @@
  },
  "C01_3": {
   "ngib": "Cap de Formentor",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Punta"
  },
  "C01_30": {
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": "Punta"
  },
  "C01_4": {
   "ngib": "Cala Figuera",
@@ -1020,7 +1026,8 @@
  "C03_11": {
   "graf": "Cabo de Ferrutx",
   "ngib": "Cap de Ferrutx",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Punta"
  },
  "C03_12": {
   "graf": "Atalaya de Sô Morey",
@@ -1134,14 +1141,16 @@
  },
  "C04_27": {
   "ngib": "Far de Capdepera",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Punta"
  },
  "C04_29": {
   "verdict": "none"
  },
  "C04_31": {
   "graf": "ASEQUIA REAL",
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": "Torrente"
  },
  "C04_32": {
   "graf": "T. MILLAC",
@@ -1212,7 +1221,8 @@
  "B02_9": {
   "tipus": "Ciudad",
   "ngib": "Alcúdia",
-  "verdict": "pick"
+  "verdict": "ok",
+  "ordre": "Franciscos"
  },
  "B02_15": {
   "ngib": "Gatamoix",
@@ -1316,7 +1326,8 @@
  "B03_19": {
   "tipus": "Villa Parroquial",
   "ngib": "Pollença",
-  "verdict": "pick"
+  "verdict": "pick",
+  "ordre": "Dominicos"
  },
  "B03_21": {
   "ngib": "el Pontarró",
@@ -1508,7 +1519,8 @@
  },
  "B06_2": {
   "ngib": "Colonya",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Casa de campo ó Predio"
  },
  "B06_3": {
   "ngib": "Can Porquer",
@@ -1536,7 +1548,8 @@
  },
  "B06_11": {
   "ngib": "Can Bregat",
-  "verdict": "pick"
+  "verdict": "trash",
+  "graf": "Câ Bregât"
  },
  "B06_12": {
   "ngib": "Can Gallardó",
@@ -1837,7 +1850,12 @@
  "B10_11": {
   "tipus": "Villa Parroquial",
   "ngib": "Inca",
-  "verdict": "pick"
+  "verdict": "ok",
+  "ordre": [
+   "Dominicos",
+   "Franciscos",
+   "Geronimas"
+  ]
  },
  "B10_12": {
   "ngib": "Son Catlar",
@@ -1883,7 +1901,8 @@
  },
  "B11_1": {
   "ngib": "Biniaco",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "Binaco"
  },
  "B11_2": {
   "ngib": "Son Figuerola",
@@ -1904,7 +1923,8 @@
  "B11_7": {
   "tipus": "Villa Parroquial",
   "ngib": "Muro",
-  "verdict": "pick"
+  "verdict": "pick",
+  "ordre": "Minimos"
  },
  "B11_9": {
   "ngib": "Vinagrella",
@@ -2310,7 +2330,8 @@
  "B16_10": {
   "tipus": "Villa Parroquial",
   "ngib": "Artà",
-  "verdict": "pick"
+  "verdict": "pick",
+  "ordre": "Franciscos"
  },
  "B16_11": {
   "graf": "S. Salvador",
@@ -2468,7 +2489,8 @@
  "B18_5": {
   "tipus": "Villa Parroquial",
   "ngib": "Santa Margalida",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "Sta. MARGARITA"
  },
  "B18_7": {
   "ngib": "Femenia",
@@ -2689,7 +2711,11 @@
  "B19_31": {
   "tipus": "Villa Parroquial",
   "ngib": "Sineu",
-  "verdict": "pick"
+  "verdict": "pick",
+  "ordre": [
+   "Minimos",
+   "Concepcionistas"
+  ]
  },
  "B19_33": {
   "ngib": "Aireflor",
