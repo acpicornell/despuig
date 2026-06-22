@@ -568,7 +568,8 @@
  "B19_34": {
   "ngib": "Santuari de la Mare de Déu de la Consolació",
   "verdict": "pick",
-  "graf": "N.ª S.ª de Côsolacio"
+  "graf": "N.ª S.ª de Côsolacio",
+  "tipus": "Oratorio publico"
  },
  "B19_39": {
   "graf": "La Pûta",
@@ -1177,12 +1178,14 @@
  "B06_18": {
   "ngib": "Consolació",
   "verdict": "pick",
-  "graf": "N.ª S.ª de Côsolacion"
+  "graf": "N.ª S.ª de Côsolacion",
+  "tipus": "Oratorio publico"
  },
  "B06_19": {
   "ngib": "Bonany",
   "verdict": "ok",
-  "graf": "N.ª S.ª de Bonañy"
+  "graf": "N.ª S.ª de Bonañy",
+  "tipus": "Oratorio publico"
  },
  "B07_1": {
   "verdict": "ok"
@@ -1565,7 +1568,8 @@
  "B11_9": {
   "graf": "Hostalét",
   "ngib": "s'Hostalet",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Casa de campo ó Predio"
  },
  "B11_10": {
   "verdict": "none"
@@ -1797,7 +1801,8 @@
  "B14_1": {
   "graf": "Nª Sª de Môte=Sion",
   "ngib": "Monti-sion",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Oratorio publico"
  },
  "B14_3": {
   "ngib": "Son Gornals",
@@ -2510,7 +2515,8 @@
  "B21_29": {
   "graf": "L'Avall",
   "ngib": "sa Vall",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Casa de campo ó Predio"
  },
  "B21_30": {
   "graf": "Tor. Almonía",
@@ -2555,7 +2561,8 @@
  },
  "C01_12": {
   "ngib": "sa Ferradura",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Punta"
  },
  "C01_13": {
   "ngib": "Cala Manacor",

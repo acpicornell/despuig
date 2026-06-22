@@ -127,7 +127,8 @@
  },
  "B02_2": {
   "ngib": "Sant Elm",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Oratorio publico"
  },
  "B02_3": {
   "tipus": "Lugar chico",
@@ -318,7 +319,8 @@
  "B03_19": {
   "graf": "La Taulera",
   "ngib": "sa Teulera",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Casa de campo ó Predio"
  },
  "B03_20": {
   "verdict": "ok"
@@ -1771,7 +1773,8 @@
  },
  "C01_26": {
   "ngib": "Torre d'en Pau",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Atalaya ó Torre"
  },
  "C01_27": {
   "ngib": "Caló des Macs",

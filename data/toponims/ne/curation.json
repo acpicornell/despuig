@@ -5,13 +5,14 @@
  },
  "B01_2": {
   "ngib": "Punta de les Salines",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "Pta. de Salinas"
  },
  "B01_3": {
   "verdict": "none"
  },
  "B01_4": {
-  "graf": "Pta de la Solana",
+  "graf": "Pta. de la Solana",
   "ngib": "Punta de la Solana",
   "verdict": "pick"
  },
@@ -206,7 +207,8 @@
  },
  "B05_21": {
   "graf": "Mina",
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": "Casa de campo ó Predio"
  },
  "B05_22": {
   "ngib": "Alcanelleta",
@@ -434,8 +436,7 @@
   "verdict": "pick"
  },
  "B08_8": {
-  "ngib": "es Molinet",
-  "verdict": "pick"
+  "verdict": "none"
  },
  "B09_10": {
   "ngib": "Faro de Capdepera",
@@ -450,7 +451,8 @@
   "verdict": "pick"
  },
  "B09_4": {
-  "verdict": "none"
+  "verdict": "none",
+  "graf": "Pta. de Dürlai"
  },
  "B09_5": {
   "graf": "Librerét de Lobrega",
@@ -584,7 +586,8 @@
   "verdict": "pick"
  },
  "B13_2": {
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": "Atalaya ó Torre"
  },
  "B13_20": {
   "verdict": "none"
@@ -592,7 +595,8 @@
  "B13_23": {
   "ngib": "Talaia Vella",
   "verdict": "ok",
-  "tipus": "Atalaya ó Torre"
+  "tipus": "Atalaya ó Torre",
+  "graf": "ATl.ª Vieja"
  },
  "B13_24": {
   "verdict": "none"
@@ -849,7 +853,8 @@
  },
  "B19_34": {
   "ngib": "Laiar",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Dos ó tres casas"
  },
  "B19_5": {
   "graf": "Sô Aguyo",
@@ -866,7 +871,8 @@
  },
  "C01_12": {
   "ngib": "Punta de l'Àguila",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "Pta. de laguila"
  },
  "C01_14": {
   "ngib": "Punta Topina",
@@ -910,7 +916,8 @@
  },
  "C01_28": {
   "ngib": "Punta Bèquer",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "Pta. de Bocca"
  },
  "C01_3": {
   "ngib": "Cap de Formentor",
@@ -955,12 +962,14 @@
  },
  "C02_18": {
   "ngib": "Punta des Càrritx",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "Pta. del Carrax"
  },
  "C02_19": {
   "graf": "Pûta d. l. Ferredura",
   "ngib": "sa Ferradura",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Punta"
  },
  "C02_20": {
   "verdict": "none"
@@ -978,7 +987,8 @@
   "verdict": "none"
  },
  "C02_25": {
-  "verdict": "none"
+  "verdict": "none",
+  "graf": "Pta. del Freu"
  },
  "C02_26": {
   "ngib": "Punta de ses Olles",
@@ -988,7 +998,8 @@
   "verdict": "none"
  },
  "C02_5": {
-  "verdict": "none"
+  "verdict": "none",
+  "graf": "Pta. d. Ariant"
  },
  "C02_6": {
   "ngib": "Caleta d'Ariant",
@@ -996,7 +1007,8 @@
  },
  "C02_8": {
   "ngib": "Punta des Pagès",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "Pta. del Pajes"
  },
  "C03_1": {
   "verdict": "none"
@@ -1071,7 +1083,8 @@
   "verdict": "none"
  },
  "C04_11": {
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": "Punta"
  },
  "C04_12": {
   "verdict": "none"
@@ -1133,7 +1146,8 @@
  "C04_32": {
   "graf": "T. MILLAC",
   "ngib": "Torrent des Millac",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Torrente"
  },
  "C04_4": {
   "graf": "Cala ancha del revellar",

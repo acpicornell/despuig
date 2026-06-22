@@ -92,8 +92,9 @@
  },
  "B02_7": {
   "ngib": "Santa Catalina",
-  "verdict": "pick",
-  "graf": "S.ta Cathª"
+  "verdict": "ok",
+  "graf": "S.ta Cathª",
+  "tipus": "Oratorio publico"
  },
  "B03_11": {
   "graf": "Casteio",
@@ -632,7 +633,8 @@
  "C01_4": {
   "graf": "Tor. de Burdils",
   "ngib": "burdils",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Atalaya ó Torre"
  },
  "C02_11": {
   "graf": "Bufador",
@@ -1111,7 +1113,7 @@
  "B04_7": {
   "ngib": "es Molí",
   "verdict": "pick",
-  "tipus": "altre"
+  "tipus": "Casa de campo ó Predio"
  },
  "B04_9": {
   "ngib": "Son Rutlan",
@@ -1441,7 +1443,8 @@
  },
  "B08_8": {
   "ngib": "Raixa",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Casa de campo ó Predio"
  },
  "B08_9": {
   "ngib": "Biniatzar",
@@ -2338,7 +2341,8 @@
  },
  "C02_22": {
   "ngib": "Talaia de Son Galceran",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": "Atalaya ó Torre"
  },
  "C02_23": {
   "verdict": "none"
@@ -2376,7 +2380,8 @@
  },
  "C03_2": {
   "ngib": "Torre des Verger",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": "Atalaya ó Torre"
  },
  "C03_3": {
   "tipus": "Punta",
