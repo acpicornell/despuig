@@ -42,7 +42,7 @@ function tableRows(q) {
   return matches.map((m) => {
     const c = cur[m.id] || {};
     return {
-      id: m.id, graf: c.graf ?? m.graf, graf0: m.graf, nom: m.nom,
+      id: m.id, q, uid: `${q}:${m.id}`, graf: c.graf ?? m.graf, graf0: m.graf, nom: m.nom,
       tipus: c.tipus ?? m.tipus, tipus0: m.tipus, tipusEdited: c.tipus != null && c.tipus !== m.tipus,
       decision: m.decision, review: m.review || null, ngib: m.ngib || null,
       municipi: m.municipi || null, km: m.km ?? null, sim: m.sim ?? null,
@@ -84,6 +84,7 @@ const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</ti
  .rowact .ok{color:#2f7d4f}.rowact .tr{color:#8a4a1d}.rowact .un{color:#3a6098}
  .num{text-align:right;font-variant-numeric:tabular-nums;color:var(--soft)}
  .pendtag{font-size:.7rem;color:#c0530a;font-weight:700}
+ .lectlink{cursor:pointer;border-bottom:1px dashed var(--soft)} .lectlink:hover{color:#2f7d4f;border-bottom-color:#2f7d4f}
  /* ---- card view ---- */
  main{max-width:1280px;margin:1.2rem auto;padding:0 1rem;display:grid;grid-template-columns:1.35fr 1fr;gap:1.4rem;align-items:start}
  #app{min-width:0} #map{height:80vh;position:sticky;top:64px;border:1px solid var(--line);border-radius:8px;background:#eee}
@@ -106,6 +107,7 @@ const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</ti
  <span class=seg><button id=mTable class=on>Taula</button><button id=mCard>Fitxes</button></span>
  <input id=search placeholder="🔍 cerca grafia / nom / NGIB" style="width:16rem">
  <label class=meta>conf <select id=fdec><option value="">tota</option><option>confirmat</option><option>probable</option><option>suggerit</option><option>posicional</option><option>sense</option></select></label>
+ <label class=meta>tipus <select id=ftip><option value="">tots</option></select></label>
  <label class=meta>revisió <select id=frev><option value="">tota</option><option value=any>revisat</option><option value=none>sense revisar</option><option value=corregit>corregit</option></select></label>
  <span class=grow></span>
  <span id=prog class=meta></span>
@@ -115,7 +117,7 @@ const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</ti
 <div class=hint id=hint></div>
 <div id=toast></div>
 <script>
-var Q='', MODE='table', ROWS=[], NGIB=[];
+var Q='', MODE='table', ROWS=[], NGIB=[], ALLMODE=false;
 // Categories LITERALS de la llegenda del gravat (1785), tal com hi estan gravades.
 var TIPS=['Ciudad','Villa Parroquial','Lugar grande','Lugar chico','Oratorio publico',
   'Muchas casas separadas ó Establecimiento','Dos ó tres casas','Casa de campo ó Predio',
@@ -126,45 +128,50 @@ var esc=function(s){return (s==null?'':''+s).replace(/[&<>"]/g,function(c){retur
 var $=function(s){return document.querySelector(s);};
 
 function api(p){ return p+(p.indexOf('?')<0?'?':'&')+'q='+Q; }
-async function post(body){ body.q=Q; await fetch('/pick',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)}); }
+async function post(body){ if(!body.q)body.q=Q; await fetch('/pick',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)}); }
 
 async function boot(){
   var qs=(await (await fetch('/quadrants')).json()).quadrants;
-  $('#q').innerHTML=qs.map(function(x){return '<option>'+x.toUpperCase()+'</option>';}).join('');
+  $('#q').innerHTML=qs.map(function(x){return '<option>'+x.toUpperCase()+'</option>';}).join('')+(qs.length>1?'<option value=ALL>TOTES (4 fulls)</option>':'');
   Q=qs[0]||'';
-  $('#q').onchange=function(){Q=$('#q').value.toLowerCase();reload();};
+  $('#q').onchange=function(){Q=$('#q').value.toLowerCase();var all=(Q==='all');$('#mCard').disabled=all;$('#mCard').style.opacity=all?'.4':'';if(all&&MODE!=='table'){setMode('table');return;}reload();};
   $('#mTable').onclick=function(){setMode('table');};
   $('#mCard').onclick=function(){setMode('card');};
-  ['#search','#fdec','#frev'].forEach(function(s){$(s).addEventListener('input',onFilter);});
+  ['#search','#fdec','#ftip','#frev'].forEach(function(s){$(s).addEventListener('input',onFilter);});
   try{ NGIB=await (await fetch('/ngib')).json(); }catch(e){}
   reload();
 }
-function setMode(m){ MODE=m; $('#mTable').classList.toggle('on',m==='table'); $('#mCard').classList.toggle('on',m==='card');
+function setMode(m){ if(m==='card'&&Q==='all'){toast('Tria un full concret per a la vista Fitxes','warn');return;} MODE=m; $('#mTable').classList.toggle('on',m==='table'); $('#mCard').classList.toggle('on',m==='card');
   $('#tablewrap').style.display=m==='table'?'':'none'; $('#cardview').style.display=m==='card'?'grid':'none'; reload(); }
 function reload(){ if(MODE==='table') loadTable(); else loadCards(); }
 function onFilter(){ if(MODE==='table') applyFilter(); else cbuild(); }
 
 /* ================= TABLE VIEW ================= */
 async function loadTable(){
+  ALLMODE=(Q==='all');
   ROWS=(await (await fetch(api('/table'))).json()).rows;
-  var head='<tr><th>Grafia (gravat)</th><th>Lectura</th><th>Tipus</th><th>Confiança</th><th>NGIB</th><th>Municipi</th><th class=num>km</th><th></th></tr>';
+  fillTipFilter();
+  var head='<tr><th>Grafia (gravat)</th><th>Lectura</th><th>Tipus</th><th>Confiança</th><th>NGIB</th><th>Municipi</th><th class=num>km</th>'+(ALLMODE?'<th>Full</th>':'')+'<th></th></tr>';
   var body=ROWS.map(rowHTML).join('');
   $('#tablewrap').innerHTML='<table><thead>'+head+'</thead><tbody id=tb>'+body+'</tbody></table>';
   wireTable(); applyFilter(); prog();
   $('#hint').innerHTML='Edita la lectura (Enter desa) · tria/escriu el NGIB (Enter) o clica un candidat · ✓ correcte · 🗑 brossa · ↶ desfés. En acabar, re-aplica el match del full (apply_graf_fixes + ngib_match, veure PER-SHEET.md).';
 }
 function rowHTML(r){
+  var u=r.uid||r.id;
   var pend=r.pend?'<span class=pendtag> ·'+r.pend+(r.pendPick?' '+esc(r.pendPick):'')+'</span>':'';
   var rev=r.review==='revisat'?'<span class=rev title="revisat a mà">✓</span>':r.review==='corregit'?'<span class=rev title="corregit a mà">✎</span>':'';
   var chips=(r.cand||[]).slice(0,4).map(function(c){return '<span class=chip data-g="'+esc(c.grafia)+'">'+esc(c.grafia)+'</span>';}).join('');
-  return '<tr data-id="'+r.id+'" data-dec="'+r.decision+'" data-rev="'+(r.review||'')+'" '
+  return '<tr data-id="'+esc(u)+'" data-dec="'+r.decision+'" data-tip="'+esc(r.tipus||'')+'" data-rev="'+(r.review||'')+'" '
     +'data-text="'+esc(((r.graf||'')+' '+(r.nom||'')+' '+(r.ngib||'')+' '+(r.municipi||'')).toLowerCase())+'"'
     +(r.pend?' class=pend':'')+(r.discarded?' class=disc':'')+'>'
-    +'<td><input class=eg data-id="'+r.id+'" value="'+esc(r.graf)+'">'+(r.grafEdited?' <span class=pendtag>✎</span>':'')+'</td>'
-    +'<td>'+esc(r.nom)+'</td><td>'+tipSel(r.id,r.tipus)+(r.tipusEdited?' <span class=pendtag>✎</span>':'')+'</td>'
+    +'<td><input class=eg data-id="'+esc(u)+'" value="'+esc(r.graf)+'">'+(r.grafEdited?' <span class=pendtag>✎</span>':'')+'</td>'
+    +'<td><span class=lectlink data-openid="'+esc(u)+'" title="obre la fitxa d\\'edició">'+esc(r.nom)+'</span></td>'
+    +'<td>'+tipSel(u,r.tipus)+(r.tipusEdited?' <span class=pendtag>✎</span>':'')+'</td>'
     +'<td><span class="badge b-'+r.decision+'">'+r.decision+'</span>'+rev+pend+'</td>'
-    +'<td><input class=en data-id="'+r.id+'" value="'+esc(r.ngib||'')+'" placeholder="—">'+(chips?'<div class=chips>'+chips+'</div>':'')+'</td>'
+    +'<td><input class=en data-id="'+esc(u)+'" value="'+esc(r.ngib||'')+'" placeholder="—">'+(chips?'<div class=chips>'+chips+'</div>':'')+'</td>'
     +'<td class=meta>'+esc(r.municipi||'')+'</td><td class=num>'+(r.km==null?'':r.km)+'</td>'
+    +(ALLMODE?'<td class=meta>'+esc((r.q||'').toUpperCase())+'</td>':'')
     +'<td class=rowact><button class=ok title="correcte (revisat)">✓</button><button class=tr title="brossa">🗑</button><button class=un title="desfés">↶</button></td>'
     +'</tr>';
 }
@@ -176,6 +183,7 @@ function wireTable(){
     else if(t.classList.contains('en')){ if(t.value.trim()) pickRow(t.dataset.id,t.value.trim()); }
   });
   tb.addEventListener('click',function(e){
+    if(e.target.classList.contains('lectlink')){ openCardFor(e.target.dataset.openid); return; }
     var tr=e.target.closest('tr'); if(!tr)return; var id=tr.dataset.id;
     if(e.target.classList.contains('chip')){ var g=e.target.dataset.g; var en=tr.querySelector('.en'); if(en)en.value=g; pickRow(id,g); }
     else if(e.target.classList.contains('ok')) okRow(id);
@@ -184,24 +192,32 @@ function wireTable(){
   });
   tb.addEventListener('change',function(e){ if(e.target.classList.contains('etip')) setTipus(e.target.dataset.id,e.target.value); });
 }
-async function setTipus(id,v){ var r=rowOf(id); if(!r||v===r.tipus)return; r.tipus=v; r.tipusEdited=(v!==r.tipus0); await post({id:id,action:'tipus',tipus:(v===r.tipus0?'':v)}); refreshRow(id); toast('🏷 '+v); }
-function rowOf(id){ return ROWS.find(function(r){return r.id===id;}); }
-function trEl(id){ return $('#tb tr[data-id="'+CSS.escape(id)+'"]'); }
-async function saveReading(id,v){ var r=rowOf(id); v=(v||'').trim(); if(!r||!v||v===r.graf)return; r.graf=v; r.grafEdited=(v!==r.graf0); await post({id:id,action:'graf',graf:v}); flash(id); toast('💾 Lectura desada'); }
-async function pickRow(id,g){ var r=rowOf(id); if(!r)return; r.pend='pick'; r.pendPick=g; r.review=(g===r.ngib?'revisat':'corregit'); await post({id:id,action:'pick',grafia:g,graf:ged(id)}); refreshRow(id); prog(); toast('✓ '+g); }
-async function okRow(id){ var r=rowOf(id); if(!r)return; r.pend='ok'; r.review='revisat'; await post({id:id,action:'ok',graf:ged(id)}); refreshRow(id); prog(); toast('✓ Correcte'); }
-async function trashRow(id){ var r=rowOf(id); if(!r)return; r.pend='trash'; r.discarded=true; await post({id:id,action:'trash',graf:ged(id)}); refreshRow(id); prog(); toast('🗑 Brossa','bad'); }
-async function undoRow(id){ var r=rowOf(id); if(!r)return; r.pend=null; r.pendPick=null; r.discarded=false; await post({id:id,action:'undo'}); refreshRow(id); prog(); toast('↶ Desfet'); }
-function ged(id){ var r=rowOf(id); return (r&&r.grafEdited)?r.graf:null; }
-function refreshRow(id){ var tr=trEl(id); if(!tr)return; var r=rowOf(id); var n=document.createElement('tbody'); n.innerHTML=rowHTML(r); tr.replaceWith(n.firstChild); applyFilter(); }
+async function setTipus(uid,v){ var r=rowOf(uid); if(!r||v===r.tipus)return; r.tipus=v; r.tipusEdited=(v!==r.tipus0); await post({q:r.q,id:r.id,action:'tipus',tipus:(v===r.tipus0?'':v)}); refreshRow(uid); toast('🏷 '+v); }
+function rowOf(uid){ return ROWS.find(function(r){return (r.uid||r.id)===uid;}); }
+function trEl(uid){ return $('#tb tr[data-id="'+CSS.escape(uid)+'"]'); }
+async function saveReading(uid,v){ var r=rowOf(uid); v=(v||'').trim(); if(!r||!v||v===r.graf)return; r.graf=v; r.grafEdited=(v!==r.graf0); await post({q:r.q,id:r.id,action:'graf',graf:v}); flash(uid); toast('💾 Lectura desada'); }
+async function pickRow(uid,g){ var r=rowOf(uid); if(!r)return; r.pend='pick'; r.pendPick=g; r.review=(g===r.ngib?'revisat':'corregit'); await post({q:r.q,id:r.id,action:'pick',grafia:g,graf:ged(uid)}); refreshRow(uid); prog(); toast('✓ '+g); }
+async function okRow(uid){ var r=rowOf(uid); if(!r)return; r.pend='ok'; r.review='revisat'; await post({q:r.q,id:r.id,action:'ok',graf:ged(uid)}); refreshRow(uid); prog(); toast('✓ Correcte'); }
+async function trashRow(uid){ var r=rowOf(uid); if(!r)return; r.pend='trash'; r.discarded=true; await post({q:r.q,id:r.id,action:'trash',graf:ged(uid)}); refreshRow(uid); prog(); toast('🗑 Brossa','bad'); }
+async function undoRow(uid){ var r=rowOf(uid); if(!r)return; r.pend=null; r.pendPick=null; r.discarded=false; await post({q:r.q,id:r.id,action:'undo'}); refreshRow(uid); prog(); toast('↶ Desfet'); }
+function ged(uid){ var r=rowOf(uid); return (r&&r.grafEdited)?r.graf:null; }
+function refreshRow(uid){ var tr=trEl(uid); if(!tr)return; var r=rowOf(uid); var n=document.createElement('tbody'); n.innerHTML=rowHTML(r); tr.replaceWith(n.firstChild); applyFilter(); }
 function flash(id){ var tr=trEl(id); if(tr){tr.style.background='#eaf3ec';setTimeout(function(){tr.style.background='';},500);} }
+function fillTipFilter(){
+  var sel=$('#ftip'); if(!sel)return; var cur=sel.value;
+  var present={}; ROWS.forEach(function(r){if(r.tipus)present[r.tipus]=1;});
+  // ordre: les categories de la llegenda primer (TIPS), després qualsevol altra present
+  var ordered=TIPS.filter(function(x){return present[x];})
+    .concat(Object.keys(present).filter(function(x){return TIPS.indexOf(x)<0;}).sort());
+  sel.innerHTML='<option value="">tots</option>'+ordered.map(function(x){return '<option'+(x===cur?' selected':'')+'>'+esc(x)+'</option>';}).join('');
+}
 function applyFilter(){
-  if(MODE!=='table')return; var t=($('#search').value||'').trim().toLowerCase(),d=$('#fdec').value,rv=$('#frev').value;
+  if(MODE!=='table')return; var t=($('#search').value||'').trim().toLowerCase(),d=$('#fdec').value,tp=$('#ftip').value,rv=$('#frev').value;
   var rows=document.querySelectorAll('#tb tr'),shown=0;
   rows.forEach(function(tr){
     var rev=tr.dataset.rev;
     var rok=!rv||(rv==='any'?!!rev:rv==='none'?!rev:rev===rv);
-    var ok=(!d||tr.dataset.dec===d)&&rok&&(!t||tr.dataset.text.indexOf(t)>=0);
+    var ok=(!d||tr.dataset.dec===d)&&(!tp||tr.dataset.tip===tp)&&rok&&(!t||tr.dataset.text.indexOf(t)>=0);
     tr.style.display=ok?'':'none'; if(ok)shown++;
   });
   prog(shown);
@@ -212,7 +228,15 @@ function prog(shown){
 }
 
 /* ================= CARD VIEW (crops + map) ================= */
-var DATA=[],STATE={picks:{},reviewed:{},graf:{}},queue=[],ci=0,map,mlayer,ngibLayer,searchLayer,chist=[];
+var DATA=[],STATE={picks:{},reviewed:{},graf:{}},queue=[],ci=0,map,mlayer,ngibLayer,searchLayer,chist=[],TARGET=null;
+// Obre la vista Fitxes centrada en una entrada concreta (des de la taula).
+// uid = "<full>:<id>"; canvia al full corresponent (la vista Fitxes és per full).
+function openCardFor(uid){
+  var i=(''+uid).indexOf(':'); var qq=i<0?Q:uid.slice(0,i), bid=i<0?uid:uid.slice(i+1);
+  TARGET=bid;
+  if(Q!==qq){ Q=qq; $('#q').value=qq.toUpperCase(); $('#mCard').disabled=false; $('#mCard').style.opacity=''; }
+  setMode('card');
+}
 async function loadCards(){
   var dd=await (await fetch(api('/data'))).json(); DATA=dd.items||[];
   STATE=await (await fetch(api('/state'))).json();
@@ -227,7 +251,14 @@ function cbuild(){
     if(t){ var hay=((d.graf||'')+' '+(d.nom||'')+' '+(d.ngib||'')+' '+(d.municipi||'')).toLowerCase(); if(hay.indexOf(t)<0) return false; }
     return true;
   });
-  ci=0; crender();
+  ci=0;
+  if(TARGET){
+    var idx=queue.map(function(d){return d.id;}).indexOf(TARGET);
+    if(idx<0){ var it=DATA.filter(function(d){return d.id===TARGET;})[0]; if(it){ queue.unshift(it); idx=0; } }  // ja revisat/filtrat: l'injectem
+    if(idx>=0) ci=idx;
+    TARGET=null;
+  }
+  crender();
 }
 function crender(){
   var done=Object.keys(STATE.reviewed).length;
@@ -299,8 +330,10 @@ const server = http.createServer((req, res) => {
   if (req.method === 'GET' && u.pathname === '/') return send(res, 200, 'text/html; charset=utf8', PAGE);
   if (req.method === 'GET' && u.pathname === '/quadrants') return send(res, 200, 'application/json', JSON.stringify({ quadrants: QUADRANTS }));
   if (req.method === 'GET' && u.pathname === '/ngib') return send(res, 200, 'application/json', NGIB_JSON);
-  if (req.method === 'GET' && u.pathname === '/table' && QUADRANTS.includes(q))
-    return send(res, 200, 'application/json', JSON.stringify({ rows: tableRows(q) }));
+  if (req.method === 'GET' && u.pathname === '/table' && (q === 'all' || QUADRANTS.includes(q))) {
+    const qs = q === 'all' ? QUADRANTS : [q];
+    return send(res, 200, 'application/json', JSON.stringify({ rows: qs.flatMap((qi) => tableRows(qi)) }));
+  }
   if (req.method === 'GET' && u.pathname === '/data' && QUADRANTS.includes(q)) {
     const d = readJSON(F(q).reviewdata, { items: [] }); return send(res, 200, 'application/json', JSON.stringify(d));
   }
