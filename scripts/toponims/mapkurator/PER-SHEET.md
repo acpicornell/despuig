@@ -237,9 +237,11 @@ two files (it never edits the data):
 - `data/toponims/mapkurator/quality_report.json` — full breakdown (truncation
   suspects, name/NGIB duplicates, odd chars, spatial outliers).
 - `data/toponims/mapkurator/quality_flags.json` — `{uid:[codes]}` of **notation**
-  problems only (very_short, short_single, lower_start, dangling_edge, has_digit,
-  odd_char). Name/NGIB duplicates are deliberately NOT flagged: Mallorcan homonyms
-  (two Bini, many "Son X", "sa Teulera"…) are legitimate.
+  problems (very_short, short_single, lower_start, dangling_edge, has_digit, odd_char)
+  **plus `ngib_far`** = a single NGIB record shared by labels on different sheets at
+  high georef distance (≥1.5 km), i.e. a probable *match* error (≈237 labels). Plain
+  name/NGIB duplicates are still NOT flagged: Mallorcan homonyms (two Bini, many
+  "Son X", "sa Teulera"…) are legitimate; `ngib_far` is the narrower mismatch signal.
 ```bash
 nix-shell scripts/toponims/shell.nix --run 'python3 scripts/toponims/mapkurator/quality_audit.py'
 ```

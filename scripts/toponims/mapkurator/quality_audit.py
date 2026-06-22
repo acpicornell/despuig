@@ -107,12 +107,20 @@ def audit(rows):
     for r in rows:
         if r["ngib"]:
             byngib[norm(r["ngib"])].append(r)
+    # A SHARED NGIB across DIFFERENT sheets with a far georef distance is a real match
+    # error (not a legit homonym): the same NGIB record was assigned to labels that sit
+    # km apart, so at least one pick is wrong. Flag those members (km >= 1.5).
+    NGIB_FAR_KM = 1.5
     for g, group in byngib.items():
         if len(group) > 1:
             rep["dup_ngib"].append({"ngib": group[0]["ngib"], "count": len(group),
                                     "items": [{"uid": x["uid"], "nom": x["nom"],
                                                "km": x["km"], "municipi": x["municipi"]}
                                               for x in group]})
+            if len({x["q"] for x in group}) > 1:          # spans >1 sheet
+                for x in group:
+                    if x["km"] is not None and x["km"] >= NGIB_FAR_KM:
+                        rep["ngib_far"].append(x)
 
     # ---- near-identical coordinates with similar names (double-detection) ----
     # group by quadrant+subtile, compare pixel distance
@@ -153,7 +161,7 @@ def main():
     slim = {"total": len(rows)}
     print(f"\n=== QUALITY AUDIT — {len(rows)} toponyms (trashed excluded) ===\n")
     order = ["empty", "very_short", "short_single", "lower_start", "dangling_edge",
-             "has_digit", "odd_char", "dup_nom", "dup_ngib", "near_dup", "geo_outlier"]
+             "has_digit", "odd_char", "dup_nom", "dup_ngib", "ngib_far", "near_dup", "geo_outlier"]
     DESC = {
         "empty": "buit (sense lectura)",
         "very_short": "molt curt (≤3) — possible truncat",
@@ -164,6 +172,7 @@ def main():
         "odd_char": "caràcters estranys",
         "dup_nom": "lectures idèntiques repetides (pot ser homònim!)",
         "dup_ngib": "mateix NGIB reusat en ≥2 topònims",
+        "ngib_far": "NGIB compartit entre fulls + km alt (match probablement erroni)",
         "near_dup": "coords quasi idèntiques + nom semblant (doble detecció)",
         "geo_outlier": "posició fora de Mallorca",
     }
@@ -189,10 +198,11 @@ def main():
     out = f"{ROOT}/data/toponims/mapkurator/quality_report.json"
     json.dump(slim, open(out, "w"), ensure_ascii=False, indent=1, default=str)
 
-    # Flags per-entry for the curation tool — NOTATION problems only.
-    # Name/NGIB duplicates are NOT flagged: Mallorcan homonyms are legitimate.
+    # Flags per-entry for the curation tool. NOTATION problems + the ngib_far match
+    # errors (cross-sheet shared NGIB at high km). Plain name/NGIB duplicates are still
+    # NOT flagged — Mallorcan homonyms are legitimate — but ngib_far is a real mismatch.
     PROB = ["empty", "very_short", "short_single", "lower_start",
-            "dangling_edge", "has_digit", "odd_char"]
+            "dangling_edge", "has_digit", "odd_char", "ngib_far"]
     flags = defaultdict(list)
     for k in PROB:
         for r in rep.get(k, []):

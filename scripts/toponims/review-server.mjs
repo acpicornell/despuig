@@ -171,7 +171,7 @@ var TIPS=['Ciudad','Villa Parroquial','Lugar grande','Lugar chico','Oratorio pub
 function tipSel(id,cur){var opts=TIPS.slice();if(cur&&opts.indexOf(cur)<0)opts.unshift(cur);return '<select class=etip data-id="'+id+'">'+opts.map(function(x){return '<option'+(x===cur?' selected':'')+'>'+esc(x)+'</option>';}).join('')+'</select>';}
 var esc=function(s){return (s==null?'':''+s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
 // Etiquetes humanes dels flags de qualitat (quality_audit.py).
-var FLAGLAB={empty:'buit',very_short:'molt curt',short_single:'token curt',lower_start:'minúscula inicial',dangling_edge:'vora penjant',has_digit:'dígits',odd_char:'caràcters/abreviatura'};
+var FLAGLAB={empty:'buit',very_short:'molt curt',short_single:'token curt',lower_start:'minúscula inicial',dangling_edge:'vora penjant',has_digit:'dígits',odd_char:'caràcters/abreviatura',ngib_far:'NGIB llunyà (compartit entre fulls)'};
 function flagTxt(fs){return (fs||[]).map(function(f){return FLAGLAB[f]||f;}).join(', ');}
 var $=function(s){return document.querySelector(s);};
 // Lightbox per ampliar el recorte del gravat (vista Fitxes).
