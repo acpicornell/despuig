@@ -58,6 +58,7 @@ function tableRows(q) {
       id: m.id, q, uid, lon: g.lon ?? null, lat: g.lat ?? null, flags: flags[uid] || [],
       graf: c.graf ?? m.graf, graf0: m.graf, nom: m.nom,
       tipus: c.tipus ?? m.tipus, tipus0: m.tipus, tipusEdited: c.tipus != null && c.tipus !== m.tipus,
+      ordre: c.ordre ?? m.ordre ?? '', ordre0: m.ordre ?? '', ordreEdited: c.ordre != null && c.ordre !== (m.ordre ?? ''),
       decision: m.decision, review: m.review || null, ngib: m.ngib || null,
       municipi: m.municipi || null, km: m.km ?? null, sim: m.sim ?? null,
       cand: (candById[m.id] || []).slice(0, 6),
@@ -143,6 +144,7 @@ const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</ti
  <input id=search placeholder="🔍 cerca grafia / nom / NGIB" style="width:16rem">
  <label class=meta>conf <select id=fdec><option value="">tota</option><option>confirmat</option><option>probable</option><option>suggerit</option><option>posicional</option><option>sense</option></select></label>
  <label class=meta>tipus <select id=ftip><option value="">tots</option></select></label>
+ <label class=meta>orde <select id=ford><option value="">tots</option><option value=__any>amb orde</option><option value=__none>sense orde</option></select></label>
  <label class=meta>revisió <select id=frev><option value="">tota</option><option value=any>revisat o corregit</option><option value=revisat>només revisat</option><option value=corregit>només corregit</option><option value=none>sense revisar</option></select></label>
  <label class=meta>⚠ <select id=fprob><option value="">tots</option><option value=prob>amb problemes</option><option value=ok>sense problemes</option></select></label>
  <span class=grow></span>
@@ -161,14 +163,22 @@ var ROWSQ=null;                    // quin full hi ha carregat a ROWS (evita re-
 var UNDO=[], PENDTIP=null;         // pila de desfer de la taula; valor de filtre tipus pendent de restaurar
 var DECORD={confirmat:5,probable:4,suggerit:3,posicional:2,sense:1};
 // Columnes ordenables de la taula (clau del model + etiqueta).
-var COLS=[{k:'graf',t:'Grafia (gravat)'},{k:'nom',t:'Lectura'},{k:'tipus',t:'Tipus'},
+var COLS=[{k:'graf',t:'Grafia (gravat)'},{k:'nom',t:'Lectura'},{k:'tipus',t:'Tipus'},{k:'ordre',t:'Ordre'},
   {k:'decision',t:'Confiança'},{k:'ngib',t:'NGIB'},{k:'municipi',t:'Municipi'},{k:'km',t:'km',cls:'num'}];
 // Categories LITERALS de la llegenda del gravat (1785), tal com hi estan gravades.
 var TIPS=['Ciudad','Villa Parroquial','Lugar grande','Lugar chico','Oratorio publico',
   'Muchas casas separadas ó Establecimiento','Dos ó tres casas','Casa de campo ó Predio',
   'Hermita','Casa de estudios','Castillo','Atalaya ó Torre','Guarda','Bateria',
-  'Torrente','Puente','Puerto','Punta','Isla','altre'];
+  'Lugar donde se ha dado batalla','Torrente','Puente','Puerto','Punta','Isla',
+  'Obispado','Encomienda de Malta','Colegiata','Priorato ó Abadia','Baronia','Rafal',
+  'Pozos de nieve','Olivares','Viñas','altre'];
+// Eix 2: ordes religioses (codis de la llegenda C/B/1–16). Buit = cap orde.
+var ORDRES=['Cartuxos','Bernardos','Dominicos','Franciscos','Agustinos','Carmelitas',
+  'Trinitarios','Mercenarios','Minimos','Capuchinos','Hermitaños','Concepcionistas',
+  'Geronimas','Carmelitas descalzas','Antonianos','Cayetanos','Clerigos de la Mision',
+  'Clerigos de S.n Phelipe Neri'];
 function tipSel(id,cur){var opts=TIPS.slice();if(cur&&opts.indexOf(cur)<0)opts.unshift(cur);return '<select class=etip data-id="'+id+'">'+opts.map(function(x){return '<option'+(x===cur?' selected':'')+'>'+esc(x)+'</option>';}).join('')+'</select>';}
+function ordSel(id,cur){var opts=ORDRES.slice();if(cur&&opts.indexOf(cur)<0)opts.unshift(cur);return '<select class=eord data-id="'+id+'"><option value=""'+(cur?'':' selected')+'>—</option>'+opts.map(function(x){return '<option'+(x===cur?' selected':'')+'>'+esc(x)+'</option>';}).join('')+'</select>';}
 var esc=function(s){return (s==null?'':''+s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
 // Etiquetes humanes dels flags de qualitat (quality_audit.py).
 var FLAGLAB={empty:'buit',very_short:'molt curt',short_single:'token curt',lower_start:'minúscula inicial',dangling_edge:'vora penjant',has_digit:'dígits',odd_char:'caràcters/abreviatura',ngib_far:'NGIB llunyà (compartit entre fulls)'};
@@ -178,7 +188,7 @@ var $=function(s){return document.querySelector(s);};
 function openLightbox(src){var lb=$('#lb');lb.querySelector('img').src=src;lb.classList.add('show');}
 function closeLightbox(){var lb=$('#lb');lb.classList.remove('show');lb.querySelector('img').src='';}
 // Persistència de l'estat de la UI (full, vista, filtres, ordre) entre recàrregues (B4).
-function saveUI(){ try{ localStorage.setItem('curUI',JSON.stringify({q:Q,mode:MODE,sort:SORT,f:{s:$('#search').value,d:$('#fdec').value,t:$('#ftip').value,r:$('#frev').value,p:$('#fprob').value}})); }catch(e){} }
+function saveUI(){ try{ localStorage.setItem('curUI',JSON.stringify({q:Q,mode:MODE,sort:SORT,f:{s:$('#search').value,d:$('#fdec').value,t:$('#ftip').value,o:$('#ford').value,r:$('#frev').value,p:$('#fprob').value}})); }catch(e){} }
 function loadUI(){ try{ return JSON.parse(localStorage.getItem('curUI')||'null'); }catch(e){ return null; } }
 
 function api(p){ return p+(p.indexOf('?')<0?'?':'&')+'q='+Q; }
@@ -200,7 +210,8 @@ async function boot(){
   $('#mTable').onclick=function(){setMode('table');};
   $('#mCard').onclick=function(){setMode('card');};
   $('#mGeo').onclick=function(){setMode('geo');};
-  ['#search','#fdec','#ftip','#frev','#fprob'].forEach(function(s){$(s).addEventListener('input',onFilter);});
+  $('#ford').innerHTML+=ORDRES.map(function(x){return '<option>'+esc(x)+'</option>';}).join('');  // afegeix les ordes al filtre
+  ['#search','#fdec','#ftip','#ford','#frev','#fprob'].forEach(function(s){$(s).addEventListener('input',onFilter);});
   $('#lb').onclick=closeLightbox;
   addEventListener('keydown',function(e){ if(e.key==='Escape'&&$('#lb').classList.contains('show')){closeLightbox();} });
   // Ctrl/Cmd+Z desfà l'última acció (taula o fitxes) (I2/B1).
@@ -210,7 +221,7 @@ async function boot(){
   var ui=loadUI();
   if(ui){
     if(ui.q && (ui.q==='all'?qs.length>1:qs.indexOf(ui.q)>=0)) Q=ui.q;
-    if(ui.f){ $('#search').value=ui.f.s||''; $('#fdec').value=ui.f.d||''; $('#frev').value=ui.f.r||''; $('#fprob').value=ui.f.p||''; PENDTIP=ui.f.t||null; }
+    if(ui.f){ $('#search').value=ui.f.s||''; $('#fdec').value=ui.f.d||''; $('#ford').value=ui.f.o||''; $('#frev').value=ui.f.r||''; $('#fprob').value=ui.f.p||''; PENDTIP=ui.f.t||null; }
     if(ui.sort) SORT=ui.sort;
     if(ui.mode) MODE=ui.mode;
   }
@@ -262,13 +273,14 @@ function rowHTML(r){
   var pend=r.pend?'<span class=pendtag> ·'+r.pend+(r.pendPick?' '+esc(r.pendPick):'')+'</span>':'';
   var rev=r.review==='revisat'?'<span class=rev title="revisat a mà">✓</span>':r.review==='corregit'?'<span class=rev title="corregit a mà">✎</span>':'';
   var chips=(r.cand||[]).slice(0,4).map(function(c){return '<span class=chip data-g="'+esc(c.grafia)+'">'+esc(c.grafia)+'</span>';}).join('');
-  return '<tr data-id="'+esc(u)+'" data-dec="'+r.decision+'" data-tip="'+esc(r.tipus||'')+'" data-rev="'+(r.review||'')+'" data-prob="'+(fs.length?'1':'')+'" '
+  return '<tr data-id="'+esc(u)+'" data-dec="'+r.decision+'" data-tip="'+esc(r.tipus||'')+'" data-ord="'+esc(r.ordre||'')+'" data-rev="'+(r.review||'')+'" data-prob="'+(fs.length?'1':'')+'" '
     +'data-text="'+esc(((r.graf||'')+' '+(r.nom||'')+' '+(r.ngib||'')+' '+(r.municipi||'')).toLowerCase())+'"'
     +' class="'+(r.pend?'pend ':'')+(r.discarded?'disc ':'')+(SEL[u]?'selrow':'')+'">'
     +'<td class=selcell><input type=checkbox class=selbox data-id="'+esc(u)+'"'+(SEL[u]?' checked':'')+'></td>'
     +'<td class=gcell><input class=eg data-id="'+esc(u)+'" value="'+esc(r.graf)+'">'+warn+(r.grafEdited?' <span class=pendtag>✎</span>':'')+'</td>'
     +'<td><span class=lectlink data-openid="'+esc(u)+'" title="obre la fitxa d\\'edició">'+esc(r.nom)+'</span></td>'
     +'<td>'+tipSel(u,r.tipus)+(r.tipusEdited?' <span class=pendtag>✎</span>':'')+'</td>'
+    +'<td>'+ordSel(u,r.ordre)+(r.ordreEdited?' <span class=pendtag>✎</span>':'')+'</td>'
     +'<td><span class="badge b-'+r.decision+'">'+r.decision+'</span>'+rev+pend+'</td>'
     +'<td><input class=en data-id="'+esc(u)+'" value="'+esc(r.ngib||'')+'" placeholder="—">'+(chips?'<div class=chips>'+chips+'</div>':'')+'</td>'
     +'<td class=meta>'+esc(r.municipi||'')+'</td><td class=num>'+(r.km==null?'':r.km)+'</td>'
@@ -293,6 +305,7 @@ function wireTable(){
   });
   tb.addEventListener('change',function(e){
     if(e.target.classList.contains('etip')) setTipus(e.target.dataset.id,e.target.value);
+    else if(e.target.classList.contains('eord')) setOrdre(e.target.dataset.id,e.target.value);
     else if(e.target.classList.contains('selbox')){ var u=e.target.dataset.id; if(e.target.checked)SEL[u]=1; else delete SEL[u]; var tr=e.target.closest('tr'); if(tr)tr.classList.toggle('selrow',e.target.checked); updateBatchBar(); }
   });
   // Desa la lectura en sortir del camp (no només amb Enter): evita perdre edicions.
@@ -309,12 +322,14 @@ function updateBatchBar(){ var bar=$('#batchbar'); if(!bar)return; var n=Object.
   bar.innerHTML='<b>'+n+' seleccionats</b> · accions en lot: '
     +'<button class=bok>✓ Correcte</button><button class=btr>🗑 Brossa</button><button class=bun>↶ Desfés</button>'
     +' · tipus <select class=btip><option value="">—</option>'+TIPS.map(function(x){return '<option>'+esc(x)+'</option>';}).join('')+'</select>'
+    +' · orde <select class=bord><option value="">—</option><option value="__clear">(cap orde)</option>'+ORDRES.map(function(x){return '<option>'+esc(x)+'</option>';}).join('')+'</select>'
     +' <button class=bclr>✕ deselecciona</button>';
   bar.querySelector('.bok').onclick=function(){batchVerdict('ok');};
   bar.querySelector('.btr').onclick=function(){batchVerdict('trash');};
   bar.querySelector('.bun').onclick=function(){batchVerdict('undo');};
   bar.querySelector('.bclr').onclick=function(){SEL={};buildTable();};
   bar.querySelector('.btip').onchange=function(){batchTipus(this.value);};
+  bar.querySelector('.bord').onchange=function(){batchOrdre(this.value);};
 }
 async function batchVerdict(action){ var ids=Object.keys(SEL); if(!ids.length)return; var n=0,undos=[];
   for(var i=0;i<ids.length;i++){ var r=rowOf(ids[i]); if(!r)continue; var p=snap(r);
@@ -335,10 +350,18 @@ async function batchTipus(v){ if(!v)return; var ids=Object.keys(SEL),n=0,undos=[
   if(undos.length)pushUndo(async function(){ for(var j=0;j<undos.length;j++)await undos[j](); buildTable(); });
   buildTable(); toast('🏷 '+v+' ×'+n);
 }
+async function batchOrdre(v){ if(!v)return; var set=(v==='__clear')?'':v; var ids=Object.keys(SEL),n=0,undos=[];
+  for(var i=0;i<ids.length;i++){ var r=rowOf(ids[i]); if(!r)continue; var p=snap(r);
+    if(!await post({q:r.q,id:r.id,action:'ordre',ordre:(set===r.ordre0?'':set)})){ toast('⚠ Aturat a '+r.id,'bad'); break; }
+    r.ordre=set; r.ordreEdited=((set||'')!==(r.ordre0||'')); undos.push(restorer(ids[i],p)); n++;
+  }
+  if(undos.length)pushUndo(async function(){ for(var j=0;j<undos.length;j++)await undos[j](); buildTable(); });
+  buildTable(); toast((set?'⛪ '+set:'⛪ (cap orde)')+' ×'+n);
+}
 function rowOf(uid){ return ROWS.find(function(r){return (r.uid||r.id)===uid;}); }
 function trEl(uid){ return $('#tb tr[data-id="'+CSS.escape(uid)+'"]'); }
 // ---- unified undo stack (verdict + graf + tipus) ----
-function snap(r){ return {pend:r.pend,pendPick:r.pendPick,review:r.review,discarded:r.discarded,graf:r.graf,grafEdited:r.grafEdited,tipus:r.tipus,tipusEdited:r.tipusEdited}; }
+function snap(r){ return {pend:r.pend,pendPick:r.pendPick,review:r.review,discarded:r.discarded,graf:r.graf,grafEdited:r.grafEdited,tipus:r.tipus,tipusEdited:r.tipusEdited,ordre:r.ordre,ordreEdited:r.ordreEdited}; }
 function pushUndo(fn){ UNDO.push(fn); if(UNDO.length>100)UNDO.shift(); }
 // Restorer: re-applies a full prior row state (verdict + reading + tipus) with minimal posts.
 function restorer(uid,p){ return async function(){ var r=rowOf(uid); if(!r)return;
@@ -348,10 +371,12 @@ function restorer(uid,p){ return async function(){ var r=rowOf(uid); if(!r)retur
   if(!await post(body))return;
   if(!p.grafEdited && r.grafEdited) await post({q:r.q,id:r.id,action:'graf',graf:''});   // was unedited -> clear
   if(p.tipus!==r.tipus) await post({q:r.q,id:r.id,action:'tipus',tipus:(p.tipus===r.tipus0?'':p.tipus)});
-  r.pend=p.pend;r.pendPick=p.pendPick;r.review=p.review;r.discarded=p.discarded;r.graf=p.graf;r.grafEdited=p.grafEdited;r.tipus=p.tipus;r.tipusEdited=p.tipusEdited;
+  if((p.ordre||'')!==(r.ordre||'')) await post({q:r.q,id:r.id,action:'ordre',ordre:((p.ordre||'')===(r.ordre0||'')?'':(p.ordre||''))});
+  r.pend=p.pend;r.pendPick=p.pendPick;r.review=p.review;r.discarded=p.discarded;r.graf=p.graf;r.grafEdited=p.grafEdited;r.tipus=p.tipus;r.tipusEdited=p.tipusEdited;r.ordre=p.ordre;r.ordreEdited=p.ordreEdited;
   refreshRow(uid); prog(); }; }
 async function tableUndo(){ var fn=UNDO.pop(); if(!fn){toast('(res a desfer)','warn');return;} await fn(); toast('↶ Desfet'); }
 async function setTipus(uid,v){ var r=rowOf(uid); if(!r||v===r.tipus)return; var p=snap(r); if(!await post({q:r.q,id:r.id,action:'tipus',tipus:(v===r.tipus0?'':v)}))return; r.tipus=v; r.tipusEdited=(v!==r.tipus0); refreshRow(uid); pushUndo(restorer(uid,p)); toast('🏷 '+v); }
+async function setOrdre(uid,v){ var r=rowOf(uid); if(!r||(v||'')===(r.ordre||''))return; var p=snap(r); if(!await post({q:r.q,id:r.id,action:'ordre',ordre:(v===r.ordre0?'':v)}))return; r.ordre=v; r.ordreEdited=((v||'')!==(r.ordre0||'')); refreshRow(uid); pushUndo(restorer(uid,p)); toast(v?'⛪ '+v:'⛪ (cap orde)'); }
 async function saveReading(uid,v){ var r=rowOf(uid); v=(v||'').trim(); if(!r||!v||v===r.graf)return; var p=snap(r); if(!await post({q:r.q,id:r.id,action:'graf',graf:v}))return; r.graf=v; r.grafEdited=(v!==r.graf0); flash(uid); refreshRow(uid); pushUndo(restorer(uid,p)); toast('💾 Lectura desada'); }
 async function pickRow(uid,g){ var r=rowOf(uid); if(!r)return; var p=snap(r); if(!await post({q:r.q,id:r.id,action:'pick',grafia:g,graf:ged(uid)}))return; r.pend='pick'; r.pendPick=g; r.review=(g===r.ngib?'revisat':'corregit'); refreshRow(uid); prog(); pushUndo(restorer(uid,p)); toast('✓ '+g); }
 async function noneRow(uid){ var r=rowOf(uid); if(!r)return; var p=snap(r); if(!await post({q:r.q,id:r.id,action:'none',graf:ged(uid)}))return; r.pend='none'; r.pendPick=null; r.ngib=null; r.review=null; refreshRow(uid); prog(); pushUndo(restorer(uid,p)); toast('Cap match','warn'); }
@@ -373,13 +398,14 @@ function fillTipFilter(){
   sel.innerHTML='<option value="">tots</option>'+ordered.map(function(x){return '<option'+(x===cur?' selected':'')+'>'+esc(x)+'</option>';}).join('');
 }
 function applyFilter(){
-  if(MODE!=='table')return; var t=($('#search').value||'').trim().toLowerCase(),d=$('#fdec').value,tp=$('#ftip').value,rv=$('#frev').value,fp=$('#fprob').value;
+  if(MODE!=='table')return; var t=($('#search').value||'').trim().toLowerCase(),d=$('#fdec').value,tp=$('#ftip').value,fo=$('#ford').value,rv=$('#frev').value,fp=$('#fprob').value;
   var rows=document.querySelectorAll('#tb tr'),shown=0;
   rows.forEach(function(tr){
-    var rev=tr.dataset.rev, prob=tr.dataset.prob==='1';
+    var rev=tr.dataset.rev, prob=tr.dataset.prob==='1', ord=tr.dataset.ord;
     var rok=!rv||(rv==='any'?!!rev:rv==='none'?!rev:rev===rv);
     var pok=!fp||(fp==='prob'?prob:!prob);
-    var ok=(!d||tr.dataset.dec===d)&&(!tp||tr.dataset.tip===tp)&&rok&&pok&&(!t||tr.dataset.text.indexOf(t)>=0);
+    var ook=!fo||(fo==='__any'?!!ord:fo==='__none'?!ord:ord===fo);
+    var ok=(!d||tr.dataset.dec===d)&&(!tp||tr.dataset.tip===tp)&&ook&&rok&&pok&&(!t||tr.dataset.text.indexOf(t)>=0);
     tr.style.display=ok?'':'none'; if(ok)shown++;
   });
   prog(shown);
@@ -421,13 +447,14 @@ function initGeoMap(){
 }
 function renderGeo(){
   if(!geolayer)return; geolayer.clearLayers();
-  var t=($('#search').value||'').trim().toLowerCase(),d=$('#fdec').value,tp=$('#ftip').value,rv=$('#frev').value,fp=$('#fprob').value,shown=0;
+  var t=($('#search').value||'').trim().toLowerCase(),d=$('#fdec').value,tp=$('#ftip').value,fo=$('#ford').value,rv=$('#frev').value,fp=$('#fprob').value,shown=0;
   ROWS.forEach(function(r){
     if(r.lat==null||r.lon==null||r.discarded)return;
-    var rev=r.review||'',prob=(r.flags&&r.flags.length)>0;
+    var rev=r.review||'',prob=(r.flags&&r.flags.length)>0,ord=r.ordre||'';
     var rok=!rv||(rv==='any'?!!rev:rv==='none'?!rev:rev===rv);
     var pok=!fp||(fp==='prob'?prob:!prob);
-    var ok=(!d||r.decision===d)&&(!tp||(r.tipus||'')===tp)&&rok&&pok&&(!t||((r.graf||'')+' '+(r.nom||'')+' '+(r.ngib||'')+' '+(r.municipi||'')).toLowerCase().indexOf(t)>=0);
+    var ook=!fo||(fo==='__any'?!!ord:fo==='__none'?!ord:ord===fo);
+    var ok=(!d||r.decision===d)&&(!tp||(r.tipus||'')===tp)&&ook&&rok&&pok&&(!t||((r.graf||'')+' '+(r.nom||'')+' '+(r.ngib||'')+' '+(r.municipi||'')).toLowerCase().indexOf(t)>=0);
     if(!ok)return;
     var mk=L.circleMarker([r.lat,r.lon],{radius:prob?5:4,weight:(prob||rev)?2:1,color:prob?'#c0530a':(rev?'#1d6b2a':'rgba(40,30,20,.55)'),fillColor:GEOC[r.decision]||'#888',fillOpacity:.9});
     var revTxt=rev==='corregit'?' · ✎ corregit':rev?' · ✓ revisat':'';
@@ -467,11 +494,12 @@ async function loadCards(){
   $('#hint').innerHTML='Fitxes: <kbd>1</kbd>–<kbd>6</kbd> candidat · <kbd>C</kbd> correcte · <kbd>0</kbd> cap match · <kbd>D</kbd> brossa · <kbd>S</kbd> saltar · <kbd>U</kbd>/<kbd>Ctrl+Z</kbd> desfés · clica el recorte per ampliar';
 }
 function cbuild(){
-  var t=($('#search').value||'').trim().toLowerCase(), f=$('#fdec').value, tp=$('#ftip').value, fp=$('#fprob').value;
+  var t=($('#search').value||'').trim().toLowerCase(), f=$('#fdec').value, tp=$('#ftip').value, fo=$('#ford').value, fp=$('#fprob').value;
   queue=DATA.filter(function(d){
     if(d.id in STATE.reviewed) return false;            // la cua = encara no revisats
     if(f && d.decision!==f) return false;
     if(tp && ((STATE.tipus&&STATE.tipus[d.id])||d.tipus||'')!==tp) return false;
+    if(fo){ var od=(STATE.ordre&&STATE.ordre[d.id])||d.ordre||''; if(fo==='__any'?!od:fo==='__none'?!!od:od!==fo) return false; }
     if(fp){ var prob=(d.flags&&d.flags.length)>0; if(fp==='prob'?!prob:prob) return false; }
     if(t){ var hay=((d.graf||'')+' '+(d.nom||'')+' '+(d.ngib||'')+' '+(d.municipi||'')).toLowerCase(); if(hay.indexOf(t)<0) return false; }
     return true;
@@ -494,8 +522,9 @@ function crender(){
   var d=queue[ci];
   var cands=d.candidates.map(function(c,n){var rec=(c.grafia===d.ngib)?' rec':'';return '<button class="cand'+rec+'" data-g="'+esc(c.grafia)+'"><kbd>'+(n+1)+'</kbd><b>'+esc(c.grafia)+'</b><div class=m>'+esc(c.municipi||'?')+' · '+c.km+'km · sim '+c.sim+'</div></button>';}).join('');
   var etip=(STATE.tipus&&STATE.tipus[d.id])||d.tipus;
+  var eord=(STATE.ordre&&STATE.ordre[d.id])||d.ordre||'';
   app.innerHTML='<div><img class=crop src="'+api('/crop/'+d.id+'.jpg')+'" onclick="openLightbox(this.src)" title="clica per ampliar"></div><div>'
-    +'<div class=meta><span class="badge b-'+d.decision+'">'+d.decision+'</span> · '+tipSel(d.id,etip)+' · <code>'+d.id+'</code>'+(d.flags&&d.flags.length?' · <span class=warn title="'+esc(flagTxt(d.flags))+'">⚠ '+esc(flagTxt(d.flags))+'</span>':'')+'</div>'
+    +'<div class=meta><span class="badge b-'+d.decision+'">'+d.decision+'</span> · '+tipSel(d.id,etip)+' · ⛪ '+ordSel(d.id,eord)+' · <code>'+d.id+'</code>'+(d.flags&&d.flags.length?' · <span class=warn title="'+esc(flagTxt(d.flags))+'">⚠ '+esc(flagTxt(d.flags))+'</span>':'')+'</div>'
     +'<div class=act><label style="flex:0 0 auto;color:var(--soft);align-self:center">Lectura</label>'
     +'<input id=cgraf value="'+esc((STATE.graf&&STATE.graf[d.id])||d.graf)+'" style="flex:3;font-weight:600">'
     +'<button onclick="csave()">💾</button></div>'
@@ -507,9 +536,11 @@ function crender(){
     +'<button class=undo onclick="cundo()">↶ <kbd>U</kbd></button></div></div>';
   app.querySelectorAll('.cand').forEach(function(b){b.onclick=function(){cpick(b.dataset.g,b);};});
   var et=app.querySelector('.etip'); if(et)et.onchange=function(){ctip(d.id,et.value,d.tipus);};
+  var eo=app.querySelector('.eord'); if(eo)eo.onchange=function(){cord(d.id,eo.value,d.ordre||'');};
   cmap(d);
 }
 async function ctip(id,v,base){ if(!await post({id:id,action:'tipus',tipus:(v===base?'':v)}))return; STATE.tipus=STATE.tipus||{}; if(v===base)delete STATE.tipus[id]; else STATE.tipus[id]=v; toast('🏷 '+v); }
+async function cord(id,v,base){ if(!await post({id:id,action:'ordre',ordre:(v===base?'':v)}))return; STATE.ordre=STATE.ordre||{}; if(!v||v===base)delete STATE.ordre[id]; else STATE.ordre[id]=v; toast(v?'⛪ '+v:'⛪ (cap orde)'); }
 function toast(msg,cls){var t=$('#toast');t.className='';if(cls)t.classList.add(cls);t.textContent=msg;void t.offsetWidth;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove('show');},1300);}
 function hit(sel){var b=document.querySelector('#app '+sel);if(b)b.classList.add('hit');}
 function cgrafv(){var el=$('#cgraf'),d=queue[ci];if(!el||!d)return null;var v=el.value.trim();return (v&&v!==d.graf)?v:null;}
@@ -563,19 +594,21 @@ const server = http.createServer((req, res) => {
   if (req.method === 'GET' && u.pathname === '/data' && QUADRANTS.includes(q)) {
     const d = readJSON(F(q).reviewdata, { items: [] });
     const flags = readJSON(`${ROOT}/data/toponims/mapkurator/quality_flags.json`, {});
-    (d.items || []).forEach((it) => { it.flags = flags[`${q}:${it.id}`] || []; });
+    const ordreById = Object.fromEntries(readJSON(F(q).matches, []).map((m) => [m.id, m.ordre || '']));
+    (d.items || []).forEach((it) => { it.flags = flags[`${q}:${it.id}`] || []; it.ordre = ordreById[it.id] || ''; });
     return send(res, 200, 'application/json', JSON.stringify(d));
   }
   if (req.method === 'GET' && u.pathname === '/state' && QUADRANTS.includes(q)) {
     const cur = readJSON(F(q).curation, {});
-    const picks = {}, reviewed = {}, graf = {}, tipus = {};
+    const picks = {}, reviewed = {}, graf = {}, tipus = {}, ordre = {};
     for (const [id, c] of Object.entries(cur)) {
       if (c.graf) graf[id] = c.graf;
       if (c.tipus) tipus[id] = c.tipus;
+      if (c.ordre) ordre[id] = c.ordre;
       if (c.ngib) picks[id] = c.ngib;
       if (c.verdict) reviewed[id] = c.verdict;
     }
-    return send(res, 200, 'application/json', JSON.stringify({ picks, reviewed, graf, tipus }));
+    return send(res, 200, 'application/json', JSON.stringify({ picks, reviewed, graf, tipus, ordre }));
   }
   if (req.method === 'GET' && u.pathname.startsWith('/crop/') && QUADRANTS.includes(q)) {
     const p = `${F(q).crops}/${path.basename(u.pathname)}`;
@@ -586,13 +619,14 @@ const server = http.createServer((req, res) => {
     let body = ''; req.on('data', (c) => body += c);
     req.on('end', () => {
       try {
-        const { q: bq, id, action, grafia, graf, tipus } = JSON.parse(body || '{}');
+        const { q: bq, id, action, grafia, graf, tipus, ordre } = JSON.parse(body || '{}');
         if (!QUADRANTS.includes(bq) || !id) return send(res, 400, 'application/json', '{"ok":false}');
         const f = F(bq);
         const cur = readJSON(f.curation, {});                      // THROWS if the file is corrupt
         const rec = cur[id] || (cur[id] = {});
         if (graf) rec.graf = graf;                                 // reading edits ride along any action
         if (action === 'graf') { if (!graf) delete rec.graf; }     // explicit empty graf -> clear the reading edit (for undo)
+        else if (action === 'ordre') { if (ordre) rec.ordre = ordre; else delete rec.ordre; }  // religious order (axis 2)
         else if (action === 'tipus') { if (tipus) rec.tipus = tipus; else delete rec.tipus; }
         else if (action === 'pick' && grafia) { rec.ngib = grafia; rec.verdict = 'pick'; }
         else if (action === 'none') { rec.verdict = 'none'; delete rec.ngib; }  // "cap match" also clears any pick

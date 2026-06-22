@@ -31,7 +31,16 @@ VALID_TIPUS = {
     "Ciudad", "Villa Parroquial", "Lugar grande", "Lugar chico", "Oratorio publico",
     "Muchas casas separadas ó Establecimiento", "Dos ó tres casas", "Casa de campo ó Predio",
     "Hermita", "Casa de estudios", "Castillo", "Atalaya ó Torre", "Guarda", "Bateria",
-    "Torrente", "Puente", "Puerto", "Punta", "Isla", "altre",
+    "Lugar donde se ha dado batalla", "Torrente", "Puente", "Puerto", "Punta", "Isla",
+    "Obispado", "Encomienda de Malta", "Colegiata", "Priorato ó Abadia", "Baronia", "Rafal",
+    "Pozos de nieve", "Olivares", "Viñas", "altre",
+}
+# Axis 2: religious orders (legend codes C/B/1–16). Stored in the separate `ordre` field.
+VALID_ORDRES = {
+    "Cartuxos", "Bernardos", "Dominicos", "Franciscos", "Agustinos", "Carmelitas",
+    "Trinitarios", "Mercenarios", "Minimos", "Capuchinos", "Hermitaños", "Concepcionistas",
+    "Geronimas", "Carmelitas descalzas", "Antonianos", "Cayetanos", "Clerigos de la Mision",
+    "Clerigos de S.n Phelipe Neri",
 }
 
 
@@ -39,7 +48,7 @@ def apply_overlay(top_path, cur):
     """Rewrite graf/nom/tipus in toponims.json from the curation overlay. Idempotent:
     re-running with the same overlay is a no-op (only changed fields are touched)."""
     top = json.load(open(top_path))
-    ng = nt = 0
+    ng = nt = no = 0
     for t in top["toponims"]:
         c = cur.get(t["id"], {})
         g = (c.get("graf") or "").strip()
@@ -53,8 +62,16 @@ def apply_overlay(top_path, cur):
         if tp in VALID_TIPUS and tp != t["tipus"]:
             t["tipus"] = tp
             nt += 1
+        od = c.get("ordre")               # axis 2: religious order (no derivation, overlay only)
+        if od in VALID_ORDRES:
+            if t.get("ordre") != od:
+                t["ordre"] = od
+                no += 1
+        elif od == "" and t.get("ordre"):  # explicit clear
+            del t["ordre"]
+            no += 1
     json.dump(top, open(top_path, "w"), ensure_ascii=False, indent=1)
-    return ng, nt
+    return ng, nt, no
 
 
 def main():
@@ -68,8 +85,8 @@ def main():
         sys.exit(f"missing {top}")
 
     cur = json.load(open(cur_path)) if os.path.exists(cur_path) else {}
-    ng, nt = apply_overlay(top, cur)
-    print(f"[{q}] overlay applied: {ng} readings + {nt} tipus ({len(cur)} curated ids)")
+    ng, nt, no = apply_overlay(top, cur)
+    print(f"[{q}] overlay applied: {ng} readings + {nt} tipus + {no} ordres ({len(cur)} curated ids)")
 
     rel = lambda p: os.path.relpath(p, ROOT)
     env = {**os.environ,

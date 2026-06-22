@@ -223,8 +223,16 @@ the chosen full, view, filters and sort are **remembered between reloads** (loca
 **Undo** is unified: `↶` or **Ctrl/Cmd+Z** reverts the last action — verdict *and* reading
 *and* tipus, batch ops included.
 
-Every edit updates one record in `curation.json` (a tipus or reading equal to the original
-removes that field). Saves are **crash-safe**: atomic write (`.tmp`+rename) with a rolling
+The 1785 legend encodes **two independent axes**, both editable per row/card: `tipus`
+(the place-type icon — full literal vocabulary incl. Obispado, Encomienda de Malta,
+Colegiata, Priorato ó Abadia, Baronia, Rafal, Pozos de nieve, Olivares, Viñas, Lugar
+donde se ha dado batalla…) and **`ordre`** (the religious-order code next to a name:
+Cartuxos, Bernardos, Dominicos…Clerigos de S.n Phelipe Neri — 18 orders, optional). The
+two are separate fields, filterable independently (the `orde` filter has amb/sense orde).
+`bake.py` applies both from the overlay; `ngib_match` carries `ordre` into matches.json.
+
+Every edit updates one record in `curation.json` (a tipus/ordre/reading equal to the
+original removes that field). Saves are **crash-safe**: atomic write (`.tmp`+rename) with a rolling
 `curation.json.bak`; a corrupt overlay makes the server refuse to write (HTTP 500) rather
 than clobber it, and the client shows "⚠ NO desat" if a save ever fails. The server binds
 **127.0.0.1 only**. After editing, **re-bake the sheet** with `bake.py <q>` (single command

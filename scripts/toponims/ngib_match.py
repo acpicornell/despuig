@@ -250,6 +250,7 @@ for t, pm in zip(toponims, proj):
     g = chosen[0] if chosen else None
     matches.append({
         "id": t["id"], "nom": t["nom"], "graf": t.get("graf"), "tipus": t["tipus"],
+        "ordre": t.get("ordre"),
         "dubte": bool(t.get("dubte")), "decision": decision, "review": None,
         "ngib": g["grafia"] if g else None,
         "municipi": g["municipi"] if g else None,
