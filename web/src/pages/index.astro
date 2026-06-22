@@ -34,6 +34,13 @@ const teaser = pool.slice(0, 5);
         de 1785— i la densa <strong>toponímia</strong> de l'interior, llegida sobre el gravat i
         contrastada amb el Nomenclàtor Geogràfic de les Illes Balears.
       </p>
+      <p class="lede sub">
+        El tercer gran mapa de l'illa —després dels de Binimelis (c.&nbsp;1594) i Mut (1683)— el va
+        gravar <strong>Josep Muntaner</strong> el 1785 en quatre planxes de coure (uns 160&nbsp;×&nbsp;123&nbsp;cm,
+        a escala ~1:72.000). Fruit de la Societat Econòmica d'Amics del País i de l'expedició Tofiño,
+        és un mapa enciclopèdic: 36 vinyetes de viles i més de 2.500 noms.
+        <a href={url('gravat')}>Coneix el gravat →</a>
+      </p>
     </div>
   </section>
 
@@ -107,7 +114,9 @@ const teaser = pool.slice(0, 5);
     width: 100%; padding: 2.2rem 1.2rem;
   }
   .hero h1 { margin: 0 0 .6rem; }
-  .hero .lede { max-width: 62ch; margin: 0 0 1.2rem; }
+  .hero .lede { max-width: none; margin: 0 0 1.2rem; }
+  .hero .lede.sub { font-size: .96rem; color: var(--ink-soft); margin-bottom: 0; }
+  .hero .lede.sub a { white-space: nowrap; font-family: var(--display); }
 
   .portes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin: 2.4rem auto; }
   .porta { text-decoration: none; color: inherit; padding: 1.4rem 1.3rem; display: flex; flex-direction: column; transition: transform .12s, box-shadow .12s; }

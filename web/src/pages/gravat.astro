@@ -22,30 +22,9 @@ const cfg = {
   description="El gravat original del Mapa de la Isla de Mallorca (Antoni Despuig, 1785) a resolució completa: navega les quatre planxes amb zoom profund.">
   <section class="wrap ghead">
     <h1>El gravat</h1>
-    <p class="lede">
-      El <em>Mapa de la Isla de Mallorca</em> del Cardenal Despuig, gravat el <strong>1785</strong> en
-      <strong>quatre planxes</strong> de coure. Aquí el tens sencer i a màxima resolució —prop de
-      19.300 × 14.900 píxels— per recórrer-lo amb zoom profund: arrossega per moure't, fes servir la
-      roda per acostar-te, o salta directament a un dels quatre fulls.
-    </p>
   </section>
 
   <section class="wrap gstage">
-    <aside class="panel">
-      <h2 class="phead">Fulls del gravat</h2>
-      <div class="sheets2" role="group" aria-label="Tria un full del gravat">
-        {SHEETS.map((s) => (
-          <button data-sheet={s.key} aria-pressed="false">{s.label}</button>
-        ))}
-        <button data-sheet="full" class="full on" aria-pressed="true">Tot el mapa</button>
-      </div>
-      <p class="phint muted">Les quatre planxes es corresponen amb els quadrants del mapa.</p>
-      <p class="onward">
-        Cada nom gravat és a la <a href={url('toponims')}>taula de topònims</a>, i a
-        <a href={url('metode')}>El mètode</a> expliquem com s'ha llegit.
-      </p>
-    </aside>
-
     <figure class="plate">
       <div id="eng" class="viewer"></div>
       <figcaption>
@@ -53,6 +32,143 @@ const cfg = {
         Imatge mestra: Biblioteca Virtual de Defensa (edició original de 1785), CC&nbsp;BY&nbsp;4.0.
       </figcaption>
     </figure>
+
+    <div class="panel">
+      <div class="controls">
+        <h2 class="phead">Fulls del gravat</h2>
+        <div class="sheets2" role="group" aria-label="Tria un full del gravat">
+          {SHEETS.map((s) => (
+            <button data-sheet={s.key} aria-pressed="false">{s.label}</button>
+          ))}
+          <button data-sheet="full" class="full on" aria-pressed="true">Tot el mapa</button>
+        </div>
+      </div>
+      <p class="phint muted">Les quatre planxes es corresponen amb els quadrants del mapa.</p>
+      <p class="onward">
+        Cada nom gravat és a la <a href={url('toponims')}>taula de topònims</a>, i a
+        <a href={url('metode')}>El mètode</a> expliquem com s'ha llegit.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap obra">
+    <h2 class="otitle">L'obra</h2>
+
+    <aside class="side">
+      <h3 class="sidehead">Fitxa tècnica</h3>
+      <dl class="fitxa">
+        <div><dt>Títol</dt><dd><em>Mapa de la Ysla de Mallorca</em> (només titulat dins la dedicatòria)</dd></div>
+        <div><dt>Promotor</dt><dd>Antoni Despuig i Dameto (Palma, 1745 – Lucca, 1813), canonge i, més tard, cardenal</dd></div>
+        <div><dt>Gravador</dt><dd>Josep Muntaner i Moner (Palma, c.&nbsp;1745 – 1788), probablement amb un taller</dd></div>
+        <div><dt>Data</dt><dd>Aixecat el 1784, gravat el 1785</dd></div>
+        <div><dt>Suport</dt><dd>4 planxes de coure · superfície d'estampació ≈&nbsp;160&nbsp;×&nbsp;123&nbsp;cm</dd></div>
+        <div><dt>Escala</dt><dd>≈&nbsp;1:72.000 (cinc escales gràfiques, sense escala numèrica)</dd></div>
+        <div><dt>Toponímia</dt><dd>més de 2.500 noms (522 al litoral, 2.041 a l'interior)</dd></div>
+        <div><dt>Aparell</dt><dd>36 vinyetes de viles + requadre de Cabrera + cartel·la dedicatòria</dd></div>
+      </dl>
+    </aside>
+
+    <div class="prose">
+      <h3>El tercer gran mapa de Mallorca</h3>
+      <p>
+        La cartografia mallorquina anterior al segle&nbsp;XIX té tres fites, una per segle: el mapa de
+        <strong>Joan Binimelis</strong> (cap a 1594), el de <strong>Vicenç Mut</strong> (1683) i, el tercer,
+        aquest mapa patrocinat pel canonge <strong>Antoni Despuig</strong> (1784–1785). És, de molt, el més
+        ambiciós: respecte del mapa de Mallorca de Tomás López (1773), Despuig multiplica l'escala —de
+        ~1:201.000 a ~1:72.000— i, amb ella, la densitat d'informació i una línia de costa notablement
+        millorada. Els estudiosos l'han definit com «un dels millors treballs sobre la geografia de l'illa
+        i un dels grans mapes de la història de la cartografia de Mallorca».
+      </p>
+
+      <h3>Qui el va fer</h3>
+      <p>
+        El mapa només duu un nom d'autor —el del gravador— i una dedicatòria: <em>«su más humilde Capellán
+        Antonio Despuig y Dameto, quien lo levantó en el año de 1784. Joseph Muntaner, la gravó en Mallorca
+        año 1785»</em>, adreçada a la princesa d'Astúries Maria Lluïsa de Borbó. Despuig, home de la
+        Il·lustració i impulsor de la <strong>Societat Econòmica Mallorquina d'Amics del País</strong>, en fou
+        el promotor i en pagà l'edició; la seva intervenció directa sembla concentrada en les notícies
+        històriques de les viles. Darrere seu hi va treballar, però, un equip que el gravat amaga: la crítica
+        ha proposat <strong>Julià Ballester</strong> (a qui un biògraf arribà a atribuir-ne el dibuix), el
+        caputxí <strong>fra Miquel de Petra</strong> (reducció i equivalència de les mesures) i <strong>Jeroni
+        Berard</strong>. El gravat, dens i desigual entre planxa i planxa, delata també diverses mans al
+        taller de <strong>Josep Muntaner</strong>, director de l'escola de dibuix de la Societat.
+      </p>
+
+      <h3>Com es va construir</h3>
+      <p>
+        El mapa és, en bona part, un fruit col·lectiu de la Societat Econòmica. El 1784 dues iniciatives
+        n'alimentaren el contingut: un <strong>qüestionari estadístic</strong> de les viles (població,
+        agricultura, indústria), publicat a les <em>Memorias</em> de 1784 —d'on surten les xifres de veïns de
+        les vinyetes—, i el <strong>mesurament dels camins</strong> de l'illa, una comissió encapçalada pel
+        mateix Despuig. La costa i les sondes dels ports, en canvi, beuen de l'<strong>expedició
+        hidrogràfica de Tofiño</strong> (1783–1788), que treballava aleshores a les Balears: d'aquí la
+        batimetria de les badies i la referència al meridià de París. Tant és així que s'ha qualificat el mapa
+        de «resultat indirecte de l'expedició Tofiño». Les planxes encara es van retocar a darrera hora,
+        sobretot el perfil de la costa del sud i el ponent, i les vinyetes es van gravar al final.
+      </p>
+
+      <h3>Què hi ha dibuixat</h3>
+      <p>
+        No porta escala numèrica, sinó <strong>cinc escales gràfiques</strong> (llegües mallorquines,
+        castellanes de 17½ al grau, de 19, de 20 i horàries) i una <strong>rosa dels vents de 16 punts</strong>
+        amb flor de lis al nord —un detall que no tenen ni López ni Tofiño. El relleu es resol amb
+        muntanyetes ombrejades (encara no hi ha corbes de nivell); els <strong>torrents</strong> hi són
+        marcats amb força, amb fonts, pous, l'Albufera («Laguna de muchísima utilidad y recreo») i altres
+        zones humides; els <strong>camins</strong> es distingeixen entre «de rueda» i «de herradura». La
+        llegenda és rica i de dos eixos: a banda del tipus de lloc (ciutat, vila, predi, talaia, castell,
+        oratori…), assenyala l'aprofitament del sòl —oliverars i vinyes—, els llocs de batalla i fins i tot
+        les <strong>ordes religioses</strong> propietàries amb un codi al costat del nom.
+      </p>
+
+      <h3>Les 36 vinyetes</h3>
+      <p>
+        La sanefa de <strong>36 vinyetes</strong> —Palma i 35 viles— és el segell visual del gravat, i va molt
+        més enllà de l'ornament. Cada una porta l'<strong>escut</strong> del lloc, una vista dibuixada de la
+        seva activitat i un text breu, a la manera dels viatgers il·lustrats, amb la població, l'any de
+        fundació, les collites, les fires i les antiguitats (la d'Inca, per exemple, reprodueix una inscripció
+        romana). La de <strong>Palma</strong>, la capital, ocupa el lloc d'honor, sota la dedicatòria a la
+        princesa. Es van gravar les últimes: encara s'hi veu un topònim corregit damunt la vinyeta de
+        Banyalbufar, afegida a darrera hora.
+      </p>
+
+      <h3>Més de 2.500 noms</h3>
+      <p>
+        El que fa únic aquest mapa és la seva <strong>toponímia</strong>: 522 noms al litoral i 2.041 a
+        l'interior, molt més completa i detallada que la de qualsevol mapa anterior i que la de molts de
+        posteriors (al litoral, més del 80&nbsp;% dels noms són ortogràficament correctes). És justament aquest
+        tresor de noms de l'interior el que aquest projecte llegeix sobre el gravat i contrasta amb el
+        Nomenclàtor —pots recórrer-los a la <a href={url('toponims')}>taula de topònims</a> i veure com s'ha
+        fet a <a href={url('metode')}>El mètode</a>.
+      </p>
+
+      <h3>Encerts i errades</h3>
+      <p>
+        L'anònim cartògraf va aconseguir una «meritòria aproximació» al traçat dels torrents ancorant-los a les
+        viles veïnes: quan un poble queda mal situat, els seus cursos d'aigua es desplacen amb ell. No tot és
+        perfecte —al centre de l'illa, prop de Sineu, el dibuixant o el gravador va connectar per error dues
+        conques diferents, potser perquè les planxes contigües les van obrir mans distintes—, però el conjunt
+        va tenir prop d'un segle de validesa pràctica. El veredicte dels especialistes és matisat: «no fou una
+        gran aportació a la ciència, però sí una eina molt útil i, fins i tot, patriòtica», d'un caràcter
+        marcadament enciclopèdic.
+      </p>
+
+      <h3>Edicions i exemplars</h3>
+      <p>
+        El 1814 se'n va publicar una versió reduïda (~1:200.000) i, pel bicentenari, el 1985 se'n va fer una
+        reimpressió des de les planxes originals, limitada a 75 exemplars. La imatge a màxima resolució que
+        navegues més amunt prové de l'exemplar de l'edició original de 1785 conservat a la Biblioteca Virtual
+        de Defensa.
+      </p>
+
+      <p class="fonts">
+        <strong>Fonts.</strong> C.&nbsp;Picornell, J.&nbsp;M.&nbsp;Seguí i A.&nbsp;Ginard, «El mapa de Mallorca
+        d'Antoni Despuig (1785)», <em>Treballs de Geografia</em>, 40 (UIB, 1988), 23–40 · A.&nbsp;Ginard
+        Bujosa, «Antoni Despuig i Dameto, el mapa de Mallorca (1784–1785) i la Societat d'Amics del País»,
+        <em>Cuadernos de Geografía</em>, 86 (València, 2009), 241–260 · V.&nbsp;M.&nbsp;Rosselló i Verger, «La
+        xarxa hídrica del mapa de Mallorca d'en Despuig (1785)», <em>Cuadernos de Geografía</em>, 90 (València,
+        2011), 115–124.
+      </p>
+    </div>
   </section>
 
   <script type="application/json" id="cfg" set:html={JSON.stringify(cfg)}></script>
@@ -64,7 +180,7 @@ const cfg = {
       const osd = OpenSeadragon({
         id: 'eng', prefixUrl: cfg.osdImg, tileSources: cfg.dzi,
         showNavigator: true, navigatorPosition: 'BOTTOM_RIGHT',
-        gestureSettingsMouse: { clickToZoom: false }, minZoomImageRatio: 0.5, visibilityRatio: 1,
+        gestureSettingsMouse: { clickToZoom: false }, minZoomImageRatio: 1, visibilityRatio: 1,
         animationTime: reduce ? 0 : 0.8,
       });
       const btns = Array.from(document.querySelectorAll('.sheets2 button'));
@@ -92,34 +208,60 @@ const cfg = {
 <style>
   .ghead { padding-top: 1.2rem; }
 
-  /* panell de control + visor */
-  .gstage { display: grid; grid-template-columns: 17rem 1fr; gap: 1.6rem; align-items: start; margin-bottom: 3rem; }
+  /* visor a tot l'ample + panell de control a sota */
+  .gstage { margin-bottom: 3rem; }
 
-  .panel { position: sticky; top: 5rem; }
-  .phead { font-family: var(--display); font-size: 1rem; letter-spacing: .03em; text-transform: uppercase; color: var(--sepia); margin: 0 0 .8rem; }
-  /* selector 2×2 que imita la disposició de les planxes */
-  .sheets2 { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+  /* visor emmarcat tipus "làmina" — fons pergamí perquè no es vegin marges negres */
+  .plate { margin: 0; border: 1px solid var(--line); border-radius: 5px; background: #e9e2cf; box-shadow: 0 4px 18px var(--shadow); overflow: hidden; }
+  .viewer { width: 100%; aspect-ratio: 19306 / 14902; max-height: 84vh; background: #e9e2cf; }
+  .plate figcaption { padding: .6rem .9rem; font-size: .8rem; line-height: 1.5; color: var(--ink-soft); background: var(--paper-2); border-top: 1px solid var(--line); }
+
+  /* panell de control sota el gravat, en horitzontal */
+  .panel { margin-top: 1rem; }
+  .controls { display: flex; align-items: center; gap: .6rem 1.1rem; flex-wrap: wrap; }
+  .phead { font-family: var(--display); font-size: 1rem; letter-spacing: .03em; text-transform: uppercase; color: var(--sepia); margin: 0; }
+  .sheets2 { display: flex; flex-wrap: wrap; gap: .5rem; }
   .sheets2 button {
-    font-family: var(--display); font-size: .9rem; padding: .85rem .6rem; cursor: pointer;
+    font-family: var(--display); font-size: .9rem; padding: .5rem .9rem; cursor: pointer;
     background: rgba(255,255,255,.45); color: var(--ink-soft);
     border: 1px solid var(--line); border-radius: 4px; transition: background .12s, color .12s, transform .12s;
   }
   .sheets2 button:hover { background: var(--paper-2); transform: translateY(-1px); }
   .sheets2 button.on { background: var(--accent); color: #fff; border-color: #6c281d; }
-  .sheets2 .full { grid-column: 1 / -1; }
   .sheets2 button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .phint { font-size: .82rem; margin: .7rem 0 1.4rem; }
-  .onward { font-size: .95rem; line-height: 1.55; }
-
-  /* visor emmarcat tipus "làmina" */
-  .plate { margin: 0; border: 1px solid var(--line); border-radius: 5px; background: #2a2622; box-shadow: 0 4px 18px var(--shadow); overflow: hidden; }
-  .viewer { width: 100%; height: min(80vh, 860px); background: #2a2622; }
-  .plate figcaption { padding: .6rem .9rem; font-size: .8rem; line-height: 1.5; color: var(--ink-soft); background: var(--paper-2); border-top: 1px solid var(--line); }
+  .phint { font-size: .82rem; margin: .7rem 0 .3rem; }
+  .onward { font-size: .95rem; line-height: 1.55; margin: 0; }
 
   @media (max-width: 820px) {
-    .gstage { grid-template-columns: 1fr; gap: 1.1rem; }
-    .panel { position: static; }
-    .sheets2 { max-width: 22rem; }
-    .viewer { height: 68vh; }
+    .viewer { max-height: none; }
+    .controls { gap: .5rem .8rem; }
+  }
+
+  /* ── L'obra: article (text) + barra lateral (fitxa tècnica) ── */
+  .obra { display: grid; grid-template-columns: minmax(0, 1fr) 21rem; column-gap: 3rem; align-items: start; margin: 0 auto 3.5rem; }
+  .otitle { grid-column: 1 / -1; font-family: var(--display); font-size: 1.05rem; letter-spacing: .03em; text-transform: uppercase; color: var(--sepia); border-bottom: 1px solid var(--line); padding-bottom: .4rem; margin: 0 0 1.6rem; }
+
+  /* text principal a l'esquerra, amplada de lectura còmoda */
+  .prose { grid-column: 1; grid-row: 2; }
+  .prose h3 { font-family: var(--display); font-size: 1.22rem; color: var(--accent); margin: 1.9rem 0 .5rem; }
+  .prose h3:first-child { margin-top: 0; }
+  .prose p { margin: 0 0 1rem; line-height: 1.75; max-width: 68ch; }
+  .prose .fonts { margin-top: 1.8rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .82rem; line-height: 1.65; color: var(--ink-soft); max-width: none; }
+
+  /* barra lateral enganxada amb la fitxa tècnica */
+  .side { grid-column: 2; grid-row: 2; position: sticky; top: 5rem; }
+  .sidehead { font-family: var(--display); font-size: .82rem; letter-spacing: .05em; text-transform: uppercase; color: var(--sepia); margin: 0 0 .6rem; }
+  .fitxa { margin: 0; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; background: rgba(255,255,255,.45); }
+  .fitxa > div { display: flex; flex-direction: column; gap: .15rem; padding: .65rem .9rem; border-top: 1px solid var(--line); }
+  .fitxa > div:first-child { border-top: 0; }
+  .fitxa dt { font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: var(--sepia); }
+  .fitxa dd { margin: 0; font-size: .92rem; color: var(--ink); line-height: 1.45; }
+
+  @media (max-width: 820px) {
+    .obra { grid-template-columns: 1fr; }
+    .otitle { grid-column: 1; grid-row: 1; }
+    .prose { grid-column: 1; grid-row: 2; }
+    .side { grid-column: 1; grid-row: 3; position: static; margin-top: 2.2rem; max-width: 28rem; }
+    .prose p { max-width: none; }
   }
 </style>

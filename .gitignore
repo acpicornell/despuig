@@ -41,3 +41,6 @@ data/toponims/*/*-overlay.png
 # review-server atomic-write artefacts (rolling .bak + temp on every save)
 data/toponims/*/curation.json.bak
 data/toponims/*/curation.json.tmp
+
+# research PDFs about the map — local reference only, do NOT upload
+data/pdf/
