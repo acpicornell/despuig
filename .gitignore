@@ -37,3 +37,7 @@ data/toponims/*/*-overlay.png
 
 # local backups of superseded curation
 *.superseded
+
+# review-server atomic-write artefacts (rolling .bak + temp on every save)
+data/toponims/*/curation.json.bak
+data/toponims/*/curation.json.tmp

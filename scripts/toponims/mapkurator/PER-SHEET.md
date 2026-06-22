@@ -204,15 +204,49 @@ in the header and it reads/writes the SINGLE `data/toponims/<q>/curation.json`:
 ```bash
 nix-shell -p nodejs --run 'node scripts/toponims/review-server.mjs'   # → :4400
 ```
-Two views: **Taula** (an editable copy of the public toponyms table — fast inline edits
-of reading/NGIB match + a **tipus dropdown** per row, ✓ correcte, 🗑 brossa, candidate
-chips; works for any quadrant straight from `matches.json` + `recheck.json`, no crops
-needed) and **Fitxes** (one item at a time with the engraving crop + candidates + map +
-the same tipus dropdown — needs `render_review_crops.py` run for that sheet first; degrades
-to a notice if absent). Every edit updates one record in `curation.json` (a tipus equal
-to the original removes that field). After editing, **re-bake the sheet** with
-`bake.py <q>` (single command — applies the overlay + re-matches). The hand-set tipus
-wins over the derived one.
+Three views, switchable in the header (the `full` selector also has **TOTES (4 fulls)**
+for an all-sheets table; ids are namespaced `q:id` so they don't collide):
+- **Taula** — an editable copy of the public toponyms table. Inline edits of reading
+  (Enter *or* leaving the field saves) and NGIB match (Enter on a candidate, or **empty +
+  Enter = «cap match»**), a **tipus dropdown** per row, ✓ correcte / 🗑 brossa / ↶ desfés,
+  candidate chips. **Click any column header to sort** (km, confiança, alphabetical).
+  **Checkbox per row + "select all visible"** for **batch** ✓/🗑/↶/set-tipus. Works for
+  any quadrant straight from `matches.json` + `recheck.json`, no crops needed.
+- **Fitxes** — one item at a time with the engraving crop (**click to zoom**) + candidates
+  + map + the same tipus dropdown. Needs `render_review_crops.py` run for that sheet first;
+  degrades to a notice if absent. Keyboard: `1`–`6`, `C`, `0`, `D`, `S`, `U`.
+- **Mapa** — geographic Leaflet view (lon/lat, coloured by decision, same filters as the
+  public Mapa); a marker popup links to the card **and** to its table row.
+
+Search + filters by **confiança / tipus / revisió / ⚠** apply across all three views, and
+the chosen full, view, filters and sort are **remembered between reloads** (localStorage).
+**Undo** is unified: `↶` or **Ctrl/Cmd+Z** reverts the last action — verdict *and* reading
+*and* tipus, batch ops included.
+
+Every edit updates one record in `curation.json` (a tipus or reading equal to the original
+removes that field). Saves are **crash-safe**: atomic write (`.tmp`+rename) with a rolling
+`curation.json.bak`; a corrupt overlay makes the server refuse to write (HTTP 500) rather
+than clobber it, and the client shows "⚠ NO desat" if a save ever fails. The server binds
+**127.0.0.1 only**. After editing, **re-bake the sheet** with `bake.py <q>` (single command
+— applies the overlay + re-matches). The hand-set tipus wins over the derived one.
+
+### Quality audit (notation problems)
+
+`quality_audit.py` is a **read-only** sweep of all four sheets' notations. It writes
+two files (it never edits the data):
+- `data/toponims/mapkurator/quality_report.json` — full breakdown (truncation
+  suspects, name/NGIB duplicates, odd chars, spatial outliers).
+- `data/toponims/mapkurator/quality_flags.json` — `{uid:[codes]}` of **notation**
+  problems only (very_short, short_single, lower_start, dangling_edge, has_digit,
+  odd_char). Name/NGIB duplicates are deliberately NOT flagged: Mallorcan homonyms
+  (two Bini, many "Son X", "sa Teulera"…) are legitimate.
+```bash
+nix-shell scripts/toponims/shell.nix --run 'python3 scripts/toponims/mapkurator/quality_audit.py'
+```
+The review server reads `quality_flags.json` live (per request) and the curation UI
+exposes a **⚠ filter** (`tots / amb problemes / sense problemes`) plus a ⚠ badge per
+row (Taula), per point (Mapa, orange) and on the card (Fitxes). Re-run the audit after
+a bake to refresh the flags.
 
 ## NW results — clean deskew rebuild, 2026-06-19
 
