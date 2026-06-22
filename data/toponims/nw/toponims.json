@@ -1485,7 +1485,10 @@
    "id": "B04_27",
    "graf": "Cartuxa",
    "nom": "Cartuxa",
-   "tipus": "Casa de estudios",
+   "tipus": [
+    "Oratorio publico",
+    "Casa de estudios"
+   ],
    "subtile": "",
    "x": 4997,
    "y": 5756,

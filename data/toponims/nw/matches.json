@@ -1697,7 +1697,10 @@
   "id": "B04_27",
   "nom": "Cartuxa",
   "graf": "Cartuxa",
-  "tipus": "Casa de estudios",
+  "tipus": [
+   "Oratorio publico",
+   "Casa de estudios"
+  ],
   "ordre": "Cartuxos",
   "dubte": false,
   "decision": "posicional",
