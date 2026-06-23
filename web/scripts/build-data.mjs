@@ -42,6 +42,7 @@ const perQuadrant = {};
 // Two axes: `decision` = algorithmic confidence; `review` = human layer (orthogonal).
 const perDecision = {};
 const perReview = {};
+let descartats = 0;   // misreads marked as trash in curation (dropped from matches.json)
 for (const q of QUADRANTS) {
   const topo = rd(q.topo).toponims;
   const matches = rd(q.matches);
@@ -50,7 +51,7 @@ for (const q of QUADRANTS) {
   for (const t of topo) {
     // matches.json is the curated set: bake.py drops trashed toponyms from it but
     // leaves them in toponims.json. Skip those so the public site never shows garbage.
-    if (!matchById.has(t.id)) continue;
+    if (!matchById.has(t.id)) { descartats++; continue; }
     const m = matchById.get(t.id);
     const decision = m.decision || 'sense';
     const review = m.review ?? null;
@@ -89,7 +90,7 @@ writeFileSync(
     {
       font: 'Topònims del mapa de Despuig (1785), pipeline per-sheet: spotter mapKurator + lectura Claude vision + georef + match NGIB. Dos eixos: confiança (decision) + revisió a mà (review).',
       quadrants: QUADRANTS.map((q) => q.key),
-      comptador: { total: toponims.length, perQuadrant, perDecision, perReview },
+      comptador: { total: toponims.length, perQuadrant, perDecision, perReview, descartats },
       toponims,
     },
     null,

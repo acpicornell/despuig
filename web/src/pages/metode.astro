@@ -20,6 +20,11 @@ for (const t of data.toponims) {
 }
 const pct = (n) => Math.round((n / total) * 100);
 const decOrder = ['confirmat', 'probable', 'suggerit', 'posicional', 'sense'];
+// Capa de revisió humana i lectures descartades (curació a mà).
+const perRev = data.comptador.perReview || {};
+const revisats = (perRev.revisat || 0) + (perRev.corregit || 0);
+const pctRev = Math.round((revisats / total) * 100);
+const descartats = data.comptador.descartats || 0;
 ---
 <Base title="El mètode" description="Com s'han extret, llegit, georeferenciat i identificat els milers de topònims del mapa de Despuig (1785): el procediment complet, full per full.">
   <article class="wrap metode">
@@ -115,6 +120,18 @@ const decOrder = ['confirmat', 'probable', 'suggerit', 'posicional', 'sense'];
           desfer empats entre homònims, mai per descartar un nom únic.
         </p>
       </li>
+      <li>
+        <h3><span class="n">8</span> Curació a mà</h3>
+        <p>
+          Cap procés automàtic no és perfecte amb lletra de fa dos segles i mig. Per això, com a darrer pas,
+          una persona repassa <strong>cada nom</strong> sobre el retall del gravat: confirma o corregeix la
+          lectura, tria la forma del NGIB correcta quan l'automàtic ha dubtat, i <strong>descarta</strong> les
+          deteccions que no són topònims (l'<em>spotter</em> de vegades emmarca xifres, ornaments o lletres
+          soltes). En aquesta obra s'han revisat a mà <strong>{pctRev}%</strong> dels noms i s'han descartat
+          <strong>{descartats.toLocaleString('ca-ES')}</strong> lectures errònies. Les correccions es guarden
+          en una capa a part que es torna a aplicar cada cop que es recalcula res, de manera que mai es perden.
+        </p>
+      </li>
     </ol>
 
     <h2>Dos eixos de qualitat</h2>
@@ -132,8 +149,9 @@ const decOrder = ['confirmat', 'probable', 'suggerit', 'posicional', 'sense'];
         <em>Sense</em> (no s'ha trobat equivalent).
       </li>
       <li>
-        <strong>Revisió</strong> (humana): a banda de la confiança automàtica, una part dels topònims s'han
-        validat o corregit a mà. Aquesta capa es manté encara que es torni a calcular la confiança.
+        <strong>Revisió</strong> (humana): a banda de la confiança automàtica, <strong>{pctRev}%</strong> dels
+        topònims s'han validat o corregit a mà, un per un, sobre el gravat. Aquesta capa es manté encara que es
+        torni a calcular la confiança.
       </li>
     </ul>
 

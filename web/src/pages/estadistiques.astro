@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import topo from '../data/toponims.json';
 import pob from '../data/pobles.json';
+import { url } from '../lib/url.mjs';
 
 const DEC = {
   confirmat: { label: 'Confirmat', color: '#2e7d32' },
@@ -19,51 +20,164 @@ const QNOM = { nw: 'Nord-oest', ne: 'Nord-est', se: 'Sud-est', sw: 'Sud-oest' };
 
 const rows = topo.toponims;
 const total = rows.length;
+const pct = (n, max) => `${Math.max(2, Math.round((n / max) * 100))}%`;
 
-// Topònims per estat (ordre de l'escala), per tipus, per quadrant.
-const decStats = Object.keys(DEC)
-  .map((k) => ({ k, ...DEC[k], n: topo.comptador.perDecision[k] || 0 }))
-  .filter((d) => d.n > 0);
+// ─────────── EL MAPA DE 1785 (què conté el gravat) ───────────
+// Tipus de lloc (categories literals de la llegenda).
 const tipStats = [...new Set(rows.flatMap((r) => r.tipus || []))]
   .map((k) => ({ k, label: TIP[k] ?? k, n: rows.filter((r) => (r.tipus || []).includes(k)).length }))
   .filter((t) => t.k && t.n > 0)
   .sort((a, b) => b.n - a.n);
-const qStats = topo.quadrants.map((q) => ({ q, label: QNOM[q] ?? q, n: topo.comptador.perQuadrant[q] || 0 }));
-const ambNgib = rows.filter((r) => r.ngib).length;
-// Eix de revisió humana (ortogonal a la confiança).
-const perReview = topo.comptador.perReview || {};
-const revStats = Object.keys(REV).map((k) => ({ k, ...REV[k], n: perReview[k] || 0 })).filter((r) => r.n > 0);
-const revisatsTotal = revStats.reduce((s, r) => s + r.n, 0);
-
+// Ordes religiosos (segon eix de la llegenda).
+const ordStats = [...new Set(rows.flatMap((r) => r.ordre || []))]
+  .map((k) => ({ k, n: rows.filter((r) => (r.ordre || []).includes(k)).length }))
+  .filter((o) => o.n > 0)
+  .sort((a, b) => b.n - a.n);
+const ambOrdre = rows.filter((r) => (r.ordre || []).length).length;
+// Topònims per municipi actual (densitat de noms; top 16).
+const munCount = {};
+for (const r of rows) if (r.municipi) munCount[r.municipi] = (munCount[r.municipi] || 0) + 1;
+const munStats = Object.entries(munCount).map(([k, n]) => ({ k, n })).sort((a, b) => b.n - a.n).slice(0, 16);
+const maxMun = munStats[0]?.n || 1;
+const nMun = Object.keys(munCount).length;
 // Població de 1785 (vecinos llegits de les cartel·les).
 const pobVeins = pob.pobles.filter((p) => p.veins != null).sort((a, b) => b.veins - a.veins);
 const totalVeins = pobVeins.reduce((s, p) => s + p.veins, 0);
 const maxVeins = pobVeins[0]?.veins || 1;
-
 // Producció més freqüent.
 const collites = {};
 for (const p of pob.pobles) for (const c of p.collites || []) collites[c] = (collites[c] || 0) + 1;
 const colStats = Object.entries(collites).map(([k, n]) => ({ k, n })).sort((a, b) => b.n - a.n).slice(0, 14);
 const maxCol = colStats[0]?.n || 1;
 
-const pct = (n, max) => `${Math.max(2, Math.round((n / max) * 100))}%`;
+// ─────────── EL NOSTRE PROCÉS (com ho hem llegit i validat) ───────────
+const decStats = Object.keys(DEC)
+  .map((k) => ({ k, ...DEC[k], n: topo.comptador.perDecision[k] || 0 }))
+  .filter((d) => d.n > 0);
+const qStats = topo.quadrants.map((q) => ({ q, label: QNOM[q] ?? q, n: topo.comptador.perQuadrant[q] || 0 }));
+const ambNgib = rows.filter((r) => r.ngib).length;
+const senseNgib = total - ambNgib;
+const perReview = topo.comptador.perReview || {};
+const revStats = Object.keys(REV).map((k) => ({ k, ...REV[k], n: perReview[k] || 0 })).filter((r) => r.n > 0);
+const revisatsTotal = revStats.reduce((s, r) => s + r.n, 0);
+const descartats = topo.comptador.descartats || 0;
+// Distància de cada topònim a la forma del NGIB (qualitat del georeferenciat).
+const withKm = rows.filter((r) => r.km != null);
+const KMB = [['< 0,5 km', 0, 0.5], ['0,5 – 1 km', 0.5, 1], ['1 – 2 km', 1, 2], ['2 – 5 km', 2, 5], ['> 5 km', 5, Infinity]];
+const kmStats = KMB.map(([k, lo, hi]) => ({ k, n: withKm.filter((r) => r.km >= lo && r.km < hi).length }));
+const maxKm = Math.max(...kmStats.map((s) => s.n), 1);
+const meanKm = withKm.length ? withKm.reduce((s, r) => s + r.km, 0) / withKm.length : 0;
 ---
-<Base title="Estadístiques" description="Estadístiques del mapa de Despuig (1785): topònims llegits, estat de validació NGIB, i població dels pobles segons les cartel·les de 1785.">
+<Base title="Estadístiques" description="Estadístiques del mapa de Despuig (1785): d'una banda què conté el gravat (llocs, població, economia de 1785); de l'altra, el nostre procés de lectura, georeferenciació i validació.">
   <section class="wrap">
     <h1>Estadístiques</h1>
-    <p class="lede">Una mirada de conjunt a allò que hem pogut llegir i georeferenciar del mapa original de 1785.</p>
+    <p class="lede">Dues mirades: <strong>què conté el mapa de 1785</strong> i <strong>com l'hem llegit</strong>.</p>
 
     <div class="kpis">
       <div class="card kpi"><strong>{total.toLocaleString('ca-ES')}</strong><span>topònims llegits</span></div>
-      <div class="card kpi"><strong>{ambNgib.toLocaleString('ca-ES')}</strong><span>amb forma NGIB</span></div>
-      <div class="card kpi"><strong>{revisatsTotal.toLocaleString('ca-ES')}</strong><span>revisats a mà</span></div>
+      <div class="card kpi"><strong>{pob.pobles.length}</strong><span>pobles amb cartela</span></div>
+      <div class="card kpi"><strong>{nMun}</strong><span>municipis actuals</span></div>
       <div class="card kpi"><strong>{totalVeins.toLocaleString('ca-ES')}</strong><span>veïns (1785)</span></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ EL MAPA DE 1785 ═══════════ -->
+  <section class="wrap">
+    <div class="sectionhead">
+      <h2>El mapa de 1785</h2>
+      <p class="muted">Què hi ha gravat: els llocs, la gent i l'economia de la Mallorca d'aleshores.</p>
     </div>
   </section>
 
   <section class="wrap cols2">
     <div>
-      <h2>Topònims per confiança</h2>
+      <h3>Topònims per tipus</h3>
+      <p class="muted small">Categories de la llegenda original (casa de camp, punta, torre, illa…).</p>
+      <ul class="bars">
+        {tipStats.map((t) => (
+          <li>
+            <span class="blab">{t.label}</span>
+            <span class="btrack"><span class="bfill" style={`width:${pct(t.n, tipStats[0].n)};background:var(--sepia)`}></span></span>
+            <span class="bval">{t.n.toLocaleString('ca-ES')}</span>
+          </li>
+        ))}
+      </ul>
+
+      {ordStats.length > 0 && (
+        <>
+          <h3>Ordes religiosos</h3>
+          <p class="muted small">Segon eix de la llegenda: {ambOrdre} topònims amb orde indicat (convents, oratoris…).</p>
+          <ul class="bars">
+            {ordStats.map((o) => (
+              <li>
+                <span class="blab">{o.k}</span>
+                <span class="btrack"><span class="bfill" style={`width:${pct(o.n, ordStats[0].n)};background:#6b5b95`}></span></span>
+                <span class="bval">{o.n.toLocaleString('ca-ES')}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </div>
+
+    <div>
+      <h3>Topònims per municipi</h3>
+      <p class="muted small">On cauen avui els noms gravats (els 16 municipis amb més topònims, de {nMun}).</p>
+      <ul class="bars">
+        {munStats.map((m) => (
+          <li>
+            <span class="blab">{m.k}</span>
+            <span class="btrack"><span class="bfill" style={`width:${pct(m.n, maxMun)};background:var(--accent-soft)`}></span></span>
+            <span class="bval">{m.n.toLocaleString('ca-ES')}</span>
+          </li>
+        ))}
+      </ul>
+
+      <h3>Producció més freqüent</h3>
+      <p class="muted small">Productes i activitats esmentats a les cartel·les, per nombre de pobles.</p>
+      <ul class="bars">
+        {colStats.map((c) => (
+          <li>
+            <span class="blab">{c.k}</span>
+            <span class="btrack"><span class="bfill" style={`width:${pct(c.n, maxCol)};background:#7a8a3f`}></span></span>
+            <span class="bval">{c.n}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h3>Població dels pobles (1785)</h3>
+    <p class="muted small">Veïns (caps de casa) segons la xifra gravada a cada cartela. Campanet no s'hi inclou: la xifra és il·legible per una arruga del paper.</p>
+    <ul class="bars pop">
+      {pobVeins.map((p) => (
+        <li>
+          <span class="blab">{p.nom}</span>
+          <span class="btrack"><span class="bfill" style={`width:${pct(p.veins, maxVeins)};background:var(--accent)`}></span></span>
+          <span class="bval">{p.veins.toLocaleString('ca-ES')}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- ═══════════ EL NOSTRE PROCÉS ═══════════ -->
+  <section class="wrap">
+    <div class="sectionhead">
+      <h2>El nostre procés de lectura</h2>
+      <p class="muted">Com hem llegit, georeferenciat i validat cada nom del gravat. <a href={url('metode')}>Més detall →</a></p>
+    </div>
+    <div class="kpis">
+      <div class="card kpi"><strong>{Math.round((ambNgib / total) * 100)}%</strong><span>amb forma NGIB</span></div>
+      <div class="card kpi"><strong>{Math.round((revisatsTotal / total) * 100)}%</strong><span>revisats a mà</span></div>
+      <div class="card kpi"><strong>{meanKm.toFixed(2)} km</strong><span>distància mitjana al NGIB</span></div>
+      <div class="card kpi"><strong>{descartats}</strong><span>lectures errònies descartades</span></div>
+    </div>
+  </section>
+
+  <section class="wrap cols2">
+    <div>
+      <h3>Topònims per confiança</h3>
       <p class="muted small">Confiança algorítmica del creuament amb el Nomenclàtor (NGIB): nom + posició.</p>
       <ul class="bars">
         {decStats.map((d) => (
@@ -77,8 +191,8 @@ const pct = (n, max) => `${Math.max(2, Math.round((n / max) * 100))}%`;
 
       {revStats.length > 0 && (
         <>
-          <h2>Revisió a mà</h2>
-          <p class="muted small">Eix independent de la confiança: validació humana (✓ revisat, ✎ corregit). La resta encara no s'han revisat.</p>
+          <h3>Revisió a mà</h3>
+          <p class="muted small">Eix independent de la confiança: validació humana (✓ revisat, ✎ corregit).</p>
           <ul class="bars">
             {revStats.map((r) => (
               <li>
@@ -95,57 +209,48 @@ const pct = (n, max) => `${Math.max(2, Math.round((n / max) * 100))}%`;
           </ul>
         </>
       )}
+    </div>
 
-      <h2>Per tipus</h2>
+    <div>
+      <h3>Creuament amb el NGIB</h3>
+      <p class="muted small">Quants noms s'han pogut lligar a una forma oficial del Nomenclàtor.</p>
       <ul class="bars">
-        {tipStats.map((t) => (
+        <li>
+          <span class="blab">Amb forma NGIB</span>
+          <span class="btrack"><span class="bfill" style={`width:${pct(ambNgib, total)};background:#2e7d32`}></span></span>
+          <span class="bval">{ambNgib.toLocaleString('ca-ES')}</span>
+        </li>
+        <li>
+          <span class="blab">Sense match</span>
+          <span class="btrack"><span class="bfill" style={`width:${pct(senseNgib, total)};background:#9a4a3a`}></span></span>
+          <span class="bval">{senseNgib.toLocaleString('ca-ES')}</span>
+        </li>
+      </ul>
+
+      <h3>Distància al NGIB</h3>
+      <p class="muted small">Separació entre el punt llegit i la forma oficial ({withKm.length.toLocaleString('ca-ES')} amb match; mitjana {meanKm.toFixed(2)} km).</p>
+      <ul class="bars">
+        {kmStats.map((s) => (
           <li>
-            <span class="blab">{t.label}</span>
-            <span class="btrack"><span class="bfill" style={`width:${pct(t.n, tipStats[0].n)};background:var(--sepia)`}></span></span>
-            <span class="bval">{t.n.toLocaleString('ca-ES')}</span>
+            <span class="blab">{s.k}</span>
+            <span class="btrack"><span class="bfill" style={`width:${pct(s.n, maxKm)};background:var(--accent-soft)`}></span></span>
+            <span class="bval">{s.n.toLocaleString('ca-ES')}</span>
           </li>
         ))}
       </ul>
 
-      <h2>Per full del mapa</h2>
+      <h3>Per full del mapa</h3>
+      <p class="muted small">Les quatre planxes de coure del gravat original.</p>
       <ul class="bars">
         {qStats.map((q) => (
           <li>
             <span class="blab">{q.label}</span>
-            <span class="btrack"><span class="bfill" style={`width:${pct(q.n, total)};background:var(--accent-soft)`}></span></span>
+            <span class="btrack"><span class="bfill" style={`width:${pct(q.n, total)};background:var(--sepia)`}></span></span>
             <span class="bval">{q.n.toLocaleString('ca-ES')}</span>
           </li>
         ))}
       </ul>
     </div>
-
-    <div>
-      <h2>Producció més freqüent</h2>
-      <p class="muted small">Productes i activitats esmentats a les cartel·les, segons el nombre de pobles.</p>
-      <ul class="bars">
-        {colStats.map((c) => (
-          <li>
-            <span class="blab">{c.k}</span>
-            <span class="btrack"><span class="bfill" style={`width:${pct(c.n, maxCol)};background:#7a8a3f`}></span></span>
-            <span class="bval">{c.n}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
-  <section class="wrap">
-    <h2>Població dels pobles (1785)</h2>
-    <p class="muted small">Veïns (caps de casa) segons la xifra gravada a cada cartela. Campanet no s'hi inclou: la xifra és il·legible per una arruga del paper.</p>
-    <ul class="bars pop">
-      {pobVeins.map((p) => (
-        <li>
-          <span class="blab">{p.nom}</span>
-          <span class="btrack"><span class="bfill" style={`width:${pct(p.veins, maxVeins)};background:var(--accent)`}></span></span>
-          <span class="bval">{p.veins.toLocaleString('ca-ES')}</span>
-        </li>
-      ))}
-    </ul>
   </section>
 </Base>
 
@@ -156,11 +261,16 @@ const pct = (n, max) => `${Math.max(2, Math.round((n / max) * 100))}%`;
   .kpi strong { display: block; font-family: var(--display); font-size: 1.9rem; color: var(--accent); }
   .kpi span { font-size: .82rem; color: var(--ink-soft); }
 
-  .cols2 { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: start; }
-  h2 { margin-top: 1.8rem; }
-  .small { font-size: .88rem; margin-top: -.3rem; }
+  .sectionhead { border-top: 2px solid var(--line); padding-top: 1.1rem; margin-top: 1.4rem; }
+  .sectionhead h2 { margin: 0 0 .2rem; font-size: 1.5rem; }
+  .sectionhead p { margin: 0; max-width: 60ch; }
 
-  .bars { list-style: none; padding: 0; margin: .8rem 0; display: grid; gap: .35rem; }
+  .cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+  h3 { margin: 1.6rem 0 .2rem; font-family: var(--display); font-size: 1.08rem; }
+  .cols2 > div > h3:first-child { margin-top: .6rem; }
+  .small { font-size: .88rem; margin-top: 0; }
+
+  .bars { list-style: none; padding: 0; margin: .7rem 0 0; display: grid; gap: .35rem; }
   .bars li { display: grid; grid-template-columns: 9.5rem 1fr 3.2rem; align-items: center; gap: .6rem; font-size: .95rem; }
   .blab { text-align: right; color: var(--ink-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .btrack { background: rgba(201,183,143,.35); border-radius: 3px; height: 1.05rem; overflow: hidden; }
