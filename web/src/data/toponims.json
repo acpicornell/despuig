@@ -24,7 +24,8 @@
   "perReview": {
    "revisat": 2200,
    "corregit": 313
-  }
+  },
+  "descartats": 47
  },
  "toponims": [
   {
@@ -34,8 +35,7 @@
    "nom": "La Calobra",
    "graf": "La Calobra",
    "tipus": [
-    "Casa de campo ó Predio",
-    "altre"
+    "Casa de campo ó Predio"
    ],
    "ordre": [],
    "subtile": "",

@@ -20,10 +20,7 @@
    "id": "B01_2",
    "graf": "La Calobra",
    "nom": "La Calobra",
-   "tipus": [
-    "Casa de campo ó Predio",
-    "altre"
-   ],
+   "tipus": "Casa de campo ó Predio",
    "subtile": "",
    "x": 8721,
    "y": 2928,
