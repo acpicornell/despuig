@@ -155,8 +155,8 @@
  },
  {
   "id": "B02_5",
-  "nom": "N.S. de la Victoria",
-  "graf": "N.S. de la Victoria",
+  "nom": "N. S. de la Victoria",
+  "graf": "N. S. de la Victoria",
   "tipus": "Oratorio publico",
   "ordre": null,
   "dubte": false,
@@ -913,7 +913,7 @@
   "id": "B03_20",
   "nom": "N. S. del Roser",
   "graf": "N. S. del Roser",
-  "tipus": "altre",
+  "tipus": "Oratorio publico",
   "ordre": null,
   "dubte": false,
   "decision": "posicional",
@@ -958,12 +958,12 @@
   "tipus": "Casa de campo ó Predio",
   "ordre": null,
   "dubte": false,
-  "decision": "sense",
-  "review": "revisat",
-  "ngib": null,
-  "municipi": null,
-  "sim": null,
-  "km": null
+  "decision": "posicional",
+  "review": "corregit",
+  "ngib": "Ermita del Puig de Maria",
+  "municipi": "Pollença",
+  "sim": 0.44,
+  "km": 1.26
  },
  {
   "id": "B03_24",
@@ -1260,20 +1260,6 @@
   "km": 0.78
  },
  {
-  "id": "B04_16",
-  "nom": "N. S. del Roser",
-  "graf": "N. S. del Roser",
-  "tipus": "Oratorio publico",
-  "ordre": null,
-  "dubte": false,
-  "decision": "posicional",
-  "review": "revisat",
-  "ngib": "Església de la Mare de Déu del Roser",
-  "municipi": "Pollença",
-  "sim": 0.4,
-  "km": 1.35
- },
- {
   "id": "B04_17",
   "nom": "Son Serre",
   "graf": "Sô Serre",
@@ -1331,17 +1317,17 @@
  },
  {
   "id": "B04_21",
-  "nom": "N. S. dll Puig",
-  "graf": "N. S. dll Puig",
-  "tipus": "Casa de campo ó Predio",
+  "nom": "N. S. dl. Puig",
+  "graf": "N. S. dl. Puig",
+  "tipus": "Oratorio publico",
   "ordre": null,
   "dubte": false,
-  "decision": "sense",
-  "review": "revisat",
-  "ngib": null,
-  "municipi": null,
-  "sim": null,
-  "km": null
+  "decision": "posicional",
+  "review": "corregit",
+  "ngib": "Ermita del Puig de Maria",
+  "municipi": "Pollença",
+  "sim": 0.46,
+  "km": 1.87
  },
  {
   "id": "B04_22",
@@ -1863,16 +1849,16 @@
  },
  {
   "id": "B05_29",
-  "nom": "N. S. D. LLUCH",
-  "graf": "N. S. D. LLUCH",
-  "tipus": "altre",
+  "nom": "Nª. Sª. D. LLUCH",
+  "graf": "Nª. Sª. D. LLUCH",
+  "tipus": "Villa Parroquial",
   "ordre": null,
   "dubte": false,
-  "decision": "suggerit",
+  "decision": "confirmat",
   "review": "revisat",
   "ngib": "Lluc",
   "municipi": "Escorca",
-  "sim": 0.74,
+  "sim": 0.94,
   "km": 0.56
  },
  {

@@ -14,7 +14,11 @@
   "verdict": "pick"
  },
  "B01_2": {
-  "verdict": "ok"
+  "verdict": "ok",
+  "tipus": [
+   "Casa de campo ó Predio",
+   "altre"
+  ]
  },
  "B01_24": {
   "ngib": "Gorg Blau",
@@ -186,7 +190,9 @@
  },
  "B04_21": {
   "graf": "Casa de neu",
-  "tipus": "altre",
+  "tipus": [
+   "Pozos de nieve"
+  ],
   "ngib": "Cases de sa Neu",
   "verdict": "pick"
  },
@@ -709,7 +715,10 @@
  "C03_9": {
   "graf": "T. RFL GARCES",
   "ngib": "Torrent des Rafal Garcès",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": [
+   "Torrente"
+  ]
  },
  "C04_11": {
   "verdict": "trash"
@@ -1037,7 +1046,10 @@
  },
  "B02_28": {
   "ngib": "sa Moana",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B02_29": {
   "verdict": "none"
@@ -1243,7 +1255,9 @@
   "verdict": "pick"
  },
  "B05_18": {
-  "tipus": "altre",
+  "tipus": [
+   "Pozos de nieve"
+  ],
   "ngib": "ses Cases de sa Neu",
   "verdict": "pick"
  },
