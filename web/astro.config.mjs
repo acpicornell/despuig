@@ -10,6 +10,10 @@ export default defineConfig({
   build: {
     format: 'directory',
   },
+  // Amaga la barra d'eines de desenvolupament d'Astro (només sortia en mode dev).
+  devToolbar: {
+    enabled: false,
+  },
   server: {
     port: 4330,
   },
