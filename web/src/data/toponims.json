@@ -7,49 +7,26 @@
   "sw"
  ],
  "comptador": {
-  "total": 2562,
+  "total": 2518,
   "perQuadrant": {
-   "nw": 602,
-   "ne": 699,
-   "se": 702,
-   "sw": 559
+   "nw": 591,
+   "ne": 684,
+   "se": 694,
+   "sw": 549
   },
   "perDecision": {
-   "sense": 485,
-   "confirmat": 1448,
+   "confirmat": 1438,
+   "sense": 453,
    "posicional": 234,
-   "probable": 153,
-   "suggerit": 242
+   "probable": 152,
+   "suggerit": 241
   },
   "perReview": {
-   "revisat": 2219,
-   "corregit": 314
+   "revisat": 2203,
+   "corregit": 313
   }
  },
  "toponims": [
-  {
-   "uid": "nw:B01_1",
-   "q": "nw",
-   "id": "B01_1",
-   "nom": "Sa Lorezo",
-   "graf": "Sâ Lorêzo",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 8562,
-   "y": 2968,
-   "lon": 2.801845,
-   "lat": 39.828284,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
   {
    "uid": "nw:B01_2",
    "q": "nw",
@@ -418,29 +395,6 @@
    "municipi": "Escorca",
    "sim": 1,
    "km": 2.69
-  },
-  {
-   "uid": "nw:B01_18",
-   "q": "nw",
-   "id": "B01_18",
-   "nom": "Nª S.",
-   "graf": "Nª S.",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 9536,
-   "y": 3374,
-   "lon": 2.894252,
-   "lat": 39.813674,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
   },
   {
    "uid": "nw:B01_19",
@@ -1757,8 +1711,8 @@
    "uid": "nw:B03_6",
    "q": "nw",
    "id": "B03_6",
-   "nom": "SoBleda",
-   "graf": "SôBleda",
+   "nom": "Son Bleda",
+   "graf": "Sô Bleda",
    "tipus": [
     "Casa de campo ó Predio"
    ],
@@ -1769,11 +1723,11 @@
    "y": 4113,
    "lon": 2.687549,
    "lat": 39.778615,
-   "decision": "posicional",
+   "decision": "suggerit",
    "review": "revisat",
    "ngib": "Can Bleda",
    "municipi": "Sóller",
-   "sim": 0.62,
+   "sim": 0.81,
    "km": 1.09
   },
   {
@@ -1959,29 +1913,6 @@
    "municipi": null,
    "sim": null,
    "km": null
-  },
-  {
-   "uid": "nw:B03_15",
-   "q": "nw",
-   "id": "B03_15",
-   "nom": "Viña vella",
-   "graf": "Viña vella",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 7437,
-   "y": 4181,
-   "lon": 2.747299,
-   "lat": 39.778835,
-   "decision": "confirmat",
-   "review": "revisat",
-   "ngib": "sa Vinya Vella",
-   "municipi": "Fornalutx",
-   "sim": 0.98,
-   "km": 0.44
   },
   {
    "uid": "nw:B03_16",
@@ -3478,29 +3409,6 @@
    "lat": 39.734402,
    "decision": "sense",
    "review": "revisat",
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
-   "uid": "nw:B05_14",
-   "q": "nw",
-   "id": "B05_14",
-   "nom": "Son Vidal",
-   "graf": "Sô Vidal",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 7814,
-   "y": 4943,
-   "lon": 2.785893,
-   "lat": 39.746333,
-   "decision": "sense",
-   "review": null,
    "ngib": null,
    "municipi": null,
    "sim": null,
@@ -5945,29 +5853,6 @@
    "km": 1.19
   },
   {
-   "uid": "nw:B08_29",
-   "q": "nw",
-   "id": "B08_29",
-   "nom": "Cana Vich",
-   "graf": "Cana Vich",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 6042,
-   "y": 7004,
-   "lon": 2.655106,
-   "lat": 39.639323,
-   "decision": "confirmat",
-   "review": "revisat",
-   "ngib": "Can Vic",
-   "municipi": "Palma",
-   "sim": 0.9,
-   "km": 0.49
-  },
-  {
    "uid": "nw:B08_30",
    "q": "nw",
    "id": "B08_30",
@@ -6865,29 +6750,6 @@
    "municipi": "Santa Maria del Camí",
    "sim": 1,
    "km": 0.58
-  },
-  {
-   "uid": "nw:B09_35",
-   "q": "nw",
-   "id": "B09_35",
-   "nom": "Las Covas",
-   "graf": "Las Covas",
-   "tipus": [
-    "Dos ó tres casas"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 8517,
-   "y": 7123,
-   "lon": 2.810018,
-   "lat": 39.630133,
-   "decision": "confirmat",
-   "review": "revisat",
-   "ngib": "ses Coves",
-   "municipi": "Santa Eugènia",
-   "sim": 0.9,
-   "km": 1.19
   },
   {
    "uid": "nw:B09_36",
@@ -10070,7 +9932,7 @@
    "nom": "Verger",
    "graf": "Verger",
    "tipus": [
-    "altre"
+    "Casa de campo ó Predio"
    ],
    "ordre": [],
    "subtile": "",
@@ -10631,12 +10493,12 @@
    "y": 7154,
    "lon": 2.6191,
    "lat": 39.629685,
-   "decision": "suggerit",
-   "review": "revisat",
-   "ngib": "es Trull",
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "Establiments Vells",
    "municipi": "Palma",
-   "sim": 0.8,
-   "km": 9.8
+   "sim": 0.17,
+   "km": 1.31
   },
   {
    "uid": "nw:B14_46",
@@ -11168,29 +11030,6 @@
    "km": null
   },
   {
-   "uid": "nw:B15_19",
-   "q": "nw",
-   "id": "B15_19",
-   "nom": "Plana de",
-   "graf": "Plana de",
-   "tipus": [
-    "altre"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 1140,
-   "y": 7284,
-   "lon": 2.374658,
-   "lat": 39.588959,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
    "uid": "nw:B15_20",
    "q": "nw",
    "id": "B15_20",
@@ -11651,29 +11490,6 @@
    "km": 1.63
   },
   {
-   "uid": "nw:C01_19",
-   "q": "nw",
-   "id": "C01_19",
-   "nom": "Fuete de la",
-   "graf": "Fuête de la",
-   "tipus": [
-    "altre"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 8093,
-   "y": 2622,
-   "lon": 2.749704,
-   "lat": 39.838857,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
    "uid": "nw:C01_20",
    "q": "nw",
    "id": "C01_20",
@@ -11942,12 +11758,12 @@
    "y": 3211,
    "lon": 2.65807,
    "lat": 39.811948,
-   "decision": "sense",
-   "review": "revisat",
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
+   "decision": "posicional",
+   "review": "corregit",
+   "ngib": "Torre Picada",
+   "municipi": "Sóller",
+   "sim": 0.47,
+   "km": 3.43
   },
   {
    "uid": "nw:C02_1",
@@ -12801,29 +12617,6 @@
    "km": 0.96
   },
   {
-   "uid": "nw:C02_38",
-   "q": "nw",
-   "id": "C02_38",
-   "nom": "Amarador",
-   "graf": "Amarador",
-   "tipus": [
-    "altre"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 3448,
-   "y": 5472,
-   "lon": 2.495388,
-   "lat": 39.698958,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
    "uid": "nw:C03_1",
    "q": "nw",
    "id": "C03_1",
@@ -12991,7 +12784,8 @@
    "nom": "Torréte de la Tanca",
    "graf": "Torréte de la Tanca",
    "tipus": [
-    "Atalaya ó Torre"
+    "Atalaya ó Torre",
+    "altre"
    ],
    "ordre": [],
    "subtile": "",
@@ -13744,29 +13538,6 @@
    "km": null
   },
   {
-   "uid": "nw:C04_6",
-   "q": "nw",
-   "id": "C04_6",
-   "nom": "Mor.d.l.Galera",
-   "graf": "Mor.d.l.Galera",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 1053,
-   "y": 6903,
-   "lon": 2.370271,
-   "lat": 39.606372,
-   "decision": "suggerit",
-   "review": "corregit",
-   "ngib": "sa Galera Grossa",
-   "municipi": "Andratx",
-   "sim": 0.7,
-   "km": 2.36
-  },
-  {
    "uid": "nw:C04_7",
    "q": "nw",
    "id": "C04_7",
@@ -13853,29 +13624,6 @@
    "lat": 39.5876,
    "decision": "sense",
    "review": "revisat",
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
-   "uid": "nw:C04_11",
-   "q": "nw",
-   "id": "C04_11",
-   "nom": "Cala",
-   "graf": "Cala",
-   "tipus": [
-    "altre"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 798,
-   "y": 7250,
-   "lon": 2.357224,
-   "lat": 39.586189,
-   "decision": "sense",
-   "review": null,
    "ngib": null,
    "municipi": null,
    "sim": null,
@@ -15611,29 +15359,6 @@
    "km": 0.42
   },
   {
-   "uid": "ne:B04_1",
-   "q": "ne",
-   "id": "B04_1",
-   "nom": "Can Torrens",
-   "graf": "Câ Torrens",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 1584,
-   "y": 1766,
-   "lon": 3.004488,
-   "lat": 39.914316,
-   "decision": "sense",
-   "review": "revisat",
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
    "uid": "ne:B04_2",
    "q": "ne",
    "id": "B04_2",
@@ -15954,29 +15679,6 @@
    "municipi": "Pollença",
    "sim": 1,
    "km": 0.78
-  },
-  {
-   "uid": "ne:B04_16",
-   "q": "ne",
-   "id": "B04_16",
-   "nom": "N. S. del Roser",
-   "graf": "N. S. del Roser",
-   "tipus": [
-    "Oratorio publico"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 1592,
-   "y": 2555,
-   "lon": 3.001584,
-   "lat": 39.871619,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
   },
   {
    "uid": "ne:B04_17",
@@ -16506,29 +16208,6 @@
    "municipi": "Pollença",
    "sim": 0.61,
    "km": 0.95
-  },
-  {
-   "uid": "ne:B05_9",
-   "q": "ne",
-   "id": "B05_9",
-   "nom": "Bet",
-   "graf": "Bet",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 1062,
-   "y": 2931,
-   "lon": 2.961538,
-   "lat": 39.850081,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
   },
   {
    "uid": "ne:B05_10",
@@ -17175,52 +16854,6 @@
    "km": null
   },
   {
-   "uid": "ne:B05_38",
-   "q": "ne",
-   "id": "B05_38",
-   "nom": "Can Masana",
-   "graf": "Câ Masana",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 1338,
-   "y": 3482,
-   "lon": 2.980863,
-   "lat": 39.820694,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
-   "uid": "ne:B05_39",
-   "q": "ne",
-   "id": "B05_39",
-   "nom": "Can Fava",
-   "graf": "Câ Fava",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 1562,
-   "y": 3521,
-   "lon": 2.997436,
-   "lat": 39.819239,
-   "decision": "confirmat",
-   "review": "revisat",
-   "ngib": "Can Fava",
-   "municipi": "Pollença",
-   "sim": 1,
-   "km": 1.71
-  },
-  {
    "uid": "ne:B06_1",
    "q": "ne",
    "id": "B06_1",
@@ -17449,29 +17082,6 @@
    "municipi": "Alcúdia",
    "sim": 0.84,
    "km": 0.26
-  },
-  {
-   "uid": "ne:B06_11",
-   "q": "ne",
-   "id": "B06_11",
-   "nom": "Can Bregat",
-   "graf": "Câ Bregât",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 2828,
-   "y": 3013,
-   "lon": 3.089326,
-   "lat": 39.848996,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
   },
   {
    "uid": "ne:B06_12",
@@ -19475,29 +19085,6 @@
    "km": 1.42
   },
   {
-   "uid": "ne:B08_19",
-   "q": "ne",
-   "id": "B08_19",
-   "nom": "Llebra",
-   "graf": "Llebra",
-   "tipus": [
-    "Villa Parroquial"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 1630,
-   "y": 4402,
-   "lon": 3.003073,
-   "lat": 39.772611,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
    "uid": "ne:B08_20",
    "q": "ne",
    "id": "B08_20",
@@ -21390,29 +20977,6 @@
    "km": 1.05
   },
   {
-   "uid": "ne:B12_4",
-   "q": "ne",
-   "id": "B12_4",
-   "nom": "Biniseti",
-   "graf": "Biniseti",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 1188,
-   "y": 5035,
-   "lon": 2.972098,
-   "lat": 39.737773,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
    "uid": "ne:B12_5",
    "q": "ne",
    "id": "B12_5",
@@ -21551,29 +21115,6 @@
    "km": 2.66
   },
   {
-   "uid": "ne:B12_11",
-   "q": "ne",
-   "id": "B12_11",
-   "nom": "Son Blay",
-   "graf": "Sô Blay",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 862,
-   "y": 5364,
-   "lon": 2.949349,
-   "lat": 39.719277,
-   "decision": "confirmat",
-   "review": "revisat",
-   "ngib": "Son Blai",
-   "municipi": "Inca",
-   "sim": 0.94,
-   "km": 1.73
-  },
-  {
    "uid": "ne:B12_12",
    "q": "ne",
    "id": "B12_12",
@@ -21664,29 +21205,6 @@
    "municipi": "Inca",
    "sim": 0.94,
    "km": 0.94
-  },
-  {
-   "uid": "ne:B12_16",
-   "q": "ne",
-   "id": "B12_16",
-   "nom": "Son Catiu",
-   "graf": "Sô Catiu",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 866,
-   "y": 5550,
-   "lon": 2.950853,
-   "lat": 39.709935,
-   "decision": "confirmat",
-   "review": "revisat",
-   "ngib": "Son Catiu",
-   "municipi": "Inca",
-   "sim": 1,
-   "km": 1.14
   },
   {
    "uid": "ne:B12_17",
@@ -21802,29 +21320,6 @@
    "municipi": "Inca",
    "sim": 1,
    "km": 0.59
-  },
-  {
-   "uid": "ne:B12_22",
-   "q": "ne",
-   "id": "B12_22",
-   "nom": "Son Berrina",
-   "graf": "Sô Berrina",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 1366,
-   "y": 5685,
-   "lon": 2.988876,
-   "lat": 39.706079,
-   "decision": "confirmat",
-   "review": "revisat",
-   "ngib": "Son Barrina",
-   "municipi": "Inca",
-   "sim": 0.95,
-   "km": 0.38
   },
   {
    "uid": "ne:B12_23",
@@ -24058,29 +23553,6 @@
    "km": 0.65
   },
   {
-   "uid": "ne:B15_31",
-   "q": "ne",
-   "id": "B15_31",
-   "nom": "Ariany Marq.",
-   "graf": "Ariany Marq.",
-   "tipus": [
-    "Lugar grande"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 2995,
-   "y": 7259,
-   "lon": 3.113658,
-   "lat": 39.644329,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
    "uid": "ne:B16_1",
    "q": "ne",
    "id": "B16_1",
@@ -25047,29 +24519,6 @@
    "municipi": "Artà",
    "sim": 1,
    "km": 1.28
-  },
-  {
-   "uid": "ne:B17_12",
-   "q": "ne",
-   "id": "B17_12",
-   "nom": "Sa Salvador",
-   "graf": "Sâ Salvador",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 6767,
-   "y": 6303,
-   "lon": 3.3628,
-   "lat": 39.69334,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
   },
   {
    "uid": "ne:B17_13",
@@ -29215,29 +28664,6 @@
    "km": null
   },
   {
-   "uid": "ne:C04_2",
-   "q": "ne",
-   "id": "C04_2",
-   "nom": "P. ranada",
-   "graf": "P. ranada",
-   "tipus": [
-    "altre"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 4322,
-   "y": 4708,
-   "lon": 3.197327,
-   "lat": 39.765349,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
    "uid": "ne:C04_3",
    "q": "ne",
    "id": "C04_3",
@@ -29949,29 +29375,6 @@
    "municipi": "Maria de la Salut",
    "sim": 0.8,
    "km": 2.36
-  },
-  {
-   "uid": "ne:C05_5",
-   "q": "ne",
-   "id": "C05_5",
-   "nom": "BOU",
-   "graf": "BOU",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 3537,
-   "y": 7273,
-   "lon": 3.149277,
-   "lat": 39.646496,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
   },
   {
    "uid": "se:B01_1",
@@ -30708,29 +30111,6 @@
    "municipi": "Ariany",
    "sim": 0.74,
    "km": 1.46
-  },
-  {
-   "uid": "se:B02_2",
-   "q": "se",
-   "id": "B02_2",
-   "nom": "CAYA",
-   "graf": "CAYA",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 3402,
-   "y": 36,
-   "lon": 3.144461,
-   "lat": 39.631156,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
   },
   {
    "uid": "se:B02_3",
@@ -33587,29 +32967,6 @@
    "km": null
   },
   {
-   "uid": "se:B05_28",
-   "q": "se",
-   "id": "B05_28",
-   "nom": "Son Cabre",
-   "graf": "Sô Cabre",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 5194,
-   "y": 916,
-   "lon": 3.263144,
-   "lat": 39.593677,
-   "decision": "confirmat",
-   "review": "revisat",
-   "ngib": "Son Cabrer",
-   "municipi": "Sant Llorenç des Cardassar",
-   "sim": 0.95,
-   "km": 1.47
-  },
-  {
    "uid": "se:B05_29",
    "q": "se",
    "id": "B05_29",
@@ -34459,29 +33816,6 @@
    "municipi": "Sineu",
    "sim": 1,
    "km": 2.65
-  },
-  {
-   "uid": "se:B07_7",
-   "q": "se",
-   "id": "B07_7",
-   "nom": "Miquelet Rfl.",
-   "graf": "Miquelet Rfl.",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 74,
-   "y": 1070,
-   "lon": 2.936406,
-   "lat": 39.579345,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
   },
   {
    "uid": "se:B07_8",
@@ -36232,29 +35566,6 @@
    "km": 1.11
   },
   {
-   "uid": "se:B09_4",
-   "q": "se",
-   "id": "B09_4",
-   "nom": "Franca Marq",
-   "graf": "Franca Marq",
-   "tipus": [
-    "Villa Parroquial"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 2542,
-   "y": 1294,
-   "lon": 3.094468,
-   "lat": 39.573256,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
    "uid": "se:B09_5",
    "q": "se",
    "id": "B09_5",
@@ -37315,29 +36626,6 @@
    "km": null
   },
   {
-   "uid": "se:B11_11",
-   "q": "se",
-   "id": "B11_11",
-   "nom": "e Cura",
-   "graf": "e Cura",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 54,
-   "y": 2076,
-   "lon": 2.938797,
-   "lat": 39.530679,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
    "uid": "se:B11_12",
    "q": "se",
    "id": "B11_12",
@@ -37428,29 +36716,6 @@
    "municipi": "Porreres",
    "sim": 1,
    "km": 1.67
-  },
-  {
-   "uid": "se:B11_16",
-   "q": "se",
-   "id": "B11_16",
-   "nom": "Honorato",
-   "graf": "Honorato",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 85,
-   "y": 2222,
-   "lon": 2.94144,
-   "lat": 39.523306,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
   },
   {
    "uid": "se:B11_17",
@@ -40400,29 +39665,6 @@
    "km": 1.41
   },
   {
-   "uid": "se:B15_29",
-   "q": "se",
-   "id": "B15_29",
-   "nom": "tjolas",
-   "graf": "tjolas",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 55,
-   "y": 4197,
-   "lon": 2.949824,
-   "lat": 39.412325,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
    "uid": "se:B15_30",
    "q": "se",
    "id": "B15_30",
@@ -41665,29 +40907,6 @@
    "municipi": "Felanitx",
    "sim": 0.92,
    "km": 1.61
-  },
-  {
-   "uid": "se:B18_4",
-   "q": "se",
-   "id": "B18_4",
-   "nom": "Can Pinoi",
-   "graf": "Câ Pinoi",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 2351,
-   "y": 3406,
-   "lon": 3.103909,
-   "lat": 39.462066,
-   "decision": "sense",
-   "review": "revisat",
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
   },
   {
    "uid": "se:B18_5",
@@ -47394,29 +46613,6 @@
    "km": 1.02
   },
   {
-   "uid": "sw:B02_22",
-   "q": "sw",
-   "id": "B02_22",
-   "nom": "Cala de gos",
-   "graf": "Cala de gos",
-   "tipus": [
-    "altre"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 1386,
-   "y": 541,
-   "lon": 2.369479,
-   "lat": 39.5516,
-   "decision": "sense",
-   "review": "revisat",
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
    "uid": "sw:B02_23",
    "q": "sw",
    "id": "B02_23",
@@ -47535,8 +46731,8 @@
    "uid": "sw:B02_28",
    "q": "sw",
    "id": "B02_28",
-   "nom": "Murter",
-   "graf": "Murter",
+   "nom": "Murtér",
+   "graf": "Murtér",
    "tipus": [
     "altre"
    ],
@@ -47722,7 +46918,7 @@
    "nom": "Islas de Malgrat",
    "graf": "Islas de Malgrat",
    "tipus": [
-    "altre"
+    "Isla"
    ],
    "ordre": [],
    "subtile": "",
@@ -47852,29 +47048,6 @@
    "municipi": "Palma",
    "sim": 0.95,
    "km": 1.35
-  },
-  {
-   "uid": "sw:B03_6",
-   "q": "sw",
-   "id": "B03_6",
-   "nom": "Son Bosch",
-   "graf": "Sô Bosch",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 5243,
-   "y": 206,
-   "lon": 2.609411,
-   "lat": 39.603287,
-   "decision": "confirmat",
-   "review": "revisat",
-   "ngib": "Son Bosc",
-   "municipi": "Palma",
-   "sim": 0.97,
-   "km": 1.46
   },
   {
    "uid": "sw:B03_7",
@@ -48803,7 +47976,7 @@
    "nom": "Tor. de Grau",
    "graf": "Tor. dê Grau",
    "tipus": [
-    "altre"
+    "Casa de campo ó Predio"
    ],
    "ordre": [],
    "subtile": "",
@@ -49654,7 +48827,7 @@
    "nom": "Tanca",
    "graf": "Tanca",
    "tipus": [
-    "altre"
+    "Casa de campo ó Predio"
    ],
    "ordre": [],
    "subtile": "",
@@ -49723,7 +48896,7 @@
    "nom": "Hort d.S. Jua",
    "graf": "Hort d.S. Juâ",
    "tipus": [
-    "altre"
+    "Casa de campo ó Predio"
    ],
    "ordre": [],
    "subtile": "",
@@ -49953,7 +49126,7 @@
    "nom": "Tor. de Suau",
    "graf": "Tor. dê Suau",
    "tipus": [
-    "altre"
+    "Casa de campo ó Predio"
    ],
    "ordre": [],
    "subtile": "",
@@ -50568,29 +49741,6 @@
    "km": null
   },
   {
-   "uid": "sw:B06_22",
-   "q": "sw",
-   "id": "B06_22",
-   "nom": "Son Cotoner",
-   "graf": "Sô Cotoner",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 5377,
-   "y": 545,
-   "lon": 2.622178,
-   "lat": 39.586248,
-   "decision": "confirmat",
-   "review": "revisat",
-   "ngib": "Son Cotoner",
-   "municipi": "Palma",
-   "sim": 1,
-   "km": 1.24
-  },
-  {
    "uid": "sw:B06_23",
    "q": "sw",
    "id": "B06_23",
@@ -50620,7 +49770,7 @@
    "nom": "Da. Ayna",
    "graf": "Da. Ayna",
    "tipus": [
-    "altre"
+    "Casa de campo ó Predio"
    ],
    "ordre": [],
    "subtile": "",
@@ -50643,7 +49793,7 @@
    "nom": "Tor. de Suñer",
    "graf": "Tor. dê Suñer",
    "tipus": [
-    "altre"
+    "Casa de campo ó Predio"
    ],
    "ordre": [],
    "subtile": "",
@@ -50712,7 +49862,7 @@
    "nom": "Sini de Gili",
    "graf": "Sini dê Gili",
    "tipus": [
-    "altre"
+    "Casa de campo ó Predio"
    ],
    "ordre": [],
    "subtile": "",
@@ -50744,29 +49894,6 @@
    "y": 640,
    "lon": 2.640026,
    "lat": 39.583022,
-   "decision": "sense",
-   "review": "revisat",
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
-   "uid": "sw:B06_30",
-   "q": "sw",
-   "id": "B06_30",
-   "nom": "Son Bruy",
-   "graf": "Sô Bruy",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 5757,
-   "y": 616,
-   "lon": 2.647822,
-   "lat": 39.585156,
    "decision": "sense",
    "review": "revisat",
    "ngib": null,
@@ -50911,29 +50038,6 @@
    "municipi": "Palma",
    "sim": 1,
    "km": 0.9
-  },
-  {
-   "uid": "sw:B06_37",
-   "q": "sw",
-   "id": "B06_37",
-   "nom": "Palma",
-   "graf": "CAPITAL",
-   "tipus": [
-    "altre"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 5676,
-   "y": 827,
-   "lon": 2.64482,
-   "lat": 39.573318,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
   },
   {
    "uid": "sw:B07_1",
@@ -51287,7 +50391,7 @@
    "nom": "Tor. de Palou",
    "graf": "Tor. de Palou",
    "tipus": [
-    "altre"
+    "Casa de campo ó Predio"
    ],
    "ordre": [],
    "subtile": "",
@@ -52109,29 +51213,6 @@
    "km": null
   },
   {
-   "uid": "sw:B08_34",
-   "q": "sw",
-   "id": "B08_34",
-   "nom": "Son Garcias de la m",
-   "graf": "Sô Garcias de la m",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 8315,
-   "y": 1932,
-   "lon": 2.840713,
-   "lat": 39.526491,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
    "uid": "sw:B09_1",
    "q": "sw",
    "id": "B09_1",
@@ -52434,8 +51515,8 @@
    "uid": "sw:B09_14",
    "q": "sw",
    "id": "B09_14",
-   "nom": "Voldel Pi",
-   "graf": "Voldel Pi",
+   "nom": "Vol del Pi",
+   "graf": "Vol del Pi",
    "tipus": [
     "altre"
    ],
@@ -52447,10 +51528,10 @@
    "lon": 2.470751,
    "lat": 39.520714,
    "decision": "posicional",
-   "review": "corregit",
+   "review": "revisat",
    "ngib": "es Bol des Pi",
    "municipi": "Calvià",
-   "sim": 0.27,
+   "sim": 0.33,
    "km": 0.75
   },
   {
@@ -52618,8 +51699,8 @@
    "uid": "sw:B09_22",
    "q": "sw",
    "id": "B09_22",
-   "nom": "Peñas roties",
-   "graf": "Peñas roties",
+   "nom": "Peñas rotjes",
+   "graf": "Peñas rotjes",
    "tipus": [
     "altre"
    ],
@@ -54110,29 +53191,6 @@
    "km": 0.59
   },
   {
-   "uid": "sw:B12_9",
-   "q": "sw",
-   "id": "B12_9",
-   "nom": "Perod",
-   "graf": "Perod",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 7143,
-   "y": 2558,
-   "lon": 2.761676,
-   "lat": 39.487579,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
    "uid": "sw:B12_10",
    "q": "sw",
    "id": "B12_10",
@@ -54384,29 +53442,6 @@
    "municipi": "Llucmajor",
    "sim": 0.9,
    "km": 0.32
-  },
-  {
-   "uid": "sw:B13_2",
-   "q": "sw",
-   "id": "B13_2",
-   "nom": "N.a S.a",
-   "graf": "N.a S.a",
-   "tipus": [
-    "Oratorio publico"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 9494,
-   "y": 2063,
-   "lon": 2.932244,
-   "lat": 39.524348,
-   "decision": "sense",
-   "review": null,
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
   },
   {
    "uid": "sw:B13_3",
@@ -55521,7 +54556,7 @@
    "nom": "Lluchamet",
    "graf": "Lluchamet",
    "tipus": [
-    "altre"
+    "Casa de campo ó Predio"
    ],
    "ordre": [],
    "subtile": "",
@@ -57660,7 +56695,7 @@
    "nom": "I. de la Caleta",
    "graf": "I. de la Caleta",
    "tipus": [
-    "altre"
+    "Isla"
    ],
    "ordre": [],
    "subtile": "",
@@ -57683,7 +56718,7 @@
    "nom": "I. del pas",
    "graf": "I. del pas",
    "tipus": [
-    "altre"
+    "Isla"
    ],
    "ordre": [],
    "subtile": "",
@@ -57775,7 +56810,7 @@
    "nom": "I. de Salas",
    "graf": "I. dê Sâlas",
    "tipus": [
-    "altre"
+    "Isla"
    ],
    "ordre": [],
    "subtile": "",
@@ -58068,29 +57103,6 @@
    "km": 1.64
   },
   {
-   "uid": "sw:C02_21",
-   "q": "sw",
-   "id": "C02_21",
-   "nom": "Cabo Negret",
-   "graf": "Cabo Negret",
-   "tipus": [
-    "altre"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 2625,
-   "y": 1991,
-   "lon": 2.457488,
-   "lat": 39.50444,
-   "decision": "probable",
-   "review": "revisat",
-   "ngib": "Cap Negret",
-   "municipi": "Calvià",
-   "sim": 0.86,
-   "km": 0.64
-  },
-  {
    "uid": "sw:C02_22",
    "q": "sw",
    "id": "C02_22",
@@ -58135,29 +57147,6 @@
    "municipi": "Calvià",
    "sim": 0.84,
    "km": 1.2
-  },
-  {
-   "uid": "sw:C02_24",
-   "q": "sw",
-   "id": "C02_24",
-   "nom": "Peñas rotjes",
-   "graf": "Peñas rotjes",
-   "tipus": [
-    "altre"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 2786,
-   "y": 2124,
-   "lon": 2.46864,
-   "lat": 39.498881,
-   "decision": "posicional",
-   "review": "corregit",
-   "ngib": "Cala de ses Penyes Roges",
-   "municipi": "Calvià",
-   "sim": 0.62,
-   "km": 0.89
   },
   {
    "uid": "sw:C02_25",
@@ -58787,7 +57776,7 @@
    "nom": "Illót del Estañol",
    "graf": "Illót del Estañol",
    "tipus": [
-    "altre"
+    "Isla"
    ],
    "ordre": [],
    "subtile": "",

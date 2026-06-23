@@ -198,7 +198,7 @@
  },
  "B02_22": {
   "graf": "Cala de gos",
-  "verdict": "none"
+  "verdict": "trash"
  },
  "B02_23": {
   "verdict": "ok"
@@ -217,7 +217,8 @@
  },
  "B02_28": {
   "tipus": "altre",
-  "verdict": "ok"
+  "verdict": "ok",
+  "graf": "Murtér"
  },
  "B02_29": {
   "graf": "Barril",
@@ -254,7 +255,10 @@
  "B02_36": {
   "graf": "Islas de Malgrat",
   "ngib": "es Malgrats",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Isla"
+  ]
  },
  "B03_1": {
   "verdict": "ok"
@@ -273,7 +277,7 @@
   "verdict": "ok"
  },
  "B03_6": {
-  "verdict": "ok"
+  "verdict": "trash"
  },
  "B03_7": {
   "verdict": "ok"
@@ -414,7 +418,10 @@
  },
  "B04_22": {
   "graf": "Tor. dê Grau",
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B04_23": {
   "verdict": "none"
@@ -554,7 +561,10 @@
  },
  "B05_18": {
   "graf": "Tanca",
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B05_19": {
   "tipus": "Casa de campo ó Predio",
@@ -566,7 +576,10 @@
  },
  "B05_21": {
   "graf": "Hort d.S. Juâ",
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B05_22": {
   "graf": "Tor. dê Suñer",
@@ -599,7 +612,10 @@
  },
  "B05_31": {
   "graf": "Tor. dê Suau",
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B05_32": {
   "ngib": "Son Fillol",
@@ -703,18 +719,24 @@
   "verdict": "none"
  },
  "B06_22": {
-  "verdict": "ok"
+  "verdict": "trash"
  },
  "B06_23": {
   "verdict": "none"
  },
  "B06_24": {
   "graf": "Da. Ayna",
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B06_25": {
   "graf": "Tor. dê Suñer",
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B06_26": {
   "verdict": "ok"
@@ -724,13 +746,16 @@
  },
  "B06_28": {
   "graf": "Sini dê Gili",
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B06_29": {
   "verdict": "none"
  },
  "B06_30": {
-  "verdict": "none"
+  "verdict": "trash"
  },
  "B06_31": {
   "verdict": "none"
@@ -813,7 +838,10 @@
  "B07_16": {
   "graf": "Tor. de Palou",
   "ngib": "Can Palou",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B07_17": {
   "verdict": "ok"
@@ -986,9 +1014,9 @@
   "verdict": "pick"
  },
  "B09_14": {
-  "graf": "Voldel Pi",
+  "graf": "Vol del Pi",
   "ngib": "es Bol des Pi",
-  "verdict": "pick"
+  "verdict": "ok"
  },
  "B09_15": {
   "graf": "Caló dé Pallicer",
@@ -1024,7 +1052,8 @@
  },
  "B09_22": {
   "ngib": "Cala de ses Penyes Roges",
-  "verdict": "pick"
+  "verdict": "pick",
+  "graf": "Peñas rotjes"
  },
  "B10_1": {
   "ngib": "Son Batle",
@@ -1484,7 +1513,10 @@
  "B14_16": {
   "graf": "Lluchamet",
   "ngib": "Llucamet",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B14_17": {
   "ngib": "s'Àguila",
@@ -1848,12 +1880,18 @@
  "C02_3": {
   "graf": "I. de la Caleta",
   "ngib": "Illa de sa Caleta",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Isla"
+  ]
  },
  "C02_4": {
   "graf": "I. del pas",
   "ngib": "Illa des Pas",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Isla"
+  ]
  },
  "C02_5": {
   "graf": "Playola",
@@ -1870,7 +1908,10 @@
  "C02_8": {
   "graf": "I. dê Sâlas",
   "ngib": "Illa d'en Sales",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Isla"
+  ]
  },
  "C02_9": {
   "ngib": "ses Penyes Roges",
@@ -1922,7 +1963,7 @@
  "C02_21": {
   "graf": "Cabo Negret",
   "ngib": "Cap Negret",
-  "verdict": "pick"
+  "verdict": "trash"
  },
  "C02_22": {
   "ngib": "Platja de Magaluf",
@@ -1936,7 +1977,7 @@
   "graf": "Peñas rotjes",
   "tipus": "altre",
   "ngib": "Cala de ses Penyes Roges",
-  "verdict": "pick"
+  "verdict": "trash"
  },
  "C02_25": {
   "verdict": "ok"
@@ -2047,7 +2088,10 @@
  "C03_23": {
   "graf": "Illót del Estañol",
   "ngib": "Illot de s'Estanyol",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Isla"
+  ]
  },
  "C03_24": {
   "graf": "Berret del Capellá",

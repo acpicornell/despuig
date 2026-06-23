@@ -145,7 +145,7 @@
  },
  "B04_1": {
   "graf": "Câ Torrens",
-  "verdict": "none"
+  "verdict": "trash"
  },
  "B04_12": {
   "graf": "Pedruxella xic",
@@ -273,7 +273,7 @@
  "B05_39": {
   "graf": "Câ Fava",
   "ngib": "Can Fava",
-  "verdict": "pick"
+  "verdict": "trash"
  },
  "B05_8": {
   "graf": "Câ Guillê Cruille",
@@ -2080,7 +2080,7 @@
  },
  "B12_11": {
   "ngib": "Son Blai",
-  "verdict": "pick"
+  "verdict": "trash"
  },
  "B12_12": {
   "ngib": "Son Salat",
@@ -2100,7 +2100,7 @@
  },
  "B12_16": {
   "ngib": "Son Catiu",
-  "verdict": "pick"
+  "verdict": "trash"
  },
  "B12_21": {
   "ngib": "Son Poquet",
@@ -2109,7 +2109,7 @@
  "B12_22": {
   "graf": "Sô Berrina",
   "ngib": "Son Barrina",
-  "verdict": "pick"
+  "verdict": "trash"
  },
  "B12_23": {
   "ngib": "So n'Arnau",

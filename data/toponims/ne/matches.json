@@ -1050,20 +1050,6 @@
   "km": 0.42
  },
  {
-  "id": "B04_1",
-  "nom": "Can Torrens",
-  "graf": "Câ Torrens",
-  "tipus": "Casa de campo ó Predio",
-  "ordre": null,
-  "dubte": false,
-  "decision": "sense",
-  "review": "revisat",
-  "ngib": null,
-  "municipi": null,
-  "sim": null,
-  "km": null
- },
- {
   "id": "B04_2",
   "nom": "La Cella",
   "graf": "La Cella",
@@ -1972,20 +1958,6 @@
   "municipi": null,
   "sim": null,
   "km": null
- },
- {
-  "id": "B05_39",
-  "nom": "Can Fava",
-  "graf": "Câ Fava",
-  "tipus": "Casa de campo ó Predio",
-  "ordre": null,
-  "dubte": false,
-  "decision": "confirmat",
-  "review": "revisat",
-  "ngib": "Can Fava",
-  "municipi": "Pollença",
-  "sim": 1.0,
-  "km": 1.71
  },
  {
   "id": "B06_1",
@@ -4582,20 +4554,6 @@
   "km": 2.66
  },
  {
-  "id": "B12_11",
-  "nom": "Son Blay",
-  "graf": "Sô Blay",
-  "tipus": "Casa de campo ó Predio",
-  "ordre": null,
-  "dubte": false,
-  "decision": "confirmat",
-  "review": "revisat",
-  "ngib": "Son Blai",
-  "municipi": "Inca",
-  "sim": 0.94,
-  "km": 1.73
- },
- {
   "id": "B12_12",
   "nom": "Son Salat",
   "graf": "Sô Salat",
@@ -4650,20 +4608,6 @@
   "municipi": "Inca",
   "sim": 0.94,
   "km": 0.94
- },
- {
-  "id": "B12_16",
-  "nom": "Son Catiu",
-  "graf": "Sô Catiu",
-  "tipus": "Casa de campo ó Predio",
-  "ordre": null,
-  "dubte": false,
-  "decision": "confirmat",
-  "review": "revisat",
-  "ngib": "Son Catiu",
-  "municipi": "Inca",
-  "sim": 1.0,
-  "km": 1.14
  },
  {
   "id": "B12_17",
@@ -4734,20 +4678,6 @@
   "municipi": "Inca",
   "sim": 1.0,
   "km": 0.59
- },
- {
-  "id": "B12_22",
-  "nom": "Son Berrina",
-  "graf": "Sô Berrina",
-  "tipus": "Casa de campo ó Predio",
-  "ordre": null,
-  "dubte": false,
-  "decision": "confirmat",
-  "review": "revisat",
-  "ngib": "Son Barrina",
-  "municipi": "Inca",
-  "sim": 0.95,
-  "km": 0.38
  },
  {
   "id": "B12_23",

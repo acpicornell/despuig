@@ -2184,20 +2184,6 @@
   "km": null
  },
  {
-  "id": "B05_28",
-  "nom": "Son Cabre",
-  "graf": "Sô Cabre",
-  "tipus": "Casa de campo ó Predio",
-  "ordre": null,
-  "dubte": false,
-  "decision": "confirmat",
-  "review": "revisat",
-  "ngib": "Son Cabrer",
-  "municipi": "Sant Llorenç des Cardassar",
-  "sim": 0.95,
-  "km": 1.47
- },
- {
   "id": "B05_29",
   "nom": "Son Llunas",
   "graf": "Sô Llunas",
@@ -7029,20 +7015,6 @@
   "municipi": "Felanitx",
   "sim": 0.92,
   "km": 1.61
- },
- {
-  "id": "B18_4",
-  "nom": "Can Pinoi",
-  "graf": "Câ Pinoi",
-  "tipus": "Casa de campo ó Predio",
-  "ordre": null,
-  "dubte": false,
-  "decision": "sense",
-  "review": "revisat",
-  "ngib": null,
-  "municipi": null,
-  "sim": null,
-  "km": null
  },
  {
   "id": "B18_5",

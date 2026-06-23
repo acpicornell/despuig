@@ -534,7 +534,7 @@
  },
  "B18_4": {
   "graf": "Câ Pinoi",
-  "verdict": "none"
+  "verdict": "trash"
  },
  "B18_7": {
   "ngib": "Sos Bessons",
@@ -1122,7 +1122,8 @@
  },
  "B05_28": {
   "ngib": "Son Cabrer",
-  "verdict": "pick"
+  "verdict": "trash",
+  "graf": "Sô Cabrer"
  },
  "B05_30": {
   "ngib": "sa Canova",

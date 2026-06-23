@@ -1026,16 +1026,16 @@
  },
  {
   "id": "B03_6",
-  "nom": "SoBleda",
-  "graf": "SôBleda",
+  "nom": "Son Bleda",
+  "graf": "Sô Bleda",
   "tipus": "Casa de campo ó Predio",
   "ordre": null,
   "dubte": false,
-  "decision": "posicional",
+  "decision": "suggerit",
   "review": "revisat",
   "ngib": "Can Bleda",
   "municipi": "Sóller",
-  "sim": 0.62,
+  "sim": 0.81,
   "km": 1.09
  },
  {
@@ -1149,20 +1149,6 @@
   "municipi": null,
   "sim": null,
   "km": null
- },
- {
-  "id": "B03_15",
-  "nom": "Viña vella",
-  "graf": "Viña vella",
-  "tipus": "Casa de campo ó Predio",
-  "ordre": null,
-  "dubte": false,
-  "decision": "confirmat",
-  "review": "revisat",
-  "ngib": "sa Vinya Vella",
-  "municipi": "Fornalutx",
-  "sim": 0.98,
-  "km": 0.44
  },
  {
   "id": "B03_16",
@@ -3562,20 +3548,6 @@
   "km": 1.19
  },
  {
-  "id": "B08_29",
-  "nom": "Cana Vich",
-  "graf": "Cana Vich",
-  "tipus": "Casa de campo ó Predio",
-  "ordre": null,
-  "dubte": false,
-  "decision": "confirmat",
-  "review": "revisat",
-  "ngib": "Can Vic",
-  "municipi": "Palma",
-  "sim": 0.9,
-  "km": 0.49
- },
- {
   "id": "B08_30",
   "nom": "Son Llopart",
   "graf": "Sô Llôpart",
@@ -4120,20 +4092,6 @@
   "municipi": "Santa Maria del Camí",
   "sim": 1.0,
   "km": 0.58
- },
- {
-  "id": "B09_35",
-  "nom": "Las Covas",
-  "graf": "Las Covas",
-  "tipus": "Dos ó tres casas",
-  "ordre": null,
-  "dubte": false,
-  "decision": "confirmat",
-  "review": "revisat",
-  "ngib": "ses Coves",
-  "municipi": "Santa Eugènia",
-  "sim": 0.9,
-  "km": 1.19
  },
  {
   "id": "B09_36",
@@ -6071,7 +6029,7 @@
   "id": "B14_21",
   "nom": "Verger",
   "graf": "Verger",
-  "tipus": "altre",
+  "tipus": "Casa de campo ó Predio",
   "ordre": null,
   "dubte": false,
   "decision": "confirmat",
@@ -6410,12 +6368,12 @@
   "tipus": "Lugar grande",
   "ordre": null,
   "dubte": false,
-  "decision": "suggerit",
-  "review": "revisat",
-  "ngib": "es Trull",
+  "decision": "posicional",
+  "review": "corregit",
+  "ngib": "Establiments Vells",
   "municipi": "Palma",
-  "sim": 0.8,
-  "km": 9.8
+  "sim": 0.17,
+  "km": 1.31
  },
  {
   "id": "B14_46",
@@ -7180,12 +7138,12 @@
   "tipus": "Castillo",
   "ordre": null,
   "dubte": false,
-  "decision": "sense",
-  "review": "revisat",
-  "ngib": null,
-  "municipi": null,
-  "sim": null,
-  "km": null
+  "decision": "posicional",
+  "review": "corregit",
+  "ngib": "Torre Picada",
+  "municipi": "Sóller",
+  "sim": 0.47,
+  "km": 3.43
  },
  {
   "id": "C02_1",
@@ -7807,7 +7765,10 @@
   "id": "C03_8",
   "nom": "Torréte de la Tanca",
   "graf": "Torréte de la Tanca",
-  "tipus": "Atalaya ó Torre",
+  "tipus": [
+   "Atalaya ó Torre",
+   "altre"
+  ],
   "ordre": null,
   "dubte": false,
   "decision": "confirmat",
@@ -8264,20 +8225,6 @@
   "municipi": null,
   "sim": null,
   "km": null
- },
- {
-  "id": "C04_6",
-  "nom": "Mor.d.l.Galera",
-  "graf": "Mor.d.l.Galera",
-  "tipus": "Casa de campo ó Predio",
-  "ordre": null,
-  "dubte": false,
-  "decision": "suggerit",
-  "review": "corregit",
-  "ngib": "sa Galera Grossa",
-  "municipi": "Andratx",
-  "sim": 0.7,
-  "km": 2.36
  },
  {
   "id": "C04_7",

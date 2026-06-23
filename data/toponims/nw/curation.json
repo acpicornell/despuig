@@ -151,7 +151,8 @@
   "verdict": "pick"
  },
  "B03_6": {
-  "verdict": "ok"
+  "verdict": "ok",
+  "graf": "Sô Bleda"
  },
  "B03_7": {
   "graf": "Sô Pusa",
@@ -393,7 +394,7 @@
  },
  "B08_29": {
   "graf": "Cana Vich",
-  "verdict": "ok"
+  "verdict": "trash"
  },
  "B08_33": {
   "verdict": "none"
@@ -647,7 +648,8 @@
   "verdict": "pick"
  },
  "C01_31": {
-  "verdict": "none"
+  "verdict": "pick",
+  "ngib": "Torre Picada"
  },
  "C01_4": {
   "graf": "Tor. de Burdils",
@@ -741,7 +743,10 @@
  "C04_6": {
   "graf": "Mor.d.l.Galera",
   "ngib": "sa Galera Grossa",
-  "verdict": "pick"
+  "verdict": "trash",
+  "tipus": [
+   "Punta"
+  ]
  },
  "C04_7": {
   "graf": "Singla del fonoi mari",
@@ -1094,7 +1099,7 @@
  },
  "B03_15": {
   "ngib": "sa Vinya Vella",
-  "verdict": "pick"
+  "verdict": "trash"
  },
  "B03_17": {
   "ngib": "Cas Xorc",
@@ -1662,7 +1667,7 @@
  "B09_35": {
   "tipus": "Dos ó tres casas",
   "ngib": "ses Coves",
-  "verdict": "pick"
+  "verdict": "trash"
  },
  "B09_36": {
   "ngib": "Can Verderol",
@@ -2114,7 +2119,10 @@
  },
  "B14_21": {
   "ngib": "es Verger",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B14_22": {
   "ngib": "Canet",
@@ -2176,8 +2184,9 @@
   "verdict": "none"
  },
  "B14_45": {
-  "verdict": "ok",
-  "tipus": "Lugar grande"
+  "verdict": "pick",
+  "tipus": "Lugar grande",
+  "ngib": "Establiments Vells"
  },
  "B14_46": {
   "tipus": "Muchas casas separadas ó Establecimiento",
@@ -2432,7 +2441,11 @@
  },
  "C03_8": {
   "ngib": "Torrent de sa Tanca",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Atalaya ó Torre",
+   "altre"
+  ]
  },
  "C03_10": {
   "ngib": "Racó de s'Algar",
