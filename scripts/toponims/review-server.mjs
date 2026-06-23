@@ -174,6 +174,7 @@ const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</ti
 var Q='', MODE='table', ROWS=[], NGIB=[], ALLMODE=false;
 var SORT={key:'',dir:1}, SEL={};   // SEL = uid->1 (multiselecció de la taula)
 var ROWSQ=null;                    // quin full hi ha carregat a ROWS (evita re-fetch en canviar de vista)
+var ROWSDIRTY=false;               // un canvi des de Fitxes/Geo invalida la cache de la Taula
 var UNDO=[], PENDTIP=null;         // pila de desfer de la taula; valor de filtre tipus pendent de restaurar
 var DECORD={confirmat:5,probable:4,suggerit:3,posicional:2,sense:1};
 // Columnes ordenables de la taula (clau del model + etiqueta).
@@ -215,6 +216,7 @@ async function post(body){ if(!body.q)body.q=Q;
   try{ var r=await fetch('/pick',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});
     if(!r.ok){ toast('⚠ NO desat — error '+r.status,'bad'); return false; }
     var j=await r.json(); if(!j||!j.ok){ toast('⚠ El servidor no ha desat','bad'); return false; }
+    if(MODE!=='table') ROWSDIRTY=true;   // edició feta fora de la Taula: cal refrescar-la en tornar-hi
     return true;
   }catch(e){ toast('⚠ Sense connexió amb el servidor — NO desat','bad'); return false; }
 }
@@ -255,7 +257,7 @@ function onFilter(){ saveUI(); if(MODE==='table') applyFilter(); else if(MODE===
 
 /* ================= TABLE VIEW ================= */
 // Fetch the rows only when the loaded sheet differs from the current one; views share ROWS.
-async function ensureRows(force){ if(!force && ROWSQ===Q && ROWS.length)return; ROWS=(await (await fetch(api('/table'))).json()).rows; ROWSQ=Q; SEL={}; UNDO=[]; }
+async function ensureRows(force){ if(!force && !ROWSDIRTY && ROWSQ===Q && ROWS.length)return; ROWS=(await (await fetch(api('/table'))).json()).rows; ROWSQ=Q; ROWSDIRTY=false; SEL={}; UNDO=[]; }
 async function loadTable(){
   ALLMODE=(Q==='all');
   await ensureRows();
@@ -658,8 +660,11 @@ const server = http.createServer((req, res) => {
   if (req.method === 'GET' && u.pathname === '/data' && QUADRANTS.includes(q)) {
     const d = readJSON(F(q).reviewdata, { items: [] });
     const flags = readJSON(`${ROOT}/data/toponims/mapkurator/quality_flags.json`, {});
-    const ordreById = Object.fromEntries(readJSON(F(q).matches, []).map((m) => [m.id, m.ordre || '']));
-    (d.items || []).forEach((it) => { it.flags = flags[`${q}:${it.id}`] || []; it.ordre = ordreById[it.id] || ''; });
+    // matches.json is the authoritative source for tipus/ordre (the table reads it too).
+    // review-data.json is a stale snapshot from crop-render time, so override its tipus
+    // here; otherwise the fitxa and the taula could disagree (e.g. "altre" vs "Punta").
+    const mById = Object.fromEntries(readJSON(F(q).matches, []).map((m) => [m.id, m]));
+    (d.items || []).forEach((it) => { const m = mById[it.id] || {}; it.flags = flags[`${q}:${it.id}`] || []; if ('tipus' in m) it.tipus = m.tipus; it.ordre = m.ordre || ''; });
     return send(res, 200, 'application/json', JSON.stringify(d));
   }
   if (req.method === 'GET' && u.pathname === '/state' && QUADRANTS.includes(q)) {
