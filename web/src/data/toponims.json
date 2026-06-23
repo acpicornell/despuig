@@ -7,22 +7,22 @@
   "sw"
  ],
  "comptador": {
-  "total": 2518,
+  "total": 2515,
   "perQuadrant": {
    "nw": 591,
    "ne": 684,
    "se": 694,
-   "sw": 549
+   "sw": 546
   },
   "perDecision": {
-   "confirmat": 1438,
-   "sense": 453,
+   "confirmat": 1436,
+   "sense": 452,
    "posicional": 234,
    "probable": 152,
    "suggerit": 241
   },
   "perReview": {
-   "revisat": 2203,
+   "revisat": 2200,
    "corregit": 313
   }
  },
@@ -46452,29 +46452,6 @@
    "km": null
   },
   {
-   "uid": "sw:B02_15",
-   "q": "sw",
-   "id": "B02_15",
-   "nom": "Son Prim",
-   "graf": "Sô Prim",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 2365,
-   "y": 244,
-   "lon": 2.428306,
-   "lat": 39.572075,
-   "decision": "confirmat",
-   "review": "revisat",
-   "ngib": "Son Prim",
-   "municipi": "Andratx",
-   "sim": 1,
-   "km": 0.44
-  },
-  {
    "uid": "sw:B02_16",
    "q": "sw",
    "id": "B02_16",
@@ -48913,29 +48890,6 @@
    "km": null
   },
   {
-   "uid": "sw:B05_22",
-   "q": "sw",
-   "id": "B05_22",
-   "nom": "Tor. de Suñer",
-   "graf": "Tor. dê Suñer",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 5851,
-   "y": 563,
-   "lon": 2.653369,
-   "lat": 39.588668,
-   "decision": "sense",
-   "review": "revisat",
-   "ngib": null,
-   "municipi": null,
-   "sim": null,
-   "km": null
-  },
-  {
    "uid": "sw:B05_23",
    "q": "sw",
    "id": "B05_23",
@@ -49946,29 +49900,6 @@
    "municipi": null,
    "sim": null,
    "km": null
-  },
-  {
-   "uid": "sw:B06_33",
-   "q": "sw",
-   "id": "B06_33",
-   "nom": "Son Armadas",
-   "graf": "Sô Armadas",
-   "tipus": [
-    "Casa de campo ó Predio"
-   ],
-   "ordre": [],
-   "subtile": "",
-   "dubte": false,
-   "x": 5354,
-   "y": 757,
-   "lon": 2.622958,
-   "lat": 39.57489,
-   "decision": "confirmat",
-   "review": "revisat",
-   "ngib": "So n'Armadans",
-   "municipi": "Palma",
-   "sim": 0.89,
-   "km": 0.77
   },
   {
    "uid": "sw:B06_34",

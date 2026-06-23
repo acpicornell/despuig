@@ -672,20 +672,6 @@
   "km": null
  },
  {
-  "id": "B02_15",
-  "nom": "Son Prim",
-  "graf": "Sô Prim",
-  "tipus": "Casa de campo ó Predio",
-  "ordre": null,
-  "dubte": false,
-  "decision": "confirmat",
-  "review": "revisat",
-  "ngib": "Son Prim",
-  "municipi": "Andratx",
-  "sim": 1.0,
-  "km": 0.44
- },
- {
   "id": "B02_16",
   "nom": "Cabo de Falcors",
   "graf": "Cabo de Falcors",
@@ -2170,20 +2156,6 @@
   "km": null
  },
  {
-  "id": "B05_22",
-  "nom": "Tor. de Suñer",
-  "graf": "Tor. dê Suñer",
-  "tipus": "Casa de campo ó Predio",
-  "ordre": null,
-  "dubte": false,
-  "decision": "sense",
-  "review": "revisat",
-  "ngib": null,
-  "municipi": null,
-  "sim": null,
-  "km": null
- },
- {
   "id": "B05_23",
   "nom": "Son Forteza",
   "graf": "Sô Forteza",
@@ -2798,20 +2770,6 @@
   "municipi": null,
   "sim": null,
   "km": null
- },
- {
-  "id": "B06_33",
-  "nom": "Son Armadas",
-  "graf": "Sô Armadas",
-  "tipus": "Casa de campo ó Predio",
-  "ordre": null,
-  "dubte": false,
-  "decision": "confirmat",
-  "review": "revisat",
-  "ngib": "So n'Armadans",
-  "municipi": "Palma",
-  "sim": 0.89,
-  "km": 0.77
  },
  {
   "id": "B06_34",

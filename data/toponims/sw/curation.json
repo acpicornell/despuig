@@ -178,7 +178,7 @@
  "B02_15": {
   "graf": "Sô Prim",
   "ngib": "Son Prim",
-  "verdict": "pick"
+  "verdict": "trash"
  },
  "B02_17": {
   "verdict": "ok"
@@ -584,7 +584,7 @@
  "B05_22": {
   "graf": "Tor. dê Suñer",
   "tipus": "Casa de campo ó Predio",
-  "verdict": "none"
+  "verdict": "trash"
  },
  "B05_23": {
   "verdict": "ok"
@@ -765,7 +765,7 @@
   "verdict": "none"
  },
  "B06_33": {
-  "verdict": "ok"
+  "verdict": "trash"
  },
  "B06_34": {
   "tipus": "Lugar chico",
