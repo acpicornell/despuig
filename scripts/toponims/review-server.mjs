@@ -96,6 +96,7 @@ const PAGE = `<!doctype html><meta charset=utf8><title>Curació de topònims</ti
  td{padding:.3rem .55rem;border-bottom:1px solid #efe8db;vertical-align:middle}
  tbody tr:hover{background:#faf7f0} tr.pend{box-shadow:inset 3px 0 0 #c0530a} tr.disc td{opacity:.45;text-decoration:line-through}
  td input.eg{width:11rem;font-weight:600} td input.en{width:12rem}
+ td input.en.pendval{background:#fff3e6;border-color:#c0530a;font-weight:600}  /* pick desat, encara sense bakejar */
  .chips{display:flex;gap:.25rem;flex-wrap:wrap;margin-top:.2rem}
  .chip{font-size:.74rem;padding:.05rem .4rem;border:1px solid var(--line);border-radius:999px;background:#f6f7f1;cursor:pointer;color:#1d7a6b}
  .chip:hover{border-color:#2f7d4f;background:#eaf3ec}
@@ -287,12 +288,16 @@ function wireHead(){
 function rowHTML(r){
   var u=r.uid||r.id;
   var fs=r.flags||[];
+  // El pick encara no s'ha bakejat (r.ngib ve de matches.json), així que mostra el
+  // pick PENDENT a la columna NGIB; si s'ha marcat «cap match», buida-la. Sense això,
+  // un pick desat (fitxa o taula) quedava invisible fins a re-bakejar el full.
+  var ngibVal=r.pend==='pick'?(r.pendPick||''):(r.pend==='none'?'':(r.ngib||''));
   var warn=fs.length?' <span class=warn title="'+esc(flagTxt(fs))+'">⚠</span>':'';
   var pend=r.pend?'<span class=pendtag> ·'+r.pend+(r.pendPick?' '+esc(r.pendPick):'')+'</span>':'';
   var rev=r.review==='revisat'?'<span class=rev title="revisat a mà">✓</span>':r.review==='corregit'?'<span class=rev title="corregit a mà">✎</span>':'';
   var chips=(r.cand||[]).slice(0,4).map(function(c){return '<span class=chip data-g="'+esc(c.grafia)+'">'+esc(c.grafia)+'</span>';}).join('');
   return '<tr data-id="'+esc(u)+'" data-dec="'+r.decision+'" data-tip="|'+esc(arr(r.tipus).join('|'))+'|" data-ord="|'+esc(arr(r.ordre).join('|'))+'|" data-rev="'+(r.review||'')+'" data-prob="'+(fs.length?'1':'')+'" '
-    +'data-text="'+esc(((r.graf||'')+' '+(r.nom||'')+' '+(r.ngib||'')+' '+(r.municipi||'')).toLowerCase())+'"'
+    +'data-text="'+esc(((r.graf||'')+' '+(r.nom||'')+' '+(r.ngib||'')+' '+(r.pendPick||'')+' '+(r.municipi||'')).toLowerCase())+'"'
     +' class="'+(r.pend?'pend ':'')+(r.discarded?'disc ':'')+(SEL[u]?'selrow':'')+'">'
     +'<td class=selcell><input type=checkbox class=selbox data-id="'+esc(u)+'"'+(SEL[u]?' checked':'')+'></td>'
     +'<td class=gcell><input class=eg data-id="'+esc(u)+'" value="'+esc(r.graf)+'">'+warn+(r.grafEdited?' <span class=pendtag>✎</span>':'')+'</td>'
@@ -300,7 +305,7 @@ function rowHTML(r){
     +'<td class=edcell data-edit=tip data-id="'+esc(u)+'"><span class=celltxt>'+esc(tjoin(r.tipus)||'—')+'</span>'+(r.tipusEdited?' <span class=pendtag>✎</span>':'')+'</td>'
     +'<td class=edcell data-edit=ord data-id="'+esc(u)+'"><span class=celltxt>'+esc(tjoin(r.ordre)||'—')+'</span>'+(r.ordreEdited?' <span class=pendtag>✎</span>':'')+'</td>'
     +'<td><span class="badge b-'+r.decision+'">'+r.decision+'</span>'+rev+pend+'</td>'
-    +'<td><input class=en data-id="'+esc(u)+'" value="'+esc(r.ngib||'')+'" placeholder="—">'+(chips?'<div class=chips>'+chips+'</div>':'')+'</td>'
+    +'<td><input class="en'+(r.pend==='pick'?' pendval':'')+'" data-id="'+esc(u)+'" value="'+esc(ngibVal)+'" placeholder="—">'+(chips?'<div class=chips>'+chips+'</div>':'')+'</td>'
     +'<td class=meta>'+esc(r.municipi||'')+'</td><td class=num>'+(r.km==null?'':r.km)+'</td>'
     +(ALLMODE?'<td class=meta>'+esc((r.q||'').toUpperCase())+'</td>':'')
     +'<td class=rowact><button class=ok title="correcte (revisat)">✓</button><button class=tr title="brossa">🗑</button><button class=un title="desfés">↶</button></td>'
