@@ -31,6 +31,10 @@ const tipOrder = [
   ...[...new Set(rows.flatMap((r) => r.tipus || []))].filter((t) => t && !(t in TIP)).sort((a, b) => a.localeCompare(b, 'ca')),
 ];
 const qOrder = data.quadrants;
+// Ordes religiosos (eix 2 de la llegenda de 1785) i municipis presents, per als selects.
+const ordreOrder = [...new Set(rows.flatMap((r) => r.ordre || []))].filter(Boolean).sort((a, b) => a.localeCompare(b, 'ca'));
+const munOrder = [...new Set(rows.map((r) => r.municipi).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ca'));
+const hasOrdre = ordreOrder.length > 0;
 const hasReview = rows.some((r) => r.review);
 const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
 ---
@@ -47,7 +51,7 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
     </p>
 
     <div class="controls">
-      <input id="q" type="search" placeholder="Cerca grafia, nom o NGIB…" aria-label="Cerca" />
+      <input id="q" type="search" placeholder="Cerca grafia, nom, NGIB o municipi…" aria-label="Cerca" />
       <select id="fdec" aria-label="Confiança">
         <option value="">Tota confiança</option>
         {decOrder.map((d) => <option value={d}>{DEC[d].label}</option>)}
@@ -56,9 +60,30 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
         <option value="">Tots els tipus</option>
         {tipOrder.map((t) => <option value={t}>{TIP[t] ?? t}</option>)}
       </select>
+      {hasOrdre && (
+        <select id="ford" aria-label="Orde religiós">
+          <option value="">Tots els ordes</option>
+          {ordreOrder.map((o) => <option value={o}>{o}</option>)}
+        </select>
+      )}
+      <select id="fmun" aria-label="Municipi">
+        <option value="">Tots els municipis</option>
+        {munOrder.map((m) => <option value={m}>{m}</option>)}
+      </select>
       <select id="fq" aria-label="Quadrant">
         <option value="">Tots els fulls</option>
         {qOrder.map((q) => <option value={q}>{QNOM[q] ?? q}</option>)}
+      </select>
+      <select id="fngib" aria-label="Match NGIB">
+        <option value="">Amb o sense NGIB</option>
+        <option value="si">Amb forma NGIB</option>
+        <option value="no">Sense match NGIB</option>
+      </select>
+      <select id="fkm" aria-label="Distància al NGIB">
+        <option value="">Tota distància</option>
+        <option value="lt1">&lt; 1 km</option>
+        <option value="1-3">1 – 3 km</option>
+        <option value="gt3">&gt; 3 km (sospitós)</option>
       </select>
       {hasReview && (
         <select id="frev" aria-label="Revisió">
@@ -68,25 +93,38 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
           <option value="corregit">Corregit a mà</option>
         </select>
       )}
+      <button id="fclear" type="button" class="clear" hidden>Neteja ✕</button>
       <span id="count" class="muted count"></span>
     </div>
 
     <div class="tablewrap">
       <table>
         <thead>
-          <tr><th>Grafia (gravat)</th><th>Lectura</th><th>Tipus</th><th>Confiança</th><th>NGIB</th><th>Municipi</th><th class="num">Dist.</th><th>Full</th></tr>
+          <tr>
+            <th class="sortable" data-col="graf" aria-sort="none">Grafia (gravat)<span class="sar"></span></th>
+            <th class="sortable" data-col="nom" aria-sort="none">Lectura<span class="sar"></span></th>
+            <th class="sortable" data-col="tip" aria-sort="none">Tipus / orde<span class="sar"></span></th>
+            <th class="sortable" data-col="dec" aria-sort="none">Confiança<span class="sar"></span></th>
+            <th class="sortable" data-col="ngib" aria-sort="none">NGIB<span class="sar"></span></th>
+            <th class="sortable" data-col="mun" aria-sort="none">Municipi<span class="sar"></span></th>
+            <th class="sortable num" data-col="km" aria-sort="none">Dist.<span class="sar"></span></th>
+            <th class="sortable" data-col="q" aria-sort="none">Full<span class="sar"></span></th>
+          </tr>
         </thead>
         <tbody id="rows">
           {rows.map((r) => (
             <tr class="row" tabindex="0" role="button" aria-label={`Veure ${r.graf} al gravat`}
-                data-dec={r.decision} data-tip={(r.tipus || []).join('|')} data-q={r.q} data-rev={r.review ?? ''}
+                data-dec={r.decision} data-tip={(r.tipus || []).join('|')} data-ord={(r.ordre || []).join('|')} data-q={r.q} data-rev={r.review ?? ''}
                 data-x={r.x} data-y={r.y} data-lon={r.lon ?? ''} data-lat={r.lat ?? ''}
                 data-graf={r.graf} data-nom={r.nom ?? ''} data-ngib={r.ngib ?? ''} data-mun={r.municipi ?? ''}
                 data-km={r.km ?? ''} data-sim={r.sim ?? ''} data-dubte={r.dubte ? '1' : ''}
                 data-text={`${r.graf} ${r.nom} ${r.ngib ?? ''} ${r.municipi ?? ''}`.toLowerCase()}>
               <td class="graf">{r.graf}{r.dubte && <span class="dubte" title="lectura dubtosa">?</span>}</td>
               <td>{r.nom}</td>
-              <td class="muted">{(r.tipus || []).map((t) => TIP[t] ?? t).join(' · ')}</td>
+              <td class="muted">
+                {(r.tipus || []).map((t) => TIP[t] ?? t).join(' · ')}
+                {(r.ordre || []).length > 0 && (r.ordre || []).map((o) => <span class="ordtag">{o}</span>)}
+              </td>
               <td>
                 <span class="badge" style={`--c:${(DEC[r.decision] ?? {}).color ?? '#888'}`}>{(DEC[r.decision] ?? {}).label ?? r.decision}</span>
                 {r.review && <span class="rev" title={REV[r.review]?.label ?? r.review}>{REV[r.review]?.icon ?? '✓'}</span>}
@@ -123,15 +161,22 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
   <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script>
 
-  <script is:inline define:vars={{ total: rows.length, DEC, TIP, QNOM, REV, sheetsBase: url('sheets/'), osdImg: 'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/' }}>
+  <script is:inline define:vars={{ total: rows.length, DEC, TIP, QNOM, REV, decOrder, qOrder, sheetsBase: url('sheets/'), osdImg: 'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/' }}>
     (function () {
       const q = document.getElementById('q');
       const fdec = document.getElementById('fdec');
       const ftip = document.getElementById('ftip');
+      const ford = document.getElementById('ford');
+      const fmun = document.getElementById('fmun');
       const fq = document.getElementById('fq');
+      const fngib = document.getElementById('fngib');
+      const fkm = document.getElementById('fkm');
       const frev = document.getElementById('frev');
+      const fclear = document.getElementById('fclear');
       const count = document.getElementById('count');
-      const trs = Array.from(document.getElementById('rows').children);
+      const tbody = document.getElementById('rows');
+      let trs = Array.from(tbody.children);
+      const DECRANK = {}; decOrder.forEach((d, i) => { DECRANK[d] = i; });
 
       // ── Fitxa: visor del gravat + dades + mini-mapa ──
       const fx = document.getElementById('fx');
@@ -157,6 +202,7 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
         document.getElementById('fxbadges').innerHTML = badges;
         const meta = [];
         meta.push(['Tipus', (d.tip || '').split('|').filter(Boolean).map((t) => TIP[t] ?? t).join(' · ')]);
+        if (d.ord) meta.push(['Orde religiós', d.ord.split('|').filter(Boolean).join(' · ')]);
         if (d.ngib) meta.push(['NGIB', d.ngib]);
         if (d.mun) meta.push(['Municipi', d.mun]);
         if (d.km) meta.push(['Distància al NGIB', (+d.km).toFixed(1) + ' km']);
@@ -214,25 +260,86 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
         tr.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFx(tr); } });
       }
 
+      const filters = [q, fdec, ftip, ford, fmun, fq, fngib, fkm, frev].filter(Boolean);
+
       function apply() {
         const t = q.value.trim().toLowerCase();
-        const d = fdec.value, tp = ftip.value, qq = fq.value, rv = frev ? frev.value : '';
+        const d = fdec.value, tp = ftip.value, od = ford ? ford.value : '', mn = fmun.value,
+          qq = fq.value, ng = fngib.value, km = fkm.value, rv = frev ? frev.value : '';
         let shown = 0;
         for (const tr of trs) {
-          const rev = tr.dataset.rev;
+          const ds = tr.dataset;
+          const rev = ds.rev;
           const revOk = !rv || (rv === 'any' ? !!rev : rv === 'none' ? !rev : rev === rv);
+          const ngOk = !ng || (ng === 'si' ? !!ds.ngib : !ds.ngib);
+          const dkm = ds.km === '' ? null : +ds.km;
+          const kmOk = !km || (dkm != null && (km === 'lt1' ? dkm < 1 : km === '1-3' ? (dkm >= 1 && dkm <= 3) : km === 'gt3' ? dkm > 3 : true));
           const ok =
-            (!d || tr.dataset.dec === d) &&
-            (!tp || tr.dataset.tip.split('|').includes(tp)) &&
-            (!qq || tr.dataset.q === qq) &&
-            revOk &&
-            (!t || tr.dataset.text.includes(t));
+            (!d || ds.dec === d) &&
+            (!tp || ds.tip.split('|').includes(tp)) &&
+            (!od || ds.ord.split('|').includes(od)) &&
+            (!mn || ds.mun === mn) &&
+            (!qq || ds.q === qq) &&
+            ngOk && kmOk && revOk &&
+            (!t || ds.text.includes(t));
           tr.style.display = ok ? '' : 'none';
           if (ok) shown++;
         }
         count.textContent = `mostrant ${shown.toLocaleString('ca-ES')} de ${total.toLocaleString('ca-ES')}`;
+        const active = filters.some((el) => el.value);
+        fclear.hidden = !active;
       }
-      [q, fdec, ftip, fq, frev].filter(Boolean).forEach((el) => el.addEventListener('input', apply));
+      filters.forEach((el) => el.addEventListener('input', apply));
+      fclear.addEventListener('click', () => { filters.forEach((el) => { el.value = ''; }); apply(); });
+
+      // ── Ordenació per columna (clic a la capçalera; asc → desc → sense) ──
+      const QORDER = qOrder;
+      let sortCol = null, sortDir = 'asc';
+      function keyOf(tr, col) {
+        const ds = tr.dataset;
+        switch (col) {
+          case 'graf': return ds.graf || '';
+          case 'nom': return ds.nom || '';
+          case 'tip': return ds.tip ? ds.tip.split('|').map((x) => TIP[x] ?? x).join(' ') : '';
+          case 'dec': return DECRANK[ds.dec] != null ? DECRANK[ds.dec] : 99;
+          case 'ngib': return ds.ngib || '';
+          case 'mun': return ds.mun || '';
+          case 'km': return ds.km === '' ? null : +ds.km;
+          case 'q': return QORDER.indexOf(ds.q);
+          default: return '';
+        }
+      }
+      function cmp(a, b) {
+        const ka = keyOf(a, sortCol), kb = keyOf(b, sortCol);
+        const ea = (ka === '' || ka == null), eb = (kb === '' || kb == null);
+        if (ea && eb) return 0;
+        if (ea) return 1;            // buits sempre al final
+        if (eb) return -1;
+        const r = typeof ka === 'number' ? ka - kb : String(ka).localeCompare(String(kb), 'ca', { numeric: true });
+        return sortDir === 'desc' ? -r : r;
+      }
+      function applySort() {
+        if (!sortCol) return;
+        trs = trs.slice().sort(cmp);
+        const frag = document.createDocumentFragment();
+        trs.forEach((tr) => frag.appendChild(tr));
+        tbody.appendChild(frag);
+      }
+      document.querySelectorAll('th.sortable').forEach((th) => {
+        th.addEventListener('click', () => {
+          const col = th.dataset.col;
+          if (sortCol === col) { sortDir = sortDir === 'asc' ? 'desc' : 'asc'; }
+          else { sortCol = col; sortDir = 'asc'; }
+          document.querySelectorAll('th.sortable').forEach((o) => {
+            o.setAttribute('aria-sort', 'none');
+            o.querySelector('.sar').textContent = '';
+          });
+          th.setAttribute('aria-sort', sortDir === 'asc' ? 'ascending' : 'descending');
+          th.querySelector('.sar').textContent = sortDir === 'asc' ? ' ▲' : ' ▼';
+          applySort();
+        });
+      });
+
       apply();
     })();
   </script>
@@ -246,11 +353,18 @@ const fmtKm = (k) => (k == null ? '' : `${k.toFixed(1)} km`);
     border: 1px solid var(--line); border-radius: 4px; background: rgba(255,255,255,.6); color: var(--ink);
   }
   .controls input { flex: 1 1 240px; }
+  .controls .clear { font-family: var(--serif); font-size: .9rem; padding: .4rem .7rem; border: 1px solid var(--line); border-radius: 4px; background: rgba(154,74,58,.1); color: var(--accent); cursor: pointer; }
+  .controls .clear:hover { background: rgba(154,74,58,.18); }
   .count { margin-left: auto; font-size: .9rem; }
 
   .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 4px; background: rgba(255,255,255,.35); }
   table { border-collapse: collapse; width: 100%; font-size: .96rem; }
   thead th { position: sticky; top: 0; background: var(--paper-2); text-align: left; font-family: var(--display); font-size: .82rem; letter-spacing: .03em; text-transform: uppercase; color: var(--sepia); padding: .55rem .7rem; border-bottom: 2px solid var(--line); }
+  thead th.sortable { cursor: pointer; user-select: none; white-space: nowrap; }
+  thead th.sortable:hover { background: var(--paper); color: var(--accent); }
+  thead th[aria-sort="ascending"], thead th[aria-sort="descending"] { color: var(--accent); }
+  .sar { font-size: .8em; }
+  .ordtag { display: inline-block; margin-left: .35rem; font-size: .72rem; padding: .04rem .4rem; border-radius: 3px; background: rgba(63,122,138,.16); color: #2f5f6b; white-space: nowrap; }
   td { padding: .4rem .7rem; border-bottom: 1px solid rgba(201,183,143,.4); vertical-align: top; }
   tbody tr:hover { background: rgba(255,255,255,.5); }
   .graf { font-weight: 500; }
