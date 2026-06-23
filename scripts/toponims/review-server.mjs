@@ -1,9 +1,13 @@
-// Local toponym curation tool — quadrant-aware, two views:
-//   • Taula  : an editable copy of the public toponyms table (fast edits in a grid).
+// Local toponym curation tool — quadrant-aware, three views over ONE data model:
+//   • Taula  : an editable grid (fast bulk edits).
 //   • Fitxes : one item at a time with the engraving crop + NGIB candidates + map.
+//   • Mapa   : all toponyms on a geographic layer.
+// All three derive from buildItems(q) — a SINGLE source-of-truth record per toponym
+// (matches.json base + toponims.json geometry + curation.json overlay + flags +
+// review-data candidates). No field is merged twice, so the views can't disagree.
 // Pick a quadrant (NW/NE/SE/SW) in the header. ALL hand edits persist to a SINGLE
 // overlay per sheet — data/toponims/<q>/curation.json — one record per toponym id:
-//   { "B01_1": { "graf": "...", "tipus": "...", "ngib": "...", "verdict": "ok|pick|none|trash" } }
+//   { "B01_1": { "graf": "...", "tipus": [...], "ordre": [...], "ngib": "...", "verdict": "ok|pick|none|trash" } }
 // Then bake the sheet with one command (applies the overlay + re-matches):
 //   nix-shell scripts/toponims/shell.nix --run 'python3 scripts/toponims/mapkurator/bake.py <q>'
 //
@@ -20,7 +24,7 @@ const QUADRANTS = ['nw', 'ne', 'se', 'sw'].filter(
 const F = (q) => {
   const b = `${ROOT}/data/toponims/${q}`;
   return {
-    matches: `${b}/matches.json`, toponims: `${b}/toponims.json`, recheck: `${b}/recheck.json`,
+    matches: `${b}/matches.json`, toponims: `${b}/toponims.json`,
     reviewdata: `${b}/review-data.json`, crops: `${b}/review-crops`,
     curation: `${b}/curation.json`,   // SINGLE overlay: {id: {graf?, tipus?, ngib?, verdict?}}
   };
@@ -40,16 +44,20 @@ const NGIB_JSON = JSON.stringify(
   JSON.parse(fs.readFileSync(`${ROOT}/data/toponims/ngib/llocs.json`, 'utf8'))
     .map((g) => [g.grafia, g.municipi, g.lng, g.lat]));
 
-// Build the editable-table rows for a quadrant: matches.json overlaid with the
-// pending (not-yet-baked) curation state, plus nearby NGIB candidates per item.
-function tableRows(q) {
+// SINGLE SOURCE OF TRUTH for a quadrant's toponyms. Every view (table, card, geo)
+// derives from this — no field is merged twice with divergent logic. Layers:
+//   matches.json   = authoritative base (graf/nom/tipus/ordre/decision/review/ngib/…)
+//   toponims.json  = geometry (x,y crop px · lon,lat WGS84 · dubte)
+//   curation.json  = hand-edit overlay (graf/tipus/ordre/ngib-pick/verdict), applied here
+//   review-data    = ONLY the nearby NGIB candidates (its other fields are a stale snapshot)
+//   quality_flags  = audit flags
+function buildItems(q) {
   const f = F(q);
   const matches = readJSON(f.matches, []);
-  const recheck = readJSON(f.recheck, []);
-  const candById = Object.fromEntries(recheck.map((r) => [r.id, r.candidates || []]));
   const cur = readJSON(f.curation, {});
   const geoById = Object.fromEntries((readJSON(f.toponims, { toponims: [] }).toponims || []).map((t) => [t.id, t]));
   const flags = readJSON(`${ROOT}/data/toponims/mapkurator/quality_flags.json`, {});  // {uid:[codes]} from quality_audit.py
+  const candById = Object.fromEntries((readJSON(f.reviewdata, { items: [] }).items || []).map((it) => [it.id, it.candidates || []]));
   const A = (v) => (v == null || v === '') ? [] : (Array.isArray(v) ? v.slice() : [v]);  // tipus/ordre are multi-value
   return matches.map((m) => {
     const c = cur[m.id] || {};
@@ -58,13 +66,14 @@ function tableRows(q) {
     const tip = c.tipus != null ? A(c.tipus) : A(m.tipus), tip0 = A(m.tipus);
     const ord = c.ordre != null ? A(c.ordre) : A(m.ordre), ord0 = A(m.ordre);
     return {
-      id: m.id, q, uid, lon: g.lon ?? null, lat: g.lat ?? null, flags: flags[uid] || [],
+      id: m.id, q, uid, lon: g.lon ?? null, lat: g.lat ?? null, x: g.x ?? null, y: g.y ?? null, dubte: !!g.dubte,
+      flags: flags[uid] || [],
       graf: c.graf ?? m.graf, graf0: m.graf, nom: m.nom,
       tipus: tip, tipus0: tip0, tipusEdited: c.tipus != null && tip.join('|') !== tip0.join('|'),
       ordre: ord, ordre0: ord0, ordreEdited: c.ordre != null && ord.join('|') !== ord0.join('|'),
       decision: m.decision, review: m.review || null, ngib: m.ngib || null,
       municipi: m.municipi || null, km: m.km ?? null, sim: m.sim ?? null,
-      cand: (candById[m.id] || []).slice(0, 6),
+      candidates: (candById[m.id] || []).slice(0, 6),
       pend: c.verdict || null, pendPick: c.ngib || null,
       grafEdited: c.graf != null && c.graf !== m.graf,
       discarded: c.verdict === 'trash',
@@ -297,7 +306,7 @@ function rowHTML(r){
   var warn=fs.length?' <span class=warn title="'+esc(flagTxt(fs))+'">⚠</span>':'';
   var pend=r.pend?'<span class=pendtag> ·'+r.pend+(r.pendPick?' '+esc(r.pendPick):'')+'</span>':'';
   var rev=r.review==='revisat'?'<span class=rev title="revisat a mà">✓</span>':r.review==='corregit'?'<span class=rev title="corregit a mà">✎</span>':'';
-  var chips=(r.cand||[]).slice(0,4).map(function(c){return '<span class=chip data-g="'+esc(c.grafia)+'">'+esc(c.grafia)+'</span>';}).join('');
+  var chips='';  // els candidats (r.candidates) es trien a la fitxa; la taula es manté neta per a escaneig
   return '<tr data-id="'+esc(u)+'" data-dec="'+r.decision+'" data-tip="|'+esc(arr(r.tipus).join('|'))+'|" data-ord="|'+esc(arr(r.ordre).join('|'))+'|" data-rev="'+(r.review||'')+'" data-prob="'+(fs.length?'1':'')+'" '
     +'data-text="'+esc(((r.graf||'')+' '+(r.nom||'')+' '+(r.ngib||'')+' '+(r.pendPick||'')+' '+(r.municipi||'')).toLowerCase())+'"'
     +' class="'+(r.pend?'pend ':'')+(r.discarded?'disc ':'')+(SEL[u]?'selrow':'')+'">'
@@ -539,8 +548,10 @@ function gotoTableRow(uid){
     else if(++tries<40) setTimeout(find,50); })();
 }
 
-/* ================= CARD VIEW (crops + map) ================= */
-var DATA=[],STATE={picks:{},reviewed:{},graf:{}},queue=[],ci=0,map,mlayer,ngibLayer,searchLayer,chist=[],TARGET=null;
+/* ================= CARD VIEW (crops + map) — same canonical records as the table ================= */
+var DATA=[],queue=[],ci=0,map,mlayer,ngibLayer,searchLayer,chist=[],TARGET=null;
+function dById(id){for(var i=0;i<DATA.length;i++)if(DATA[i].id===id)return DATA[i];return null;}
+function effNgib(d){return d.pend==='pick'?(d.pendPick||''):(d.ngib||'');}  // pick pendent o match bakejat
 // Obre la vista Fitxes centrada en una entrada concreta (des de la taula).
 // uid = "<full>:<id>"; canvia al full corresponent (la vista Fitxes és per full).
 function openCardFor(uid){
@@ -550,45 +561,45 @@ function openCardFor(uid){
   setMode('card');
 }
 async function loadCards(){
-  var dd=await (await fetch(api('/data'))).json(); DATA=dd.items||[];
-  STATE=await (await fetch(api('/state'))).json();
+  DATA=((await (await fetch(api('/data'))).json()).items)||[];
   initMap(); cbuild();
   $('#hint').innerHTML='Fitxes: <kbd>1</kbd>–<kbd>6</kbd> candidat · <kbd>C</kbd> correcte · <kbd>0</kbd> cap match · <kbd>D</kbd> brossa · <kbd>S</kbd> saltar · <kbd>U</kbd>/<kbd>Ctrl+Z</kbd> desfés · clica el recorte per ampliar';
 }
 function cbuild(){
   var t=($('#search').value||'').trim().toLowerCase(), f=$('#fdec').value, tp=$('#ftip').value, fo=$('#ford').value, fp=$('#fprob').value;
   queue=DATA.filter(function(d){
-    if(d.id in STATE.reviewed) return false;            // la cua = encara no revisats
+    if(d.pend) return false;                             // la cua = encara no revisats (sense verdict)
     if(f && d.decision!==f) return false;
-    if(tp && arr((STATE.tipus&&STATE.tipus[d.id])||d.tipus).indexOf(tp)<0) return false;
-    if(fo){ var oa=arr((STATE.ordre&&STATE.ordre[d.id])||d.ordre); if(fo==='__any'?!oa.length:fo==='__none'?!!oa.length:oa.indexOf(fo)<0) return false; }
+    if(tp && arr(d.tipus).indexOf(tp)<0) return false;
+    if(fo){ var oa=arr(d.ordre); if(fo==='__any'?!oa.length:fo==='__none'?!!oa.length:oa.indexOf(fo)<0) return false; }
     if(fp){ var prob=(d.flags&&d.flags.length)>0; if(fp==='prob'?!prob:prob) return false; }
-    if(t){ var hay=((d.graf||'')+' '+(d.nom||'')+' '+(d.ngib||'')+' '+(d.municipi||'')).toLowerCase(); if(hay.indexOf(t)<0) return false; }
+    if(t){ var hay=((d.graf||'')+' '+(d.nom||'')+' '+effNgib(d)+' '+(d.municipi||'')).toLowerCase(); if(hay.indexOf(t)<0) return false; }
     return true;
   });
   ci=0;
   if(TARGET){
     var idx=queue.map(function(d){return d.id;}).indexOf(TARGET);
-    if(idx<0){ var it=DATA.filter(function(d){return d.id===TARGET;})[0]; if(it){ queue.unshift(it); idx=0; } }  // ja revisat/filtrat: l'injectem
+    if(idx<0){ var it=dById(TARGET); if(it){ queue.unshift(it); idx=0; } }  // ja revisat/filtrat: l'injectem
     if(idx>=0) ci=idx;
     TARGET=null;
   }
   crender();
 }
 function crender(){
-  var done=Object.keys(STATE.reviewed).length;
+  var done=DATA.filter(function(d){return d.pend;}).length;
   $('#prog').textContent=Q.toUpperCase()+' · fitxes · revisats '+done+'/'+DATA.length+' · cua '+queue.length;
   var app=$('#app');
   if(!DATA.length){app.innerHTML='<div class=done>Aquest full no té crops rendetjats.<br>Genera\\'ls amb render_review_crops.py (REVIEW_* del full) o usa la vista Taula.</div>';return;}
   if(!queue.length){app.innerHTML='<div class=done>✓ Res més a la cua amb aquest filtre.</div>';clearMap();return;}
   var d=queue[ci];
-  var cands=d.candidates.map(function(c,n){var rec=(c.grafia===d.ngib)?' rec':'';return '<button class="cand'+rec+'" data-g="'+esc(c.grafia)+'"><kbd>'+(n+1)+'</kbd><b>'+esc(c.grafia)+'</b><div class=m>'+esc(c.municipi||'?')+' · '+c.km+'km · sim '+c.sim+'</div></button>';}).join('');
-  var etip=arr((STATE.tipus&&STATE.tipus[d.id])||d.tipus);
-  var eord=arr((STATE.ordre&&STATE.ordre[d.id])||d.ordre);
+  var eng=effNgib(d);
+  var cands=(d.candidates||[]).map(function(c,n){var rec=(c.grafia===eng)?' rec':'';return '<button class="cand'+rec+'" data-g="'+esc(c.grafia)+'"><kbd>'+(n+1)+'</kbd><b>'+esc(c.grafia)+'</b><div class=m>'+esc(c.municipi||'?')+' · '+c.km+'km · sim '+c.sim+'</div></button>';}).join('');
+  var etip=arr(d.tipus);
+  var eord=arr(d.ordre);
   app.innerHTML='<div><img class=crop src="'+api('/crop/'+d.id+'.jpg')+'" onclick="openLightbox(this.src)" title="clica per ampliar"></div><div>'
     +'<div class=meta><span class="badge b-'+d.decision+'">'+d.decision+'</span> · tipus <span class="edcellc" data-edit=tip><span class=celltxt>'+esc(tjoin(etip)||'—')+'</span></span> · ⛪ <span class="edcellc" data-edit=ord><span class=celltxt>'+esc(tjoin(eord)||'—')+'</span></span> · <code>'+d.id+'</code>'+(d.flags&&d.flags.length?' · <span class=warn title="'+esc(flagTxt(d.flags))+'">⚠ '+esc(flagTxt(d.flags))+'</span>':'')+'</div>'
     +'<div class=act><label style="flex:0 0 auto;color:var(--soft);align-self:center">Lectura</label>'
-    +'<input id=cgraf value="'+esc((STATE.graf&&STATE.graf[d.id])||d.graf)+'" style="flex:3;font-weight:600">'
+    +'<input id=cgraf value="'+esc(d.graf||'')+'" style="flex:3;font-weight:600">'
     +'<button onclick="csave()">💾</button></div>'
     +(cands||'<div class=meta>(sense candidats)</div>')
     +'<div class=act><input id=csearch placeholder="🔍 cerca un nom al NGIB i mostra\\'l al mapa" style="flex:3"><button onclick="csearchMap()">al mapa</button></div>'
@@ -605,17 +616,18 @@ function crender(){
   };});
   cmap(d);
 }
-async function ctipM(id,vals){ vals=vals||[]; if(!await post({id:id,action:'tipus',tipus:vals})){crender();return;} STATE.tipus=STATE.tipus||{}; if(vals.length)STATE.tipus[id]=vals; else delete STATE.tipus[id]; toast(vals.length?'🏷 '+vals.join(' · '):'🏷 (cap tipus)'); crender(); }
-async function cordM(id,vals){ vals=vals||[]; if(!await post({id:id,action:'ordre',ordre:vals})){crender();return;} STATE.ordre=STATE.ordre||{}; if(vals.length)STATE.ordre[id]=vals; else delete STATE.ordre[id]; toast(vals.length?'⛪ '+vals.join(' · '):'⛪ (cap orde)'); crender(); }
+async function ctipM(id,vals){ vals=vals||[]; var d=dById(id); if(!await post({id:id,action:'tipus',tipus:vals})){crender();return;} if(d){ d.tipus=vals.length?vals.slice():d.tipus0.slice(); d.tipusEdited=d.tipus.join('|')!==d.tipus0.join('|'); } toast(vals.length?'🏷 '+vals.join(' · '):'🏷 (cap tipus)'); crender(); }
+async function cordM(id,vals){ vals=vals||[]; var d=dById(id); if(!await post({id:id,action:'ordre',ordre:vals})){crender();return;} if(d){ d.ordre=vals.length?vals.slice():d.ordre0.slice(); d.ordreEdited=d.ordre.join('|')!==d.ordre0.join('|'); } toast(vals.length?'⛪ '+vals.join(' · '):'⛪ (cap orde)'); crender(); }
 function toast(msg,cls){var t=$('#toast');t.className='';if(cls)t.classList.add(cls);t.textContent=msg;void t.offsetWidth;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove('show');},1300);}
 function hit(sel){var b=document.querySelector('#app '+sel);if(b)b.classList.add('hit');}
-function cgrafv(){var el=$('#cgraf'),d=queue[ci];if(!el||!d)return null;var v=el.value.trim();return (v&&v!==d.graf)?v:null;}
+function cgrafv(){var el=$('#cgraf'),d=queue[ci];if(!el||!d)return null;var v=el.value.trim();return (v&&v!==(d.graf||''))?v:null;}
+function csetgraf(d,gv){if(gv){d.graf=gv;d.grafEdited=(gv!==d.graf0);}}  // aplica una edició de lectura al registre
 function cadvance(){queue.splice(ci,1);if(ci>=queue.length)ci=queue.length-1;crender();}
-async function cpick(g,el){var d=queue[ci];if(!el){try{el=document.querySelector('#app .cand[data-g="'+CSS.escape(g)+'"]');}catch(e){}}if(el)el.classList.add('sel');if(!await post({id:d.id,action:'pick',grafia:g,graf:cgrafv()})){if(el)el.classList.remove('sel');return;}chist.push(d.id);STATE.reviewed[d.id]='pick';STATE.picks[d.id]=g;toast('✓ '+g);setTimeout(cadvance,170);}
-async function cnone(){var d=queue[ci];hit('.none');if(!await post({id:d.id,action:'none',graf:cgrafv()}))return;chist.push(d.id);STATE.reviewed[d.id]='none';toast('Cap match','warn');setTimeout(cadvance,170);}
-async function ctrash(){var d=queue[ci];hit('.trash');if(!await post({id:d.id,action:'trash',graf:cgrafv()}))return;chist.push(d.id);STATE.reviewed[d.id]='trash';toast('🗑 Brossa','bad');setTimeout(cadvance,170);}
-async function cok(){var d=queue[ci];hit('.ok');if(!await post({id:d.id,action:'ok',graf:cgrafv()}))return;chist.push(d.id);STATE.reviewed[d.id]='ok';toast('✓ Correcte');setTimeout(cadvance,170);}
-async function csave(){var d=queue[ci],g=cgrafv();if(!g){toast('(lectura igual)','warn');return;}if(!await post({id:d.id,action:'graf',graf:g}))return;(STATE.graf=STATE.graf||{})[d.id]=g;toast('💾 Lectura desada');}
+async function cpick(g,el){var d=queue[ci];if(!el){try{el=document.querySelector('#app .cand[data-g="'+CSS.escape(g)+'"]');}catch(e){}}if(el)el.classList.add('sel');var gv=cgrafv();if(!await post({id:d.id,action:'pick',grafia:g,graf:gv})){if(el)el.classList.remove('sel');return;}csetgraf(d,gv);d.pend='pick';d.pendPick=g;d.review=(g===d.ngib?'revisat':'corregit');chist.push(d.id);toast('✓ '+g);setTimeout(cadvance,170);}
+async function cnone(){var d=queue[ci];hit('.none');var gv=cgrafv();if(!await post({id:d.id,action:'none',graf:gv}))return;csetgraf(d,gv);d.pend='none';d.pendPick=null;d.review=null;chist.push(d.id);toast('Cap match','warn');setTimeout(cadvance,170);}
+async function ctrash(){var d=queue[ci];hit('.trash');var gv=cgrafv();if(!await post({id:d.id,action:'trash',graf:gv}))return;csetgraf(d,gv);d.pend='trash';d.discarded=true;chist.push(d.id);toast('🗑 Brossa','bad');setTimeout(cadvance,170);}
+async function cok(){var d=queue[ci];hit('.ok');var gv=cgrafv();if(!await post({id:d.id,action:'ok',graf:gv}))return;csetgraf(d,gv);d.pend='ok';chist.push(d.id);toast('✓ Correcte');setTimeout(cadvance,170);}
+async function csave(){var d=queue[ci],g=cgrafv();if(!g){toast('(lectura igual)','warn');return;}if(!await post({id:d.id,action:'graf',graf:g}))return;csetgraf(d,g);toast('💾 Lectura desada');}
 function cskip(){toast('Saltat');ci=(ci+1)%queue.length;crender();}
 function ccustom(){var v=$('#ccustom').value.trim();if(v)cpick(v);}
 function csearchMap(){
@@ -629,7 +641,7 @@ function csearchMap(){
   if(d&&d.lat!=null)pts.push([d.lat,d.lon]);
   if(pts.length)map.fitBounds(pts,{padding:[40,40]}); else toast('(cap resultat)','warn');
 }
-async function cundo(){var id=chist.pop();if(!id){toast('(res a desfer)','warn');return;}if(!await post({id:id,action:'undo'})){chist.push(id);return;}delete STATE.reviewed[id];delete STATE.picks[id];toast('↶ Desfet');TARGET=id;cbuild();}
+async function cundo(){var id=chist.pop();if(!id){toast('(res a desfer)','warn');return;}if(!await post({id:id,action:'undo'})){chist.push(id);return;}var d=dById(id);if(d){d.pend=null;d.pendPick=null;d.discarded=false;}toast('↶ Desfet');TARGET=id;cbuild();}
 function initMap(){if(map)return;map=L.map('map');L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);ngibLayer=L.layerGroup().addTo(map);mlayer=L.layerGroup().addTo(map);map.setView([39.6,3.0],9);map.on('moveend',rngib);}
 function rngib(){if(!ngibLayer||!NGIB.length||map.getZoom()<12)return;ngibLayer.clearLayers();var b=map.getBounds(),n=0;for(var k=0;k<NGIB.length;k++){var a=NGIB[k];if(a[3]<b.getSouth()||a[3]>b.getNorth()||a[2]<b.getWest()||a[2]>b.getEast())continue;var mk=L.circleMarker([a[3],a[2]],{radius:4,color:'#3a7d12',weight:1,fillColor:'#7cdb27',fillOpacity:.9});mk.bindTooltip('<b>'+esc(a[0])+'</b> · '+esc(a[1]||''));mk.on('click',(function(g){return function(){cpick(g);};})(a[0]));mk.addTo(ngibLayer);if(++n>700)break;}}
 function clearMap(){if(mlayer)mlayer.clearLayers();if(searchLayer)searchLayer.clearLayers();}
@@ -655,29 +667,13 @@ const server = http.createServer((req, res) => {
   if (req.method === 'GET' && u.pathname === '/ngib') return send(res, 200, 'application/json', NGIB_JSON);
   if (req.method === 'GET' && u.pathname === '/table' && (q === 'all' || QUADRANTS.includes(q))) {
     const qs = q === 'all' ? QUADRANTS : [q];
-    return send(res, 200, 'application/json', JSON.stringify({ rows: qs.flatMap((qi) => tableRows(qi)) }));
+    return send(res, 200, 'application/json', JSON.stringify({ rows: qs.flatMap((qi) => buildItems(qi)) }));
   }
   if (req.method === 'GET' && u.pathname === '/data' && QUADRANTS.includes(q)) {
-    const d = readJSON(F(q).reviewdata, { items: [] });
-    const flags = readJSON(`${ROOT}/data/toponims/mapkurator/quality_flags.json`, {});
-    // matches.json is the authoritative source for tipus/ordre (the table reads it too).
-    // review-data.json is a stale snapshot from crop-render time, so override its tipus
-    // here; otherwise the fitxa and the taula could disagree (e.g. "altre" vs "Punta").
-    const mById = Object.fromEntries(readJSON(F(q).matches, []).map((m) => [m.id, m]));
-    (d.items || []).forEach((it) => { const m = mById[it.id] || {}; it.flags = flags[`${q}:${it.id}`] || []; if ('tipus' in m) it.tipus = m.tipus; it.ordre = m.ordre || ''; });
-    return send(res, 200, 'application/json', JSON.stringify(d));
-  }
-  if (req.method === 'GET' && u.pathname === '/state' && QUADRANTS.includes(q)) {
-    const cur = readJSON(F(q).curation, {});
-    const picks = {}, reviewed = {}, graf = {}, tipus = {}, ordre = {};
-    for (const [id, c] of Object.entries(cur)) {
-      if (c.graf) graf[id] = c.graf;
-      if (c.tipus) tipus[id] = c.tipus;
-      if (c.ordre) ordre[id] = c.ordre;
-      if (c.ngib) picks[id] = c.ngib;
-      if (c.verdict) reviewed[id] = c.verdict;
-    }
-    return send(res, 200, 'application/json', JSON.stringify({ picks, reviewed, graf, tipus, ordre }));
+    // Same canonical records as the table; the card just renders them differently
+    // (crop + candidates). Only items that have a rendered crop are kept.
+    const items = buildItems(q).filter((it) => fs.existsSync(`${F(q).crops}/${it.id}.jpg`));
+    return send(res, 200, 'application/json', JSON.stringify({ items }));
   }
   if (req.method === 'GET' && u.pathname.startsWith('/crop/') && QUADRANTS.includes(q)) {
     const p = `${F(q).crops}/${path.basename(u.pathname)}`;
