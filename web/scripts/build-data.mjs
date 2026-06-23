@@ -48,7 +48,10 @@ for (const q of QUADRANTS) {
   const matchById = new Map(matches.map((m) => [m.id, m]));
   let n = 0;
   for (const t of topo) {
-    const m = matchById.get(t.id) || {};
+    // matches.json is the curated set: bake.py drops trashed toponyms from it but
+    // leaves them in toponims.json. Skip those so the public site never shows garbage.
+    if (!matchById.has(t.id)) continue;
+    const m = matchById.get(t.id);
     const decision = m.decision || 'sense';
     const review = m.review ?? null;
     toponims.push({
