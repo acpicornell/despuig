@@ -306,8 +306,11 @@
  },
  "B06_10": {
   "ngib": "Puig de Santa Llúcia",
-  "verdict": "pick",
-  "graf": "S.ta Lucia"
+  "verdict": "ok",
+  "graf": "Sta. Lucia",
+  "tipus": [
+   "Oratorio publico"
+  ]
  },
  "B06_14": {
   "ngib": "Conilla de Dalt",
@@ -868,7 +871,9 @@
   "verdict": "none"
  },
  "C01_15": {
-  "tipus": "altre",
+  "tipus": [
+   "Punta"
+  ],
   "verdict": "none"
  },
  "C02_3": {
@@ -956,7 +961,7 @@
  },
  "C02_38": {
   "graf": "Amarador",
-  "verdict": "none"
+  "verdict": "trash"
  },
  "C03_1": {
   "verdict": "none"
@@ -1237,7 +1242,10 @@
  },
  "B05_9": {
   "graf": "Hort dê Dagui",
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B05_10": {
   "ngib": "Son Moragues",
@@ -2200,7 +2208,10 @@
  "B15_4": {
   "graf": "Mor d.l. Galera",
   "ngib": "sa Galera Grossa",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Punta"
+  ]
  },
  "B15_5": {
   "ngib": "Escull de Cala en Regau",

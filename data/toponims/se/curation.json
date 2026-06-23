@@ -124,7 +124,10 @@
  },
  "B04_7": {
   "ngib": "Lloret de Vistalegre",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Lugar grande"
+  ]
  },
  "B04_8": {
   "ngib": "Peixerí",
@@ -187,7 +190,10 @@
  },
  "B06_12": {
   "ngib": "Hort de Son Baró",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B06_13": {
   "verdict": "none"
@@ -339,7 +345,10 @@
  "B11_25": {
   "ngib": "Església de la Santa Creu",
   "verdict": "pick",
-  "graf": "La Sta. Creu"
+  "graf": "La Sta. Creu",
+  "tipus": [
+   "Oratorio publico"
+  ]
  },
  "B11_26": {
   "ngib": "Son Pere Ponç",
@@ -430,7 +439,10 @@
   "verdict": "pick"
  },
  "B14_2": {
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B15_1": {
   "ngib": "Míner",
@@ -456,7 +468,10 @@
  },
  "B16_10": {
   "ngib": "Can Franc",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B16_13": {
   "verdict": "none"
@@ -612,7 +627,10 @@
   "verdict": "none"
  },
  "C01_10": {
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": [
+   "Puente"
+  ]
  },
  "C01_14": {
   "verdict": "none"
@@ -821,12 +839,18 @@
  "B02_29": {
   "graf": "Termenó",
   "ngib": "Termenor",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B02_30": {
   "graf": "Bâdris",
   "ngib": "Bendrís",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B02_32": {
   "ngib": "Son Ferrer",
@@ -834,7 +858,10 @@
  },
  "B02_33": {
   "ngib": "es Pou Nou",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B02_34": {
   "ngib": "Son Llunes",
@@ -1017,7 +1044,10 @@
  },
  "B04_26": {
   "ngib": "Puig Moltó",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B04_27": {
   "ngib": "Son Toni Coll",
@@ -1305,7 +1335,10 @@
  "B08_2": {
   "graf": "Caldéres",
   "ngib": "es Calderers",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B08_3": {
   "ngib": "Son Gil",
@@ -1327,7 +1360,10 @@
  "B08_7": {
   "graf": "Hostalét",
   "ngib": "s'Hostalet",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B08_11": {
   "ngib": "Son Ramon",
@@ -1347,7 +1383,10 @@
  },
  "B08_16": {
   "ngib": "Cugulutx",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B08_17": {
   "ngib": "So n'Oms",
@@ -1408,7 +1447,10 @@
  "B08_34": {
   "graf": "Hort dê Jan",
   "ngib": "Hort d'en Jan",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B08_36": {
   "ngib": "Son Veny",
@@ -1462,7 +1504,10 @@
  "B09_11": {
   "ngib": "Alcudiarrom",
   "verdict": "pick",
-  "graf": "Alcudia=rom"
+  "graf": "Alcudia=rom",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B09_12": {
   "ngib": "es Castellot Vell",
@@ -1470,7 +1515,10 @@
  },
  "B09_13": {
   "ngib": "es Rafalot",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B09_14": {
   "ngib": "Son Moix",
@@ -1896,7 +1944,10 @@
  },
  "B15_5": {
   "ngib": "es Moreis",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B15_6": {
   "ngib": "Son Fullana",
@@ -2260,7 +2311,10 @@
  },
  "B19_10": {
   "ngib": "es Pou de sa Coma",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B19_11": {
   "ngib": "Son Sard",
@@ -2309,7 +2363,10 @@
  "B19_35": {
   "graf": "Alqa. Blanca",
   "ngib": "s'Alqueria Blanca",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B19_36": {
   "tipus": "Casa de campo ó Predio",
@@ -2356,7 +2413,10 @@
  },
  "B20_9": {
   "ngib": "ses Cases Noves",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B20_11": {
   "verdict": "none"
@@ -2401,7 +2461,10 @@
  },
  "B20_21": {
   "ngib": "Illot de sa Llova",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Isla"
+  ]
  },
  "B20_22": {
   "ngib": "Platja des Marquès",
@@ -2521,12 +2584,18 @@
  },
  "B21_26": {
   "ngib": "ses Salines",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B21_27": {
   "graf": "Refal de los porcs",
   "ngib": "Rafal des Porcs",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B21_28": {
   "ngib": "Son Piris",

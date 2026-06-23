@@ -41,7 +41,11 @@
  },
  "B02_13": {
   "graf": "S.ta Ana",
-  "verdict": "none"
+  "verdict": "pick",
+  "ngib": "Església de Santa Anna",
+  "tipus": [
+   "Oratorio publico"
+  ]
  },
  "B02_14": {
   "ngib": "Can Socies",
@@ -111,7 +115,10 @@
   ]
  },
  "B03_22": {
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": [
+   "Torrente"
+  ]
  },
  "B03_23": {
   "graf": "NS. dl. Puig",
@@ -414,7 +421,10 @@
  },
  "B08_13": {
   "graf": "T. D. S. MIGUEL",
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": [
+   "Torrente"
+  ]
  },
  "B08_18": {
   "ngib": "sa Pobla",
@@ -500,9 +510,12 @@
   "verdict": "none"
  },
  "B10_9": {
-  "graf": "S.ta Magdalena",
+  "graf": "Sta. Magdalena",
   "ngib": "Santa Magdalena",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Oratorio publico"
+  ]
  },
  "B11_10": {
   "ngib": "Cases de s'Ermitori",
@@ -609,7 +622,10 @@
   "graf": "ATl.ª Vieja"
  },
  "B13_24": {
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B13_25": {
   "ngib": "Cap Vermell",
@@ -711,7 +727,10 @@
  "B16_14": {
   "graf": "Paises",
   "ngib": "Talaiot de ses Païsses",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B16_19": {
   "graf": "Bell=Puig Marq.",
@@ -819,7 +838,10 @@
  },
  "B18_26": {
   "ngib": "Maria de la Salut",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": [
+   "Lugar grande"
+  ]
  },
  "B18_30": {
   "verdict": "none"
@@ -999,7 +1021,10 @@
   "verdict": "none"
  },
  "C02_24": {
-  "verdict": "none"
+  "verdict": "none",
+  "tipus": [
+   "Isla"
+  ]
  },
  "C02_25": {
   "verdict": "none",
@@ -1244,7 +1269,10 @@
  },
  "B02_21": {
   "ngib": "Albufera",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B02_22": {
   "ngib": "Albufera",
@@ -1352,7 +1380,10 @@
  },
  "B03_26": {
   "ngib": "Molí d'Almadrava",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B03_27": {
   "ngib": "Son Brull",
@@ -1665,7 +1696,10 @@
  "B07_25": {
   "graf": "La Bisbál",
   "ngib": "sa Bisbal",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B07_26": {
   "ngib": "Son Morro",
@@ -1750,7 +1784,10 @@
  },
  "B08_7": {
   "graf": "Molinás",
-  "verdict": "ok"
+  "verdict": "ok",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B08_9": {
   "verdict": "ok"
@@ -1770,7 +1807,10 @@
  },
  "B08_16": {
   "verdict": "ok",
-  "graf": "Refal"
+  "graf": "Refal",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B08_17": {
   "verdict": "ok"
@@ -1797,11 +1837,17 @@
  },
  "B08_28": {
   "graf": "Telápi",
-  "verdict": "ok"
+  "verdict": "ok",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B08_29": {
   "graf": "Los Fitérs",
-  "verdict": "ok"
+  "verdict": "ok",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B09_1": {
   "ngib": "Albarca",
@@ -1834,7 +1880,10 @@
  "B10_2": {
   "graf": "Hostalét",
   "ngib": "s'Hostalet",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B10_4": {
   "ngib": "So n'Estaràs",
@@ -1893,7 +1942,10 @@
  "B10_19": {
   "graf": "Hostelét",
   "ngib": "s'Hostalet",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B10_21": {
   "graf": "Sô Seriol",
@@ -2207,7 +2259,10 @@
  },
  "B14_23": {
   "ngib": "Pou Colomer",
-  "verdict": "pick"
+  "verdict": "ok",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B14_27": {
   "ngib": "Sos Ferrers",
@@ -2375,7 +2430,10 @@
  },
  "B16_18": {
   "ngib": "es Mostir Vell",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B16_20": {
   "ngib": "sa Granja",
@@ -2452,7 +2510,10 @@
  },
  "B17_17": {
   "ngib": "ses Terres",
-  "verdict": "pick"
+  "verdict": "pick",
+  "tipus": [
+   "Casa de campo ó Predio"
+  ]
  },
  "B17_18": {
   "ngib": "na Maians",
