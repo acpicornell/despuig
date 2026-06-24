@@ -1,0 +1,9 @@
+# Build context = this dir. Keep it lean: the only thing the Dockerfile needs from
+# it is vendor/mapkurator-spotter/spotter-v2. Drop VCS, caches and editor cruft.
+**/.git
+**/.DS_Store
+**/__pycache__
+**/*.pyc
+__pycache__
+workflows
+*.md

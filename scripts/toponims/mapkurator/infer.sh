@@ -5,11 +5,11 @@
 #   scripts/toponims/mapkurator/run.sh bash /workspace/mk/infer.sh
 # Env overrides: MK_CONFIG, MK_IN, MK_OUT, MK_WEIGHTS.
 set -euo pipefail
-cd /workspace/spotter
-# The compiled adet._C .so persists in the mounted repo, but the editable-install
-# metadata does not (container is --rm). Putting the repo on PYTHONPATH makes
-# `import adet` + adet._C resolve without re-running pip.
-export PYTHONPATH="/workspace/spotter${PYTHONPATH:+:$PYTHONPATH}"
+SPOTTER="${MK_SPOTTER:-/opt/spotter}"
+cd "$SPOTTER"
+# The spotter (incl. the compiled adet._C op) lives at /opt/spotter; the image already
+# sets PYTHONPATH=/opt/spotter. Re-assert it so `import adet` + adet._C resolve.
+export PYTHONPATH="$SPOTTER${PYTHONPATH:+:$PYTHONPATH}"
 CONFIG="${MK_CONFIG:-configs/inference_en_test.yaml}"
 IN="${MK_IN:-/workspace/in}"
 OUT="${MK_OUT:-/workspace/out}"

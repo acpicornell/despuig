@@ -7,8 +7,11 @@ the GPU to get whole-word polygons over the map. Recognition (Claude) comes afte
 
 There is **no official mapKurator Docker image** — the spotter is AdelaiDet
 (Detectron2) with a custom CUDA op (`adet._C`, deformable-attention) that must be
-**compiled** against the installed PyTorch. So we build our own environment image
-and compile the op inside a container.
+**compiled** against the installed PyTorch. So we build our own image. The
+`Dockerfile` is multi-stage: a CUDA *devel* builder compiles detectron2 + `adet._C`,
+then a thin CUDA *base* runtime stage keeps only the installed Python packages (the
+op is **baked in**; no nvcc, ~5.8 GB). To patch the spotter source, edit
+`vendor/mapkurator-spotter/spotter-v2` and rebuild — the builder recompiles `adet._C`.
 
 ## One-time host setup (NixOS)
 
@@ -36,26 +39,27 @@ scripts/toponims/mapkurator/run.sh nvidia-smi -L   # GPU listed inside the conta
 ## Build & run
 
 ```bash
-# 1. build the environment image (slow first time; no GPU needed)
+# 1. build the image (slow first time; no GPU needed). Clones the spotter into
+#    vendor/ and compiles adet._C inside the build — no separate compile step.
 scripts/toponims/mapkurator/build-image.sh
 
-# 2. compile the custom CUDA op (clones the spotter into vendor/ on first run)
-scripts/toponims/mapkurator/run.sh bash /workspace/mk/build-op.sh
-
-# 3. download the English spotting weight (Google Drive, via gdown)
+# 2. download the English spotting weight (Google Drive, via gdown)
 scripts/toponims/mapkurator/run.sh bash /workspace/mk/get-weights.sh
 
-# 4. tile the master scan into overlapping input tiles
+# 3. tile the master scan into overlapping input tiles
 node scripts/toponims/mapkurator/pretile.mjs        # → data/toponims/mapkurator/in/
 
-# 5. detect on the tiles
+# 4. detect on the tiles
 scripts/toponims/mapkurator/run.sh bash /workspace/mk/infer.sh
 #    → per-tile JSON in data/toponims/mapkurator/out/
 
-# 6. stitch tile detections back to master-image coordinates, de-overlap
+# 5. stitch tile detections back to master-image coordinates, de-overlap
 nix-shell scripts/toponims/mapkurator/shell.nix \
   --run "python3 scripts/toponims/mapkurator/merge_detections.py"   # → detections.json
 ```
+
+To patch the spotter source: edit `vendor/mapkurator-spotter/spotter-v2` and rerun
+`build-image.sh` — the builder stage recompiles `adet._C` from the patched sources.
 
 `detections.json` is the handoff to the rest of the chain — see the
 [parent README](../README.md) (b_windows → vision extraction → assemble → georef →
@@ -68,14 +72,14 @@ proceed to Phase 1 (tile the whole master, merge polygons). If not, fall back to
 
 ## Files
 
-- `Dockerfile` — CUDA 11.8 devel + torch 2.0.1+cu118 + detectron2 0.6 + deps.
-- `build-image.sh` — build the image (`localhost/despuig-mapkurator:latest`).
-- `run.sh` — run a command in the container with GPU + all mounts. Clones the
-  spotter into `vendor/` if missing. `MK_NO_GPU=1` drops the GPU device (for
-  compiling the op before the host toolkit is ready). Mounts:
-  `vendor/mapkurator-spotter/spotter-v2` → `/workspace/spotter`, this dir →
-  `/workspace/mk`, and `data/toponims/mapkurator/{weights,in,out}`.
-- `build-op.sh` — `pip install -e .` the spotter (compiles `adet._C` for sm_89).
+- `Dockerfile` — multi-stage: CUDA 11.8 devel builder (torch 2.0.1+cu118 +
+  detectron2 + compiled `adet._C`) → CUDA 11.8 *base* runtime (op baked in, ~5.8 GB).
+  `--build-arg RUNTIME_BASE=…cudnn8-runtime…` to fall back to the bigger base.
+- `build-image.sh` — build the image (`localhost/despuig-mapkurator:latest`). Clones
+  the spotter into `vendor/` for the build.
+- `run.sh` — run a command in the container with GPU + mounts. `MK_NO_GPU=1` drops
+  the GPU device. Mounts this dir → `/workspace/mk` and
+  `data/toponims/mapkurator/{weights,in,out}`.
 - `get-weights.sh` — download the English checkpoint to the weights mount.
 - `infer.sh` — run `tools/inference.py` over the input tiles → JSON polygons.
 - `pretile.mjs` — slice the master scan into overlapping detection tiles (`in/`).
