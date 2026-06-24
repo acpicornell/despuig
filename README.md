@@ -10,8 +10,9 @@ tool — plus the **data pipeline** that feeds them.
 ## `web/` — the public website (Astro, static)
 
 The published site: town pages (1785 census + cartela text + clean vignette + locator
-map), a filterable table of the ~2,570 toponyms, an interactive **Mapa** (geographic
-layer + deep-zoom of the engraving), and statistics. Catalan UI; cartela texts kept in
+map), a filterable/sortable table of the ~2,515 curated toponyms, an interactive **Mapa**
+(geographic layer + deep-zoom of the engraving), and statistics ("the 1785 map" vs "our
+reading process"). Catalan UI; cartela texts kept in
 their original period spelling. It is **self-contained**: it only reads the versioned
 JSON under `web/src/data/`, never the pipeline internals.
 
@@ -21,7 +22,8 @@ npm install
 npm run data        # build src/data/*.json from the per-sheet pipeline output
 npm run vinetes     # town vignettes  (needs data/jpg/, local-only)
 npm run hero        # homepage hero crop
-npm run map         # DZI tiles for the engraving deep-zoom (slow; only when the master changes)
+npm run map         # DZI tiles for the engraving deep-zoom on /mapa (slow; only when the master changes)
+npm run sheets      # per-quadrant DZIs for the "El gravat" tab (slow; only when the master changes)
 npm run dev         # http://localhost:4330
 npm run build       # → web/dist  (prebuild runs data + vinetes + hero)
 ```
