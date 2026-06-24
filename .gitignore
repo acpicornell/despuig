@@ -17,6 +17,9 @@ web/public/sheets/
 
 # raw master + source images — large; Biblioteca Virtual de Defensa (CC BY 4.0), not versioned
 data/jpg/
+# 1785 cartela L/R column crops — derived from data/jpg/ for the Claude-vision OCR,
+# regenerable with web/scripts/crop-cartelles.mjs. The OCR result (extract.json) IS versioned.
+data/cartelles-1785/crops/
 # copyrighted PDFs
 data/pdf/
 
