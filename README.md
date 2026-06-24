@@ -28,8 +28,9 @@ npm run dev         # http://localhost:4330
 npm run build       # → web/dist  (prebuild runs data + vinetes + hero)
 ```
 
-Deploy = **Cloudflare Pages Direct Upload** (build locally because the source images are
-not in git): `npm run deploy` (= build + `wrangler pages deploy dist`).
+Deploy = **Cloudflare Workers (Static Assets)** (build locally because the source images
+are not in git): `npm run deploy` (= build + `wrangler deploy`, config in `web/wrangler.toml`).
+Live at **https://mapa-despuig.cloudflare-d82.workers.dev**.
 
 ## `scripts/toponims/review-server.mjs` — the curation tool (internal)
 
