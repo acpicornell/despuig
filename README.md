@@ -67,7 +67,8 @@ NGIB gazetteer match. Quality is recorded on two orthogonal axes: **confidence**
 (`decision`) and **human review** (`review`).
 
 Full reproducible recipe: [`scripts/toponims/mapkurator/PER-SHEET.md`](scripts/toponims/mapkurator/PER-SHEET.md).
-Spotter setup: [`scripts/toponims/mapkurator/README.md`](scripts/toponims/mapkurator/README.md).
+Spotter setup: [`scripts/toponims/mapkurator/README.md`](scripts/toponims/mapkurator/README.md)
+— a slim multi-stage GPU image (~5.8 GB; the custom `adet._C` op is baked in).
 Per-sheet outputs live in `data/toponims/<q>/` (versioned); the gazetteer and large
 image/tile assets are local-only (regenerable). `node`/`python3` come from the nix
 shells (`nix-shell -p nodejs --run …`, `scripts/toponims/{,mapkurator/}shell.nix`).
