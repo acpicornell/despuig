@@ -18,6 +18,32 @@ const nav = [
   { href: url('metode'), label: 'El mètode', match: base + '/metode' },
 ];
 const isCurrent = (m) => (m === (base || '') ? path === (base || '') : path === m || path.startsWith(m + '/'));
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://despuig.corpusbalear.org/#website',
+      url: 'https://despuig.corpusbalear.org/',
+      name: 'Mapa del Cardenal Despuig (1785)',
+      inLanguage: 'ca',
+      isPartOf: { '@type': 'CollectionPage', name: 'Corpus Balear', url: 'https://corpusbalear.org/' },
+    },
+    {
+      '@type': 'Dataset',
+      '@id': 'https://despuig.corpusbalear.org/#dataset',
+      name: 'Pobles i topònims del mapa del Cardenal Despuig (1785)',
+      description:
+        'Els pobles i els milers de topònims del mapa de Mallorca del Cardenal Antoni Despuig (Mapa de la Isla de Mallorca, gravat el 1785), enllaçats al Nomenclàtor Geogràfic de les Illes Balears (NGIB).',
+      inLanguage: 'ca',
+      isBasedOn: { '@type': 'Map', name: 'Mapa de la Isla de Mallorca', creator: { '@type': 'Person', name: 'Antoni Despuig' }, datePublished: '1785' },
+      isPartOf: { '@type': 'CollectionPage', name: 'Corpus Balear', url: 'https://corpusbalear.org/' },
+      spatialCoverage: { '@type': 'Place', name: 'Mallorca' },
+    },
+  ],
+};
 ---
 <!doctype html>
 <html lang="ca">
@@ -29,6 +55,9 @@ const isCurrent = (m) => (m === (base || '') ? path === (base || '') : path === 
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={desc} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <link rel="canonical" href={canonical} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -58,6 +87,8 @@ const isCurrent = (m) => (m === (base || '') ? path === (base || '') : path === 
         <div>
           <em>Mapa de la Isla de Mallorca</em> (Antoni Despuig, gravat el 1785), enllaçada al
           <em>Nomenclàtor Geogràfic de les Illes Balears</em> (NGIB) com a autoritat de topònims canònics.
+          <br />
+          Part del <a href="https://corpusbalear.org/">Corpus Balear</a> · edicions digitals de fonts històriques de les Illes Balears.
         </div>
         <div class="foot-links">
           <a href="https://github.com/acpicornell/despuig" target="_blank" rel="noopener">
