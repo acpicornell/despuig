@@ -9,8 +9,11 @@ name: Deploy
 # and this matches the local deploy flow.
 
 on:
-  push:
-    branches: [main, master]
+  # Push-triggered auto-deploy is intentionally DISABLED for this Astro map.
+  # Its vignette + deep-zoom imagery is generated from raw scans that are not
+  # versioned, so a clean CI checkout cannot reproduce the full site. Deploy
+  # manually from a complete local checkout. This workflow is kept for manual
+  # runs only.
   workflow_dispatch:
 
 jobs:
