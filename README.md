@@ -1,5 +1,7 @@
 # El mapa del Cardenal Despuig (1785)
 
+[![Deploy](https://github.com/acpicornell/despuig/actions/workflows/deploy.yml/badge.svg)](https://github.com/acpicornell/despuig/actions/workflows/deploy.yml)
+
 Outreach project around the *Mapa de la Isla de Mallorca* by Cardinal Antoni Despuig,
 engraved **1785** (high-resolution original from the Biblioteca Virtual de Defensa,
 CC BY 4.0).
