@@ -2,7 +2,9 @@
   "name": "mapa-despuig-web",
   "type": "module",
   "version": "0.1.0",
-  "description": "Web nova del mapa de Mallorca del Cardenal Despuig (1785), sobre el pipeline de topònims per-sheet",
+  "description": "Static site for the map of Mallorca by Cardinal Antoni Despuig (1785), on the per-sheet toponym pipeline",
+  "license": "AGPL-3.0-only",
+  "author": "Antonio Picornell",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
