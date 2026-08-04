@@ -111,8 +111,8 @@ for (const d of p.dependents) {
 
   {punts.length > 0 && (
     <>
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-      <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+      <link rel="stylesheet" href={url('vendor/leaflet/leaflet.css')} />
+      <script is:inline src={url('vendor/leaflet/leaflet.js')}></script>
       <script is:inline>
         (function () {
           const el = document.getElementById('locator');
