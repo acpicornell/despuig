@@ -6,7 +6,7 @@
 //
 //   cd web && npm run vinetes
 
-import { readFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, mkdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve, join } from 'node:path';
 import sharp from 'sharp';
@@ -24,7 +24,9 @@ mkdirSync(OUT_DIR, { recursive: true });
 let done = 0;
 const skipped = [];
 for (const p of pobles) {
-  if (!p.vinyetaFile) {
+  // Sense font local (data/jpg/ no es versiona): es conserva la vinyeta ja
+  // construïda que hi hagi a public/vinetes/ en comptes de petar.
+  if (!p.vinyetaFile || !existsSync(join(SRC_DIR, p.vinyetaFile))) {
     skipped.push(p.slug);
     continue;
   }

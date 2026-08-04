@@ -23,7 +23,8 @@ import { QUADRANTS } from './quadrants.mjs';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '..', '..');
 const OUT = resolve(HERE, '..', 'src', 'data');
-const VINYETES_DIR = 'data/jpg/pobles';
+const VINYETES_DIR = 'data/jpg/pobles';                                       // font local (no versionada)
+const VINYETES_OUT = resolve(HERE, '..', 'public', 'vinetes');                // sortida servida (versionada)
 
 const rd = (rel) => JSON.parse(readFileSync(join(ROOT, rel), 'utf8'));
 const DIACRITICS = /[̀-ͯ]/g;
@@ -126,7 +127,10 @@ const pobles = cartelles.map((t) => {
   const ed = edBySlug[t.slug] || {};
   const g = geoOf(t.slug, t.nom);
   const file = t.img;                                                        // ja és la canònica (fusions incloses)
-  const hasFile = file && existsSync(join(ROOT, VINYETES_DIR, file));
+  // La web serveix la vinyeta ja construïda (web/public/vinetes/<slug>.jpg, versionada);
+  // data/jpg/pobles/ només és la font local d'on surt. Val qualsevol de les dues, així un
+  // checkout net de CI (sense els escanejos crus) també marca el poble com a il·lustrat.
+  const hasFile = (file && existsSync(join(ROOT, VINYETES_DIR, file))) || existsSync(join(VINYETES_OUT, `${t.slug}.jpg`));
   return {
     id: ed.id ?? nextId++,
     slug: t.slug,

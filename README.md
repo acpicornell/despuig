@@ -30,9 +30,13 @@ npm run dev         # http://localhost:4330
 npm run build       # → web/dist  (prebuild runs data + vinetes + hero)
 ```
 
-Deploy = **Cloudflare Workers (Static Assets)** (build locally because the source images
-are not in git): `npm run deploy` (= build + `wrangler deploy`, config in `web/wrangler.toml`).
-Live at **https://mapa-despuig.cloudflare-d82.workers.dev**.
+Deploy = **Cloudflare Workers (Static Assets)**, automatic on push to the default branch
+(see `.github/workflows/deploy.yml`); manually with `npm run deploy` (= build +
+`wrangler deploy`, config in `web/wrangler.toml`). The generated deploy assets
+(`web/public/{map,sheets,vinetes,hero}`) are versioned, so a clean checkout reproduces
+the whole site. Third-party libraries and fonts are self-hosted under
+`web/public/vendor/`, so the site loads no runtime CDN and can enforce the strict CSP in
+`web/public/_headers`. Live at **https://despuig.corpusbalear.org**.
 
 ## `scripts/toponims/review-server.mjs` — the curation tool (internal)
 
@@ -75,3 +79,19 @@ Spotter setup: [`scripts/toponims/mapkurator/README.md`](scripts/toponims/mapkur
 Per-sheet outputs live in `data/toponims/<q>/` (versioned); the gazetteer and large
 image/tile assets are local-only (regenerable). `node`/`python3` come from the nix
 shells (`nix-shell -p nodejs --run …`, `scripts/toponims/{,mapkurator/}shell.nix`).
+
+## License
+
+- **Code** (the pipeline, the `web/` site, all scripts) — **© Antonio Picornell,
+  [AGPL-3.0-only](https://www.gnu.org/licenses/agpl-3.0.html)** (see [`LICENSE`](LICENSE)).
+  Strong copyleft with a network clause: anyone who uses, modifies, or runs this
+  code as a network service must release their complete source under the AGPL too,
+  keeping attribution.
+- **Toponym data** (`data/toponims/<q>/*.json` and the derived `web/src/data/`) —
+  **© Antonio Picornell, [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)**:
+  free to reuse for non-commercial purposes **with attribution**. See
+  [`data/toponims/LICENSE.md`](data/toponims/LICENSE.md).
+- The engraving itself is a historical work; the high-resolution master comes from the
+  **Biblioteca Virtual de Defensa** (CC BY 4.0). Canonical name forms come from the
+  **NGIB** and keep their own terms; the vendored web libraries/fonts keep theirs
+  (see [`web/public/vendor/README.md`](web/public/vendor/README.md)).
