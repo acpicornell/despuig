@@ -3,8 +3,7 @@
     "font": "Mapa de la Isla de Mallorca, reedició a escala menor de l'original publicat pel Cardenal Despuig el 1785. Les xifres censals corresponen a l'any 1829 segons nota explícita sota la cartela de Palma.",
     "fitxaIGN": "32-H-18",
     "totalCartel·les": 34,
-    "anyCens": 1829,
-    "imatgeMestra": { "fitxer": "/map/mapa-web.jpg", "amplada": 19306, "alcada": 14902 }
+    "anyCens": 1829
   },
   "pobles": [
     {
