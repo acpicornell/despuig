@@ -6,6 +6,8 @@ Outreach project around the *Mapa de la Isla de Mallorca* by Cardinal Antoni Des
 engraved **1785** (high-resolution original from the Biblioteca Virtual de Defensa,
 CC BY 4.0).
 
+**Live site:** <https://despuig.corpusbalear.org>
+
 The repository holds **two applications** — a public website and an internal curation
 tool — plus the **data pipeline** that feeds them.
 
@@ -36,7 +38,7 @@ Deploy = **Cloudflare Workers (Static Assets)**, automatic on push to the defaul
 (`web/public/{map,sheets,vinetes,hero}`) are versioned, so a clean checkout reproduces
 the whole site. Third-party libraries and fonts are self-hosted under
 `web/public/vendor/`, so the site loads no runtime CDN and can enforce the strict CSP in
-`web/public/_headers`. Live at **https://despuig.corpusbalear.org**.
+`web/public/_headers`.
 
 ## `scripts/toponims/review-server.mjs` — the curation tool (internal)
 
@@ -76,8 +78,10 @@ NGIB gazetteer match. Quality is recorded on two orthogonal axes: **confidence**
 Full reproducible recipe: [`scripts/toponims/mapkurator/PER-SHEET.md`](scripts/toponims/mapkurator/PER-SHEET.md).
 Spotter setup: [`scripts/toponims/mapkurator/README.md`](scripts/toponims/mapkurator/README.md)
 — a slim multi-stage GPU image (~5.8 GB; the custom `adet._C` op is baked in).
-Per-sheet outputs live in `data/toponims/<q>/` (versioned); the gazetteer and large
-image/tile assets are local-only (regenerable). `node`/`python3` come from the nix
+Per-sheet outputs live in `data/toponims/<q>/` (versioned); the raw scans (`data/jpg/`),
+the gazetteer and the detection intermediates are local-only (regenerable) — note that
+the *built* deploy imagery under `web/public/` is versioned, as described above.
+`node`/`python3` come from the nix
 shells (`nix-shell -p nodejs --run …`, `scripts/toponims/{,mapkurator/}shell.nix`).
 
 ## License
