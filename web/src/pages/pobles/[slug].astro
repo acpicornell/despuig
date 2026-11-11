@@ -120,7 +120,7 @@ for (const d of p.dependents) {
           const punts = JSON.parse(el.dataset.punts);
           const main = punts.find((p) => p.main) || punts[0];
           const map = L.map(el, { scrollWheelZoom: false, attributionControl: true }).setView([main.lat, main.lng], 11);
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap' }).addTo(map);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap', className: 'osm-tiles' }).addTo(map);
           const group = [];
           punts.forEach((pt) => {
             const m = L.marker([pt.lat, pt.lng]).addTo(map)
@@ -193,7 +193,7 @@ for (const d of p.dependents) {
   .transcripcio { margin-top: 1.8rem; }
   .transcripcio .original {
     font-size: 1.12rem; line-height: 1.65; margin: 0; padding: 1.1rem 1.3rem;
-    border-left: 4px solid var(--accent); background: rgba(255,255,255,.4);
+    border-left: 4px solid var(--accent); background: var(--veil-2);
     font-style: italic; color: var(--ink);
   }
   .dependents { margin-top: 1.4rem; }
@@ -205,7 +205,7 @@ for (const d of p.dependents) {
   .vthumb { display: block; width: 100%; padding: 0; border: 1px solid var(--line); background: #fff; box-shadow: 0 3px 14px var(--shadow); cursor: zoom-in; transition: transform .12s, box-shadow .12s; }
   .vthumb:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--shadow); }
   .vthumb img { width: 100%; display: block; }
-  .vinyeta .noimg { aspect-ratio: 4 / 3; display: grid; place-items: center; border: 1px solid var(--line); background: #fff; color: var(--ink-soft); font-style: italic; }
+  .vinyeta .noimg { aspect-ratio: 4 / 3; display: grid; place-items: center; border: 1px solid var(--line); background: var(--paper-2); color: var(--ink-soft); font-style: italic; }
   .vinyeta figcaption { margin-top: .5rem; font-style: italic; }
   .small { font-size: .85rem; }
 

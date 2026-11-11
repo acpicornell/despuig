@@ -107,7 +107,7 @@ const teaser = pool.slice(0, 5);
   /* vel de pergamí sobre tot el mapa (més dens a baix, on hi ha el text) */
   .hero::after {
     content: ''; position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(to top, var(--paper) 2%, rgba(244,236,219,.82) 42%, rgba(244,236,219,.4) 100%);
+    background: linear-gradient(to top, var(--paper) 2%, rgba(var(--hero-fade),.82) 42%, rgba(var(--hero-fade),.4) 100%);
   }
   .hero__panel {
     position: relative; z-index: 2;

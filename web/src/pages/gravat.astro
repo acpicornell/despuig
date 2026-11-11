@@ -212,8 +212,8 @@ const cfg = {
   .gstage { margin-bottom: 3rem; }
 
   /* visor emmarcat tipus "làmina" — fons pergamí perquè no es vegin marges negres */
-  .plate { margin: 0; border: 1px solid var(--line); border-radius: 5px; background: #e9e2cf; box-shadow: 0 4px 18px var(--shadow); overflow: hidden; }
-  .viewer { width: 100%; aspect-ratio: 19306 / 14902; max-height: 84vh; background: #e9e2cf; }
+  .plate { margin: 0; border: 1px solid var(--line); border-radius: 5px; background: var(--plate-bg); box-shadow: 0 4px 18px var(--shadow); overflow: hidden; }
+  .viewer { width: 100%; aspect-ratio: 19306 / 14902; max-height: 84vh; background: var(--plate-bg); }
   .plate figcaption { padding: .6rem .9rem; font-size: .8rem; line-height: 1.5; color: var(--ink-soft); background: var(--paper-2); border-top: 1px solid var(--line); }
 
   /* panell de control sota el gravat, en horitzontal */
@@ -223,11 +223,11 @@ const cfg = {
   .sheets2 { display: flex; flex-wrap: wrap; gap: .5rem; }
   .sheets2 button {
     font-family: var(--display); font-size: .9rem; padding: .5rem .9rem; cursor: pointer;
-    background: rgba(255,255,255,.45); color: var(--ink-soft);
+    background: var(--veil-2); color: var(--ink-soft);
     border: 1px solid var(--line); border-radius: 4px; transition: background .12s, color .12s, transform .12s;
   }
   .sheets2 button:hover { background: var(--paper-2); transform: translateY(-1px); }
-  .sheets2 button.on { background: var(--accent); color: #fff; border-color: #6c281d; }
+  .sheets2 button.on { background: var(--accent); color: var(--on-accent); border-color: var(--accent-edge); }
   .sheets2 button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .phint { font-size: .82rem; margin: .7rem 0 .3rem; }
   .onward { font-size: .95rem; line-height: 1.55; margin: 0; }
@@ -251,7 +251,7 @@ const cfg = {
   /* barra lateral enganxada amb la fitxa tècnica */
   .side { grid-column: 2; grid-row: 2; position: sticky; top: 5rem; }
   .sidehead { font-family: var(--display); font-size: .82rem; letter-spacing: .05em; text-transform: uppercase; color: var(--sepia); margin: 0 0 .6rem; }
-  .fitxa { margin: 0; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; background: rgba(255,255,255,.45); }
+  .fitxa { margin: 0; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; background: var(--veil-2); }
   .fitxa > div { display: flex; flex-direction: column; gap: .15rem; padding: .65rem .9rem; border-top: 1px solid var(--line); }
   .fitxa > div:first-child { border-top: 0; }
   .fitxa dt { font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: var(--sepia); }
