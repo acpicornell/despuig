@@ -1,5 +1,5 @@
-// Registre dels quadrants ACABATS del pipeline per-sheet. Afegir SE/SW després
-// = afegir-hi dues entrades més (i res més no canvia: build-data.mjs n'és additiu).
+// Registre dels quadrants ACABATS del pipeline per-sheet: tots quatre (NW, NE,
+// SE, SW). build-data.mjs n'és additiu: un quadrant nou és una entrada més.
 // Camins relatius a l'arrel del repo.
 export const QUADRANTS = [
   {

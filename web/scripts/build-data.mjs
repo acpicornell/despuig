@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 // Capa de dades de la web nova, ADDITIVA per quadrant. Genera dos fitxers
-// versionats que el lloc Astro importa:
+// (gitignored; el CI els regenera amb `npm run data`) que el lloc Astro importa:
 //
 //   web/src/data/toponims.json  — tots els topònims dels quadrants acabats,
 //                                 amb id prefixat per quadrant i el match NGIB.
 //   web/src/data/pobles.json    — els pobles del mapa ORIGINAL de 1785: dades
 //                                 factuals llegides de les cartel·les (1785) +
 //                                 coords autoritatives (gcps) + vinyeta neta +
-//                                 resum/notes editorials (català) de pobles.json.
+//                                 resum/notes editorials (català) de pobles-editorial.json.
 //
 // FONT DELS FETS = les cartel·les de 1785 (data/cartelles-1785/extract.json), NO
-// les xifres de la reedició de 1826 (src/data/pobles.json), que només aporta el
+// les xifres de la reedició de 1826; src/data/pobles-editorial.json només aporta el
 // text divulgatiu en català. NO toca cap dada global/abandonada.
 //
 //   cd web && npm run data
@@ -115,12 +115,12 @@ const geoOf = (slug, nom) => gcpByNorm.get(GEO_ALIAS[slug] || norm(nom)) || null
 // encara no georeferenciat (SE/SW) o sense GCP. Aproximades; les substitueix el gcp quan arribi.
 const FALLBACK_GEO = JSON.parse(readFileSync(join(HERE, 'town-coords-fallback.json'), 'utf8')).coords;
 
-// ─── 3. Pobles: FETS de 1785 (cartel·les) + editorial de pobles.json ───
+// ─── 3. Pobles: FETS de 1785 (cartel·les) + editorial de pobles-editorial.json ───
 const cartelles = rd('data/cartelles-1785/extract.json').towns;            // 36, font dels fets
 // Editorial (id, esCapital, resumCat/notes, nomAntic) — viu DINS de web/, font pròpia.
 const editorial = JSON.parse(readFileSync(resolve(HERE, '..', 'src', 'data', 'pobles-editorial.json'), 'utf8'));
 const edBySlug = Object.fromEntries(editorial.pobles.map((p) => [p.slug, p]));
-// id de mapa: el de pobles.json on existeix; els nous (Banyalbufar, Deià) al final.
+// id de mapa: el de pobles-editorial.json on existeix; els nous (Banyalbufar, Deià) al final.
 let nextId = Math.max(...Object.values(edBySlug).map((p) => p.id)) + 1;
 
 const pobles = cartelles.map((t) => {

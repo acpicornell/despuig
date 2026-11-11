@@ -1,6 +1,6 @@
 # Cloudflare Workers (Static Assets) — serves the prebuilt Astro site in dist/.
-# Assets-only Worker (no server code), so it sits alongside the other *-balears
-# Workers at https://mapa-despuig.cloudflare-d82.workers.dev.
+# Assets-only Worker (no server code), served at https://despuig.corpusbalear.org
+# (custom domain; workers_dev = false, so there is no *.workers.dev URL).
 # Deploy: npm run deploy  (= astro build + wrangler deploy).
 name = "mapa-despuig"
 compatibility_date = "2025-01-01"

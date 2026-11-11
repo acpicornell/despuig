@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Genera les tessel·les Deep Zoom (DZI) del màster de 1785 per a OpenSeadragon
-// (pestanya Mapa → vista "El gravat"). Sortida gitignored i regenerable; lenta
-// (~6000 tessel·les), per això NO va al prebuild — executa-la quan canviï el màster:
+// (pàgina "El gravat", /gravat). Sortida versionada (web/public/map, el màster no
+// ho és); lenta (~6000 tessel·les), per això NO va al prebuild — executa-la quan canviï el màster:
 //
 //   cd web && npm run map
 
